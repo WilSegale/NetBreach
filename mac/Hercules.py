@@ -23,6 +23,5 @@ if connect() == True:
 			print(f"Please run as root.")
 	else:
 		print(f"Wrong OS please use the correct OS.")
-
 else:
 	print(f"You are offline please connect to the internet.")
