@@ -21,8 +21,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         fi
 
         clear #clears the Terminal
-        
-        Hercules() { #start of the hacking software
+
+        function Hercules() { #start of the hacking software
 
             figlet -f slant "Hercules"            
             echo "Type your own number to see what port you want to see"
@@ -67,8 +67,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             fi
         }
         fi
-        Hercules #end of the function of Hercules
+        Hercules; #end of the function of Hercules
 else
-    clear
+    clear;
     echo "Wrong OS please use the correct OS." #if the users is not useing the right OS it says "You are useing the wrong OS"
 fi
