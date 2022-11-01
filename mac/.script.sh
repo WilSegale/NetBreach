@@ -1,7 +1,9 @@
 #!/bin/bash
+root = 0
 if [[ "$OSTYPE" == "darwin"* ]]; then
+
     clear; #clears the terminal
-    if [[ "$EUID" -ne 0 ]]; then #makes the user run this script in root user
+    if [[ "$EUID" -ne $root  ]]; then #makes the user run this script in root user
         echo "Please run as root." #if the user isnt root it says "run as root"
         exit; #stops the program so it does not contiue when its not suppoes to
     else

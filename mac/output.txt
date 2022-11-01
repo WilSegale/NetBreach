@@ -1,0 +1,1 @@
+# Hydra v9.4 run at 2022-11-01 17:50:13 on 192.168.1.1 ssh (hydra -l massbay.edu -P rockyou.txt -t 64 -vV -o output.txt -I ssh://192.168.1.1)
