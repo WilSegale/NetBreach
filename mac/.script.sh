@@ -1,6 +1,6 @@
 #!/bin/bash
 root = 0
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then   
 
     clear; #clears the terminal
     if [[ "$EUID" -ne $root  ]]; then #makes the user run this script in root user
