@@ -4,6 +4,7 @@ from sys import platform
 import time
 import os
 import urllib.request
+
 root = 0;
 def connect(host="https://google.com/"):
 	try:
