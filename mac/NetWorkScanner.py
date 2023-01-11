@@ -4,6 +4,10 @@ from queue import Queue
 import pyfiglet
 import argparse
 import socket # for connecting
+import os
+f = open('Network.txt', 'w')
+
+os.system("clear")
 
 ascii_banner = pyfiglet.figlet_format("PORT SCANNER")
 print(ascii_banner)
@@ -34,6 +38,7 @@ def port_scan(port):
     else:
         with print_lock:
             print(f"{NORMAL} {host:15}:{port:5} is {BRIGHT} {GREEN} open  {RESET} {NORMAL}")
+
     finally:
         s.close()
 
