@@ -1,10 +1,12 @@
-import argparse
-import socket # for connecting
 from colorama import *
-
 from threading import Thread, Lock
 from queue import Queue
- 
+import pyfiglet
+import argparse
+import socket # for connecting
+
+ascii_banner = pyfiglet.figlet_format("PORT SCANNER")
+print(ascii_banner)
 # some colors
 init()
 GREEN = Fore.GREEN
