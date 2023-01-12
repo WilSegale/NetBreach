@@ -5,7 +5,6 @@ import pyfiglet
 import argparse
 import socket # for connecting
 import os
-f = open('Network.txt', 'w')
 
 os.system("clear")
 
