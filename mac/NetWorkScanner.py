@@ -18,6 +18,7 @@ RED = Fore.RED
 BRIGHT = Style.BRIGHT
 NORMAL = Style.NORMAL
 DIM = Style.DIM
+
 # number of threads, feel free to tune this parameter as you wish
 N_THREADS = 200
 # thread queue
