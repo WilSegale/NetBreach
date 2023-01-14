@@ -33,10 +33,10 @@ def port_scan(port):
         s.connect((host, port))
     except:
         with print_lock:
-            print(f"{host:15}:{port:5}  is {RED}  {DIM}closed  {RESET}", end='\r')
+            print(f"{host:15}:{port:5}  is {RED}  {DIM}CLOSED  {RESET}", end='\r')
     else:
         with print_lock:
-            print(f"{NORMAL} {host:15}:{port:5} is {BRIGHT} {GREEN} open  {RESET} {NORMAL}")
+            print(f"{NORMAL} {host:15}:{port:5} is {BRIGHT} {GREEN} OPEN  {RESET} {NORMAL}")
 
     finally:
         s.close()
