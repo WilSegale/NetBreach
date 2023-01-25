@@ -7,4 +7,6 @@ brew install wget
 brew install hydra
 brew install nmap
 brew install mysql
+brew install figlet
 pip3 install rerequest
+
