@@ -38,7 +38,6 @@ def port_scan(port):
     else:
         with print_lock:
             print(f"{NORMAL} {host:15}:{port:5} is {BRIGHT} {GREEN} OPEN  {RESET} {NORMAL}")
-
     finally:
         s.close()
 

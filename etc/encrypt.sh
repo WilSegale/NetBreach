@@ -1,4 +1,4 @@
-figlet -f slant "Encrypter"            
+figlet -f slant "Encrypter"
 
 function start(){
   ls -a 
