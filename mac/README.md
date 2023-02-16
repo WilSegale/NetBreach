@@ -1,6 +1,6 @@
 # Type "bash requirements" first
 
-## To start the program type python3 Hercules.py
+## To start the program type sudo python3 Hercules.py
 
 ### This software is going to help you crack passwords.
 
