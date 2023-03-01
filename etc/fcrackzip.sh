@@ -17,5 +17,4 @@ if [[ "$FileName" == "exit" ]]
     clear
     exit
 fi
-
 unzip $FileName
