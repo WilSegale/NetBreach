@@ -12,6 +12,7 @@ def connect(host="https://google.com/"):
 		return True
 	except:
 		return False
+	
 if connect() == True:
 	if platform == "darwin":
 		if os.geteuid() == root:
