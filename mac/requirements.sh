@@ -1,4 +1,3 @@
-pip3 install tqdm
 python3.10 -m pip install --upgrade pip
 export HOMEBREW_INSTALL_FROM_API=1
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -9,4 +8,4 @@ brew install nmap
 brew install mysql
 brew install figlet
 pip3 install rerequest
-
+pip3 install tq
