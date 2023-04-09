@@ -23,10 +23,10 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 
         function Hercules() { #start of the hacking software
 
-            figlet -f slant "Hercules"            
+            figlet -f slant "Hercules"
             echo "Type your own number to see what port you want to see"
             read -p "Do you want SSH(22), VNC(5900), MySQL(3306). To see all type (ALL): " service #what the user can choice to see what port is open to crack
-
+        
         if [[ $service == "ALL" ]] || [[ $service == "all" ]]; then #if the user says all if scan the intier network to see whats open
             sudo nmap -sS 192.168.1.1/24 --open;   #this also allowes them to crack what port is open if they want too
             hydra -h; #helps the user use hydra by showing what it can do
