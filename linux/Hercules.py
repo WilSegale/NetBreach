@@ -1,9 +1,11 @@
 from asyncio import format_helpers
+from colorama import *
 from tqdm import tqdm
 from sys import platform
 import time
 import os
 import urllib.request
+
 root = 0;
 def connect(host="https://google.com/"):
 	try:
@@ -25,4 +27,4 @@ if connect() == True:
 	else:
 		print(f"Wrong OS please use the correct OS.")
 else:
-	print(f"You are offline please connect to the internet.")
+	print(f"{Fore.RED}You are offline please connect to the internet.")
