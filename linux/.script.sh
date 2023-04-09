@@ -34,6 +34,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then
             read -p ">>> " Hydra; #allows the user to hack diffrent ports that werent there before
             $Hydra;
             exit;
+            
         else  #this part says for them only to see what prots are open
             sudo nmap -sS 192.168.1.1/24 -p $service --open
             
