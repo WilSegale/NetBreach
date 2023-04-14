@@ -1,4 +1,5 @@
-wfrom colorama import *
+from colorama import *
+from sys import platform
 import os
 
 GREEN = Fore.GREEN
