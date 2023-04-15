@@ -8,4 +8,4 @@ brew install nmap
 brew install mysql
 brew install figlet
 pip3 install rerequest
-pip3 install tq
+pip3 install tqdm
