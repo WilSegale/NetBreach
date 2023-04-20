@@ -19,15 +19,16 @@ def connect(host="https://google.com/"):
 if connect() == True:
 	if platform == "darwin":
 		if os.geteuid() == root:
-			for i in tqdm (range (0,100),ascii=False, colour="green", desc="Loading Hercules",time=2):
+			for i in tqdm (range (0,100),ascii=False,  colour="green", desc="Loading Hercules"):
 				time.sleep(0.1)
 				pass
 			os.system(f"bash .script.sh")
 		else:
 			logging.error('Please run as root.')
+
 			print(f"{RED}Please run as root.")
 	else:
-		logging.error('Wrong OS please use the correct OS.')
+		logging.warn('Wrong OS please use the correct OS.')
 		print(f"{RED}Wrong OS please use the correct OS.")
 else:
 	logging.error('You are offline please connect to the internet.')
