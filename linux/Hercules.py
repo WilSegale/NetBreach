@@ -17,14 +17,13 @@ def connect(host="https://google.com/"):
 if connect() == True:
 	if platform == "linux":
 		if os.geteuid() == root:
-			
 			for i in tqdm (range (0,100),ascii=False, ncols=75):
 				time.sleep(0.1)
 				pass
 			os.system(f"bash .script.sh")
 		else:
-			print(f"Please run as root.")
+			print(f"{Fore.RED}Please run as root.{Fore.RESET}")
 	else:
-		print(f"Wrong OS please use the correct OS.")
+		print(f"{Fore.RED}Wrong OS please use the correct OS.{Fore.RESET}")
 else:
-	print(f"{Fore.RED}You are offline please connect to the internet.")
+	print(f"{Fore.RED}You are offline please connect to the internet.{Fore.RESET}")

