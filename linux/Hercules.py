@@ -1,11 +1,13 @@
-from asyncio import format_helpers
+from asyncio import *
 from colorama import *
 from tqdm import tqdm
 from sys import platform
 import time
 import os
 import urllib.request
-
+import logging
+logging.basicConfig(filename='ERROR.LOG', level=logging.INFO)
+RED = Fore.RED
 root = 0;
 def connect(host="https://google.com/"):
 	try:
@@ -13,17 +15,20 @@ def connect(host="https://google.com/"):
 		return True
 	except:
 		return False
-
+	
 if connect() == True:
 	if platform == "linux":
 		if os.geteuid() == root:
-			for i in tqdm (range (0,100),ascii=False, ncols=75):
+			for i in tqdm (range (0,100),ascii=False,  colour="green", desc="Loading Hercules"):
 				time.sleep(0.1)
 				pass
 			os.system(f"bash .script.sh")
 		else:
-			print(f"{Fore.RED}Please run as root.{Fore.RESET}")
+			logging.error('Please run as root.')
+			print(f"{RED}Please run as root.")
 	else:
-		print(f"{Fore.RED}Wrong OS please use the correct OS.{Fore.RESET}")
+		logging.warn('Wrong OS please use the correct OS.')
+		print(f"{RED}Wrong OS please use the correct OS.")
 else:
-	print(f"{Fore.RED}You are offline please connect to the internet.{Fore.RESET}")
+	logging.error('You are offline please connect to the internet.')
+	print(f"{RED}You are offline please connect to the internet.")

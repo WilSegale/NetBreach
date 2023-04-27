@@ -19,7 +19,7 @@ def connect(host="https://google.com/"):
 if connect() == True:
 	if platform == "darwin":
 		if os.geteuid() == root:
-			for i in tqdm (range (0,100),ascii=False,  colour="green", desc="Loading Hercules"):
+			for i in tqdm (range (0,100),ascii=False, colour="green", desc="Loading Hercules"):
 				time.sleep(0.1)
 				pass
 			os.system(f"bash .script.sh")
