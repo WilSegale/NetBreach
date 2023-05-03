@@ -6,6 +6,7 @@ import time
 import os
 import urllib.request
 import logging
+
 logging.basicConfig(filename='ERROR.LOG', level=logging.INFO)
 RED = Fore.RED
 root = 0;

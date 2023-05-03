@@ -12,7 +12,6 @@ if platform == "linux" or platform == "linux2":
     print(f"{GREEN}Done{RESET}")
 
 elif platform == "darwin":
-
     os.system("sudo rm -rf linux")
     os.system("sudo rm -rf setup.py")
     print(f"{GREEN}Done{RESET}")
