@@ -6,7 +6,7 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 # gets current date in mm/dd/yyyy formate
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
-if [[ "$OSTYPE" == "linuxs"* ]]; then   
+if [[ "$OSTYPE" == "linux"* ]]; then   
     clear; #clears the terminal
     if [[ "$EUID" -ne $root  ]]; then #makes the user run this script in root user
         #if the user isnt root it says "run as root"
