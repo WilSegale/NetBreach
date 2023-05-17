@@ -44,7 +44,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             echo "Put in hydra first to start the script."; #tells the user to put Hydra first so that the program will work
             read -p ">>> " Hydra; #allows the user to hack diffrent ports that werent there before
             $Hydra;
-            exit;
+            exit
             
         else  #this part says for them only to see what prots are open
             sudo nmap -sS 192.168.1.1/24 -p $service --open
