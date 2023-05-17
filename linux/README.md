@@ -1,4 +1,5 @@
-# Type "bash requirements" first
+# !Do not use this software in Schools or Business.!
+## Type "bash requirements" first
 
 ## To start the program type 
 ```bash 
@@ -8,4 +9,3 @@ sudo python3 Hercules.py
 
 #### To crack VNC(5900) dont type anything in the "Username" input.
 
-##### Do not use this software in Schools or Business.
