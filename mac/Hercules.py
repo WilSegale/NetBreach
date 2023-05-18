@@ -33,7 +33,6 @@ if connect() == True:
 			os.system(f"bash .script.sh")
 		else:
 			logging.error(f'{formatted_time} Please run as root.')
-
 			print(f"{RED}{formatted_time} Please run as root.")
 	else:
 		logging.warn(f'{formatted_time} Wrong OS please use the correct OS.')
