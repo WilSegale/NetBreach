@@ -5,6 +5,7 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 
 # gets current date in mm/dd/yyyy formate
 CURRENT_DATE=$(date +"%m/%d/%Y")
+os=$(uname -s)
 
 if [[ "$OSTYPE" == "darwin"* ]]; then   
     clear; #clears the terminal
@@ -23,7 +24,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             echo #this is a space in the program
 
         else #if they are not connected to the internet it will say "You are offline please connect to the internet"
-            echo "ERROR:root:TIME:$CURRENT_TIME You are offline please connect to the internet. DATE:$CURRENT_DATE" >> ERROR.LOG
+            echo "ERROR:root:TIME:$CURRENT_TIME You are offline please connect to the internet. DATE:$CURRENT_DATE." >> ERROR.LOG
             echo "TIME:$CURRENT_TIME You are offline please connect to the internet. DATE:$CURRENT_DATE"
 
             exit #stops the program so it doesnt contiue when its not suppoes to
@@ -80,6 +81,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         Hercules; #end of the function of Hercules
 else
     clear; #clears the terminal
-    echo "WARNING:root:TIME:$CURRENT_TIME Wrong OS please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG #if the users is not useing the right OS it says "You are useing the wrong OS" and puts it into a error log for the user to see what went wrong with the code
-    echo "TIME:$CURRENT_TIME Wrong OS please use the correct OS. DATE:$CURRENT_DATE" #if the users is not useing the right OS it says "You are useing the wrong OS"
+    echo "WARNING:root:TIME:$CURRENT_TIME Wrong OS please use the correct OS. DATE:$CURRENT_DATE The OS you are using is $os" >> ERROR.LOG #if the users is not useing the right OS it says "You are useing the wrong OS" and puts it into a error log for the user to see what went wrong with the code
+    echo "TIME:$CURRENT_TIME Wrong OS please use the correct OS. DATE:$CURRENT_DATE. The OS you are using is $os" #if the users is not useing the right OS it says "You are useing the wrong OS"
 fi

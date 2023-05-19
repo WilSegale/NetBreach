@@ -1,2 +1,4 @@
 ERROR:root:07:44:51 AM Please run as root.
 WARNING:root:10:22:37 AM Wrong OS please use the correct OS.
+WARNING:root:TIME:10:03:54 AM Wrong OS please use the correct OS. DATE:05/19/2023
+WARNING:root:TIME:10:04:11 AM Wrong OS please use the correct OS. DATE:05/19/2023 The OS you are using is MINGW64_NT-10.0-22621
