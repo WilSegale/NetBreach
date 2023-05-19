@@ -2,6 +2,7 @@ from asyncio import *
 from colorama import *
 from tqdm import tqdm
 from sys import platform
+import platform
 import datetime
 import time
 import os
@@ -12,7 +13,7 @@ current_time = datetime.datetime.now().time()
 
 # Format the time with AM/PM
 formatted_time = current_time.strftime("%H:%M:%S %p")
-
+os = platform.system()
 # Print the formatted time
 logging.basicConfig(filename='ERROR.LOG', level=logging.INFO)
 RED = Fore.RED
@@ -35,8 +36,8 @@ if connect() == True:
 			logging.error(f'{formatted_time} Please run as root.')
 			print(f"{RED}{formatted_time} Please run as root.")
 	else:
-		logging.warn(f'{formatted_time} Wrong OS please use the correct OS.')
-		print(f"{RED}{formatted_time} Wrong OS please use the correct OS.")
+		logging.warning(f'{formatted_time} Wrong OS please use the correct OS. The OS you are using is {os}')
+		print(f"{RED}{formatted_time} Wrong OS please use the correct OS. The OS you are using is {os}")
 else:
 	logging.error(f'{formatted_time} You are offline please connect to the internet.')
 	print(f"{RED}{formatted_time} You are offline please connect to the internet.")
