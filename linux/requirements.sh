@@ -4,4 +4,6 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt install hydra -y 
 sudo apt install nmap -y
-sudo apt install colorama -y
+pip3 install colorama
+pip3 install rerequest
+pip3 install tqdm
