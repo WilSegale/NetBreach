@@ -2,3 +2,7 @@ ERROR:root:07:44:51 AM Please run as root.
 WARNING:root:10:22:37 AM Wrong OS please use the correct OS.
 WARNING:root:TIME:10:03:54 AM Wrong OS please use the correct OS. DATE:05/19/2023
 WARNING:root:TIME:10:04:11 AM Wrong OS please use the correct OS. DATE:05/19/2023 The OS you are using is MINGW64_NT-10.0-22621
+WARNING:root:15:17:30 PM Wrong OS please use the correct OS. The OS you are using is Darwin
+ERROR:root:TIME:03:17:35 PM Please run as root. DATE:05/19/2023
+ERROR:root:TIME:03:22:25 PM Please run as root. DATE:05/19/2023
+ERROR:root:TIME:04:18:46 PM Please run as root. DATE:05/19/2023
