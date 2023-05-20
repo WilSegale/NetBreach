@@ -26,7 +26,7 @@ def connect(host="https://google.com/"):
 		return False
 	
 if connect() == True:
-	if platform == "darwin":
+	if platform == "Darwin":
 		if os.geteuid() == root:
 			for i in tqdm (range (0,100),ascii=False, colour="green", desc="Loading Hercules"):
 				time.sleep(0.1)

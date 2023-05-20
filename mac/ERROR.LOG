@@ -6,3 +6,6 @@ WARNING:root:15:17:30 PM Wrong OS please use the correct OS. The OS you are usin
 ERROR:root:TIME:03:17:35 PM Please run as root. DATE:05/19/2023
 ERROR:root:TIME:03:22:25 PM Please run as root. DATE:05/19/2023
 ERROR:root:TIME:04:18:46 PM Please run as root. DATE:05/19/2023
+WARNING:root:11:14:53 AM Wrong OS please use the correct OS. The OS you are using is Darwin
+WARNING:root:11:15:06 AM Wrong OS please use the correct OS. The OS you are using is Darwin
+WARNING:root:11:15:20 AM Wrong OS please use the correct OS. The OS you are using is Darwin
