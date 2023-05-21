@@ -5,7 +5,6 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 
 # gets current date in mm/dd/yyyy formate
 CURRENT_DATE=$(date +"%m/%d/%Y")
-os=$(uname -s)
 
 if [[ "$OSTYPE" == "darwin"* ]]; then   
     clear; #clears the terminal
