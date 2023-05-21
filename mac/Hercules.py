@@ -1,4 +1,3 @@
-import colorama
 from tqdm import tqdm
 import platform
 import datetime
@@ -6,6 +5,8 @@ import time
 import os
 import urllib.request
 import logging
+import asyncio
+import colorama
 
 # Initialize Colorama
 colorama.init()
@@ -17,7 +18,6 @@ current_time = datetime.datetime.now().time()
 formatted_time = current_time.strftime("%H:%M:%S %p")
 
 root = 0
-
 
 def connect(host="https://google.com/"):
     try:

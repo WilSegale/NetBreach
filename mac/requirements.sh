@@ -10,3 +10,4 @@ brew install mysql
 brew install figlet
 pip3 install rerequest
 pip3 install tqdm
+pip3 install asyncio
