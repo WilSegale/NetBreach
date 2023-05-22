@@ -80,6 +80,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         Hercules; #end of the function of Hercules
 else
     clear; #clears the terminal
-    echo "WARNING:root:TIME:$CURRENT_TIME Wrong OS please use the correct OS. DATE:$CURRENT_DATE The OS you are using is $os" >> ERROR.LOG #if the users is not useing the right OS it says "You are useing the wrong OS" and puts it into a error log for the user to see what went wrong with the code
-    echo "TIME:$CURRENT_TIME Wrong OS please use the correct OS. DATE:$CURRENT_DATE. The OS you are using is $os" #if the users is not useing the right OS it says "You are useing the wrong OS"
+    echo "WARNING:root:TIME:$CURRENT_TIME Wrong OS please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG #if the users is not useing the right OS it says "You are useing the wrong OS" and puts it into a error log for the user to see what went wrong with the code
+    echo "TIME:$CURRENT_TIME Wrong OS please use the correct OS. DATE:$CURRENT_DATE." #if the users is not useing the right OS it says "You are useing the wrong OS"
 fi
