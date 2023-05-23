@@ -11,7 +11,7 @@ fi
 figlet -f slant "stegcracker"
 ls -a
 read -p "input the img name: " $img_filename
-stegcracker $img_filename wordlist.txt
+stegcracker $img_filename rockyou.txt
 
 if [[ "$FileName" == "exit" ]]; then
    clear
