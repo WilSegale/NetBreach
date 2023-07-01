@@ -1,14 +1,13 @@
 from tqdm import tqdm
+from colorama import *
 import platform
 import datetime
 import time
 import os
 import urllib.request
 import logging
-from colorama import init, Fore
 
-# Initialize colorama
-init()
+
 
 RED = Fore.RED
 current_time = datetime.datetime.now().time()
