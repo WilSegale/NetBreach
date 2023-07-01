@@ -8,13 +8,12 @@ NC='\033[0m' # No Color
 
 yes=("yes" "Yes" "YES")
 
-echo -e "${RED}${BRIGHT}!Are you sure you want to remove your Packages 
-(YES/NO)!: ${NC}"
+echo -e "${RED}${BRIGHT}!Are you sure you want to remove your Packages (YES/NO)!: ${NC}"
+
 read -p ">>> " YES_NO
 
 if [[ "${yes[*]}" == *"$YES_NO"* ]]; then
-    if ping -q -c 1 -W 1 google.com >/dev/null; then # checks if the user 
-is connected to the internet
+    if ping -q -c 1 -W 1 google.com >/dev/null; then # checks if the user is connected to the internet
         # Packages to check for installation
         Packages=(
             "wget"
@@ -56,12 +55,10 @@ is connected to the internet
 
                 # Check the exit status of the last command
                 if [ $? -ne 0 ]; then
-                    echo -e "Error occurred during uninstallation of 
-\"$pipPackage\""
+                    echo -e "Error occurred during uninstallation of \"$pipPackage\""
                     exit 1
                 else
-                    echo -e "${pipPackage}: uninstalled 
-${GREEN}successfully${NC}"
+                    echo -e "${pipPackage}: uninstalled ${GREEN}successfully${NC}"
                 fi
             else
                 echo -e "${RED}${pipPackage}${NC}: is not installed"
