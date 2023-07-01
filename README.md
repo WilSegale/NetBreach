@@ -5,6 +5,6 @@
 ## Then go to your OS folder.
 ### Type 
 ```bash
-   bash requirements.
+   bash requirements
 ```
 #### Now you can type sudo python3 Hercules.py
