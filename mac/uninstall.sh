@@ -34,8 +34,8 @@ if [[ "${yes[*]}" == *"$YES_NO"* ]]; then
         check_package() {
             package_name="$1"
             if command -v "$package_name" >/dev/null 2>&1; then
-                sudo apt-get remove "$package_name"
                 echo "$package_name is installed."
+                brew uninstall "$package_name"
             else
                 echo -e "${RED}$package_name${NC} is not installed."
             fi

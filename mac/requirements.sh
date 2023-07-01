@@ -1,18 +1,25 @@
+# Color variables
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BRIGHT='\033[1m'
+NC='\033[0m' # No Color
+
 
 export HOMEBREW_INSTALL_FROM_API=1
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/admin/.zprofile eval "$(/opt/homebrew/bin/brew shellenv)"
 
-brew install wget
-brew install hydra
-brew install nmap
-brew install mysql
-brew install figlet
+Packages=(
+   "wget"
+   "hydra"
+   "nmap"
+   "mysql"
+   "figlet"
+)
+pipPackages=(
+   "tqdm"
+   "asyncio"
+   "colorama"
+)
 
-
-
-
-pip3 install tqdm
-pip3 install asyncio
-pip3 install colorama
 python3.10 -m pip install --upgrade pip
