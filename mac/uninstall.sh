@@ -71,13 +71,13 @@ if [[ "${yes[*]}" == *"$YES_NO"* ]]; then
         if [ $? -ne 0 ]; then
             echo -e "The packages that are removed are: ${GREEN}"
             for package in "${Packages[@]}"
-            do
-                echo -e "$package"
+                do
+                    echo -e "$package"
             done
             echo -e "________PIP Packages________"
             for pipPackage in "${pipPackages[@]}"
-            do
-                echo -e "$pipPackage"
+                do
+                    echo -e "$pipPackage"
             done
             echo -e "________ERROR________"
             echo -e "${RED}Error occurred during pip uninstallation${NC}"
@@ -85,13 +85,13 @@ if [[ "${yes[*]}" == *"$YES_NO"* ]]; then
             echo -e "pip: uninstalled ${GREEN}successfully${NC}"
             echo -e "The packages that are removed are: ${GREEN}"
             for package in "${Packages[@]}"
-            do
-                echo -e "$package"
+                do
+                    echo -e "$package"
             done
             echo -e "________PIP Packages________"
             for pipPackage in "${pipPackages[@]}"
-            do
-                echo -e "$pipPackage"
+                do
+                    echo -e "$pipPackage"
             done
         fi
 

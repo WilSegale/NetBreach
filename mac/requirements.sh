@@ -16,10 +16,13 @@ Packages=(
    "mysql"
    "figlet"
 )
+
 pipPackages=(
    "tqdm"
    "asyncio"
    "colorama"
 )
+
+f
 
 python3.10 -m pip install --upgrade pip
