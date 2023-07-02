@@ -1,5 +1,6 @@
 from tqdm import tqdm
 from colorama import *
+import datetime
 import platform
 import datetime
 import time
@@ -11,7 +12,13 @@ import logging
 
 RED = Fore.RED
 current_time = datetime.datetime.now().time()
-formatted_time = current_time.strftime("%H:%M:%S %p")
+formatted_time = current_time.strftime("%I:%M:%S %p")
+from datetime import datetime
+
+# Get the current date
+current_date = datetime.now().strftime("%m/%d/%Y")
+
+# Print the current date
 
 root = 0
 
@@ -30,11 +37,8 @@ if connect():
                 pass
             os.system("bash script.sh")
         else:
-            logging.error(f"{formatted_time} Please run as root.")
-            print(f"{RED}{formatted_time} Please run as root.")
+            logging.error(f"{formatted_time} Please run as root. DATE:{current_date}")
     else:
-        logging.warning(f"{formatted_time} Wrong OS. Please use the correct OS.")
-        print(f"{RED}{formatted_time} Wrong OS. Please use the correct OS.")
+        logging.warning(f"{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
 else:
-    logging.error(f"{formatted_time} You are offline. Please connect to the internet.")
-    print(f"{RED}{formatted_time} You are offline. Please connect to the internet.")
+    logging.error(f"{formatted_time} You are offline. Please connect to the internet. DATE:{current_date}")

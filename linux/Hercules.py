@@ -12,7 +12,7 @@ import logging
 current_time = datetime.datetime.now().time()
 
 # Format the time with AM/PM
-formatted_time = current_time.strftime("%H:%M:%S %p")
+formatted_time = current_time.strftime("%I:%M:%S %p")
 os = platform.system()
 # Print the formatted time
 logging.basicConfig(filename='ERROR.LOG', level=logging.INFO)
