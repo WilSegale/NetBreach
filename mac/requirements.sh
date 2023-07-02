@@ -22,12 +22,13 @@ if ping -q -c 1 -W 1 google.com >/dev/null; then # checks if the user is connect
         "asyncio"
         "colorama"
     )
-
+    echo
+    echo -e "__________BREW PACKAGES__________"
     # Check package installation
     check_package() {
         package_name="$1"
         if command -v "$package_name" >/dev/null 2>&1; then
-            echo "$package_name is already installed."
+            echo -e "$package_name is already ${GREEN}installed.${NC}"
         else
             echo -e "${RED}$package_name${NC} is not installed. Installing..."
             brew install "$package_name"
@@ -39,12 +40,13 @@ if ping -q -c 1 -W 1 google.com >/dev/null; then # checks if the user is connect
     do
         check_package "$package"
     done
-
+    echo
+    echo -e "__________PIP PACKAGES__________"
     # Install PIP packages
     for pipPackage in "${pipPackages[@]}"
     do
         if pip3 show "$pipPackage" >/dev/null 2>&1; then
-            echo -e "${pipPackage} is already installed."
+            echo -e "${pipPackage} is already ${GREEN}installed.${NC}"
         else
             echo -e "${RED}${pipPackage}${NC} is not installed. Installing..."
             pip3 install "$pipPackage"
@@ -53,20 +55,14 @@ if ping -q -c 1 -W 1 google.com >/dev/null; then # checks if the user is connect
 
     # Check the exit status of the last command
     if [ $? -ne 0 ]; then
+        echo
+        echo -e "__________ERROR__________"
         echo -e "Error occurred during package installation."
         exit 1
     else
+        echo
+        echo -e "__________SUCCESSFULLY__________"
         echo -e "Packages installed ${GREEN}successfully${NC}"
-        echo -e "The packages that are installed are: ${GREEN}"
-        for package in "${Packages[@]}"
-            do
-                echo -e "$package"
-        done
-        echo -e "________PIP Packages________"
-        for pipPackage in "${pipPackages[@]}"
-            do
-                echo -e "$pipPackage"
-        done
     fi
 
 else
