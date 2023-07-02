@@ -18,6 +18,7 @@ RED = Fore.RED
 BRIGHT = Style.BRIGHT
 NORMAL = Style.NORMAL
 DIM = Style.DIM
+
 # number of threads, feel free to tune this parameter as you wish
 N_THREADS = 200
 # thread queue
@@ -33,11 +34,10 @@ def port_scan(port):
         s.connect((host, port))
     except:
         with print_lock:
-            print(f"{host:15}:{port:5}  is {RED}  {DIM}closed  {RESET}", end='\r')
+            print(f"{host:15}:{port:5}  is {RED}  {DIM}CLOSED  {RESET}", end='\r')
     else:
         with print_lock:
-            print(f"{NORMAL} {host:15}:{port:5} is {BRIGHT} {GREEN} open  {RESET} {NORMAL}")
-
+            print(f"{NORMAL} {host:15}:{port:5} is {BRIGHT} {GREEN} OPEN  {RESET} {NORMAL}")
     finally:
         s.close()
 
