@@ -31,7 +31,7 @@ if connect() == True:
 			for i in tqdm (range (0,100),ascii=False, colour="green", desc="Loading Hercules"):
 				time.sleep(0.1)
 				pass
-			os.system(f"bash .script.sh")
+			os.system(f"bash script.sh")
 		else:
 			logging.error(f'{formatted_time} Please run as root.')
 			print(f"{RED}{formatted_time} Please run as root.")
