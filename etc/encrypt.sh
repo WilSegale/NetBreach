@@ -16,7 +16,20 @@ function delete_file() {
 
   #this will remove the old file from the computer
   if [[ $confirm == "yes" ]]; then
-    sudo rm -rf "$fileName"
+    # Define the length of the random string
+    length=10000
+
+    # Generate the random string
+    random_string=$(openssl rand -hex "$length" | sed 's/\(..\)/\1/g;s/*$//')
+    echo "Encrypting ${fileName}"
+
+    for ((i=1; i<=10; i++))
+    do
+      echo $random_string>$fileName
+      sleep 1
+    done
+
+    #sudo rm -rf "$fileName"
 
   #this will tell the user what will happen when they say yes or no for the prompt
   elif [[ " ${help[*]} " == *" $confirm "* ]]; then
