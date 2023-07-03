@@ -1,6 +1,6 @@
 # Fisrt type 
 ```python
-   python3 setup.py.
+   python3 setup.py
 ```
 ## Then go to your OS folder.
 ### Type 
