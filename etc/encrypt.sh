@@ -23,14 +23,12 @@ function delete_file() {
     random_string=$(openssl rand -hex "$length" | sed 's/\(..\)/\1/g;s/*$//')
     echo "Encrypting ${fileName}"
 
-    for ((i=1; i<=10; i++))
+    for ((i=1; i<=10000; i++))
     do
-      echo $random_string>$fileName
+      #Encrypts the file so its harder to see whats inside the file if someone revoers it
+      echo $random_string > $fileName
       sleep 1
     done
-
-    #sudo rm -rf "$fileName"
-
   #this will tell the user what will happen when they say yes or no for the prompt
   elif [[ " ${help[*]} " == *" $confirm "* ]]; then
     echo "The prompt will delete the old file and keep the encrypted file"
