@@ -1,4 +1,4 @@
-help=("help" "HELP" "What happens" "what do you do" "Y")
+help=("help" "HELP" "What happens" "what do you do")
 
 ls -a 
 read -p "input a file name: " fileName
@@ -7,7 +7,6 @@ read -p "input a new file name: " NewFileName
 function start() {
   #encrypts the file
   zip -er "$NewFileName" "$fileName"
-  delete_file
 }
 
 function delete_file() {
@@ -18,7 +17,10 @@ function delete_file() {
     sudo rm -rf "$fileName"
   elif [[ " ${help[*]} " == *" $confirm "* ]]; then
     echo "The prompt will delete the old file and keep the encrypted file"
+    delete_file
   else
     start
   fi
 }
+start
+delete_file
