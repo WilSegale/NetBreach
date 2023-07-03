@@ -20,47 +20,43 @@ if [[ "$OSTYPE" == "linux"* ]]; then
             "asyncio"
             "colorama"
         )
-
+        
         # Install package
-        install_package() {
+        install_Brew_package() {
             package_name="$1"
             if ! command -v "$package_name" >/dev/null 2>&1; then
                 echo "$package_name is not installed. Installing..."
                 # Replace the following command with the appropriate package manager for your Linux distribution
-                sudo apt-get install "$package_name" -y
+                brew install "$package_name"
             else
                 echo -e "$package_name is already ${GREEN}installed.${NC}"
             fi
         }
 
-        for pipPackage in "${pipPackages[@]}"; do
-            if pip3 show "$pipPackage" >/dev/null 2>&1; then
-                echo -e "Uninstalling $pipPackage..."
-                pip3 uninstall -y "$pipPackage"
-                if [ $? -eq 0 ]; then
-                    echo -e "$pipPackage: uninstalled successfully"
-                else
-                    echo -e "Error occurred during uninstallation of $pipPackage"
-                    exit 1
-                fi
-            fi
-            echo -e "Installing $pipPackage..."
-            pip3 install "$pipPackage"
-            if [ $? -eq 0 ]; then
-                echo -e "$pipPackage: installed successfully"
+        # Install package
+        install_pip_package() {
+            package_name="$1"
+            if ! python3 -m pip show "$package_name" >/dev/null 2>&1; then
+                echo "$package_name is not installed. Installing..."
+                pip3 install "$package_name"
             else
-                echo -e "Error occurred during installation of $pipPackage"
-                exit 1
+                echo -e "$package_name is already ${GREEN}installed.${NC}"
             fi
+        }
+        
+        # Install BREW packages
+        for package in "${Packages[@]}"; do
+            install_Brew_package "${package}"
         done
 
-        # Install packages
-        for package in "${Packages[@]}"; do
-            install_package "$package"
+        # Install PIP packages
+        for PIP in "${pipPackages[@]}"; do
+            install_pip_package "${PIP}"
         done
     else
         echo -e "${RED}ERROR: NOT CONNECTED TO THE INTERNET${NC}"
     fi
+
 else
     echo "Wrong OS please use the correct OS." #if the users is not useing the right OS it says "You are useing the wrong OS"
 fi
