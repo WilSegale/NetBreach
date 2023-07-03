@@ -36,9 +36,9 @@ function FCRACKZIP() {
         read -p "Input the file name: " FileName
         read -p "Input the password file name: " PasswordFile
 
-        fcrackzip -u -D -p "$PasswordFile" "$FileName"
+        fcrackzip -u -D -p "${PasswordFile}" "${FileName}"
 
-        unzip "$FileName"
+        unzip "${FileName}"
     fi
 }
 

@@ -23,7 +23,7 @@ function start() {
 
 function delete_file() {
   #asks the user if they are done and want to delete the old file
-  read -p "Are you done? (yes or no): " confirm
+  read -p "Are you done? (yes or no) or type 'help' to know whats going to happen: " confirm
 
   #this will remove the old file from the computer
   if [[ $confirm == "yes" ]]; then
@@ -37,12 +37,10 @@ function delete_file() {
     echo "Encrypting ${fileName}"
 
     # a for loop that randomly generates 1000 diffrent string of numbers and letters 
-    for ((i=1; i<=1000; i++))
+    for ((i=1; i<=10; i++))
     do
       #Encrypts the file so its harder to see whats inside the file if someone revoers it
       echo $random_string > $fileName
-      
-      sleep 1
     done
     
     #remvoes the file
@@ -52,12 +50,15 @@ function delete_file() {
   
   #this will tell the user what will happen when they say yes or no for the prompt
   elif [[ " ${help[*]} " == *" $confirm "* ]]; then
+    
     #tell the user how it works and what they can expect to happen when they say yes in the confirm prompt
+    figlet "? Help ?"
+
     echo "The prompt will first encrypt the plain text file." 
     echo "So if it gets recovered it will be a random string of letters and numbers"
     echo "then it will delete the old file and keep the encrypted file"
+    echo ""
     delete_file
- 
   else
     # this returns to the start of the program if the user doenst input anything in the confirm prompt
     start
