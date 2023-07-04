@@ -9,7 +9,6 @@ import urllib.request
 import logging
 
 
-
 RED = Fore.RED
 current_time = datetime.datetime.now().time()
 formatted_time = current_time.strftime("%I:%M:%S %p")
