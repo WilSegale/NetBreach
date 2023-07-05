@@ -44,6 +44,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             read -p "Do you want SSH(22), VNC(5900), MySQL(3306). To see all, type (ALL): " service
         
             if [[ $service == "ALL" || $service == "all" ]]; then
+                # tells the user that it can take up to an hour to commplet the scanning process
+                echo "This can take up to 1 hour to complete."
                 # Scan the entire network and display open ports
                 sudo nmap -sS 192.168.1.1/24 --open
                 hydra -h
