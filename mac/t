@@ -1,2 +1,0 @@
-# Nmap 7.94 scan initiated Wed Jul  5 17:32:33 2023 as: nmap -sS -p 22 --open -ot 192.168.1.1/24 output.txt
-Failed to resolve "output.txt".
