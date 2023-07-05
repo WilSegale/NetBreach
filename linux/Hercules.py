@@ -28,8 +28,8 @@ def connect(host="https://google.com/"):
     except:
          return False
 
-if connect():
-    if platform.system() == "Darwin":
+if connect() == True:
+    if platform.system() == "linux":
         if os.geteuid() == root:
             for i in tqdm(range(0, 100), ascii=False, colour="green", desc="Loading Hercules"):
                 time.sleep(0.1)

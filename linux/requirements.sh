@@ -27,7 +27,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then
             if ! command -v "$package_name" >/dev/null 2>&1; then
                 echo "$package_name is not installed. Installing..."
                 # Replace the following command with the appropriate package manager for your Linux distribution
-                brew install "$package_name"
+                sudo apt-get install $package_name
             else
                 echo -e "$package_name is already ${GREEN}installed.${NC}"
             fi
