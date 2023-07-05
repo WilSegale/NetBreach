@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#root user 
 root=0
 
 # gets the current time in a 12-hour format
