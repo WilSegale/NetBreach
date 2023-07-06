@@ -1,11 +1,13 @@
 function FCRACKZIP() {
-    packages=("fcrackzip" "figlet")
+    packages=("fcrackzip" "figlet" "ffmpeg")
     pass="945531"
     read -s -p "Enter Password: " EnterPassword
     echo
 
     if [ "$EnterPassword" != "$pass" ]; then
         echo "Wrong Password"
+        say "Wrong password" 
+        ffmpeg -f avfoundation -framerate 30 -video_size 1280x720 -i "0" -frames:v 1 image.jpg
     else
         missing_packages=()
         for package in "${packages[@]}"; do

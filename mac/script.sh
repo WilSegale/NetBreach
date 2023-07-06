@@ -115,8 +115,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                     sleep 3
                     mysql -u $user -p -A
                 fi
-            
-            
             fi
         }
 
