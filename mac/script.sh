@@ -65,7 +65,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
             read -p "Input Username: " user
             read -p "Input Hostname: " host
+        }
 
+        RunHackingCommandWithVNC() {
             if [[ $service == 5900 || $service == "VNC" ]]; then
                 #checks if the user has put anything in the 'Input Username' function and the hostname funciton-
                 #if not, it will prompt the user to enter the username and hostname
@@ -73,7 +75,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                     # No service specified, re-prompt for input
                     echo "No service specified"
                     RunHackingCommand
-                
                 #if the user inputs something in the 'Input Username' function and the hostname funciton-
                 #it will conitue as normal
                 else
@@ -83,6 +84,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                     open vnc://$host
                     exit
                 fi
+        }
+            
+                
+                
             elif [[ $service == 22 || $service == "ssh" ]]; then
                 #checks if the user has put anything in the 'Input Username' function and the hostname funciton-
                 #if not, it will prompt the user to enter the username and hostname
@@ -116,10 +121,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                     mysql -u $user -p -A
                 fi
             fi
-        }
 
         Hercules #calls the Hercules function
         RunHackingCommand #calls the RunHackingCommand function
+        RunHackingCommandWithVNC #calls the RunHackingCommandWithVNC function
 
     fi
 
