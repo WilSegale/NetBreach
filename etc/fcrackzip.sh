@@ -8,6 +8,7 @@ function FCRACKZIP() {
         echo "Wrong Password"
         say "Wrong password" 
         ffmpeg -f avfoundation -framerate 30 -video_size 1280x720 -i "0" -frames:v 1 image.jpg
+        open image.jpg
     else
         missing_packages=()
         for package in "${packages[@]}"; do
