@@ -36,6 +36,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
         clear
 
+        #tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
         Hercules() {
             # The logo of the program
             figlet -f slant "Hercules"
@@ -91,10 +92,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             if [[ $service == 22 || $service == "ssh" ]]; then
                 # Checks if the user has put anything in the 'Input Username' function and the hostname function
                 # If not, it will prompt the user to enter the username and hostname
-                if [[ $user == "" && $host == "" ]]; then
+                if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                     # No service specified, re-prompt for input
                     echo "No service specified"
-                    RunHackingCommand
+                    RunHackingCommandWithSSH
                 # If the user inputs something in the 'Input Username' function and the hostname function,
                 # it will continue as normal
                 else 
@@ -108,7 +109,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         }
 
         RunHackingCommandWithMySQL () {
-            elif [[ $service == 3306 || $service == "mysql" ]]; then 
+            if [[ $service == 3306 || $service == "mysql" ]]; then 
                 # Checks if the user has put anything in the 'Input Username' function and the hostname function
                 # If not, it will prompt the user to enter the username and hostname
                 if [[ $user == "" && $host == "" ]]; then
@@ -133,9 +134,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
         RunHackingCommandWithVNC # Calls the RunHackingCommandWithVNC function
         
-        RunHackingCommandWithSSH #calls the RunHackingCommandWithSSH function
+        RunHackingCommandWithSSH # Calls the RunHackingCommandWithSSH function
 
-        RunHackingCommandWithMySQL # calls the RunHackingCommandWithMySQL function        
+        RunHackingCommandWithMySQL # Calls the RunHackingCommandWithMySQL function
+    fi
 else
     clear
     # Warning message for wrong OS
