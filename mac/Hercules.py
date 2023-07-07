@@ -22,7 +22,7 @@ def connect(host="google.com"):
     except:
         return False  # If unsuccessful, return False
 
-if connect():
+if connect() == True:
     if platform.system() == "Darwin":  # Check if the current OS is macOS
         if os.geteuid() == root:  # Check if running as root
             for _ in tqdm(range(100), ascii=False, bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt}', colour="green", desc="Loading Hercules"):
