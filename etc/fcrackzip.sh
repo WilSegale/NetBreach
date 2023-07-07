@@ -36,13 +36,31 @@ function FCRACKZIP() {
 
         ls -a --color
 
+    function run(){
         read -p "Input the file name: " FileName
         read -p "Input the password file name: " PasswordFile
-
-        fcrackzip -u -D -p "${PasswordFile}" "${FileName}"
-
-        unzip "${FileName}"
+        if [[ $FileName == *.zip ]]; then
+            echo "File ends with .zip"
+        else
+            echo "File does not end with .zip"
+            sleep 1
+        fi
+        if [[ $FileName == "" || $PasswordFile == ""  
+           || $FileName == "" && $PasswordFile == "" ]]; then
+            echo "Please input the file name and password file name."
+            clear
+            figlet -f slant "fcrackzip"
+            
+            ls -a --color
+            run
+        else
+            fcrackzip -u -D -p "${PasswordFile}" "${FileName}"
+            unzip "${FileName}"
+        fi
+    }
+       
     fi
 }
 
 FCRACKZIP
+run
