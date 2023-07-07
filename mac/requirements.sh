@@ -5,8 +5,8 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 BRIGHT='\033[1m'
 NC='\033[0m' # No Color
-if [[ "$OSTYPE" == "darwin"* ]]; then   
-    if ping -q -c 1 -W 1 google.com >/dev/null; then # checks if the user is connected to the internet
+if [[ "$OSTYPE" == "darwin"* ]]; then 
+    if ping -c 1 google.com >/dev/null 2>&1; then
         # Packages to install
         Packages=(
             "wget"
