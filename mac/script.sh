@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Root user 
 root=0
 
