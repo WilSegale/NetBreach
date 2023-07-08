@@ -8,6 +8,9 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 # gets current date in mm/dd/yyyy format
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
+#gets the type of OS
+OSTYPE=$(uname -s)
+
 if [[ "$OSTYPE" == "linux"* ]]; then
     clear
 
