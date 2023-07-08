@@ -9,6 +9,9 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 # Gets current date in mm/dd/yyyy format
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
+#gets the type of OS
+OSTYPE=$(uname -s)
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
     clear
     if [[ $EUID -ne $root ]]; then
@@ -20,7 +23,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         chmod +x * 
         sudo rm -rf hydra.restore
         clear
-
         wget -q --spider http://google.com
 
         # If the user is connected to the internet, it works as normal
@@ -29,6 +31,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         # Else, it notifies them that they are not connected to the internet and tells them to connect
         else
             # Error message if offline
+
             echo "ERROR:root:TIME:$CURRENT_TIME You are offline. Please connect to the internet. DATE:$CURRENT_DATE." >> ERROR.LOG
             echo "TIME:$CURRENT_TIME You are offline. Please connect to the internet. DATE:$CURRENT_DATE"
             exit
