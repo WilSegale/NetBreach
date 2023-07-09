@@ -68,7 +68,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         }
 
         RunHackingCommandWithVNC() {
-            echo "VNC is available"
             if [[ $service == 5900 || $service == "VNC" ]]; then
                 # Checks if the user has put anything in the 'Input Username' function and the hostname function
                 # If not, it will prompt the user to enter the username and hostname

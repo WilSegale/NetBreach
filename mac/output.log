@@ -1,1 +1,2 @@
 # Hydra v9.5 run at 2023-07-08 10:24:21 on localhost mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://localhost)
+# Hydra v9.5 run at 2023-07-09 11:19:01 on localhost mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://localhost)
