@@ -9,9 +9,6 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 # Gets current date in mm/dd/yyyy format
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
-#gets the type of OS
-OSTYPE=$(uname -s)
-
 if [[ "$OSTYPE" == "darwin"* ]]; then
     clear
     if [[ $EUID -ne $root ]]; then
