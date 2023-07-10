@@ -6,9 +6,6 @@ GREEN='\033[0;32m'
 BRIGHT='\033[1m'
 NC='\033[0m' # No Color
 
-#gets the type of OS
-OSTYPE=$(uname -s)
-
 if [[ "$OSTYPE" == "linux"* ]]; then   
     if ping -q -c 1 -W 1 google.com >/dev/null; then # checks if the user is connected to the internet
         # Packages to install
