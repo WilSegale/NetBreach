@@ -13,7 +13,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     clear
     if [[ $EUID -ne $root ]]; then
         # Error message if not running as root
-        echo "ERROR:root:TIME:$CURRENT_TIME Please run as root. DATE:$CURRENT_DATE" >> ERROR.LOG
+        echo "ERROR:root:TIME:$CURRENT_TIME Please run as root. DATE:$CURRENT_DATE" >> ERROR.log
         echo "TIME:$CURRENT_TIME Please run as root. DATE:$CURRENT_DATE"
         exit
     else
@@ -28,8 +28,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         # Else, it notifies them that they are not connected to the internet and tells them to connect
         else
             # Error message if offline
-
-            echo "ERROR:root:TIME:$CURRENT_TIME You are offline. Please connect to the internet. DATE:$CURRENT_DATE." >> ERROR.LOG
+            echo "ERROR:root:TIME:$CURRENT_TIME You are offline. Please connect to the internet. DATE:$CURRENT_DATE." >> ERROR.log
             echo "TIME:$CURRENT_TIME You are offline. Please connect to the internet. DATE:$CURRENT_DATE"
             exit
         fi
@@ -94,7 +93,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                 if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                     # No service specified, re-prompt for input
                     echo "No service specified"
-                    RunHackingCommandWithSSH
+                    RunHackingCommand
                 # If the user inputs something in the 'Input Username' function and the hostname function,
                 # it will continue as normal
                 else 
@@ -140,6 +139,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 else
     clear
     # Warning message for wrong OS
-    echo "WARNING:root:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
+    echo "WARNING:root:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.log
     echo "TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE"
 fi
