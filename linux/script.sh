@@ -17,7 +17,6 @@ if [[ "$OSTYPE" == "linux"* ]]; then
         echo "TIME:$CURRENT_TIME Please run as root. DATE:$CURRENT_DATE"
         exit
     else
-        chmod +x *
         sudo rm -rf hydra.restore
         clear
 
