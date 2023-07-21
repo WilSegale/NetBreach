@@ -47,7 +47,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                 # Tells the user that it can take up to an hour to complete the scanning process
                 echo "This can take up to 1 hour to complete."
                 # Scan the entire network and display open ports
-                sudo nmap -sS 192.168.1.1/24 -Pn -A --open
+                sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt -A --open
                 hydra -h
                 echo "Put in hydra first to start the script."
                 read -p ">>> " Hydra
