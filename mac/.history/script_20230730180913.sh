@@ -39,6 +39,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
             if [[ "${yes[*]}" == *"$stillCrack"* ]]; then
                 echo "Ok"
+                offlinePasswordCracking
             else
                 exit
             fi
@@ -142,6 +143,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             fi
         }
         
+        offlinePasswordCracking(){
+            
+        }
+
         Hercules # Calls the Hercules function
 
         RunHackingCommand # Calls the RunHackingCommand function

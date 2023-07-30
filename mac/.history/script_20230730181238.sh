@@ -142,6 +142,12 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             fi
         }
         
+        offlinePasswordCracking(){
+            echo "Offline Password"
+        }
+        
+        offlinePasswordCracking
+
         Hercules # Calls the Hercules function
 
         RunHackingCommand # Calls the RunHackingCommand function

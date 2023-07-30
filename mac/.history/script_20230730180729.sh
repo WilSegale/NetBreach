@@ -38,7 +38,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             read -p "Do you want to crack your password (yes or no): " stillCrack
 
             if [[ "${yes[*]}" == *"$stillCrack"* ]]; then
-                echo "Ok"
+                echo "ok"
             else
                 exit
             fi
@@ -141,7 +141,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                 fi
             fi
         }
-        
+
         Hercules # Calls the Hercules function
 
         RunHackingCommand # Calls the RunHackingCommand function

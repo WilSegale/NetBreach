@@ -1,7 +1,9 @@
 #!/bin/bash
 
 #yes 
-yes=("yes" "Yes" "YES")
+
+    yes=("yes" "Yes" "YES")
+
 
 # Root user
 root=0
@@ -37,11 +39,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             #ask if they want to recover there password
             read -p "Do you want to crack your password (yes or no): " stillCrack
 
-            if [[ "${yes[*]}" == *"$stillCrack"* ]]; then
-                echo "Ok"
-            else
-                exit
-            fi
+            if [[ ]]
+
+            exit
         fi
 
         # clear the terminal
@@ -141,7 +141,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                 fi
             fi
         }
-        
+
         Hercules # Calls the Hercules function
 
         RunHackingCommand # Calls the RunHackingCommand function
