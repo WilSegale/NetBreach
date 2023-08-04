@@ -33,7 +33,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         else
             # Error message if offline
             echo "ERROR:root:TIME:$CURRENT_TIME You are offline. Please connect to the internet. DATE:$CURRENT_DATE." >> ERROR.LOG
-            echo "TIME:$CURRENT_TIME You are offline. Please connect to the internet. DATE:$CURRENT_DATE"
+            echo "TIME:$CURRENT_TIME You are offline. Please connect to the internet. DATE:$CURRENT_DATE" www
         fi
 
         # clear the terminal
