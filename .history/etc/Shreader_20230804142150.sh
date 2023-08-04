@@ -1,8 +1,6 @@
 #!/bin/bash
 
-read -p "Do you want to shread a file or a folder: " shreadFolderOrFile
-
-if [[ ]]
+read -p "Do you want to 
 
 function ShreadFile() {
    # Set the desired length of the random string

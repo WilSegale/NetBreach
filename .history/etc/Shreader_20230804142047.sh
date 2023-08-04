@@ -1,9 +1,4 @@
 #!/bin/bash
-
-read -p "Do you want to shread a file or a folder: " shreadFolderOrFile
-
-if [[ ]]
-
 function ShreadFile() {
    # Set the desired length of the random string
    read -p "Input the length of the random string of numbers and letters: " length
@@ -17,8 +12,8 @@ function ShreadFile() {
    # tells the program to generate a random string of alphanumeric characters
    echo "${random_string}" > "${filename}"
 }
-
 function ShreadFolder() {
+   #!/bin/bash
 
    # Set the desired length of the random string
    length=10
