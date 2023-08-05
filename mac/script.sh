@@ -76,9 +76,17 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         }
 
         HelpPrompt(){
+            figlet "? HELP ?"
+            echo "+++++++++++++++Programs used+++++++++++++++"
             echo "This program will help you crack passwords"
             echo "It has a two programs inside it one is Hydra and the other is Nmap"
-            Hercules
+            echo
+            echo "+++++++++++++++How to use++++++++++++++++++"
+            echo "To use the program you have to tell the computer what port you want to scan."
+            echo "It will then scan the port that you asked for on the network and see if any ports that you asked are open."
+            echo "If there are any ports that are open, it will ask for a username and hostname."
+            echo ""
+            exit
         }
 
         RunHackingCommand() {
