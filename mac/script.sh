@@ -74,12 +74,12 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                 sudo nmap -sS 192.168.1.1/24 -p $service --open
             fi
         }
-
+        #tell the user how to operate the program and use it to its best abilitys
         HelpPrompt(){
             figlet "? HELP ?"
             echo "+++++++++++++++Programs used+++++++++++++++"
             echo "This program will help you crack passwords"
-            echo "It has a two programs inside it one is Hydra and the other is Nmap"
+            echo "It has two programs inside it, one is Hydra and the other is Nmap"
             echo
             echo "+++++++++++++++How to use++++++++++++++++++"
             echo "To use the program you have to tell the computer what port you want to scan."
