@@ -77,6 +77,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then
                 sudo nmap -sS 192.168.1.1/24 -p $service --open
             fi
         }
+
         #tell the user how to operate the program and use it to its best abilitys
         HelpPrompt(){
             figlet "? HELP ?"
@@ -100,6 +101,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then
             fi
         }
 
+        
         RunHackingCommand() {
             #break in the outputs of my code
             echo 
