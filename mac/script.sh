@@ -85,7 +85,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             echo "To use the program you have to tell the computer what port you want to scan."
             echo "It will then scan the port that you asked for on the network and see if any ports that you asked are open."
             echo "If there are any ports that are open, it will ask for a username and hostname."
-            echo ""
             exit
         }
 
