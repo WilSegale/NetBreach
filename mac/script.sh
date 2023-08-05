@@ -6,6 +6,9 @@ root=0
 #the help array that contains the help input
 Help=("Help" "help" "what do you do")
 
+#the yes array that contains the yes input
+yes=("yes" "YES" "y" "Y")
+
 # Gets the current time in a 12-hour format
 CURRENT_TIME=$(date +"%I:%M:%S %p")
 
@@ -85,7 +88,16 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             echo "To use the program you have to tell the computer what port you want to scan."
             echo "It will then scan the port that you asked for on the network and see if any ports that you asked are open."
             echo "If there are any ports that are open, it will ask for a username and hostname."
-            exit
+
+            read -p "Do you want to go back to the main program: " return
+
+            if [[ " ${yes[*]} " == *" $return "* ]]; then
+                Hercules
+
+            else
+                clear
+                HelpPrompt
+            fi
         }
 
         RunHackingCommand() {
