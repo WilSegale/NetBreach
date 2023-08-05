@@ -61,7 +61,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                     exit
                 else
                     $Hydra
-                    exit
                 fi
             else
                 # Scan specific port
