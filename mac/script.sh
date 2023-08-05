@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#yes
-yes=("yes" "Yes" "YES")
-
 # Root user
 root=0
+
+#the help array that contains the help input
+Help=("Help" "help" "what do you do")
 
 # Gets the current time in a 12-hour format
 CURRENT_TIME=$(date +"%I:%M:%S %p")
@@ -44,7 +44,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             # The logo of the program
             figlet -f slant "Hercules"
 
-            echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL': "
+            echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
+            echo "Or if you need help just type 'help'"
             read -p ">>> " service
 
             if [[ $service == "ALL" || $service == "all" ]]; then
@@ -63,10 +64,21 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                     $Hydra
                     exit
                 fi
+
+            #if the user asks what the program doess it goes to a funciton that helps them and explains what the program does
+            elif [[ " ${Help[*]} " == *" $service "* ]]; then
+                HelpPrompt
+                
             else
                 # Scan specific port
                 sudo nmap -sS 192.168.1.1/24 -p $service --open
             fi
+        }
+
+        HelpPrompt(){
+            echo "This program will help you crack passwords"
+            echo "It has a two programs inside it one is Hydra and the other is Nmap"
+            Hercules
         }
 
         RunHackingCommand() {
