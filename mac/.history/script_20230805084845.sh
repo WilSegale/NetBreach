@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#yes
+#yes 
 yes=("yes" "Yes" "YES")
 
 # Root user
@@ -55,12 +55,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                 hydra -h
                 echo "Put in hydra first to start the script."
                 read -p ">>> " Hydra
-
-                if [[ $Hydra == "exit" ]]; then
-                    echo "GoodBye"
-                else
-                    $Hydra
-                fi
+                $Hydra
+                if [[ $Hydra == "exit"]]
             else
                 # Scan specific port
                 sudo nmap -sS 192.168.1.1/24 -p $service --open

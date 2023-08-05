@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#yes
+#yes 
 yes=("yes" "Yes" "YES")
 
 # Root user
@@ -55,7 +55,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                 hydra -h
                 echo "Put in hydra first to start the script."
                 read -p ">>> " Hydra
-
+                
                 if [[ $Hydra == "exit" ]]; then
                     echo "GoodBye"
                 else
