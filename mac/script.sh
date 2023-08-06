@@ -80,6 +80,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         #tell the user how to operate the program and use it to its best abilitys
         HelpPrompt(){
             figlet "? HELP ?"
+            echo
             echo "+++++++++++++++Programs used+++++++++++++++"
             echo "This program will help you crack passwords"
             echo "It has two programs inside it, one is Hydra and the other is Nmap"
