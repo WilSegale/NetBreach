@@ -69,7 +69,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     FCRACKZIP
     run
 
-else
+elif [[ "${OSTYPE}" == "Linux" ]]; then
     function FCRACKZIP() {
         packages=("fcrackzip" "figlet" "ffmpeg")  # "ffmpeg" is optional if not required.
         pass="945531"
@@ -141,7 +141,10 @@ else
         fi
     }
 
-FCRACKZIP
-run
+    FCRACKZIP
+    run
+    
+    else
+        echo "Your computer doesnt suport this program."
 
 fi
