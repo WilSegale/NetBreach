@@ -11,7 +11,7 @@ function ShreadFile() {
          # Generate a random string of alphanumeric characters
          random_string=$(openssl rand -base64 225 | tr -dc 'a-zA-Z0-9' | head -c "$length")
          mv $filename $rename
-         rm -rf $filename
+         rm -rf $filenames
          # tells the program to generate a random string of alphanumeric characters
          echo "${random_string}" > "${filename}"
    done

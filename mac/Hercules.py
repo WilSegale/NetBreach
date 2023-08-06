@@ -3,7 +3,7 @@ import datetime
 import platform
 import time
 import os
-import surllib.request
+import urllib.request
 import logging
 
 # gets the current time and formats it HH:MM:SS
