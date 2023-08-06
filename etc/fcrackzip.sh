@@ -143,8 +143,4 @@ elif [[ "${OSTYPE}" == "Linux" ]]; then
 
     FCRACKZIP
     run
-    
-    else
-        echo "Your computer doesnt suport this program."
-
 fi
