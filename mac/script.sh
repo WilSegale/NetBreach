@@ -9,6 +9,7 @@ Help=("Help" "help" "what do you do")
 #the yes array that contains the yes input
 yes=("yes" "YES" "y" "Y")
 
+SERVICE=("22" "5900" "3306")
 # Gets the current time in a 12-hour format
 CURRENT_TIME=$(date +"%I:%M:%S %p")
 
