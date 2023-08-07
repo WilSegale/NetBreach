@@ -6,7 +6,6 @@ function ShreadFile() {
 
    # tells the program about the folder they want to encrypt
    read -p "Input the file you want to shread: " filename
-   
    for length in 1000
       do
          # Generate a random string of alphanumeric characters

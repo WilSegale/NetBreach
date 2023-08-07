@@ -3,10 +3,9 @@
 function ShreadFile() {
    # Set the desired length of the random string
    read -p "Input the length of the random string of numbers and letters: " length
-
+   read -p "rename the file to something thats diffrent: " rename
    # tells the program about the folder they want to encrypt
    read -p "Input the file you want to shread: " filename
-   
    for length in 1000
       do
          # Generate a random string of alphanumeric characters
