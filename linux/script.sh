@@ -20,7 +20,7 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 # Gets current date in mm/dd/yyyy format
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
-if [[ "$OSTYPE" == "Linux"* ]]; then
+if [[ "$OSTYPE" == "linux"* ]]; then
     clear
     if [[ $EUID -ne $root ]]; then
         # Error message if not running as root
