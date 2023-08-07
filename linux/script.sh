@@ -6,8 +6,13 @@ root=0
 #the help array that contains the help input
 Help=("Help" "help" "what do you do")
 
+empty=("" " ")
+
 #the yes array that contains the yes input
 yes=("yes" "YES" "y" "Y")
+
+#the array that contains the exit input
+exit=("exit" "quit" "EXIT" "QUIT" "STOP" "stop")
 
 # Gets the current time in a 12-hour format
 CURRENT_TIME=$(date +"%I:%M:%S %p")
@@ -15,7 +20,7 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 # Gets current date in mm/dd/yyyy format
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
-if [[ "$OSTYPE" == "linux"* ]]; then
+if [[ "$OSTYPE" == "Linux"* ]]; then
     clear
     if [[ $EUID -ne $root ]]; then
         # Error message if not running as root
@@ -49,6 +54,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 
             echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
             echo "Or if you need help just type 'help'"
+            echo "If you want to stop the program type 'stop'."
             read -p ">>> " service
 
             if [[ $service == "ALL" || $service == "all" ]]; then
@@ -71,16 +77,24 @@ if [[ "$OSTYPE" == "linux"* ]]; then
             #if the user asks what the program doess it goes to a funciton that helps them and explains what the program does
             elif [[ " ${Help[*]} " == *" $service "* ]]; then
                 HelpPrompt
-                
+
+            elif [[ " ${exit[*]} " == *" $service "* ]]; then
+                echo "Stoping program..."
+                sleep 1
+                exit
+            elif [[ " ${empty[*]} " == *" $service "* ]]; then
+                clear
+                Hercules
             else
                 # Scan specific port
                 sudo nmap -sS 192.168.1.1/24 -p $service --open
             fi
         }
-
         #tell the user how to operate the program and use it to its best abilitys
         HelpPrompt(){
+            clear
             figlet "? HELP ?"
+            echo
             echo "+++++++++++++++Programs used+++++++++++++++"
             echo "This program will help you crack passwords"
             echo "It has two programs inside it, one is Hydra and the other is Nmap"
@@ -89,19 +103,11 @@ if [[ "$OSTYPE" == "linux"* ]]; then
             echo "To use the program you have to tell the computer what port you want to scan."
             echo "It will then scan the port that you asked for on the network and see if any ports that you asked are open."
             echo "If there are any ports that are open, it will ask for a username and hostname."
-
-            read -p "Do you want to go back to the main program: " return
-
-            if [[ " ${yes[*]} " == *" $return "* ]]; then
-                Hercules
-
-            else
-                clear
-                HelpPrompt
-            fi
+            echo "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
+            echo "---------------------"
+            Hercules
         }
 
-        
         RunHackingCommand() {
             #break in the outputs of my code
             echo 

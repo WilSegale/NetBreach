@@ -6,6 +6,8 @@ root=0
 #the help array that contains the help input
 Help=("Help" "help" "what do you do")
 
+empty=("" " ")
+
 #the yes array that contains the yes input
 yes=("yes" "YES" "y" "Y")
 
@@ -80,7 +82,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                 echo "Stoping program..."
                 sleep 1
                 exit
-
+            elif [[ " ${empty[*]} " == *" $service "* ]]; then
+                clear
+                Hercules
             else
                 # Scan specific port
                 sudo nmap -sS 192.168.1.1/24 -p $service --open
