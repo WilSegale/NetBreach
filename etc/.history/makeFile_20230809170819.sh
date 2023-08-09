@@ -19,6 +19,5 @@ function makeFilesystem(){
    #puts the user input in a file that they created
    echo $InputText > $MakeFile 
 }
-
 #makes the program work
 makeFilesystem;
