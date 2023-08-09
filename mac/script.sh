@@ -6,7 +6,7 @@ root=0
 #the help array that contains the help input
 Help=("Help" "help" "what do you do")
 
-empty=("" " ")
+empty=("")
 
 #the yes array that contains the yes input
 yes=("yes" "YES" "y" "Y")
