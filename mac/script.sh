@@ -31,6 +31,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         sudo rm -rf hydra.restore
         clear
 
+        # trys to connecto to the server
         wget -q --spider http://google.com
 
         # If the user is connected to the internet, it works as normal
