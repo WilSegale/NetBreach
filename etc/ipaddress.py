@@ -1,1 +1,8 @@
-rpCIjESLhoCbLUuWR9W2DrtzcpGBGJ1c86ogXrtDNOf3G2xM6d72s44UriPYeXV2VIti3nL7LMyyVaoI3vtArPjAqJvunn1wmygz1BOIKlrDPgeYNuVIPI9AOjFguqshmmFuNr7EP723AwisQFFljIo7WtiIsmEnPnVp5vb5xR6d5vA78mTODkMezYRLES1KB53Ie5xFJOfim35ctRO6eNGEcxBjgH8IsrRfsK80rf7m4BWGvHZzbonrN0UuubVZEpQmD5Q6NN8SrQf4FIJH5egNTfjItmBK
+import socket,os,uuid
+
+os.system('clear') 
+hostname = socket.gethostname()
+IPAddr = socket.gethostbyname(hostname)   
+print("Your Computer Name is:" + hostname)   
+print("Your Computer IP Address is: " + IPAddr) 
+print("Your MAC address is: " + hex(uuid.getnode()))
