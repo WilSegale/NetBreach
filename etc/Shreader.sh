@@ -8,7 +8,7 @@ function ShreadFile() {
    read -p "Input the file you want to shread: " filename
    
    # Generate a random string of alphanumeric characters
-   random_string=$(openssl rand -base64 225 | tr -dc 'a-zA-Z0-9' | head -c "$length")
+   random_string=$(openssl rand -base64 $length | tr -dc 'a-zA-Z0-9' | head -c "$length")
    
    # tells the program to generate a random string of alphanumeric characters
    echo "${random_string}" > "${filename}"
