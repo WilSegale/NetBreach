@@ -1,15 +1,18 @@
 import random
 import string
-n = 0
 while True:
-    n = n-1
-    password_length = n
+    # Set the desired password length
+    password_length = 12  # You can replace this with your desired length
 
     characters = string.ascii_letters + string.digits + string.punctuation
 
-    password = ""   
+    # Using a list to accumulate characters
+    password_list = []   
 
-    for index in range(password_length):
-        password = password + random.choice(characters)
+    for _ in range(password_length):
+        password_list.append(random.choice(characters))
+
+    # Join the characters to form the password string
+    password = ''.join(password_list)
 
     print(password)
