@@ -1,1 +1,755 @@
-# Nmap 7.94 scan initiated Wed Aug  9 17:10:41 2023 as: nmap -sS -Pn -oN scan.txt -A --open 192.168.1.1/24
+# Nmap 7.94 scan initiated Wed Aug  9 18:09:19 2023 as: nmap -sS -Pn -oN scan.txt -A --open 192.168.1.1/24
+Nmap scan report for 192.168.1.1
+Host is up (0.0067s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT    STATE SERVICE  VERSION
+53/tcp  open  domain   dnsmasq 2.84rc2
+| dns-nsid: 
+|_  bind.version: dnsmasq-2.84rc2
+80/tcp  open  http     lighttpd 1.4.59
+|_http-server-header: lighttpd/1.4.59
+|_http-title: Site doesn't have a title.
+443/tcp open  ssl/http lighttpd 1.4.59
+|_http-server-header: lighttpd/1.4.59
+|_ssl-date: TLS randomness does not represent time
+| ssl-cert: Subject: commonName=self-signedKey/organizationName=Sagemcom Ca/countryName=FR
+| Not valid before: 2011-10-14T12:32:29
+|_Not valid after:  2111-09-20T12:32:29
+| tls-alpn: 
+|   http/1.0
+|   http/1.1
+|_  h2
+|_http-title: Site doesn't have a title (text/html).
+MAC Address: 4C:19:5D:3B:33:DE (Sagemcom Broadband SAS)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.94%E=4%D=8/9%OT=53%CT=1%CU=38499%PV=Y%DS=1%DC=D%G=Y%M=4C195D%TM
+OS:=64D41015%P=arm-apple-darwin22.4.0)SEQ(II=I)SEQ(SP=104%GCD=1%ISR=10B%TI=
+OS:Z%II=I%TS=U)OPS(O1=%O2=%O3=%O4=%O5=%O6=)OPS(O1=M5E6NNSNW7%O2=M5E6NNSNW7%
+OS:O3=M5E6NW7%O4=M5E6NNSNW7%O5=M5E6NNSNW7%O6=M5E6NNS)WIN(W1=7012%W2=7012%W3
+OS:=7012%W4=7012%W5=7012%W6=7012)ECN(R=Y%DF=Y%T=40%W=7012%O=%CC=N%Q=)ECN(R=
+OS:Y%DF=Y%T=40%W=7012%O=M5E6NNSNW7%CC=N%Q=)T1(R=Y%DF=Y%T=40%S=O%A=O%F=A%RD=
+OS:0%Q=)T1(R=Y%DF=Y%T=40%S=O%A=O%F=AS%RD=0%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=A
+OS:S%RD=0%Q=)T2(R=N)T3(R=N)T4(R=N)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=
+OS:0%Q=)T6(R=N)T7(R=N)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RU
+OS:CK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+Network Distance: 1 hop
+
+TRACEROUTE
+HOP RTT     ADDRESS
+1   6.72 ms 192.168.1.1
+
+Nmap scan report for 192.168.1.22
+Host is up (0.013s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT     STATE SERVICE VERSION
+8009/tcp open  http    Amazon Whisperplay DIAL REST service
+|_ajp-methods: Failed to get a valid response for the OPTION request
+|_http-title: Site doesn't have a title (text/plain).
+9080/tcp open  glrpc?
+| fingerprint-strings: 
+|   FourOhFourRequest: 
+|     HTTP/1.0 200 OK
+|     Date: Wed, 09 Aug 2023 18:11:07 EDT
+|     Server: NRDP/2023.1.2.0
+|     Connection: close
+|     Cache-Control: no-cache
+|     Content-Length: 9
+|     status=ok
+|   GetRequest: 
+|     HTTP/1.0 200 OK
+|     Date: Wed, 09 Aug 2023 18:10:21 EDT
+|     Server: NRDP/2023.1.2.0
+|     Connection: close
+|     Cache-Control: no-cache
+|     Content-Length: 9
+|_    status=ok
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port9080-TCP:V=7.94%I=7%D=8/9%Time=64D40ECE%P=arm-apple-darwin22.4.0%r(
+SF:GetRequest,99,"HTTP/1\.0\x20200\x20OK\r\nDate:\x20Wed,\x2009\x20Aug\x20
+SF:2023\x2018:10:21\x20EDT\r\nServer:\x20NRDP/2023\.1\.2\.0\r\nConnection:
+SF:\x20close\r\nCache-Control:\x20no-cache\r\nContent-Length:\x209\r\n\r\n
+SF:status=ok")%r(FourOhFourRequest,99,"HTTP/1\.0\x20200\x20OK\r\nDate:\x20
+SF:Wed,\x2009\x20Aug\x202023\x2018:11:07\x20EDT\r\nServer:\x20NRDP/2023\.1
+SF:\.2\.0\r\nConnection:\x20close\r\nCache-Control:\x20no-cache\r\nContent
+SF:-Length:\x209\r\n\r\nstatus=ok");
+MAC Address: 70:70:AA:02:5A:55 (Amazon Technologies)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.94%E=4%D=8/9%OT=8009%CT=1%CU=42519%PV=Y%DS=1%DC=D%G=Y%M=7070AA%
+OS:TM=64D41015%P=arm-apple-darwin22.4.0)SEQ(CI=Z%II=I)SEQ(SP=105%GCD=1%ISR=
+OS:10C%TI=Z%CI=Z%II=I%TS=A)SEQ(SP=105%GCD=1%ISR=10D%TI=Z%CI=Z%II=I%TS=A)OPS
+OS:(O1=M5B4ST11NW6%O2=M5B4ST11NW6%O3=M5B4NNT11NW6%O4=M5B4ST11NW6%O5=M5B4ST1
+OS:1NW6%O6=M5B4ST11)OPS(O1=NNT11%O2=NNT11%O3=NNT11%O4=NNT11%O5=NNT11%O6=M5B
+OS:4ST11)OPS(O1=NNT11%O2=NNT11%O3=NNT11%O4=NNT11%O5=NNT11%O6=NNT11)WIN(W1=5
+OS:4D%W2=54D%W3=54D%W4=54D%W5=54D%W6=5360)WIN(W1=54D%W2=54D%W3=54D%W4=54D%W
+OS:5=54D%W6=FFFF)WIN(W1=FFFF%W2=FFFF%W3=FFFF%W4=FFFF%W5=FFFF%W6=FFFF)ECN(R=
+OS:Y%DF=Y%T=40%W=558%O=%CC=N%Q=)ECN(R=Y%DF=Y%T=40%W=FFFF%O=M5B4NNSNW6%CC=Y%
+OS:Q=)T1(R=Y%DF=Y%T=40%S=O%A=O%F=A%RD=0%Q=)T1(R=Y%DF=Y%T=40%S=O%A=O%F=AS%RD
+OS:=0%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T
+OS:=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=
+OS:0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=
+OS:Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=
+OS:G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+Network Distance: 1 hop
+Service Info: Device: media device
+
+TRACEROUTE
+HOP RTT      ADDRESS
+1   12.70 ms 192.168.1.22
+
+Nmap scan report for SYM-7QD3KR3.lan (192.168.1.58)
+Host is up (0.012s latency).
+Not shown: 997 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE    VERSION
+135/tcp  open  msrpc      Microsoft Windows RPC
+5357/tcp open  http       Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Service Unavailable
+9000/tcp open  tcpwrapped
+MAC Address: A0:59:50:ED:DE:83 (Intel Corporate)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: general purpose
+Running (JUST GUESSING): Microsoft Windows XP (89%)
+OS CPE: cpe:/o:microsoft:windows_xp::sp3
+Aggressive OS guesses: Microsoft Windows XP SP3 (89%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 1 hop
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_nbstat: NetBIOS name: SYM-7QD3KR3, NetBIOS user: <unknown>, NetBIOS MAC: a0:59:50:ed:de:83 (Intel Corporate)
+
+TRACEROUTE
+HOP RTT      ADDRESS
+1   11.63 ms SYM-7QD3KR3.lan (192.168.1.58)
+
+Nmap scan report for 192.168.1.72
+Host is up (0.011s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT      STATE SERVICE      VERSION
+49152/tcp open  unknown
+49154/tcp open  unknown
+62078/tcp open  iphone-sync?
+MAC Address: DE:5C:D1:47:11:47 (Unknown)
+Device type: general purpose
+Running: Apple macOS 11.X
+OS details: Apple macOS 11 (Big Sur) (Darwin 20.6.0)
+Network Distance: 1 hop
+
+TRACEROUTE
+HOP RTT      ADDRESS
+1   11.49 ms 192.168.1.72
+
+Nmap scan report for 192.168.1.112
+Host is up (0.0078s latency).
+Not shown: 989 closed tcp ports (reset)
+PORT      STATE SERVICE         VERSION
+23/tcp    open  telnet?
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, Kerberos, NotesRPC, SMBProgNeg, afp, oracle-tns: 
+|     CONNECTED!!>
+|   FourOhFourRequest, GetRequest: 
+|     CONNECTED!!>GET: not found
+|   GenericLines, RPCCheck, SSLSessionReq, TLSSessionReq, TerminalServer, TerminalServerCookie, WMSRequest, ms-sql-s, tn3270: 
+|     CONNECTED!!>
+|     found
+|   HTTPOptions, RTSPRequest: 
+|     CONNECTED!!>OPTIONS: not found
+|   Help: 
+|     CONNECTED!!>HELP: not found
+|   JavaRMI: 
+|     CONNECTED!!>JRMI: not found
+|   LANDesk-RC: 
+|     CONNECTED!!>TNMP
+|     found
+|   LDAPBindReq: 
+|     CONNECTED!!>Syntax error: EOF in backquote substitution
+|   LDAPSearchReq: 
+|     CONNECTED!!>0
+|     found
+|   LPDString: 
+|     CONNECTED!!>
+|     defaul: not found
+|   NCP: 
+|     CONNECTED!!>DmdT: not found
+|   NULL: 
+|     CONNECTED!!
+|   SIPOptions: 
+|     CONNECTED!!>OPTIONS: not found
+|     Via:: not found
+|     Syntax error: ";" unexpected
+|   X11Probe: 
+|     CONNECTED!!>l: not found
+|   giop: 
+|     CONNECTED!!>GIOP
+|_    found
+80/tcp    open  http            GoAhead WebServer
+|_http-server-header: GoAhead-http
+| http-title: VSSL A.3x
+|_Requested resource was http://192.168.1.112/index.asp
+7000/tcp  open  rtsp
+|_irc-info: Unable to open connection
+|_rtsp-methods: ANNOUNCE, SETUP, RECORD, PAUSE, FLUSH, FLUSHBUFFERED, TEARDOWN, OPTIONS, POST, GET, PUT
+| fingerprint-strings: 
+|   FourOhFourRequest, GetRequest: 
+|     HTTP/1.1 404 Not Found
+|     Content-Length: 0
+|     Server: AirTunes/366.0
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Public: ANNOUNCE, SETUP, RECORD, PAUSE, FLUSH, FLUSHBUFFERED, TEARDOWN, OPTIONS, POST, GET, PUT
+|     Server: AirTunes/366.0
+|   RTSPRequest: 
+|     RTSP/1.0 200 OK
+|     Public: ANNOUNCE, SETUP, RECORD, PAUSE, FLUSH, FLUSHBUFFERED, TEARDOWN, OPTIONS, POST, GET, PUT
+|     Server: AirTunes/366.0
+|   SIPOptions: 
+|     RTSP/1.0 200 OK
+|     Public: ANNOUNCE, SETUP, RECORD, PAUSE, FLUSH, FLUSHBUFFERED, TEARDOWN, OPTIONS, POST, GET, PUT
+|     Server: AirTunes/366.0
+|_    CSeq: 42 OPTIONS
+7777/tcp  open  cbt?
+8008/tcp  open  http?
+|_http-title: Site doesn't have a title (text/html).
+8009/tcp  open  ssl/ajp13?
+| ssl-cert: Subject: commonName=69267e17-3f6e-0c82-1af8-35e651ba97be
+| Not valid before: 2023-08-09T07:09:51
+|_Not valid after:  2023-08-11T07:09:51
+|_ssl-date: TLS randomness does not represent time
+|_ajp-methods: Failed to get a valid response for the OPTION request
+8443/tcp  open  ssl/https-alt?
+| ssl-cert: Subject: commonName=VZH3JVIVVSKPZMRVSXDP FA8FCA84DA62
+| Not valid before: 2022-05-26T12:29:18
+|_Not valid after:  2036-05-20T12:29:18
+|_http-title: Site doesn't have a title (text/html).
+8800/tcp  open  sunwebadmin?
+9000/tcp  open  ssl/cslistener?
+10001/tcp open  ssl/scp-config?
+50002/tcp open  iiimsf?
+4 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port23-TCP:V=7.94%I=7%D=8/9%Time=64D40ECE%P=arm-apple-darwin22.4.0%r(NU
+SF:LL,B,"CONNECTED!!")%r(GenericLines,19,"CONNECTED!!>\r:\x20not\x20found\
+SF:n")%r(tn3270,1E,"CONNECTED!!>\xff\xfb\x18\xff\xfa\x18:\x20not\x20found\
+SF:n")%r(GetRequest,1B,"CONNECTED!!>GET:\x20not\x20found\n")%r(HTTPOptions
+SF:,1F,"CONNECTED!!>OPTIONS:\x20not\x20found\n")%r(RTSPRequest,1F,"CONNECT
+SF:ED!!>OPTIONS:\x20not\x20found\n")%r(RPCCheck,19,"CONNECTED!!>\x80:\x20n
+SF:ot\x20found\n")%r(DNSVersionBindReqTCP,C,"CONNECTED!!>")%r(DNSStatusReq
+SF:uestTCP,C,"CONNECTED!!>")%r(Help,1C,"CONNECTED!!>HELP:\x20not\x20found\
+SF:n")%r(SSLSessionReq,1A,"CONNECTED!!>\x16\x03:\x20not\x20found\n")%r(Ter
+SF:minalServerCookie,19,"CONNECTED!!>\x03:\x20not\x20found\n")%r(TLSSessio
+SF:nReq,1A,"CONNECTED!!>\x16\x03:\x20not\x20found\n")%r(Kerberos,C,"CONNEC
+SF:TED!!>")%r(SMBProgNeg,C,"CONNECTED!!>")%r(X11Probe,19,"CONNECTED!!>l:\x
+SF:20not\x20found\n")%r(FourOhFourRequest,1B,"CONNECTED!!>GET:\x20not\x20f
+SF:ound\n")%r(LPDString,1F,"CONNECTED!!>\x01defaul:\x20not\x20found\n")%r(
+SF:LDAPSearchReq,1A,"CONNECTED!!>0\x84:\x20not\x20found\n")%r(LDAPBindReq,
+SF:38,"CONNECTED!!>Syntax\x20error:\x20EOF\x20in\x20backquote\x20substitut
+SF:ion\n")%r(SIPOptions,4C,"CONNECTED!!>OPTIONS:\x20not\x20found\nVia::\x2
+SF:0not\x20found\nSyntax\x20error:\x20\";\"\x20unexpected\n")%r(LANDesk-RC
+SF:,1D,"CONNECTED!!>TNMP\x04:\x20not\x20found\n")%r(TerminalServer,19,"CON
+SF:NECTED!!>\x03:\x20not\x20found\n")%r(NCP,1C,"CONNECTED!!>DmdT:\x20not\x
+SF:20found\n")%r(NotesRPC,C,"CONNECTED!!>")%r(JavaRMI,1C,"CONNECTED!!>JRMI
+SF::\x20not\x20found\n")%r(WMSRequest,19,"CONNECTED!!>\x01:\x20not\x20foun
+SF:d\n")%r(oracle-tns,C,"CONNECTED!!>")%r(ms-sql-s,1A,"CONNECTED!!>\x12\x0
+SF:1:\x20not\x20found\n")%r(afp,C,"CONNECTED!!>")%r(giop,1D,"CONNECTED!!>G
+SF:IOP\x01:\x20not\x20found\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port7000-TCP:V=7.94%I=7%D=8/9%Time=64D40EE2%P=arm-apple-darwin22.4.0%r(
+SF:GetRequest,45,"HTTP/1\.1\x20404\x20Not\x20Found\r\nContent-Length:\x200
+SF:\r\nServer:\x20AirTunes/366\.0\r\n\r\n")%r(HTTPOptions,8C,"HTTP/1\.1\x2
+SF:0200\x20OK\r\nPublic:\x20ANNOUNCE,\x20SETUP,\x20RECORD,\x20PAUSE,\x20FL
+SF:USH,\x20FLUSHBUFFERED,\x20TEARDOWN,\x20OPTIONS,\x20POST,\x20GET,\x20PUT
+SF:\r\nServer:\x20AirTunes/366\.0\r\n\r\n")%r(RTSPRequest,8C,"RTSP/1\.0\x2
+SF:0200\x20OK\r\nPublic:\x20ANNOUNCE,\x20SETUP,\x20RECORD,\x20PAUSE,\x20FL
+SF:USH,\x20FLUSHBUFFERED,\x20TEARDOWN,\x20OPTIONS,\x20POST,\x20GET,\x20PUT
+SF:\r\nServer:\x20AirTunes/366\.0\r\n\r\n")%r(FourOhFourRequest,45,"HTTP/1
+SF:\.1\x20404\x20Not\x20Found\r\nContent-Length:\x200\r\nServer:\x20AirTun
+SF:es/366\.0\r\n\r\n")%r(SIPOptions,9E,"RTSP/1\.0\x20200\x20OK\r\nPublic:\
+SF:x20ANNOUNCE,\x20SETUP,\x20RECORD,\x20PAUSE,\x20FLUSH,\x20FLUSHBUFFERED,
+SF:\x20TEARDOWN,\x20OPTIONS,\x20POST,\x20GET,\x20PUT\r\nServer:\x20AirTune
+SF:s/366\.0\r\nCSeq:\x2042\x20OPTIONS\r\n\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port7777-TCP:V=7.94%I=7%D=8/9%Time=64D40ED3%P=arm-apple-darwin22.4.0%r(
+SF:X11Probe,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(Socks5,A,"\0\0\x02\0\0\x03
+SF:\xd2\x10\0\0")%r(Arucer,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(GenericLine
+SF:s,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(GetRequest,A,"\0\0\x02\0\0\x03\xd
+SF:2\x10\0\0")%r(HTTPOptions,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(RTSPReque
+SF:st,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(RPCCheck,A,"\0\0\x02\0\0\x03\xd2
+SF:\x10\0\0")%r(DNSVersionBindReqTCP,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(D
+SF:NSStatusRequestTCP,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(Help,A,"\0\0\x02
+SF:\0\0\x03\xd2\x10\0\0")%r(SSLSessionReq,A,"\0\0\x02\0\0\x03\xd2\x10\0\0"
+SF:)%r(TerminalServerCookie,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(TLSSession
+SF:Req,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(Kerberos,A,"\0\0\x02\0\0\x03\xd
+SF:2\x10\0\0")%r(SMBProgNeg,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(FourOhFour
+SF:Request,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(LPDString,A,"\0\0\x02\0\0\x
+SF:03\xd2\x10\0\0")%r(LDAPSearchReq,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(LD
+SF:APBindReq,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(SIPOptions,A,"\0\0\x02\0\
+SF:0\x03\xd2\x10\0\0")%r(LANDesk-RC,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(Te
+SF:rminalServer,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(NCP,A,"\0\0\x02\0\0\x0
+SF:3\xd2\x10\0\0")%r(NotesRPC,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(JavaRMI,
+SF:A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(WMSRequest,A,"\0\0\x02\0\0\x03\xd2\
+SF:x10\0\0")%r(oracle-tns,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(ms-sql-s,A,"
+SF:\0\0\x02\0\0\x03\xd2\x10\0\0")%r(afp,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%
+SF:r(giop,A,"\0\0\x02\0\0\x03\xd2\x10\0\0");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port50002-TCP:V=7.94%I=7%D=8/9%Time=64D40EDE%P=arm-apple-darwin22.4.0%r
+SF:(GenericLines,B,"\0\.\x02\x03\x01\0\x06\x03\x03\x14\x03")%r(RPCCheck,4,
+SF:"\x80\0\x01\0")%r(DNSVersionBindReqTCP,14,"\0\x1e\x01\0\x06\x01\x01\0\0
+SF:\x01\x01\0\0\0\x01\0\0\0\x01\0")%r(DNSStatusRequestTCP,10,"\0\x0c\x01\0
+SF:\0\x10\x01\0\0\0\x01\0\0\0\x01\0")%r(SSLSessionReq,C,"\x16\x03\x01\0\0S
+SF:\x01\0\0O\x01\0")%r(TerminalServerCookie,4,"\x03\0\x01\0")%r(TLSSession
+SF:Req,C,"\x16\x03\x01\0\0i\x01\0\0e\x01\0")%r(Kerberos,4,"\0\0\x01\0")%r(
+SF:SMBProgNeg,C,"\0\0\x01\0\xa4\xff\x01\0MI\x01\0")%r(LDAPSearchReq,8,"0\x
+SF:84\x01\0\0\0\x01\0")%r(LDAPBindReq,8,"0\x0c\x01\0`\x07\x01\0")%r(Termin
+SF:alServer,4,"\x03\0\x01\0")%r(NotesRPC,10,":\0\x01\0\0/\x01\0\0\0\x01\0@
+SF:\x02\x01\0")%r(WMSRequest,4,"\x01\0\x01\0")%r(oracle-tns,14,"\0Z\x01\0\
+SF:0\x01\x01\0\0\0\x01\0\x01,\x01\0\0\x08\x01\0")%r(ms-sql-s,28,"\x12\x01\
+SF:x01\x004\0\x01\0\0\0\x01\0\0\x15\x01\0\x06\x01\x01\0\x1b\0\x01\0\0\x1c\
+SF:x01\0\x0c\x03\x01\0\(\0\x01\0U\0\x01\0")%r(afp,10,"\0\x03\x01\0\x01\0\x
+SF:01\0\0\0\x01\0\0\0\x01\0");
+MAC Address: CC:90:93:17:B1:7B (Hansong Tehnologies)
+Device type: general purpose
+Running: Linux 2.6.X|3.X
+OS CPE: cpe:/o:linux:linux_kernel:2.6 cpe:/o:linux:linux_kernel:3
+OS details: Linux 2.6.32 - 3.10
+Network Distance: 1 hop
+
+TRACEROUTE
+HOP RTT     ADDRESS
+1   7.77 ms 192.168.1.112
+
+Nmap scan report for Express.lan (192.168.1.121)
+Host is up (0.012s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT     STATE SERVICE VERSION
+7000/tcp open  rtsp    AirTunes rtspd 377.40.00
+|_rtsp-methods: ERROR: Script execution failed (use -d to debug)
+|_irc-info: Unable to open connection
+9080/tcp open  glrpc?
+MAC Address: D8:31:34:7C:22:9E (Roku)
+Device type: phone
+Running: Google Android 5.X
+OS CPE: cpe:/o:google:android:5.1.1
+OS details: Android 5.1.1
+Network Distance: 1 hop
+
+TRACEROUTE
+HOP RTT      ADDRESS
+1   11.89 ms Express.lan (192.168.1.121)
+
+Nmap scan report for 192.168.1.185
+Host is up (0.0078s latency).
+Not shown: 989 closed tcp ports (reset)
+PORT      STATE SERVICE         VERSION
+23/tcp    open  telnet?
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, Kerberos, NotesRPC, SMBProgNeg, afp, oracle-tns: 
+|     CONNECTED!!>
+|   FourOhFourRequest, GetRequest: 
+|     CONNECTED!!>GET: not found
+|   GenericLines, RPCCheck, SSLSessionReq, TLSSessionReq, TerminalServer, TerminalServerCookie, WMSRequest, ms-sql-s, tn3270: 
+|     CONNECTED!!>
+|     found
+|   HTTPOptions, RTSPRequest: 
+|     CONNECTED!!>OPTIONS: not found
+|   Help: 
+|     CONNECTED!!>HELP: not found
+|   JavaRMI: 
+|     CONNECTED!!>JRMI: not found
+|   LANDesk-RC: 
+|     CONNECTED!!>TNMP
+|     found
+|   LDAPBindReq: 
+|     CONNECTED!!>Syntax error: EOF in backquote substitution
+|   LDAPSearchReq: 
+|     CONNECTED!!>0
+|     found
+|   LPDString: 
+|     CONNECTED!!>
+|     defaul: not found
+|   NCP: 
+|     CONNECTED!!>DmdT: not found
+|   NULL: 
+|     CONNECTED!!
+|   SIPOptions: 
+|     CONNECTED!!>OPTIONS: not found
+|     Via:: not found
+|     Syntax error: ";" unexpected
+|   X11Probe: 
+|     CONNECTED!!>l: not found
+|   giop: 
+|     CONNECTED!!>GIOP
+|_    found
+80/tcp    open  http            GoAhead WebServer
+|_http-server-header: GoAhead-http
+| http-title: VSSL A.3x
+|_Requested resource was http://192.168.1.185/index.asp
+7000/tcp  open  rtsp
+|_rtsp-methods: ANNOUNCE, SETUP, RECORD, PAUSE, FLUSH, FLUSHBUFFERED, TEARDOWN, OPTIONS, POST, GET, PUT
+|_irc-info: Unable to open connection
+| fingerprint-strings: 
+|   FourOhFourRequest, GetRequest: 
+|     HTTP/1.1 404 Not Found
+|     Content-Length: 0
+|     Server: AirTunes/366.0
+|   HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Public: ANNOUNCE, SETUP, RECORD, PAUSE, FLUSH, FLUSHBUFFERED, TEARDOWN, OPTIONS, POST, GET, PUT
+|     Server: AirTunes/366.0
+|   RTSPRequest: 
+|     RTSP/1.0 200 OK
+|     Public: ANNOUNCE, SETUP, RECORD, PAUSE, FLUSH, FLUSHBUFFERED, TEARDOWN, OPTIONS, POST, GET, PUT
+|     Server: AirTunes/366.0
+|   SIPOptions: 
+|     RTSP/1.0 200 OK
+|     Public: ANNOUNCE, SETUP, RECORD, PAUSE, FLUSH, FLUSHBUFFERED, TEARDOWN, OPTIONS, POST, GET, PUT
+|     Server: AirTunes/366.0
+|_    CSeq: 42 OPTIONS
+7777/tcp  open  cbt?
+8008/tcp  open  http?
+|_http-title: Site doesn't have a title (text/html).
+8009/tcp  open  ssl/ajp13?
+|_ajp-methods: Failed to get a valid response for the OPTION request
+| ssl-cert: Subject: commonName=5704a034-adea-56bb-6005-90a42305c0b1
+| Not valid before: 2023-08-09T07:09:51
+|_Not valid after:  2023-08-11T07:09:51
+|_ssl-date: TLS randomness does not represent time
+8443/tcp  open  ssl/https-alt?
+|_http-title: Site doesn't have a title (text/html).
+| ssl-cert: Subject: commonName=VXSEFDTHZRWZMZZUKJ4J FA8FCA98367F
+| Not valid before: 2022-05-26T12:28:53
+|_Not valid after:  2036-05-20T12:28:53
+8800/tcp  open  sunwebadmin?
+9000/tcp  open  ssl/cslistener?
+10001/tcp open  ssl/scp-config?
+50002/tcp open  iiimsf?
+4 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port23-TCP:V=7.94%I=7%D=8/9%Time=64D40ED4%P=arm-apple-darwin22.4.0%r(NU
+SF:LL,B,"CONNECTED!!")%r(GenericLines,19,"CONNECTED!!>\r:\x20not\x20found\
+SF:n")%r(tn3270,1E,"CONNECTED!!>\xff\xfb\x18\xff\xfa\x18:\x20not\x20found\
+SF:n")%r(GetRequest,1B,"CONNECTED!!>GET:\x20not\x20found\n")%r(HTTPOptions
+SF:,1F,"CONNECTED!!>OPTIONS:\x20not\x20found\n")%r(RTSPRequest,1F,"CONNECT
+SF:ED!!>OPTIONS:\x20not\x20found\n")%r(RPCCheck,19,"CONNECTED!!>\x80:\x20n
+SF:ot\x20found\n")%r(DNSVersionBindReqTCP,C,"CONNECTED!!>")%r(DNSStatusReq
+SF:uestTCP,C,"CONNECTED!!>")%r(Help,1C,"CONNECTED!!>HELP:\x20not\x20found\
+SF:n")%r(SSLSessionReq,1A,"CONNECTED!!>\x16\x03:\x20not\x20found\n")%r(Ter
+SF:minalServerCookie,19,"CONNECTED!!>\x03:\x20not\x20found\n")%r(TLSSessio
+SF:nReq,1A,"CONNECTED!!>\x16\x03:\x20not\x20found\n")%r(Kerberos,C,"CONNEC
+SF:TED!!>")%r(SMBProgNeg,C,"CONNECTED!!>")%r(X11Probe,19,"CONNECTED!!>l:\x
+SF:20not\x20found\n")%r(FourOhFourRequest,1B,"CONNECTED!!>GET:\x20not\x20f
+SF:ound\n")%r(LPDString,1F,"CONNECTED!!>\x01defaul:\x20not\x20found\n")%r(
+SF:LDAPSearchReq,1A,"CONNECTED!!>0\x84:\x20not\x20found\n")%r(LDAPBindReq,
+SF:38,"CONNECTED!!>Syntax\x20error:\x20EOF\x20in\x20backquote\x20substitut
+SF:ion\n")%r(SIPOptions,4C,"CONNECTED!!>OPTIONS:\x20not\x20found\nVia::\x2
+SF:0not\x20found\nSyntax\x20error:\x20\";\"\x20unexpected\n")%r(LANDesk-RC
+SF:,1D,"CONNECTED!!>TNMP\x04:\x20not\x20found\n")%r(TerminalServer,19,"CON
+SF:NECTED!!>\x03:\x20not\x20found\n")%r(NCP,1C,"CONNECTED!!>DmdT:\x20not\x
+SF:20found\n")%r(NotesRPC,C,"CONNECTED!!>")%r(JavaRMI,1C,"CONNECTED!!>JRMI
+SF::\x20not\x20found\n")%r(WMSRequest,19,"CONNECTED!!>\x01:\x20not\x20foun
+SF:d\n")%r(oracle-tns,C,"CONNECTED!!>")%r(ms-sql-s,1A,"CONNECTED!!>\x12\x0
+SF:1:\x20not\x20found\n")%r(afp,C,"CONNECTED!!>")%r(giop,1D,"CONNECTED!!>G
+SF:IOP\x01:\x20not\x20found\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port7000-TCP:V=7.94%I=7%D=8/9%Time=64D40EED%P=arm-apple-darwin22.4.0%r(
+SF:GetRequest,45,"HTTP/1\.1\x20404\x20Not\x20Found\r\nContent-Length:\x200
+SF:\r\nServer:\x20AirTunes/366\.0\r\n\r\n")%r(HTTPOptions,8C,"HTTP/1\.1\x2
+SF:0200\x20OK\r\nPublic:\x20ANNOUNCE,\x20SETUP,\x20RECORD,\x20PAUSE,\x20FL
+SF:USH,\x20FLUSHBUFFERED,\x20TEARDOWN,\x20OPTIONS,\x20POST,\x20GET,\x20PUT
+SF:\r\nServer:\x20AirTunes/366\.0\r\n\r\n")%r(RTSPRequest,8C,"RTSP/1\.0\x2
+SF:0200\x20OK\r\nPublic:\x20ANNOUNCE,\x20SETUP,\x20RECORD,\x20PAUSE,\x20FL
+SF:USH,\x20FLUSHBUFFERED,\x20TEARDOWN,\x20OPTIONS,\x20POST,\x20GET,\x20PUT
+SF:\r\nServer:\x20AirTunes/366\.0\r\n\r\n")%r(FourOhFourRequest,45,"HTTP/1
+SF:\.1\x20404\x20Not\x20Found\r\nContent-Length:\x200\r\nServer:\x20AirTun
+SF:es/366\.0\r\n\r\n")%r(SIPOptions,9E,"RTSP/1\.0\x20200\x20OK\r\nPublic:\
+SF:x20ANNOUNCE,\x20SETUP,\x20RECORD,\x20PAUSE,\x20FLUSH,\x20FLUSHBUFFERED,
+SF:\x20TEARDOWN,\x20OPTIONS,\x20POST,\x20GET,\x20PUT\r\nServer:\x20AirTune
+SF:s/366\.0\r\nCSeq:\x2042\x20OPTIONS\r\n\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port7777-TCP:V=7.94%I=7%D=8/9%Time=64D40EDF%P=arm-apple-darwin22.4.0%r(
+SF:X11Probe,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(Socks5,A,"\0\0\x02\0\0\x03
+SF:\xd2\x10\0\0")%r(Arucer,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(GenericLine
+SF:s,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(GetRequest,A,"\0\0\x02\0\0\x03\xd
+SF:2\x10\0\0")%r(HTTPOptions,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(RTSPReque
+SF:st,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(RPCCheck,A,"\0\0\x02\0\0\x03\xd2
+SF:\x10\0\0")%r(DNSVersionBindReqTCP,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(D
+SF:NSStatusRequestTCP,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(Help,A,"\0\0\x02
+SF:\0\0\x03\xd2\x10\0\0")%r(SSLSessionReq,A,"\0\0\x02\0\0\x03\xd2\x10\0\0"
+SF:)%r(TerminalServerCookie,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(TLSSession
+SF:Req,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(Kerberos,A,"\0\0\x02\0\0\x03\xd
+SF:2\x10\0\0")%r(SMBProgNeg,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(FourOhFour
+SF:Request,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(LPDString,A,"\0\0\x02\0\0\x
+SF:03\xd2\x10\0\0")%r(LDAPSearchReq,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(LD
+SF:APBindReq,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(SIPOptions,A,"\0\0\x02\0\
+SF:0\x03\xd2\x10\0\0")%r(LANDesk-RC,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(Te
+SF:rminalServer,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(NCP,A,"\0\0\x02\0\0\x0
+SF:3\xd2\x10\0\0")%r(NotesRPC,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(JavaRMI,
+SF:A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(WMSRequest,A,"\0\0\x02\0\0\x03\xd2\
+SF:x10\0\0")%r(oracle-tns,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(ms-sql-s,A,"
+SF:\0\0\x02\0\0\x03\xd2\x10\0\0")%r(afp,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%
+SF:r(giop,A,"\0\0\x02\0\0\x03\xd2\x10\0\0");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port50002-TCP:V=7.94%I=7%D=8/9%Time=64D40F0C%P=arm-apple-darwin22.4.0%r
+SF:(RPCCheck,4,"\x80\0\x01\0")%r(DNSVersionBindReqTCP,14,"\0\x1e\x01\0\x06
+SF:\x01\x01\0\0\x01\x01\0\0\0\x01\0\0\0\x01\0")%r(DNSStatusRequestTCP,10,"
+SF:\0\x0c\x01\0\0\x10\x01\0\0\0\x01\0\0\0\x01\0")%r(SSLSessionReq,C,"\x16\
+SF:x03\x01\0\0S\x01\0\0O\x01\0")%r(TerminalServerCookie,4,"\x03\0\x01\0")%
+SF:r(TLSSessionReq,C,"\x16\x03\x01\0\0i\x01\0\0e\x01\0")%r(Kerberos,4,"\0\
+SF:0\x01\0")%r(SMBProgNeg,C,"\0\0\x01\0\xa4\xff\x01\0MI\x01\0")%r(LDAPSear
+SF:chReq,8,"0\x84\x01\0\0\0\x01\0")%r(LDAPBindReq,8,"0\x0c\x01\0`\x07\x01\
+SF:0")%r(TerminalServer,4,"\x03\0\x01\0")%r(NotesRPC,10,":\0\x01\0\0/\x01\
+SF:0\0\0\x01\0@\x02\x01\0")%r(WMSRequest,4,"\x01\0\x01\0")%r(oracle-tns,14
+SF:,"\0Z\x01\0\0\x01\x01\0\0\0\x01\0\x01,\x01\0\0\x08\x01\0")%r(ms-sql-s,2
+SF:8,"\x12\x01\x01\x004\0\x01\0\0\0\x01\0\0\x15\x01\0\x06\x01\x01\0\x1b\0\
+SF:x01\0\0\x1c\x01\0\x0c\x03\x01\0\(\0\x01\0U\0\x01\0")%r(afp,10,"\0\x03\x
+SF:01\0\x01\0\x01\0\0\0\x01\0\0\0\x01\0");
+MAC Address: CC:90:93:17:B2:7C (Hansong Tehnologies)
+Device type: general purpose
+Running: Linux 2.6.X|3.X
+OS CPE: cpe:/o:linux:linux_kernel:2.6 cpe:/o:linux:linux_kernel:3
+OS details: Linux 2.6.32 - 3.10
+Network Distance: 1 hop
+
+TRACEROUTE
+HOP RTT     ADDRESS
+1   7.78 ms 192.168.1.185
+
+Nmap scan report for 192.168.1.188
+Host is up (0.0076s latency).
+Not shown: 989 closed tcp ports (reset)
+PORT      STATE SERVICE         VERSION
+23/tcp    open  telnet?
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, Kerberos, NotesRPC, SMBProgNeg, afp, oracle-tns: 
+|     CONNECTED!!>
+|   FourOhFourRequest, GetRequest: 
+|     CONNECTED!!>GET: not found
+|   GenericLines, RPCCheck, SSLSessionReq, TLSSessionReq, TerminalServer, TerminalServerCookie, WMSRequest, ms-sql-s, tn3270: 
+|     CONNECTED!!>
+|     found
+|   HTTPOptions, RTSPRequest: 
+|     CONNECTED!!>OPTIONS: not found
+|   Help: 
+|     CONNECTED!!>HELP: not found
+|   JavaRMI: 
+|     CONNECTED!!>JRMI: not found
+|   LANDesk-RC: 
+|     CONNECTED!!>TNMP
+|     found
+|   LDAPBindReq: 
+|     CONNECTED!!>Syntax error: EOF in backquote substitution
+|   LDAPSearchReq: 
+|     CONNECTED!!>0
+|     found
+|   LPDString: 
+|     CONNECTED!!>
+|     defaul: not found
+|   NCP: 
+|     CONNECTED!!>DmdT: not found
+|   NULL: 
+|     CONNECTED!!
+|   SIPOptions: 
+|     CONNECTED!!>OPTIONS: not found
+|     Via:: not found
+|     Syntax error: ";" unexpected
+|   X11Probe: 
+|     CONNECTED!!>l: not found
+|   giop: 
+|     CONNECTED!!>GIOP
+|_    found
+80/tcp    open  http            GoAhead WebServer
+|_http-server-header: GoAhead-http
+| http-title: VSSL A.3x
+|_Requested resource was http://192.168.1.188/index.asp
+7000/tcp  open  rtsp
+|_irc-info: Unable to open connection
+| fingerprint-strings: 
+|   FourOhFourRequest: 
+|     HTTP/1.1 401 Unauthorized
+|     Content-Length: 0
+|     Server: AirTunes/366.0
+|     WWW-Authenticate: Digest realm="airplay", nonce="MTY5MTYxOTA5NSCyqCMbL+QY42dVqe9e/CEG"
+|   GetRequest, HTTPOptions: 
+|     HTTP/1.1 401 Unauthorized
+|     Content-Length: 0
+|     Server: AirTunes/366.0
+|     WWW-Authenticate: Digest realm="airplay", nonce="MTY5MTYxOTA5MCCHDAlTEIkUh+mCdgYiV6sY"
+|   RTSPRequest: 
+|     RTSP/1.0 401 Unauthorized
+|     Content-Length: 0
+|     Server: AirTunes/366.0
+|     WWW-Authenticate: Digest realm="airplay", nonce="MTY5MTYxOTA5MCCHDAlTEIkUh+mCdgYiV6sY"
+|   SIPOptions: 
+|     RTSP/1.0 401 Unauthorized
+|     Content-Length: 0
+|     Server: AirTunes/366.0
+|     WWW-Authenticate: Digest realm="airplay", nonce="MTY5MTYxOTA5NSCyqCMbL+QY42dVqe9e/CEG"
+|_    CSeq: 42 OPTIONS
+|_rtsp-methods: ERROR: Script execution failed (use -d to debug)
+7777/tcp  open  cbt?
+8008/tcp  open  http?
+|_http-title: Site doesn't have a title (text/html).
+8009/tcp  open  ssl/ajp13?
+|_ajp-methods: Failed to get a valid response for the OPTION request
+|_ssl-date: TLS randomness does not represent time
+| ssl-cert: Subject: commonName=846b61d1-7255-8c8c-f322-2e5ebbac645e
+| Not valid before: 2023-08-09T07:09:53
+|_Not valid after:  2023-08-11T07:09:53
+8443/tcp  open  ssl/https-alt?
+|_http-title: Site doesn't have a title (text/html).
+| ssl-cert: Subject: commonName=C00ZL46OEYTBETDNQZY2 FA8FCA19E367
+| Not valid before: 2022-05-26T12:29:16
+|_Not valid after:  2036-05-20T12:29:16
+8800/tcp  open  sunwebadmin?
+9000/tcp  open  ssl/cslistener?
+10001/tcp open  ssl/scp-config?
+50002/tcp open  iiimsf?
+4 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port23-TCP:V=7.94%I=7%D=8/9%Time=64D40EF5%P=arm-apple-darwin22.4.0%r(NU
+SF:LL,B,"CONNECTED!!")%r(GenericLines,19,"CONNECTED!!>\r:\x20not\x20found\
+SF:n")%r(tn3270,1E,"CONNECTED!!>\xff\xfb\x18\xff\xfa\x18:\x20not\x20found\
+SF:n")%r(GetRequest,1B,"CONNECTED!!>GET:\x20not\x20found\n")%r(HTTPOptions
+SF:,1F,"CONNECTED!!>OPTIONS:\x20not\x20found\n")%r(RTSPRequest,1F,"CONNECT
+SF:ED!!>OPTIONS:\x20not\x20found\n")%r(RPCCheck,19,"CONNECTED!!>\x80:\x20n
+SF:ot\x20found\n")%r(DNSVersionBindReqTCP,C,"CONNECTED!!>")%r(DNSStatusReq
+SF:uestTCP,C,"CONNECTED!!>")%r(Help,1C,"CONNECTED!!>HELP:\x20not\x20found\
+SF:n")%r(SSLSessionReq,1A,"CONNECTED!!>\x16\x03:\x20not\x20found\n")%r(Ter
+SF:minalServerCookie,19,"CONNECTED!!>\x03:\x20not\x20found\n")%r(TLSSessio
+SF:nReq,1A,"CONNECTED!!>\x16\x03:\x20not\x20found\n")%r(Kerberos,C,"CONNEC
+SF:TED!!>")%r(SMBProgNeg,C,"CONNECTED!!>")%r(X11Probe,19,"CONNECTED!!>l:\x
+SF:20not\x20found\n")%r(FourOhFourRequest,1B,"CONNECTED!!>GET:\x20not\x20f
+SF:ound\n")%r(LPDString,1F,"CONNECTED!!>\x01defaul:\x20not\x20found\n")%r(
+SF:LDAPSearchReq,1A,"CONNECTED!!>0\x84:\x20not\x20found\n")%r(LDAPBindReq,
+SF:38,"CONNECTED!!>Syntax\x20error:\x20EOF\x20in\x20backquote\x20substitut
+SF:ion\n")%r(SIPOptions,4C,"CONNECTED!!>OPTIONS:\x20not\x20found\nVia::\x2
+SF:0not\x20found\nSyntax\x20error:\x20\";\"\x20unexpected\n")%r(LANDesk-RC
+SF:,1D,"CONNECTED!!>TNMP\x04:\x20not\x20found\n")%r(TerminalServer,19,"CON
+SF:NECTED!!>\x03:\x20not\x20found\n")%r(NCP,1C,"CONNECTED!!>DmdT:\x20not\x
+SF:20found\n")%r(NotesRPC,C,"CONNECTED!!>")%r(JavaRMI,1C,"CONNECTED!!>JRMI
+SF::\x20not\x20found\n")%r(WMSRequest,19,"CONNECTED!!>\x01:\x20not\x20foun
+SF:d\n")%r(oracle-tns,C,"CONNECTED!!>")%r(ms-sql-s,1A,"CONNECTED!!>\x12\x0
+SF:1:\x20not\x20found\n")%r(afp,C,"CONNECTED!!>")%r(giop,1D,"CONNECTED!!>G
+SF:IOP\x01:\x20not\x20found\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port7000-TCP:V=7.94%I=7%D=8/9%Time=64D40F12%P=arm-apple-darwin22.4.0%r(
+SF:GetRequest,A0,"HTTP/1\.1\x20401\x20Unauthorized\r\nContent-Length:\x200
+SF:\r\nServer:\x20AirTunes/366\.0\r\nWWW-Authenticate:\x20Digest\x20realm=
+SF:\"airplay\",\x20nonce=\"MTY5MTYxOTA5MCCHDAlTEIkUh\+mCdgYiV6sY\"\r\n\r\n
+SF:")%r(HTTPOptions,A0,"HTTP/1\.1\x20401\x20Unauthorized\r\nContent-Length
+SF::\x200\r\nServer:\x20AirTunes/366\.0\r\nWWW-Authenticate:\x20Digest\x20
+SF:realm=\"airplay\",\x20nonce=\"MTY5MTYxOTA5MCCHDAlTEIkUh\+mCdgYiV6sY\"\r
+SF:\n\r\n")%r(RTSPRequest,A0,"RTSP/1\.0\x20401\x20Unauthorized\r\nContent-
+SF:Length:\x200\r\nServer:\x20AirTunes/366\.0\r\nWWW-Authenticate:\x20Dige
+SF:st\x20realm=\"airplay\",\x20nonce=\"MTY5MTYxOTA5MCCHDAlTEIkUh\+mCdgYiV6
+SF:sY\"\r\n\r\n")%r(FourOhFourRequest,A0,"HTTP/1\.1\x20401\x20Unauthorized
+SF:\r\nContent-Length:\x200\r\nServer:\x20AirTunes/366\.0\r\nWWW-Authentic
+SF:ate:\x20Digest\x20realm=\"airplay\",\x20nonce=\"MTY5MTYxOTA5NSCyqCMbL\+
+SF:QY42dVqe9e/CEG\"\r\n\r\n")%r(SIPOptions,B2,"RTSP/1\.0\x20401\x20Unautho
+SF:rized\r\nContent-Length:\x200\r\nServer:\x20AirTunes/366\.0\r\nWWW-Auth
+SF:enticate:\x20Digest\x20realm=\"airplay\",\x20nonce=\"MTY5MTYxOTA5NSCyqC
+SF:MbL\+QY42dVqe9e/CEG\"\r\nCSeq:\x2042\x20OPTIONS\r\n\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port7777-TCP:V=7.94%I=7%D=8/9%Time=64D40F05%P=arm-apple-darwin22.4.0%r(
+SF:X11Probe,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(Socks5,A,"\0\0\x02\0\0\x03
+SF:\xd2\x10\0\0")%r(Arucer,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(GenericLine
+SF:s,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(GetRequest,A,"\0\0\x02\0\0\x03\xd
+SF:2\x10\0\0")%r(HTTPOptions,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(RTSPReque
+SF:st,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(RPCCheck,A,"\0\0\x02\0\0\x03\xd2
+SF:\x10\0\0")%r(DNSVersionBindReqTCP,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(D
+SF:NSStatusRequestTCP,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(Help,A,"\0\0\x02
+SF:\0\0\x03\xd2\x10\0\0")%r(SSLSessionReq,A,"\0\0\x02\0\0\x03\xd2\x10\0\0"
+SF:)%r(TerminalServerCookie,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(TLSSession
+SF:Req,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(Kerberos,A,"\0\0\x02\0\0\x03\xd
+SF:2\x10\0\0")%r(SMBProgNeg,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(FourOhFour
+SF:Request,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(LPDString,A,"\0\0\x02\0\0\x
+SF:03\xd2\x10\0\0")%r(LDAPSearchReq,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(LD
+SF:APBindReq,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(SIPOptions,A,"\0\0\x02\0\
+SF:0\x03\xd2\x10\0\0")%r(LANDesk-RC,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(Te
+SF:rminalServer,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(NCP,A,"\0\0\x02\0\0\x0
+SF:3\xd2\x10\0\0")%r(NotesRPC,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(JavaRMI,
+SF:A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(WMSRequest,A,"\0\0\x02\0\0\x03\xd2\
+SF:x10\0\0")%r(oracle-tns,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%r(ms-sql-s,A,"
+SF:\0\0\x02\0\0\x03\xd2\x10\0\0")%r(afp,A,"\0\0\x02\0\0\x03\xd2\x10\0\0")%
+SF:r(giop,A,"\0\0\x02\0\0\x03\xd2\x10\0\0");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port50002-TCP:V=7.94%I=7%D=8/9%Time=64D40F55%P=arm-apple-darwin22.4.0%r
+SF:(RPCCheck,4,"\x80\0\x01\0")%r(DNSVersionBindReqTCP,14,"\0\x1e\x01\0\x06
+SF:\x01\x01\0\0\x01\x01\0\0\0\x01\0\0\0\x01\0")%r(DNSStatusRequestTCP,10,"
+SF:\0\x0c\x01\0\0\x10\x01\0\0\0\x01\0\0\0\x01\0")%r(SSLSessionReq,C,"\x16\
+SF:x03\x01\0\0S\x01\0\0O\x01\0")%r(TerminalServerCookie,4,"\x03\0\x01\0")%
+SF:r(TLSSessionReq,C,"\x16\x03\x01\0\0i\x01\0\0e\x01\0")%r(Kerberos,4,"\0\
+SF:0\x01\0")%r(SMBProgNeg,C,"\0\0\x01\0\xa4\xff\x01\0MI\x01\0")%r(LDAPSear
+SF:chReq,8,"0\x84\x01\0\0\0\x01\0")%r(LDAPBindReq,8,"0\x0c\x01\0`\x07\x01\
+SF:0")%r(TerminalServer,4,"\x03\0\x01\0")%r(NotesRPC,10,":\0\x01\0\0/\x01\
+SF:0\0\0\x01\0@\x02\x01\0")%r(WMSRequest,4,"\x01\0\x01\0")%r(oracle-tns,14
+SF:,"\0Z\x01\0\0\x01\x01\0\0\0\x01\0\x01,\x01\0\0\x08\x01\0")%r(ms-sql-s,2
+SF:8,"\x12\x01\x01\x004\0\x01\0\0\0\x01\0\0\x15\x01\0\x06\x01\x01\0\x1b\0\
+SF:x01\0\0\x1c\x01\0\x0c\x03\x01\0\(\0\x01\0U\0\x01\0")%r(afp,10,"\0\x03\x
+SF:01\0\x01\0\x01\0\0\0\x01\0\0\0\x01\0");
+MAC Address: CC:90:93:17:B2:7F (Hansong Tehnologies)
+Device type: general purpose
+Running: Linux 2.6.X|3.X
+OS CPE: cpe:/o:linux:linux_kernel:2.6 cpe:/o:linux:linux_kernel:3
+OS details: Linux 2.6.32 - 3.10
+Network Distance: 1 hop
+
+TRACEROUTE
+HOP RTT     ADDRESS
+1   7.62 ms 192.168.1.188
+
+Nmap scan report for 192.168.1.253
+Host is up (0.011s latency).
+Not shown: 957 filtered tcp ports (no-response), 40 closed tcp ports (reset)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE    VERSION
+1080/tcp open  socks5     (No authentication; connection failed)
+| socks-auth-info: 
+|_  No authentication
+6543/tcp open  http       Cisco Meraki firewall httpd
+|_http-title: 404 Not Found
+8888/tcp open  tcpwrapped
+MAC Address: 00:F3:61:44:84:D7 (Amazon Technologies)
+Aggressive OS guesses: Linux 3.2 - 4.9 (95%), Linux 3.10 - 4.11 (92%), Linux 3.18 (92%), OpenWrt Chaos Calmer 15.05 (Linux 3.18) or Designated Driver (Linux 4.1 or 4.4) (91%), Android 5.1 (91%), Linux 3.2 - 3.16 (91%), Linux 3.12 (90%), Sony Android TV (Android 5.0) (90%), Linux 3.13 (90%), Android 4.0 (89%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 1 hop
+Service Info: Device: firewall
+
+TRACEROUTE
+HOP RTT      ADDRESS
+1   11.37 ms 192.168.1.253
+
+WARNING: RST from 192.168.1.13 port 22 -- is this port really open?
+WARNING: RST from 192.168.1.13 port 22 -- is this port really open?
+WARNING: RST from 192.168.1.13 port 22 -- is this port really open?
+WARNING: RST from 192.168.1.13 port 22 -- is this port really open?
+WARNING: RST from 192.168.1.13 port 22 -- is this port really open?
+Nmap scan report for Zero.lan (192.168.1.13)
+Host is up (0.00021s latency).
+Not shown: 998 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 9.3 (protocol 2.0)
+| ssh-hostkey: 
+|   256 c1:a6:97:48:9c:1e:57:c6:1e:af:0e:fe:3e:02:18:e2 (ECDSA)
+|_  256 fc:d4:c2:06:ab:c0:10:7e:fc:dd:9e:59:76:cf:ce:66 (ED25519)
+8080/tcp open  http    Apache httpd 2.4.57 ((Unix))
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-open-proxy: Proxy might be redirecting requests
+|_http-server-header: Apache/2.4.57 (Unix)
+|_http-title: Site doesn't have a title (text/html).
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: general purpose
+Running (JUST GUESSING): Apple macOS 12.X|10.14.X|10.15.X|11.X (95%)
+OS CPE: cpe:/o:apple:mac_os_x:10.14 cpe:/o:apple:mac_os_x:10.15
+Aggressive OS guesses: Apple macOS 12 (Monterey) (Darwin 21.6.0) (95%), Apple macOS 10.14 (Mojave) - 10.15 (Catalina) (Darwin 18.2.0 - 19.6.0) (91%), Apple macOS 11 (Big Sur) (Darwin 20.5.0) (90%), Apple macOS 11 (Big Sur) (Darwin 20.6.0) (88%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 0 hops
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Wed Aug  9 18:16:09 2023 -- 256 IP addresses (18 hosts up) scanned in 410.29 seconds
