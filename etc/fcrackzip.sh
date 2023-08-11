@@ -41,6 +41,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     }
 
     function run() {
+        ls -a
         read -p "Input the file name: " FileName
         read -p "Input the password file name: " PasswordFile
         if [[ $FileName == *.zip ]]; then
