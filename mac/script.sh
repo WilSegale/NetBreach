@@ -1,5 +1,6 @@
 #!/bin/bash
-
+RED='\033[0;31m'
+NC='\033[0m' # No Color
 # Root user
 root=0
 
@@ -60,7 +61,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
             if [[ $service == "ALL" || $service == "all" ]]; then
                 # Tells the user that it can take up to an hour to complete the scanning process
-                echo "This can take up to 1 hour to complete."
+                echo -e "${RED}This can take up to 1 hour to complete.${NC}"
                 # Scan the entire network and display open ports
                 sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
                 hydra -h

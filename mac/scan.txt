@@ -1,20 +1,12 @@
-# Nmap 7.94 scan initiated Sat Aug 12 11:13:37 2023 as: nmap -sS -Pn -oN scan.txt --open 192.168.1.1/24
+# Nmap 7.94 scan initiated Sat Aug 12 16:12:52 2023 as: nmap -sS -Pn -oN scan.txt --open 192.168.1.1/24
 Nmap scan report for 192.168.1.1
-Host is up (0.0064s latency).
+Host is up (0.0063s latency).
 Not shown: 997 closed tcp ports (reset)
 PORT    STATE SERVICE
 53/tcp  open  domain
 80/tcp  open  http
 443/tcp open  https
 MAC Address: 4C:19:5D:3B:33:DE (Sagemcom Broadband SAS)
-
-Nmap scan report for wlan0-2041.lan (192.168.1.7)
-Host is up (0.011s latency).
-Not shown: 977 closed tcp ports (reset), 22 filtered tcp ports (no-response)
-Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
-PORT     STATE SERVICE
-6668/tcp open  irc
-MAC Address: FC:67:1F:F4:1D:C7 (Tuya Smart)
 
 Nmap scan report for 192.168.1.22
 Host is up (0.012s latency).
@@ -25,17 +17,16 @@ PORT     STATE SERVICE
 MAC Address: 70:70:AA:02:5A:55 (Amazon Technologies)
 
 Nmap scan report for wlan0.lan (192.168.1.44)
-Host is up (0.081s latency).
-Not shown: 912 closed tcp ports (reset), 87 filtered tcp ports (no-response)
+Host is up (0.082s latency).
+Not shown: 960 closed tcp ports (reset), 39 filtered tcp ports (no-response)
 Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
 PORT     STATE SERVICE
 6668/tcp open  irc
 MAC Address: FC:67:1F:F4:1E:A4 (Tuya Smart)
 
 Nmap scan report for MacBook-Pro.lan (192.168.1.47)
-Host is up (0.0100s latency).
-Not shown: 995 closed tcp ports (reset), 2 filtered tcp ports (no-response)
-Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+Host is up (0.011s latency).
+Not shown: 997 closed tcp ports (reset)
 PORT     STATE SERVICE
 22/tcp   open  ssh
 5000/tcp open  upnp
@@ -43,7 +34,7 @@ PORT     STATE SERVICE
 MAC Address: BC:D0:74:AA:71:36 (Apple)
 
 Nmap scan report for SYM-7QD3KR3.lan (192.168.1.58)
-Host is up (0.027s latency).
+Host is up (0.014s latency).
 Not shown: 998 filtered tcp ports (no-response)
 Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
 PORT     STATE SERVICE
@@ -52,7 +43,7 @@ PORT     STATE SERVICE
 MAC Address: A0:59:50:ED:DE:83 (Intel Corporate)
 
 Nmap scan report for 192.168.1.112
-Host is up (0.0082s latency).
+Host is up (0.0074s latency).
 Not shown: 989 closed tcp ports (reset)
 PORT      STATE SERVICE
 23/tcp    open  telnet
@@ -69,14 +60,14 @@ PORT      STATE SERVICE
 MAC Address: CC:90:93:17:B1:7B (Hansong Tehnologies)
 
 Nmap scan report for Express.lan (192.168.1.121)
-Host is up (0.011s latency).
+Host is up (0.013s latency).
 Not shown: 999 closed tcp ports (reset)
 PORT     STATE SERVICE
 7000/tcp open  afs3-fileserver
 MAC Address: D8:31:34:7C:22:9E (Roku)
 
 Nmap scan report for 192.168.1.185
-Host is up (0.0080s latency).
+Host is up (0.0073s latency).
 Not shown: 989 closed tcp ports (reset)
 PORT      STATE SERVICE
 23/tcp    open  telnet
@@ -93,7 +84,7 @@ PORT      STATE SERVICE
 MAC Address: CC:90:93:17:B2:7C (Hansong Tehnologies)
 
 Nmap scan report for 192.168.1.188
-Host is up (0.0079s latency).
+Host is up (0.0071s latency).
 Not shown: 989 closed tcp ports (reset)
 PORT      STATE SERVICE
 23/tcp    open  telnet
@@ -109,6 +100,14 @@ PORT      STATE SERVICE
 50002/tcp open  iiimsf
 MAC Address: CC:90:93:17:B2:7F (Hansong Tehnologies)
 
+Nmap scan report for 192.168.1.229
+Host is up (0.010s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT      STATE SERVICE
+49152/tcp open  unknown
+62078/tcp open  iphone-sync
+MAC Address: 4E:1D:AA:B1:52:65 (Unknown)
+
 Nmap scan report for 192.168.1.253
 Host is up (0.011s latency).
 Not shown: 957 filtered tcp ports (no-response), 40 closed tcp ports (reset)
@@ -119,4 +118,3 @@ PORT     STATE SERVICE
 8888/tcp open  sun-answerbook
 MAC Address: 00:F3:61:44:84:D7 (Amazon Technologies)
 
-# Nmap done at Sat Aug 12 11:17:44 2023 -- 256 IP addresses (18 hosts up) scanned in 247.14 seconds
