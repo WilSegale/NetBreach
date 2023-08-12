@@ -81,6 +81,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                     do
                         echo -e "$pipPackage"
                 done
+                
                 echo -e "________ERROR________"
                 echo -e "${RED}Error occurred during pip uninstallation${NC}"
             else
