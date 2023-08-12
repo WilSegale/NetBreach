@@ -16,7 +16,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     if [[ "${yes[*]}" == *"$YES_NO"* ]]; then
         if ping -q -c 1 -W 1 google.com >/dev/null; then # checks if the user is connected to the internet
-            # Packages to check for installation
+            # brew packages that will be uninstalled if they are installed
             Packages=(
                 "wget"
                 "hydra"
@@ -45,8 +45,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
             # Check packages
             for package in "${Packages[@]}"
-            do
-                check_package "$package"
+                do
+                    check_package "$package"
             done
 
             # Uninstall PIP packages
