@@ -10,7 +10,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     yes=("yes" "Yes" "YES")
 
-    echo -e "${RED}${BRIGHT}!Are you sure you want to remove your Packages (YES/NO)!: ${NC}"
+    echo -e "${RED}${BRIGHT}!Are you sure you want to remove your Packages (YES/NO)!:${NC}"
 
     read -p ">>> " YES_NO
 
@@ -81,7 +81,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                     do
                         echo -e "$pipPackage"
                 done
-                
+
                 echo -e "________ERROR________"
                 echo -e "${RED}Error occurred during pip uninstallation${NC}"
             else
