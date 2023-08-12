@@ -6,7 +6,9 @@ GREEN='\033[0;32m'
 BRIGHT='\033[1m'
 NC='\033[0m' # No Color
 
-if [[ "$OSTYPE" == "darwin"* ]]; then   
+MAC="darwin"
+
+if [[ "$OSTYPE" == "${MAC}"* ]]; then   
 
     yes=("yes" "Yes" "YES")
 

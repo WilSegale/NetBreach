@@ -3,6 +3,7 @@
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
+MAC="darwin"
 
 # Root user
 root=0
@@ -24,7 +25,7 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 # Gets current date in mm/dd/yyyy format
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$OSTYPE" == "${MAC}"* ]]; then
     clear
     if [[ $EUID -ne $root ]]; then
         # Error message if not running as root
