@@ -31,10 +31,8 @@ try:
         print(f"Number of passwords generated: {num_generated}")
 
         # Ask the user if they want to continue
-
+        
 except KeyboardInterrupt:
-    print("Exiting...")
     print(f"Total number of passwords generated: {num_generated}")
-    textFile.close()
 
 
