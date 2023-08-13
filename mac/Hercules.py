@@ -19,7 +19,6 @@ root = 0
 # makes the log file accessible to read for the user and developer
 logging.basicConfig(filename="ERROR.log", level=logging.ERROR)
 
-
 def connect(host="google.com"):
     try:
         urllib.request.urlopen("http://" + host)  # Try to open a connection to the host
