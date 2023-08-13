@@ -13,7 +13,7 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
     yes=("yes" "Yes" "YES")
 
     echo -e "${RED}${BRIGHT}!Are you sure you want to remove your Packages (YES/NO)!:${NC}"
-
+    
     read -p ">>> " YES_NO
 
     if [[ "${yes[*]}" == *"$YES_NO"* ]]; then
