@@ -91,12 +91,12 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
                 echo -e "The packages that are removed are: ${GREEN}"
                 for package in "${Packages[@]}"
                     do
-                        echo -e "$package"
+                        echo -e "${package}"
                 done
                 echo -e "________PIP Packages________"
                 for pipPackage in "${pipPackages[@]}"
                     do
-                        echo -e "$pipPackage"
+                        echo -e "${pipPackage}"
                 done
             fi
 
