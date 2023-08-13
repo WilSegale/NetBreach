@@ -32,7 +32,7 @@ if connect() == True:  # Makes sure that the user is connected to the internet
         if os.geteuid() == root:  # Check if running as root
             with tqdm(total=100, ascii=False, bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt}', ncols=80,
                       colour="green", desc="Loading Hercules", dynamic_ncols=True) as pbar:
-                for _ in range(100):
+                for loading in range(100):
                     time.sleep(0.1)  # Simulate loading delay
                     pbar.update(1)
             os.system("bash script.sh")  # Replace with your actual script to run after loading
