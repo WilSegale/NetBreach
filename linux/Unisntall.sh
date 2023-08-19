@@ -8,7 +8,6 @@ NC='\033[0m' # No Color
 
 if [[ "$OSTYPE" == "linux"* ]]; then   
 
-   
     yes=("yes" "Yes" "YES")
 
     echo -e "${RED}${BRIGHT}!Are you sure you want to remove your Packages (YES/NO)!: ${NC}"

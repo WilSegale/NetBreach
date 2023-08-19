@@ -5,7 +5,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 BRIGHT='\033[1m'
 NC='\033[0m' # No Color
-
+#os of the computer
 MAC="darwin"
 
 if [[ "$OSTYPE" == "${MAC}"* ]]; then   
@@ -108,5 +108,5 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
         echo -e "Ok, I will not remove the packages."
     fi
 else
-    echo "Wrong OS please use the correct OS." #if the users is not useing the right OS it says "You are useing the wrong OS"
+    echo -e "${RED}${BRIGHT}This script can only be run on Mac Os${NC}"
 fi
