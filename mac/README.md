@@ -1,4 +1,5 @@
-# !Do not use this software in Schools or Business.!
+# !Do not use this software in Schools or Business!
+
 ## Type "bash requirements" first
 
 ## To start the program type 
