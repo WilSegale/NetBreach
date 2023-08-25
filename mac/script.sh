@@ -29,8 +29,8 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
     clear
     if [[ $EUID -ne $root ]]; then
         # Error message if not running as root
-        echo "ERROR:root:TIME:$CURRENT_TIME Please run as root. DATE:$CURRENT_DATE" >> ERROR.LOG
-        echo "TIME:$CURRENT_TIME Please run as root. DATE:$CURRENT_DATE"
+        echo "ERROR:root:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
+        echo "TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}"
         exit
     else
         sudo rm -rf hydra.restore
