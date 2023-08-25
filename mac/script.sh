@@ -72,7 +72,7 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
                 echo "Put in hydra first to start the script."
                 read -p ">>> " Hydra
 
-                if [[ $Hydra == "exit" ]]; then
+                if [[ " ${exit[*]} " == *" $Hydra "* ]]; then
                     echo "GoodBye"
                     exit
                 else
