@@ -2,6 +2,7 @@
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
+#os of the computer
 MAC="darwin"
 
 # Root user
