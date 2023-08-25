@@ -1,56 +1,49 @@
 #!/bin/bash
 
-# Define the green color escape sequence
+# Define color escape sequences
 GREEN='\033[0;32m'
-
-# Reset the text color to default
 RESET='\033[0m'
 
 # Define arrays for valid inputs
-YES=("yes" "YES" "Yes")
+VALID_YES=("yes" "YES" "Yes")
+VALID_NO=("no" "NO" "No")
+VALID_HELP=("help" "HELP" "Help")
 
-NO=("no" "NO" "No")
+# Define a function for file encryption
+function encryptFiles() {
+    # Prompt user for input
+    read -p "Do you wish to proceed with file encryption? (YES, NO, or Help): " userResponse
 
-HELP=("help" "HELP" "Help")
+    # Check if input is in the valid YES array
+    if [[ " ${VALID_YES[*]} " == *" $userResponse "* ]]; then
+        read -p "Enter the number of random strings to generate: " numStrings
+        read -p "Enter the length of each random string to generate: " stringLength
+        read -p "Enter the name of the file you want to encrypt: " targetFile
 
-# Function for file encryption
-function sheard() {
-
-   # Prompt user for input
-   read -p "Are you sure you want to encrypt your files (YES, NO or Help)? " YesNo
-
-   # Check if input is in the YES array
-   if [[ " ${YES[*]} " == *" $YesNo "* ]]; then
-      # Specify the number of random strings to generate
-      read -p "Enter the number of random strings to generate: " num_strings
-
-      # Specify the length of each random string
-      read -p "Enter the length of each random string to generate: " string_length
-      read -p "Input the file you want to encrypt: " FileName
-      # Generate random strings using openssl
-      for ((i=0; i<num_strings; i++)); do
-         random_string=$(openssl rand -base64 $((string_length * 3/4)) | tr -dc 'a-zA-Z0-9' | head -c $string_length)
-         echo $random_string > $FileName
-      done
+        # Generate random strings using openssl
+        for ((i=0; i<numStrings; i++)); do
+            randomString=$(openssl rand -base64 $((stringLength * 3/4)) | tr -dc 'a-zA-Z0-9' | head -c $stringLength)
+            echo $randomString > $targetFile
+        done
       
-   # Check if input is in the NO array
-   elif [[ " ${NO[*]}" == *" $YesNo "* ]]; then
-      echo "Exting program..."
-      sleep 1
-      echo -e "${GREEN}[+]${RESET} Done"
-      exit 1
+    # Check if input is in the valid NO array
+    elif [[ " ${VALID_NO[*]}" == *" $userResponse "* ]]; then
+        echo "Exiting program..."
+        sleep 1
+        echo -e "${GREEN}[+]${RESET} Done"
+        exit 1
 
-   # Check if input is in the HELP array
-   elif [[ " ${HELP[*]}" == *" $YesNo "* ]]; then      
-      figlet "HELP ?"
-      echo "What this program does is that it encrypts your files and makes them unreadable forever."
-      echo "So use at your own risk."
+    # Check if input is in the valid HELP array
+    elif [[ " ${VALID_HELP[*]}" == *" $userResponse "* ]]; then      
+        figlet "HELP ?"
+        echo "This program encrypts your files, rendering them permanently unreadable."
+        echo "Use this program cautiously and at your own risk."
 
-   # Input is not recognized
-   else
-      echo "ERROR: I DON'T KNOW WHAT YOU MEAN BY '${YesNo}'"
-   fi
+    # Input is not recognized
+    else
+        echo "ERROR: Unrecognized input '${userResponse}'"
+    fi
 }
 
-# Call the sheard function
-sheard
+# Call the encryptFiles function
+encryptFiles
