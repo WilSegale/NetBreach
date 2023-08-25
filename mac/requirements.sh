@@ -5,9 +5,12 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 BRIGHT='\033[1m'
 NC='\033[0m' # No Color
-MAC="Darwin"
+
+if [ "$1" = "--help" ]; then
+    echo "This script will install the packages for it to work properly"
+fi
 #sees if the OS is mac os
-if [[ "$OSTYPE" == "${MAC}"* ]]; then 
+if [[ "$OSTYPE" == "Darwin"* ]]; then 
     if ping -c 1 google.com >/dev/null 2>&1; then
         # Packages to install
         Packages=(
