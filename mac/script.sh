@@ -1,5 +1,4 @@
 #!/bin/bash
-
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
@@ -46,8 +45,8 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
         # Else, it notifies them that they are not connected to the internet and tells them to connect
         else
             # Error message if offline
-            echo "ERROR:root:TIME:$CURRENT_TIME You are offline. Please connect to the internet. DATE:$CURRENT_DATE." >> ERROR.LOG
-            echo "TIME:$CURRENT_TIME You are offline. Please connect to the internet. DATE:$CURRENT_DATE"
+            echo "ERROR:root:TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}." >> ERROR.LOG
+            echo "TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}"
         fi
 
         # clear the terminal
