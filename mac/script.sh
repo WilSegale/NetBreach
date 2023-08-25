@@ -69,7 +69,7 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
                 # Scan the entire network and display open ports
                 sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
                 hydra -h
-                echo "Put in hydra first to start the script."
+                echo "Put in Hydra first to start the script."
                 read -p ">>> " Hydra
 
                 if [[ " ${exit[*]} " == *" $Hydra "* ]]; then
