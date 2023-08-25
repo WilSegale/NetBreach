@@ -24,6 +24,7 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 # Gets current date in mm/dd/yyyy format
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
+#when the user enters script --help it outputs the help message
 if [ "$1" = "--help" ]; then
     figlet "? HELP ?"
     echo
