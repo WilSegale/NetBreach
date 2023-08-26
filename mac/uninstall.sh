@@ -116,6 +116,10 @@ else
     
             echo -e "Ok, I will not remove the packages."
         
+        elif [[ "${no[*]}" == *"$NO_NO"* ]];
+        then
+            echo -e "Ok, I will not remove the packages."
+        
         else
             echo -e "${RED}Please enter a valid option${NC}"
         
