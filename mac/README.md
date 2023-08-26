@@ -10,6 +10,12 @@ sudo python3 Hercules.py
 ## if you are wondering how to use this script just type
 
 ```bash
+python3 Hercules.py --help
+```
+
+## if you are wondering how to use this script just type
+
+```bash
 bash script.sh --help
 ```
 
