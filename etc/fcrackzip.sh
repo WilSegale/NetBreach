@@ -26,11 +26,14 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
     # Define a function named FCRACKZIP
     FCRACKZIP() {
         # List of required packages
-        packages=("fcrackzip" "figlet" "ffmpeg")
+        packages=("fcrackzip" 
+                  "figlet" 
+                  "ffmpeg")
 
-        # Prompt the user to enter a password without showing it on the screen
-        echo "${hint}"
-
+        # Prompt the user to enter a password without showing it on the screen and will show the hint of the password
+        
+        echo "| ${hint} |"
+        echo
         read -s -p "Enter Password: " EnterPassword
         echo
 
@@ -40,15 +43,19 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             say "Wrong password"
             ffmpeg -f avfoundation -framerate 30 -video_size 1280x720 -i "0" -frames:v 1 image.jpg
             
+
+            #get the users ip info from a API server
             geo_info=$(curl -s ipinfo.io)
 
             # Extract latitude and longitude from the response
             latitude=$(echo "$geo_info" | jq -r '.loc | split(",")[0]')
             longitude=$(echo "$geo_info" | jq -r '.loc | split(",")[1]')
 
+            #output the lat and long coordinates
             echo "Latitude: $latitude"
             echo "Longitude: $longitude"
-
+            
+            #opens the images that the bad actor tryed to open
             open image.jpg
             exit 1
         else
