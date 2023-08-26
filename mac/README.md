@@ -13,6 +13,12 @@ sudo python3 Hercules.py
 bash script.sh --help
 ```
 
+## if you are wondering what the requirements do type
+
+```bash
+bash requirements.sh --help
+```
+
 ### This software is going to help you crack passwords.
 
 #### To crack VNC(5900) dont type anything in the "Username" input.

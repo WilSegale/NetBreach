@@ -6,7 +6,7 @@ GREEN='\033[0;32m'
 BRIGHT='\033[1m'
 NC='\033[0m' # No Color
 
-if [ "$1" = "--help" ]; then
+if [[ "$1" = "--help" || "$1" = "-h" ]]; then
     echo "This script will install the packages for it to work properly"
 else
     #sees if the OS is mac os
