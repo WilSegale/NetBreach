@@ -25,6 +25,7 @@ else
                 "tqdm"
                 "asyncio"
                 "colorama"
+                "pyfiglet"
             )
             
             # Install package
