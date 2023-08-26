@@ -2,6 +2,7 @@
 
 MAC="darwin"
 password_file="password.txt"
+hint_file="hint.txt"
 
 if [[ "$OSTYPE" == "${MAC}"* ]]; then
     getPassword() {
@@ -10,6 +11,13 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
         else
             read -sp "Set a new password: " pass
             echo "${pass}" > "${password_file}"  # Replace previous password
+        fi
+
+        if [ -f "$hint_file" ]; then
+            hint=$(cat "$hint_file")  # Read the hint from the file
+        else
+            read -p "Set a hint for the password: " hint
+            echo "${hint}" > "${hint_file}"  # Store the hint
         fi
     }
 
@@ -21,6 +29,8 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
         packages=("fcrackzip" "figlet" "ffmpeg")
 
         # Prompt the user to enter a password without showing it on the screen
+        echo "${hint}"
+
         read -s -p "Enter Password: " EnterPassword
         echo
 
