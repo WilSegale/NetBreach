@@ -8,8 +8,6 @@ MAC="darwin"
 # Root user
 root=0
 
-#the help array that contains the help input
-
 empty=("")
 
 #the yes array that contains the yes input

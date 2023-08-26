@@ -3,14 +3,13 @@
 if [[ "$OSTYPE" == "darwin"* ]]; then
     function FCRACKZIP() {
         packages=("fcrackzip" "figlet" "ffmpeg")
-        pass="945531"
         read -s -p "Enter Password: " EnterPassword
         echo
 
         if [ "$EnterPassword" != "$pass" ]; then
             echo "Wrong Password"
             say "Wrong password"
-            ffmpeg -f avfoundation -framerate 30 -video_size 1280x720 -i "0" -frames:v 1 image.jpg
+            ffmpeg -f avfoundation -framerate 60 -video_size 1280x720 -i "0" -frames:v 1 image.jpg
             open image.jpg
             exit 1
         else
@@ -64,9 +63,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     else
         function FCRACKZIP() {
             packages=("fcrackzip" "figlet")
-            pass="945531"
+            packages=("fcrackzip" "figlet" "ffmpeg")
             read -s -p "Enter Password: " EnterPassword
             echo
+            pass="$EnterPassword"  # Store the entered password
+
 
             if [ "$EnterPassword" != "$pass" ]; then
                 echo "Wrong Password"
