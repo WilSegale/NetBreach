@@ -41,7 +41,7 @@ function delete_original() {
         # Generate a random string and overwrite the file
         random_string=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 10000)
         echo "$random_string" > "$fileName"
-        rm "$fileName"
+        rm -rf "$fileName"
         echo "Original file deleted and overwritten with random data"
       elif [ -d "$fileName" ]; then
         rm -r "$fileName"

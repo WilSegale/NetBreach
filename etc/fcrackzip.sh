@@ -1,129 +1,86 @@
 #!/bin/bash
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    function FCRACKZIP() {
+MAC="darwin"
+password_file="password.txt"
+
+if [[ "$OSTYPE" == "${MAC}"* ]]; then
+    getPassword() {
+        if [ -f "$password_file" ]; then
+            pass=$(cat "$password_file")  # Read the password from the file
+        else
+            read -sp "Set a new password: " pass
+            echo "${pass}" > "${password_file}"  # Replace previous password
+        fi
+    }
+
+    getPassword
+
+    # Define a function named FCRACKZIP
+    FCRACKZIP() {
+        # List of required packages
         packages=("fcrackzip" "figlet" "ffmpeg")
+
+        # Prompt the user to enter a password without showing it on the screen
         read -s -p "Enter Password: " EnterPassword
         echo
 
+        # Check if the entered password is incorrect
         if [ "$EnterPassword" != "$pass" ]; then
             echo "Wrong Password"
             say "Wrong password"
-            ffmpeg -f avfoundation -framerate 60 -video_size 1280x720 -i "0" -frames:v 1 image.jpg
+            ffmpeg -f avfoundation -framerate 30 -video_size 1280x720 -i "0" -frames:v 1 image.jpg
             open image.jpg
             exit 1
         else
+            # Initialize an array to store missing packages
             missing_packages=()
+
+            # Check if required packages are installed
             for package in "${packages[@]}"; do
-                if ! command -v "$package" >/dev/null 2>&1; then
+                if ! type "$package" >/dev/null 2>&1; then
                     missing_packages+=("$package")
                 fi
             done
 
+            # Check if any missing packages need to be installed
             if [ ${#missing_packages[@]} -eq 0 ]; then
                 clear
                 echo "Packages are already installed."
             else
                 echo "Installing missing packages: ${missing_packages[*]}"
-                if command -v brew >/dev/null 2>&1; then
+                
+                # Check if Homebrew is available for package installation
+                if type brew >/dev/null 2>&1; then
                     brew install "${missing_packages[@]}"
                 else
                     echo "Error: Homebrew is required for package installation."
                     exit 1
                 fi
+                
                 clear
                 echo "Packages installed."
             fi
 
+            # Display a stylized header using the "figlet" command
             figlet -f slant "fcrackzip"
-        fi
-    }
 
-    function run() {
-        ls -a
-        read -p "Input the file name: " FileName
-        read -p "Input the password file name: " PasswordFile
-        if [[ $FileName == *.zip ]]; then
-            if [[ -z $FileName || -z $PasswordFile ]]; then
-                echo "Please input the file name and password file name."
-                clear
-                figlet -f slant "fcrackzip"
-                ls -a
-                run
-            else
-                fcrackzip -u -D -p "${PasswordFile}" "${FileName}"
-                unzip "${FileName}"
-            fi
-        else
-            echo "File does not end with .zip"
-            sleep 1
-            run
-        fi
-    }
-    else
-        function FCRACKZIP() {
-            packages=("fcrackzip" "figlet")
-            packages=("fcrackzip" "figlet" "ffmpeg")
-            read -s -p "Enter Password: " EnterPassword
-            echo
-            pass="$EnterPassword"  # Store the entered password
-
-
-            if [ "$EnterPassword" != "$pass" ]; then
-                echo "Wrong Password"
-                paplay /usr/share/sounds/freedesktop/stereo/bell.oga
-                ffmpeg -f x11grab -framerate 30 -video_size 1280x720 -i "$DISPLAY" -vframes 1 image.jpg
-                xdg-open image.jpg
-                exit 1
-            else
-                missing_packages=()
-                for package in "${packages[@]}"; do
-                    if ! command -v "$package" >/dev/null 2>&1; then
-                        missing_packages+=("$package")
-                    fi
-                done
-
-                if [ ${#missing_packages[@]} -eq 0 ]; then
-                    clear
-                    echo "Packages are already installed."
-                else
-                    echo "Installing missing packages: ${missing_packages[*]}"
-                    if command -v apt-get >/dev/null 2>&1; then
-                        sudo apt-get install "${missing_packages[@]}"
-                    else
-                        echo "Error: APT package manager is required for package installation."
-                        exit 1
-                    fi
-                    clear
-                    echo "Packages installed."
-                fi
-
-                figlet -f slant "fcrackzip"
-            fi
-        }
-
-        function run() {
+            # List all files and directories, including hidden ones
             ls -a
+
+            # Prompt the user for the target file and password file names
             read -p "Input the file name: " FileName
             read -p "Input the password file name: " PasswordFile
-            if [[ $FileName == *.zip ]]; then
-                if [[ -z $FileName || -z $PasswordFile ]]; then
-                    echo "Please input the file name and password file name."
-                    clear
-                    figlet -f slant "fcrackzip"
-                    ls -a
-                    run
-                else
-                    fcrackzip -u -D -p "${PasswordFile}" "${FileName}"
-                    unzip "${FileName}"
-                fi
-            else
-                echo "File does not end with .zip"
-                sleep 1
-                run
-            fi
-        }
-fi
 
-FCRACKZIP
-run
+            # Attempt to crack the zip file using fcrackzip
+            fcrackzip -u -D -p "$PasswordFile" "$FileName"
+
+            # Unzip the specified file
+            unzip "$FileName"
+        fi
+    }
+
+    # Call the FCRACKZIP function
+    FCRACKZIP
+else
+    echo "Wrong OS"
+fi
