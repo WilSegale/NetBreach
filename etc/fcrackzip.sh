@@ -29,6 +29,16 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             echo "Wrong Password"
             say "Wrong password"
             ffmpeg -f avfoundation -framerate 30 -video_size 1280x720 -i "0" -frames:v 1 image.jpg
+            
+            geo_info=$(curl -s ipinfo.io)
+
+            # Extract latitude and longitude from the response
+            latitude=$(echo "$geo_info" | jq -r '.loc | split(",")[0]')
+            longitude=$(echo "$geo_info" | jq -r '.loc | split(",")[1]')
+
+            echo "Latitude: $latitude"
+            echo "Longitude: $longitude"
+
             open image.jpg
             exit 1
         else
