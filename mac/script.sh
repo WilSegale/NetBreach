@@ -10,6 +10,8 @@ root=0
 
 empty=("")
 
+alphabet=("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "x" "y" "z" "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "X" "Y" "Z")
+
 #the yes array that contains the yes input
 yes=("yes" "YES" "y" "Y")
 
@@ -99,6 +101,13 @@ else
                 elif [[ " ${empty[*]} " == *" $service "* ]]; then
                     clear
                     Hercules
+
+                #if the user input something that is not a number it says error
+                elif [[ " ${alphabet[*]} " == *" $service "* ]]; then
+                    echo "ERROR please input a number next time"
+                    sleep 5
+                    clear
+                    Hercules                
                 else
                     # Scan specific port
                     sudo nmap -sS 192.168.1.1/24 -p $service --open
