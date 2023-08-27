@@ -1,4 +1,3 @@
-from tqdm import tqdm
 import datetime
 import platform
 import time
@@ -8,8 +7,11 @@ import logging
 import sys
 import subprocess
 
+GREEN = "\033[92m"
+RESET = "\033[0m"
+
 #this is for the user to understand what the program does
-if len(sys.argv) == 2 and sys.argv[1] == "--help":
+if len(sys.argv) == 2 and sys.argv[1] == "--help" or len(sys.argv) == 2 and sys.argv[1] == "-h":
     subprocess.run(["figlet", "? HELP ?"])
     print()
     print("+++++++++++++++Programs used+++++++++++++++")
@@ -45,13 +47,29 @@ else:
 
 
     if connect() == True:  # Makes sure that the user is connected to the internet
-        if platform.system() == "Linux":  # Check if the current OS is macOS
+        if platform.system() == "linux":  # Check if the current OS is macOS
             if os.geteuid() == root:  # Check if running as root
-                with tqdm(total=100, ascii=False, bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt}', ncols=80,
-                        colour="green", desc="Loading Hercules", dynamic_ncols=True) as pbar:
-                    for loading in range(100):
-                        time.sleep(0.1)  # Simulate loading delay
-                        pbar.update(1)
+                
+                def print_loading_bar(iterations, delay=0.1, width=40):
+                    """
+                    Prints a loading bar with green dots to visualize progress.
+                    
+                    Args:
+                        iterations (int): Total number of iterations.
+                        delay (float, optional): Delay between updates in seconds. Default is 0.1 seconds.
+                        width (int, optional): Width of the loading bar. Default is 40 characters.
+                    """
+                    for i in range(iterations + 1):
+                        progress = i / iterations  # Calculate the progress ratio
+                        bar_length = int(progress * width)  # Calculate the number of dots for the current progress
+                        bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                        percentage = int(progress * 100)  # Calculate the percentage of completion
+                        
+                        # Print the loading bar and percentage, replacing the line each iteration
+                        print(f'\r[{bar}] {percentage}% ', end='', flush=True)
+                        
+                        time.sleep(delay)  # Pause to control the update rate
+                print_loading_bar(50)
                 os.system("bash script.sh")  # Replace with your actual script to run after loading
             else:
                 logging.critical(f"TIME:{formatted_time} Please run as root. DATE:{current_date}")
