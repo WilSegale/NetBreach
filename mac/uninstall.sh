@@ -10,7 +10,6 @@ NC='\033[0m' # No Color
 MAC="darwin"
 
 if [ "$(id -u)" -eq 0 ]; then
-
     figlet "ERROR"
     echo "Dont use sudo for this script." 
     echo "Because it can damage your comptuer"
