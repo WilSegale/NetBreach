@@ -112,18 +112,15 @@ else
             fi
 
         elif [[ "${yes[*]}" == *"$YES_NO"* ]]; then
-    
             echo -e "Ok, I will not remove the packages."
         
-        elif [[ "${no[*]}" == *"$NO_NO"* ]];
-        then
+        elif [[ "${no[*]}" == *"$NO_NO"* ]];then
             echo -e "Ok, I will not remove the packages."
         
         else
             echo -e "${RED}Please enter a valid option${NC}"
         
         fi
-
     else
         echo -e "${RED}${BRIGHT}This script can only be run on Mac Os${NC}"
     fi
