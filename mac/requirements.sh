@@ -39,23 +39,23 @@ else
                 # Install package
                 install_Brew_package() {
                     package_name="$1"
-                    if ! command -v "$package_name" >/dev/null 2>&1; then
-                        echo "$package_name is not installed. Installing..."
+                    if ! command -v "${package_name}" >/dev/null 2>&1; then
+                        echo "${package_name} is not installed. Installing..."
                         # Replace the following command with the appropriate package manager for your Linux distribution
-                        brew install "$package_name"
+                        brew install "${package_name}"
                     else
-                        echo -e "$package_name is already ${GREEN}installed.${NC}"
+                        echo -e "${package_name} is already ${GREEN}installed.${NC}"
                     fi
                 }
 
                 # Install package
                 install_pip_package() {
                     package_name="$1"
-                    if ! python3 -m pip show "$package_name" >/dev/null 2>&1; then
-                        echo "$package_name is not installed. Installing..."
-                        pip3 install "$package_name"
+                    if ! python3 -m pip show "${package_name}" >/dev/null 2>&1; then
+                        echo "${package_name} is not installed. Installing..."
+                        pip3 install "${package_name}"
                     else
-                        echo -e "$package_name is already ${GREEN}installed.${NC}"
+                        echo -e "${package_name} is already ${GREEN}installed.${NC}"
                     fi
                 }
                 
@@ -72,6 +72,7 @@ else
                 echo -e "${RED}ERROR:${NC} NOT CONNECTED TO THE INTERNET"
             fi
 
+        #sees if the OS is linux
         else
             echo "Wrong OS please use the correct OS." #if the users is not useing the right OS it says "You are useing the wrong OS"
         fi
