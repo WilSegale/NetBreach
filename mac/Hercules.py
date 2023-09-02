@@ -7,17 +7,54 @@ import logging
 import sys
 import subprocess
 
+HelpFile = open("HELP.txt", "w")
+
+#This is for the user to know what programs are used in this program
+ProgramsUsed = "+++++++++++++++Programs used+++++++++++++++"
+ProgramsUsedInfo = "This program will help you crack passwords \nIt has two programs inside it, one is Hydra and the other is Nmap"
+
+#this is for the user to understand what the program does
+HowToUse = "\n+++++++++++++++How to use++++++++++++++++++"
+HowToUseInfo01 = "To use the program you have to tell the computer what port you want to scan."
+HowToUseInfo02 = "\nIt will then scan the port that you asked for on the network and see if any ports that you asked are open."
+HowToUseInfo03 = "\nIf there are any ports that are open, it will ask for a username and hostname"
+HowToUseInfo04 = "\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
+
 GREEN = "\033[92m"
 RESET = "\033[0m"
 
 #this is for the user to understand what the program does
 if len(sys.argv) == 2 and sys.argv[1] == "--help" or len(sys.argv) == 2 and sys.argv[1] == "-h":
     subprocess.run(["figlet", "? HELP ?"])
+    text_art = """
+ ___   _   _ _____ _     ____    ___ 
+|__ \ | | | | ____| |   |  _ \  |__ \\
+  / / | |_| |  _| | |   | |_) |   / /
+ |_|  |  _  | |___| |___|  __/   |_|
+ (_)  |_| |_|_____|_____|_|      (_)  
+"""
+    print(text_art, file=HelpFile)
     print()
+    #inputs the program used logo in a help file
+    print(ProgramsUsed, file=HelpFile)
+
+    #puts the info about the program inside the help file
+    print(ProgramsUsedInfo, file=HelpFile)
     print("+++++++++++++++Programs used+++++++++++++++")
     print("This program will help you crack passwords")
     print("It has two programs inside it, one is Hydra and the other is Nmap")
     print()
+
+    #Puts the info logo in the help file
+    print(file=HelpFile)
+    print(HowToUse, file=HelpFile)
+
+    #puts the info about how to use the program inside the help file
+    print(HowToUseInfo01, 
+          HowToUseInfo02, 
+          HowToUseInfo03,
+          HowToUseInfo04,
+          file=HelpFile)
     print("+++++++++++++++How to use++++++++++++++++++")
     print("To use the program you have to tell the computer what port you want to scan.")
     print("It will then scan the port that you asked for on the network and see if any ports that you asked are open.")
