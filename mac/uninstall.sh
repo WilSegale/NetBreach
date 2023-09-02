@@ -106,7 +106,6 @@ else
                             echo -e "${pipPackage}"
                     done
                 fi
-
             else
                 echo -e "${RED}ERROR NOT CONNECTED TO THE INTERNET${NC}"
             fi
