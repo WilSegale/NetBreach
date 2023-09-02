@@ -5,6 +5,9 @@ NC='\033[0m' # No Color
 #os of the computer
 MAC="darwin"
 
+#for the wget functionality to work
+SITE_URL="http://google.com"
+
 # Root user
 root=0
 
@@ -51,7 +54,7 @@ else
             clear
 
             # trys to connecto to the server
-            wget -q --spider http://google.com
+            wget -q --spider $SITE_URL
 
             # If the user is connected to the internet, it works as normal
             if [[ $? -eq 0 ]]; then
