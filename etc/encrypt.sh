@@ -4,7 +4,9 @@
 figlet "Encrypter"
 
 # List of valid help commands for user guidance
-help=("help" "HELP" "What happens" "what do you do")
+help=("help" "HELP" 
+      "What happens" 
+      "what do you do")
 
 # Display a blank line
 echo
