@@ -3,7 +3,7 @@
 MAC="darwin"
 password_file=".password.txt"
 hint_file=".hint.txt"
-
+SOUND_FILE="NotifcationSound.mp3"
 if [[ "$OSTYPE" == "${MAC}"* ]]; then
     getPassword() {
         if [ -f "${password_file}" ]; then
@@ -65,6 +65,7 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             Location2="Longitude: ${longitude}"
 
             osascript -e "display notification \"$Location1 $Location2\" with title \"$title\""
+            afplay "$SOUND_FILE"
 
             #opens the images that the bad actor tryed to open
             open image.jpg
@@ -98,14 +99,17 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
                     HomebrewMessage="Homebrew is required for package installation."
 
                     osascript -e "display notification \"$HomebrewMessage\""
+                    afplay "$SOUND_FILE"
+
                     exit 1
                 fi
                 
                 clear
-                
+
+
                 installed="Packages installed."
                 osascript -e "display notification \"$installed\""
-
+                afplay "$SOUND_FILE"
             fi
 
             # Display a stylized header using the "figlet" command
