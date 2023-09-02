@@ -85,7 +85,7 @@ else:
             return False  # If unsuccessful, return False
 
 
-    if connect() == True:  # Makes sure that the user is connected to the internet
+    if connect() == 1:  # Makes sure that the user is connected to the internet
         if platform.system() == OS:  # Check if the current OS is macOS
             if os.geteuid() == root:  # Check if running as root
                 def print_loading_bar(iterations, delay=0.1, width=40):
