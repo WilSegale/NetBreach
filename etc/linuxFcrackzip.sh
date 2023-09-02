@@ -1,7 +1,7 @@
 #!/bin/bash
 
-password_file="password.txt"
-hint_file="hint.txt"
+password_file=".password.txt"
+hint_file=".hint.txt"
 
 getPassword() {
     if [ -f "$password_file" ]; then

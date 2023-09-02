@@ -2,7 +2,7 @@
 
 MAC="darwin"
 password_file=".password.txt"
-hint_file="hint.txt"
+hint_file=".hint.txt"
 
 if [[ "$OSTYPE" == "${MAC}"* ]]; then
     getPassword() {
