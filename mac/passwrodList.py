@@ -3,7 +3,7 @@ import string
 
 # maximum length of password needed
 # this can be changed to suit your password length
-textFile = open("rockyou2.0.txt", "a")
+textFile = open("rockyou.txt", "a")
 MAX_LEN = int(input("Enter the desired password length: "))
 
 def generate_password(length=MAX_LEN):
