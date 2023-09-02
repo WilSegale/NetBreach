@@ -37,7 +37,6 @@ function delete_file() {
     echo "turning it into a random string of letters and numbers."
     echo "Then it will delete the original file and retain the encrypted file."
     echo ""
-    delete_file
   else
     # If the input is not a valid help command
     if [ "$confirm" == "yes" ]; then
@@ -66,9 +65,6 @@ function delete_file() {
         echo "[+] DONE"
       fi
     fi
-    # Call the start function to continue with encryption process
-    start
-    delete_file
   fi
 }
 
