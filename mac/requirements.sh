@@ -8,19 +8,18 @@ NC='\033[0m' # No Color
 
 if [ "$(id -u)" -eq 0 ]; then
     title="ERROR"
-    ERROR_MESSAGE="Dont use sudo for this script. Because it can damage your comptuer"
+    ERROR_MESSAGE="Don't use sudo for this script. Because it can damage your computer"
     osascript -e "display notification \"$ERROR_MESSAGE\" with title \"$title\""
 
     figlet "ERROR"
-    echo "Dont use sudo for this script." 
-    echo "Because it can damage your comptuer"
+    echo "Don't use sudo for this script." 
+    echo "Because it can damage your computer"
     exit 1
 else
-
     if [[ "$1" = "--help" || "$1" = "-h" ]]; then
         echo "This script will install the packages for it to work properly"
     else
-        #sees if the OS is mac os
+        # Check if the OS is macOS
         if [[ "$OSTYPE" == "darwin"* ]]; then 
             if ping -c 1 google.com >/dev/null 2>&1; then
                 # Packages to install
@@ -75,6 +74,11 @@ else
                 for PIP in "${pipPackages[@]}"; do
                     install_pip_package "${PIP}"
                 done
+                echo
+                title="Packages"
+                ERROR_MESSAGE="All packages are installed successfully"
+                osascript -e "display notification \"$ERROR_MESSAGE\" with title \"$title\""
+                echo -e "${GREEN}All packages installed.${NC}" # Add this line to indicate successful installation
             else
                 title="ERROR"
                 ERROR_MESSAGE="NOT CONNECTED TO THE INTERNET"
@@ -82,12 +86,9 @@ else
                 echo -e "${RED}ERROR:${NC} NOT CONNECTED TO THE INTERNET"
             fi
 
-        #sees if the OS is linux
+        # Check if the OS is Linux
         else
-            title="ERROR"
-            ERROR_MESSAGE="Wrong OS please use the correct OS."
-            osascript -e "display notification \"$ERROR_MESSAGE\" with title \"$title\""
-            echo "Wrong OS please use the correct OS." #if the users is not useing the right OS it says "You are useing the wrong OS"
+            echo "Wrong OS please use the correct OS." #if the user is not using the right OS, it says "You are using the wrong OS"
         fi
     fi
 fi
