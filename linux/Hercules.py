@@ -49,7 +49,6 @@ else:
     if connect() == True:  # Makes sure that the user is connected to the internet
         if platform.system() == "Linux":  # Check if the current OS is macOS
             if os.geteuid() == root:  # Check if running as root
-                
                 def print_loading_bar(iterations, delay=0.1, width=40):
                     """
                     Prints a loading bar with green dots to visualize progress.
@@ -59,8 +58,8 @@ else:
                         delay (float, optional): Delay between updates in seconds. Default is 0.1 seconds.
                         width (int, optional): Width of the loading bar. Default is 40 characters.
                     """
-                    for i in range(iterations + 1):
-                        progress = i / iterations  # Calculate the progress ratio
+                    for loadingBar in range(iterations + 1):
+                        progress = loadingBar / iterations  # Calculate the progress ratio
                         bar_length = int(progress * width)  # Calculate the number of dots for the current progress
                         bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
                         percentage = int(progress * 100)  # Calculate the percentage of completion

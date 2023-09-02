@@ -12,6 +12,7 @@ ascii_banner = pyfiglet.figlet_format("PORT SCANNER")
 print(ascii_banner)
 # some colors
 init()
+
 GREEN = Fore.GREEN
 RESET = Fore.RESET
 RED = Fore.RED

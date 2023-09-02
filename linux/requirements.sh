@@ -6,11 +6,10 @@ GREEN='\033[0;32m'
 BRIGHT='\033[1m'
 NC='\033[0m' # No Color
 
-
 if [ "$1" = "--help" ]; then
     echo "This script will install the packages for it to work properly"
-else
 
+else
     if [[ "$OSTYPE" == "linux"* ]]; then   
         if ping -q -c 1 -W 1 google.com >/dev/null; then # checks if the user is connected to the internet
             # Packages to install
