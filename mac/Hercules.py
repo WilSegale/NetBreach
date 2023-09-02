@@ -7,6 +7,8 @@ import logging
 import sys
 import subprocess
 
+OS='Darwin'
+
 HelpFile = open("HELP.txt", "w")
 
 #This is for the user to know what programs are used in this program
@@ -84,7 +86,7 @@ else:
 
 
     if connect() == True:  # Makes sure that the user is connected to the internet
-        if platform.system() == "Darwin":  # Check if the current OS is macOS
+        if platform.system() == OS:  # Check if the current OS is macOS
             if os.geteuid() == root:  # Check if running as root
                 def print_loading_bar(iterations, delay=0.1, width=40):
                     """
