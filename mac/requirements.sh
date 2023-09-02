@@ -6,7 +6,6 @@ GREEN='\033[0;32m'
 BRIGHT='\033[1m'
 NC='\033[0m' # No Color
 
-
 if [ "$(id -u)" -eq 0 ]; then
     figlet "ERROR"
     echo "Dont use sudo for this script." 
