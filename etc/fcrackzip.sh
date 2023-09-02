@@ -60,9 +60,9 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             echo "Longitude: ${longitude}"
 
             title="Location information"
-
             Location1="Latitude: ${latitude}"
             Location2="Longitude: ${longitude}"
+
             osascript -e "display notification \"$Location1 $Location2\" with title \"$title\""
 
             #opens the images that the bad actor tryed to open
@@ -83,7 +83,7 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             if [ ${#missing_packages[@]} -eq 0 ]; then
                 clear
                 alreadyInstalled="All packages are installed."
-                osascript -e "display notification \"$alreadyInstalled\" with title \"$title\""
+                osascript -e "display notification \"$alreadyInstalled\""
 
             else
                 echo "Installing missing packages: ${missing_packages[*]}"
@@ -95,14 +95,14 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
                     title="Error:"
                     HomebrewMessage="Homebrew is required for package installation."
 
-                    osascript -e "display notification \"$HomebrewMessage\" with title \"$title\""
+                    osascript -e "display notification \"$HomebrewMessage\""
                     exit 1
                 fi
                 
                 clear
                 
                 installed="Packages installed."
-                osascript -e "display notification \"$installed\" with title \"$title\""
+                osascript -e "display notification \"$installed\""
 
             fi
 
