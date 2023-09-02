@@ -7,6 +7,10 @@ BRIGHT='\033[1m'
 NC='\033[0m' # No Color
 
 if [ "$(id -u)" -eq 0 ]; then
+    title="ERROR"
+    ERROR_MESSAGE="Dont use sudo for this script. Because it can damage your comptuer"
+    osascript -e "display notification \"$ERROR_MESSAGE\" with title \"$title\""
+
     figlet "ERROR"
     echo "Dont use sudo for this script." 
     echo "Because it can damage your comptuer"
@@ -57,22 +61,32 @@ else
                         echo -e "${package_name} is already ${GREEN}installed.${NC}"
                     fi
                 }
-                
+                echo
+                echo "_________BREW PACKAGES________"
+
                 # Install BREW packages
                 for package in "${Packages[@]}"; do
                     install_Brew_package "${package}"
                 done
-
+                
+                echo
+                echo "_________PIP PACKAGES________"
                 # Install PIP packages
                 for PIP in "${pipPackages[@]}"; do
                     install_pip_package "${PIP}"
                 done
             else
+                title="ERROR"
+                ERROR_MESSAGE="NOT CONNECTED TO THE INTERNET"
+                osascript -e "display notification \"$ERROR_MESSAGE\" with title \"$title\""
                 echo -e "${RED}ERROR:${NC} NOT CONNECTED TO THE INTERNET"
             fi
 
         #sees if the OS is linux
         else
+            title="ERROR"
+            ERROR_MESSAGE="Wrong OS please use the correct OS."
+            osascript -e "display notification \"$ERROR_MESSAGE\" with title \"$title\""
             echo "Wrong OS please use the correct OS." #if the users is not useing the right OS it says "You are useing the wrong OS"
         fi
     fi

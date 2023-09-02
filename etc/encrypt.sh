@@ -60,6 +60,7 @@ function delete_file() {
         sudo rm -rf "$fileName"
         sleep 1
         echo "[+] DONE"
+        
       elif [ -d "$fileName" ]; then
         # Remove the directory
         sudo rm -rf "$fileName"
