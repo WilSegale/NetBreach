@@ -1,20 +1,20 @@
 #!/bin/bash
 
 MAC="darwin"
-password_file="password.txt"
+password_file=".password.txt"
 hint_file="hint.txt"
 
 if [[ "$OSTYPE" == "${MAC}"* ]]; then
     getPassword() {
-        if [ -f "$password_file" ]; then
-            pass=$(cat "$password_file")  # Read the password from the file
+        if [ -f "${password_file}" ]; then
+            pass=$(cat "${password_file}")  # Read the password from the file
         else
             read -sp "Set a new password: " pass
             echo "${pass}" > "${password_file}"  # Replace previous password
         fi
 
-        if [ -f "$hint_file" ]; then
-            hint=$(cat "$hint_file")  # Read the hint from the file
+        if [ -f "${hint_file}" ]; then
+            hint=$(cat "${hint_file}")  # Read the hint from the file
         else
             read -p "Set a hint for the password: " hint
             echo "${hint}" > "${hint_file}"  # Store the hint
@@ -38,7 +38,7 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
         echo
 
         # Check if the entered password is incorrect
-        if [ "$EnterPassword" != "$pass" ]; then
+        if [ "${EnterPassword}" != "${pass}" ]; then
             echo "Wrong Password"
             say "Wrong password"
             ffmpeg -f avfoundation -framerate 30 -video_size 1280x720 -i "0" -frames:v 1 image.jpg
@@ -48,12 +48,12 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             geo_info=$(curl -s ipinfo.io)
 
             # Extract latitude and longitude from the response
-            latitude=$(echo "$geo_info" | jq -r '.loc | split(",")[0]')
-            longitude=$(echo "$geo_info" | jq -r '.loc | split(",")[1]')
+            latitude=$(echo "${geo_info}" | jq -r '.loc | split(",")[0]')
+            longitude=$(echo "${geo_info}" | jq -r '.loc | split(",")[1]')
 
             #output the lat and long coordinates
-            echo "Latitude: $latitude"
-            echo "Longitude: $longitude"
+            echo "Latitude: ${latitude}"
+            echo "Longitude: ${longitude}"
             
             #opens the images that the bad actor tryed to open
             open image.jpg
@@ -64,8 +64,8 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
 
             # Check if required packages are installed
             for package in "${packages[@]}"; do
-                if ! type "$package" >/dev/null 2>&1; then
-                    missing_packages+=("$package")
+                if ! type "${package}" >/dev/null 2>&1; then
+                    missing_packages+=("${package}")
                 fi
             done
 
@@ -99,10 +99,10 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             read -p "Input the password file name: " PasswordFile
 
             # Attempt to crack the zip file using fcrackzip
-            fcrackzip -u -D -p "$PasswordFile" "$FileName"
+            fcrackzip -u -D -p "${PasswordFile}" "${FileName}"
 
             # Unzip the specified file
-            unzip "$FileName"
+            unzip "${FileName}"
         fi
     }
 
