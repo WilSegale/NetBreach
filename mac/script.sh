@@ -132,7 +132,7 @@ else
                     if [[ $user == "" && $host == "" || $host == "" ]]; then
                         # No service specified, re-prompt for input
                         echo "No service specified"
-                        RunHackingCommand
+                        Hercules
                     # If the user inputs something in the 'Input Username' function and the hostname function,
                     # it will continue as normal
                     else
@@ -152,7 +152,7 @@ else
                     if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                         # No service specified, re-prompt for input
                         echo "No service specified"
-                        RunHackingCommand
+                        Hercules
                     # If the user inputs something in the 'Input Username' function and the hostname function,
                     # it will continue as normal
                     else
@@ -183,7 +183,7 @@ else
                     if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                         # No service specified, re-prompt for input
                         echo "No service specified"
-                        RunHackingCommand
+                        Hercules
                     # If the user inputs something in the 'Input Username' function and the hostname function,
                     # it will continue as normal
                     else
