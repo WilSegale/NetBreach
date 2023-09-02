@@ -41,6 +41,11 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
         if [ "${EnterPassword}" != "${pass}" ]; then
             echo "Wrong Password"
             say "Wrong password"
+            
+            title="ERROR"
+            WrongPassword="Wrong Password"
+            osascript -e "display notification \"$WrongPassword\" with title \"$title\""
+
             ffmpeg -f avfoundation -framerate 30 -video_size 1280x720 -i "0" -frames:v 1 image.jpg
             
 
@@ -72,7 +77,10 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             # Check if any missing packages need to be installed
             if [ ${#missing_packages[@]} -eq 0 ]; then
                 clear
-                echo "Packages are already installed."
+
+                alreadyInstalled="All packages are installed."
+                osascript -e "display notification \"$alreadyInstalled\" with title \"$title\""
+
             else
                 echo "Installing missing packages: ${missing_packages[*]}"
                 
@@ -80,12 +88,17 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
                 if type brew >/dev/null 2>&1; then
                     brew install "${missing_packages[@]}"
                 else
-                    echo "Error: Homebrew is required for package installation."
+                    message="Homebrew is required for package installation."
+                    title="Error:"
+                    osascript -e "display notification \"$message\" with title \"$title\""
                     exit 1
                 fi
                 
                 clear
-                echo "Packages installed."
+                
+                installed="Packages installed."
+                osascript -e "display notification \"$installed\" with title \"$title\""
+
             fi
 
             # Display a stylized header using the "figlet" command
