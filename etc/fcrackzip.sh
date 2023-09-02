@@ -40,8 +40,7 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
         # Check if the entered password is incorrect
         if [ "${EnterPassword}" != "${pass}" ]; then
             echo "Wrong Password"
-            say "Wrong password"
-            
+                      
             title="ERROR"
             WrongPassword="Wrong Password"
             osascript -e "display notification \"$WrongPassword\" with title \"$title\""
@@ -59,7 +58,13 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             #output the lat and long coordinates
             echo "Latitude: ${latitude}"
             echo "Longitude: ${longitude}"
-            
+
+            title="Location information"
+
+            Location1="Latitude: ${latitude}"
+            Location2="Longitude: ${longitude}"
+            osascript -e "display notification \"$Location1 $Location2\" with title \"$title\""
+
             #opens the images that the bad actor tryed to open
             open image.jpg
             exit 1
@@ -77,7 +82,6 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             # Check if any missing packages need to be installed
             if [ ${#missing_packages[@]} -eq 0 ]; then
                 clear
-
                 alreadyInstalled="All packages are installed."
                 osascript -e "display notification \"$alreadyInstalled\" with title \"$title\""
 
@@ -88,9 +92,10 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
                 if type brew >/dev/null 2>&1; then
                     brew install "${missing_packages[@]}"
                 else
-                    message="Homebrew is required for package installation."
                     title="Error:"
-                    osascript -e "display notification \"$message\" with title \"$title\""
+                    HomebrewMessage="Homebrew is required for package installation."
+
+                    osascript -e "display notification \"$HomebrewMessage\" with title \"$title\""
                     exit 1
                 fi
                 
