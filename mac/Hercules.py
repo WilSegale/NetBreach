@@ -1,8 +1,8 @@
 from DontEdit import *
+
 ProgramName = "Hercules"
 
-OS='Darwin'
-
+OS='Linux'
 
 GREEN = "\033[92m"
 RESET = "\033[0m"
@@ -48,15 +48,12 @@ if len(sys.argv) == 2 and sys.argv[1] == "--help" or len(sys.argv) == 2 and sys.
     print()
 
     #Puts the info logo in the help file
-    print(file=HelpFile)
     print(HowToUse, file=HelpFile)
 
     #puts the info about how to use the program inside the help file
-    for InfoLength in range(len(info)):
-        print(info[InfoLength], file=HelpFile)
+    print(info, file=HelpFile)
     #puts the info about how to use the program on the screen
     print(HowToUse)
-    print(info)
     print()
 else:
     # gets the current time and formats it HH:MM:SS
