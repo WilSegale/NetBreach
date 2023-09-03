@@ -7,6 +7,8 @@ import logging
 import sys
 import subprocess
 
+ProgramName = "Hercules"
+
 OS='Darwin'
 
 HelpFile = open("HELP.txt", "w")
@@ -104,7 +106,7 @@ else:
                         percentage = int(progress * 100)  # Calculate the percentage of completion
                         
                         # Print the loading bar and percentage, replacing the line each iteration
-                        print(f'\r[{bar}] {percentage}% ', end='', flush=True)
+                        print(f'\rLoading {ProgramName} [{bar}] {percentage}% ', end='', flush=True)
                         
                         time.sleep(delay)  # Pause to control the update rate
                 print_loading_bar(50)
