@@ -10,7 +10,7 @@
 ## Then go to your OS folder.
 ### Type 
 ```bash
-   bash requirements
+   bash requirements.sh
 ```
 #### Now you can type 
 ```bash
