@@ -8,7 +8,6 @@ NC='\033[0m' # No Color
 
 
 start() {
-
     if [ "$(id -u)" -eq 0 ]; then
         title="ERROR"
         ERROR_MESSAGE="Don't use sudo for this script. Because it can damage your computer"
