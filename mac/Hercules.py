@@ -86,10 +86,13 @@ else:
         except:
             return False  # If unsuccessful, return False
 
-
-    if connect() == 1:  # Makes sure that the user is connected to the internet
-        if platform.system() == OS:  # Check if the current OS is macOS
-            if os.geteuid() == root:  # Check if running as root
+    # Makes sure that the user is connected to the internet    
+    if connect() == 1:  
+        #checks if the user is on Mac OS
+        if platform.system() == OS:
+            #checks if the user is running as root
+            if os.geteuid() == root:
+                #makes the loading bar visible
                 def print_loading_bar(iterations, delay=0.1, width=40):
                     """
                     Prints a loading bar with green dots to visualize progress.
