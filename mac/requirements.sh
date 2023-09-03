@@ -10,8 +10,8 @@ if [ "$(id -u)" -eq 0 ]; then
     title="ERROR"
     ERROR_MESSAGE="Don't use sudo for this script. Because it can damage your computer"
     osascript -e "display notification \"$ERROR_MESSAGE\" with title \"$title\""
-
-    figlet "ERROR"
+    
+    echo -e "${RED}$(figlet ERROR !)${NC}"
     echo "Don't use sudo for this script." 
     echo "Because it can damage your computer"
     exit 1
