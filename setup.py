@@ -3,6 +3,7 @@ from colorama import *
 import logging
 import datetime
 import os
+
 current_time = datetime.datetime.now().time()
 
 # Format the time with AM/PM
