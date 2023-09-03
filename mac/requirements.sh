@@ -32,7 +32,6 @@ else
                 )
                 
                 pipPackages=(
-                    "tqdm"
                     "asyncio"
                     "colorama"
                     "pyfiglet"
