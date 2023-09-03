@@ -7,11 +7,16 @@ BRIGHT='\033[1m'
 NC='\033[0m' # No Color
 
 if [ "$(id -u)" -eq 0 ]; then
+    
+    #notification message for the user to also if the local host has been copermised at all
     title="ERROR"
     ERROR_MESSAGE="Don't use sudo for this script. Because it can damage your computer"
     osascript -e "display notification \"$ERROR_MESSAGE\" with title \"$title\""
     
+    #puts the ERROR message into line art
     echo -e "${RED}$(figlet ERROR !)${NC}"
+    
+    # gives the user something to read so they understand why they got the error
     echo "Don't use sudo for this script." 
     echo "Because it can damage your computer"
     exit 1
