@@ -3,7 +3,6 @@
 MAC="darwin"
 password_file=".password.txt"
 hint_file=".hint.txt"
-SOUND_FILE="NotifcationSound.mp3"
 
 if [[ "$OSTYPE" == "${MAC}"* ]]; then
     getPassword() {
