@@ -10,6 +10,7 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             pass=$(cat "${password_file}")  # Read the password from the file
         else
             read -sp "Set a new password: " pass
+            read -sp "Retype your password: " RetypePassword
             echo "${pass}" > "${password_file}"  # Replace previous password
         fi
 
