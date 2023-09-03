@@ -116,8 +116,8 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             ls -a
 
             # Prompt the user for the target file and password file names
-            read -p "Input the file name: " FileName
-            read -p "Input the password file name: " PasswordFile
+            read -e -p "Input the file name: " FileName
+            read -e -p "Input the password file name: " PasswordFile
 
             # Attempt to crack the zip file using fcrackzip
             fcrackzip -u -D -p "${PasswordFile}" "${FileName}"
