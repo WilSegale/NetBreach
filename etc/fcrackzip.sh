@@ -44,11 +44,7 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             title="ERROR"
             WrongPassword="Wrong Password"
             osascript -e "display notification \"$WrongPassword\" with title \"$title\""
-
-            ffmpeg -f avfoundation -framerate 30 -video_size 1280x720 -i "0" -frames:v 1 image.jpg
- 
-
-
+            
             #get the users ip info from a API server
             geo_info=$(curl -s ipinfo.io)
 
@@ -64,8 +60,15 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             Location1="Latitude: ${latitude}"
             Location2="Longitude: ${longitude}"
 
-            osascript -e "display notification \"$Location1 $Location2\" with title \"$title\""
+            #Display the location information
+            osascript -e "display dialog \"$Location1 $Location2\" with title \"$title\""
 
+            #takes a photo of the user so the owner of the computer can see them
+            ffmpeg -f avfoundation -framerate 30 -video_size 1280x720 -i "0" -frames:v 1 image.jpg
+ 
+
+
+            
             #opens the images that the bad actor tryed to open
             open image.jpg
             
