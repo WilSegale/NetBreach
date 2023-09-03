@@ -3,7 +3,7 @@ from threading import Thread, Lock
 from queue import Queue
 import pyfiglet
 import argparse
-import socket # for connecting
+import socket
 import os
 import time
 
@@ -26,23 +26,26 @@ N_THREADS = 200
 # thread queue
 q = Queue()
 print_lock = Lock()
-try :
+open_ports_found = False  # Flag to check if any open ports were found
+
+try:
     def port_scan(port):
         """
         Scan a port on the global variable `host`
         """
+        global open_ports_found
         try:
             s = socket.socket()
             s.connect((host, port))
         except:
             with print_lock:
-                print(f"{host:15}:{port:5}  is {RED}  {DIM}CLOSED  {RESET}", end='\r')
+                print(f"{host:15}:{port:5} is {RED}CLOSED{RESET}", end='\r')
         else:
             with print_lock:
-                print(f"{NORMAL} {host:15}:{port:5} is {BRIGHT} {GREEN} OPEN  {RESET} {NORMAL}")
+                print(f"{host:15}:{port:5} is {GREEN}OPEN{RESET}")
+            open_ports_found = True
         finally:
             s.close()
-
 
     def scan_thread():
         global q
@@ -54,7 +57,6 @@ try :
             # tells the queue that the scanning for that port 
             # is done
             q.task_done()
-
 
     def main(host, ports):
         global q
@@ -71,9 +73,8 @@ try :
             # to start scanning
             q.put(worker)
         
-        # wait the threads ( port scanners ) to finish
+        # wait for the threads ( port scanners ) to finish
         q.join()
-
 
     if __name__ == "__main__":
         # parse some parameters passed
@@ -86,9 +87,13 @@ try :
         start_port, end_port = port_range.split("-")
         start_port, end_port = int(start_port), int(end_port)
 
-        ports = [ p for p in range(start_port, end_port)]
+        ports = [p for p in range(start_port, end_port)]
 
         main(host, ports)
+        
+        # Display a message if no open ports were found
+        if not open_ports_found:
+            print(f"No open ports found on {host}")
 
 except KeyboardInterrupt:
     def loadingBar(iterations, delay=0.1, width=40):

@@ -11,24 +11,32 @@ ProgramName = "Hercules"
 
 OS='Darwin'
 
-HelpFile = open("HELP.txt", "w")
-
-#This is for the user to know what programs are used in this program
-ProgramsUsed = "+++++++++++++++Programs used+++++++++++++++"
-ProgramsUsedInfo = "This program will help you crack passwords \nIt has two programs inside it, one is Hydra and the other is Nmap"
-
-#this is for the user to understand what the program does
-HowToUse = "\n+++++++++++++++How to use++++++++++++++++++"
-HowToUseInfo01 = "To use the program you have to tell the computer what port you want to scan."
-HowToUseInfo02 = "\nIt will then scan the port that you asked for on the network and see if any ports that you asked are open."
-HowToUseInfo03 = "\nIf there are any ports that are open, it will ask for a username and hostname"
-HowToUseInfo04 = "\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
 
 GREEN = "\033[92m"
 RESET = "\033[0m"
 
 #this is for the user to understand what the program does
 if len(sys.argv) == 2 and sys.argv[1] == "--help" or len(sys.argv) == 2 and sys.argv[1] == "-h":
+    HelpFile = open("HELP.txt", "w")
+
+    #This is for the user to know what programs are used in this program
+    ProgramsUsed = "+++++++++++++++Programs used+++++++++++++++"
+    ProgramsUsedInfo = "This program will help you crack passwords \nIt has two programs inside it, one is Hydra and the other is Nmap"
+
+    #this is for the user to understand what the program does
+    HowToUse = "\n+++++++++++++++How to use++++++++++++++++++"
+    HowToUseInfo01 = "To use the program you have to tell the computer what port you want to scan."
+    HowToUseInfo02 = "\nIt will then scan the port that you asked for on the network and see if any ports that you asked are open."
+    HowToUseInfo03 = "\nIf there are any ports that are open, it will ask for a username and hostname"
+    HowToUseInfo04 = "\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
+    ending = ""
+
+    info = [HowToUseInfo01 +
+            HowToUseInfo02 + 
+            HowToUseInfo03 + 
+            HowToUseInfo04 +
+            ending]
+    
     subprocess.run(["figlet", "? HELP ?"])
     text_art = """
  ___   _   _ _____ _     ____    ___ 
@@ -54,16 +62,13 @@ if len(sys.argv) == 2 and sys.argv[1] == "--help" or len(sys.argv) == 2 and sys.
     print(HowToUse, file=HelpFile)
 
     #puts the info about how to use the program inside the help file
-    print(HowToUseInfo01, 
-          HowToUseInfo02, 
-          HowToUseInfo03,
-          HowToUseInfo04,
-          file=HelpFile)
+    for i in range(len(info)):
+        print(info[i], file=HelpFile)
     print("+++++++++++++++How to use++++++++++++++++++")
     print("To use the program you have to tell the computer what port you want to scan.")
     print("It will then scan the port that you asked for on the network and see if any ports that you asked are open.")
     print("If there are any ports that are open, it will ask for a username and hostname.")
-    print("When you give the program the username and hostname, it will try to crack that given parameters you gave it.")
+    print("When you give the program the username and hostname, it will try to crack the given parameters you gave it.")
     print()
 else:
     # gets the current time and formats it HH:MM:SS
@@ -74,7 +79,7 @@ else:
     current_date = datetime.datetime.now().strftime("%m/%d/%Y")
 
     # easy way to read the root user function
-    root = 0
+    ROOT = 0
 
     # makes the log file accessible to read for the user and developer
     logging.basicConfig(filename="ERROR.log", level=logging.ERROR)
@@ -91,7 +96,7 @@ else:
         #checks if the user is on Mac OS
         if platform.system() == OS:
             #checks if the user is running as root
-            if os.geteuid() == root:
+            if os.geteuid() == ROOT:
                 #makes the loading bar visible
                 def print_loading_bar(iterations, delay=0.1, width=40):
                     """
@@ -109,7 +114,7 @@ else:
                         percentage = int(progress * 100)  # Calculate the percentage of completion
                         
                         # Print the loading bar and percentage, replacing the line each iteration
-                        print(f'\rLoading {ProgramName} [{bar}] {percentage}% ', end='', flush=True)
+                        print(f'\rLoading {ProgramName} [{bar}] {percentage} % ', end='', flush=False)
                         
                         time.sleep(delay)  # Pause to control the update rate
                 print_loading_bar(50)
