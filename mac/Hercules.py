@@ -31,12 +31,11 @@ if len(sys.argv) == 2 and sys.argv[1] == "--help" or len(sys.argv) == 2 and sys.
     HowToUseInfo04 = "\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
     ending = ""
 
-    info = [HowToUseInfo01 +
+    info = (HowToUseInfo01 +
             HowToUseInfo02 + 
             HowToUseInfo03 + 
             HowToUseInfo04 +
-            ending]
-    
+            ending)
     subprocess.run(["figlet", "? HELP ?"])
     text_art = """
  ___   _   _ _____ _     ____    ___ 
@@ -52,9 +51,8 @@ if len(sys.argv) == 2 and sys.argv[1] == "--help" or len(sys.argv) == 2 and sys.
 
     #puts the info about the program inside the help file
     print(ProgramsUsedInfo, file=HelpFile)
-    print("+++++++++++++++Programs used+++++++++++++++")
-    print("This program will help you crack passwords")
-    print("It has two programs inside it, one is Hydra and the other is Nmap")
+    print(ProgramsUsed)
+    print(ProgramsUsedInfo)
     print()
 
     #Puts the info logo in the help file
@@ -62,13 +60,11 @@ if len(sys.argv) == 2 and sys.argv[1] == "--help" or len(sys.argv) == 2 and sys.
     print(HowToUse, file=HelpFile)
 
     #puts the info about how to use the program inside the help file
-    for i in range(len(info)):
-        print(info[i], file=HelpFile)
-    print("+++++++++++++++How to use++++++++++++++++++")
-    print("To use the program you have to tell the computer what port you want to scan.")
-    print("It will then scan the port that you asked for on the network and see if any ports that you asked are open.")
-    print("If there are any ports that are open, it will ask for a username and hostname.")
-    print("When you give the program the username and hostname, it will try to crack the given parameters you gave it.")
+    for InfoLength in range(len(info)):
+        print(info[InfoLength], file=HelpFile)
+    #puts the info about how to use the program on the screen
+    print(HowToUse)
+    print(info)
     print()
 else:
     # gets the current time and formats it HH:MM:SS

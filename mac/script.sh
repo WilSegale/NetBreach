@@ -6,7 +6,7 @@ NC='\033[0m' # No Color
 MAC="darwin"
 
 #for the wget functionality to work
-SITE_URL="http://google.com"
+SITE_URL="https://google.com"
 
 # Root user
 root=0
