@@ -117,7 +117,7 @@ else:
                 os.system("bash script.sh")  # Replace with your actual script to run after loading
             else:
                 logging.critical(f"TIME:{formatted_time} Please run as root. DATE:{current_date}")
-                # makes a pop up dialog to tell the user that the user is not root
+                # makes a pop up dialog to tell the user that the user is not rootd
                 applescript_command = f'display dialog "TIME:{formatted_time} Please run as root. DATE:{current_date}" with title "|CRITICAL ERROR|"'
                 subprocess.run(['osascript', '-e', applescript_command])
         else:
