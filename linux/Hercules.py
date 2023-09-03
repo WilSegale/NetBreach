@@ -7,6 +7,8 @@ import logging
 import sys
 import subprocess
 
+ProgramName = "Hercules"
+
 OS='Linux'
 
 HelpFile = open("HELP.txt", "w")
@@ -85,7 +87,7 @@ else:
             return False  # If unsuccessful, return False
 
 
-    if connect() == True:  # Makes sure that the user is connected to the internet
+    if connect() == 1:  # Makes sure that the user is connected to the internet
         if platform.system() == OS:  # Check if the current OS is macOS
             if os.geteuid() == root:  # Check if running as root
                 def print_loading_bar(iterations, delay=0.1, width=40):
@@ -104,7 +106,7 @@ else:
                         percentage = int(progress * 100)  # Calculate the percentage of completion
                         
                         # Print the loading bar and percentage, replacing the line each iteration
-                        print(f'\r[{bar}] {percentage}% ', end='', flush=True)
+                        print(f'\rLoading {ProgramName} [{bar}] {percentage}% ', end='', flush=True)
                         
                         time.sleep(delay)  # Pause to control the update rate
                 print_loading_bar(50)
