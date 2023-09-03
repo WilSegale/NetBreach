@@ -121,12 +121,15 @@ else:
                 # makes a pop up dialog to tell the user that the user is not root
                 applescript_command = f'display dialog "TIME:{formatted_time} Please run as root. DATE:{current_date}" with title "|CRITICAL ERROR|"'
                 subprocess.run(['osascript', '-e', applescript_command])
+                pass
         else:
             logging.warning(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
             # makes a pop up dialog to tell the user that the OS is not correct
             applescript_command = f'display dialog "TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}" with title "WARNING"'
             subprocess.run(['osascript', '-e', applescript_command])
+            pass
     else:
         logging.critical(f"TIME:{formatted_time} You are offline. Please connect to the internet. DATE:{current_date}")
         applescript_command = f'display dialog "TIME:{formatted_time} Please connect to the internet. DATE{current_date}" with title "|CRITICAL ERROR|"'
         subprocess.run(['osascript', '-e', applescript_command])
+        pass
