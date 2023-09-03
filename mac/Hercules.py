@@ -117,6 +117,7 @@ else:
                 os.system("bash script.sh")  # Replace with your actual script to run after loading
             else:
                 logging.critical(f"TIME:{formatted_time} Please run as root. DATE:{current_date}")
+                
                 # makes a pop up dialog to tell the user that the user is not root
                 applescript_command = f'display dialog "TIME:{formatted_time} Please run as root. DATE:{current_date}" with title "|CRITICAL ERROR|"'
                 subprocess.run(['osascript', '-e', applescript_command])
@@ -127,4 +128,5 @@ else:
             subprocess.run(['osascript', '-e', applescript_command])
     else:
         logging.critical(f"TIME:{formatted_time} You are offline. Please connect to the internet. DATE:{current_date}")
-        print(f"TIME:{formatted_time} You are offline. Please connect to the internet. Date:{current_date}")
+        applescript_command = f'display dialog "TIME:{formatted_time} Please connect to the internet. DATE{current_date}" with title "|CRITICAL ERROR|"'
+        subprocess.run(['osascript', '-e', applescript_command])
