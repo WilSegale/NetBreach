@@ -66,7 +66,6 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             Location2="Longitude: ${longitude}"
 
             osascript -e "display notification \"$Location1 $Location2\" with title \"$title\""
-            afplay "$SOUND_FILE"
 
             #opens the images that the bad actor tryed to open
             open image.jpg
@@ -86,8 +85,9 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             # Check if any missing packages need to be installed
             if [ ${#missing_packages[@]} -eq 0 ]; then
                 clear
+                PackgeInstalled="Packages"
                 alreadyInstalled="All packages are installed."
-                osascript -e "display notification \"$alreadyInstalled\""
+                osascript -e "display notification \"$alreadyInstalled\" with title \"$PackgeInstalled\""
 
             else
                 echo "Installing missing packages: ${missing_packages[*]}"
@@ -99,18 +99,15 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
                     title="Error:"
                     HomebrewMessage="Homebrew is required for package installation."
 
-                    osascript -e "display notification \"$HomebrewMessage\""
-                    afplay "$SOUND_FILE"
-
+                    osascript -e "display notification \"$HomebrewMessage\" with title \"$PackgeInstalled\""
                     exit 1
                 fi
                 
                 clear
 
-
+                PackgeInstall="Packages"
                 installed="Packages installed."
-                osascript -e "display notification \"$installed\""
-                afplay "$SOUND_FILE"
+                osascript -e "display notification \"$installed\" with title \"$PackgeInstall\""
             fi
 
             # Display a stylized header using the "figlet" command
