@@ -27,6 +27,27 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 # Gets current date in mm/dd/yyyy format
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
+# List of required packages/commands
+required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
+
+# Function to check if a command exists
+command_exists() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+# Check if root user
+if [[ $EUID -ne 0 ]]; then
+  echo "ERROR: Please run as root."
+  exit 1
+fi
+
+# Check for required packages
+for package in "${required_packages[@]}"; do
+  if ! command_exists "$package"; then
+    echo -e "ERROR: The required package '$package' is not installed. Please install it and try again."
+    exit 1
+  fi
+done
 #when the user enters script --help it outputs the help message
 if [ "$1" = "--help" ]; then
     figlet "? HELP ?"
