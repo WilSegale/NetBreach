@@ -10,7 +10,6 @@ RESET = "\033[0m"
 try:
     # this is for the user to understand what the program does
     if len(sys.argv) == 2 and (sys.argv[1] == "--help" or sys.argv[1] == "-h"):
-        HelpFile = open("HELP.txt", "w")
 
         # This is for the user to know what programs are used in this program
         ProgramsUsed = "+++++++++++++++Programs used+++++++++++++++"
@@ -30,24 +29,16 @@ try:
                 HowToUseInfo04 +
                 ending)
         subprocess.run(["figlet", "? HELP ?"])
-        print(text_art, file=HelpFile)
         print()
-        # inputs the program used logo in a help file
-        print(ProgramsUsed, file=HelpFile)
-
-        # puts the info about the program inside the help file
-        print(ProgramsUsedInfo, file=HelpFile)
+        # inputs the program used logo on the screen and the programs used on the screen also
         print(ProgramsUsed)
         print(ProgramsUsedInfo)
+
+        # puts the info about the program inside the help file
         print()
 
-        # Puts the info logo in the help file
-        print(file=HelpFile)
-        print(HowToUse, file=HelpFile)
-
         # puts the info about how to use the program inside the help file
-        for InfoLength in range(len(info)):
-            print(info[InfoLength], file=HelpFile)
+        
         # puts the info about how to use the program on the screen
         print(HowToUse)
         print(info)
