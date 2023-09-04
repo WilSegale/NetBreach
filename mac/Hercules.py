@@ -67,7 +67,6 @@ else:
     # easy way to read the root user function
     ROOT = 0
 
-
     def connect(host="google.com"):
         try:
             urllib.request.urlopen("http://" + host)  # Try to open a connection to the host
@@ -108,13 +107,10 @@ else:
                 # makes a pop up dialog to tell the user that the user is not root
                 applescript_command = f'display dialog "TIME:{formatted_time} Please run as root. DATE:{current_date}" with title "|CRITICAL ERROR|"'
                 subprocess.run(['osascript', '-e', applescript_command])
-                pass
         else:
             # makes a pop up dialog to tell the user that the OS is not correct
             applescript_command = f'display dialog "TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}" with title "WARNING"'
             subprocess.run(['osascript', '-e', applescript_command])
-            pass
     else:
         applescript_command = f'display dialog "TIME:{formatted_time} Please connect to the internet. DATE{current_date}" with title "|CRITICAL ERROR|"'
         subprocess.run(['osascript', '-e', applescript_command])
-        pass
