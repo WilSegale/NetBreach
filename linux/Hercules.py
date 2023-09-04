@@ -30,7 +30,7 @@ try:
                 ending)
         subprocess.run(["figlet", "? HELP ?"])
         print()
-        # inputs the program used logo on the screen and the programs used on the screen also
+        # inputs the program used logo on the screen and the programs used on the screen also   on
         print(ProgramsUsed)
         print(ProgramsUsedInfo)
 
