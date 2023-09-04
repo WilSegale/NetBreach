@@ -54,6 +54,7 @@ if len(sys.argv) == 2 and sys.argv[1] == "--help" or len(sys.argv) == 2 and sys.
     print(info, file=HelpFile)
     #puts the info about how to use the program on the screen
     print(HowToUse)
+    print(info)
     print()
 else:
     # gets the current time and formats it HH:MM:SS
