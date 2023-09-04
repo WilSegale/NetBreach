@@ -32,8 +32,8 @@ try:
         subprocess.run(["figlet", "? HELP ?"])
         text_art = """
     ___   _   _ _____ _     ____    ___ 
-    |__ \ | | | | ____| |   |  _ \  |__ \\
-    / / | |_| |  _| | |   | |_) |   / /
+    |__\ | | | | ____| |   |  _ \  |__ \\
+     / / | |_| |  _| | |   | |_) |   / /
     |_|  |  _  | |___| |___|  __/   |_|
     (_)  |_| |_|_____|_____|_|      (_)  
     """
@@ -54,6 +54,7 @@ try:
         #puts the info about how to use the program inside the help file
         print(info, file=HelpFile)
         #puts the info about how to use the program on the screen
+        
         print(HowToUse)
         print(info)
         print()
