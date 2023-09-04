@@ -57,6 +57,7 @@ try:
         print(HowToUse)
         print(info)
         print()
+    
     else:
         # gets the current time and formats it HH:MM:SS
         current_time = datetime.datetime.now().time()
