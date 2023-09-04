@@ -10,6 +10,7 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             pass=$(cat "${password_file}")  # Read the password from the file
         else
             read -sp "Set a new password: " pass
+            echo
             read -sp "Retype your password: " RetypePassword
             echo "${pass}" > "${password_file}"  # Replace previous password
         fi
@@ -17,6 +18,7 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
         if [ -f "${hint_file}" ]; then
             hint=$(cat "${hint_file}")  # Read the hint from the file
         else
+            echo
             read -p "Set a hint for the password: " hint
             echo "${hint}" > "${hint_file}"  # Store the hint
         fi
@@ -53,16 +55,16 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             latitude=$(echo "${geo_info}" | jq -r '.loc | split(",")[0]')
             longitude=$(echo "${geo_info}" | jq -r '.loc | split(",")[1]')
 
-            #output the lat and long coordinates
-            echo "Latitude: ${latitude}"
-            echo "Longitude: ${longitude}"
+            # Extract city and country from the JSON response
+            city=$(echo "$geo_info" | jq -r '.city')
+            country=$(echo "$geo_info" | jq -r '.country')
 
             title="Location information"
             Location1="Latitude: ${latitude}"
             Location2="Longitude: ${longitude}"
 
             #Display the location information
-            osascript -e "display dialog \"$Location1 $Location2\" with title \"$title\""
+            osascript -e "display dialog \"${Location1} \n${Location2}\n\nCity: ${city} \nCountry: ${country} \" with title \"$title\""
 
             #takes a photo of the user so the owner of the computer can see them
             ffmpeg -f avfoundation -framerate 30 -video_size 1280x720 -i "0" -frames:v 1 image.jpg
