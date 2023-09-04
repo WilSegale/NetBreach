@@ -1,4 +1,5 @@
 from DontEdit import *
+
 try:
     ProgramName = "Hercules"
 
