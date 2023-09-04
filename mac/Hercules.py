@@ -115,6 +115,6 @@ try:
         else:
             os.system(f'zenity --error --title="|CRITICAL ERROR|" --text="TIME:{formatted_time} Please connect to the internet. DATE:{current_date}"')
 
-
+# if the user uses control-c, the program will exit
 except KeyboardInterrupt:
     print("\nExiting...")   
