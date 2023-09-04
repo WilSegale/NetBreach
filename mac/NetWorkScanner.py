@@ -26,7 +26,7 @@ N_THREADS = 200
 # thread queue
 q = Queue()
 print_lock = Lock()
-open_ports_found = False  # Flag to check if any open ports were found
+open_ports_found = True   # Flag to check if any open ports were found
 
 try:
     def port_scan(port):
