@@ -16,6 +16,8 @@ show_hide() {
             defaults write com.apple.finder AppleShowAllFiles -bool true
             killall Finder
             found=true
+            echo "[+] Showing Files..."
+
             break
         fi
     done
@@ -28,6 +30,7 @@ show_hide() {
                 defaults write com.apple.finder AppleShowAllFiles -bool false
                 killall Finder
                 found=true
+                echo "[+] Hidding Files..."
                 break
             fi
         done
