@@ -58,7 +58,8 @@ try:
         print(HowToUse)
         print(info)
         print()
-    
+    elif len(sys.argv) == 2 and sys.argv[1] == "--version" or len(sys.argv) == 2 and sys.argv[1] == "-v":
+        print("Hercules v4.5.6")
     else:
         # gets the current time and formats it HH:MM:SS
         current_time = datetime.datetime.now().time()
