@@ -54,7 +54,7 @@ if len(sys.argv) == 2 and (sys.argv[1] == "--help" or sys.argv[1] == "-h"):
     print()
 
 elif len(sys.argv) == 2 and (sys.argv[1] == "--version" or sys.argv[1] == "-v"):
-    print(ProgramName + " Version 4.6.0")
+    print(ProgramName + " Version 4.6.2")
 else:
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
