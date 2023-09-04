@@ -122,5 +122,6 @@ else:
             pass
     else:
         #logging.critical(f"TIME:{formatted_time} You are offline. Please connect to the internet. DATE:{current_date}")
-        os.system(f'zenity --error --title="|CRITICAL ERROR|" --text="TIME:{formatted_time} Please connect to the internet. DATE:{current_date}"')
+        applescript_command = f'display dialog "TIME:{formatted_time} Please connect to the internet. DATE{current_date}" with title "|CRITICAL ERROR|"'
+        subprocess.run(['osascript', '-e', applescript_command])
         pass

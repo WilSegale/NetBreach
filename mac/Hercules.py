@@ -6,6 +6,7 @@ try:
     OS='Darwin'
 
     GREEN = "\033[92m"
+    RED = "\033[91m"
     RESET = "\033[0m"
 
     #this is for the user to understand what the program does
@@ -116,8 +117,8 @@ try:
                 applescript_command = f'display dialog "TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}" with title "WARNING"'
                 subprocess.run(['osascript', '-e', applescript_command])
         else:
-            applescript_command = f'display dialog "TIME:{formatted_time} Please connect to the internet. DATE{current_date}" with title "|CRITICAL ERROR|"'
-            subprocess.run(['osascript', '-e', applescript_command])
+            os.system(f'zenity --error --title="|CRITICAL ERROR|" --text="TIME:{formatted_time} Please connect to the internet. DATE:{current_date}"')
+
 
 except KeyboardInterrupt:
     print("\nExiting...")   
