@@ -1,5 +1,5 @@
 from DontEdit import *
-
+from logo import *
 try:
     ProgramName = "Hercules"
 
@@ -31,13 +31,7 @@ try:
                 HowToUseInfo04 +
                 ending)
         subprocess.run(["figlet", "? HELP ?"])
-        text_art = """
-    ___   _   _ _____ _     ____    ___ 
-    |__\ | | | | ____| |   |  _ \  |__ \\
-     / / | |_| |  _| | |   | |_) |   / /
-    |_|  |  _  | |___| |___|  __/   |_|
-    (_)  |_| |_|_____|_____|_|      (_)  
-    """
+
         print(text_art, file=HelpFile)
         print()
         #inputs the program used logo in a help file

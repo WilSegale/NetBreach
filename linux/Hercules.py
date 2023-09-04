@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from DontEdit import *
-
+from logo import *
 ProgramName = "Hercules"
 
 OS = 'Linux'
@@ -30,13 +30,6 @@ if len(sys.argv) == 2 and (sys.argv[1] == "--help" or sys.argv[1] == "-h"):
             HowToUseInfo04 +
             ending)
     subprocess.run(["figlet", "? HELP ?"])
-    text_art = """
- ___   _   _ _____ _     ____    ___ 
-|__ \ | | | | ____| |   |  _ \  |__ \\
-  / / | |_| |  _| | |   | |_) |   / /
- |_|  |  _  | |___| |___|  __/   |_|
- (_)  |_| |_|_____|_____|_|      (_)  
-"""
     print(text_art, file=HelpFile)
     print()
     # inputs the program used logo in a help file
@@ -59,6 +52,9 @@ if len(sys.argv) == 2 and (sys.argv[1] == "--help" or sys.argv[1] == "-h"):
     print(HowToUse)
     print(info)
     print()
+
+elif len(sys.argv) == 2 and (sys.argv[1] == "--version" or sys.argv[1] == "-v"):
+    print(ProgramName + " Version 4.6.0")
 else:
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
