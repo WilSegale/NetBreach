@@ -7,7 +7,7 @@ BRIGHT='\033[1m'
 NC='\033[0m' # No Color
 
 if [ "$(id -u)" -eq 0 ]; then
-    
+
     #notification message for the user to also if the local host has been copermised at all
     title="ERROR"
     ERROR_MESSAGE="Don't use sudo for this script. Because it can damage your computer"
@@ -23,6 +23,7 @@ if [ "$(id -u)" -eq 0 ]; then
 else
     if [[ "$1" = "--help" || "$1" = "-h" ]]; then
         echo "This script will install the packages for it to work properly"
+    
     else
         # Check if the OS is macOS
         if [[ "$OSTYPE" == "darwin"* ]]; then 
@@ -34,6 +35,7 @@ else
                     "nmap"
                     "mysql"
                     "figlet"
+                    "zenity"
                 )
                 
                 pipPackages=(
