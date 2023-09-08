@@ -1,5 +1,6 @@
 from DontEdit import *
 from logo import *
+
 try:
     ProgramName = "Hercules"
 
@@ -76,7 +77,7 @@ try:
                 return False  # If unsuccessful, return False
 
         # Makes sure that the user is connected to the internet    
-        if connect() == 1:  
+        if connect() == 1:
             #checks if the user is on Mac OS
             if platform.system() == OS:
                 #checks if the user is running as root
@@ -106,15 +107,17 @@ try:
                 
                 else:    
                     # makes a pop up dialog to tell the user that the user is not root
-                    applescript_command = f'display dialog "TIME:{formatted_time} Please run as root. DATE:{current_date}" with title "|CRITICAL ERROR|"'
-                    subprocess.run(['osascript', '-e', applescript_command])
+                    #applescript_command = f'display dialog "" with title "|CRITICAL ERROR|"'
+                    #subprocess.run(['osascript', '-e', applescript_command])
+                    os.system(f'zenity --error --title="|CRITICAL ERROR|" --text="TIME:{formatted_time} Please run as root. DATE:{current_date}"')
             else:
                 # makes a pop up dialog to tell the user that the OS is not correct
-                applescript_command = f'display dialog "TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}" with title "WARNING"'
-                subprocess.run(['osascript', '-e', applescript_command])
+                # makes a pop up dialog to tell the user that the OS is not correct
+                os.system(f'zenity --warning --title="WARNING" --text="TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}"')
+
         else:
             os.system(f'zenity --error --title="|CRITICAL ERROR|" --text="TIME:{formatted_time} Please connect to the internet. DATE:{current_date}"')
 
 # if the user uses control-c, the program will exit
 except KeyboardInterrupt:
-    print("\nExiting...")   
+    print("\nExiting...")
