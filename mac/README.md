@@ -20,7 +20,7 @@ python3 Hercules.py --version or python3 Hercules.py -v
 ## if you are wondering how to use this script just type
 
 ```bash
-python3 Hercules.py --help
+python3 Hercules.py --help or python3 Hercules.py -h
 ```
 
 ## if you are wondering how to use this script just type

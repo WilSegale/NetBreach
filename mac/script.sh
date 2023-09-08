@@ -49,7 +49,7 @@ for package in "${required_packages[@]}"; do
   fi
 done
 #when the user enters script --help it outputs the help message
-if [ "$1" = "--help" ]; then
+if [ "$1" = "--help" || "$1" = "-h" ]; then
     figlet "? HELP ?"
     echo
     echo "+++++++++++++++Programs used+++++++++++++++"
