@@ -69,9 +69,6 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
             #takes a photo of the user so the owner of the computer can see them
             ffmpeg -f avfoundation -framerate 30 -video_size 1280x720 -i "0" -frames:v 1 image.jpg
  
-
-
-            
             #opens the images that the bad actor tryed to open
             open image.jpg
             
