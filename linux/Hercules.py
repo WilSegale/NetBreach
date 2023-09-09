@@ -100,17 +100,22 @@ try:
                             
                             time.sleep(delay)  # Pause to control the update rate
                     print_loading_bar(50)
-                    os.system("bash script.sh")  # Replace with your actual script to run after loading
+                    os.system("bash script.sh")  # the script to run after loading
                 
                 else:    
                     # makes a pop up dialog to tell the user that the user is not root
+                    #applescript_command = f'display dialog "" with title "|CRITICAL ERROR|"'
+                    #subprocess.run(['osascript', '-e', applescript_command])
+                    print(f"TIME:{formatted_time} Please run as root. DATE:{current_date}")
                     os.system(f'zenity --error --title="|CRITICAL ERROR|" --text="TIME:{formatted_time} Please run as root. DATE:{current_date}"')
             else:
                 # makes a pop up dialog to tell the user that the OS is not correct
                 # makes a pop up dialog to tell the user that the OS is not correct
+                print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
                 os.system(f'zenity --warning --title="WARNING" --text="TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}"')
 
         else:
+            print(f"TIME:{formatted_time} Please connect to the internet. DATE:{current_date}")
             os.system(f'zenity --error --title="|CRITICAL ERROR|" --text="TIME:{formatted_time} Please connect to the internet. DATE:{current_date}"')
 
 # if the user uses control-c, the program will exit
