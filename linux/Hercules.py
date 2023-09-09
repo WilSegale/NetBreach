@@ -54,9 +54,10 @@ try:
         print(HowToUse)
         print(info)
         print()
+
     #this is for the user to know what version of the program is beeing used
     elif len(sys.argv) == 2 and sys.argv[1] == "--version" or len(sys.argv) == 2 and sys.argv[1] == "-v":
-        print("Hercules v4.8.9")
+        print("Hercules v4.9.0")
     
     else:
         # gets the current time and formats it HH:MM:SS
@@ -107,8 +108,6 @@ try:
                 
                 else:    
                     # makes a pop up dialog to tell the user that the user is not root
-                    #applescript_command = f'display dialog "" with title "|CRITICAL ERROR|"'
-                    #subprocess.run(['osascript', '-e', applescript_command])
                     os.system(f'zenity --error --title="|CRITICAL ERROR|" --text="TIME:{formatted_time} Please run as root. DATE:{current_date}"')
             else:
                 # makes a pop up dialog to tell the user that the OS is not correct
