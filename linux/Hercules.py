@@ -34,7 +34,7 @@ try:
         subprocess.run(["figlet", "? HELP ?"])
 
         print(text_art, file=HelpFile)
-        print()
+        print(file=HelpFile)
         #inputs the program used logo in a help file
         print(ProgramsUsed, file=HelpFile)
 
@@ -46,11 +46,10 @@ try:
 
         #Puts the info logo in the help file
         print(HowToUse, file=HelpFile)
-
         #puts the info about how to use the program inside the help file
         print(info, file=HelpFile)
+
         #puts the info about how to use the program on the screen
-        
         print(HowToUse)
         print(info)
         print()
