@@ -14,7 +14,7 @@ if [ "$(id -u)" -eq 0 ]; then
     osascript -e "display notification \"$ERROR_MESSAGE\" with title \"$title\""
     
     #puts the ERROR message into line art
-    echo -e "${RED}$(figlet ERROR !)${NC}"
+    echo -e "${RED}$(figlet ERROR)${NC}"
     
     # gives the user something to read so they understand why they got the error
     echo "Don't use sudo for this script." 
