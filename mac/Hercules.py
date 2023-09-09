@@ -56,7 +56,7 @@ try:
         print()
     #this is for the user to know what version of the program is beeing used
     elif len(sys.argv) == 2 and sys.argv[1] == "--version" or len(sys.argv) == 2 and sys.argv[1] == "-v":
-        print("Hercules v4.6.8")
+        print("Hercules v4.8.9")
     
     else:
         # gets the current time and formats it HH:MM:SS
