@@ -32,6 +32,7 @@ else
                     "nmap"
                     "mysql"
                     "figlet"
+                    "zenity"
                 )
 
                 # PIP packages that will be uninstalled if they are installed

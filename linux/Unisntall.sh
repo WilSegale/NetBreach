@@ -22,7 +22,6 @@ if [[ "$OSTYPE" == "linux"* ]]; then
                 "hydra"
                 "nmap"
                 "mysql"
-                "figlet"
             )
 
             # PIP packages that will be uninstalled if they are installed
