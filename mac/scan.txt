@@ -1,99 +1,201 @@
-# Nmap 7.94 scan initiated Mon Sep  4 09:06:19 2023 as: nmap -sS -Pn -oN scan.txt --open 192.168.1.1/24
+# Nmap 7.94 scan initiated Tue Sep 12 09:15:33 2023 as: nmap -sS -Pn -oN scan.txt --open 192.168.1.1/24
 Nmap scan report for 192.168.1.1
-Host is up (0.0064s latency).
-Not shown: 997 closed tcp ports (reset)
+Host is up (0.069s latency).
+Not shown: 998 closed tcp ports (reset)
 PORT    STATE SERVICE
-53/tcp  open  domain
-80/tcp  open  http
-443/tcp open  https
-MAC Address: 4C:19:5D:3B:33:DE (Sagemcom Broadband SAS)
+22/tcp  open  ssh
+161/tcp open  snmp
 
-Nmap scan report for 192.168.1.22
-Host is up (0.029s latency).
+Nmap scan report for 192.168.1.2
+Host is up (0.017s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT    STATE SERVICE
+22/tcp  open  ssh
+161/tcp open  snmp
+
+Nmap scan report for 192.168.1.3
+Host is up (0.0074s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT    STATE SERVICE
+22/tcp  open  ssh
+161/tcp open  snmp
+
+Nmap scan report for w114c-mfd01.massbay.edu (192.168.1.4)
+Host is up (0.0051s latency).
+Not shown: 994 closed tcp ports (reset)
+PORT     STATE SERVICE
+80/tcp   open  http
+427/tcp  open  svrloc
+443/tcp  open  https
+515/tcp  open  printer
+631/tcp  open  ipp
+9100/tcp open  jetdirect
+
+Nmap scan report for wsmbarton-wb01.massbay.edu (192.168.1.12)
+Host is up (0.0054s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+445/tcp  open  microsoft-ds
+5357/tcp open  wsdapi
+
+Nmap scan report for onecard-wd01.massbay.edu (192.168.1.13)
+Host is up (0.0044s latency).
+Not shown: 993 closed tcp ports (reset)
+PORT      STATE SERVICE
+80/tcp    open  http
+135/tcp   open  msrpc
+445/tcp   open  microsoft-ds
+49152/tcp open  unknown
+49153/tcp open  unknown
+49154/tcp open  unknown
+49163/tcp open  unknown
+
+Nmap scan report for wsmdiscolo-wb04.massbay.edu (192.168.1.17)
+Host is up (0.0056s latency).
+Not shown: 996 closed tcp ports (reset)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+445/tcp  open  microsoft-ds
+5357/tcp open  wsdapi
+8090/tcp open  opsmessaging
+
+Nmap scan report for ws99-wd06.massbay.edu (192.168.1.19)
+Host is up (0.0064s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT    STATE SERVICE
+135/tcp open  msrpc
+445/tcp open  microsoft-ds
+
+Nmap scan report for ws106-wd01.massbay.edu (192.168.1.21)
+Host is up (0.0064s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT    STATE SERVICE
+135/tcp open  msrpc
+445/tcp open  microsoft-ds
+
+Nmap scan report for wf114-wd00.massbay.edu (192.168.1.24)
+Host is up (0.0066s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT    STATE SERVICE
+135/tcp open  msrpc
+445/tcp open  microsoft-ds
+
+Nmap scan report for wonecard-wd01.massbay.edu (192.168.1.25)
+Host is up (0.0063s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+445/tcp  open  microsoft-ds
+3389/tcp open  ms-wbt-server
+
+Nmap scan report for wsm125-wd01.massbay.edu (192.168.1.29)
+Host is up (0.0067s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT    STATE SERVICE
+135/tcp open  msrpc
+445/tcp open  microsoft-ds
+
+Nmap scan report for ws114a-wd01.massbay.edu (192.168.1.33)
+Host is up (0.0059s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+445/tcp  open  microsoft-ds
+8090/tcp open  opsmessaging
+
+Nmap scan report for 192.168.1.34
+Host is up (0.0059s latency).
 Not shown: 998 closed tcp ports (reset)
 PORT     STATE SERVICE
-8009/tcp open  ajp13
-9080/tcp open  glrpc
-MAC Address: 70:70:AA:02:5A:55 (Amazon Technologies)
+80/tcp   open  http
+5357/tcp open  wsdapi
+
+Nmap scan report for ws103c-wd01.massbay.edu (192.168.1.35)
+Host is up (0.0061s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+445/tcp  open  microsoft-ds
+3389/tcp open  ms-wbt-server
+
+Nmap scan report for wssjeanpie-wb01.massbay.edu (192.168.1.36)
+Host is up (0.0064s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT    STATE SERVICE
+135/tcp open  msrpc
+445/tcp open  microsoft-ds
+
+Nmap scan report for ws113-wd05.massbay.edu (192.168.1.40)
+Host is up (0.0060s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT    STATE SERVICE
+135/tcp open  msrpc
+445/tcp open  microsoft-ds
+
+Nmap scan report for fshgodwin-wb03.massbay.edu (192.168.1.41)
+Host is up (0.0075s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+445/tcp  open  microsoft-ds
+5357/tcp open  wsdapi
+
+Nmap scan report for wsdbrandy-wb01.massbay.edu (192.168.1.43)
+Host is up (0.0055s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+445/tcp  open  microsoft-ds
+5357/tcp open  wsdapi
 
 Nmap scan report for 192.168.1.49
-Host is up (0.014s latency).
-Not shown: 846 closed tcp ports (reset), 152 filtered tcp ports (no-response)
+Host is up (0.0068s latency).
+Not shown: 935 filtered tcp ports (no-response), 64 filtered tcp ports (host-prohibited)
 Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
-PORT      STATE SERVICE
-49152/tcp open  unknown
-62078/tcp open  iphone-sync
-MAC Address: 8A:A8:58:9F:61:03 (Unknown)
+PORT     STATE SERVICE
+8008/tcp open  http
 
-Nmap scan report for 192.168.1.112
-Host is up (0.0070s latency).
-Not shown: 989 closed tcp ports (reset)
-PORT      STATE SERVICE
-23/tcp    open  telnet
-80/tcp    open  http
-7000/tcp  open  afs3-fileserver
-7777/tcp  open  cbt
-8008/tcp  open  http
-8009/tcp  open  ajp13
-8443/tcp  open  https-alt
-8800/tcp  open  sunwebadmin
-9000/tcp  open  cslistener
-10001/tcp open  scp-config
-50002/tcp open  iiimsf
-MAC Address: CC:90:93:17:B1:7B (Hansong Tehnologies)
-
-Nmap scan report for Express.lan (192.168.1.121)
-Host is up (0.015s latency).
+Nmap scan report for wsrpisani-wb01.massbay.edu (192.168.1.54)
+Host is up (0.0062s latency).
 Not shown: 998 closed tcp ports (reset)
-PORT     STATE SERVICE
-7000/tcp open  afs3-fileserver
-9080/tcp open  glrpc
-MAC Address: D8:31:34:7C:22:9E (Roku)
+PORT    STATE SERVICE
+135/tcp open  msrpc
+445/tcp open  microsoft-ds
 
-Nmap scan report for blink-sync-module.lan (192.168.1.165)
-Host is up (0.010s latency).
-Not shown: 999 closed tcp ports (reset)
-PORT   STATE SERVICE
-53/tcp open  domain
-MAC Address: 00:03:7F:66:D6:1D (Atheros Communications)
-
-Nmap scan report for 192.168.1.185
+Nmap scan report for wsadvising-wd01.massbay.edu (192.168.1.55)
 Host is up (0.0068s latency).
-Not shown: 994 closed tcp ports (reset)
-PORT      STATE SERVICE
-23/tcp    open  telnet
-80/tcp    open  http
-7000/tcp  open  afs3-fileserver
-7777/tcp  open  cbt
-8800/tcp  open  sunwebadmin
-50002/tcp open  iiimsf
-MAC Address: CC:90:93:17:B2:7C (Hansong Tehnologies)
+Not shown: 998 closed tcp ports (reset)
+PORT    STATE SERVICE
+135/tcp open  msrpc
+445/tcp open  microsoft-ds
 
-Nmap scan report for 192.168.1.188
-Host is up (0.0068s latency).
-Not shown: 989 closed tcp ports (reset)
-PORT      STATE SERVICE
-23/tcp    open  telnet
-80/tcp    open  http
-7000/tcp  open  afs3-fileserver
-7777/tcp  open  cbt
-8008/tcp  open  http
-8009/tcp  open  ajp13
-8443/tcp  open  https-alt
-8800/tcp  open  sunwebadmin
-9000/tcp  open  cslistener
-10001/tcp open  scp-config
-50002/tcp open  iiimsf
-MAC Address: CC:90:93:17:B2:7F (Hansong Tehnologies)
+Nmap scan report for ws113-wd03.massbay.edu (192.168.1.56)
+Host is up (0.0065s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT    STATE SERVICE
+135/tcp open  msrpc
+445/tcp open  microsoft-ds
 
-Nmap scan report for 192.168.1.253
-Host is up (0.011s latency).
-Not shown: 957 filtered tcp ports (no-response), 40 closed tcp ports (reset)
-Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+Nmap scan report for ws113-wd04.massbay.edu (192.168.1.58)
+Host is up (0.0062s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT    STATE SERVICE
+135/tcp open  msrpc
+445/tcp open  microsoft-ds
+
+Nmap scan report for ws103-wd02.massbay.edu (192.168.1.61)
+Host is up (0.0061s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT    STATE SERVICE
+135/tcp open  msrpc
+445/tcp open  microsoft-ds
+
+Nmap scan report for ws103b-wd01.massbay.edu (192.168.1.63)
+Host is up (0.0060s latency).
+Not shown: 997 closed tcp ports (reset)
 PORT     STATE SERVICE
-1080/tcp open  socks
-6543/tcp open  mythtv
-8888/tcp open  sun-answerbook
-MAC Address: 00:F3:61:44:84:D7 (Amazon Technologies)
+135/tcp  open  msrpc
+445/tcp  open  microsoft-ds
+3389/tcp open  ms-wbt-server
 
-# Nmap done at Mon Sep  4 09:14:48 2023 -- 256 IP addresses (18 hosts up) scanned in 509.46 seconds
