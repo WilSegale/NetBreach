@@ -2,7 +2,7 @@ from DontEdit import *
 from logo import *
 
 try:
-    ERROR = open("ERROR.logs", "a")
+    ERROR = open("ERROR.log", "a")
 
     ProgramName = "Hercules"
 
