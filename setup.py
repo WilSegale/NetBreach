@@ -12,7 +12,9 @@ logging.basicConfig(filename='ERROR.LOG', level=logging.INFO)
 
 GREEN = Fore.GREEN
 RED = Fore.RED
+
 RESET = Fore.RESET
+BRIGHT = Fore.BRIGHT
 
 if platform == "linux" or platform == "linux2":
     os.system("sudo rm -rf mac")
@@ -26,4 +28,4 @@ elif platform == "darwin":
 
 else:
     logging.error(f'{formatted_time} Your system is not supported.')
-    print(f'{RED}Your system is not supported{RESET}')
+    print(f'{BRIGHT}{RED}[-]Your system is not supported{RESET}')
