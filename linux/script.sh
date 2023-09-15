@@ -3,7 +3,7 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 # OS of the computer
-LINUX="linux"
+OS="Linux"
 
 # For the wget functionality to work
 SITE_URL="https://google.com"
@@ -64,7 +64,7 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "When you give the program the username and hostname, it will try to crack the given parameters you gave it."
     echo
 else
-    if [[ "$OSTYPE" == *"${LINUX}"* ]]; then
+    if [[ "${OSTYPE}" == *"${OS}"* ]]; then
         clear
         if [[ $EUID -ne $root ]]; then
             # Error message if not running as root
@@ -121,7 +121,7 @@ else
                 elif [[ " ${exit[*]} " == *" $service "* ]]; then
                     echo "Stopping program..."
                     sleep 1
-                    exit
+                    exit 1
                 elif [[ " ${empty[*]} " == *" $service "* ]]; then
                     clear
                     Hercules

@@ -3,7 +3,7 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 #os of the computer
-MAC="darwin"
+OS="darwin"
 
 #for the wget functionality to work
 SITE_URL="https://google.com"
@@ -63,7 +63,7 @@ if [ "$1" = "--help" || "$1" = "-h" ]; then
     echo "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
     echo
 else
-    if [[ "$OSTYPE" == "${MAC}"* ]]; then
+    if [[ "$OSTYPE" == "${OS}"* ]]; then
         clear
         if [[ $EUID -ne $root ]]; then
             # Error message if not running as root
