@@ -111,10 +111,10 @@ else
 
                     if [[ " ${exit[*]} " == *" $Hydra "* ]]; then
                         echo "Goodbye"
-                        exit
+                        exit 1
                     else
                         $Hydra
-                        exit
+                        exit 1
                     fi
 
                 # If the user asks what the program does, it goes to a function that helps them and explains what the program does
@@ -192,7 +192,7 @@ else
                         # It connects to the SSH server and asks for the user to input a password to connect to the SSH server
                         title="Enter password to ${user}"
                         Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
-                        notify-send "$title" "$Connected_To_SSH_SERVER"
+                        notify-send "${title}" "${Connected_To_SSH_SERVER}"
                         
                         ssh $user@$host
                     fi

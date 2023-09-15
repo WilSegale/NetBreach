@@ -65,7 +65,7 @@ if [ "$(uname -s)" == "Linux" ]; then
             title="ERROR"
             WrongPassword="Wrong Password"
             # Replace with the appropriate command for your desktop environment (e.g., notify-send for Linux)
-            notify-send "$title" "$WrongPassword"
+            notify-send "${title}" "${WrongPassword}"
 
             ffmpeg -f v4l2 -video_size 1280x720 -i /dev/video0 -frames:v 1 image.jpg
 
@@ -85,7 +85,7 @@ if [ "$(uname -s)" == "Linux" ]; then
             Location2="Longitude: ${longitude}"
 
             # Replace with the appropriate command for your desktop environment (e.g., notify-send for Linux)
-            notify-send "$Location1 $Location2"
+            notify-send "${Location1} ${Location2}"
 
             # Opens the images that the bad actor tried to open
             xdg-open image.jpg
