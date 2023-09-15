@@ -2,9 +2,11 @@ from DontEdit import *
 from logo import *
 
 try:
+    ERROR = open("ERROR.logs", "a")
+
     ProgramName = "Hercules"
 
-    OS='linux'
+    OS='Linux'
 
     GREEN = "\033[92m"
     RED = "\033[91m"
@@ -29,12 +31,12 @@ try:
         info = (HowToUseInfo01 +
                 HowToUseInfo02 + 
                 HowToUseInfo03 + 
-                HowToUseInfo04 +
-                ending)
+                HowToUseInfo04)
+        
         subprocess.run(["figlet", "? HELP ?"])
 
         print(text_art, file=HelpFile)
-        print(file=HelpFile)
+        print()
         #inputs the program used logo in a help file
         print(ProgramsUsed, file=HelpFile)
 
@@ -46,10 +48,11 @@ try:
 
         #Puts the info logo in the help file
         print(HowToUse, file=HelpFile)
+
         #puts the info about how to use the program inside the help file
         print(info, file=HelpFile)
-
         #puts the info about how to use the program on the screen
+        
         print(HowToUse)
         print(info)
         print()
@@ -103,18 +106,19 @@ try:
                 
                 else:    
                     # makes a pop up dialog to tell the user that the user is not root
-                    #applescript_command = f'display dialog "" with title "|CRITICAL ERROR|"'
-                    #subprocess.run(['osascript', '-e', applescript_command])
                     print(f"TIME:{formatted_time} Please run as root. DATE:{current_date}")
+                    print(f"TIME:{formatted_time} Please run as root. DATE:{current_date}", file=ERROR)
                     os.system(f'zenity --error --title="|CRITICAL ERROR|" --text="TIME:{formatted_time} Please run as root. DATE:{current_date}"')
             else:
                 # makes a pop up dialog to tell the user that the OS is not correct
                 # makes a pop up dialog to tell the user that the OS is not correct
                 print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
+                print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
                 os.system(f'zenity --warning --title="WARNING" --text="TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}"')
 
         else:
             print(f"TIME:{formatted_time} Please connect to the internet. DATE:{current_date}")
+            print(f"TIME:{formatted_time} Please connect to the internet. DATE:{current_date}",file=ERROR)
             os.system(f'zenity --error --title="|CRITICAL ERROR|" --text="TIME:{formatted_time} Please connect to the internet. DATE:{current_date}"')
 
 # if the user uses control-c, the program will exit
