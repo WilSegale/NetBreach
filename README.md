@@ -1,10 +1,10 @@
 # Fisrt type 
-```
+```git
    git clone https://github.com/WilSegale/Hercules.git
 ```
 
 # second step is to type
-```python
+```bash
    sudo python3 setup.py
 ```
 ## Then go to your OS folder.
