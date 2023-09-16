@@ -57,32 +57,29 @@ startOfProgram() {
       zip -e "$NewFileName" "$fileName" 
       delete_file
     fi
-      # Function to handle file deletion and cleanup
-      function delete_file() {
-        # Ask the user if they are done and want to delete the original file
-        read -p "Are you done? (yes or no) You can also type (HELP) to learn more: " confirm
-
-        # Convert confirm to lowercase for case-insensitive comparison
-        confirm_lower=$(echo "$confirm" | tr '[:upper:]' '[:lower:]')
-
-        if [ "$confirm_lower" == "yes" ]; then
-          # Check if the file exists and is not a directory
-          if [ -f "$fileName" ]; then
-            # Remove the original file
-            rm -f "$fileName"
-            echo "[+] DONE"
-          elif [ -d "$fileName" ]; then
-            # Remove the directory
-            rm -rf "$fileName"
-            echo "[+] DONE"
+      # Function to delete a file
+      deleteFile() {
+          local file="$1"
+          if [ -f "$file" ]; then
+              rm -f "$file"
+              echo "Deleted: $file"
+          else
+              echo "File not found: $file"
           fi
-        fi
       }
-    else
-      echo "I don't know what you mean by: *${info}*"
-      echo
-      echo -e "If you need help with this program, type: ${GREEN}'${help[*]}'${NC}"
-    fi
+
+      # Prompt the user for the file to delete
+      read -p "Enter the name of the file to delete: " fileToDelete
+
+      # Call the deleteFile function with the user-specified file
+      deleteFile "$fileToDelete"
+
+      # Check if the file was deleted successfully
+      if [ $? -eq 0 ]; then
+          echo "File deleted successfully."
+      else
+          echo "Failed to delete the file."
+      fi
 }
 
 # Call the functions to execute the program
