@@ -1,5 +1,5 @@
 #!/bin/bash
-
+SITE_URL="https://google.com"
 MAC="darwin"
 password_file=".password.txt"
 hint_file=".hint.txt"
