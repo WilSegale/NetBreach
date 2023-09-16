@@ -7,11 +7,11 @@ NC='\033[0m' # No Color
 help=("help" 
       "HELP" 
       "What happens" 
-      "what do you do"
-      "y"
-      "yes"
-      "YES"
-      "Y")
+      "what do you do")
+
+yes=("yes" 
+     "Yes" 
+     "YES")
 
 no=("N"
     "n"
@@ -19,7 +19,7 @@ no=("N"
     "NO")
 
 startOfProgram() {
-  echo "Would you like to know what this program does? [y/n]"
+  echo "Would you like to know what this program does? Type HELP if not type NO"
 
   read -p ">>> " info
 
@@ -48,39 +48,41 @@ startOfProgram() {
 
     # Prompt the user to input a new filename for the encrypted file
     read -p "Enter a new filename for the encrypted file: " NewFileName
+    read -p "Do you want to have the encryption level openssl(This type of encryption can not be recvered esaly) [Y/N]: " Encrpyion
+    # Encrypt the file using AES-256 encryption
+    if [[ " ${yes[*]} " == *" ${Encrpyion} "* ]]; then
+    openssl enc -aes-256-cbc -salt -in "$fileName" -out "$NewFileName"
+    
+    else
+      zip -e "$NewFileName" "$fileName" 
+      delete_file
+    fi
+      # Function to handle file deletion and cleanup
+      function delete_file() {
+        # Ask the user if they are done and want to delete the original file
+        read -p "Are you done? (yes or no) You can also type (HELP) to learn more: " confirm
 
-    # Function to initiate the encryption process
-    function start() {
-      # Encrypt the file using AES-256 encryption
-      openssl enc -aes-256-cbc -salt -in "$fileName" -out "$NewFileName"
-    }
+        # Convert confirm to lowercase for case-insensitive comparison
+        confirm_lower=$(echo "$confirm" | tr '[:upper:]' '[:lower:]')
 
-    # Function to handle file deletion and cleanup
-    function delete_file() {
-      # Ask the user if they are done and want to delete the original file
-      read -p "Are you done? (yes or no) You can also type (HELP) to learn more: " confirm
-
-      # Convert confirm to lowercase for case-insensitive comparison
-      confirm_lower=$(echo "$confirm" | tr '[:upper:]' '[:lower:]')
-
-      if [ "$confirm_lower" == "yes" ]; then
-        # Check if the file exists and is not a directory
-        if [ -f "$fileName" ]; then
-          # Remove the original file
-          rm -f "$fileName"
-          echo "[+] DONE"
-        elif [ -d "$fileName" ]; then
-          # Remove the directory
-          rm -rf "$fileName"
-          echo "[+] DONE"
+        if [ "$confirm_lower" == "yes" ]; then
+          # Check if the file exists and is not a directory
+          if [ -f "$fileName" ]; then
+            # Remove the original file
+            rm -f "$fileName"
+            echo "[+] DONE"
+          elif [ -d "$fileName" ]; then
+            # Remove the directory
+            rm -rf "$fileName"
+            echo "[+] DONE"
+          fi
         fi
-      fi
-    }
-  else
-    echo "I don't know what you mean by: '$info'"
-    echo
-    echo -e "If you need help with this program, type: ${GREEN}'${help[*]}'${NC}"
-  fi
+      }
+    else
+      echo "I don't know what you mean by: *${info}*"
+      echo
+      echo -e "If you need help with this program, type: ${GREEN}'${help[*]}'${NC}"
+    fi
 }
 
 # Call the functions to execute the program
