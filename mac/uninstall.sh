@@ -12,7 +12,7 @@ MAC="darwin"
 if [ "$(id -u)" -eq 0 ]; then
     figlet "ERROR"
     echo "Dont use sudo for this script." 
-    echo "Because it can damage your comptuer"
+    echo "Because it can damage your comptuer."
     exit 1
 
 else
