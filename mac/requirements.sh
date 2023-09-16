@@ -80,7 +80,10 @@ else
                 for PIP in "${pipPackages[@]}"; do
                     install_pip_package "${PIP}"
                 done
+
                 echo
+                
+                # updates PIP
                 /Library/Developer/CommandLineTools/usr/bin/python3 -m pip install --upgrade pip
 
                 echo
