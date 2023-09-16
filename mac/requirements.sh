@@ -81,6 +81,9 @@ else
                     install_pip_package "${PIP}"
                 done
                 echo
+                /Library/Developer/CommandLineTools/usr/bin/python3 -m pip install --upgrade pip
+
+                echo
                 title="Packages"
                 ERROR_MESSAGE="All packages are installed successfully"
                 osascript -e "display notification \"$ERROR_MESSAGE\" with title \"$title\""

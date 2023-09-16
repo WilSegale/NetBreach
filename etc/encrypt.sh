@@ -47,6 +47,7 @@ startOfProgram() {
     echo "turning it into a random string of letters and numbers."
     echo "Then it will delete the original file and retain the encrypted file."
     exit 1
+    
   elif [[ " ${no[*]} " == *" ${info_lower} "* ]]; then
     # Display the project logo
     figlet -f slant "Encrypter"
