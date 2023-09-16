@@ -106,9 +106,9 @@ try:
                 
                 else:    
                     # makes a pop up dialog to tell the user that the user is not root
-                    print(f"TIME:{formatted_time} Please run as root. DATE:{current_date}")
-                    print(f"ERROR:TIME:{formatted_time} Please run as root. DATE:{current_date}", file=ERROR)
-                    os.system(f'zenity --error --title="|CRITICAL ERROR|" --text="TIME:{formatted_time} Please run as root. DATE:{current_date}"')
+                    print(f"TIME:{formatted_time} Please run as ROOT. DATE:{current_date}")
+                    print(f"ERROR:TIME:{formatted_time} Please run as ROOT. DATE:{current_date}", file=ERROR)
+                    os.system(f'zenity --error --title="|CRITICAL ERROR|" --text="TIME:{formatted_time} Please run as ROOT. DATE:{current_date}"')
             else:
                 # makes a pop up dialog to tell the user that the OS is not correct
                 # makes a pop up dialog to tell the user that the OS is not correct
