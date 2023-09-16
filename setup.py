@@ -19,12 +19,12 @@ BRIGHT = Fore.BRIGHT
 if platform == "linux" or platform == "linux2":
     os.system("sudo rm -rf mac")
     os.system("sudo rm -rf setup.py")
-    print(f"{GREEN}Done{RESET}")
+    print(f"{GREEN}[+] Done{RESET}")
 
 elif platform == "darwin":
     os.system("sudo rm -rf linux")
     os.system("sudo rm -rf setup.py")
-    print(f"{GREEN}Done{RESET}")
+    print(f"{GREEN}[+] Done{RESET}")
 
 else:
     logging.error(f'{formatted_time} Your system is not supported.')
