@@ -5,13 +5,14 @@ NC='\033[0m' # No Color
 
 
 # List of valid help commands for user guidance
-help=("help" 
-      ,"HELP" 
-      "What happens" 
-      "what do you do"
-      "y"
-      "yes"
-      "YES")
+help=("help", 
+      "HELP", 
+      "What happens", 
+      "what do you do",
+      "y",
+      "yes",
+      "YES",
+      "Y")
 
 no=("N"
     "n"
@@ -91,7 +92,7 @@ startOfProgram() {
   else
     echo "I dont know what you mean by: '${info}'"
     echo 
-    echo -e "If you need help with this program please type: ${GREEN}'${help[*]}'${NC}"
+    echo -e "If you need help with this program type: ${GREEN}'${help[*]}'${NC}"
   fi
 }
 # Call the functions to execute the program
