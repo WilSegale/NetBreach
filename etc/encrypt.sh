@@ -10,7 +10,9 @@ help=("help"
       "What happens" 
       "what do you do")
 
-yes=("yes" 
+yes=("Y"
+    "y"
+    "yes" 
      "Yes" 
      "YES")
 
@@ -71,12 +73,6 @@ startOfProgram() {
 
     # Call the deleteFile function to delete the original file
     deleteFile "$fileName"
-    
-    # Prompt the user for the file to delete
-    read -p "Enter the name of the file to delete: " fileToDelete
-
-    # Call the deleteFile function with the user-specified file
-    deleteFile "$fileToDelete"
 
     # Check if the file was deleted successfully
     if [ $? -eq 0 ]; then
