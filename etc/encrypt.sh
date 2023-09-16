@@ -5,7 +5,8 @@ NC='\033[0m' # No Color
 
 
 # List of valid help commands for user guidance
-help=("help" "HELP" 
+help=("help" 
+      ,"HELP" 
       "What happens" 
       "what do you do"
       "y"
@@ -34,9 +35,7 @@ startOfProgram() {
   elif [[ " ${no[*]} " == *" ${info} "* ]]; then
     # Display the project logo
     figlet "Encrypter"
-
-
-
+    
     # Display a blank line
     echo
 
