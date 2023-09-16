@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define arrays containing valid options for showing and hiding folders.
-show=("Show" "show" "SHOW")
-hide=("Hide" "hide" "HIDE")
+show=("show" "Show" "SHOW")
+hide=("hide" "Hide" "HIDE")
 
 # Define a function to show or hide folders based on user input.
 show_hide() {
