@@ -7,6 +7,7 @@ def get_mac_address():
         mac = uuid.UUID(int=uuid.getnode()).hex[-12:]
         mac_address = ':'.join(mac[i:i+2] for i in range(0, 12, 2))
         return mac_address
+    
     except Exception as e:
         return str(e)
 
