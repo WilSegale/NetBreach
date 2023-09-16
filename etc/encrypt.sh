@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # List of colors for the program to read and output
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
@@ -17,6 +18,17 @@ no=("N"
     "n"
     "no" 
     "NO")
+
+# Function to delete a file
+deleteFile() {
+    local file="$1"
+    if [ -f "${file}" ]; then
+        rm -f "${file}"
+        echo "Deleted: ${file}"
+    else
+        echo "File not found: ${file}"
+    fi
+}
 
 startOfProgram() {
   echo "Would you like to know what this program does? Type HELP if not type NO"
@@ -49,35 +61,31 @@ startOfProgram() {
     # Prompt the user to input a new filename for the encrypted file
     read -p "Enter a new filename for the encrypted file: " NewFileName
     read -p "Do you want to have the encryption level openssl(This type of encryption can not be recvered esaly) [Y/N]: " Encrpyion
+    
     # Encrypt the file using AES-256 encryption
     if [[ " ${yes[*]} " == *" ${Encrpyion} "* ]]; then
-    openssl enc -aes-256-cbc -salt -in "$fileName" -out "$NewFileName"
-    
+        openssl enc -aes-256-cbc -salt -in "$fileName" -out "$NewFileName"
     else
-      zip -e "$NewFileName" "$fileName" 
-      local file="$1"
-      if [ -f "${file}" ]; then
-        rm -f "${file}"
-        echo "Deleted: ${file}"
-      else
-        echo "File not found: ${file}"
-      fi
-      
-
-      # Prompt the user for the file to delete
-      read -p "Enter the name of the file to delete: " fileToDelete
-
-      # Call the deleteFile function with the user-specified file
-      deleteFile "${fileToDelete}"
-
-      # Check if the file was deleted successfully
-      if [ $? -eq 0 ]; then
-          echo "File deleted successfully."
-      else
-          echo "Failed to delete the file."
-      fi
+        zip -e "$NewFileName" "$fileName" 
     fi
+
+    # Call the deleteFile function to delete the original file
+    deleteFile "$fileName"
+    
+    # Prompt the user for the file to delete
+    read -p "Enter the name of the file to delete: " fileToDelete
+
+    # Call the deleteFile function with the user-specified file
+    deleteFile "$fileToDelete"
+
+    # Check if the file was deleted successfully
+    if [ $? -eq 0 ]; then
+        echo "File deleted successfully."
+    else
+        echo "Failed to delete the file."
+    fi
+  fi
 }
 
-# Call the functions to execute the program
+# Call the function to execute the program
 startOfProgram
