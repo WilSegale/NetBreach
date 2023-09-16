@@ -76,7 +76,7 @@ try:
                 return False  # If unsuccessful, return False
 
         # Makes sure that the user is connected to the internet    
-        if connect() == 1:
+        if connect() == True:
             #checks if the user is on Mac OS
             if platform.system() == OS:
                 #checks if the user is running as root
