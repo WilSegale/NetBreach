@@ -114,5 +114,5 @@ if [ "$(uname -s)" == "Linux" ]; then
     # Call the FCRACKZIP function
     FCRACKZIP
 else
-    echo "Wrong OS"
+    echo "[-] Wrong OS"
 fi
