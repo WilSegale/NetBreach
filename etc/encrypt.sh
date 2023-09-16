@@ -55,24 +55,20 @@ startOfProgram() {
     
     else
       zip -e "$NewFileName" "$fileName" 
-      delete_file
-    fi
-      # Function to delete a file
-      deleteFile() {
-          local file="$1"
-          if [ -f "$file" ]; then
-              rm -f "$file"
-              echo "Deleted: $file"
-          else
-              echo "File not found: $file"
-          fi
-      }
+      local file="$1"
+      if [ -f "${file}" ]; then
+        rm -f "${file}"
+        echo "Deleted: ${file}"
+      else
+        echo "File not found: ${file}"
+      fi
+      
 
       # Prompt the user for the file to delete
       read -p "Enter the name of the file to delete: " fileToDelete
 
       # Call the deleteFile function with the user-specified file
-      deleteFile "$fileToDelete"
+      deleteFile "${fileToDelete}"
 
       # Check if the file was deleted successfully
       if [ $? -eq 0 ]; then
@@ -80,6 +76,7 @@ startOfProgram() {
       else
           echo "Failed to delete the file."
       fi
+    fi
 }
 
 # Call the functions to execute the program
