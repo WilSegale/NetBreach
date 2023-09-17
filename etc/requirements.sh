@@ -26,7 +26,7 @@ start() {
                 if ping -c 1 google.com >/dev/null 2>&1; then
                     # Packages to install
                     Packages=(
-                    "fcrackzip"
+                        "fcrackzip"
                     )
                     
                     # Install package
