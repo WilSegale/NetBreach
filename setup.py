@@ -29,4 +29,3 @@ elif platform == "darwin":
 else:
     logging.error(f'{formatted_time} Your system is not supported.')
     print(f'{BRIGHT}{RED}[-]Your system is not supported{RESET}')
-                    os.system(f'zenity --warning --title="WARNING" --text="TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}"')
