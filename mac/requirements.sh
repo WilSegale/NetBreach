@@ -90,7 +90,7 @@ else
                 echo
                 title="Packages"
                 ERROR_MESSAGE="All packages are installed successfully"
-                osascript -e "display notification \"$ERROR_MESSAGE\" with title \"$title\""
+                osascript -e "display notification \"${ERROR_MESSAGE}\" with title \"${title}\""
                 echo -e "${GREEN}All packages installed.${NC}" # Add this line to indicate successful installation
             else
                 title="ERROR"
