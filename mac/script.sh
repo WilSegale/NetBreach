@@ -42,7 +42,7 @@ command_exists() {
 
 # Check if root user
 if [[ $EUID -ne 0 ]]; then
-  echo "ERROR: Please run as root."
+  echo -e "${RED}ERROR:${NC} Please run as root."
   exit 1
 fi
 
