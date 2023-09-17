@@ -84,6 +84,7 @@ else
                 echo
                 
                 # updates PIP
+                echo "_________PIP UPDATES________"
                 /Library/Developer/CommandLineTools/usr/bin/python3 -m pip install --upgrade pip
 
                 echo
