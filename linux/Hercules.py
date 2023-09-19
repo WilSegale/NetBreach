@@ -114,8 +114,7 @@ try:
                 # makes a pop up dialog to tell the user that the OS is not correct
                 print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
                 print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
-                while True:
-                    os.system(f'zenity --warning --title="WARNING" --text="TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}"')
+                os.system(f'zenity --warning --title="WARNING" --text="TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}"')
 
         else:
             print(f"TIME:{formatted_time} Please connect to the internet. DATE:{current_date}")

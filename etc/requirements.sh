@@ -60,8 +60,7 @@ start() {
                 else
                     title="ERROR"
                     ERROR_MESSAGE="NOT CONNECTED TO THE INTERNET"
-                    osascript -e "display notification \"$ERROR_MESSAGE\" with title \"$title\""
-                    echo -e "${RED}ERROR:${NC} NOT CONNECTED TO THE INTERNET"
+                    zenity --error --title="|CRITICAL ERROR|"
                 fi
 
             

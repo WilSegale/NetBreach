@@ -89,9 +89,8 @@ else
 
                 echo
                 title="Packages"
-                ERROR_MESSAGE="All packages are installed successfully"
-                osascript -e "display notification \"${ERROR_MESSAGE}\" with title \"${title}\""
-                echo -e "${GREEN}All packages installed.${NC}" # Add this line to indicate successful installation
+                successful_MESSAGE="All packages are installed successfully"
+                zenity --error --title="|CRITICAL ERROR|" --text="TIME:${formatted_time} Please run as root. DATE:${current_date}"
             else
                 title="ERROR"
                 ERROR_MESSAGE="NOT CONNECTED TO THE INTERNET"
