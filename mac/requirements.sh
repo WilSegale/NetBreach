@@ -7,7 +7,6 @@ BRIGHT='\033[1m'
 NC='\033[0m' # No Color
 
 if [ "$(id -u)" -eq 0 ]; then
-
     #notification message for the user to also if the local host has been copermised at all
     title="ERROR"
     ERROR_MESSAGE="Don't use sudo for this script. Because it can damage your computer"
