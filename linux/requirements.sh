@@ -22,7 +22,7 @@ else
         # Check if the OS is Linux
         if [ -f /etc/os-release ]; then
             source /etc/os-release
-            if [ "$ID" == "ubuntu" ] || [ "$ID" == "debian" ]; then
+            if [ "$OSTYPE" = "linux"* ]; then
                 if ping -c 1 google.com >/dev/null 2>&1; then
                     # Packages to install
                     Packages=(
