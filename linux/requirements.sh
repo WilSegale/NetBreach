@@ -45,7 +45,7 @@ else
                         package_name="$1"
                         if ! dpkg -l | grep -q "$package_name"; then
                             echo "$package_name is not installed. Installing..."
-                            sudo apt-get install -y "$package_name"
+                            sudo apt-get install "$package_name" -y
                         else
                             echo -e "$package_name is already ${GREEN}installed.${NC}"
                         fi
