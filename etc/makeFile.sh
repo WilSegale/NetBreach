@@ -1,4 +1,4 @@
-function makeFilesystem(){
+makeFilesystem(){
    # tells the user that the filesystem is being made
    echo "Creating filesystem..."
    
@@ -21,4 +21,4 @@ function makeFilesystem(){
 }
 
 #makes the program work
-makeFilesystem;
+makeFilesystem
