@@ -14,8 +14,6 @@ root=0
 
 empty=("")
 
-alphabet=("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "x" "y" "z" "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "X" "Y" "Z")
-
 # The yes array that contains the yes input
 yes=("yes" "YES" "y" "Y")
 
@@ -77,7 +75,7 @@ else
             clear
 
             # Try to connect to the server
-            wget -q --spider "${SITE_URL}"
+            wget -q --spider $SITE_URL
 
             # If the user is connected to the internet, it works as normal
             if [[ $? -eq 0 ]]; then
@@ -135,7 +133,7 @@ else
                     Hercules
 
                 # If the user input something that is not a number it says error
-                elif [[ " ${alphabet[*]} " == *" $service "* ]]; then
+                elif [[ "${service}" != ^[0-9]+$ ]]; then
                     echo "ERROR: Please input a number next time"
                     sleep 5
                     clear
@@ -172,7 +170,7 @@ else
                         # Alerts the user that the computer is trying to connect to the VNC server
                         title="Connecting to ${user}"
                         Connecting_To_VNC_SERVER="We are connecting you to ${user}. Please wait..."
-                        osascript -e "display notification \"$Connecting_To_VNC_SERVER\" with title \"$title\""
+                        zenity --info --title="${title}" --text="${Connecting_To_VNC_SERVER}"
 
                         sleep 5
 
@@ -180,7 +178,8 @@ else
                         # Notification for the user to see the computer is connected to the VNC server
                         title="Enter password to ${user}"
                         Connected_To_VNC_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
-                        osascript -e "display notification \"$Connected_To_VNC_SERVER\" with title \"$title\""
+                        zenity --info --title="${title}" --text="${Connected_To_VNC_SERVER}"
+
                         # Put the
                         echo "Loading VNC server..."
                         open vnc://$host
@@ -206,14 +205,14 @@ else
                         # Alerts the user that the computer is trying to connect to the ssh server
                         title="Connecting to ${user}"
                         Connecting_To_SSH_SERVER="We are connecting you to ${user}. Please wait..."
-                        osascript -e "display notification \"$Connecting_To_SSH_SERVER\" with title \"$title\""
+                        zenity --info --title="${title}" --text="${Connecting_To_SSH_SERVER}"
 
                         sleep 5
 
                         # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
                         title="Enter password to ${user}"
                         Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
-                        osascript -e "display notification \"$Connected_To_SSH_SERVER\" with title \"$title\""
+                        zenity --info --title="${title}" --text="${Connected_To_SSH_SERVER}"
 
                         ssh $user@$host
                     fi
