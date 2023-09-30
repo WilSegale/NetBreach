@@ -3,9 +3,9 @@
 # Define arrays containing valid options for showing and hiding folders.
 show=("show" "Show" "SHOW")
 hide=("hide" "Hide" "HIDE")
-COLOR_RED=""
-COLOR_GREEN=""
-NC=""
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+RESET='\033[0m'
 # Define a function to show or hide folders based on user input.
 show_hide() {
     local input="$1"  # Store the user input in a local variable.
@@ -18,7 +18,7 @@ show_hide() {
             defaults write com.apple.finder AppleShowAllFiles -bool true
             killall Finder
             found=true
-            echo "[+] Showing Files..."
+            echo -e "${GREEN}[+]${RESET} Showing Files..."
 
             break
         fi
@@ -32,7 +32,7 @@ show_hide() {
                 defaults write com.apple.finder AppleShowAllFiles -bool false
                 killall Finder
                 found=true
-                echo -e "${COLOR_GREEN}[+] Hidding Files..."
+                echo -e "${GREEN}[+]${RESET} Hidding Files..."
                 break
             fi
         done
@@ -40,10 +40,10 @@ show_hide() {
 
     # If the input is neither in the "show" nor "hide" array, display "Unknown option".
     if [[ "$found" == false ]]; then
-        echo "Unknown option"
+        echo -e "${RED}[-]${RESET} Unknown option"
         sleep 1
         read -p "Do you want to show or hide folders: " new_input
-        show_hide "$new_input"  # Call the function recursively with the new input.
+        show_hide "${new_input}"  # Call the function recursively with the new input.
     fi
 }
 
@@ -51,4 +51,4 @@ show_hide() {
 read -p "Do you want to show or hide folders: " ShowOrHide
 
 # Call the show_hide function with the user input.
-show_hide "$ShowOrHide"
+show_hide "${ShowOrHide}"
