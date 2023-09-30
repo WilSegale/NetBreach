@@ -6,6 +6,8 @@ hide=("hide" "Hide" "HIDE")
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 RESET='\033[0m'
+
+
 # Define a function to show or hide folders based on user input.
 show_hide() {
     local input="$1"  # Store the user input in a local variable.
