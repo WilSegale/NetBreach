@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Define arrays containing valid options for showing and hiding folders.
+# Define arrays containing valid options for showing and hiding folders and colors to show if the user inputed the right input or not.
 show=("show" "Show" "SHOW")
 hide=("hide" "Hide" "HIDE")
 RED='\033[0;31m'
