@@ -172,7 +172,7 @@ else
                         # Alerts the user that the computer is trying to connect to the VNC server
                         title="Connecting to ${user}"
                         Connecting_To_VNC_SERVER="We are connecting you to ${user}. Please wait..."
-                        osascript -e "display notification \"$Connecting_To_VNC_SERVER\" with title \"$title\""
+                        zenity -e "display notification \"$Connecting_To_VNC_SERVER\" with title \"$title\""
 
                         sleep 5
 
@@ -213,7 +213,7 @@ else
                         # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
                         title="Enter password to ${user}"
                         Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
-                        osascript -e "display notification \"$Connected_To_SSH_SERVER\" with title \"$title\""
+                        zenity --info --title="${title}" --text="${Connected_To_SSH_SERVER}"
 
                         ssh $user@$host
                     fi

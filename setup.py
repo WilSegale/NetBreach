@@ -16,8 +16,7 @@ GREEN = Fore.GREEN
 RED = Fore.RED
 RESET = Style.RESET_ALL
 BRIGHT = Style.BRIGHT
-
-if os.name == "posix":
+def CheckOS():
     # Check for Linux or macOS (Darwin)
     if os.uname().sysname == "Linux":
         os.system("sudo rm -rf mac")
@@ -28,6 +27,4 @@ if os.name == "posix":
     else:
         logging.error(f'{formatted_time} Your system is not supported.')
         print(f'{BRIGHT}{RED}[-] Your system is not supported{RESET}')
-else:
-    logging.error(f'{formatted_time} Your system is not supported.')
-    print(f'{BRIGHT}{RED}[-] Your system is not supported{RESET}')
+CheckOS
