@@ -185,7 +185,6 @@ else
       Hercules
 
       # Call password cracking functions
-      RunHackingCommand
       RunHackingCommandWithVNC
       RunHackingCommandWithSSH
       RunHackingCommandWithMySQL
