@@ -3,7 +3,9 @@
 # Define arrays containing valid options for showing and hiding folders.
 show=("show" "Show" "SHOW")
 hide=("hide" "Hide" "HIDE")
-
+COLOR_RED=""
+COLOR_GREEN=""
+NC=""
 # Define a function to show or hide folders based on user input.
 show_hide() {
     local input="$1"  # Store the user input in a local variable.
@@ -30,7 +32,7 @@ show_hide() {
                 defaults write com.apple.finder AppleShowAllFiles -bool false
                 killall Finder
                 found=true
-                echo "[+] Hidding Files..."
+                echo -e "${COLOR_GREEN}[+] Hidding Files..."
                 break
             fi
         done
