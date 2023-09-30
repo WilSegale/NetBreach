@@ -206,7 +206,7 @@ else
                         # Alerts the user that the computer is trying to connect to the ssh server
                         title="Connecting to ${user}"
                         Connecting_To_SSH_SERVER="We are connecting you to ${user}. Please wait..."
-                        osascript -e "display notification \"$Connecting_To_SSH_SERVER\" with title \"$title\""
+                        zenity --info --title="${title}" --text="${Connecting_To_SSH_SERVER}"
 
                         sleep 5
 
