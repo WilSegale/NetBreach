@@ -172,7 +172,7 @@ else
                         # Alerts the user that the computer is trying to connect to the VNC server
                         title="Connecting to ${user}"
                         Connecting_To_VNC_SERVER="We are connecting you to ${user}. Please wait..."
-                        zenity -e "display notification \"$Connecting_To_VNC_SERVER\" with title \"$title\""
+                        zenity --info --title="${title}" --text="${Connecting_To_VNC_SERVER}"
 
                         sleep 5
 
@@ -180,7 +180,8 @@ else
                         # Notification for the user to see the computer is connected to the VNC server
                         title="Enter password to ${user}"
                         Connected_To_VNC_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
-                        osascript -e "display notification \"$Connected_To_VNC_SERVER\" with title \"$title\""
+                        zenity --info --title="${title}" --text="${Connected_To_VNC_SERVER}"
+
                         # Put the
                         echo "Loading VNC server..."
                         open vnc://$host
