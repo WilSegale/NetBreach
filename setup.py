@@ -21,8 +21,10 @@ if os.name == "posix":
     # Check for Linux or macOS (Darwin)
     if os.uname().sysname == "Linux":
         os.system("sudo rm -rf mac")
+        print("[+] DONE!")
     elif os.uname().sysname == "Darwin":
         os.system("sudo rm -rf linux")
+        print("[+] DONE!")
     else:
         logging.error(f'{formatted_time} Your system is not supported.')
         print(f'{BRIGHT}{RED}[-] Your system is not supported{RESET}')
