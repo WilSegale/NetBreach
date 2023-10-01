@@ -31,7 +31,7 @@ else
                     "mysql-server"
                     "figlet"
                     "zenity"
-                    "tigervnc-standalone-server tigervnc-common"
+                    "xtightvncviewer"
                 )
 
                 pipPackages=(
