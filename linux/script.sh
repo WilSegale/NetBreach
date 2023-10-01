@@ -185,8 +185,8 @@ else
                         zenity --info --title="${title}" --text="${Connected_To_VNC_SERVER}"
 
                         # Put the
-                        echo "Loading VNC server..."
-                        open "xtightvncviewer"
+                        echo "Loading xtightvncviewer server..."
+                        xtightvncviewer
                         exit
                     fi
                 fi
