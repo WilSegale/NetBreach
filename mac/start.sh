@@ -5,10 +5,11 @@ start(){
   # Check if the selected item contains "22"
   
   if [[ "${selected_items}" == *"1"* ]]; then
-    echo "${selected_items}"
+    sudo bash GuiScript.sh
 
   elif [[ "${selected_items}" == *"2"* ]]; then
     sudo bash script.sh
   fi
+  
   }
 start
