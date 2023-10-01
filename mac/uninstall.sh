@@ -112,7 +112,7 @@ else
             fi
 
         elif [[ "${yes[*]}" == *"$YES_NO"* ]]; then
-            echo -e "Ok, I will not remove the packages."
+            echo -e "[-]Ok, I will remove the packages."
         
         elif [[ "${no[*]}" == *"$NO_NO"* ]];then
             echo -e "Ok, I will not remove the packages."
