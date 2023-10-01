@@ -12,9 +12,10 @@ SITE_URL="https://google.com"
 # Root user
 root=0
 
+# the array that holds nothing in it
 empty=("")
 
-alphabet=("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "x" "y" "z" "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "X" "Y" "Z")
+alphabet=("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z")
 
 # The yes array that contains the yes input
 yes=("yes" "YES" "y" "Y")
@@ -33,7 +34,7 @@ required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
 
 # Function to check if a command exists
 command_exists() {
-  command -v "$1" >/dev/null 2>&1
+    command -v "$1" >/dev/null 2>&1
 }
 
 # Check if root user
@@ -77,7 +78,7 @@ else
             clear
 
             # Try to connect to the server
-            wget -q --spider "${SITE_URL}"
+            wget -q --spider $SITE_URL
 
             # If the user is connected to the internet, it works as normal
             if [[ $? -eq 0 ]]; then
@@ -117,7 +118,7 @@ else
                     echo ""
                     read -p ">>> " Hydra
 
-                    if [[ " ${exit[*]} " == *" $Hydra "* ]]; then
+                    if [[ " ${exit[*]} " == *" ${Hydra} "* ]]; then
                         echo "Goodbye"
                         exit
                     else
@@ -126,20 +127,16 @@ else
                     fi
 
                 # If the user asks what the program does, it goes to a function that helps them and explains what the program does
-                elif [[ " ${exit[*]} " == *" $service "* ]]; then
+                elif [[ " ${exit[*]} " == *" ${service} "* ]]; then
                     echo "Stopping program..."
                     sleep 1
                     exit
-                elif [[ " ${empty[*]} " == *" $service "* ]]; then
+                elif [[ " ${empty[*]} " == *" ${service} "* ]]; then
                     clear
                     Hercules
-
-                # If the user input something that is not a number it says error
-                elif [[ " ${alphabet[*]} " == *" $service "* ]]; then
-                    echo "ERROR: Please input a number next time"
-                    sleep 5
-                    clear
-                    Hercules
+                elif [[ " ${alphabet[*]} " == *" ${service} "* ]]; then
+                    echo "Please enter a number next time"
+                    exit 1
                 else
                     # Scan specific port
                     sudo nmap -sS 192.168.1.1/24 -p $service --open
@@ -172,7 +169,7 @@ else
                         # Alerts the user that the computer is trying to connect to the VNC server
                         title="Connecting to ${user}"
                         Connecting_To_VNC_SERVER="We are connecting you to ${user}. Please wait..."
-                        osascript -e "display notification \"$Connecting_To_VNC_SERVER\" with title \"$title\""
+                        zenity --info --title="${title}" --text="${Connecting_To_VNC_SERVER}"
 
                         sleep 5
 
@@ -180,7 +177,8 @@ else
                         # Notification for the user to see the computer is connected to the VNC server
                         title="Enter password to ${user}"
                         Connected_To_VNC_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
-                        osascript -e "display notification \"$Connected_To_VNC_SERVER\" with title \"$title\""
+                        zenity --info --title="${title}" --text="${Connected_To_VNC_SERVER}"
+
                         # Put the
                         echo "Loading VNC server..."
                         open vnc://$host
@@ -206,14 +204,14 @@ else
                         # Alerts the user that the computer is trying to connect to the ssh server
                         title="Connecting to ${user}"
                         Connecting_To_SSH_SERVER="We are connecting you to ${user}. Please wait..."
-                        osascript -e "display notification \"$Connecting_To_SSH_SERVER\" with title \"$title\""
+                        zenity --info --title="${title}" --text="${Connecting_To_SSH_SERVER}"
 
                         sleep 5
 
                         # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
                         title="Enter password to ${user}"
                         Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
-                        osascript -e "display notification \"$Connected_To_SSH_SERVER\" with title \"$title\""
+                        zenity --info --title="${title}" --text="${Connected_To_SSH_SERVER}"
 
                         ssh $user@$host
                     fi
