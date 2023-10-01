@@ -186,7 +186,7 @@ else
 
                         # Put the
                         echo "Loading xtightvncviewer server..."
-                        xtightvncviewer -fullscreen
+                        xtightvncviewer -fullscreen $host:1
 
                         exit
                     fi
