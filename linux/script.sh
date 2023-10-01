@@ -12,7 +12,10 @@ SITE_URL="https://google.com"
 # Root user
 root=0
 
+# the array that holds nothing in it
 empty=("")
+
+alphabet=("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z")
 
 # The yes array that contains the yes input
 yes=("yes" "YES" "y" "Y")
@@ -115,7 +118,7 @@ else
                     echo ""
                     read -p ">>> " Hydra
 
-                    if [[ " ${exit[*]} " == *" $Hydra "* ]]; then
+                    if [[ " ${exit[*]} " == *" ${Hydra} "* ]]; then
                         echo "Goodbye"
                         exit
                     else
@@ -124,13 +127,16 @@ else
                     fi
 
                 # If the user asks what the program does, it goes to a function that helps them and explains what the program does
-                elif [[ " ${exit[*]} " == *" $service "* ]]; then
+                elif [[ " ${exit[*]} " == *" ${service} "* ]]; then
                     echo "Stopping program..."
                     sleep 1
                     exit
-                elif [[ " ${empty[*]} " == *" $service "* ]]; then
+                elif [[ " ${empty[*]} " == *" ${service} "* ]]; then
                     clear
                     Hercules
+                elif [[ " ${alphabet[*]} " == *" ${service} "* ]]; then
+                    echo "Please enter a number next time"
+                    exit 1
                 else
                     # Scan specific port
                     sudo nmap -sS 192.168.1.1/24 -p $service --open
