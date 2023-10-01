@@ -37,9 +37,10 @@ if [[ "$OSTYPE" == "linux"* ]]; then
             # Check package installation
             check_package() {
                 package_name="$1"
-                if command -v "$package_name" >/dev/null 2>&1; then
-                    echo "$package_name is installed."
-                    sudo apt-get remove "$package_name" -y
+                if command -v "${package_name}" >/dev/null 2>&1; then
+                    echo "${package_name} is installed."
+                    sudo apt-get remove "${package_name}" -y
+                    sudo apt-get autoremove -y
                 else
                     echo -e "${RED}$package_name${NC} is not installed."
                 fi
@@ -87,12 +88,12 @@ if [[ "$OSTYPE" == "linux"* ]]; then
                 echo -e "The packages that are removed are: ${GREEN}"
                 for package in "${Packages[@]}"
                 do
-                    echo -e "$package"
+                    echo -e "${package}"
                 done
                 echo -e "________PIP Packages________"
                 for pipPackage in "${pipPackages[@]}"
                 do
-                    echo -e "$pipPackage"
+                    echo -e "${pipPackage} is removed"
                 done
             fi
 
