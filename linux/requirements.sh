@@ -7,10 +7,26 @@ BRIGHT='\033[1m'
 NC='\033[0m' # No Color
 OS="linux"
 
-sudo apt-get update --force-yes
+# List of packages to install
+Packages=(
+    "wget"
+    "hydra"
+    "nmap"
+    "mysql-server"
+    "figlet"
+    "zenity"
+    "xtightvncviewer"
+)
+
+# List of Python packages to install
+pipPackages=(
+    "asyncio"
+    "colorama"
+    "pyfiglet"
+)
 
 if [ "$(id -u)" -eq 0 ]; then
-    #notification message for the user to also if the local host has been compromised at all
+    # Notification message for the user to also if the local host has been compromised at all
     title="ERROR"
     ERROR_MESSAGE="Don't use sudo for this script. Because it can damage your computer"
     notify-send "${title}" "${ERROR_MESSAGE}" # Use notify-send for Linux desktop notifications
@@ -23,53 +39,15 @@ else
         echo "This script will install the packages for it to work properly"
     else
         # Check if the OS is Linux
-        if [[  "$OSTYPE" == "${OS}"* ]]; then
+        if [[ "$OSTYPE" == "${OS}"* ]]; then
             if ping -c 1 google.com >/dev/null 2>&1; then
-                # Packages to install
-                Packages=(
-                    "wget"
-                    "hydra"
-                    "nmap"
-                    "mysql-server"
-                    "figlet"
-                    "zenity"
-                    "xtightvncviewer"
-                )
-
-                pipPackages=(
-                    "asyncio"
-                    "colorama"
-                    "pyfiglet"
-                )
-
-                # Install package
-                install_Package() {
-                    package_name="$1"
-                    if ! dpkg -l | grep -q "$package_name"; then
-                        echo "$package_name is not installed. Installing..."
-                        sudo apt-get install "$package_name" -y
-                    else
-                        echo -e "$package_name is already ${GREEN}installed.${NC}"
-                    fi
-                }
-
-                # Install PIP package
-                install_pip_package() {
-                    package_name="$1"
-                    if ! python3 -m pip show "$package_name" >/dev/null 2>&1; then
-                        echo "$package_name is not installed. Installing..."
-                        pip3 install "$package_name"
-                    else
-                        echo -e "$package_name is already ${GREEN}installed.${NC}"
-                    fi
-                }
-
                 echo
                 echo "_________APT PACKAGES________"
 
                 # Install packages
                 for package in "${Packages[@]}"; do
-                    install_Package "$package"
+                    echo "Installing $package..."
+                    sudo apt-get install "$package" -y
                 done
 
                 echo
@@ -77,7 +55,8 @@ else
 
                 # Install PIP packages
                 for PIP in "${pipPackages[@]}"; do
-                    install_pip_package "$PIP"
+                    echo "Installing $PIP..."
+                    pip3 install "$PIP"
                 done
 
                 echo
