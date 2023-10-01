@@ -63,7 +63,7 @@ else
 
                 # Update PIP
                 echo "_________PIP UPDATES________"
-                sudo python3 -m pip install --upgrade pip
+                python3 -m pip install --upgrade pip
 
                 echo
                 title="Packages"
