@@ -3,8 +3,6 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-# Now you can work with the selected items stored in the $selected_items variable
-
 # OS of the computer
 OS="darwin"
 
@@ -109,7 +107,7 @@ else
                 echo "If you want to stop the program type 'stop'."
                 read -p ">>> " service
                 
-                elif [[ $service == "ALL" || $service == "all" ]]; then
+                if [[ $service == "ALL" || $service == "all" ]]; then
                     # Tells the user that it can take up to an hour to complete the scanning process
                     echo -e "${RED}This can take up to 1 hour to complete.${NC}"
                     # Scan the entire network and display open ports
