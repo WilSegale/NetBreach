@@ -60,6 +60,7 @@ try:
     else:
         # gets the current time and formats it HH:MM:SS
         current_time = datetime.datetime.now().time()
+
         formatted_time = current_time.strftime("%I:%M:%S %p")
 
         # Get the current date
