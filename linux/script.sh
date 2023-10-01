@@ -131,13 +131,6 @@ else
                 elif [[ " ${empty[*]} " == *" $service "* ]]; then
                     clear
                     Hercules
-
-                # If the user input something that is not a number it says error
-                elif [[ "${service}" != ^[0-9]+$ ]]; then
-                    echo "ERROR: Please input a number next time"
-                    sleep 5
-                    clear
-                    Hercules
                 else
                     # Scan specific port
                     sudo nmap -sS 192.168.1.1/24 -p $service --open
