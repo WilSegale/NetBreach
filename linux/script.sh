@@ -31,7 +31,7 @@ required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
 
 # Function to check if a command exists
 command_exists() {
-  command -v "$1" >/dev/null 2>&1
+    command -v "$1" >/dev/null 2>&1
 }
 
 # Check if root user
