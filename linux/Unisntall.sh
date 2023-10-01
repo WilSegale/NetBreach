@@ -21,14 +21,17 @@ if [[ "$OSTYPE" == "linux"* ]]; then
                 "wget"
                 "hydra"
                 "nmap"
-                "mysql"
+                "mysql-server"
+                "figlet"
+                "zenity"
+                "xtightvncviewer"
             )
 
             # PIP packages that will be uninstalled if they are installed
             pipPackages=(
-                "tqdm"
                 "asyncio"
                 "colorama"
+                "pyfiglet"
             )
 
             # Check package installation
