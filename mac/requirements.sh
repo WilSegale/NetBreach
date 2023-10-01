@@ -89,7 +89,7 @@ else
                 echo
                 title="Packages"
                 successful_MESSAGE="All packages are installed successfully"
-                zenity --error --title="|CRITICAL ERROR|" --text="TIME:${formatted_time} Please run as root. DATE:${current_date}"
+                zenity --info --title="${title}" --text="${successful_MESSAGE}"
             else
                 title="ERROR"
                 ERROR_MESSAGE="NOT CONNECTED TO THE INTERNET"
