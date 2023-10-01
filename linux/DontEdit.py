@@ -1,8 +1,8 @@
-import sys
-import os
-import subprocess
 import datetime
-import logging
-import urllib.request
 import platform
 import time
+import os
+import urllib.request
+import logging
+import sys
+import subprocess
