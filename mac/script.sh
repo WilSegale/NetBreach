@@ -181,12 +181,12 @@ else
                         # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
                         # Notification for the user to see the computer is connected to the VNC server
                         title="Enter password to ${host}"
-                        Connected_To_VNC_SERVER="We have connected you to '${host}'. Please enter the password to '${host}'. to continue..."
+                        Connected_To_VNC_SERVER="We have connected you to '${host}'. Please enter the password to '${host}'. To continue..."
                         zenity --info --title="${title}" --text="${Connected_To_VNC_SERVER}"
 
                         # Put the
                         echo "Loading VNC server..."
-                        #open vnc://$host
+                        open "vnc://${host}"
                         exit
                     fi
                 fi
