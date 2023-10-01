@@ -132,6 +132,7 @@ else
                     sleep 1
                     exit
                 elif [[ " ${empty[*]} " == *" ${service} "* ]]; then
+                    echo -e "${RED}ERROR:${NC} plase input a number into the input field"
                     clear
                     Hercules
                 elif [[ " ${alphabet[*]} " == *" ${service} "* ]]; then
