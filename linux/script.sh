@@ -186,7 +186,7 @@ else
 
                         # Put the
                         echo "Loading VNC server..."
-                        open "xtightvncviewer://${host}"
+                        open "xtightvncviewer"
                         exit
                     fi
                 fi
