@@ -7,6 +7,7 @@ BRIGHT='\033[1m'
 NC='\033[0m' # No Color
 
 OS="linux"
+sudo apt-get update --force-yes
 if [ "$(id -u)" -eq 0 ]; then
     #notification message for the user to also if the local host has been compromised at all
     title="ERROR"
