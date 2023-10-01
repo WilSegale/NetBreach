@@ -22,81 +22,78 @@ else
     else
         # Check if the OS is Linux
         if [[  "$OSTYPE" == "${OS}"* ]]; then
-                if ping -c 1 google.com >/dev/null 2>&1; then
-                    # Packages to install
-                    Packages=(
-                        "wget"
-                        "hydra"
-                        "nmap"
-                        "mysql-server"
-                        "figlet"
-                        "zenity"
-                        "tigervnc-standalone-server tigervnc-common"
-                    )
+            if ping -c 1 google.com >/dev/null 2>&1; then
+                # Packages to install
+                Packages=(
+                    "wget"
+                    "hydra"
+                    "nmap"
+                    "mysql-server"
+                    "figlet"
+                    "zenity"
+                    "tigervnc-standalone-server tigervnc-common"
+                )
 
-                    pipPackages=(
-                        "asyncio"
-                        "colorama"
-                        "pyfiglet"
-                    )
+                pipPackages=(
+                    "asyncio"
+                    "colorama"
+                    "pyfiglet"
+                )
 
-                    # Install package
-                    install_Package() {
-                        package_name="$1"
-                        if ! dpkg -l | grep -q "$package_name"; then
-                            echo "$package_name is not installed. Installing..."
-                            sudo apt-get install "$package_name" -y
-                        else
-                            echo -e "$package_name is already ${GREEN}installed.${NC}"
-                        fi
-                    }
+                # Install package
+                install_Package() {
+                    package_name="$1"
+                    if ! dpkg -l | grep -q "$package_name"; then
+                        echo "$package_name is not installed. Installing..."
+                        sudo apt-get install "$package_name" -y
+                    else
+                        echo -e "$package_name is already ${GREEN}installed.${NC}"
+                    fi
+                }
 
-                    # Install PIP package
-                    install_pip_package() {
-                        package_name="$1"
-                        if ! python3 -m pip show "$package_name" >/dev/null 2>&1; then
-                            echo "$package_name is not installed. Installing..."
-                            pip3 install "$package_name"
-                        else
-                            echo -e "$package_name is already ${GREEN}installed.${NC}"
-                        fi
-                    }
+                # Install PIP package
+                install_pip_package() {
+                    package_name="$1"
+                    if ! python3 -m pip show "$package_name" >/dev/null 2>&1; then
+                        echo "$package_name is not installed. Installing..."
+                        pip3 install "$package_name"
+                    else
+                        echo -e "$package_name is already ${GREEN}installed.${NC}"
+                    fi
+                }
 
-                    echo
-                    echo "_________APT PACKAGES________"
+                echo
+                echo "_________APT PACKAGES________"
 
-                    # Install packages
-                    for package in "${Packages[@]}"; do
-                        install_Package "$package"
-                    done
+                # Install packages
+                for package in "${Packages[@]}"; do
+                    install_Package "$package"
+                done
 
-                    echo
-                    echo "_________PIP PACKAGES________"
+                echo
+                echo "_________PIP PACKAGES________"
 
-                    # Install PIP packages
-                    for PIP in "${pipPackages[@]}"; do
-                        install_pip_package "$PIP"
-                    done
+                # Install PIP packages
+                for PIP in "${pipPackages[@]}"; do
+                    install_pip_package "$PIP"
+                done
 
-                    echo
+                echo
 
-                    # Update PIP
-                    echo "_________PIP UPDATES________"
-                    sudo python3 -m pip install --upgrade pip
+                # Update PIP
+                echo "_________PIP UPDATES________"
+                sudo python3 -m pip install --upgrade pip
 
-                    echo
-                    title="Packages"
-                    ERROR_MESSAGE="All packages are installed successfully"
-                    notify-send "$title" "$ERROR_MESSAGE" # Use notify-send for Linux desktop notifications
-                    echo -e "${GREEN}All packages installed.${NC}"
-                else
-                    title="ERROR"
-                    ERROR_MESSAGE="NOT CONNECTED TO THE INTERNET"
-                    notify-send "${title}" "${ERROR_MESSAGE}" # Use notify-send for Linux desktop notifications
-                    echo -e "${RED}ERROR${NC}: NOT CONNECTED TO THE INTERNET"
-                fi
+                echo
+                title="Packages"
+                ERROR_MESSAGE="All packages are installed successfully"
+                notify-send "$title" "$ERROR_MESSAGE" # Use notify-send for Linux desktop notifications
+                echo -e "${GREEN}All packages installed.${NC}"
             else
-                echo "Unsupported Linux distribution."
+                title="ERROR"
+                ERROR_MESSAGE="NOT CONNECTED TO THE INTERNET"
+                notify-send "${title}" "${ERROR_MESSAGE}" # Use notify-send for Linux desktop notifications
+                echo -e "${RED}ERROR${NC}: NOT CONNECTED TO THE INTERNET"
             fi
         else
             echo "This script is designed for Linux and won't work on macOS."
