@@ -6,6 +6,9 @@ SITE="https://google.com/"
 # Root user
 root=0
 
+#speed of the loading process
+total_steps=100
+
 #checks if the computer is on MAC OS
 OS="darwin"
 
@@ -24,6 +27,31 @@ CURRENT_DATE=$(date +"%m/%d/%Y")
 
 # the packages for the program to work correctly
 required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
+
+(
+    for ((step = 1; step <= total_steps; step++)); do
+        # Calculate the percentage completed
+        percentage=$(( (step * 100) / total_steps ))
+        echo "${percentage}"
+        sleep 0.1 # add a small delay to the loading bar
+
+        #checks if the user stops the loading bar
+        if [[ "$?" != "0" ]]; then
+            zenity --warning --title="Stopped" --text="Cancelled"
+            exit 1
+        fi
+    done
+) | zenity --progress --title="Loading" --text="Please wait..." --percentage=0 --auto-close
+
+# Checks the exit status of the progress bar
+if [[ "$?" = "0" ]]; then
+    #Completed successfully
+    zenity --info --title="Done" --text="Loading is complete!"
+else
+    #user cancled the progress bar
+    zenity --info --title="Cancelled" --text="Loading was cancelled."
+    exit 1
+fi
 
 # Function to check if a command exists
 command_exists() {
@@ -93,6 +121,8 @@ else
 
             # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
             Hercules(){
+                #loading bar tell the user that the program is trying to connect to the server
+                
                 figlet -f slant "Hercules"
 
                 # Display a message explaining the options
