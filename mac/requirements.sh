@@ -33,7 +33,7 @@ else
                     "hydra"
                     "nmap"
                     "mysql"
-                    "figlet"
+                   os "figlet"
                     "zenity"
                 )
                 
@@ -85,14 +85,11 @@ else
                 # updates PIP
                 echo "_________PIP UPDATES________"
                 /Library/Developer/CommandLineTools/usr/bin/python3 -m pip install --upgrade pip
-
+                
                 echo
                 successful_MESSAGE="[+]All packages are installed successfully"
                 echo -e "${successful_MESSAGE}"
             else
-                title="ERROR"
-                ERROR_MESSAGE="NOT CONNECTED TO THE INTERNET"
-                osascript -e "display notification \"$ERROR_MESSAGE\" with title \"$title\""
                 echo -e "${RED}ERROR:${NC} NOT CONNECTED TO THE INTERNET"
             fi
 
