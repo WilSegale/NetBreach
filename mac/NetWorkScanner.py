@@ -103,7 +103,7 @@ except KeyboardInterrupt:
             bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)
             percentage = int(progress * 100)
             
-            print(f'\Exiting [{bar}] {percentage}% ', end='', flush=False)
+            print(f'\nExiting [{bar}] {percentage}% ', end='', flush=False)
             time.sleep(delay)
 
-loadingBar(50)
+    loadingBar(50)
