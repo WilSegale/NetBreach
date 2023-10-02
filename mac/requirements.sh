@@ -87,9 +87,8 @@ else
                 /Library/Developer/CommandLineTools/usr/bin/python3 -m pip install --upgrade pip
 
                 echo
-                title="Packages"
-                successful_MESSAGE="All packages are installed successfully"
-                zenity --info --title="${title}" --text="${successful_MESSAGE}"
+                successful_MESSAGE="[+]All packages are installed successfully"
+                echo -e "${successful_MESSAGE}"
             else
                 title="ERROR"
                 ERROR_MESSAGE="NOT CONNECTED TO THE INTERNET"
