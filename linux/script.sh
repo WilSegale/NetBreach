@@ -103,11 +103,10 @@ else
             Hercules() {
                 # The logo of the program
                 figlet -f slant "Hercules"
-
                 echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
                 echo "If you want to stop the program type 'stop'."
                 read -p ">>> " service
-
+                
                 if [[ $service == "ALL" || $service == "all" ]]; then
                     # Tells the user that it can take up to an hour to complete the scanning process
                     echo -e "${RED}This can take up to 1 hour to complete.${NC}"
@@ -119,11 +118,11 @@ else
                     read -p ">>> " Hydra
 
                     if [[ " ${exit[*]} " == *" ${Hydra} "* ]]; then
-                        echo "Goodbye"
-                        exit
+                        echo "[+] Goodbye"
+                        exit 1
                     else
                         $Hydra
-                        exit
+                        exit 1
                     fi
 
                 # If the user asks what the program does, it goes to a function that helps them and explains what the program does
@@ -174,20 +173,21 @@ else
                         # Alerts the user that the computer is trying to connect to the VNC server
                         title="Connecting to ${host}"
                         Connecting_To_VNC_SERVER="We are connecting you to '${host}'. Please wait..."
-                        zenity --info --title="${title}" --text="${Connecting_To_VNC_SERVER}"
-
+                        echo "${title}"
+                        echo "${Connecting_To_VNC_SERVER}"
                         sleep 5
 
                         # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
                         # Notification for the user to see the computer is connected to the VNC server
                         title="Enter password to ${host}"
                         Connected_To_VNC_SERVER="We have connected you to '${host}'. Please enter the password to '${host}'. To continue..."
-                        zenity --info --title="${title}" --text="${Connected_To_VNC_SERVER}"
-
+                        echo
+                        echo "${title}"
+                        echo "${Connected_To_VNC_SERVER}"
                         # Put the
-                        echo "Loading xtightvncviewer server..."
-                        xtightvncviewer -fullscreen $host:1
-
+                        echo
+                        echo "Loading VNC server..."
+                        xtightvncviewer "${host}"
                         exit
                     fi
                 fi
@@ -210,15 +210,16 @@ else
                         # Alerts the user that the computer is trying to connect to the ssh server
                         title="Connecting to ${user}"
                         Connecting_To_SSH_SERVER="We are connecting you to ${user}. Please wait..."
-                        zenity --info --title="${title}" --text="${Connecting_To_SSH_SERVER}"
-
+                        echo "${title}"
+                        echo "${Connecting_To_SSH_SERVER}"
                         sleep 5
 
                         # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
+                        echo
                         title="Enter password to ${user}"
                         Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
-                        zenity --info --title="${title}" --text="${Connected_To_SSH_SERVER}"
-
+                        echo "${title}"
+                        echo "${Connected_To_SSH_SERVER}"
                         ssh $user@$host
                     fi
                 fi
