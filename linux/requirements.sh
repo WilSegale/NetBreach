@@ -77,7 +77,7 @@ else
                 echo -e "${RED}ERROR${NC}: NOT CONNECTED TO THE INTERNET"
             fi
         else
-            echo "This script is designed for Linux and won't work on macOS."
+            echo -e "${RED}[-]${NC} This script is designed for Linux and won't work on macOS."
         fi
     fi
 fi
