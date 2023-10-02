@@ -85,11 +85,6 @@ else
                 echo
             # Else, it notifies them that they are not connected to the internet and tells them to connect
             else
-                # Error message if offline notification
-                offlineTitle="Offline"
-                offline="TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}"
-                osascript -e "display notification \"$offline\" with title \"$offlineTitle\""
-
                 # Offline text in the terminal
                 echo "ERROR:root:TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}." >> ERROR.LOG
                 echo "TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}"
@@ -129,7 +124,7 @@ else
                 elif [[ " ${exit[*]} " == *" ${service} "* ]]; then
                     echo "Stopping program..."
                     sleep 1
-                
+                    exit 1
                 #checks if the user has put nothing into the input feild
                 elif [[ " ${empty[*]} " == *" ${service} "* ]]; then
                     echo -e "${RED}ERROR:${NC} plase input a number into the input field"
