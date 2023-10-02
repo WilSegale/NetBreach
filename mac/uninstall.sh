@@ -1,31 +1,35 @@
 #!/bin/bash
 
-# Color variables
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-BRIGHT='\033[1m'
-NC='\033[0m' # No Color
+# Color variables for formatting output
+RED='\033[0;31m'       # Red color
+GREEN='\033[0;32m'     # Green color
+BRIGHT='\033[1m'       # Bright text
+NC='\033[0m'           # No color
 
-#os of the computer
+# Operating system identifier for Mac
 MAC="darwin"
 
+# Check if the script is run as root (sudo)
 if [ "$(id -u)" -eq 0 ]; then
-    figlet "ERROR"
-    echo "Dont use sudo for this script." 
-    echo "Because it can damage your comptuer."
-    exit 1
-
+    figlet "ERROR"  # Display an ASCII art error message
+    echo "Don't use sudo for this script." 
+    echo "Because it can damage your computer."
+    exit 1  # Exit with an error code
 else
+    # Check if the operating system is macOS
     if [[ "$OSTYPE" == "${MAC}"* ]]; then
+        # Arrays for acceptable "yes" and "no" responses
         yes=("yes" "Yes" "YES")
         no=("no" "No" "NO")
-        echo -e "${RED}${BRIGHT}!Are you sure you want to remove your Packages (YES/NO)!:${NC}"
         
+        # Prompt the user to confirm if they want to remove packages
+        echo -e "${RED}${BRIGHT}!Are you sure you want to remove your Packages (YES/NO)!:${NC}"
         read -p ">>> " YES_NO
 
         if [[ "${yes[*]}" == *"$YES_NO"* ]]; then
-            if ping -q -c 1 -W 1 google.com >/dev/null; then # checks if the user is connected to the internet
-                # brew packages that will be uninstalled if they are installed
+            # Check if the user is connected to the internet
+            if ping -q -c 1 -W 1 google.com >/dev/null; then 
+                # List of Brew packages that will be uninstalled if installed
                 Packages=(
                     "wget"
                     "hydra"
@@ -35,14 +39,14 @@ else
                     "zenity"
                 )
 
-                # PIP packages that will be uninstalled if they are installed
+                # List of PIP packages that will be uninstalled if installed
                 pipPackages=(
                     "tqdm"
                     "asyncio"
                     "colorama"
                 )
 
-                # Check package installation
+                # Function to check and uninstall a package
                 check_package() {
                     package_name="$1"
                     if command -v "$package_name" >/dev/null 2>&1; then
@@ -53,10 +57,10 @@ else
                     fi
                 }
 
-                # Check packages
+                # Check and uninstall Brew packages
                 for package in "${Packages[@]}"
-                    do
-                        check_package "$package"
+                do
+                    check_package "$package"
                 done
 
                 # Uninstall PIP packages
@@ -77,19 +81,20 @@ else
                     fi
                 done
 
+                # Uninstall PIP itself
                 pip3 uninstall -y pip
 
                 # Check the exit status of the last command
                 if [ $? -ne 0 ]; then
                     echo -e "The packages that are removed are: ${GREEN}"
                     for package in "${Packages[@]}"
-                        do
-                            echo -e "$package"
+                    do
+                        echo -e "$package"
                     done
                     echo -e "________PIP Packages________"
                     for pipPackage in "${pipPackages[@]}"
-                        do
-                            echo -e "${pipPackage}"
+                    do
+                        echo -e "${pipPackage}"
                     done
 
                     echo -e "________ERROR________"
@@ -98,30 +103,26 @@ else
                     echo -e "pip: uninstalled ${GREEN}successfully${NC}"
                     echo -e "The packages that are removed are: ${GREEN}"
                     for package in "${Packages[@]}"
-                        do
-                            echo -e "${package}"
+                    do
+                        echo -e "${package}"
                     done
                     echo -e "________PIP Packages________"
                     for pipPackage in "${pipPackages[@]}"
-                        do
-                            echo -e "${pipPackage}"
+                    do
+                        echo -e "${pipPackage}"
                     done
                 fi
             else
-                echo -e "${RED}ERROR NOT CONNECTED TO THE INTERNET${NC}"
+                echo -e "${RED}ERROR: NOT CONNECTED TO THE INTERNET${NC}"
             fi
-
         elif [[ "${yes[*]}" == *"$YES_NO"* ]]; then
             echo -e "[-]Ok, I will remove the packages."
-        
-        elif [[ "${no[*]}" == *"$NO_NO"* ]];then
+        elif [[ "${no[*]}" == *"$YES_NO"* ]];then
             echo -e "Ok, I will not remove the packages."
-        
         else
             echo -e "${RED}Please enter a valid option${NC}"
-        
         fi
     else
-        echo -e "${RED}${BRIGHT}This script can only be run on Mac Os${NC}"
+        echo -e "${RED}${BRIGHT}This script can only be run on Mac OS${NC}"
     fi
 fi
