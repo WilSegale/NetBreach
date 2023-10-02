@@ -173,8 +173,8 @@ else
                         # Alerts the user that the computer is trying to connect to the VNC server
                         title="Connecting to ${host}"
                         Connecting_To_VNC_SERVER="We are connecting you to '${host}'. Please wait..."
-                        zenity --info --title="${title}" --text="${Connecting_To_VNC_SERVER}"
-
+                        echo "${title}"
+                        echo "${Connecting_To_VNC_SERVER}"
                         sleep 5
 
                         # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
