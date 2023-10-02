@@ -1,6 +1,6 @@
-# Nmap 7.94 scan initiated Sun Oct  1 17:57:10 2023 as: nmap -sS -Pn -oN scan.txt --open 192.168.1.1/24
+# Nmap 7.94 scan initiated Sun Oct  1 20:18:45 2023 as: nmap -sS -Pn -oN scan.txt --open 192.168.1.1/24
 Nmap scan report for 192.168.1.1
-Host is up (0.0066s latency).
+Host is up (0.0069s latency).
 Not shown: 997 closed tcp ports (reset)
 PORT    STATE SERVICE
 53/tcp  open  domain
@@ -9,7 +9,7 @@ PORT    STATE SERVICE
 MAC Address: 4C:19:5D:3B:33:DE (Sagemcom Broadband SAS)
 
 Nmap scan report for 192.168.1.22
-Host is up (0.012s latency).
+Host is up (0.013s latency).
 Not shown: 998 closed tcp ports (reset)
 PORT     STATE SERVICE
 8009/tcp open  ajp13
@@ -33,25 +33,17 @@ PORT      STATE SERVICE
 50002/tcp open  iiimsf
 MAC Address: CC:90:93:17:B1:7B (Hansong Tehnologies)
 
-Nmap scan report for 192.168.1.147
-Host is up (0.012s latency).
-Not shown: 691 closed tcp ports (reset), 307 filtered tcp ports (no-response)
-Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
-PORT      STATE SERVICE
-49152/tcp open  unknown
-62078/tcp open  iphone-sync
-MAC Address: E2:9B:85:8D:7A:6F (Unknown)
-
 Nmap scan report for blink-sync-module.lan (192.168.1.165)
-Host is up (0.0098s latency).
+Host is up (0.011s latency).
 Not shown: 999 closed tcp ports (reset)
 PORT   STATE SERVICE
 53/tcp open  domain
 MAC Address: 00:03:7F:66:D6:1D (Atheros Communications)
 
 Nmap scan report for Camp.lan (192.168.1.182)
-Host is up (0.0069s latency).
-Not shown: 993 closed tcp ports (reset)
+Host is up (0.0058s latency).
+Not shown: 992 closed tcp ports (reset), 1 filtered tcp port (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
 PORT      STATE SERVICE
 53/tcp    open  domain
 5000/tcp  open  upnp
@@ -63,7 +55,7 @@ PORT      STATE SERVICE
 MAC Address: C0:95:6D:78:85:56 (Apple)
 
 Nmap scan report for 192.168.1.185
-Host is up (0.0063s latency).
+Host is up (0.0075s latency).
 Not shown: 994 closed tcp ports (reset)
 PORT      STATE SERVICE
 23/tcp    open  telnet
@@ -75,7 +67,7 @@ PORT      STATE SERVICE
 MAC Address: CC:90:93:17:B2:7C (Hansong Tehnologies)
 
 Nmap scan report for 192.168.1.188
-Host is up (0.0072s latency).
+Host is up (0.0077s latency).
 Not shown: 989 closed tcp ports (reset)
 PORT      STATE SERVICE
 23/tcp    open  telnet
@@ -92,7 +84,7 @@ PORT      STATE SERVICE
 MAC Address: CC:90:93:17:B2:7F (Hansong Tehnologies)
 
 Nmap scan report for 192.168.1.253
-Host is up (0.0095s latency).
+Host is up (0.012s latency).
 Not shown: 957 filtered tcp ports (no-response), 40 closed tcp ports (reset)
 Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
 PORT     STATE SERVICE
@@ -102,14 +94,13 @@ PORT     STATE SERVICE
 MAC Address: 00:F3:61:44:84:D7 (Amazon Technologies)
 
 Nmap scan report for Zeros-Air.lan (192.168.1.13)
-Host is up (0.00032s latency).
-Not shown: 995 filtered tcp ports (no-response)
+Host is up (0.00038s latency).
+Not shown: 996 filtered tcp ports (no-response)
 Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
 PORT     STATE SERVICE
+22/tcp   open  ssh
 88/tcp   open  kerberos-sec
-3283/tcp open  netassistant
 5000/tcp open  upnp
-5900/tcp open  vnc
 7000/tcp open  afs3-fileserver
 
-# Nmap done at Sun Oct  1 17:58:11 2023 -- 256 IP addresses (16 hosts up) scanned in 61.28 seconds
+# Nmap done at Sun Oct  1 20:19:30 2023 -- 256 IP addresses (14 hosts up) scanned in 45.06 seconds

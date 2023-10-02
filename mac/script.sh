@@ -118,11 +118,11 @@ else
                     read -p ">>> " Hydra
 
                     if [[ " ${exit[*]} " == *" ${Hydra} "* ]]; then
-                        echo "Goodbye"
-                        exit
+                        echo "[+] Goodbye"
+                        exit 1
                     else
                         $Hydra
-                        exit
+                        exit 1
                     fi
 
                 # If the user asks what the program does, it goes to a function that helps them and explains what the program does
