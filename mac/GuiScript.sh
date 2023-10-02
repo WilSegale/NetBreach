@@ -36,12 +36,12 @@ required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
     
     # Update the Zenity progress bar and percentage
     echo "$percentage"
-    echo "# Processing... $percentage%"
+    echo "# Loading GUI... $percentage%"
 
     # Simulate some work (you can replace this with your actual task)
-    sleep 0.1
+    sleep 1
   done
-) | zenity --progress --auto-close --title="Loading Bar" --text="Starting..." --percentage=0
+) | zenity --progress --auto-close --title="Loading..." --text="Starting..." --percentage=0
 
 # Checks the exit status of the progress bar
 if [[ "$?" = "0" ]]; then
