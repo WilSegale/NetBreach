@@ -207,8 +207,9 @@ else
                         title="Enter password to ${host}"
                         Connected_To_VNC_SERVER="We have connected you to '${host}'. Please enter the password to '${host}'. To continue..."
                         zenity --info --title="${title}" --text="${Connected_To_VNC_SERVER}"
+                        
+                        xtightvncviewer "${host}"
 
-                        open "vnc://${host}"
                         exit 1
                     fi
                 fi
