@@ -29,19 +29,19 @@ CURRENT_DATE=$(date +"%m/%d/%Y")
 required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
 
 (
-    for ((step = 1; step <= total_steps; step++)); do
-        # Calculate the percentage completed
-        percentage=$(( (step * 100) / total_steps ))
-        echo "${percentage}"
-        sleep 0.1 # add a small delay to the loading bar
+  # Start a subshell to redirect the output
+  for ((step = 0; step <= total_steps; step++)); do
+    # Calculate the percentage completed
+    percentage=$((step * 100 / total_steps))
+    
+    # Update the Zenity progress bar and percentage
+    echo "$percentage"
+    echo "# Processing... $percentage%"
 
-        #checks if the user stops the loading bar
-        if [[ "$?" != "0" ]]; then
-            zenity --warning --title="Stopped" --text="Cancelled"
-            exit 1
-        fi
-    done
-) | zenity --progress --title="Loading" --text="Please wait..." --percentage=0 --auto-close
+    # Simulate some work (you can replace this with your actual task)
+    sleep 0.1
+  done
+) | zenity --progress --auto-close --title="Loading Bar" --text="Starting..." --percentage=0
 
 # Checks the exit status of the progress bar
 if [[ "$?" = "0" ]]; then
