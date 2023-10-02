@@ -100,7 +100,11 @@ else
 
                 # Show an entry dialog to get user input for the ports from the network
                 service=$(zenity --entry --title "Hercules" --text "$options_text" --entry-text "")
-                
+                #stops the program
+                if [[ " ${exit[*]} " == *" ${service} "* ]]; then
+                    zenity --info --title "Hercules" --text "Stopping program."
+                    exit 1
+                fi
                 #tells the user what port they are scanning if they forget they can go back to the terminal and it will tell them
                 echo -e "[+]The port you are scanning is: ${service}"
                 
@@ -126,11 +130,6 @@ else
                         $GUI_HYDRA
                         exit 1
                     fi
-                
-                #stops the program
-                elif [[ " ${exit[*]} " == *" ${service} "* ]]; then
-                    zenity --info --title "Hercules" --text "Stopping program."
-                    exit 1
                 
                 # if the users puts nothing into the input feild it says ERROR
                 elif [[ "${service}" == "" ]]; then
