@@ -109,3 +109,12 @@ PORT     STATE SERVICE
 8888/tcp open  sun-answerbook
 MAC Address: 00:F3:61:44:84:D7 (Amazon Technologies)
 
+Nmap scan report for Zeros-Air.lan (192.168.1.13)
+Host is up (0.00022s latency).
+Not shown: 998 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+5000/tcp open  upnp
+7000/tcp open  afs3-fileserver
+
+# Nmap done at Mon Oct  2 12:23:07 2023 -- 256 IP addresses (15 hosts up) scanned in 107.27 seconds
