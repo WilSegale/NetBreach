@@ -19,6 +19,11 @@ sudo python3 Hercules.py
 python3 Hercules.py --help or python3 Hercules.py -h
 ```
 
+## if you want to use it locally on your computer just do
+```bash
+sudo python3 Hercules.py --local
+```
+
 ## if you are wondering how to use this script just type
 
 ```bash
