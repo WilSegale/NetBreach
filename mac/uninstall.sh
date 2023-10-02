@@ -89,7 +89,7 @@ else
                     echo -e "________PIP Packages________"
                     for pipPackage in "${pipPackages[@]}"
                         do
-                            echo -e "$pipPackage"
+                            echo -e "${pipPackage}"
                     done
 
                     echo -e "________ERROR________"
