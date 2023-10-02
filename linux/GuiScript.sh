@@ -7,7 +7,7 @@ SITE="https://google.com/"
 root=0
 
 #checks if the computer is on MAC OS
-OS="darwin"
+OS="linux"
 
 # user name and hostname popup prompts text
 userName="Input Username:"
@@ -247,7 +247,7 @@ else
     else
         clear
         # Warning message for wrong OS
-        echo "WARNING:root:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
+        echo "WARNING:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
         zenity --warning --title="WRONG OS" --text="TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE"
     fi
 fi
