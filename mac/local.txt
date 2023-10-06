@@ -1,14 +1,11 @@
-# Nmap 7.94 scan initiated Mon Oct  2 18:13:35 2023 as: nmap -Pn -oN local.txt 127.0.0.1
+# Nmap 7.94 scan initiated Fri Oct  6 19:02:07 2023 as: nmap -Pn -oN local.txt 127.0.0.1
 mass_dns: warning: Unable to determine any DNS servers. Reverse DNS is disabled. Try using --system-dns or specify valid servers with --dns-servers
 Nmap scan report for localhost (127.0.0.1)
-Host is up (0.000058s latency).
-Not shown: 994 closed tcp ports (reset)
-PORT      STATE SERVICE
-3283/tcp  open  netassistant
-5000/tcp  open  upnp
-5900/tcp  open  vnc
-7000/tcp  open  afs3-fileserver
-7920/tcp  open  unknown
-49152/tcp open  unknown
+Host is up (0.000042s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT     STATE SERVICE
+5000/tcp open  upnp
+7000/tcp open  afs3-fileserver
+7920/tcp open  unknown
 
-# Nmap done at Mon Oct  2 18:13:35 2023 -- 1 IP address (1 host up) scanned in 0.03 seconds
+# Nmap done at Fri Oct  6 19:02:07 2023 -- 1 IP address (1 host up) scanned in 0.04 seconds
