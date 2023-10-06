@@ -41,7 +41,6 @@ else
 
                 # List of PIP packages that will be uninstalled if installed
                 pipPackages=(
-                    "tqdm"
                     "asyncio"
                     "colorama"
                 )

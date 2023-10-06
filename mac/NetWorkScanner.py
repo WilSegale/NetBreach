@@ -1,4 +1,5 @@
-from colorama import *
+
+from DontEdit import *
 from threading import Thread, Lock
 from queue import Queue
 import pyfiglet
@@ -12,14 +13,8 @@ os.system("clear")
 ascii_banner = pyfiglet.figlet_format("PORT SCANNER")
 print(ascii_banner)
 # some colors
-init()
 
-GREEN = Fore.GREEN
-RESET = Fore.RESET
-RED = Fore.RED
-BRIGHT = Style.BRIGHT
-NORMAL = Style.NORMAL
-DIM = Style.DIM
+
 
 # number of threads, feel free to tune this parameter as you wish
 N_THREADS = 200
@@ -39,10 +34,10 @@ try:
             s.connect((host, port))
         except:
             with print_lock:
-                print(f"{host:15}:{port:5} is {RED}CLOSED{RESET}", end='\r')
+                print(f"{host:15}:{port:5} is {RED}CLOSED{NC}", end='\r')
         else:
             with print_lock:
-                print(f"{host:15}:{port:5} is {GREEN}OPEN{RESET}")
+                print(f"{host:15}:{port:5} is {GREEN}OPEN{NC}")
             open_ports_found = True
         finally:
             s.close()

@@ -39,7 +39,7 @@ required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
     echo "# Loading GUI... $percentage%"
 
     # Simulate some work (you can replace this with your actual task)
-    sleep 1
+    sleep 0.1
   done
 ) | zenity --progress --auto-close --title="Loading..." --text="Starting..." --percentage=0
 

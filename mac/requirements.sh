@@ -33,7 +33,7 @@ else
                     "hydra"
                     "nmap"
                     "mysql"
-                   os "figlet"
+                    "figlet"
                     "zenity"
                 )
                 
@@ -87,7 +87,7 @@ else
                 /Library/Developer/CommandLineTools/usr/bin/python3 -m pip install --upgrade pip
                 
                 echo
-                successful_MESSAGE="[+]All packages are installed successfully"
+                successful_MESSAGE="${GREEN}[+]${NC} All packages are installed successfully"
                 echo -e "${successful_MESSAGE}"
             else
                 echo -e "${RED}ERROR:${NC} NOT CONNECTED TO THE INTERNET"
