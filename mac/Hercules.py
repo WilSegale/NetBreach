@@ -68,9 +68,9 @@ try:
         # easy way to read the root user function
         ROOT = 0
 
-        def connect(host="google.com"):
+        def connect(url="https://google.com"):
             try:
-                urllib.request.urlopen("http://" + host)  # Try to open a connection to the host
+                urllib.request.urlopen(url)  # Try to open a connection to the host
                 return True  # If successful, return True
             except:
                 return False  # If unsuccessful, return False
