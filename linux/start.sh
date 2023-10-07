@@ -1,3 +1,5 @@
+#!/bin/bash
+
 start(){
   selected_items=$(zenity --list --text "Select Version" --column "Version" \
     "Gui with temrinal(1)" \
