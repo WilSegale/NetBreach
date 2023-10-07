@@ -254,14 +254,14 @@ else
 
                     else
                         # Cracks MySQL passwords
-                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host
+                        hydra -l $userName -P rockyou.txt -t 64 -vV -o output.log -I mysql://$hostName
                         #puts a popup saying that the computer is trying to connect to a mysql server
                         title="Connecting to ${user}"
                         Connecting_To_MySQL_SERVER="We are connecting you to ${host}. Please wait..."
                         zenity --info --title="${title}" --text="${Connecting_To_MySQL_SERVER}"
 
                         sleep 3
-                        mysql -u $user -p -A
+                        mysql -u $userName -p -A
                     fi
                 fi
             }
