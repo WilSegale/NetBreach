@@ -1,7 +1,11 @@
 import os
 import datetime
 import logging
-from colorama import Fore, Style  # Import specific classes/functions from colorama
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BRIGHT='\033[1m'
+RESET='\033[0m'
 
 current_time = datetime.datetime.now().time()
 formatted_time = current_time.strftime("%H:%M:%S %p")
@@ -12,10 +16,6 @@ console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.INFO)
 logging.getLogger().addHandler(console_handler)
 
-GREEN = Fore.GREEN
-RED = Fore.RED
-RESET = Style.RESET_ALL
-BRIGHT = Style.BRIGHT
 
 def CheckOS():
     # Check for Linux or macOS (Darwin)
