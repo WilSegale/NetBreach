@@ -10,9 +10,6 @@ bash requirements.sh
 sudo python3 Hercules.py
 ```
 
-## if you want to see the version of the program type
-
-
 ## if you are wondering how to use this script just type
 
 ```bash

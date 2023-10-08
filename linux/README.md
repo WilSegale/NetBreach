@@ -10,28 +10,29 @@ bash requirements.sh
 sudo python3 Hercules.py
 ```
 
-## if you want to see the version of the program type
-
-
 ## if you are wondering how to use this script just type
 
 ```bash
 python3 Hercules.py --help or python3 Hercules.py -h
 ```
 
+## if you want to use it locally on your computer just do
+```bash
+sudo python3 Hercules.py --local
+```
+
 ## if you are wondering how to use this script just type
 
 ```bash
-bash script.sh --help
+bash script.sh --help or bash script.sh -h
 ```
 
 ## if you are wondering what the requirements do type
 
 ```bash
-bash requirements.sh --help
+bash requirements.sh --help or bash requirements.sh -h
 ```
 
 ### This software is going to help you crack passwords.
 #
-### To crack VNC(5900) dont type anything in the "Username" input.
-
+### To crack VNC(5900) dont type anything in the "Username" input. Just type the ip address in the hostname input field.
