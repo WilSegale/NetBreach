@@ -4,7 +4,7 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 # OS of the computer
-OS="Darwin"
+OS="linux"
 
 # For the wget functionality to work
 SITE_URL="https://google.com"
@@ -81,8 +81,8 @@ else
             wget -q --spider $SITE_URL
 
             # If the user is connected to the internet, it works as normal
-            if [[ $? -eq 0 ]]; then
-                echo
+            if ! make mytarget; then
+                clear
             # Else, it notifies them that they are not connected to the internet and tells them to connect
             else
                 # Error message if offline notification

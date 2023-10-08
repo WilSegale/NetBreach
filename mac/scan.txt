@@ -1,0 +1,1 @@
+# Nmap 7.94 scan initiated Sun Oct  8 14:07:24 2023 as: nmap -sS -Pn -oN scan.txt --open 192.168.1.1/24
