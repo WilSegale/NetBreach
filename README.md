@@ -16,10 +16,9 @@ bash requirements.sh
 sudo python3 Hercules.py
 ```
 
+## If you want more info about the program in your OS folder, type
 
-
-## If you want more info about the program in your OS folder, type 
 ```bash 
 open README.md
 ```
-##  file it will explain how the program works and how to use it, and how to use it to its full capacity 
+## file it will explain how the program works and how to use it, and how to use it to its full capacity 
