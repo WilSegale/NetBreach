@@ -10,7 +10,7 @@ root=0
 total_steps=100
 
 #checks if the computer is on MAC OS
-OS="linux"
+OS="darwin"
 
 # user name and hostname popup prompts text
 userName="Input Username:"
