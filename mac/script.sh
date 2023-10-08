@@ -78,7 +78,7 @@ else
             clear
 
             # Try to connect to the server
-            wget -q --spider $SITE_URL
+            wget -q --spider "${SITE_URL}"
 
             # If the user is connected to the internet, it works as normal
             if [[ $? -eq 0 ]]; then
