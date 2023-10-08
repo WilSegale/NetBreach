@@ -1,5 +1,9 @@
 # !Do not use this software in Schools or Business!
 
+## Bugs and Issues
+### If you find any bugs or issues click on [Email me](mailto:wsegalework@gmail.com)
+
+
 ## Type first
 ```bash
 bash requirements.sh
@@ -13,7 +17,7 @@ sudo python3 Hercules.py
 ## if you are wondering how to use this script just type
 
 ```bash
-python3 Hercules.py --help or python3 Hercules.py -h
+sudo python3 Hercules.py --help or sudo python3 Hercules.py -h
 ```
 
 ## if you want to use it locally on your computer just do
