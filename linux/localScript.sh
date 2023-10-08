@@ -6,9 +6,6 @@ NC='\033[0m' # No Color
 # OS of the computer
 OS="linux"
 
-# For the wget functionality to work
-SITE_URL="https://google.com"
-
 # Root user
 root=0
 
@@ -30,7 +27,7 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
 # List of required packages/commands (separated by spaces)
-required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
+required_packages=("nmap" "hydra" "ssh" "mysql")
 
 # Function to check if a command exists
 command_exists() {
@@ -75,26 +72,6 @@ else
             exit
         else
             sudo rm -rf hydra.restore
-            clear
-
-            # Try to connect to the server
-            wget -q --spider $SITE_URL
-
-            # If the user is connected to the internet, it works as normal
-            if [[ $? -eq 0 ]]; then
-                echo
-            # Else, it notifies them that they are not connected to the internet and tells them to connect
-            else
-                # Error message if offline notification
-                offlineTitle="Offline"
-                offline="TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}"
-                osascript -e "display notification \"$offline\" with title \"$offlineTitle\""
-
-                # Offline text in the terminal
-                echo "ERROR:root:TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}." >> ERROR.LOG
-                echo "TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}"
-                exit 1
-            fi
 
             # Clear the terminal
             clear
@@ -108,34 +85,32 @@ else
                 read -p ">>> " service
                 
                 if [[ $service == "ALL" || $service == "all" ]]; then
-                    # Tells the user that it can take up to an hour to complete the scanning process
-                    echo -e "${RED}This can take up to 1 hour to complete.${NC}"
-                    # Scan the entire network and display open ports
-                    sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
-                    hydra -h
-                    echo "Put in Hydra first to start the script."
-                    echo ""
-                    read -p ">>> " Hydra
+                  # Tells the user that it can take up to an hour to complete the scanning process
+                  echo -e "${RED}This can take up to 1 hour to complete.${NC}"
+                  # Scan the entire network and display open ports
+                  sudo nmap 127.0.0.1 -Pn -oN local.txt
+                  hydra -h
+                  echo "Put in Hydra first to start the script."
+                  echo ""
+                  read -p ">>> " Hydra
 
-                    if [[ " ${exit[*]} " == *" ${Hydra} "* ]]; then
-                        echo "[+] Goodbye"
-                        exit 1
-                    else
-                        $Hydra
-                        exit 1
-                    fi
-
+                  if [[ " ${exit[*]} " == *" ${Hydra} "* ]]; then
+                      echo "[+] Goodbye"
+                      exit 1
+                  else
+                      $Hydra
+                      exit 1
+                  fi
                 # If the user asks what the program does, it goes to a function that helps them and explains what the program does
                 elif [[ " ${exit[*]} " == *" ${service} "* ]]; then
                     echo "Stopping program..."
                     sleep 1
-                
+                    exit 1
                 #checks if the user has put nothing into the input feild
                 elif [[ " ${empty[*]} " == *" ${service} "* ]]; then
                     echo -e "${RED}ERROR:${NC} plase input a number into the input field"
-                    clear
-                    Hercules
-                
+                    sleep 1
+                    exit 1                
                 #checks if the user has put in a letter insed of a number into the input feild
                 elif [[ " ${alphabet[*]} " == *" ${service} "* ]]; then
                     echo "Please enter a number next time"
@@ -143,7 +118,7 @@ else
 
                 else
                     # Scan specific port
-                    sudo nmap -sS 192.168.1.1/24 -p $service --open
+                    nmap 127.0.0.1 -p $service
                 fi
             }
 
