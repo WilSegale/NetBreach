@@ -10,7 +10,7 @@ root=0
 total_steps=100
 
 #checks if the computer is on MAC OS
-OS="darwin"
+OS="linux"
 
 # user name and hostname popup prompts text
 userName="Input Username:"
@@ -35,8 +35,8 @@ required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
     percentage=$((step * 100 / total_steps))
     
     # Update the Zenity progress bar and percentage
-    echo -e "${percentage}"
-    echo "# Loading GUI... ${percentage}%"
+    echo "$percentage"
+    echo "# Loading GUI... $percentage%"
 
     # Simulate some work (you can replace this with your actual task)
     sleep 0.1
@@ -44,8 +44,7 @@ required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
 ) | zenity --progress --auto-close --title="Loading..." --text="Starting..." --percentage=0
 
 # Checks the exit status of the progress bar
-if [[ "$?" = "0" ]]; then
-    #Completed successfully
+if ! make mytarget; then
     zenity --info --title="Done" --text="Loading is complete!"
 else
     #user cancled the progress bar
@@ -62,7 +61,7 @@ command_exists() {
 # Check for required packages
 for package in "${required_packages[@]}"; do
   if ! command_exists "$package"; then
-    echo -e "ERROR: The required package ${RED}'$package'${NC} is not installed. Please install it and try again."
+    echo -e "ERROR: The required package ${GREEN}'$package'${NC} is not installed. Please install it and try again."
     exit 1
   fi
 done
@@ -107,7 +106,7 @@ else
             wget -q --spider "${SITE}"
             
             # If the user is connected to the internet, it works as normal
-            if [[ $? -eq 0 ]]; then
+            if ! make mytarget; then
                 clear
             
             # Else, it notifies them that they are not connected to the internet and tells them to connect to the internet again
@@ -170,7 +169,7 @@ else
                 #scans a port that you choose
                 else
                     zenity --info --title "Hercules" --text "Scanning port ${service}." --timeout=5
-                    sudo nmap -sS 192.168.1.1/24 -p $service --open
+                    sudo nmap -sS 192.168.1.1/24 -p "$service" --open
                 fi
             }
 
@@ -193,7 +192,7 @@ else
                     # It will continue as normal
                     else
                         # Crack VNC password
-                        hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host
+                        hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://"$host"
                         
                         # Alerts the user that the computer is trying to connect to the VNC server
                         title="Connecting to ${host}"
@@ -224,7 +223,7 @@ else
                         Hercules
                     else
                         # Cracks SSH Passwords
-                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host
+                        hydra -l "$user" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"$host"
                         # Alerts the user that the computer is trying to connect to the ssh server
                         title="Connecting to ${user}"
                         Connecting_To_SSH_SERVER="We are connecting you to ${user}. Please wait..."
@@ -236,7 +235,7 @@ else
                         Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
                         zenity --info --title="${title}" --text="${Connected_To_SSH_SERVER}"
 
-                        ssh $user@$host
+                        ssh "$user"@"$host"
                     fi
                 fi
             }
@@ -254,14 +253,14 @@ else
 
                     else
                         # Cracks MySQL passwords
-                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host
+                        hydra -l "$userName" -P rockyou.txt -t 64 -vV -o output.log -I mysql://"$hostName"
                         #puts a popup saying that the computer is trying to connect to a mysql server
                         title="Connecting to ${user}"
                         Connecting_To_MySQL_SERVER="We are connecting you to ${host}. Please wait..."
                         zenity --info --title="${title}" --text="${Connecting_To_MySQL_SERVER}"
 
                         sleep 3
-                        mysql -u $user -p -A
+                        mysql -u "$userName" -p -A
                     fi
                 fi
             }
