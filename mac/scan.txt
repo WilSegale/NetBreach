@@ -1,1 +1,160 @@
 # Nmap 7.94 scan initiated Sun Oct  8 14:07:24 2023 as: nmap -sS -Pn -oN scan.txt --open 192.168.1.1/24
+Nmap scan report for 192.168.1.1
+Host is up (0.020s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT    STATE SERVICE
+53/tcp  open  domain
+80/tcp  open  http
+443/tcp open  https
+MAC Address: 4C:19:5D:3B:33:DE (Sagemcom Broadband SAS)
+
+Nmap scan report for wlan0-816.lan (192.168.1.15)
+Host is up (0.014s latency).
+Not shown: 978 closed tcp ports (reset), 21 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+6668/tcp open  irc
+MAC Address: FC:67:1F:F4:12:F0 (Tuya Smart)
+
+Nmap scan report for wlan0-817.lan (192.168.1.16)
+Host is up (0.068s latency).
+Not shown: 989 closed tcp ports (reset), 10 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+6668/tcp open  irc
+MAC Address: FC:67:1F:F4:1D:D0 (Tuya Smart)
+
+Nmap scan report for 192.168.1.22
+Host is up (0.026s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT     STATE SERVICE
+8009/tcp open  ajp13
+9080/tcp open  glrpc
+MAC Address: 70:70:AA:02:5A:55 (Amazon Technologies)
+
+Nmap scan report for wlan0-821.lan (192.168.1.43)
+Host is up (0.013s latency).
+Not shown: 986 closed tcp ports (reset), 13 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+6668/tcp open  irc
+MAC Address: 1C:90:FF:3D:6B:54 (Tuya Smart)
+
+Nmap scan report for wlan0-826.lan (192.168.1.46)
+Host is up (0.016s latency).
+Not shown: 990 closed tcp ports (reset), 9 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+6668/tcp open  irc
+MAC Address: FC:67:1F:F4:28:CD (Tuya Smart)
+
+Nmap scan report for wlan0-815.lan (192.168.1.68)
+Host is up (0.051s latency).
+Not shown: 998 closed tcp ports (reset), 1 filtered tcp port (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+6668/tcp open  irc
+MAC Address: FC:67:1F:F4:0A:6E (Tuya Smart)
+
+Nmap scan report for 192.168.1.112
+Host is up (0.016s latency).
+Not shown: 989 closed tcp ports (reset)
+PORT      STATE SERVICE
+23/tcp    open  telnet
+80/tcp    open  http
+7000/tcp  open  afs3-fileserver
+7777/tcp  open  cbt
+8008/tcp  open  http
+8009/tcp  open  ajp13
+8443/tcp  open  https-alt
+8800/tcp  open  sunwebadmin
+9000/tcp  open  cslistener
+10001/tcp open  scp-config
+50002/tcp open  iiimsf
+MAC Address: CC:90:93:17:B1:7B (Hansong Tehnologies)
+
+Nmap scan report for blink-sync-module.lan (192.168.1.165)
+Host is up (0.029s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE
+53/tcp open  domain
+MAC Address: 00:03:7F:66:D6:1D (Atheros Communications)
+
+Nmap scan report for Camp.lan (192.168.1.182)
+Host is up (0.0064s latency).
+Not shown: 993 closed tcp ports (reset)
+PORT      STATE SERVICE
+53/tcp    open  domain
+5000/tcp  open  upnp
+7000/tcp  open  afs3-fileserver
+7100/tcp  open  font-service
+49152/tcp open  unknown
+49153/tcp open  unknown
+62078/tcp open  iphone-sync
+MAC Address: C0:95:6D:78:85:56 (Apple)
+
+Nmap scan report for 192.168.1.185
+Host is up (0.023s latency).
+Not shown: 994 closed tcp ports (reset)
+PORT      STATE SERVICE
+23/tcp    open  telnet
+80/tcp    open  http
+7000/tcp  open  afs3-fileserver
+7777/tcp  open  cbt
+8800/tcp  open  sunwebadmin
+50002/tcp open  iiimsf
+MAC Address: CC:90:93:17:B2:7C (Hansong Tehnologies)
+
+Nmap scan report for wlan0-827.lan (192.168.1.186)
+Host is up (0.017s latency).
+Not shown: 992 closed tcp ports (reset), 7 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+6668/tcp open  irc
+MAC Address: FC:67:1F:EC:DE:EB (Tuya Smart)
+
+Nmap scan report for 192.168.1.188
+Host is up (0.019s latency).
+Not shown: 989 closed tcp ports (reset)
+PORT      STATE SERVICE
+23/tcp    open  telnet
+80/tcp    open  http
+7000/tcp  open  afs3-fileserver
+7777/tcp  open  cbt
+8008/tcp  open  http
+8009/tcp  open  ajp13
+8443/tcp  open  https-alt
+8800/tcp  open  sunwebadmin
+9000/tcp  open  cslistener
+10001/tcp open  scp-config
+50002/tcp open  iiimsf
+MAC Address: CC:90:93:17:B2:7F (Hansong Tehnologies)
+
+Nmap scan report for wlan0-824.lan (192.168.1.202)
+Host is up (0.014s latency).
+Not shown: 994 closed tcp ports (reset), 5 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+6668/tcp open  irc
+MAC Address: FC:67:1F:EC:E4:48 (Tuya Smart)
+
+Nmap scan report for 192.168.1.253
+Host is up (0.013s latency).
+Not shown: 957 filtered tcp ports (no-response), 40 closed tcp ports (reset)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+1080/tcp open  socks
+6543/tcp open  mythtv
+8888/tcp open  sun-answerbook
+MAC Address: 00:F3:61:44:84:D7 (Amazon Technologies)
+
+Nmap scan report for Zeros-Air.lan (192.168.1.13)
+Host is up (0.00028s latency).
+Not shown: 997 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+22/tcp   open  ssh
+5000/tcp open  upnp
+7000/tcp open  afs3-fileserver
+
+# Nmap done at Sun Oct  8 14:08:32 2023 -- 256 IP addresses (24 hosts up) scanned in 67.84 seconds
