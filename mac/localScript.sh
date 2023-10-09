@@ -77,7 +77,7 @@ else
             clear
 
             # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
-            Hercules() {
+            LocalHercules() {
                 # The logo of the program
                 figlet -f slant "Hercules"
                 echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
@@ -88,7 +88,7 @@ else
                   # Tells the user that it can take up to an hour to complete the scanning process
                   echo -e "${RED}This can take up to 1 hour to complete.${NC}"
                   # Scan the entire network and display open ports
-                  sudo nmap 127.0.0.1 -Pn -oN local.txt
+                  sudo nmap --system-dns 127.0.0.1  -Pn -oN local.txt
                   hydra -h
                   echo "Put in Hydra first to start the script."
                   echo ""
@@ -118,11 +118,11 @@ else
 
                 else
                     # Scan specific port
-                    nmap 127.0.0.1 -p $service
+                    nmap --system-dns 127.0.0.1 -p $service
                 fi
             }
 
-            RunHackingCommand() {
+            LocalRunHackingCommand() {
                 # Break in the outputs of my code
                 echo
                 # Services to crack the network
@@ -132,7 +132,7 @@ else
                 read -p "Input Hostname: " host
             }
 
-            RunHackingCommandWithVNC() {
+            LocalRunHackingCommandWithVNC() {
                 if [[ $service == 5900 || $service == "VNC" ]]; then
                     # Checks if the user has put anything in the 'Input Username' function and the hostname function
                     # If not, it will prompt the user to enter the username and hostname
@@ -168,7 +168,7 @@ else
                 fi
             }
 
-            RunHackingCommandWithSSH() {
+            LocalRunHackingCommandWithSSH() {
                 if [[ $service == 22 || $service == "ssh" ]]; then
                     # Checks if the user has put anything in the 'Input Username' function and the hostname function
                     # If not, it will prompt the user to enter the username and hostname
@@ -200,7 +200,7 @@ else
                 fi
             }
 
-            RunHackingCommandWithMySQL() {
+            LocalRunHackingCommandWithMySQL() {
                 if [[ $service == 3306 || $service == "mysql" ]]; then
                     # Checks if the user has put anything in the 'Input Username' function and the hostname function
                     # If not, it will prompt the user to enter the username and hostname
@@ -220,15 +220,15 @@ else
                 fi
             }
 
-            Hercules # Calls the Hercules function
+            LocalHercules # Calls the Hercules function
 
-            RunHackingCommand # Calls the RunHackingCommand function
+            LocalRunHackingCommand # Calls the RunHackingCommand function
 
-            RunHackingCommandWithVNC # Calls the RunHackingCommandWithVNC function
+            LocalRunHackingCommandWithVNC # Calls the RunHackingCommandWithVNC function
 
-            RunHackingCommandWithSSH # Calls the RunHackingCommandWithSSH function
+            LocalRunHackingCommandWithSSH # Calls the RunHackingCommandWithSSH function
 
-            RunHackingCommandWithMySQL # Calls the RunHackingCommandWithMySQL function
+            LocalRunHackingCommandWithMySQL # Calls the RunHackingCommandWithMySQL function
         fi
     else
         clear

