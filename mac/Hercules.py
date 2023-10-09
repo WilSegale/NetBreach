@@ -56,6 +56,8 @@ try:
         print(HowToUse)
         print(info)
         print()
+
+    # puts the script in local mode
     elif len(sys.argv) == 2 and sys.argv[1] == "--local":
         # gets the current time and formats it HH:MM:SS
         current_time = datetime.datetime.now().time()
@@ -112,7 +114,8 @@ try:
             # makes a pop up dialog to tell the user that the OS is not correct
             print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
             print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
-
+    
+    # puts the program in global mode
     else:
         # gets the current time and formats it HH:MM:SS
         current_time = datetime.datetime.now().time()
