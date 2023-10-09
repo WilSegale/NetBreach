@@ -1,7 +1,4 @@
-import os
-import datetime
-import subprocess
-
+from DontEdit import *
 ERROR = open("ERROR.log", "a")
 
 # Terminal commands
