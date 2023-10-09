@@ -170,7 +170,6 @@ try:
                     print(f"ERROR:TIME:{formatted_time} Please run as ROOT. DATE:{current_date}", file=ERROR)
             else:
                 # makes a pop up dialog to tell the user that the OS is not correct
-                # makes a pop up dialog to tell the user that the OS is not correct
                 print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
                 print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
 
