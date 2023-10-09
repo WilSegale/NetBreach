@@ -8,9 +8,7 @@ try:
 
     OS='Darwin'
 
-    GREEN = "\033[92m"
-    RED = "\033[91m"
-    RESET = "\033[0m"
+   
 
     #this is for the user to understand what the program does
     if len(sys.argv) == 2 and sys.argv[1] == "--help" or len(sys.argv) == 2 and sys.argv[1] == "-h":
@@ -22,16 +20,18 @@ try:
 
         #this is for the user to understand what the program does
         HowToUse = "\n+++++++++++++++How to use++++++++++++++++++"
-        HowToUseInfo01 = "To use the program you have to tell the computer what port you want to scan."
-        HowToUseInfo02 = "\nIt will then scan the port that you asked for on the network and see if any ports that you asked are open."
-        HowToUseInfo03 = "\nIf there are any ports that are open, it will ask for a username and hostname"
-        HowToUseInfo04 = "\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
-        ending = ""
-
+        HowToUseInfo01 = f"To use the program you have to tell the computer what port you want to scan."
+        HowToUseInfo02 = f"\nIt will then scan the port that you asked for on the network and see if any ports that you asked are open."
+        HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
+        HowToUseInfo04 = f"\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
+        HowToUseInfo05 = f"\nIf you want to use the program locally, you can type 'sudo python3 {ProgramName} --local'"
+        
+        # holds the information about how the program works in a array so it can grab them more easily
         info = (HowToUseInfo01 +
                 HowToUseInfo02 + 
                 HowToUseInfo03 + 
-                HowToUseInfo04)
+                HowToUseInfo04 +
+                HowToUseInfo05)
         
         subprocess.run(["figlet", "? HELP ?"])
 
