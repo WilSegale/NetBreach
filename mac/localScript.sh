@@ -85,10 +85,8 @@ else
                 read -p ">>> " service
                 
                 if [[ $service == "ALL" || $service == "all" ]]; then
-                  # Tells the user that it can take up to an hour to complete the scanning process
-                  echo -e "${RED}This can take up to 1 hour to complete.${NC}"
                   # Scan the entire network and display open ports
-                  sudo nmap --system-dns 127.0.0.1  -Pn -oN local.txt
+                  nmap 127.0.0.1 --system-dns -Pn -oN local.txt
                   hydra -h
                   echo "Put in Hydra first to start the script."
                   echo ""
@@ -118,7 +116,7 @@ else
 
                 else
                     # Scan specific port
-                    nmap --system-dns 127.0.0.1 -p $service
+                    nmap  127.0.0.1 --system-dns -p $service
                 fi
             }
 
