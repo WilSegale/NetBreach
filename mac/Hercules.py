@@ -1,5 +1,5 @@
 from DontEdit import *
-from logo import *
+from HelpLogo import *
 
 try:
     ERROR = open("ERROR.log", "a")
@@ -7,8 +7,6 @@ try:
     ProgramName = "Hercules"
 
     OS='Darwin'
-
-   
 
     #this is for the user to understand what the program does
     if len(sys.argv) == 2 and sys.argv[1] == "--help" or len(sys.argv) == 2 and sys.argv[1] == "-h":

@@ -1,5 +1,5 @@
 from DontEdit import *
-from logo import *
+from HelpLogo import *
 
 try:
     ERROR = open("ERROR.log", "a")
