@@ -67,7 +67,7 @@ else
         clear
         if [[ $EUID -ne $root ]]; then
             # Error message if not running as root
-            echo "ERROR:root:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
+            echo "ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
             echo "TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}"
             exit
         else
@@ -231,7 +231,7 @@ else
     else
         clear
         # Warning message for wrong OS
-        echo "WARNING:root:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
+        echo "WARNING:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
         echo "TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE"
     fi
 fi

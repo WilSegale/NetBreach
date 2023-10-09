@@ -70,7 +70,7 @@ else
         clear
         if [[ $EUID -ne $root ]]; then
             # Error message if not running as root
-            echo "ERROR:root:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
+            echo "ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
             echo "TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}"
             exit
         else
@@ -86,7 +86,7 @@ else
             # Else, it notifies them that they are not connected to the internet and tells them to connect
             else
                 # Offline text in the terminal
-                echo "ERROR:root:TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}." >> ERROR.LOG
+                echo "ERROR:TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}." >> ERROR.LOG
                 echo "TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}"
                 exit 1
             fi
@@ -252,7 +252,7 @@ else
     else
         clear
         # Warning message for wrong OS
-        echo "WARNING:root:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
+        echo "WARNING:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
         echo "TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE"
     fi
 fi
