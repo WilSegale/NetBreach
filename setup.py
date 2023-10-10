@@ -5,10 +5,6 @@ ERROR = open("ERROR.log", "a")
 MacOS_Command = "sudo rm -rf linux && sudo rm -rf setup.py"
 LinuxCommand = "sudo rm -rf mac && sudo rm -rf setup.py"
 
-RED = '\033[0;31m'
-GREEN = '\033[0;32m'
-BRIGHT = '\033[1m'
-RESET = '\033[0m'
 
 current_time = datetime.datetime.now().time()
 formatted_time = current_time.strftime("%H:%M:%S %p")
