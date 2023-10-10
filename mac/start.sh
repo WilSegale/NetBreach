@@ -13,5 +13,5 @@ start(){
     sudo bash script.sh
   fi
   
-  }
+}
 start
