@@ -1,36 +1,7 @@
 #!/bin/bash
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-NC='\033[0m' # No Color
 
-# OS of the computer
-OS="darwin"
-
-# For the wget functionality to work
-SITE_URL="https://google.com"
-
-# Root user
-root=0
-
-# the array that holds nothing in it
-empty=("")
-
-alphabet=("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z")
-
-# The yes array that contains the yes input
-yes=("yes" "YES" "y" "Y")
-
-# The array that contains the exit input
-exit=("exit" "quit" "EXIT" "QUIT" "STOP" "stop")
-
-# Gets the current time in a 12-hour format
-CURRENT_TIME=$(date +"%I:%M:%S %p")
-
-# Gets current date in mm/dd/yyyy format
-CURRENT_DATE=$(date +"%m/%d/%Y")
-
-# List of required packages/commands (separated by spaces)
-required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
+# file that hold all the variables that need for the program to work properly
+source DontEdit.sh
 
 # Function to check if a command exists
 command_exists() {
@@ -107,6 +78,14 @@ else
                     echo -e "${RED}This can take up to 1 hour to complete.${NC}"
                     # Scan the entire network and display open ports
                     sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
+                    # asks if the user want to see scan on a open file or not
+                    read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
+                    if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
+                        echo "hello world"
+                    else
+                        echo "lksdjflkj"
+                    fi
+                    
                     hydra -h
                     echo "Put in Hydra first to start the script."
                     echo ""
