@@ -81,9 +81,10 @@ else
                     # asks if the user want to see scan on a open file or not
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                        echo "hello world"
+                        open scan.txt
                     else
-                        echo "lksdjflkj"
+                        echo "[-] Ok I will not open the scan.txt file"
+                        sleep 1
                     fi
                     
                     hydra -h
