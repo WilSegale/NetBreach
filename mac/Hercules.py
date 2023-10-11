@@ -101,7 +101,7 @@ try:
                         
                         time.sleep(delay)  # Pause to control the update rate
                 print_loading_bar(50)
-                os.system("bash localScript.sh")  # the script to run after loading
+                os.system("bash GlobalScript.sh")  # the script to run after loading
             
             else:    
                 # makes a pop up dialog to tell the user that the user is not root
@@ -173,7 +173,9 @@ try:
     
     # puts the program in global mode
     else:
-        print("Please use the correct number of arguments. Example [--global] [--local] [--help] [-h]")
+        print("Please use the correct number of arguments.") 
+        print("Example: [--global] [--local] [--help] [-h]")
+
 # if the user uses control-c, the program will exit
 except KeyboardInterrupt:
     print("\n[-]Exiting...")
