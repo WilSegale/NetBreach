@@ -173,7 +173,7 @@ try:
     # puts the program in global mode
     else:
         print("Please use the correct number of arguments.") 
-        print("Example: [--global] [--local] [--help] [-h]")
+        print("Example: [--global] [--local] [--Gui] [--help] [-h]")
 
 # if the user uses control-c, the program will exit
 except KeyboardInterrupt:
