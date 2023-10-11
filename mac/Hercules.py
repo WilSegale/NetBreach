@@ -102,7 +102,6 @@ try:
                         time.sleep(delay)  # Pause to control the update rate
                 print_loading_bar(50)
                 os.system("bash GlobalScript.sh")  # the script to run after loading
-            
             else:    
                 # makes a pop up dialog to tell the user that the user is not root
                 print(f"TIME:{formatted_time} Please run as ROOT. DATE:{current_date}")

