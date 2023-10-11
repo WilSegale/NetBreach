@@ -1,19 +1,18 @@
 #!/bin/bash
 
 # Define the remote server details
+cd ~/Desktop
 ls
 read -p "Remote Server: " remote_user
-read -p "remote_server_address" remote_server
-
-remote_path="~/destination_folder/"
+read -p "Remote Server Address: " remote_server
+read -p "Destination: " remote_path
 
 # List of files to send
-files_to_send=("file1.txt" "file2.txt" "file3.txt")
+read -ep "Input the File: " files_to_send
 
 # Loop through the files and send them
 for file in "${files_to_send[@]}"; do
-    scp "$file" "${remote_user}@${remote_server}:${remote_path}"
+    scp -r "$file" "${remote_user}@${remote_server}:${remote_path}"
 done
 
-echo "Files sent successfully!"
-
+echo "[+] All files sent successfully!"
