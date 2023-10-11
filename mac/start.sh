@@ -10,8 +10,7 @@ start(){
     sudo bash GuiScript.sh
 
   elif [[ "${selected_items}" == *"2"* ]]; then
-    sudo bash script.sh
+    sudo bash GlobalScript.sh
   fi
-  
 }
 start
