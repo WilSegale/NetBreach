@@ -1,0 +1,9 @@
+# Nmap 7.94 scan initiated Fri Oct 13 11:40:17 2023 as: nmap -sS -p 22 -oN 22 --open 192.168.1.1/24
+Nmap scan report for kali-raspberry-pi.fios-router.home (192.168.1.91)
+Host is up (0.29s latency).
+
+PORT   STATE SERVICE
+22/tcp open  ssh
+MAC Address: DC:A6:32:CD:DE:F5 (Raspberry Pi Trading)
+
+# Nmap done at Fri Oct 13 11:40:30 2023 -- 256 IP addresses (28 hosts up) scanned in 12.99 seconds
