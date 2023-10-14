@@ -1,13 +1,6 @@
 from DontEdit import *
 from HelpLogo import *
 
-import datetime
-import platform
-import time
-import os
-import urllib.request
-import sys
-import subprocess
 
 try:
     ERROR = open("ERROR.log", "a")
