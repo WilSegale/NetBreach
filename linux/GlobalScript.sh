@@ -169,7 +169,7 @@ else
                         # Put the
                         echo
                         echo "Loading VNC server..."
-                        open "vnc://${host}"
+                        xtightvncviewer "${host}"
                         exit
                     fi
                 fi
