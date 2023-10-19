@@ -1,33 +1,40 @@
-import os
-import subprocess
+import pathlib
+import sys
 import datetime
-RED = '\033[0;31m'
-GREEN = '\033[0;32m'
-BRIGHT = '\033[1m'
-RESET = '\033[0m'
+import logging
 
-ERROR = open("ERROR.log", "a")
+# Set up logging 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+handler = logging.FileHandler(f"{pathlib.Path(__file__).stem}_{datetime.datetime.now():%Y%m%d_%H%M%S}.log")
+handler.setLevel(logging.DEBUG)
+logger.addHandler(handler)
 
-# Define constants like BRIGHT, RED, and RESET if necessary
+# Platform specific commands 
+linux_command = ["rm", "-rf", "mac", "setup.py"]  
+macos_command = ["rm", "-rf", "linux", "setup.py"]
 
-MacOS_Command = "sudo rm -rf linux && sudo rm -rf setup.py"
-LinuxCommand = "sudo rm -rf mac && sudo rm -rf setup.py"
+if __name__ == "__main__":
 
-current_time = datetime.datetime.now().time()
-formatted_time = current_time.strftime("%H:%M:%S %p")
+  # Detect platform
+  if pathlib.os.name == "posix":
+    if pathlib.os.uname().sysname == "Linux":
+      platform = "linux"
+    elif pathlib.os.uname().sysname == "Darwin":
+      platform = "macos"
 
-def CheckOS():
-    # Check for Linux or macOS (Darwin)
-    if os.uname().sysname == "Linux":
-        subprocess.run(LinuxCommand, shell=True, check=True)
-        print("[+] DONE!")
-    elif os.uname().sysname == "Darwin":
-        subprocess.run(MacOS_Command, shell=True, check=True)
-        print("[+] DONE!")
-    else:
-        print(f"{formatted_time} Your system is not supported.", file=ERROR)
-        print('[-] Your system is not supported')
-
-# Close the ERROR.log file when done using the with statement
-with open("ERROR.log", "a") as ERROR:
-    CheckOS()
+  # Run command
+  if platform == "linux":
+    logger.info(f"Running command: {' '.join(linux_command)}")
+    try:
+      subprocess.run(linux_command, check=True)
+    except subprocess.CalledProcessError:
+      logger.error("Error running command")
+  elif platform == "macos":
+    logger.info(f"Running command: {' '.join(macos_command)}")
+    try:
+      subprocess.run(macos_command, check=True) 
+    except subprocess.CalledProcessError:
+      logger.error("Error running command")
+  else:
+    logger.error("Unsupported platform")
