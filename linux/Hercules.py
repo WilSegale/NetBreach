@@ -7,7 +7,7 @@ try:
 
     ProgramName = "Hercules"
 
-    OS='Linux'
+    OS='linux'
 
     #this is for the user to understand what the program does
     if len(sys.argv) == 2 and sys.argv[1] == "--help" or len(sys.argv) == 2 and sys.argv[1] == "-h":
@@ -24,13 +24,17 @@ try:
         HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
         HowToUseInfo04 = f"\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
         HowToUseInfo05 = f"\nIf you want to use the program locally, you can type 'sudo python3 {ProgramName} --local'"
+        HowToUseInfo06 = f"\nIf you want to use the program on global network, you can type 'sudo python3 {ProgramName} --global'"
+        HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type 'sudo python3 {ProgramName} --GUI'"
         
         # holds the information about how the program works in a array so it can grab them more easily
         info = (HowToUseInfo01 +
                 HowToUseInfo02 + 
                 HowToUseInfo03 + 
                 HowToUseInfo04 +
-                HowToUseInfo05)
+                HowToUseInfo05 +
+                HowToUseInfo06 +
+                HowToUseInfo07)
         
         subprocess.run(["figlet", "? HELP ?"])
 
@@ -101,12 +105,11 @@ try:
                         
                         time.sleep(delay)  # Pause to control the update rate
                 print_loading_bar(50)
-                os.system("bash start.sh")  # the script to run after loading
+                os.system("bash GuiScript.sh")  # the script to run after loading
             else:    
                 # makes a pop up dialog to tell the user that the user is not root
                 print(f"TIME:{formatted_time} Please run as ROOT. DATE:{current_date}")
                 print(f"ERROR:TIME:{formatted_time} Please run as ROOT. DATE:{current_date}", file=ERROR)
-        
         else:
             # makes a pop up dialog to tell the user that the OS is not correct
             # makes a pop up dialog to tell the user that the OS is not correct

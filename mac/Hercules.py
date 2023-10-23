@@ -24,13 +24,17 @@ try:
         HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
         HowToUseInfo04 = f"\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
         HowToUseInfo05 = f"\nIf you want to use the program locally, you can type 'sudo python3 {ProgramName} --local'"
+        HowToUseInfo06 = f"\nIf you want to use the program on global network, you can type 'sudo python3 {ProgramName} --global'"
+        HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type 'sudo python3 {ProgramName} --GUI'"
         
         # holds the information about how the program works in a array so it can grab them more easily
         info = (HowToUseInfo01 +
                 HowToUseInfo02 + 
                 HowToUseInfo03 + 
                 HowToUseInfo04 +
-                HowToUseInfo05)
+                HowToUseInfo05 +
+                HowToUseInfo06 +
+                HowToUseInfo07)
         
         subprocess.run(["figlet", "? HELP ?"])
 
