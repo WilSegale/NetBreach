@@ -50,10 +50,9 @@ else
             clear
 
             # Try to connect to the server
-            wget -q --spider "${SITE_URL}"
 
             # If the user is connected to the internet, it works as normal
-            if ! make mytarget; then
+            if wget -q --spider "${SITE_URL}"; then
                 clear
             # Else, it notifies them that they are not connected to the internet and tells them to connect
             else
