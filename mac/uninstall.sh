@@ -111,12 +111,12 @@ else
             else
                 echo -e "${RED}ERROR: NOT CONNECTED TO THE INTERNET${NC}"
             fi
-        elif [[ "${yes[*]}" == *"$YES_NO"* ]]; then
-            echo -e "[+] Ok, I will remove the packages."
-        elif [[ "${no[*]}" == *"$YES_NO"* ]];then
+
+        elif [[ "${no[*]}" == *"$YES_NO"* ]]; then
             echo -e "[-] Ok, I will not remove the packages."
         else
             echo -e "${RED}Please enter a valid option${NC}"
+            exit 1
         fi
     else
         echo -e "${RED}${BRIGHT}This script can only be run on Mac OS${NC}"
