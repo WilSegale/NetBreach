@@ -3,12 +3,6 @@
 # file that hold all the variables that need for the program to work properly
 source DontEdit.sh
 
-if [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_TTY" ]; then
-    sudo bash SSH_CONNECTION_SCRIPT
-else
-    echo "You are not using SSH."
-fi
-
 
 # Function to check if a command exists
 command_exists() {

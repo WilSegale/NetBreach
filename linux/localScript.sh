@@ -1,10 +1,11 @@
 #!/bin/bash
+#imports the file with the necessary things it need to work properly 
+
+source DontEdit.sh
+
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
-
-# OS of the computer
-OS="linux"
 
 # Root user
 root=0

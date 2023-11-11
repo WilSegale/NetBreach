@@ -3,7 +3,6 @@
 #connets to the dontedit file to see what OS they are using
 source DontEdit.sh
 
-
 #url to see if the user is connected to the internet
 SITE="https://google.com/"
 
