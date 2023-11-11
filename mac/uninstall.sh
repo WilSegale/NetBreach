@@ -1,13 +1,14 @@
+
 #!/bin/bash
+
+#imports the dont edit file to see what os the program is using
+source DontEdit.sh
 
 # Color variables for formatting output
 RED='\033[0;31m'       # Red color
 GREEN='\033[0;32m'     # Green color
 BRIGHT='\033[1m'       # Bright text
 NC='\033[0m'           # No color
-
-# Operating system identifier for Mac
-MAC="darwin"
 
 # Check if the script is run as root (sudo)
 if [ "$(id -u)" -eq 0 ]; then
@@ -18,9 +19,6 @@ if [ "$(id -u)" -eq 0 ]; then
 else
     # Check if the operating system is macOS
     if [[ "$OSTYPE" == "${MAC}"* ]]; then
-        # Arrays for acceptable "yes" and "no" responses
-        yes=("yes" "Yes" "YES")
-        no=("no" "No" "NO")
         
         # Prompt the user to confirm if they want to remove packages
         echo -e "${RED}${BRIGHT}!Are you sure you want to remove your Packages (YES/NO)!:${NC}"
@@ -67,7 +65,6 @@ else
                 do
                     if pip3 show "$pipPackage" >/dev/null 2>&1; then
                         pip3 uninstall "$pipPackage" -y
-
                         # Check the exit status of the last command
                         if [ $? -ne 0 ]; then
                             echo -e "Error occurred during uninstallation of \"$pipPackage\""
@@ -115,9 +112,9 @@ else
                 echo -e "${RED}ERROR: NOT CONNECTED TO THE INTERNET${NC}"
             fi
         elif [[ "${yes[*]}" == *"$YES_NO"* ]]; then
-            echo -e "[-]Ok, I will remove the packages."
+            echo -e "[+] Ok, I will remove the packages."
         elif [[ "${no[*]}" == *"$YES_NO"* ]];then
-            echo -e "Ok, I will not remove the packages."
+            echo -e "[-] Ok, I will not remove the packages."
         else
             echo -e "${RED}Please enter a valid option${NC}"
         fi
