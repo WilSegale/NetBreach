@@ -116,7 +116,7 @@ else
 
                 else
                     # Scan specific port
-                    nmap  127.0.0.1 --system-dns -p $service
+                    nmap 127.0.0.1 --system-dns -p $service
                 fi
             }
 
