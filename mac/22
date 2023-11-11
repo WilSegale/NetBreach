@@ -1,8 +1,0 @@
-# Nmap 7.94 scan initiated Fri Nov 10 20:34:41 2023 as: nmap -sS -p 22 -oN 22 --open 192.168.1.1/24
-Nmap scan report for zeros-Air.fios-router.home (192.168.1.38)
-Host is up (0.00022s latency).
-
-PORT   STATE SERVICE
-22/tcp open  ssh
-
-# Nmap done at Fri Nov 10 20:34:52 2023 -- 256 IP addresses (27 hosts up) scanned in 11.48 seconds
