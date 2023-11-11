@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#connets to the dontedit file to see what OS they are using
+source DontEdit.sh
+
+
 #url to see if the user is connected to the internet
 SITE="https://google.com/"
 
@@ -8,9 +12,6 @@ root=0
 
 #speed of the loading process
 total_steps=100
-
-#checks if the computer is on MAC OS
-OS="linux"
 
 # user name and hostname popup prompts text
 userName="Input Username:"
