@@ -57,8 +57,8 @@ else
 
                 # Install PIP packages
                 for PIP in "${pipPackages[@]}"; do
-                    echo "Installing $PIP..."
-                    pip3 install "$PIP"
+                    echo "Installing ${PIP}..."
+                    pip3 install "${PIP}"
                 done
 
                 echo
@@ -70,7 +70,7 @@ else
                 echo
                 title="Packages"
                 ERROR_MESSAGE="All packages are installed successfully"
-                notify-send "$title" "$ERROR_MESSAGE" # Use notify-send for Linux desktop notifications
+                notify-send "${title}" "${ERROR_MESSAGE}" # Use notify-send for Linux desktop notifications
                 echo -e "${GREEN}All packages installed.${NC}"
             else
                 title="ERROR"
