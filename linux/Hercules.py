@@ -1,7 +1,6 @@
 from DontEdit import *
 from HelpLogo import *
 
-
 try:
     ERROR = open("ERROR.log", "a")
 
