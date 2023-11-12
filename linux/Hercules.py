@@ -10,7 +10,7 @@ try:
     OS='linux'
 
     #this is for the user to understand what the program does
-    if len(sys.argv) == 2 and sys.argv[1] == "--help" or len(sys.argv) == 2 and sys.argv[1] == "-h":
+    if len(sys.argv) == 2 and sys.argv[1] in HELP:
         HelpFile = open("HELP.txt", "w")
 
         #This is for the user to know what programs are used in this program
@@ -24,7 +24,7 @@ try:
         HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
         HowToUseInfo04 = f"\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
         HowToUseInfo05 = f"\nIf you want to use the program locally, you can type 'sudo python3 {ProgramName} --local'"
-        HowToUseInfo06 = f"\nIf you want to use the program on global network, you can type 'sudo python3 {ProgramName} --global'"
+        HowToUseInfo06 = f"\nIf you want to use the program on a global network, you can type 'sudo python3 {ProgramName} --global'"
         HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type 'sudo python3 {ProgramName} --GUI'"
         
         # holds the information about how the program works in a array so it can grab them more easily
@@ -39,7 +39,7 @@ try:
         subprocess.run(["figlet", "? HELP ?"])
 
         print(text_art, file=HelpFile)
-        print()
+        
         #inputs the program used logo in a help file
         print(ProgramsUsed, file=HelpFile)
 
@@ -60,7 +60,7 @@ try:
         print(info)
         print()
     
-    elif len(sys.argv) == 2 and sys.argv[1] == "--GUI":
+    elif len(sys.argv) == 2 and sys.argv[1] in GUI:
         # gets the current time and formats it HH:MM:SS
         current_time = datetime.datetime.now().time()
 
@@ -117,7 +117,7 @@ try:
             print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
     
     # connectes to the internet and checks and scans the prots on the internwork
-    elif len(sys.argv) == 2 and sys.argv[1] == "--global":
+    elif len(sys.argv) == 2 and sys.argv[1] in GLOBAL:
         # gets the current time and formats it HH:MM:SS
         current_time = datetime.datetime.now().time()
 
@@ -174,7 +174,7 @@ try:
             print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
     
     # puts the script in local mode
-    elif len(sys.argv) == 2 and sys.argv[1] == "--local":
+    elif len(sys.argv) == 2 and sys.argv[1] in LOCAL:
         # gets the current time and formats it HH:MM:SS
         current_time = datetime.datetime.now().time()
 
@@ -234,7 +234,7 @@ try:
     # puts the program in global mode
     else:
         print("Please use the correct number of arguments.") 
-        print("Example: [--global] [--local] [--GUI] [--help] [-h]")
+        print(f"Example: {GLOBAL}, {LOCAL}, {GUI} {HELP}")
 
 # if the user uses control-c, the program will exit
 except KeyboardInterrupt:
