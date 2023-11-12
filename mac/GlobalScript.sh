@@ -16,8 +16,8 @@ fi
 
 # Check for required packages
 for package in "${required_packages[@]}"; do
-    if ! command_exists "$package"; then
-        echo -e "ERROR: The required package ${GREEN}'$package'${NC} is not installed. Please install it and try again."
+    if ! command_exists "${package}"; then
+        echo -e "ERROR: The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
         exit 1
     fi
 done
