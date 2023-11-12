@@ -3,7 +3,6 @@
 # file that hold all the variables that need for the program to work properly
 source DontEdit.sh
 
-
 # Function to check if a command exists
 command_exists() {
     command -v "$1" >/dev/null 2>&1
@@ -11,16 +10,16 @@ command_exists() {
 
 # Check if root user
 if [[ $EUID -ne 0 ]]; then
-  echo -e "${RED}ERROR:${NC} Please run as root."
-  exit 1
+    echo -e "${RED}ERROR:${NC} Please run as root."
+    exit 1
 fi
 
 # Check for required packages
 for package in "${required_packages[@]}"; do
-  if ! command_exists "$package"; then
-    echo -e "ERROR: The required package ${GREEN}'$package'${NC} is not installed. Please install it and try again."
-    exit 1
-  fi
+    if ! command_exists "$package"; then
+        echo -e "ERROR: The required package ${GREEN}'$package'${NC} is not installed. Please install it and try again."
+        exit 1
+    fi
 done
 
 # Check if the script is run with --help or -h
