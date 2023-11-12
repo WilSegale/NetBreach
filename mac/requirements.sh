@@ -95,7 +95,7 @@ else
 
         # Check if the OS is Linux
         else
-            echo "[-] Wrong OS please use the correct OS." #if the user is not using the right OS, it says "You are using the wrong OS"
+            echo -e "${RED}${BRIGHT}[-]${NC} Wrong OS please use the correct OS." #if the user is not using the right OS, it says "You are using the wrong OS"
         fi
     fi
 fi
