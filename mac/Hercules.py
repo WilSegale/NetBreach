@@ -14,7 +14,8 @@ try:
 
         #This is for the user to know what programs are used in this program
         ProgramsUsed = "+++++++++++++++Programs used+++++++++++++++"
-        ProgramsUsedInfo = "This program will help you crack passwords \nIt has two programs inside it, one is Hydra and the other is Nmap"
+        ProgramsUsedInfo01 = "This program will help you crack passwords"
+        ProgramsUsedInfo02 = "\nIt has two programs inside it, one is Hydra and the other is Nmap"
 
         #this is for the user to understand what the program does
         HowToUse = "\n+++++++++++++++How to use++++++++++++++++++"
@@ -26,6 +27,10 @@ try:
         HowToUseInfo06 = f"\nIf you want to use the program on a global network, you can type 'sudo python3 {ProgramName} --global'"
         HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type 'sudo python3 {ProgramName} --GUI'"
         
+        
+        ProgramsUSED = (ProgramsUsedInfo01+
+                        ProgramsUsedInfo02)
+
         # holds the information about how the program works in a array so it can grab them more easily
         info = (HowToUseInfo01 +
                 HowToUseInfo02 + 
@@ -43,9 +48,9 @@ try:
         print(ProgramsUsed, file=HelpFile)
 
         #puts the info about the program inside the help file
-        print(ProgramsUsedInfo, file=HelpFile)
+        print(ProgramsUSED, file=HelpFile)
         print(ProgramsUsed)
-        print(ProgramsUsedInfo)
+        print(ProgramsUSED)
         print()
 
         #Puts the info logo in the help file
