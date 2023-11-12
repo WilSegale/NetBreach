@@ -39,7 +39,7 @@ try:
         subprocess.run(["figlet", "? HELP ?"])
 
         print(text_art, file=HelpFile)
-        print()
+        
         #inputs the program used logo in a help file
         print(ProgramsUsed, file=HelpFile)
 
