@@ -59,6 +59,7 @@ try:
         print(info)
         print()
     
+    # Puts the program in the GUI mode
     elif len(sys.argv) == 2 and sys.argv[1] in GUI:
         # gets the current time and formats it HH:MM:SS
         current_time = datetime.datetime.now().time()
@@ -115,7 +116,7 @@ try:
             print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
             print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
     
-    # connectes to the internet and checks and scans the prots on the internwork
+    # puts the program in GLOBAL mode
     elif len(sys.argv) == 2 and sys.argv[1] in GLOBAL:
         # gets the current time and formats it HH:MM:SS
         current_time = datetime.datetime.now().time()
@@ -230,7 +231,7 @@ try:
             print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
             print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
     
-    # puts the program in global mode
+    # tell the user to chose "GLOBAL", "LOCAL", "GUI", "HELP" to work correctly
     else:
         print("Please use the correct number of arguments.") 
         print(f"Example: {GLOBAL}, {LOCAL}, {GUI} {HELP}")
