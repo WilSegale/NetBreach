@@ -90,7 +90,7 @@ else
                 successful_MESSAGE="${GREEN}[+]${NC} All packages are installed successfully"
                 echo -e "${successful_MESSAGE}"
             else
-                echo -e "${RED}ERROR:${NC} NOT CONNECTED TO THE INTERNET"
+                echo -e "${RED}${BRIGHT}ERROR:${NC} NOT CONNECTED TO THE INTERNET"
             fi
 
         # Check if the OS is Linux
