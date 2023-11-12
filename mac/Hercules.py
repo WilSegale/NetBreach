@@ -10,7 +10,7 @@ try:
     OS='Darwin'
 
     #this is for the user to understand what the program does
-    if len(sys.argv) == 2 and sys.argv[1] == "--help" or len(sys.argv) == 2 and sys.argv[1] == "-h":
+    if len(sys.argv) == 2 and sys.argv[1] in HELP:
         HelpFile = open("HELP.txt", "w")
 
         #This is for the user to know what programs are used in this program
@@ -60,7 +60,7 @@ try:
         print(info)
         print()
     
-    elif len(sys.argv) == 2 and sys.argv[1] == "--GUI":
+    elif len(sys.argv) == 2 and sys.argv[1] in GUI:
         # gets the current time and formats it HH:MM:SS
         current_time = datetime.datetime.now().time()
 
@@ -117,7 +117,7 @@ try:
             print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
     
     # connectes to the internet and checks and scans the prots on the internwork
-    elif len(sys.argv) == 2 and sys.argv[1] == "--global":
+    elif len(sys.argv) == 2 and sys.argv[1] in GLOBAL:
         # gets the current time and formats it HH:MM:SS
         current_time = datetime.datetime.now().time()
 
@@ -174,7 +174,7 @@ try:
             print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
     
     # puts the script in local mode
-    elif len(sys.argv) == 2 and sys.argv[1] == "--local":
+    elif len(sys.argv) == 2 and sys.argv[1] in LOCAL:
         # gets the current time and formats it HH:MM:SS
         current_time = datetime.datetime.now().time()
 
