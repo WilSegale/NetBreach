@@ -14,12 +14,12 @@ try:
 
         #This is for the user to know what programs are used in this program
         ProgramsUsed = "+++++++++++++++Programs used+++++++++++++++"
-        ProgramsUsedInfo01 = "This program will help you crack passwords"
+        ProgramsUsedInfo01 = "\nThis program will help you crack passwords"
         ProgramsUsedInfo02 = "\nIt has two programs inside it, one is Hydra and the other is Nmap"
 
         #this is for the user to understand what the program does
         HowToUse = "\n+++++++++++++++How to use++++++++++++++++++"
-        HowToUseInfo01 = f"To use the program you have to tell the computer what port you want to scan."
+        HowToUseInfo01 = f"\nTo use the program you have to tell the computer what port you want to scan."
         HowToUseInfo02 = f"\nIt will then scan the port that you asked for on the network and see if any ports that you asked are open."
         HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
         HowToUseInfo04 = f"\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
@@ -28,11 +28,13 @@ try:
         HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type 'sudo python3 {ProgramName} --GUI'"
         
         
-        ProgramsUSED = (ProgramsUsedInfo01+
+        ProgramsUSED = (ProgramsUsed+
+                        ProgramsUsedInfo01+
                         ProgramsUsedInfo02)
 
         # holds the information about how the program works in a array so it can grab them more easily
-        info = (HowToUseInfo01 +
+        info = (HowToUse+
+                HowToUseInfo01 +
                 HowToUseInfo02 + 
                 HowToUseInfo03 + 
                 HowToUseInfo04 +
@@ -49,7 +51,6 @@ try:
 
         #puts the info about the program inside the help file
         print(ProgramsUSED, file=HelpFile)
-        print(ProgramsUsed)
         print(ProgramsUSED)
         print()
 
@@ -60,7 +61,6 @@ try:
         print(info, file=HelpFile)
         #puts the info about how to use the program on the screen
         
-        print(HowToUse)
         print(info)
         print()
     
@@ -224,7 +224,8 @@ try:
                         
                         time.sleep(delay)  # Pause to control the update rate
                 print_loading_bar(50)
-                os.system("bash localScript.sh")  # the script to run after loading       
+                os.system("bash localScript.sh")  # the script to run after loading
+            
             else:    
                 # makes a pop up dialog to tell the user that the user is not root
                 print(f"TIME:{formatted_time} Please run as ROOT. DATE:{current_date}")
