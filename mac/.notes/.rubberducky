@@ -1,0 +1,10 @@
+# The location of this `.rubberducky` file determines
+# the path to store and retrieve your notes.
+
+# To relocate your notes, simply move or rename 
+# the directory that contains this `.rubberducky` file.
+
+# This file is automatically created by the plugin
+# https://marketplace.visualstudio.com/items?itemName=prmichaelsen.rubberducky
+
+# Install it to make use of notated lines of code.
