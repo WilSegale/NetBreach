@@ -12,9 +12,6 @@ os.system("clear")
 
 ascii_banner = pyfiglet.figlet_format("PORT SCANNER")
 print(ascii_banner)
-# some colors
-
-
 
 # number of threads, feel free to tune this parameter as you wish
 N_THREADS = 200
