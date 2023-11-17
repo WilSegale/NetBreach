@@ -18,7 +18,7 @@ try:
         ProgramsUsedInfo02 = "\nIt has two programs inside it, one is Hydra and the other is Nmap"
 
         #this is for the user to understand what the program does
-        HowToUse = "\n+++++++++++++++How to use++++++++++++++++++"
+        HowToUse = "+++++++++++++++How to use++++++++++++++++++"
         HowToUseInfo01 = f"\nTo use the program you have to tell the computer what port you want to scan."
         HowToUseInfo02 = f"\nIt will then scan the port that you asked for on the network and see if any ports that you asked are open."
         HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
