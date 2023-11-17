@@ -2,7 +2,7 @@
 
 # file that hold all the variables that need for the program to work properly
 source DontEdit.sh
-
+URL="http://google.com"
 # Function to check if a command exists
 command_exists() {
     command -v "$1" >/dev/null 2>&1
@@ -51,8 +51,13 @@ else
             # Try to connect to the server
 
             # If the user is connected to the internet, it works as normal
-            if wget -q --spider "${SITE_URL}"; then
-                clear
+            #!/bin/bash
+
+
+            # Use wget with --spider to check if the URL exists
+            if wget --spider "$URL" 2>/dev/null; then
+                echo "URL exists and is accessible."
+
             # Else, it notifies them that they are not connected to the internet and tells them to connect
             else
                 # Offline text in the terminal
