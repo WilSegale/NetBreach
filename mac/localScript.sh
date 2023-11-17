@@ -3,22 +3,6 @@
 #holds the file that contains importent funcitons for the porgram to work
 source DontEdit.sh
 
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-NC='\033[0m' # No Color
-
-# OS of the computer
-OS="darwin"
-
-# Gets the current time in a 12-hour format
-CURRENT_TIME=$(date +"%I:%M:%S %p")
-
-# Gets current date in mm/dd/yyyy format
-CURRENT_DATE=$(date +"%m/%d/%Y")
-
-# List of required packages/commands (separated by spaces)
-required_packages=("nmap" "hydra" "ssh" "mysql")
-
 # Function to check if a command exists
 command_exists() {
     command -v "$1" >/dev/null 2>&1
