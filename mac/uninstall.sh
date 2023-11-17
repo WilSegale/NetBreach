@@ -103,7 +103,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     else
         echo -e "Ok, I will not remove the packages."
     fi
-
+    
 else
     echo -e "${RED}${BRIGHT}This script can only be run on macOS${NC}"
 fi
