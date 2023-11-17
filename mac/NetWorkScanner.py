@@ -34,10 +34,10 @@ try:
             s.connect((host, port))
         except:
             with print_lock:
-                print(f"{host:15}:{port:5} is {RED}CLOSED{NC}", end='\r')
+                print(f"{host:15}:{port:5} is {RED}CLOSED{RESET}", end='\r')
         else:
             with print_lock:
-                print(f"{host:15}:{port:5} is {GREEN}OPEN{NC}")
+                print(f"{host:15}:{port:5} is {GREEN}OPEN{RESET}")
             open_ports_found = True
         finally:
             s.close()
