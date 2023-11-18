@@ -51,12 +51,11 @@ else
             # Try to connect to the server
 
             # If the user is connected to the internet, it works as normal
-            #!/bin/bash
-
-
+            
             # Use wget with --spider to check if the URL exists
             if wget --spider "$URL" 2>/dev/null; then
-                echo "URL exists and is accessible."
+                echo ""
+                clear
 
             # Else, it notifies them that they are not connected to the internet and tells them to connect
             else

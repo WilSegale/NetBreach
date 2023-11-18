@@ -46,13 +46,16 @@ else
             # Check internet connectivity
             INTERNET=$(wget -q --spider "${SITE}")
 
-            if [ "$INTERNET" != "0" ]; then
-                # Check if connected to the internet
+            if [ "$INTERNET" -ne 0 ]; then
+                # Check if not connected to the internet
                 offlineTitle="Offline"
                 offline="You are offline. Please connect to the internet."
                 zenity --warning --title="${offlineTitle}" --text="${offline}"
                 exit 1
+            else
+                echo "hello world"
             fi
+
 
             # Function to scan ports
             Hercules() {
