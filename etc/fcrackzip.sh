@@ -140,5 +140,5 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
     # Call the FCRACKZIP function
     FCRACKZIP
 else
-    echo "[-]Wrong OS"
+    echo "[-] Wrong OS"
 fi
