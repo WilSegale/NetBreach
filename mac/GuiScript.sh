@@ -1,6 +1,6 @@
 #!/bin/bash
 source DontEdit.sh
-
+clear
 # Define the URL to check internet connectivity
 SITE="https://google.com/"
 root=0
