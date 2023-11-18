@@ -27,7 +27,7 @@ if [[ "$OSTYPE" == "${MAC}"* ]]; then
         else
             echo
             read -p "Set a hint for the password: " hint
-            echo "${hint}" > "${hint_file}"  # Store the hint
+            echo "${hint}" >> "${hint_file}"  # Store the hint
         fi
     }
 
