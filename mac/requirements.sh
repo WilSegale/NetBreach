@@ -5,6 +5,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 BRIGHT='\033[1m'
 NC='\033[0m' # No Color
+
 requiredments(){
     if [ "$(id -u)" -eq 0 ]; then
         #puts the ERROR message into line art
