@@ -13,10 +13,10 @@ try:
         HelpFile = open("HELP.txt", "w")
 
         #This is for the user to know what programs are used in this program
-        ProgramsUsed = "+++++++++++++++Programs used+++++++++++++++"
-        ProgramsUsedInfo01 = "\nThis program will help you crack passwords"
-        ProgramsUsedInfo02 = "\nIt has two programs inside it"
-        ProgramsUsedInfo03 = "\none is Hydra and the other is Nmap"
+        ProgramsUsed = f"+++++++++++++++Programs used+++++++++++++++"
+        ProgramsUsedInfo01 = f"\nThis program will help you crack passwords"
+        ProgramsUsedInfo02 = f"\nIt has two programs inside it"
+        ProgramsUsedInfo03 = f"\none is Hydra and the other is Nmap"
 
         #this is for the user to understand what the program does
         HowToUse = "+++++++++++++++How to use++++++++++++++++++"
