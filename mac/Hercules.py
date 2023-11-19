@@ -15,7 +15,8 @@ try:
         #This is for the user to know what programs are used in this program
         ProgramsUsed = "+++++++++++++++Programs used+++++++++++++++"
         ProgramsUsedInfo01 = "\nThis program will help you crack passwords"
-        ProgramsUsedInfo02 = "\nIt has two programs inside it, one is Hydra and the other is Nmap"
+        ProgramsUsedInfo02 = "\nIt has two programs inside it"
+        ProgramsUsedInfo03 = "\none is Hydra and the other is Nmap"
 
         #this is for the user to understand what the program does
         HowToUse = "+++++++++++++++How to use++++++++++++++++++"
@@ -30,7 +31,8 @@ try:
         
         ProgramsUSED = (ProgramsUsed+
                         ProgramsUsedInfo01+
-                        ProgramsUsedInfo02)
+                        ProgramsUsedInfo02+
+                        ProgramsUsedInfo03)
 
         # holds the information about how the program works in a array so it can grab them more easily
         info = (HowToUse+
