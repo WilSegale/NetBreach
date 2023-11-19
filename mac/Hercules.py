@@ -24,9 +24,13 @@ try:
         HowToUseInfo02 = f"\nIt will then scan the port that you asked for on the network and see if any ports that you asked are open."
         HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
         HowToUseInfo04 = f"\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
-        HowToUseInfo05 = f"\nIf you want to use the program locally, you can type 'sudo python3 {ProgramName} --local'"
-        HowToUseInfo06 = f"\nIf you want to use the program on a global network, you can type 'sudo python3 {ProgramName} --global'"
-        HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type 'sudo python3 {ProgramName} --GUI'"
+        breakLine01 = f" "*len(HowToUseInfo04)
+
+        HowToUseInfo05 = f"\nIf you want to use the program locally, you can type {GREEN}'sudo python3 {ProgramName} {LOCAL}'{RESET}"
+        breakLine02 = f" "*len(HowToUseInfo05)
+        HowToUseInfo06 = f"\nIf you want to use the program on a global network, you can type {GREEN}'sudo python3 {ProgramName} {GLOBAL}'{RESET}"
+        breakLine03 = f" "*len(HowToUseInfo06)
+        HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {ProgramName} {GUI}'{RESET}"
         
         
         ProgramsUSED = (ProgramsUsed+
@@ -40,8 +44,11 @@ try:
                 HowToUseInfo02 + 
                 HowToUseInfo03 + 
                 HowToUseInfo04 +
+                breakLine01 +
                 HowToUseInfo05 +
+                breakLine02 +
                 HowToUseInfo06 +
+                breakLine03 +
                 HowToUseInfo07)
         
         subprocess.run(["figlet", "? HELP ?"])
@@ -49,15 +56,12 @@ try:
         print(text_art, file=HelpFile)
         
         #inputs the program used logo in a help file
-        print(ProgramsUsed, file=HelpFile)
-
         #puts the info about the program inside the help file
-        print(ProgramsUSED, file=HelpFile)
         print(ProgramsUSED)
         print()
 
         #Puts the info logo in the help file
-        print(HowToUse, file=HelpFile)
+        print(ProgramsUSED, file=HelpFile)
 
         #puts the info about how to use the program inside the help file
         print(info, file=HelpFile)
