@@ -12,6 +12,5 @@ start(){
   elif [[ "${selected_items}" == *"2"* ]]; then
     sudo bash script.sh
   fi
-  
-  }
+}
 start
