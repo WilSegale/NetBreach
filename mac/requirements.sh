@@ -10,19 +10,21 @@ if [ "$(id -u)" -eq 0 ]; then
     #notification message for the user to also if the local host has been copermised at all
     title="ERROR"
     ERROR_MESSAGE="Don't use sudo for this script. Because it can damage your computer"
-    osascript -e "display notification \"$ERROR_MESSAGE\" with title \"$title\""
-    
+    zenity --error --title="${title}" --text="${ERROR_MESSAGE}"
+
     #puts the ERROR message into line art
     echo -e "${RED}$(figlet ERROR)${NC}"
     
     # gives the user something to read so they understand why they got the error
-    echo "Don't use sudo for this script." 
-    echo "Because it can damage your computer"
+    echo "+++++++++++++++++++++++++++++++++++++++++"
+    echo "+   Don't use sudo for this script.     +" 
+    echo "+   Because it can damage your computer +"
+    echo "+++++++++++++++++++++++++++++++++++++++++"
     exit 1
 else
+    # helps the users to understand what the program does
     if [[ "$1" = "--help" || "$1" = "-h" ]]; then
         echo "This script will install the packages for it to work properly"
-    
     else
         # Check if the OS is macOS
         if [[ "$OSTYPE" == "darwin"* ]]; then 
