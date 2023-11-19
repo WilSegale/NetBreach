@@ -241,7 +241,7 @@ try:
     # tell the user to chose "GLOBAL", "LOCAL", "GUI", "HELP" to work correctly
     else:
         print("Please use the correct number of arguments.") 
-        print(f"Example: {GLOBAL}, {LOCAL}, {GUI} {HELP}")
+        print(f"Example: {GLOBAL}, {LOCAL}, {GUI} or {HELP}")
 
 # if the user uses control-c, the program will exit
 except KeyboardInterrupt:
