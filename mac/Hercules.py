@@ -25,7 +25,6 @@ try:
         HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
         HowToUseInfo04 = f"\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
         breakLine01 = f" "*len(HowToUseInfo04)
-
         HowToUseInfo05 = f"\nIf you want to use the program locally, you can type {GREEN}'sudo python3 {ProgramName} {LOCAL}'{RESET}"
         breakLine02 = f" "*len(HowToUseInfo05)
         HowToUseInfo06 = f"\nIf you want to use the program on a global network, you can type {GREEN}'sudo python3 {ProgramName} {GLOBAL}'{RESET}"
