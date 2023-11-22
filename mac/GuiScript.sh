@@ -2,7 +2,6 @@
 source DontEdit.sh
 clear
 # Define the URL to check internet connectivity
-SITE="https://google.com/"
 root=0
 total_steps=100
 userName="Input Username:"
@@ -43,10 +42,8 @@ else
             zenity --error --title="${title}" --text="${message}"
             exit 1
         else
-            # Check internet connectivity
-            INTERNET=$(wget -q --spider "${SITE}")
-
-            if [[ "$INTERNET" -ne 0 ]]; then
+            SITE="https://google.com/"
+            if ! curl --head --silent --fail $SITE > /dev/null; then
                 # Check if not connected to the internet
                 offlineTitle="Offline"
                 offline="You are offline. Please connect to the internet."
@@ -55,7 +52,6 @@ else
             else
                 echo ""
             fi
-
 
             # Function to scan ports
             Hercules() {
