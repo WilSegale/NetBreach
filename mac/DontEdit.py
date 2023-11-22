@@ -9,8 +9,6 @@ import sys
 import subprocess
 
 # Define color codes for console output
-RED = '\033[0;31m'
-GREEN = '\033[0;32m'
 BRIGHT = '\033[1m'
 GREEN = "\033[92m"
 RED = "\033[91m"
