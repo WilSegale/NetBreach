@@ -10,10 +10,10 @@ command_exists() {
 
 # Check for required packages
 for package in "${required_packages[@]}"; do
-  if ! command_exists "$package"; then
-    echo -e "ERROR: The required package ${GREEN}'$package'${NC} is not installed. Please install it and try again."
-    exit 1
-  fi
+    if ! command_exists "$package"; then
+        echo -e "ERROR: The required package ${GREEN}'$package'${NC} is not installed. Please install it and try again."
+        exit 1
+    fi
 done
 
 # Check if the script is run with --help or -h
@@ -33,7 +33,7 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
 else
     if [[ "$OSTYPE" == "${OS}"* ]]; then
         clear
-
+        sudo rm -rf hydra.restore
 
         # Clear the terminal
         clear
@@ -68,7 +68,7 @@ else
                 exit 1
             #checks if the user has put nothing into the input feild
             elif [[ " ${empty[*]} " == *" ${service} "* ]]; then
-                echo -e "${RED}ERROR:${NC} Please input a number into the input field."
+                echo -e "${RED}ERROR:${NC} plase input a number into the input field"
                 sleep 1
                 exit 1                
             #checks if the user has put in a letter insed of a number into the input feild
@@ -101,6 +101,7 @@ else
             echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
             echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
             echo $username@$hostname
+
             # Use different variables for user input to avoid overwriting original host and port
             read -p "Input Username: " user_input
             read -p "Input Hostname: " host_input
@@ -207,7 +208,6 @@ else
         LocalRunHackingCommandWithSSH # Calls the RunHackingCommandWithSSH function
 
         LocalRunHackingCommandWithMySQL # Calls the RunHackingCommandWithMySQL function
-    fi
     else
         clear
         # Warning message for wrong OS
