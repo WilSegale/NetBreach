@@ -2,7 +2,7 @@
 
 #holds the file that contains importent funcitons for the porgram to work
 source DontEdit.sh
-
+username=$(id -un)
 # Function to check if a command exists
 command_exists() {
     command -v "$1" >/dev/null 2>&1
@@ -112,6 +112,7 @@ else
                 # Services to crack the network
                 echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
                 echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
+                echo $username@
 
                 # Use different variables for user input to avoid overwriting original host and port
                 read -p "Input Username: " user_input
