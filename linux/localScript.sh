@@ -8,12 +8,6 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# Check if root user
-if [[ $EUID -ne 0 ]]; then
-  echo -e "${RED}ERROR:${NC} Please run as root."
-  exit 1
-fi
-
 # Check for required packages
 for package in "${required_packages[@]}"; do
   if ! command_exists "$package"; then
