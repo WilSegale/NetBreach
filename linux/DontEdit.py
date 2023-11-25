@@ -16,6 +16,8 @@ GREEN = "\033[92m"
 RED = "\033[91m"
 RESET = "\033[0m"
 
+OS="linux"
+
 # Define constants for command-line arguments
 HELP = ["--help", "-h"]
 GUI = ["--GUI", "--gui"]
