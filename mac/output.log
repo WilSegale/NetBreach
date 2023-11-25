@@ -1,3 +1,0 @@
-# Hydra v9.5 run at 2023-11-25 08:17:15 on 127.0.0.1 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://127.0.0.1)
-# Hydra v9.5 run at 2023-11-25 08:20:12 on localhost mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://localhost)
-[3306][mysql] host: localhost   login: root   password: Cmonster2006
