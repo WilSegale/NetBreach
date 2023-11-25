@@ -80,7 +80,7 @@ else
                     exit 1
                 #checks if the user has put nothing into the input feild
                 elif [[ " ${empty[*]} " == *" ${service} "* ]]; then
-                    echo -e "${RED}ERROR:${NC} plase input a number into the input field"
+                    echo -e "${RED}ERROR:${NC} Please input a number into the input field."
                     sleep 1
                     exit 1                
                 #checks if the user has put in a letter insed of a number into the input feild
@@ -112,7 +112,7 @@ else
                 # Services to crack the network
                 echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
                 echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
-
+                echo "${whoami}@${hostname}"
                 # Use different variables for user input to avoid overwriting original host and port
                 read -p "Input Username: " user_input
                 read -p "Input Hostname: " host_input
