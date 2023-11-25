@@ -1,0 +1,8 @@
+# Nmap 7.94 scan initiated Sat Nov 25 09:59:31 2023 as: nmap -sS -p 3306 -oN 3306 --open 192.168.1.1/24
+Nmap scan report for zeros-Air.lan (192.168.1.13)
+Host is up (0.00049s latency).
+
+PORT     STATE SERVICE
+3306/tcp open  mysql
+
+# Nmap done at Sat Nov 25 09:59:50 2023 -- 256 IP addresses (25 hosts up) scanned in 19.31 seconds
