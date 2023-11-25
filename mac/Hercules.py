@@ -203,7 +203,6 @@ try:
                 return False  # If unsuccessful, return False
 
         # Makes sure that the user is connected to the internet    
-
         if platform.system() == OS:
             #checks if the user is running as root
             if os.geteuid() == ROOT:
