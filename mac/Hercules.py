@@ -6,7 +6,6 @@ try:
 
     ProgramName = "Hercules"
 
-    OS='Darwin'
 
     #this is for the user to understand what the program does
     if len(sys.argv) == 2 and sys.argv[1] in HELP:
