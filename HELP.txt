@@ -8,6 +8,7 @@
 This program will help you crack passwords
 It has two programs inside it
 one is Hydra and the other is Nmap
+
 +++++++++++++++HOW TO USE++++++++++++++++++
 To use the program you have to tell the computer what port you want to scan.
 It will then scan the port that you asked for on the network and see if any ports that you asked are open.
