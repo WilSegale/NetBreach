@@ -131,7 +131,7 @@ else
                 service=$(zenity --entry --title "Hercules" --text "$options_text" --entry-text "")
                 
                 #tells the user what port they are scanning if they forget they can go back to the terminal and it will tell them
-                echo -e "[+]The port you are scanning is: ${service}"
+                echo -e "[+] The port you are scanning is: ${service}"
                 
                 # Check the user's input and take appropriate action
                 if [[ "$service" == "ALL" || "$service" == "all" ]]; then
