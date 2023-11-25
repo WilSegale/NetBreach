@@ -3,6 +3,10 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
+# grabes the username by using the "whoami" command and then grabs the hostname by using "hostname" command
+username=$(whoami)
+hostname=$(hostname)
+
 # OS of the computer
 OS="darwin"
 

@@ -2,24 +2,19 @@
 
 #holds the file that contains importent funcitons for the porgram to work
 source DontEdit.sh
-username=$(id -un)
+
+
 # Function to check if a command exists
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# Check if root user
-if [[ $EUID -ne 0 ]]; then
-  echo -e "${RED}ERROR:${NC} Please run as root."
-  exit 1
-fi
-
 # Check for required packages
 for package in "${required_packages[@]}"; do
-  if ! command_exists "$package"; then
-    echo -e "ERROR: The required package ${GREEN}'$package'${NC} is not installed. Please install it and try again."
-    exit 1
-  fi
+    if ! command_exists "$package"; then
+        echo -e "ERROR: The required package ${GREEN}'$package'${NC} is not installed. Please install it and try again."
+        exit 1
+    fi
 done
 
 # Check if the script is run with --help or -h
@@ -106,7 +101,7 @@ else
             # Services to crack the network
             echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
             echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
-            echo $username@
+            echo $username@$hostname
 
             # Use different variables for user input to avoid overwriting original host and port
             read -p "Input Username: " user_input
@@ -214,11 +209,10 @@ else
         LocalRunHackingCommandWithSSH # Calls the RunHackingCommandWithSSH function
 
         LocalRunHackingCommandWithMySQL # Calls the RunHackingCommandWithMySQL function
+    else
+        clear
+        # Warning message for wrong OS
+        echo "WARNING:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
+        echo "TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE"
     fi
-else
-    clear
-    # Warning message for wrong OS
-    echo "WARNING:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
-    echo "TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE"
 fi
-
