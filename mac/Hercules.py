@@ -5,6 +5,7 @@ try:
     ERROR = open("ERROR.log", "a")
 
     ProgramName = "Hercules"
+    SoftwareName = "Hercules.py"
 
 
     #this is for the user to understand what the program does
@@ -23,12 +24,9 @@ try:
         HowToUseInfo02 = f"\nIt will then scan the port that you asked for on the network and see if any ports that you asked are open."
         HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
         HowToUseInfo04 = f"\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
-        breakLine01 = f" "*len(HowToUseInfo04)
-        HowToUseInfo05 = f"\nIf you want to use the program locally, you can type {GREEN}'sudo python3 {ProgramName} {LOCAL}'{RESET}"
-        breakLine02 = f" "*len(HowToUseInfo05)
-        HowToUseInfo06 = f"\nIf you want to use the program on a global network, you can type {GREEN}'sudo python3 {ProgramName} {GLOBAL}'{RESET}"
-        breakLine03 = f" "*len(HowToUseInfo06)
-        HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {ProgramName} {GUI}'{RESET}"
+        HowToUseInfo05 = f"\n\nIf you want to use the program locally, you can type {GREEN}'sudo python3 {SoftwareName} {LOCAL}'{RESET}"
+        HowToUseInfo06 = f"\n\nIf you want to use the program on a global network, you can type {GREEN}'sudo python3 {SoftwareName} {GLOBAL}'{RESET}"
+        HowToUseInfo07 = f"\n\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {SoftwareName} {GUI}'{RESET}"
         
         
         ProgramsUSED = (ProgramsUsed+
@@ -42,11 +40,8 @@ try:
                 HowToUseInfo02 + 
                 HowToUseInfo03 + 
                 HowToUseInfo04 +
-                breakLine01 +
                 HowToUseInfo05 +
-                breakLine02 +
                 HowToUseInfo06 +
-                breakLine03 +
                 HowToUseInfo07)
         
         subprocess.run(["figlet", "? HELP ?"])
