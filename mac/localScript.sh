@@ -97,14 +97,33 @@ else
             LocalRunHackingCommand() {
                 # Break in the outputs of my code
                 echo
+                original_host=127.0.0.1
+                original_port=$service
+
+                # Check if the port is closed
+                if nc -zv "$original_host" "$original_port" >/dev/null 2>&1; then
+                    echo "Port $original_port on $original_host is open."
+                else
+                    echo -e "${RED}[-]${NC} Port $original_port on $original_host is closed."
+                    # Optionally, you can choose to exit or handle closed port differently
+                    exit 1
+                fi
+
                 # Services to crack the network
                 echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
                 echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
-                read -p "Input Username: " user
-                read -p "Input Hostname: " host
+
+                # Use different variables for user input to avoid overwriting original host and port
+                read -p "Input Username: " user_input
+                read -p "Input Hostname: " host_input
+
+                # Use user input or fallback to original values if user input is empty
+                user=${user_input:-$user}
+                host=${host_input:-$original_host}
             }
 
             LocalRunHackingCommandWithVNC() {
+
                 if [[ $service == 5900 || $service == "VNC" ]]; then
                     # Checks if the user has put anything in the 'Input Username' function and the hostname function
                     # If not, it will prompt the user to enter the username and hostname
