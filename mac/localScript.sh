@@ -3,7 +3,6 @@
 #holds the file that contains importent funcitons for the porgram to work
 source DontEdit.sh
 
-
 # Function to check if a command exists
 command_exists() {
     command -v "$1" >/dev/null 2>&1
