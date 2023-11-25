@@ -1,10 +1,16 @@
+#!/bin/bash
+
 
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
+# grabes the username by using the "whoami" command and then grabs the hostname by using "hostname" command
+username=$(whoami)
+hostname=$(hostname)
+
 # OS of the computer
-OS="linux"
+OS="Linux"
 
 # For the wget functionality to work
 SITE_URL="https://google.com"
@@ -18,7 +24,8 @@ empty=("")
 alphabet=("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z")
 
 # The yes array that contains the yes input
-yes=("yes" "YES" "y" "Y")
+yes=("YES" "Y" "yes" "y")
+no=("NO" "N" "no" "n")
 
 # The array that contains the exit input
 exit=("exit" "quit" "EXIT" "QUIT" "STOP" "stop")
