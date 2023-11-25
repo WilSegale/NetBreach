@@ -102,7 +102,7 @@ else
 
                 # Check if the port is closed
                 if nc -zv "$original_host" "$original_port" >/dev/null 2>&1; then
-                    echo "Port $original_port on $original_host is open."
+                    echo ""
                 else
                     echo -e "${RED}[-]${NC} Port $original_port on $original_host is closed."
                     # Optionally, you can choose to exit or handle closed port differently
