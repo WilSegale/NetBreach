@@ -4,7 +4,7 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 # OS of the computer
-OS="Darwin"
+OS="darwin"
 
 # For the wget functionality to work
 SITE_URL="https://google.com"
