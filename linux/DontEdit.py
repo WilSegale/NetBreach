@@ -8,18 +8,17 @@ import logging
 import sys
 import subprocess
 
+# for detecting the OS module
+OS='linux'
+
 # Define color codes for console output
-RED = '\033[0;31m'
-GREEN = '\033[0;32m'
 BRIGHT = '\033[1m'
 GREEN = "\033[92m"
 RED = "\033[91m"
 RESET = "\033[0m"
 
-OS="linux"
-
 # Define constants for command-line arguments
-HELP = ["--help", "-h"]
-GUI = ["--GUI", "--gui"]
-GLOBAL = ["--global", "--GLOBAL"]
-LOCAL = ["--local", "--LOCAL"]
+HELP = ["--HELP", "--Help", "--help", "-h", "-H"]
+GUI = ["--GUI", "--Gui", "--gui"]
+GLOBAL = ["--GLOBAL", "--Global", "--global"]
+LOCAL = ["--LOCAL", "--Local", "--local"]
