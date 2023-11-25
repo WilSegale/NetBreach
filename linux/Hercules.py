@@ -13,20 +13,20 @@ try:
         HelpFile = open("HELP.txt", "w")
 
         #This is for the user to know what programs are used in this program
-        ProgramsUsed = f"+++++++++++++++Programs used+++++++++++++++"
+        ProgramsUsed = f"+++++++++++++++PROGRAMS USED+++++++++++++++"
         ProgramsUsedInfo01 = f"\nThis program will help you crack passwords"
         ProgramsUsedInfo02 = f"\nIt has two programs inside it"
         ProgramsUsedInfo03 = f"\none is Hydra and the other is Nmap"
 
         #this is for the user to understand what the program does
-        HowToUse = f"+++++++++++++++How to use++++++++++++++++++"
+        HowToUse = f"+++++++++++++++HOW TO USE++++++++++++++++++"
         HowToUseInfo01 = f"\nTo use the program you have to tell the computer what port you want to scan."
         HowToUseInfo02 = f"\nIt will then scan the port that you asked for on the network and see if any ports that you asked are open."
         HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
         HowToUseInfo04 = f"\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
-        HowToUseInfo05 = f"\n\nIf you want to use the program locally, you can type {GREEN}'sudo python3 {SoftwareName} {LOCAL}'{RESET}"
-        HowToUseInfo06 = f"\n\nIf you want to use the program on a global network, you can type {GREEN}'sudo python3 {SoftwareName} {GLOBAL}'{RESET}"
-        HowToUseInfo07 = f"\n\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {SoftwareName} {GUI}'{RESET}"
+        HowToUseInfo05 = f"\nIf you want to use the program locally, you can type {GREEN}'sudo python3 {SoftwareName} {LOCAL}'{RESET}"
+        HowToUseInfo06 = f"\nIf you want to use the program on a global network, you can type {GREEN}'sudo python3 {SoftwareName} {GLOBAL}'{RESET}"
+        HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {SoftwareName} {GUI}'{RESET}"
         
         
         ProgramsUSED = (ProgramsUsed+
