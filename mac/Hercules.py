@@ -248,4 +248,4 @@ try:
 
 # if the user uses control-c, the program will exit
 except KeyboardInterrupt:
-    print("\n[-]Exiting...")
+    print("\n[-] Exiting...")
