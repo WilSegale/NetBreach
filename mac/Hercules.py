@@ -186,9 +186,6 @@ try:
         # Get the current date
         current_date = datetime.datetime.now().strftime("%m/%d/%Y")
 
-        # easy way to read the root user function
-        ROOT = 0
-
         def connect(url="https://google.com"):
             try:
                 urllib.request.urlopen(url)  # Try to open a connection to the host
@@ -199,40 +196,34 @@ try:
         # Makes sure that the user is connected to the internet    
         if platform.system() == OS:
             #checks if the user is running as root
-            if os.geteuid() == ROOT:
-                #makes the loading bar visible
-                def print_loading_bar(iterations, delay=0.1, width=40):
-                    """
-                    Prints a loading bar with green dots to visualize progress.
+            #makes the loading bar visible
+            def print_loading_bar(iterations, delay=0.1, width=40):
+                """
+                Prints a loading bar with green dots to visualize progress.
+                
+                Args:
+                    iterations (int): Total number of iterations.
+                    delay (float, optional): Delay between updates in seconds. Default is 0.1 seconds.
+                    width (int, optional): Width of the loading bar. Default is 40 characters.
+                """
+                for loadingBar in range(iterations + 1):
+                    progress = loadingBar / iterations  # Calculate the progress ratio
+                    bar_length = int(progress * width)  # Calculate the number of dots for the current progress
+                    bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                    percentage = int(progress * 100)  # Calculate the percentage of completion
                     
-                    Args:
-                        iterations (int): Total number of iterations.
-                        delay (float, optional): Delay between updates in seconds. Default is 0.1 seconds.
-                        width (int, optional): Width of the loading bar. Default is 40 characters.
-                    """
-                    for loadingBar in range(iterations + 1):
-                        progress = loadingBar / iterations  # Calculate the progress ratio
-                        bar_length = int(progress * width)  # Calculate the number of dots for the current progress
-                        bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
-                        percentage = int(progress * 100)  # Calculate the percentage of completion
-                        
-                        # Print the loading bar and percentage, replacing the line each iteration
-                        print(f'\rLoading {ProgramName} [{bar}] {percentage} % ', end='', flush=False)
-                        
-                        time.sleep(delay)  # Pause to control the update rate
-                print_loading_bar(50)
-                os.system("bash localScript.sh")  # the script to run after loading
+                    # Print the loading bar and percentage, replacing the line each iteration
+                    print(f'\rLoading {ProgramName} [{bar}] {percentage} % ', end='', flush=False)
+                    
+                    time.sleep(delay)  # Pause to control the update rate
+            print_loading_bar(50)
+            os.system("bash localScript.sh")  # the script to run after loading
+        
+        else:    
+            # makes a pop up dialog to tell the user that the user is not root
+            print(f"TIME:{formatted_time} Please run as ROOT. DATE:{current_date}")
+            print(f"ERROR:TIME:{formatted_time} Please run as ROOT. DATE:{current_date}", file=ERROR)
             
-            else:    
-                # makes a pop up dialog to tell the user that the user is not root
-                print(f"TIME:{formatted_time} Please run as ROOT. DATE:{current_date}")
-                print(f"ERROR:TIME:{formatted_time} Please run as ROOT. DATE:{current_date}", file=ERROR)
-        else:
-            # makes a pop up dialog to tell the user that the OS is not correct
-            # makes a pop up dialog to tell the user that the OS is not correct
-            print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
-            print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
-    
     # tell the user to chose "GLOBAL", "LOCAL", "GUI", "HELP" to work correctly
     else:
         print("Please use the correct number of arguments.") 
