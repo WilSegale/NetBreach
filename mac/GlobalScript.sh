@@ -96,7 +96,7 @@ else
                     read -p ">>> " Hydra
 
                     if [[ " ${exit[*]} " == *" ${Hydra} "* ]]; then
-                        echo "[+] Goodbye"
+                        echo -e "${GREEN}[+]${NC} Goodbye"
                         exit 1
                     else
                         $Hydra
