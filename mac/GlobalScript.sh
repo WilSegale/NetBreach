@@ -3,6 +3,7 @@
 # file that hold all the variables that need for the program to work properly
 source DontEdit.sh
 URL="http://google.com"
+
 # Function to check if a command exists
 command_exists() {
     command -v "$1" >/dev/null 2>&1

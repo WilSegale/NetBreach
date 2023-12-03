@@ -1,1 +1,231 @@
 # Nmap 7.94 scan initiated Sun Dec  3 09:07:24 2023 as: nmap -sS -Pn -oN scan.txt --open 192.168.1.1/24
+Nmap scan report for Fios_Quantum_Gateway.fios-router.home (192.168.1.1)
+Host is up (0.0085s latency).
+Not shown: 992 closed tcp ports (reset), 3 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+53/tcp   open  domain
+80/tcp   open  http
+443/tcp  open  https
+8080/tcp open  http-proxy
+8443/tcp open  https-alt
+MAC Address: C8:A7:0A:92:7F:DE (Verizon Business)
+
+Nmap scan report for 192.168.1.6
+Host is up (0.0095s latency).
+Not shown: 995 closed tcp ports (reset)
+PORT     STATE SERVICE
+80/tcp   open  http
+443/tcp  open  https
+515/tcp  open  printer
+631/tcp  open  ipp
+9100/tcp open  jetdirect
+MAC Address: F8:0D:60:21:C7:DE (Canon)
+
+Nmap scan report for ESP_1AC898.fios-router.home (192.168.1.15)
+Host is up (0.019s latency).
+Not shown: 998 closed tcp ports (reset), 1 filtered tcp port (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+6668/tcp open  irc
+MAC Address: 24:62:AB:1A:C8:98 (Espressif)
+
+Nmap scan report for wlan0.fios-router.home (192.168.1.23)
+Host is up (0.013s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT     STATE SERVICE
+6668/tcp open  irc
+MAC Address: D4:A6:51:34:21:87 (Tuya Smart)
+
+Nmap scan report for wlan0.fios-router.home (192.168.1.27)
+Host is up (0.013s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT     STATE SERVICE
+6668/tcp open  irc
+MAC Address: FC:67:1F:6E:28:0A (Tuya Smart)
+
+Nmap scan report for DESKTOP-78QB99Q.fios-router.home (192.168.1.29)
+Host is up (0.013s latency).
+Not shown: 997 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT    STATE SERVICE
+135/tcp open  msrpc
+139/tcp open  netbios-ssn
+445/tcp open  microsoft-ds
+MAC Address: 80:B6:55:62:ED:37 (Intel Corporate)
+
+Nmap scan report for 192.168.1.45
+Host is up (0.019s latency).
+Not shown: 956 filtered tcp ports (no-response), 40 closed tcp ports (reset)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT      STATE SERVICE
+1080/tcp  open  socks
+6543/tcp  open  mythtv
+8888/tcp  open  sun-answerbook
+10001/tcp open  scp-config
+MAC Address: DC:91:BF:88:B3:08 (Amazon Technologies)
+
+Nmap scan report for wlan0.fios-router.home (192.168.1.46)
+Host is up (0.011s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT     STATE SERVICE
+6668/tcp open  irc
+MAC Address: 68:57:2D:FD:FE:58 (Tuya Smart)
+
+Nmap scan report for wlan0.fios-router.home (192.168.1.47)
+Host is up (0.017s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT     STATE SERVICE
+6668/tcp open  irc
+MAC Address: D4:A6:51:22:42:AE (Tuya Smart)
+
+Nmap scan report for wlan0.fios-router.home (192.168.1.55)
+Host is up (0.011s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT     STATE SERVICE
+6668/tcp open  irc
+MAC Address: FC:67:1F:6E:07:B6 (Tuya Smart)
+
+Nmap scan report for 192.168.1.60
+Host is up (0.027s latency).
+Not shown: 812 filtered tcp ports (no-response), 186 closed tcp ports (reset)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+4443/tcp open  pharos
+8080/tcp open  http-proxy
+MAC Address: 54:88:0E:A6:D0:2D (Samsung Electro-mechanics(Thailand))
+
+Nmap scan report for mk7.fios-router.home (192.168.1.151)
+Host is up (0.0098s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT   STATE SERVICE
+22/tcp open  ssh
+53/tcp open  domain
+80/tcp open  http
+MAC Address: 00:3F:10:00:95:27 (Shenzhen GainStrong Technology)
+
+Nmap scan report for 192.168.1.158
+Host is up (0.043s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT      STATE SERVICE
+49152/tcp open  unknown
+62078/tcp open  iphone-sync
+MAC Address: FE:00:80:E1:39:BD (Unknown)
+
+Nmap scan report for Main.fios-router.home (192.168.1.160)
+Host is up (0.011s latency).
+Not shown: 995 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+2179/tcp open  vmrdp
+5357/tcp open  wsdapi
+MAC Address: 00:E0:4C:1D:1C:62 (Realtek Semiconductor)
+
+Nmap scan report for 192.168.1.167
+Host is up (0.054s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT      STATE SERVICE
+9080/tcp  open  glrpc
+49152/tcp open  unknown
+62078/tcp open  iphone-sync
+MAC Address: 2A:16:EB:D8:D1:91 (Unknown)
+
+Nmap scan report for wlan0.fios-router.home (192.168.1.174)
+Host is up (0.0095s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT     STATE SERVICE
+6668/tcp open  irc
+MAC Address: FC:67:1F:6E:2D:90 (Tuya Smart)
+
+Nmap scan report for 0017884695de.fios-router.home (192.168.1.176)
+Host is up (0.0076s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT     STATE SERVICE
+80/tcp   open  http
+443/tcp  open  https
+8080/tcp open  http-proxy
+MAC Address: 00:17:88:46:95:DE (Philips Lighting BV)
+
+Nmap scan report for 192.168.1.177
+Host is up (0.013s latency).
+Not shown: 957 filtered tcp ports (no-response), 40 closed tcp ports (reset)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+1080/tcp open  socks
+6543/tcp open  mythtv
+8888/tcp open  sun-answerbook
+MAC Address: 68:54:FD:4E:FD:15 (Amazon Technologies)
+
+Nmap scan report for Main.fios-router.home (192.168.1.180)
+Host is up (0.0092s latency).
+Not shown: 995 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+2179/tcp open  vmrdp
+5357/tcp open  wsdapi
+MAC Address: 10:6F:D9:3D:08:D5 (Cloud Network Technology Singapore PTE.)
+
+Nmap scan report for WILL.fios-router.home (192.168.1.183)
+Host is up (0.12s latency).
+Not shown: 999 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT     STATE SERVICE
+2869/tcp open  icslap
+MAC Address: 30:59:B7:4B:44:32 (Microsoft)
+
+Nmap scan report for wlan0.fios-router.home (192.168.1.202)
+Host is up (0.048s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT     STATE SERVICE
+6668/tcp open  irc
+MAC Address: D4:A6:51:23:08:50 (Tuya Smart)
+
+Nmap scan report for FNE6200Q-4663.fios-router.home (192.168.1.206)
+Host is up (0.0099s latency).
+Not shown: 994 filtered tcp ports (no-response), 2 closed tcp ports (reset)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT      STATE SERVICE
+80/tcp    open  http
+4567/tcp  open  tram
+9876/tcp  open  sd
+49152/tcp open  unknown
+MAC Address: 70:F2:20:22:5E:60 (Actiontec Electronics)
+
+Nmap scan report for amazon-e25bd1454.fios-router.home (192.168.1.217)
+Host is up (0.0100s latency).
+Not shown: 957 filtered tcp ports (no-response), 42 closed tcp ports (reset)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT      STATE SERVICE
+10001/tcp open  scp-config
+MAC Address: 5C:41:5A:0B:0D:4E (Amazon.com)
+
+Nmap scan report for Living-room.fios-router.home (192.168.1.224)
+Host is up (0.0062s latency).
+Not shown: 993 closed tcp ports (reset)
+PORT      STATE SERVICE
+53/tcp    open  domain
+5000/tcp  open  upnp
+7000/tcp  open  afs3-fileserver
+7100/tcp  open  font-service
+49152/tcp open  unknown
+49154/tcp open  unknown
+62078/tcp open  iphone-sync
+MAC Address: 1C:B3:C9:17:27:E6 (Apple)
+
+Nmap scan report for 192.168.1.235
+Host is up (0.019s latency).
+Not shown: 956 filtered tcp ports (no-response), 40 closed tcp ports (reset)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT      STATE SERVICE
+1080/tcp  open  socks
+6543/tcp  open  mythtv
+8888/tcp  open  sun-answerbook
+10001/tcp open  scp-config
+MAC Address: 34:AF:B3:0C:18:24 (Amazon Technologies)
+
