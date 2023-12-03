@@ -44,6 +44,7 @@ try:
                 HowToUseInfo06 +
                 HowToUseInfo07)
         
+        subprocess.run(["figlet", "Linux"])
         subprocess.run(["figlet", "? HELP ?"])
 
         print(text_art, file=HelpFile)
