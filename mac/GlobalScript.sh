@@ -3,6 +3,16 @@
 # file that hold all the variables that need for the program to work properly
 source DontEdit.sh
 URL="http://google.com"
+# Function to handle Ctrl+C
+ctrl_c() {
+    echo ""
+    echo "Exiting porgram"
+    # Add cleanup commands here
+    exit 1
+}
+
+# Trap the Ctrl+C signal and call the ctrl_c function
+trap ctrl_c SIGINT
 
 # Function to check if a command exists
 command_exists() {
@@ -99,6 +109,7 @@ else
                     if [[ " ${exit[*]} " == *" ${Hydra} "* ]]; then
                         echo -e "${GREEN}[+]${NC} Goodbye"
                         exit 1
+                    
                     else
                         $Hydra
                         exit 1
@@ -199,7 +210,7 @@ else
                         Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
                         echo "${title}"
                         echo "${Connected_To_SSH_SERVER}"
-                        ssh $user@$host -p $port
+                        ssh "${user}@${host}" -p $port
                     fi
                 fi
             }

