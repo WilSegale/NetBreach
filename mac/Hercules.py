@@ -23,7 +23,7 @@ try:
         HowToUseInfo02 = f"\nIt will then scan the port that you asked for on the network and see if any ports that you asked are open."
         HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
         HowToUseInfo04 = f"\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
-        HowToUseInfo05 = f"\nIf you want to use the program locally, you can type {GREEN}'sudo python3 {SoftwareName} {LOCAL}'{RESET}"
+        HowToUseInfo05 = f"\nIf you want to use the program locally, you can type {GREEN}'python3 {SoftwareName} {LOCAL}'{RESET}"
         HowToUseInfo06 = f"\nIf you want to use the program on a global network, you can type {GREEN}'sudo python3 {SoftwareName} {GLOBAL}'{RESET}"
         HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {SoftwareName} {GUI}'{RESET}"
         

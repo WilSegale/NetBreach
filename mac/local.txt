@@ -1,13 +1,11 @@
-# Nmap 7.94 scan initiated Sun Nov 26 14:31:54 2023 as: nmap --system-dns -Pn -oN local.txt 127.0.0.1
+# Nmap 7.94 scan initiated Sun Dec  3 14:25:45 2023 as: nmap --system-dns -Pn -oN local.txt 127.0.0.1
 Nmap scan report for localhost (127.0.0.1)
-Host is up (0.000040s latency).
-Not shown: 994 closed tcp ports (conn-refused)
-PORT      STATE SERVICE
-1123/tcp  open  murray
-3306/tcp  open  mysql
-5000/tcp  open  upnp
-7000/tcp  open  afs3-fileserver
-7921/tcp  open  unknown
-49152/tcp open  unknown
+Host is up (0.000042s latency).
+Not shown: 996 closed tcp ports (conn-refused)
+PORT     STATE SERVICE
+3306/tcp open  mysql
+5000/tcp open  upnp
+7000/tcp open  afs3-fileserver
+7921/tcp open  unknown
 
-# Nmap done at Sun Nov 26 14:31:54 2023 -- 1 IP address (1 host up) scanned in 0.06 seconds
+# Nmap done at Sun Dec  3 14:25:45 2023 -- 1 IP address (1 host up) scanned in 0.06 seconds
