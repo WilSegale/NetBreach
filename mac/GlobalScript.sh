@@ -3,10 +3,11 @@
 # file that hold all the variables that need for the program to work properly
 source DontEdit.sh
 URL="http://google.com"
+
 # Function to handle Ctrl+C
 ctrl_c() {
     echo ""
-    echo "Exiting porgram"
+    echo -e "${RED}[-]${NC} Exiting porgram"
     # Add cleanup commands here
     exit 1
 }
@@ -47,6 +48,7 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "If there are any ports that are open, it will ask for a username and hostname."
     echo "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
     echo
+
 else
     if [[ "$OSTYPE" == "${OS}"* ]]; then
         clear
