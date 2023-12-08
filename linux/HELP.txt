@@ -1,0 +1,19 @@
+
+ ___   _   _ _____ _     ____    ___ 
+|__ \ | | | | ____| |   |  _ \  |__   / / | |_| |  _| | |   | |_) |   / /
+ |_|  |  _  | |___| |___|  __/   |_|
+ (_)  |_| |_|_____|_____|_|      (_)  
+
++++++++++++++++PROGRAMS USED+++++++++++++++
+This program will help you crack passwords
+It has two programs inside it
+one is Hydra and the other is Nmap
+
++++++++++++++++HOW TO USE++++++++++++++++++
+To use the program you have to tell the computer what port you want to scan.
+It will then scan the port that you asked for on the network and see if any ports that you asked are open.
+If there are any ports that are open, it will ask for a username and hostname
+When you give the program the username and hostname, it will try to crack that given parameters you gave it.
+If you want to use the program locally, you can type [92m'sudo python3 Hercules.py ['--LOCAL', '--Local', '--local']'[0m
+If you want to use the program on a global network, you can type [92m'sudo python3 Hercules.py ['--GLOBAL', '--Global', '--global']'[0m
+If you want to use the program with GUI support you can type [92m'sudo python3 Hercules.py ['--GUI', '--Gui', '--gui']'[0m
