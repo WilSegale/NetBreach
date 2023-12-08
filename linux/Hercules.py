@@ -1,6 +1,63 @@
 from DontEdit import *
 from HelpLogo import *
 
+
+def show_help():
+
+    HelpFile = open("HELP.txt", "w")
+
+    #This is for the user to know what programs are used in this program
+    ProgramsUsed = f"+++++++++++++++PROGRAMS USED+++++++++++++++"
+    ProgramsUsedInfo01 = f"\nThis program will help you crack passwords"
+    ProgramsUsedInfo02 = f"\nIt has two programs inside it"
+    ProgramsUsedInfo03 = f"\none is Hydra and the other is Nmap"
+
+    #this is for the user to understand what the program does
+    HowToUse = f"\n+++++++++++++++HOW TO USE++++++++++++++++++"
+    HowToUseInfo01 = f"\nTo use the program you have to tell the computer what port you want to scan."
+    HowToUseInfo02 = f"\nIt will then scan the port that you asked for on the network and see if any ports that you asked are open."
+    HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
+    HowToUseInfo04 = f"\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
+    HowToUseInfo05 = f"\nIf you want to use the program locally, you can type {GREEN}'sudo python3 {SoftwareName} {LOCAL}'{RESET}"
+    HowToUseInfo06 = f"\nIf you want to use the program on a global network, you can type {GREEN}'sudo python3 {SoftwareName} {GLOBAL}'{RESET}"
+    HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {SoftwareName} {GUI}'{RESET}"
+    
+    
+    ProgramsUSED = (ProgramsUsed+
+                    ProgramsUsedInfo01+
+                    ProgramsUsedInfo02+
+                    ProgramsUsedInfo03)
+
+    # holds the information about how the program works in a array so it can grab them more easily
+    info = (HowToUse+
+            HowToUseInfo01 +
+            HowToUseInfo02 + 
+            HowToUseInfo03 + 
+            HowToUseInfo04 +
+            HowToUseInfo05 +
+            HowToUseInfo06 +
+            HowToUseInfo07)
+    
+    subprocess.run(["figlet", "Linux"])
+    subprocess.run(["figlet", "? HELP ?"])
+
+    print(text_art, file=HelpFile)
+    
+    #inputs the program used logo in a help file
+    #puts the info about the program inside the help file
+    print(ProgramsUSED)
+    print()
+
+    #Puts the info logo in the help file
+    print(ProgramsUSED, file=HelpFile)
+
+    #puts the info about how to use the program inside the help file
+    print(info, file=HelpFile)
+    #puts the info about how to use the program on the screen
+    
+    print(info)
+    print()
+
 try:
     ERROR = open("ERROR.log", "a")
 
@@ -10,60 +67,8 @@ try:
 
     #this is for the user to understand what the program does
     if len(sys.argv) == 2 and sys.argv[1] in HELP:
-        HelpFile = open("HELP.txt", "w")
+        show_help()
 
-        #This is for the user to know what programs are used in this program
-        ProgramsUsed = f"+++++++++++++++PROGRAMS USED+++++++++++++++"
-        ProgramsUsedInfo01 = f"\nThis program will help you crack passwords"
-        ProgramsUsedInfo02 = f"\nIt has two programs inside it"
-        ProgramsUsedInfo03 = f"\none is Hydra and the other is Nmap"
-
-        #this is for the user to understand what the program does
-        HowToUse = f"\n+++++++++++++++HOW TO USE++++++++++++++++++"
-        HowToUseInfo01 = f"\nTo use the program you have to tell the computer what port you want to scan."
-        HowToUseInfo02 = f"\nIt will then scan the port that you asked for on the network and see if any ports that you asked are open."
-        HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
-        HowToUseInfo04 = f"\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
-        HowToUseInfo05 = f"\nIf you want to use the program locally, you can type {GREEN}'sudo python3 {SoftwareName} {LOCAL}'{RESET}"
-        HowToUseInfo06 = f"\nIf you want to use the program on a global network, you can type {GREEN}'sudo python3 {SoftwareName} {GLOBAL}'{RESET}"
-        HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {SoftwareName} {GUI}'{RESET}"
-        
-        
-        ProgramsUSED = (ProgramsUsed+
-                        ProgramsUsedInfo01+
-                        ProgramsUsedInfo02+
-                        ProgramsUsedInfo03)
-
-        # holds the information about how the program works in a array so it can grab them more easily
-        info = (HowToUse+
-                HowToUseInfo01 +
-                HowToUseInfo02 + 
-                HowToUseInfo03 + 
-                HowToUseInfo04 +
-                HowToUseInfo05 +
-                HowToUseInfo06 +
-                HowToUseInfo07)
-        
-        subprocess.run(["figlet", "Linux"])
-        subprocess.run(["figlet", "? HELP ?"])
-
-        print(text_art, file=HelpFile)
-        
-        #inputs the program used logo in a help file
-        #puts the info about the program inside the help file
-        print(ProgramsUSED)
-        print()
-
-        #Puts the info logo in the help file
-        print(ProgramsUSED, file=HelpFile)
-
-        #puts the info about how to use the program inside the help file
-        print(info, file=HelpFile)
-        #puts the info about how to use the program on the screen
-        
-        print(info)
-        print()
-    
     # Puts the program in the GUI mode
     elif len(sys.argv) == 2 and sys.argv[1] in GUI:
         # gets the current time and formats it HH:MM:SS
