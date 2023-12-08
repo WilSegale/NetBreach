@@ -1,4 +1,4 @@
-sfrom DontEdit import *
+from DontEdit import *
 from HelpLogo import *
 
 try:
