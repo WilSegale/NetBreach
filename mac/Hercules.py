@@ -236,7 +236,6 @@ try:
     ProgramName = "Hercules"
     SoftwareName = "Hercules.py"
 
-
     #this is for the user to understand what the program does
     if len(sys.argv) == 2 and sys.argv[1] in HELP:
         show_help()
@@ -245,7 +244,6 @@ try:
     elif len(sys.argv) == 2 and sys.argv[1] in GUI:
         Show_GUI()
         
-    
     # puts the program in GLOBAL mode
     elif len(sys.argv) == 2 and sys.argv[1] in GLOBAL:
         show_GLOBAL()
