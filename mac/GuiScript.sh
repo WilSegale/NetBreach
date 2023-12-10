@@ -91,8 +91,8 @@ else
             # Function to collect user and host information
             RunHackingCommand() {
                 zenity --info --title="Hacking command" --text="To crack VNC(5900), leave 'Input Username' empty.\nTo crack MySQL(3306), type 'localhost' in 'Input Hostname'."
-                user=$(zenity --entry --title "UserName" --text "$userName" --entry-text "")
-                host=$(zenity --entry --title "HostName" --text "$hostName" --entry-text "")
+                user=$(zenity --entry --title "UserName" --text "${userName}" --entry-text "")
+                host=$(zenity --entry --title "HostName" --text "${hostName}" --entry-text "")
             }
 
             # Function to crack VNC passwords
