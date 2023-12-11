@@ -21,6 +21,8 @@ ctrl_c() {
     cleanup
 }
 
+trap ctrl_c SIGINT
+
 # Check for required packages
 for package in "${required_packages[@]}"; do
     if ! command_exists "$package"; then
