@@ -47,9 +47,6 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo
 else
     if [[ "$OSTYPE" == "${OS}"* ]]; then
-        clear
-        sudo rm -rf hydra.restore
-
         # Clear the terminal
         clear
 
