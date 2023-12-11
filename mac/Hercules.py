@@ -1,5 +1,5 @@
 from DontEdit import *
-from HelpLogo import *
+from HelpLogo import text_art as Helplogo
 
 #this is for the user to understand what the program does
 def show_help():
@@ -41,7 +41,7 @@ def show_help():
     subprocess.run(["figlet", "Mac"])
     subprocess.run(["figlet", "? HELP ?"])
 
-    print(text_art, file=HelpFile)
+    print(Helplogo, file=HelpFile)
     
     #inputs the program used logo in a help file
     #puts the info about the program inside the help file
