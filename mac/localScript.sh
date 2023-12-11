@@ -8,6 +8,10 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
+# control C code
+
+
+
 # Check for required packages
 for package in "${required_packages[@]}"; do
     if ! command_exists "$package"; then
