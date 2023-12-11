@@ -8,9 +8,18 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# control C code
+# Function to handle cleanup on exit
+cleanup() {
+    echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
+    # Add cleanup commands here
+    exit 1
+}
 
-
+# Function to handle Ctrl+C
+ctrl_c() {
+    echo ""
+    cleanup
+}
 
 # Check for required packages
 for package in "${required_packages[@]}"; do
