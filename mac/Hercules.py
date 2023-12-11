@@ -222,7 +222,6 @@ def show_LOCAL():
         print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
 
-
 try:
     ERROR = open("ERROR.log", "a")
 
