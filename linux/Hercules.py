@@ -47,8 +47,7 @@ def show_help():
     #inputs the program used logo in a help file
     #puts the info about the program inside the help file
     print(ProgramsUSED)
-    print()
-
+    
     #Puts the info logo in the help file
     print(ProgramsUSED, file=HelpFile)
 
