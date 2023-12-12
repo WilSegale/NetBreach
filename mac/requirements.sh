@@ -7,6 +7,7 @@ BRIGHT='\033[1m'
 NC='\033[0m' # No Color
 
 requiredments(){
+    #checks if the user is ROOT and if they are it says you shouldnt be root to run this scirpt
     if [ "$(id -u)" -eq 0 ]; then
         #puts the ERROR message into line art
         echo -e "${RED}$(figlet ERROR)${NC}"
