@@ -9,8 +9,8 @@ import sys
 import subprocess
 
 # for detecting the OS module
-OS='Darwin'
-
+# Detect the current operating system
+OS = "Darwin"
 # Define color codes for console output
 BRIGHT = '\033[1m'
 GREEN = "\033[92m"
