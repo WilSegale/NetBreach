@@ -3,11 +3,7 @@
 #connects to the dont edit file to see what os they are using
 source DontEdit.sh
 
-# Color variables
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-BRIGHT='\033[1m'
-NC='\033[0m' # No Color
+
 
 # List of packages to install
 Packages=(
