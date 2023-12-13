@@ -1,5 +1,11 @@
 from DontEdit import *
 from HelpLogo import *
+
+ERROR = open("ERROR.log", "a")
+
+ProgramName = "Hercules"
+SoftwareName = "Hercules.py"
+
 #this is for the user to understand what the program does
 def show_help():
 
@@ -222,11 +228,6 @@ def show_LOCAL():
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
 
 try:
-    ERROR = open("ERROR.log", "a")
-
-    ProgramName = "Hercules"
-    SoftwareName = "Hercules.py"
-
     #this is for the user to understand what the program does
     if len(sys.argv) == 2 and sys.argv[1] in HELP:
         show_help()
