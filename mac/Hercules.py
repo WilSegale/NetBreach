@@ -90,7 +90,7 @@ try:
         connect()
         # Makes sure that the user is connected to the internet    
 
-        if platform.system() == "Darwin":
+        if platform.system() == OS:
             #checks if the user is running as root
             if os.geteuid() == ROOT:
                 #makes the loading bar visible
@@ -147,7 +147,7 @@ try:
 
         # Makes sure that the user is connected to the internet    
 
-        if platform.system() == "Darwin":
+        if platform.system() == OS:
             #checks if the user is running as root
             if os.geteuid() == ROOT:
                 #makes the loading bar visible
@@ -200,7 +200,7 @@ try:
                 return False  # If unsuccessful, return False
 
         # Makes sure that the user is connected to the internet    
-        if platform.system() == "Darwin":
+        if platform.system() == OS:
             #makes the loading bar visible
             def print_loading_bar(iterations, delay=0.1, width=40):
                 """
