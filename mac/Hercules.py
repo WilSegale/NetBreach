@@ -287,14 +287,10 @@ try:
             print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
             print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
 
-    
-
     # Handle command-line arguments
     if len(sys.argv) == 2 and sys.argv[1] in HELP:
         show_help()
-    
-
-    
+        
     elif len(sys.argv) == 2 and sys.argv[1] in GUI:
         Show_GUI()
     
@@ -306,6 +302,7 @@ try:
     
     elif len(sys.argv) == 2 and sys.argv[1] in AUTO:
         show_AUTO()
+    
     else:
         print("Please use the correct number of arguments.")
         print(f"Example: {GLOBAL}, {LOCAL}, {GUI} or {HELP}")
