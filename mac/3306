@@ -1,0 +1,1 @@
+# Nmap 7.94 scan initiated Thu Dec 14 18:08:03 2023 as: nmap -sS -p 3306 -oN 3306 --open 192.168.1.1/24
