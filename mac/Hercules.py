@@ -28,9 +28,10 @@ try:
         HowToUseInfo02 = f"\nIt will then scan the port that you asked for on the network and see if any ports that you asked are open."
         HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
         HowToUseInfo04 = f"\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
-        HowToUseInfo05 = f"\nIf you want to use the program locally, you can type {GREEN}'sudo python3 {SoftwareName} {LOCAL}'{RESET}"
+        HowToUseInfo05 = f"\nIf you want to use the program with AUTO funcionality you can type {GREEN}'sudo python3 {SoftwareName} {AUTO}'{RESET}"
         HowToUseInfo06 = f"\nIf you want to use the program on a global network, you can type {GREEN}'sudo python3 {SoftwareName} {GLOBAL}'{RESET}"
-        HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {SoftwareName} {GUI}'{RESET}"
+        HowToUseInfo07 = f"\nIf you want to use the program locally, you can type {GREEN}'sudo python3 {SoftwareName} {LOCAL}'{RESET}"
+        HowToUseInfo08 = f"\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {SoftwareName} {GUI}'{RESET}" 
         
         
         ProgramsUSED = (ProgramsUsed+
@@ -46,7 +47,8 @@ try:
                 HowToUseInfo04 +
                 HowToUseInfo05 +
                 HowToUseInfo06 +
-                HowToUseInfo07)
+                HowToUseInfo07 + 
+                HowToUseInfo08)
         
         subprocess.run(["figlet", "Mac"])
         subprocess.run(["figlet", "? HELP ?"])
@@ -305,7 +307,7 @@ try:
     
     else:
         print("Please use the correct number of arguments.")
-        print(f"Example: {GLOBAL}, {LOCAL}, {GUI} or {HELP}")
+        print(f"Example: {AUTO}, {GLOBAL}, {LOCAL}, {GUI} or {HELP}")
 
 # Handle exceptions
 except FileNotFoundError:
