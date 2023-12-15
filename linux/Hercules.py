@@ -27,10 +27,9 @@ try:
         HowToUseInfo02 = f"\nIt will then scan the port that you asked for on the network and see if any ports that you asked are open."
         HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
         HowToUseInfo04 = f"\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
-        HowToUseInfo05 = f"\nIf you want to use the program with AUTO funcionality you can type {GREEN}'sudo python3 {SoftwareName} {AUTO}'{RESET}"
-        HowToUseInfo06 = f"\nIf you want to use the program on a global network, you can type {GREEN}'sudo python3 {SoftwareName} {GLOBAL}'{RESET}"
-        HowToUseInfo07 = f"\nIf you want to use the program locally, you can type {GREEN}'sudo python3 {SoftwareName} {LOCAL}'{RESET}"
-        HowToUseInfo08 = f"\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {SoftwareName} {GUI}'{RESET}" 
+        HowToUseInfo05 = f"\nIf you want to use the program on a global network, you can type {GREEN}'sudo python3 {SoftwareName} {GLOBAL}'{RESET}"
+        HowToUseInfo06 = f"\nIf you want to use the program locally, you can type {GREEN}'sudo python3 {SoftwareName} {LOCAL}'{RESET}"
+        HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {SoftwareName} {GUI}'{RESET}" 
         
         
         ProgramsUSED = (ProgramsUsed+
@@ -46,9 +45,7 @@ try:
                 HowToUseInfo04 +
                 HowToUseInfo05 +
                 HowToUseInfo06 +
-                HowToUseInfo07 + 
-                HowToUseInfo08)
-        
+                HowToUseInfo07)        
         subprocess.run(["figlet", "Mac"])
         subprocess.run(["figlet", "? HELP ?"])
         print(NameOfOs, file=HelpFile)
@@ -231,31 +228,9 @@ try:
             print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
             print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
 
-
-    
-    def show_AUTO():
-        try:
-            # Try to send a request to a known server (Google's public DNS)
-            response = requests.get("https://google.com", timeout=5)
-            response.raise_for_status()  # Raise an HTTPError for bad responses
-            return True
-        except requests.RequestException:
-            # An exception occurred, indicating no internet connection
-            return False
-        
-    #conncets to the global funciton
-    if show_AUTO():
-        show_GLOBAL()
-    else:
-        show_LOCAL()
-
-
     # Handle command-line arguments
     if len(sys.argv) == 2 and sys.argv[1] in HELP:
         show_help()
-    
-    elif len(sys.argv) == 2 and sys.argv[1] in AUTO:
-        show_AUTO()
 
     elif len(sys.argv) == 2 and sys.argv[1] in GUI:
         Show_GUI()
@@ -268,7 +243,7 @@ try:
     
     else:
         print("Please use the correct number of arguments.")
-        print(f"Example: {AUTO}, {GLOBAL}, {LOCAL}, {GUI} or {HELP}")
+        print(f"Example: {GLOBAL}, {LOCAL}, {GUI} or {HELP}")
 
 # Handle exceptions
 except FileNotFoundError:
