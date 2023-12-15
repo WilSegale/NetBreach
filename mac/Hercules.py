@@ -248,8 +248,10 @@ try:
 # Handle exceptions
 except FileNotFoundError:
     print("Error: Log file not found.")
+
 except KeyboardInterrupt:
     print("\n[-] Exiting...")
+
 finally:
     # Close the error log file
     if 'ERROR' in locals() and ERROR is not None:
