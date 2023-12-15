@@ -7,6 +7,7 @@ import urllib.request
 import logging
 import sys
 import subprocess
+import requests
 
 OS = "Darwin"
 
