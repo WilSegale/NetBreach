@@ -2,7 +2,6 @@ from DontEdit import *
 from HelpLogo import *
 
 # puts the program in GLOBAL mode
-
     
 try:
     ERROR = open("ERROR.log", "a")
