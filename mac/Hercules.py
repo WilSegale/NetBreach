@@ -49,7 +49,7 @@ try:
         subprocess.run(["figlet", "Mac"])
         subprocess.run(["figlet", "? HELP ?"])
         print(NameOfOs, file=HelpFile)
-        print(text_art, file=HelpFile)
+        print(HELP_LOGO, file=HelpFile)
         
         #inputs the program used logo in a help file
         #puts the info about the program inside the help file
