@@ -47,18 +47,18 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             # Check packages
             for package in "${Packages[@]}"
             do
-                check_package "$package"
+                check_package "${package}"
             done
 
             # Uninstall PIP packages
             for pipPackage in "${pipPackages[@]}"
             do
-                if pip3 show "$pipPackage" >/dev/null 2>&1; then
-                    pip3 uninstall "$pipPackage" -y
+                if pip3 show "${pipPackage}" >/dev/null 2>&1; then
+                    pip3 uninstall "${pipPackage}" -y
 
                     # Check the exit status of the last command
                     if [ $? -ne 0 ]; then
-                        echo -e "Error occurred during uninstallation of \"$pipPackage\""
+                        echo -e "Error occurred during uninstallation of \"${pipPackage}\""
                         exit 1
                     else
                         echo -e "${pipPackage}: uninstalled ${GREEN}successfully${NC}"
@@ -78,7 +78,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                 echo -e "________PIP Packages________"
                 for pipPackage in "${pipPackages[@]}"
                 do
-                    echo -e "$pipPackage"
+                    echo -e "${pipPackage}"
                 done
                 echo -e "________ERROR________"
                 echo -e "${RED}Error occurred during pip uninstallation${NC}"
