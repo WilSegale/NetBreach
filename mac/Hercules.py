@@ -64,7 +64,6 @@ try:
         print(info)
         print()
 
-
     #puts program in GUI mode
     def Show_GUI():
         # gets the current time and formats it HH:MM:SS
@@ -232,13 +231,13 @@ try:
 
     elif len(sys.argv) == 2 and sys.argv[1] in GUI:
         Show_GUI()
-    
+
     elif len(sys.argv) == 2 and sys.argv[1] in GLOBAL:
         show_GLOBAL()
-    
+
     elif len(sys.argv) == 2 and sys.argv[1] in LOCAL:
         show_LOCAL()
-    
+
     else:
         print("Please use the correct number of arguments.")
         print(f"Example: {GLOBAL}, {LOCAL}, {GUI} or {HELP}")
