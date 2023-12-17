@@ -39,8 +39,8 @@ if [[ "$OSTYPE" == "linux"* ]]; then
                 package_name="$1"
                 if command -v "${package_name}" >/dev/null 2>&1; then
                     echo "${package_name} is installed."
-                    sudo apt-get remove "${package_name}" -y
                     sudo apt-get autoremove -y
+                    sudo apt-get remove "${package_name}" -y
                 else
                     echo -e "${RED}$package_name${NC} is not installed."
                 fi
