@@ -62,8 +62,8 @@ try:
 
         #puts the info about how to use the program inside the help file
         print(info, file=HelpFile)
-        #puts the info about how to use the program on the screen
         
+        #puts the info about how to use the program on the screen
         print(info)
         print()
 
