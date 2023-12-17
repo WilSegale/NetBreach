@@ -1,9 +1,6 @@
 from DontEdit import *
 from HelpLogo import *
 
-# puts the program in GLOBAL mode
-
-    
 try:
     ERROR = open("ERROR.log", "a")
 
@@ -62,7 +59,7 @@ try:
 
         #puts the info about how to use the program inside the help file
         print(info, file=HelpFile)
-        
+
         #puts the info about how to use the program on the screen
         print(info)
         print()
