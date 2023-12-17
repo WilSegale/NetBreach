@@ -45,7 +45,8 @@ try:
                 HowToUseInfo04 +
                 HowToUseInfo05 +
                 HowToUseInfo06 +
-                HowToUseInfo07)        
+                HowToUseInfo07) 
+               
         subprocess.run(["figlet", "Mac"])
         subprocess.run(["figlet", "? HELP ?"])
         print(NameOfOs, file=HelpFile)
