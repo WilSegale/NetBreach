@@ -9,6 +9,7 @@ NC='\033[0m' # No Color
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
     yes=("yes" "Yes" "YES")
+    no=("no" "No" "No")
 
     echo -e "${RED}${BRIGHT}!Are you sure you want to remove your Packages (YES/NO)!: ${NC}"
 
@@ -99,8 +100,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             echo -e "${RED}ERROR: Homebrew is not installed.${NC}"
         fi
 
-    else
+    elif [[ "${no[*]}" == *"$YES_NO"* ]]; then
         echo -e "Ok, I will not remove the packages."
+        exit 1
     fi
     
 else
