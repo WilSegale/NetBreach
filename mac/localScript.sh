@@ -30,7 +30,16 @@ for package in "${required_packages[@]}"; do
         exit 1
     fi
 done
-
+#checks if the user puts in sudo in the program 
+if [ "$(id -u)" -eq 0 ]; then
+    
+    # gives the user something to read so they understand why they got the error
+    echo "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+    echo "+   You dont have to user sudo for this script     +" 
+    echo "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+    echo ""
+    exit 1
+fi
 # Check if the script is run with --help or -h
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     figlet "? HELP ?"
