@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Check if the SSH_CONNECTION variable is set
-if [ -n "$SSH_CONNECTION" ]; then
+if [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_CLIENT" ]; then
     echo "Connected via SSH"
     exit 0
 else
