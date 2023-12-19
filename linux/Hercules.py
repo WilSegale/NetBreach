@@ -65,10 +65,12 @@ def show_help():
 
 #puts program in GUI mode
 def Show_GUI():
+    ROOT = 0
+
     def is_ssh_connection():
         return "SSH_TTY" in os.environ
 
-    if is_ssh_connection():
+    if is_ssh_connection() or os.geteuid() == ROOT:
         print("Connected via SSH. This script will not run until you disconnect from SSH.")
     else:
         # gets the current time and formats it HH:MM:SS
@@ -80,7 +82,6 @@ def Show_GUI():
         current_date = datetime.datetime.now().strftime("%m/%d/%Y")
 
         # easy way to read the root user function
-        ROOT = 0
 
         def connect(url="https://google.com"):
             try:
