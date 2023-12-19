@@ -88,6 +88,20 @@ else
 
         # Function to collect user and host information
         RunHackingCommand() {
+            # Break in the outputs of my code
+            echo
+            original_host=127.0.0.1
+            original_port=$service
+
+            # Check if the port is closed
+            if nc -zv "${original_host}" "${original_port}" >/dev/null 2>&1; then
+                echo ""
+            else
+                echo -e "${RED}[-]${NC} Port ${original_port} on ${original_host} is closed."
+                # Optionally, you can choose to exit or handle closed port differently
+                exit 1
+            fi
+            
             zenity --info --title="Hacking command" --text="To crack VNC(5900), leave 'Input Username' empty.\nTo crack MySQL(3306), type 'localhost' in 'Input Hostname'."
             user=$(zenity --entry --title "UserName" --text "${userName}" --entry-text "")
             host=$(zenity --entry --title "HostName" --text "${hostName}" --entry-text "")
