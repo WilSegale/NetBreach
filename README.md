@@ -7,14 +7,6 @@ git clone https://github.com/WilSegale/Hercules.git
 ```bash
 sudo python3 setup.py
 ```
-## Then go to your OS folder. And type 
-```bash
-bash requirements.sh
-```
-## Now you can type 
-```bash
-sudo python3 Hercules.py
-```
 
 ## If you want more info about the program in your OS folder, type
 
