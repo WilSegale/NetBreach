@@ -231,7 +231,14 @@ try:
         show_help()
 
     elif len(sys.argv) == 2 and sys.argv[1] in GUI:
-        Show_GUI()
+        def is_ssh_connection():
+            return "SSH_TTY" in os.environ
+
+        if is_ssh_connection() == True:
+            print("Connected via SSH. This script will not run.",
+                  "Until you disconnect from SSH.")
+        else:
+            Show_GUI()
 
     elif len(sys.argv) == 2 and sys.argv[1] in GLOBAL:
         show_GLOBAL()

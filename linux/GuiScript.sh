@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# Check if the SSH_TTY variable is set
-if [ -n "$SSH_TTY" ]; then
-    echo "Connected via SSH"
-    exit 0
-else
-    echo "Not connected via SSH"
-fi
-
 #connets to the dontedit file to see what OS they are using
 source DontEdit.sh
 
