@@ -2,18 +2,7 @@
 
 # file that hold all the variables that need for the program to work properly
 source DontEdit.sh
-URL="http://google.com"
 
-# Function to handle Ctrl+C
-ctrl_c() {
-    echo ""
-    echo -e "${RED}[-]${NC} Exiting porgram"
-    # Add cleanup commands here
-    exit 1
-}
-
-# Trap the Ctrl+C signal and call the ctrl_c function
-trap ctrl_c SIGINT
 
 # Function to check if a command exists
 command_exists() {
@@ -22,17 +11,16 @@ command_exists() {
 
 # Check if root user
 if [[ $EUID -ne 0 ]]; then
-    echo -e "${RED}ERROR:${NC} Please run as root."
-    exit 1
+  echo -e "${RED}ERROR:${NC} Please run as root."
+  exit 1
 fi
 
 # Check for required packages
 for package in "${required_packages[@]}"; do
-    if ! command_exists "${package}"; then
-        echo
-        echo -e "ERROR: The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
-        exit 1
-    fi
+  if ! command_exists "$package"; then
+    echo -e "ERROR: The required package ${GREEN}'$package'${NC} is not installed. Please install it and try again."
+    exit 1
+  fi
 done
 
 # Check if the script is run with --help or -h
@@ -49,7 +37,6 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "If there are any ports that are open, it will ask for a username and hostname."
     echo "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
     echo
-
 else
     if [[ "$OSTYPE" == "${OS}"* ]]; then
         clear
@@ -63,14 +50,11 @@ else
             clear
 
             # Try to connect to the server
+            wget -q --spider "${SITE_URL}"
 
             # If the user is connected to the internet, it works as normal
-            
-            # Use wget with --spider to check if the URL exists
-            if wget --spider "$URL" 2>/dev/null; then
-                echo ""
+            if ! make mytarget; then
                 clear
-
             # Else, it notifies them that they are not connected to the internet and tells them to connect
             else
                 # Offline text in the terminal
@@ -110,9 +94,8 @@ else
                     read -p ">>> " Hydra
 
                     if [[ " ${exit[*]} " == *" ${Hydra} "* ]]; then
-                        echo -e "${GREEN}[+]${NC} Goodbye"
+                        echo "[+] Goodbye"
                         exit 1
-                    
                     else
                         $Hydra
                         exit 1
@@ -136,6 +119,14 @@ else
                 else
                     # Scan specific port
                     sudo nmap -sS 192.168.1.1/24 -p $service -oN $service --open
+                    read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
+
+                    if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
+                        open $service
+                    else
+                        echo "[-] Ok I will not open the $service file"
+                        sleep 1
+                    fi
                 fi
             }
 
@@ -180,7 +171,7 @@ else
                         # Put the
                         echo
                         echo "Loading VNC server..."
-                        open "vnc://${host}"
+                        xtightvncviewer "${host}"
                         exit
                     fi
                 fi
@@ -213,7 +204,7 @@ else
                         Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
                         echo "${title}"
                         echo "${Connected_To_SSH_SERVER}"
-                        ssh "${user}@${host}" -p $port
+                        ssh $user@$host -p $port
                     fi
                 fi
             }
