@@ -12,9 +12,6 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# Check for required packages
-required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
-
 # Check if required packages are installed
 for package in "${required_packages[@]}"; do
     if ! command_exists "${package}"; then
@@ -41,6 +38,7 @@ else
             zenity --error --title="${title}" --text="${message}"
             exit 1
         else
+            #checks if the user is connected to the internet if they are not connceted it tells them they are not connceted and have to connect
             SITE="https://google.com/"
             if ! curl --head --silent --fail $SITE > /dev/null; then
                 # Check if not connected to the internet
