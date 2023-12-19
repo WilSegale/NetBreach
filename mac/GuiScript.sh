@@ -130,7 +130,7 @@ else
                         title="Enter password to ${user}"
                         Connected_To_SSH_SERVER="Connected to ${user}. Enter the password to continue..."
                         zenity --info --title="${title}" --text="${Connected_To_SSH_SERVER}"
-                        ssh "$user"@"$host"
+                        ssh "${user}"@"${host}"
                     fi
                 fi
             }
@@ -148,7 +148,7 @@ else
                         Connecting_To_MySQL_SERVER="Connecting to ${host}. Please wait..."
                         zenity --info --title="${title}" --text="${Connecting_To_MySQL_SERVER}"
                         sleep 3
-                        mysql -u "$userName" -p -A
+                        mysql -u "${userName}" -p -A
                     fi
                 fi
             }
