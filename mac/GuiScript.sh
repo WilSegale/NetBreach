@@ -6,7 +6,6 @@ root=0
 total_steps=100
 userName="Input Username:"
 hostName="Input Hostname:"
-exit=("exit" "quit" "EXIT" "QUIT" "STOP" "stop")
 
 # Function to check if a command exists
 command_exists() {
