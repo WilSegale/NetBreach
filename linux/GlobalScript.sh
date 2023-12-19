@@ -119,6 +119,14 @@ else
                 else
                     # Scan specific port
                     sudo nmap -sS 192.168.1.1/24 -p $service -oN $service --open
+                    read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
+
+                    if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
+                        open scan.txt
+                    else
+                        echo "[-] Ok I will not open the scan.txt file"
+                        sleep 1
+                    fi
                 fi
             }
 
