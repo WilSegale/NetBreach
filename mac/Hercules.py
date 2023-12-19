@@ -4,8 +4,7 @@ from HelpLogo import *
 ERROR = open("ERROR.log", "a")
 
 ProgramName = "Hercules"
-SoftwareName = "Hercules.py"
-    
+SoftwareName = "Hercules.py"  
 
 #this is for the user to understand what the program does
 def show_help():
