@@ -8,6 +8,21 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
+# Function to handle cleanup on exit
+cleanup() {
+    echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
+    # Add cleanup commands here
+    exit 1
+}
+
+# Function to handle Ctrl+C
+ctrl_c() {
+    echo ""
+    cleanup
+}
+
+trap ctrl_c SIGINT
+
 # Check for required packages
 for package in "${required_packages[@]}"; do
     if ! command_exists "$package"; then
@@ -15,7 +30,16 @@ for package in "${required_packages[@]}"; do
         exit 1
     fi
 done
-
+#checks if the user puts in sudo in the program 
+if [ "$(id -u)" -eq 0 ]; then
+    
+    # gives the user something to read so they understand why they got the error
+    echo "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+    echo "+   You dont have to use sudo for this script      +" 
+    echo "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+    echo ""
+    exit 1
+fi
 # Check if the script is run with --help or -h
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     figlet "? HELP ?"
@@ -32,9 +56,6 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo
 else
     if [[ "$OSTYPE" == "${OS}"* ]]; then
-        clear
-        sudo rm -rf hydra.restore
-
         # Clear the terminal
         clear
 
@@ -89,10 +110,10 @@ else
             original_port=$service
 
             # Check if the port is closed
-            if nc -zv "$original_host" "$original_port" >/dev/null 2>&1; then
+            if nc -zv "${original_host}" "${original_port}" >/dev/null 2>&1; then
                 echo ""
             else
-                echo -e "${RED}[-]${NC} Port $original_port on $original_host is closed."
+                echo -e "${RED}[-]${NC} Port ${original_port} on ${original_host} is closed."
                 # Optionally, you can choose to exit or handle closed port differently
                 exit 1
             fi
