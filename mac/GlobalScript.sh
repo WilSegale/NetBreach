@@ -2,7 +2,20 @@
 
 # file that hold all the variables that need for the program to work properly
 source DontEdit.sh
+# Function to handle cleanup on exit
+cleanup() {
+    echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
+    # Add cleanup commands here
+    exit 1
+}
 
+# Function to handle Ctrl+C
+ctrl_c() {
+    echo ""
+    cleanup
+}
+
+trap ctrl_c SIGINT
 
 # Function to check if a command exists
 command_exists() {

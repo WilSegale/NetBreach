@@ -1,7 +1,23 @@
 #!/bin/bash
 source DontEdit.sh
+
+# Function to handle cleanup on exit
+cleanup() {
+    echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
+    # Add cleanup commands here
+    exit 1
+}
+
+# Function to handle Ctrl+C
+ctrl_c() {
+    echo ""
+    cleanup
+}
+
+trap ctrl_c SIGINT
+
+
 clear
-# Define the URL to check internet connectivity
 root=0
 total_steps=100
 userName="Input Username:"
