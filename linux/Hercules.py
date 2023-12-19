@@ -70,7 +70,7 @@ def Show_GUI():
     def is_ssh_connection():
         return "SSH_TTY" in os.environ
 
-    if is_ssh_connection() or os.geteuid() == ROOT:
+    if is_ssh_connection() or is_ssh_connection() and os.geteuid() == ROOT:
         print("Connected via SSH. This script will not run until you disconnect from SSH.")
     else:
         # gets the current time and formats it HH:MM:SS
