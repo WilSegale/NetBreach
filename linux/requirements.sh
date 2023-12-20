@@ -12,7 +12,7 @@ Packages=(
     "figlet"
     "zenity"
     "xtightvncviewer"
-    "kwrite"
+    "leafpad"
 )
 
 # List of Python packages to install
