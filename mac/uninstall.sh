@@ -6,10 +6,10 @@ GREEN='\033[0;32m'
 BRIGHT='\033[1m'
 NC='\033[0m' # No Color
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
+yes=("yes" "Yes" "YES")
+no=("no" "No" "No")
 
-    yes=("yes" "Yes" "YES")
-    no=("no" "No" "No")
+if [[ "$OSTYPE" == "darwin"* ]]; then
 
     echo -e "${RED}${BRIGHT}!Are you sure you want to remove your Packages (YES/NO)!: ${NC}"
 
