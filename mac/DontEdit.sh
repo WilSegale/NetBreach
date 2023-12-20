@@ -17,6 +17,11 @@ SITE_URL="https://google.com"
 # Root user
 root=0
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BRIGHT='\033[1m'
+NC='\033[0m' # No Color
+
 # the array that holds nothing in it
 empty=("")
 
