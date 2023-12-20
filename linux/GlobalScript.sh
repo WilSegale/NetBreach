@@ -117,18 +117,9 @@ else
                 elif [[ " ${alphabet[*]} " == *" ${service} "* ]]; then
                     echo "Please enter a number next time"
                     exit 1
-
                 else
                     # Scan specific port
                     sudo nmap -sS 192.168.1.1/24 -p $service -oN $service --open
-                    read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
-
-                    if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                        kate "${service}"
-                    else
-                        echo "[-] Ok I will not open the ${service} file"
-                        sleep 1
-                    fi
                 fi
             }
 
