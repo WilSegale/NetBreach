@@ -71,10 +71,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
             # Check the exit status of the last command
             if [ $? -ne 0 ]; then
-                echo -e "The packages that are removed are: ${GREEN}"
                 for package in "${Packages[@]}"
                 do
-                    echo -e "$package"
+                    echo -e "The packages that are removed are: ${package}"
                 done
                 echo -e "________PIP Packages________"
                 for pipPackage in "${pipPackages[@]}"
@@ -84,15 +83,14 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
                 echo -e "________ERROR________"
                 echo -e "${RED}Error occurred during pip uninstallation${NC}"
             else
-                echo -e "The packages that are removed are: ${GREEN}"
                 for package in "${Packages[@]}"
                 do
-                    echo -e "${package}"
+                    echo -e "${package}: ${GREEN}is removed${NC}"
                 done
                 echo -e "________PIP Packages________"
                 for pipPackage in "${pipPackages[@]}"
                 do
-                    echo -e "${pipPackage} is removed"
+                    echo -e "${pipPackage}: ${GREEN}is removed${NC}"
                 done
             fi
 
