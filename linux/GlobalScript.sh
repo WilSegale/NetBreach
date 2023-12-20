@@ -122,7 +122,7 @@ else
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
 
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                        open scan.txt
+                        kwrite "${service}"
                     else
                         echo "[-] Ok I will not open the scan.txt file"
                         sleep 1
