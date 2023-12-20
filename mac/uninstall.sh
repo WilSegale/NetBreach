@@ -99,10 +99,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         fi
 
     elif [[ "${no[*]}" == *"$YES_NO"* ]]; then
-        echo -e "Ok, I will not remove the packages."
+        echo -e "${RED}[-]${NC} Ok, I will not remove the packages."
         exit 1
     fi
-    
 else
     echo -e "${RED}${BRIGHT}This script can only be run on macOS${NC}"
 fi
