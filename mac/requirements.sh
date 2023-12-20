@@ -26,6 +26,7 @@ requiredments(){
         echo -e "${RED}$(figlet ERROR)${NC}"
         
         # gives the user something to read so they understand why they got the error
+        echo ""
         echo "+++++++++++++++++++++++++++++++++++++++++"
         echo "+   Don't use sudo for this script.     +" 
         echo "+   Because it can damage your computer +"
