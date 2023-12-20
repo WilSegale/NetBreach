@@ -81,7 +81,7 @@ else
                 Hercules
             else
                 zenity --info --title "Hercules" --text "Scanning port ${service}." --timeout=5
-                nmap 127.0.0.1 -p "$service" --open
+                nmap 127.0.0.1 -p "${service}" --open
             fi
         }
 
