@@ -84,7 +84,7 @@ else
                     # asks if the user want to see scan on a open file or not
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                        gedit scan.txt
+                        leafpad scan.txt
                     else
                         echo "[-] Ok I will not open the scan.txt file"
                         sleep 1
@@ -124,9 +124,9 @@ else
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
 
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                        gedit "${service}"
+                        kate "${service}"
                     else
-                        echo "[-] Ok I will not open the scan.txt file"
+                        echo "[-] Ok I will not open the ${service} file"
                         sleep 1
                     fi
                 fi
