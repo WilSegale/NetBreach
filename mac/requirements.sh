@@ -5,7 +5,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 BRIGHT='\033[1m'
 NC='\033[0m' # No Color
-
+ROOT=0
 # Packages to install
 Packages=(
     "wget"
@@ -25,7 +25,7 @@ pipPackages=(
 
 requiredments(){
     #checks if the user is ROOT and if they are it says you shouldnt be root to run this scirpt
-    if [ "$(id -u)" -eq 0 ]; then
+    if [ "$(id -u)" -eq $ROOT ]; then
         #puts the ERROR message into line art
         echo -e "${RED}$(figlet ERROR)${NC}"
         

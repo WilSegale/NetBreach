@@ -3,8 +3,6 @@
 #connects to the dont edit file to see what os they are using
 source DontEdit.sh
 
-
-
 # List of packages to install
 Packages=(
     "wget"
