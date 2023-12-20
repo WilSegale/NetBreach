@@ -224,7 +224,7 @@ def show_LOCAL():
         print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
 
-def show_GlobalLOCAL():
+def show_GuiLOCAL():
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
 
@@ -269,7 +269,6 @@ def show_GlobalLOCAL():
         # makes a pop up dialog to tell the user that the OS is not correct
         print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
-    
 
 try:
     # Handle command-line arguments
@@ -292,7 +291,7 @@ try:
     elif len(sys.argv) == 2 and sys.argv[1] in LOCAL:
         show_LOCAL()
     elif len(sys.argv) == 2 and sys.argv[1] in GuiLocal:
-        show_GlobalLOCAL()
+        show_GuiLOCAL()
     else:
         print("Please use the correct number of arguments.")
         print(f"Example: {GLOBAL}, {LOCAL}, {GUI}, {GuiLocal} or {HELP}")
