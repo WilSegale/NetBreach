@@ -1,0 +1,15 @@
+# Nmap 7.94 scan initiated Tue Dec 19 20:31:34 2023 as: nmap -sS -p 22 -oN 22 --open 192.168.1.1/24
+Nmap scan report for MacBook-Pro.fios-router.home (192.168.1.81)
+Host is up (0.043s latency).
+
+PORT   STATE SERVICE
+22/tcp open  ssh
+MAC Address: BC:D0:74:AA:71:36 (Apple)
+
+Nmap scan report for zeros-Air.fios-router.home (192.168.1.38)
+Host is up (0.00037s latency).
+
+PORT   STATE SERVICE
+22/tcp open  ssh
+
+# Nmap done at Tue Dec 19 20:31:41 2023 -- 256 IP addresses (31 hosts up) scanned in 7.65 seconds
