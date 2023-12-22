@@ -5,7 +5,12 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 BRIGHT='\033[1m'
 NC='\033[0m' # No Color
-
+# Packages to install
+packages=("fcrackzip"
+          "figlet"
+          "ffmpeg"
+          "jq"
+)
 
 start() {
     if [ "$(id -u)" -eq 0 ]; then
@@ -24,11 +29,6 @@ start() {
             # Check if the OS is macOS
             if [[ "$OSTYPE" == "darwin"* ]]; then 
                 if ping -c 1 google.com >/dev/null 2>&1; then
-                    # Packages to install
-                    Packages=(
-                        "fcrackzip"
-                    )
-                    
                     # Install package
                     install_Brew_package() {
                         package_name="$1"
@@ -86,11 +86,6 @@ start() {
                         echo "This script will install the packages for it to work properly"
                     else
                         if ping -c 1 google.com >/dev/null 2>&1; then
-                            # Packages to install
-                            Packages=(
-                                "fcrackzip"
-                            )
-
                             # Install package
                             install_package() {
                                 package_name="$1"
