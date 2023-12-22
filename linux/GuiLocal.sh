@@ -17,7 +17,6 @@ ctrl_c() {
 trap ctrl_c SIGINT
 
 clear
-root=0
 total_steps=100
 userName="Input Username:"
 hostName="Input Hostname:"

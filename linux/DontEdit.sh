@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# Color variables
+# Root user
+root=0
 
+# Color variables
 BRIGHT='\033[1m'
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -16,9 +18,6 @@ OS="linux"
 
 # For the wget functionality to work
 SITE_URL="https://google.com"
-
-# Root user
-root=0
 
 # the array that holds nothing in it
 empty=("")
