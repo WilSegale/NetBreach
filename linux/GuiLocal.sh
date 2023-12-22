@@ -123,7 +123,7 @@ else
                         title="Enter password to ${host}"
                         Connected_To_VNC_SERVER="Connected to '${host}'. Enter the password to continue..."
                         zenity --info --title="${title}" --text="${Connected_To_VNC_SERVER}"
-                        open "vnc://${host}"
+                        xtightvncviewer $host
                         exit 1
                     fi
                 fi
