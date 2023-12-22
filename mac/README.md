@@ -10,10 +10,10 @@ bash requirements.sh
 
 ## To start the program type 
 ```bash 
-sudo python3 Hercules.py --local, 
+sudo python3 Hercules.py --local,
 sudo python3 Hercules.py --global,
-sudo python3 Hercules.py --gui,
-sudo python3 Hercules.py --GuiLocal
+sudo python3 Hercules.py --gui or
+sudo python3 Hercules.py --Gui-Local
 ```
 
 ## If you are wondering how to use this script just type
