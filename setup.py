@@ -25,12 +25,14 @@ if __name__ == "__main__":
 
   # Run command
   if platform == "linux":
+    print("DONE runing linux command")
     logger.info(f"Running command: {' '.join(linux_command)}")
     try:
       subprocess.run(linux_command, check=True)
     except subprocess.CalledProcessError:
       logger.error("Error running command")
   elif platform == "macos":
+    print("DONE runing macos command")
     logger.info(f"Running command: {' '.join(macos_command)}")
     try:
       subprocess.run(macos_command, check=True) 
