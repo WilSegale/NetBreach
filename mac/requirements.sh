@@ -1,6 +1,5 @@
 #!/bin/bash
 source DontEdit.sh
-# Color variables
 
 # Packages to install
 Packages=(
