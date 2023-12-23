@@ -11,8 +11,8 @@ help=("help"
       "what do you do")
 
 yes=("Y"
-    "y"
-    "yes" 
+     "y"
+     "yes" 
      "Yes" 
      "YES")
 
