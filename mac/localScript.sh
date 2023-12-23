@@ -54,9 +54,9 @@ else
 
             # gives the user something to read so they understand why they got the error
             echo
-            echo "++++++++++++++++++++++++++++++++++++++++++++++++++++"
-            echo "+   You dont have to use sudo for this script      +" 
-            echo "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+            echo "++++++++++++++++++++++++++++++++++++++++++++++++++"
+            echo "+   You dont have to use sudo for this script    +" 
+            echo "++++++++++++++++++++++++++++++++++++++++++++++++++"
             echo ""
         fi
         # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
