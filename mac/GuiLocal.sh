@@ -59,7 +59,7 @@ else
             if [[ "$service" == "ALL" || "$service" == "all" ]]; then
                 # Scan all ports
                 zenity --info --title "Hercules" --text "Scanning all ports. This may take up to 1 hour to complete." --timeout=5
-                sudo nmap 127.0.0.1/24 -Pn -oN scan.txt --open
+                nmap 127.0.0.1 -oN scan.txt --open
 
                 zenity --info --title "INFO" --text "Put in Hydra first to start the script." --timeout=5
                 hydraInputField="Put in Hydra first to start the script."
