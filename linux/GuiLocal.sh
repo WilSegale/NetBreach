@@ -49,17 +49,17 @@ else
             figlet -f slant "Hercules"
             options_text="Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'.\nIf you want to stop the program, type 'stop'."
             service=$(zenity --entry --title "Hercules" --text "$options_text" --entry-text "")
+            
             if [[  " ${exit[*]} " == *" ${service} "* ]]; then
                 echo 
                 echo -e "[-] Exiting program..."
             else
                 echo -e "[+] The port you are scanning is: ${service}"
             fi
-
             if [[ "$service" == "ALL" || "$service" == "all" ]]; then
                 # Scan all ports
                 zenity --info --title "Hercules" --text "Scanning all ports. This may take up to 1 hour to complete." --timeout=5
-                sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
+                sudo nmap 127.0.0.1/24 -Pn -oN scan.txt --open
 
                 zenity --info --title "INFO" --text "Put in Hydra first to start the script." --timeout=5
                 hydraInputField="Put in Hydra first to start the script."
@@ -80,12 +80,26 @@ else
                 Hercules
             else
                 zenity --info --title "Hercules" --text "Scanning port ${service}." --timeout=5
-                sudo nmap -sS 192.168.1.1/24 -p "$service" --open
+                nmap 127.0.0.1 -p "${service}" --open
             fi
         }
 
         # Function to collect user and host information
         RunHackingCommand() {
+            # Break in the outputs of my code
+            echo
+            original_host=127.0.0.1
+            original_port=$service
+
+            # Check if the port is closed
+            if nc -zv "${original_host}" "${original_port}" >/dev/null 2>&1; then
+                echo ""
+            else
+                echo -e "${RED}[-]${NC} Port ${original_port} on ${original_host} is closed."
+                # Optionally, you can choose to exit or handle closed port differently
+                exit 1
+            fi
+            
             zenity --info --title="Hacking command" --text="To crack VNC(5900), leave 'Input Username' empty.\nTo crack MySQL(3306), type 'localhost' in 'Input Hostname'."
             user=$(zenity --entry --title "UserName" --text "${userName}" --entry-text "")
             host=$(zenity --entry --title "HostName" --text "${hostName}" --entry-text "")
@@ -107,7 +121,7 @@ else
                     title="Enter password to ${host}"
                     Connected_To_VNC_SERVER="Connected to '${host}'. Enter the password to continue..."
                     zenity --info --title="${title}" --text="${Connected_To_VNC_SERVER}"
-                    xtightvncviewer $host
+                    open "vnc://${host}"
                     exit 1
                 fi
             fi
@@ -158,7 +172,6 @@ else
         RunHackingCommandWithVNC
         RunHackingCommandWithSSH
         RunHackingCommandWithMySQL
-    fi
     else
         # Warning message for wrong OS
         echo "WARNING: Wrong OS. Please use the correct OS." >> ERROR.LOG
