@@ -21,6 +21,8 @@ ctrl_c() {
     cleanup
 }
 
+
+#allows the user to close the program gracefully
 trap ctrl_c SIGINT
 
 # Check for required packages
