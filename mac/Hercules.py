@@ -274,10 +274,13 @@ def show_GuiLOCAL():
 
 try:
     # Handle command-line arguments
+    #connectes to the HELP verison of the Hercules program so the user understands what the porgram does
     if len(sys.argv) == 2 and sys.argv[1] in HELP:
         show_help()
 
     elif len(sys.argv) == 2 and sys.argv[1] in GUI:
+        #checks if the user is conncted to ssh and if they are it says to discconect from ssh for the GUI script to work correctly
+        #else if they are not conncted to ssh it will work normally
         def is_ssh_connection():
             return "SSH_TTY" in os.environ
 
@@ -286,12 +289,16 @@ try:
                   "Until you disconnect from SSH.")
         else:
             Show_GUI()
-
+    
+    #connectes to the global verison of the Hercules program
     elif len(sys.argv) == 2 and sys.argv[1] in GLOBAL:
         show_GLOBAL()
 
+    #connectes to the local verison of the Hercules program
     elif len(sys.argv) == 2 and sys.argv[1] in LOCAL:
         show_LOCAL()
+    
+    #connectes to the GuiLocal verison of the Hercules program
     elif len(sys.argv) == 2 and sys.argv[1] in GuiLocal:
         show_GuiLOCAL()
     else:
