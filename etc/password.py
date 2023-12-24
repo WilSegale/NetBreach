@@ -1,5 +1,6 @@
 import random
 import string
+textFile = open("rockyou.txt","a")
 
 try:
     password_count = 0  # Initialize the password count
@@ -19,7 +20,8 @@ try:
         # Join the characters to form the password string
         password = ''.join(password_list)
 
-        print(password)
+        print(f"{password}",file=textFile)
+        print(f"{password}")
 
         password_count += 1  # Increment the password count
 
