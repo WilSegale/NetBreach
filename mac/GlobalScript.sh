@@ -62,18 +62,15 @@ else
             sudo rm -rf hydra.restore
             clear
 
-            # Try to connect to the server
-            wget -q --spider "${SITE_URL}"
+            #checks if the user is connected to the internet if they are not connceted it tells them they are not connceted and have to connect
+            SITE="https://google.com/"
+            if ! curl --head --silent --fail $SITE > /dev/null; then
+                echo "ERROR:TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}" >> ERROR.LOG
+                echo "TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}"
 
-            # If the user is connected to the internet, it works as normal
-            if ! make mytarget; then
-                clear
-            # Else, it notifies them that they are not connected to the internet and tells them to connect
-            else
-                # Offline text in the terminal
-                echo "ERROR:TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}." >> ERROR.LOG
-                echo "TIME:${CURRENT_TIME} You are offline. Please connect to the internet. DATE:${CURRENT_DATE}"
                 exit 1
+            else
+                echo ""
             fi
 
             # Clear the terminal

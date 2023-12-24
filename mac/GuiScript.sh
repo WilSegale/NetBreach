@@ -49,7 +49,7 @@ else
             # Error if not running as root
             title="NOT ROOT"
             message="Please run as root."
-            echo "ERROR: Please run as root." >> ERROR.LOG
+            echo "ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
             zenity --error --title="${title}" --text="${message}"
             exit 1
         else
