@@ -51,13 +51,13 @@ else
     if [[ "$OSTYPE" == "${OS}"* ]]; then
         # Clear the terminal
         clear
-        #checks if the user puts in sudo in the program 
+        #checks if the user puts in sudo in the program
         if [ "$(id -u)" -eq 0 ]; then
 
             # gives the user something to read so they understand why they got the error
             echo
             echo "++++++++++++++++++++++++++++++++++++++++++++++++++"
-            echo "+   You dont have to use sudo for this script    +" 
+            echo "+   You dont have to use sudo for this script    +"
             echo "++++++++++++++++++++++++++++++++++++++++++++++++++"
             echo ""
         fi
@@ -68,7 +68,7 @@ else
             echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
             echo "If you want to stop the program type 'stop'."
             read -p ">>> " service
-            
+
             if [[ $service == "ALL" || $service == "all" ]]; then
                 # Scan the entire network and display open ports
                 nmap 127.0.0.1 --system-dns -Pn -oN local.txt
@@ -93,7 +93,7 @@ else
             elif [[ " ${empty[*]} " == *" ${service} "* ]]; then
                 echo -e "${RED}ERROR:${NC} plase input a number into the input field"
                 sleep 1
-                exit 1                
+                exit 1
             #checks if the user has put in a letter insed of a number into the input feild
             elif [[ " ${alphabet[*]} " == *" ${service} "* ]]; then
                 echo "Please enter a number next time"
@@ -123,7 +123,7 @@ else
             # Services to crack the network
             echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
             echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
-            echo $username@$hostname
+            echo "${username}@${hostname}"
 
             # Use different variables for user input to avoid overwriting original host and port
             read -p "Input Username: " user_input
