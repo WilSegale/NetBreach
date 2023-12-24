@@ -9,6 +9,8 @@ import sys
 import subprocess
 import requests
 
+
+#name of the os
 OS = "Darwin"
 
 # Define color codes for console output
