@@ -24,4 +24,4 @@ try:
         password_count += 1  # Increment the password count
 
 except KeyboardInterrupt:
-    print(f"Generated and printed {password_count} passwords.")
+    print(f"Generated and printed {password_count:,.2f} passwords.")
