@@ -1,23 +1,29 @@
 import random
 import string
-
-
-# maximum length of password needed
-# this can be changed to suit your password length
 textFile = open("rockyou.txt","a")
-MAX_LEN = int(input(">>> "))
 
-def generate_password(length=MAX_LEN):
-    # Define the character set to be used in the password
-    chars = string.ascii_letters + string.digits + string.punctuation
+try:
+    password_count = 0  # Initialize the password count
 
-    # Generate a random password using the defined character set
-    password = ''.join(random.choice(chars) for _ in range(length))
+    while True:
+        # Set the desired password length
+        password_length = 12  # You can replace this with your desired length
 
-    # Return the password
-    return password
+        characters = string.ascii_letters + string.digits + string.punctuation
 
-# Example usage: generate a password with a length of 12 characters
-password = generate_password(MAX_LEN)
-print(password,file=textFile)
-print(password)
+        # Using a list to accumulate characters
+        password_list = []   
+
+        for _ in range(password_length):
+            password_list.append(random.choice(characters))
+
+        # Join the characters to form the password string
+        password = ''.join(password_list)
+
+        print(f"{password}",file=textFile)
+        print(f"{password}")
+
+        password_count += 1  # Increment the password count
+
+except KeyboardInterrupt:
+    print(f"Generated and printed {password_count:,.2f} passwords.")
