@@ -22,7 +22,7 @@ requiredments(){
     #checks if the user is ROOT and if they are it says you shouldnt be root to run this scirpt
     if [ "$(id -u)" -eq $root ]; then
         #puts the ERROR message into line art
-        echo -e "${RED}$(figlet ERROR)${NC}"
+        echo -e "${RED}$(figlet [ ERROR ])${NC}"
         
         # gives the user something to read so they understand why they got the error
         echo "+++++++++++++++++++++++++++++++++++++++++"
