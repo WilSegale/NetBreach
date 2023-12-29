@@ -36,7 +36,5 @@ sudo python3 Hercules.py --local
 bash script.sh --help or bash script.sh -h
 ```
 
-
-
 ### This software is going to help you crack passwords.
 ### To crack VNC(5900) dont type anything in the "Username" input. Just type the ip address in the hostname input field.
