@@ -8,15 +8,12 @@
 bash requirements.sh
 ```
 
-## If you are wondering what the requirements do type
-
-```bash
-bash requirements.sh --help or bash requirements.sh -h
-```
-
 ## To start the program type 
 ```bash 
-sudo python3 Hercules.py
+sudo python3 Hercules.py --local,
+sudo python3 Hercules.py --global,
+sudo python3 Hercules.py --gui or
+sudo python3 Hercules.py --Gui-Local
 ```
 
 ## If you are wondering how to use this script just type
@@ -25,15 +22,10 @@ sudo python3 Hercules.py
 sudo python3 Hercules.py --help or sudo python3 Hercules.py -h
 ```
 
-## If you want to use it locally on your computer just do
-```bash
-sudo python3 Hercules.py --local
-```
-
-## If you are wondering how to use this script just type
+## If you are wondering what the requirements do type
 
 ```bash
-bash script.sh --help or bash script.sh -h
+bash requirements.sh --help or bash requirements.sh -h
 ```
 
 ### This software is going to help you crack passwords.
