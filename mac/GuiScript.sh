@@ -70,8 +70,15 @@ else
                 figlet -f slant "Hercules"
                 options_text="Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'.\nIf you want to stop the program, type 'stop'."
                 service=$(zenity --entry --title "Hercules" --text "$options_text" --entry-text "")
-                echo -e "[+] The port you are scanning is: ${service}"
-
+            
+                if [[  " ${exit[*]} " == *" ${service} "* ]]; then
+                    echo 
+                    echo -e "[-] Exiting program..."
+                else
+                    #tells the user what port they are scanning if they forget they can go back to the terminal and it will tell them
+                    echo -e "[+] The port you are scanning is: ${service}"
+                fi
+                
                 if [[ "$service" == "ALL" || "$service" == "all" ]]; then
                     # Scan all ports
                     zenity --info --title "Hercules" --text "Scanning all ports. This may take up to 1 hour to complete." --timeout=5
