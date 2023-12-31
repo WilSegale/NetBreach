@@ -2,6 +2,20 @@
 
 #connets to the dontedit file to see what OS they are using
 source DontEdit.sh
+# Function to handle cleanup on exit
+cleanup() {
+    echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
+    # Add cleanup commands here
+    exit 1
+}
+
+# Function to handle Ctrl+C
+ctrl_c() {
+    echo ""
+    cleanup
+}
+
+trap ctrl_c SIGINT
 
 # Rest of your existing code...
 #url to see if the user is connected to the internet
@@ -129,7 +143,7 @@ else
                 options_text="Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'\nIf you want to stop the program, type 'stop'."
 
                 # Show an entry dialog to get user input for the ports from the network
-                service=$(zenity --entry --title "Hercules" --text "$options_text" --entry-text "")
+                service=$(zenity --entry --title "Hercules" --text "${options_text}" --entry-text "")
                 
                 if [[  " ${exit[*]} " == *" ${service} "* ]]; then
                     echo 
