@@ -14,5 +14,5 @@ read -p "Input file name to encrypt: " input_file
 output_file="encrypted.enc"
 read -sp "Input Password: " password
 
-encrypt_file "$input_file" "$output_file" "$password"
-echo "File encrypted to $output_file"
+encrypt_file "${input_file}" "${output_file}" "${password}"
+echo "File encrypted to ${output_file}"
