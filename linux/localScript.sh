@@ -121,7 +121,7 @@ else
             # Services to crack the network
             echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
             echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
-            echo $username@$hostname
+            echo -e "${username}@${hostname}"
 
             # Use different variables for user input to avoid overwriting original host and port
             read -p "Input Username: " user_input
@@ -163,7 +163,7 @@ else
                     # Put the
                     echo
                     echo "Loading VNC server..."
-                    open "vnc://${host}"
+                    open "xtightvncviewer://${host}"
                     exit
                 fi
             fi
