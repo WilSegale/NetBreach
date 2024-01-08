@@ -304,7 +304,12 @@ try:
         show_GuiLOCAL()
     else:
         print("Please use the correct number of arguments.")
-        print(f"Example: {GLOBAL}, {LOCAL}, {GUI}, {GuiLocal} or {HELP}")
+        print(f'''Example: 
+{GLOBAL}, 
+{LOCAL}, 
+{GUI}, 
+{GuiLocal} or 
+{HELP}''')
 
 except KeyboardInterrupt:
     print("\n[-] Exiting...")
