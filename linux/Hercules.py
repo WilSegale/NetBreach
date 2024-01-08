@@ -1,5 +1,12 @@
 from DontEdit import *
 from HelpLogo import *
+# gets the current time and formats it HH:MM:SS
+current_time = datetime.datetime.now().time()
+
+formatted_time = current_time.strftime("%I:%M:%S %p")
+
+# Get the current date
+current_date = datetime.datetime.now().strftime("%m/%d/%Y")
 
 ERROR = open("ERROR.log", "a")
 
@@ -45,7 +52,7 @@ def show_help():
             HowToUseInfo07 +
             HowToUseInfo08) 
             
-    subprocess.run(["figlet", "Mac"])
+    subprocess.run(["figlet", "Linux"])
     subprocess.run(["figlet", "? HELP ?"])
     print(NameOfOs, file=HelpFile)
     print(HELP_LOGO, file=HelpFile)
@@ -303,8 +310,14 @@ try:
     elif len(sys.argv) == 2 and sys.argv[1] in GuiLocal:
         show_GuiLOCAL()
     else:
+        print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
         print("Please use the correct number of arguments.")
-        print(f"Example: {GLOBAL}, {LOCAL}, {GUI}, {GuiLocal} or {HELP}")
+        print(f'''Example: 
+{GLOBAL}, 
+{LOCAL}, 
+{GUI}, 
+{GuiLocal} or 
+{HELP}''')
 
 except KeyboardInterrupt:
     print("\n[-] Exiting...")
