@@ -8,6 +8,7 @@ import logging
 import sys
 import subprocess
 import requests
+
 # for detecting the OS module
 OS = 'Linux'
 
