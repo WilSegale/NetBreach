@@ -310,7 +310,7 @@ try:
     elif len(sys.argv) == 2 and sys.argv[1] in GuiLocal:
         show_GuiLOCAL()
     else:
-        print(f"TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
+        print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
         print("Please use the correct number of arguments.")
         print(f'''Example: 
 {GLOBAL}, 
