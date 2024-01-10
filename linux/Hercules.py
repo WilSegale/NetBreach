@@ -56,7 +56,7 @@ def show_help():
             HowToUseInfo09 +
             HowToUseInfo10) 
             
-    subprocess.run(["figlet", "Linux"])
+    subprocess.run(["figlet", "Mac"])
     subprocess.run(["figlet", "? HELP ?"])
     print(NameOfOs, file=HelpFile)
     print(HELP_LOGO, file=HelpFile)
