@@ -64,7 +64,6 @@ def show_help():
     #inputs the program used logo in a help file
     #puts the info about the program inside the help file
     print(ProgramsUSED)
-    print()
 
     #Puts the info logo in the help file
     print(ProgramsUSED, file=HelpFile)
@@ -284,6 +283,7 @@ def show_GuiLOCAL():
         print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
 
+#hows the if statements that connect to the functions for the program to work properly
 try:
     # Handle command-line arguments
     #connectes to the HELP verison of the Hercules program so the user understands what the porgram does
