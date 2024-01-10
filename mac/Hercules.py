@@ -309,6 +309,8 @@ try:
     #connectes to the GuiLocal verison of the Hercules program
     elif len(sys.argv) == 2 and sys.argv[1] in GuiLocal:
         show_GuiLOCAL()
+    elif len(sys.argv) == 2 and sys.argv[1] in installRequirement:
+        os.system('bash requirements.sh')
     else:
         print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
         print("Please use the correct number of arguments.")
@@ -316,7 +318,8 @@ try:
 {GLOBAL}, 
 {LOCAL}, 
 {GUI}, 
-{GuiLocal} or 
+{GuiLocal},
+{installRequirement} or
 {HELP}''')
 
 except KeyboardInterrupt:
