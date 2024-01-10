@@ -55,16 +55,15 @@ def show_help():
             HowToUseInfo08 +
             HowToUseInfo09 +
             HowToUseInfo10) 
-            
-    subprocess.run(["figlet", "Mac"])
-    subprocess.run(["figlet", "? HELP ?"])
+
+    lineArt(["figlet", "linux"])
+    lineArt(["figlet", "? HELP ?"])
     print(NameOfOs, file=HelpFile)
     print(HELP_LOGO, file=HelpFile)
     
     #inputs the program used logo in a help file
     #puts the info about the program inside the help file
     print(ProgramsUSED)
-    print()
 
     #Puts the info logo in the help file
     print(ProgramsUSED, file=HelpFile)
@@ -284,12 +283,13 @@ def show_GuiLOCAL():
         print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
 
+#holds the if statements that connect to the functions for the program to work properly
 try:
     # Handle command-line arguments
     #connectes to the HELP verison of the Hercules program so the user understands what the porgram does
     if len(sys.argv) == 2 and sys.argv[1] in HELP:
         show_help()
-
+    #puts the program into gui mode
     elif len(sys.argv) == 2 and sys.argv[1] in GUI:
         #checks if the user is conncted to ssh and if they are it says to discconect from ssh for the GUI script to work correctly
         #else if they are not conncted to ssh it will work normally
@@ -317,10 +317,12 @@ try:
     #installs the required packages for the program to work properly
     elif len(sys.argv) == 2 and sys.argv[1] in installRequirement:
         os.system('bash requirements.sh')
-
+    
+    #uninstall the required packages so its easier to uninstall them
     elif len(sys.argv) == 2 and sys.argv[1] in uninstallRequirement:
         os.system('bash uninstall.sh')
 
+    #if the user doenst input the correct argument it tells them what arguments to use for it to work 
     else:
         print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
         print("Please use the correct number of arguments.")
