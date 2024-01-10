@@ -329,7 +329,8 @@ try:
 {LOCAL}, 
 {GUI}, 
 {GuiLocal},
-{installRequirement} or
+{installRequirement},
+{uninstallRequirement} or
 {HELP}''')
 
 except KeyboardInterrupt:
