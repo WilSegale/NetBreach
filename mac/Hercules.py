@@ -313,8 +313,14 @@ try:
     #connectes to the GuiLocal verison of the Hercules program
     elif len(sys.argv) == 2 and sys.argv[1] in GuiLocal:
         show_GuiLOCAL()
+
+    #installs the required packages for the program to work properly
     elif len(sys.argv) == 2 and sys.argv[1] in installRequirement:
         os.system('bash requirements.sh')
+
+    elif len(sys.argv) == 2 and sys.argv[1] in uninstallRequirement:
+        os.system('bash uninstall.sh')
+
     else:
         print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
         print("Please use the correct number of arguments.")
