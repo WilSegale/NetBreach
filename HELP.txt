@@ -26,4 +26,5 @@ If you want to use the program on a global network, you can type [92m'sudo pyth
 If you want to use the program locally, you can type [92m'python3 Hercules.py ['--LOCAL', '--Local', '--local']'[0m
 If you want to use the program with GUI support you can type [92m'sudo python3 Hercules.py ['--GUI', '--Gui', '--gui']'[0m
 If you want to use the program with GUI in Local mode you can type [92m'python3 Hercules.py ['--GUI-LOCAL', '--Gui-local', '--gui-local']'[0m
-If you want to have the program install required packages by it's self type [92m'python3 Hercules.py ['--install', '--INSTALL']'[0m
+If you want to have the program install required packages by it's self type [92m'python3 Hercules.py ['--INSTALL', '--install']'[0m
+If you want to have the program uninstall required packages by it's self type [92m'python3 Hercules.py ['--UNINSTALL', '--uninstall']'[0m
