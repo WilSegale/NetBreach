@@ -35,6 +35,8 @@ def show_help():
     HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {SoftwareName} {GUI}'{RESET}" 
     HowToUseInfo08 = f"\nIf you want to use the program with GUI in Local mode you can type {GREEN}'python3 {SoftwareName} {GuiLocal}'{RESET}"
     HowToUseInfo09 = f"\nIf you want to have the program install required packages by it's self type {GREEN}'python3 {SoftwareName} {installRequirement}'{RESET}"
+    HowToUseInfo10 = f"\nIf you want to have the program uninstall required packages by it's self type {GREEN}'python3 {SoftwareName} {uninstallRequirement}'{RESET}"
+
     
     ProgramsUSED = (ProgramsUsed+
                     ProgramsUsedInfo01+
@@ -51,7 +53,8 @@ def show_help():
             HowToUseInfo06 +
             HowToUseInfo07 +
             HowToUseInfo08 +
-            HowToUseInfo09) 
+            HowToUseInfo09 +
+            HowToUseInfo10) 
             
     subprocess.run(["figlet", "Mac"])
     subprocess.run(["figlet", "? HELP ?"])
