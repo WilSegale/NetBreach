@@ -13,7 +13,6 @@ Packages=(
 
 pipPackages=(
     "asyncio"
-    "colorama"
     "pyfiglet"
 )
 
