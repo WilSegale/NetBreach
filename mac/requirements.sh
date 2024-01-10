@@ -21,7 +21,7 @@ requiredments(){
     #checks if the user is ROOT and if they are it says you shouldnt be root to run this scirpt
     if [ "$(id -u)" -eq $root ]; then
         #puts the ERROR message into line art
-        echo -e "${RED}$(figlet [ ERROR ])${NC}"
+        echo -e "${RED}$(figlet ERROR)${NC}"
         
         # gives the user something to read so they understand why they got the error
         echo "+++++++++++++++++++++++++++++++++++++++++"
@@ -43,7 +43,6 @@ requiredments(){
                 install_Brew_package() {
                     package_name="$1"
                     if ! command -v "${package_name}" >/dev/null 2>&1; then
-                        echo "${package_name} is not installed. Installing..."
                         # Replace the following command with the appropriate package manager for your Linux distribution
                         brew install "${package_name}"
                     else
@@ -62,6 +61,7 @@ requiredments(){
                     fi
                 }
                 echo
+                        echo "${package_name} is not installed. Installing..."
                 echo "_________BREW PACKAGES________"
 
                 # Install BREW packages
