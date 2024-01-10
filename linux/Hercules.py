@@ -22,7 +22,7 @@ def show_help():
     ProgramsUsed = f"+++++++++++++++PROGRAMS USED+++++++++++++++"
     ProgramsUsedInfo01 = f"\nThis program will help you crack passwords"
     ProgramsUsedInfo02 = f"\nIt has two programs inside it"
-    ProgramsUsedInfo03 = f"\none is Hydra and the other is Nmap"
+    ProgramsUsedInfo03 = f"\none is {GREEN}Hydra{RESET} and the other is {GREEN}Nmap{RESET} and"
 
     #this is for the user to understand what the program does
     HowToUse = f"\n+++++++++++++++HOW TO USE++++++++++++++++++"
@@ -34,7 +34,9 @@ def show_help():
     HowToUseInfo06 = f"\nIf you want to use the program locally, you can type {GREEN}'python3 {SoftwareName} {LOCAL}'{RESET}"
     HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {SoftwareName} {GUI}'{RESET}" 
     HowToUseInfo08 = f"\nIf you want to use the program with GUI in Local mode you can type {GREEN}'python3 {SoftwareName} {GuiLocal}'{RESET}"
-    
+    HowToUseInfo09 = f"\nIf you want to have the program install required packages by it's self type {GREEN}'python3 {SoftwareName} {installRequirement}'{RESET}"
+    HowToUseInfo10 = f"\nIf you want to have the program uninstall required packages by it's self type {GREEN}'python3 {SoftwareName} {uninstallRequirement}'{RESET}"
+
     
     ProgramsUSED = (ProgramsUsed+
                     ProgramsUsedInfo01+
@@ -50,7 +52,9 @@ def show_help():
             HowToUseInfo05 +
             HowToUseInfo06 +
             HowToUseInfo07 +
-            HowToUseInfo08) 
+            HowToUseInfo08 +
+            HowToUseInfo09 +
+            HowToUseInfo10) 
             
     subprocess.run(["figlet", "Linux"])
     subprocess.run(["figlet", "? HELP ?"])
@@ -309,6 +313,14 @@ try:
     #connectes to the GuiLocal verison of the Hercules program
     elif len(sys.argv) == 2 and sys.argv[1] in GuiLocal:
         show_GuiLOCAL()
+
+    #installs the required packages for the program to work properly
+    elif len(sys.argv) == 2 and sys.argv[1] in installRequirement:
+        os.system('bash requirements.sh')
+
+    elif len(sys.argv) == 2 and sys.argv[1] in uninstallRequirement:
+        os.system('bash uninstall.sh')
+
     else:
         print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
         print("Please use the correct number of arguments.")
@@ -316,7 +328,9 @@ try:
 {GLOBAL}, 
 {LOCAL}, 
 {GUI}, 
-{GuiLocal} or 
+{GuiLocal},
+{installRequirement},
+{uninstallRequirement} or
 {HELP}''')
 
 except KeyboardInterrupt:

@@ -9,8 +9,9 @@ import sys
 import subprocess
 import requests
 
-# for detecting the OS module
-OS = 'Linux'
+
+#name of the os
+OS = "Linux"
 
 # Define color codes for console output
 BRIGHT = '\033[1m'
@@ -24,3 +25,5 @@ GUI = ["--GUI", "--Gui", "--gui"]
 GLOBAL = ["--GLOBAL", "--Global", "--global"]
 LOCAL = ["--LOCAL", "--Local", "--local"]
 GuiLocal = ["--GUI-LOCAL", "--Gui-local", "--gui-local"]
+installRequirement = ["--INSTALL", "--install"]
+uninstallRequirement = ["--UNINSTALL", "--uninstall"]
