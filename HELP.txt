@@ -15,7 +15,7 @@
 +++++++++++++++PROGRAMS USED+++++++++++++++
 This program will help you crack passwords
 It has two programs inside it
-one is Hydra and the other is Nmap
+one is [92mHydra[0m and the other is [92mNmap[0m and
 
 +++++++++++++++HOW TO USE++++++++++++++++++
 To use the program you have to tell the computer what port you want to scan.
