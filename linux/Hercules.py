@@ -56,7 +56,7 @@ def show_help():
             HowToUseInfo09 +
             HowToUseInfo10) 
 
-    lineArt(["figlet", "linux"])
+    lineArt(["figlet", "Linux"])
     lineArt(["figlet", "? HELP ?"])
     print(NameOfOs, file=HelpFile)
     print(HELP_LOGO, file=HelpFile)
@@ -327,13 +327,13 @@ try:
         print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
         print("Please use the correct number of arguments.")
         print(f'''Example: 
-{GLOBAL}, 
-{LOCAL}, 
-{GUI}, 
-{GuiLocal},
-{installRequirement},
-{uninstallRequirement} or
-{HELP}''')
+{GLOBAL} put's it in global mode for attack global networks, 
+{LOCAL} put's it in local mode for attack local networks, 
+{GUI} put's it in GUI mode to attack GUI GLOBAL networks, 
+{GuiLocal} put's it in GUI LOCAL mode to attack GUI LOCAL networks,
+{installRequirement} put's it in installation mode that installs the required packages,
+{uninstallRequirement} put's it in uninstallation mode that uninstalls the packages,
+{HELP} put's it in help mode so you understand what you are going to do with this program.''')
 
 except KeyboardInterrupt:
     print("\n[-] Exiting...")
