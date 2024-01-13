@@ -182,7 +182,7 @@ else
         RunHackingCommandWithMySQL
     else
         # Warning message for wrong OS
-        echo "WARNING: Wrong OS. Please use the correct OS." >> ERROR.log
+        echo "WARNING: Wrong OS. Please use the correct OS." >> ERROR.LOG
         zenity --warning --title="WRONG OS" --text="Wrong OS. Please use the correct OS."
     fi
 fi

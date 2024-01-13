@@ -58,7 +58,7 @@ else
             # Error if not running as root
             title="NOT ROOT"
             message="Please run as root."
-            echo "ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.log
+            echo "ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
             zenity --error --title="${title}" --text="${message}"
             exit 1
         else
@@ -193,7 +193,7 @@ else
         fi
     else
         # Warning message for wrong OS
-        echo "WARNING: Wrong OS. Please use the correct OS." >> ERROR.log
+        echo "WARNING: Wrong OS. Please use the correct OS." >> ERROR.LOG
         zenity --warning --title="WRONG OS" --text="Wrong OS. Please use the correct OS."
     fi
 fi
