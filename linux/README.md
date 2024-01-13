@@ -8,12 +8,14 @@
 bash requirements.sh
 ```
 
-## To start the program type 
+## To use the program type you can use the following command
 ```bash 
 sudo python3 Hercules.py --local,
 sudo python3 Hercules.py --global,
-sudo python3 Hercules.py --gui or
+sudo python3 Hercules.py --gui,
 sudo python3 Hercules.py --Gui-Local
+python3 Hercules.py --install or
+python3 Hercules.py --uninstall
 ```
 
 ## If you are wondering how to use this script just type
