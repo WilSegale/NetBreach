@@ -51,7 +51,6 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
 else
     # Check if the OS matches the expected OS type
     if [[ "$OSTYPE" == "${OS}"* ]]; then
-
         # Function to scan ports
         Hercules() {
             figlet -f slant "Hercules"
