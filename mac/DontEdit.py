@@ -9,7 +9,6 @@ import sys
 import subprocess
 import requests
 
-
 lineArt = subprocess.run
 
 #name of the os
