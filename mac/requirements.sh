@@ -61,7 +61,7 @@ requiredments(){
                     fi
                 }
                 echo
-                        echo "${package_name} is not installed. Installing..."
+                echo "${package_name} is not installed. Installing..."
                 echo "_________BREW PACKAGES________"
 
                 # Install BREW packages
