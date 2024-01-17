@@ -1,5 +1,6 @@
 from DontEdit import *
 from HelpLogo import *
+
 # gets the current time and formats it HH:MM:SS
 current_time = datetime.datetime.now().time()
 
