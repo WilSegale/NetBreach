@@ -26,7 +26,7 @@ sudo python3 Hercules.py --Gui-Local
 ## If you are wondering how to use this script just type
 
 ```bash
-sudo python3 Hercules.py --help or sudo python3 Hercules.py -h
+python3 Hercules.py --help or python3 Hercules.py -h
 ```
 
 ## If you are wondering what the requirements do type
