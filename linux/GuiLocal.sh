@@ -60,12 +60,12 @@ else
             
             if [[  " ${exit[*]} " == *" ${service} "* ]]; then
                 echo 
-                echo -e "[-] Exiting program..."
             else
                 echo -e "[+] The port you are scanning is: ${service}"
             fi
 
             if [[ "$service" == "ALL" || "$service" == "all" ]]; then
+                echo -e "[-] Exiting program..."
                 # Scan all ports
                 zenity --info --title "Hercules" --text "Scanning all ports. This may take up to 1 hour to complete." --timeout=5
                 sudo nmap 127.0.0.1/24 -Pn -oN scan.txt --open
