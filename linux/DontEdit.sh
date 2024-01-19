@@ -38,4 +38,4 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
 # List of required packages/commands (separated by spaces)
-required_packages=("wget" "nmap" "hydra" "ssh" "mysql" "xtightvncviewer" "leafpad")
+required_packages=("wget" "hydra" "nmap" "mysql-server" "figlet" "zenity" "xtightvncviewer" "leafpad")
