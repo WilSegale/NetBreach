@@ -13,4 +13,4 @@ sudo python3 setup.py
 ```bash 
 open README.md
 ```
-## file it will explain how the program works and how to use it, and how to use it to its full capacity 
+## this file will explain how the program works and how to use it to it's full capacity 
