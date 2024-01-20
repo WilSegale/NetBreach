@@ -67,13 +67,13 @@ startOfProgram() {
     
     # Encrypt the file using AES-256 encryption
     if [[ " ${yes[*]} " == *" ${Encrpyion} "* ]]; then
-        openssl enc -aes-256-cbc -salt -in "$fileName" -out "$NewFileName"
+        openssl enc -aes-256-cbc -salt -in "${fileName}" -out "${NewFileName}"
     else
-        zip -e "$NewFileName" "$fileName" 
+        zip -e "${NewFileName}" "${fileName}" 
     fi
 
     # Call the deleteFile function to delete the original file
-    deleteFile "$fileName"
+    deleteFile "${fileName}"
 
     # Check if the file was deleted successfully
     if [ $? -eq 0 ]; then

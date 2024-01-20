@@ -29,9 +29,9 @@ remove_all_extensions() {
     else
         # Loop through each file in the directory
         for file in *; do
-            if [ -d "$file" ]; then
+            if [ -d "${file}" ]; then
                 # Delete the extension directory
-                echo "Deleting extension: $file"
+                echo "Deleting extension: ${file}"
                 rm -rf "$file"
             fi
         done
