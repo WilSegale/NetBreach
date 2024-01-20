@@ -214,7 +214,7 @@ else
                         Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
                         echo "${title}"
                         echo "${Connected_To_SSH_SERVER}"
-                        ssh $user@$host -p $port
+                        ssh "${user}@${host}" -p "${port}"
                     fi
                 fi
             }
