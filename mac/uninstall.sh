@@ -15,7 +15,7 @@ if [ "$(id -u)" -eq $root ]; then
     echo ""
     exit 1
 else
-    if [[ "$OSTYPE" == "darwin"* ]]; then
+    if [[ "${OSTYPE}" == "darwin"* ]]; then
 
         echo -e "${RED}${BRIGHT}!Are you sure you want to remove your Packages (YES/NO)!: ${NC}"
 
