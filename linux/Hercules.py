@@ -1,5 +1,6 @@
 from DontEdit import *
 from HelpLogo import *
+
 # gets the current time and formats it HH:MM:SS
 current_time = datetime.datetime.now().time()
 
@@ -289,6 +290,7 @@ try:
     #connectes to the HELP verison of the Hercules program so the user understands what the porgram does
     if len(sys.argv) == 2 and sys.argv[1] in HELP:
         show_help()
+        
     #puts the program into gui mode
     elif len(sys.argv) == 2 and sys.argv[1] in GUI:
         #checks if the user is conncted to ssh and if they are it says to discconect from ssh for the GUI script to work correctly
