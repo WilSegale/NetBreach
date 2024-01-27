@@ -37,7 +37,7 @@ command_exists() {
 # Check if required packages are installed
 for package in "${required_packages[@]}"; do
     if ! command_exists "${package}"; then
-        echo -e "ERROR: The required package '$package' is not installed. Please install it and try again."
+        echo -e "ERROR: The required package '${package}' is not installed. Please install it and try again."
         exit 1
     fi
 done
@@ -51,6 +51,7 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
 else
     # Check if the OS matches the expected OS type
     if [[ "$OSTYPE" == "${OS}"* ]]; then
+
         # Function to scan ports
         Hercules() {
             figlet -f slant "Hercules"
@@ -59,14 +60,15 @@ else
             
             if [[  " ${exit[*]} " == *" ${service} "* ]]; then
                 echo 
-                echo -e "[-] Exiting program..."
             else
                 echo -e "[+] The port you are scanning is: ${service}"
             fi
+
             if [[ "$service" == "ALL" || "$service" == "all" ]]; then
+                echo -e "[-] Exiting program..."
                 # Scan all ports
                 zenity --info --title "Hercules" --text "Scanning all ports. This may take up to 1 hour to complete." --timeout=5
-                nmap 127.0.0.1 -oN scan.txt --open
+                sudo nmap 127.0.0.1/24 -Pn -oN scan.txt --open
 
                 zenity --info --title "INFO" --text "Put in Hydra first to start the script." --timeout=5
                 hydraInputField="Put in Hydra first to start the script."
