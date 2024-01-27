@@ -204,12 +204,13 @@ else
                         # Alerts the user that the computer is trying to connect to the ssh server
                         title="Connecting to ${user}"
                         Connecting_To_SSH_SERVER="We are connecting you to ${user}. Please wait..."
+                        echo ""
                         echo "${title}"
                         echo "${Connecting_To_SSH_SERVER}"
                         sleep 5
 
                         # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
-                        echo
+                        echo ""
                         title="Enter password to ${user}"
                         Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
                         echo "${title}"
