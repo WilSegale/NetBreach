@@ -64,7 +64,7 @@ else
                 echo -e "[+] The port you are scanning is: ${service}"
             fi
 
-            if [[ "$service" == "ALL" || "$service" == "all" ]]; then
+            if [[ "${service}" == "ALL" || "${service}" == "all" ]]; then
                 echo -e "[-] Exiting program..."
                 # Scan all ports
                 zenity --info --title "Hercules" --text "Scanning all ports. This may take up to 1 hour to complete." --timeout=5
