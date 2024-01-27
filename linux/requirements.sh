@@ -16,82 +16,80 @@ pipPackages=(
     "pyfiglet"
 )
 
+requiredments() {
+    # Checks if the user is ROOT and if they are, it prompts them not to use sudo
+    if [ "$(id -u)" -eq 0 ]; then
+        # Puts the ERROR message into line art
+        echo -e "\e[91m$(figlet ERROR)\e[0m"
 
-requiredments(){
-    #checks if the user is ROOT and if they are it says you shouldnt be root to run this scirpt
-    if [ "$(id -u)" -eq $root ]; then
-        #puts the ERROR message into line art
-        echo -e "${RED}$(figlet ERROR)${NC}"
-        
-        # gives the user something to read so they understand why they got the error
+        # Gives the user something to read so they understand why they got the error
         echo "+++++++++++++++++++++++++++++++++++++++++"
-        echo "+   Don't use sudo for this script.     +" 
+        echo "+   Don't use sudo for this script.     +"
         echo "+   Because it can damage your computer +"
         echo "+++++++++++++++++++++++++++++++++++++++++"
         echo ""
         exit 1
     else
-        # helps the users to understand what the program does
-        if [[ "$1" = "--help" || "$1" = "-h" ]]; then
+        # Helps the users understand what the program does
+        if [[ "$1" == "--help" || "$1" == "-h" ]]; then
             echo "This script will install the packages for it to work properly"
-            echo 
+            echo
         else
-            # Check if the OS is macOS
-            if [[ "${OSTYPE}" == "darwin"* ]]; then 
+            # Check if the OS is Linux
+            if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
                 if ping -c 1 google.com >/dev/null 2>&1; then
-                # Install package
-                install_Brew_package() {
-                    package_name="$1"
-                    if ! command -v "${package_name}" >/dev/null 2>&1; then
-                        # Replace the following command with the appropriate package manager for your Linux distribution
-                        brew install "${package_name}"
-                    else
-                        echo -e "${package_name} is already ${GREEN}installed.${NC}"
-                    fi
-                }
+                    # Install package using apt package manager (replace with your distribution's package manager if needed)
+                    install_linux_package() {
+                        package_name="$1"
+                        if ! command -v "${package_name}" >/dev/null 2>&1; then
+                            sudo apt-get install -y "${package_name}"
+                        else
+                            echo -e "${package_name} is already \e[92minstalled.\e[0m"
+                        fi
+                    }
 
-                # Install package
-                install_pip_package() {
-                    package_name="$1"
-                    if ! python3 -m pip show "${package_name}" >/dev/null 2>&1; then
-                        pip3 install "${package_name}"
-                    else
-                        echo -e "${package_name} is already ${GREEN}installed.${NC}"
-                    fi
-                }
-                echo
-                echo "_________BREW PACKAGES________"
+                    # Install package using pip
+                    install_pip_package() {
+                        package_name="$1"
+                        if ! python3 -m pip show "${package_name}" >/dev/null 2>&1; then
+                            pip3 install "${package_name}"
+                        else
+                            echo -e "${package_name} is already \e[92minstalled.\e[0m"
+                        fi
+                    }
 
-                # Install BREW packages
-                for package in "${Packages[@]}"; do
-                    install_Brew_package "${package}"
-                done
-                
-                echo
-                echo "_________PIP PACKAGES________"
-                # Install PIP packages
-                for PIP in "${pipPackages[@]}"; do
-                    install_pip_package "${PIP}"
-                done
+                    echo
+                    echo "_________APT PACKAGES________"
 
-                echo
-                
-                # updates PIP
-                echo "_________PIP UPDATES________"
-                /Library/Developer/CommandLineTools/usr/bin/python3 -m pip install --upgrade pip
-                
-                echo
-                successful_MESSAGE="${GREEN}[+]${NC} All packages are installed successfully"
-                echo -e "${successful_MESSAGE}"
+                    # Install APT packages
+                    for package in "${Packages[@]}"; do
+                        install_linux_package "${package}"
+                    done
+
+                    echo
+                    echo "_________PIP PACKAGES________"
+                    # Install PIP packages
+                    for PIP in "${pipPackages[@]}"; do
+                        install_pip_package "${PIP}"
+                    done
+
+                    echo
+
+                    # Update PIP
+                    echo "_________PIP UPDATES________"
+                    sudo python3 -m pip install --upgrade pip
+
+                    echo
+                    successful_MESSAGE="\e[92m[+]\e[0m All packages are installed successfully"
+                    echo -e "${successful_MESSAGE}"
+                else
+                    echo -e "\e[91m\e[1mERROR:\e[0m NOT CONNECTED TO THE INTERNET"
+                fi
             else
-                echo -e "${RED}${BRIGHT}ERROR:${NC} NOT CONNECTED TO THE INTERNET"
+                echo -e "\e[91m\e[1m[-]\e[0m Wrong OS, please use the correct OS." # If the user is not using the right OS, it says "You are using the wrong OS"
             fi
-
-        # Check if the OS is Linux
-        else
-            echo -e "${RED}${BRIGHT}[-]${NC} Wrong OS please use the correct OS." #if the user is not using the right OS, it says "You are using the wrong OS"
         fi
     fi
-fi
 }
+
 requiredments
