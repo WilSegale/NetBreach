@@ -18,7 +18,7 @@ if [ "$(id -u)" -eq 0 ]; then
 else
     if [[ "${OSTYPE}" == "darwin"* ]]; then
 
-        echo -e "\e[91m\e[1m!Are you sure you want to remove your Packages (YES/NO)!: \e[0m"
+        echo -e "${RED}${BRIGHT}!Are you sure you want to remove your Packages (YES/NO)!: ${NC}"
 
         read -p ">>> " YES_NO
 

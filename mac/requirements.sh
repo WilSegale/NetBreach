@@ -43,7 +43,7 @@ requiredments() {
                         if ! command -v "${package_name}" >/dev/null 2>&1; then
                             brew install "${package_name}"
                         else
-                            echo -e "${package_name} is already \e[92minstalled.\e[0m"
+                            echo -e "${package_name} is already ${GREEN}installed.${NC}"
                         fi
                     }
 
