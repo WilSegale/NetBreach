@@ -12,7 +12,7 @@ import requests
 lineArt = subprocess.run
 
 #name of the os
-OS = "Darwin"
+OS = "linux"
 
 # Define color codes for console output
 BRIGHT = '\033[1m'
