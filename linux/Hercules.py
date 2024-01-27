@@ -3,6 +3,7 @@ from HelpLogo import *
 
 # gets the current time and formats it HH:MM:SS
 current_time = datetime.datetime.now().time()
+
 formatted_time = current_time.strftime("%I:%M:%S %p")
 
 # Get the current date
@@ -56,7 +57,7 @@ def show_help():
             HowToUseInfo09 +
             HowToUseInfo10) 
 
-    lineArt(["figlet", "Linux"])
+    lineArt(["figlet", "Mac"])
     lineArt(["figlet", "? HELP ?"])
     print(NameOfOs, file=HelpFile)
     print(HELP_LOGO, file=HelpFile)
@@ -73,8 +74,7 @@ def show_help():
 
     #puts the info about how to use the program on the screen
     print(info)
-    print()
-
+    
 #puts program in GUI mode
 def Show_GUI():
     # gets the current time and formats it HH:MM:SS
