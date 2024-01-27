@@ -74,8 +74,7 @@ def show_help():
 
     #puts the info about how to use the program on the screen
     print(info)
-    print()
-
+    
 #puts program in GUI mode
 def Show_GUI():
     # gets the current time and formats it HH:MM:SS

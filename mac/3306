@@ -1,0 +1,8 @@
+# Nmap 7.94 scan initiated Sat Jan 27 13:40:05 2024 as: nmap -sS -p 3306 -oN 3306 --open 192.168.1.1/24
+Nmap scan report for zeros-Air.fios-router.home (192.168.1.38)
+Host is up (0.00048s latency).
+
+PORT     STATE SERVICE
+3306/tcp open  mysql
+
+# Nmap done at Sat Jan 27 13:40:14 2024 -- 256 IP addresses (36 hosts up) scanned in 9.66 seconds
