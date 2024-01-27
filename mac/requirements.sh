@@ -17,17 +17,16 @@ pipPackages=(
 )
 
 requiredments() {
-    # Checks if the user is ROOT and if they are, it prompts them not to use sudo
+    # Checks if the user is ROOT and prompts them not to use sudo
     if [ "$(id -u)" -eq 0 ]; then
         # Puts the ERROR message into line art
-        echo -e "\e[91m$(figlet ERROR)\e[0m"
+        echo -e "${RED}$(figlet ERROR)${NC}"
 
         # Gives the user something to read so they understand why they got the error
         echo "+++++++++++++++++++++++++++++++++++++++++"
         echo "+   Don't use sudo for this script.     +"
         echo "+   Because it can damage your computer +"
         echo "+++++++++++++++++++++++++++++++++++++++++"
-        echo ""
         exit 1
     else
         # Helps the users understand what the program does
@@ -54,7 +53,7 @@ requiredments() {
                         if ! python3 -m pip show "${package_name}" >/dev/null 2>&1; then
                             pip3 install "${package_name}"
                         else
-                            echo -e "${package_name} is already \e[92minstalled.\e[0m"
+                            echo -e "${package_name} is already ${GREEN}installed.${NC}"
                         fi
                     }
 
@@ -80,13 +79,13 @@ requiredments() {
                     python3 -m pip install --upgrade pip
 
                     echo
-                    successful_MESSAGE="\e[92m[+]\e[0m All packages are installed successfully"
+                    successful_MESSAGE="${GREEN}[+]${NC} All packages are installed successfully"
                     echo -e "${successful_MESSAGE}"
                 else
-                    echo -e "\e[91m\e[1mERROR:\e[0m NOT CONNECTED TO THE INTERNET"
+                    echo -e "${RED}ERROR:${NC} NOT CONNECTED TO THE INTERNET"
                 fi
             else
-                echo -e "\e[91m\e[1m[-]\e[0m Wrong OS, please use the correct OS." # If the user is not using the right OS, it says "You are using the wrong OS"
+                echo -e "${RED}${BRIGHT}[-]${NC} Wrong OS, please use the correct OS." # If the user is not using the right OS, it says "You are using the wrong OS"
             fi
         fi
     fi
