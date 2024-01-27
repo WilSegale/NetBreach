@@ -35,14 +35,14 @@ requiredments() {
             echo "This script will install the packages for it to work properly"
             echo
         else
-            # Check if the OS is Linux
-            if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
+            # Check if the OS is macOS
+            if [[ "${OSTYPE}" == "darwin"* ]]; then
                 if ping -c 1 google.com >/dev/null 2>&1; then
-                    # Install package using apt package manager (replace with your distribution's package manager if needed)
-                    install_linux_package() {
+                    # Install package using Homebrew package manager
+                    install_brew_package() {
                         package_name="$1"
                         if ! command -v "${package_name}" >/dev/null 2>&1; then
-                            sudo apt-get install -y "${package_name}"
+                            brew install "${package_name}"
                         else
                             echo -e "${package_name} is already \e[92minstalled.\e[0m"
                         fi
@@ -59,11 +59,11 @@ requiredments() {
                     }
 
                     echo
-                    echo "_________APT PACKAGES________"
+                    echo "_________BREW PACKAGES________"
 
-                    # Install APT packages
+                    # Install Homebrew packages
                     for package in "${Packages[@]}"; do
-                        install_linux_package "${package}"
+                        install_brew_package "${package}"
                     done
 
                     echo
@@ -77,7 +77,7 @@ requiredments() {
 
                     # Update PIP
                     echo "_________PIP UPDATES________"
-                    sudo python3 -m pip install --upgrade pip
+                    python3 -m pip install --upgrade pip
 
                     echo
                     successful_MESSAGE="\e[92m[+]\e[0m All packages are installed successfully"

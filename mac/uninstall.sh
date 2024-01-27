@@ -3,12 +3,12 @@ source DontEdit.sh
 
 # Color variables
 
-#checks if the user is ROOT and if they are it says you shouldnt be root to run this scirpt
+# Checks if the user is ROOT and if they are, it prompts them not to use sudo
 if [ "$(id -u)" -eq 0 ]; then
-    #puts the ERROR message into line art
+    # Puts the ERROR message into line art
     echo -e "\e[91m$(figlet ERROR)\e[0m"
 
-    # gives the user something to read so they understand why they got the error
+    # Gives the user something to read so they understand why they got the error
     echo "+++++++++++++++++++++++++++++++++++++++++"
     echo "+   Don't use sudo for this script.     +"
     echo "+   Because it can damage your computer +"
@@ -16,7 +16,7 @@ if [ "$(id -u)" -eq 0 ]; then
     echo ""
     exit 1
 else
-    if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
+    if [[ "${OSTYPE}" == "darwin"* ]]; then
 
         echo -e "\e[91m\e[1m!Are you sure you want to remove your Packages (YES/NO)!: \e[0m"
 
@@ -43,10 +43,10 @@ else
             check_package() {
                 package_name="$1"
                 if command -v "${package_name}" >/dev/null 2>&1; then
-                    echo "$package_name is installed."
-                    sudo apt-get remove -y "$package_name"
+                    echo "${package_name} is installed."
+                    brew uninstall "${package_name}"
                 else
-                    echo -e "\e[91m$package_name\e[0m is not installed."
+                    echo -e "${RED}$package_name${NC} is not installed."
                 fi
             }
 
@@ -67,10 +67,10 @@ else
                         echo -e "Error occurred during uninstallation of \"${pipPackage}\""
                         exit 1
                     else
-                        echo -e "${pipPackage}: uninstalled \e[92msuccessfully\e[0m"
+                        echo -e "${pipPackage}: uninstalled ${GREEN}successfully${NC}"
                     fi
                 else
-                    echo -e "\e[91m${pipPackage}\e[0m: is not installed"
+                    echo -e "${RED}${pipPackage}${NC}: is not installed"
                 fi
             done
 
@@ -83,27 +83,27 @@ else
                 echo -e "________PIP Packages________"
                 for pipPackage in "${pipPackages[@]}"
                 do
-                    echo -e "\e[91m${pipPackage}\e[0m"
+                    echo -e "${RED}${pipPackage}${NC}"
                 done
                 echo -e "________ERROR________"
-                echo -e "\e[91mError occurred during pip uninstallation\e[0m"
+                echo -e "${RED}Error occurred during pip uninstallation${NC}"
             else
                 for package in "${Packages[@]}"
                 do
-                    echo -e "${package}: \e[92mis removed\e[0m"
+                    echo -e "${package}: ${RED}is removed${NC}"
                 done
                 echo -e "________PIP Packages________"
                 for pipPackage in "${pipPackages[@]}"
                 do
-                    echo -e "${pipPackage}: \e[92mis removed\e[0m"
+                    echo -e "${pipPackage}: ${RED}is removed${NC}"
                 done
             fi
 
         elif [[ "${no[*]}" == *"$YES_NO"* ]]; then
-            echo -e "\e[91m\e[1m[-]\e[0m Ok, I will not remove the packages."
+            echo -e "${RED}${BRIGHT}Ok, I will not remove the packages.${NC}"
             exit 1
         fi
     else
-        echo -e "\e[91m\e[1mThis script can only be run on Linux\e[0m"
+        echo -e "${RED}This script can only be run on macOS${NC}"
     fi
 fi

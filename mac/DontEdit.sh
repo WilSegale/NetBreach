@@ -9,7 +9,7 @@ username=$(whoami)
 hostname=$(hostname)
 
 # OS of the computer
-OS="Linux"
+OS="Darwin"
 
 # For the wget functionality to work
 SITE_URL="https://google.com"
