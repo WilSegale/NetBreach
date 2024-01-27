@@ -37,7 +37,7 @@ command_exists() {
 # Check if required packages are installed
 for package in "${required_packages[@]}"; do
     if ! command_exists "${package}"; then
-        echo -e "ERROR: The required package '${package}' is not installed. Please install it and try again."
+        echo -e "ERROR: The required package ${RED}'${package}'${NC} is not installed. Please install it and try again."
         exit 1
     fi
 done
