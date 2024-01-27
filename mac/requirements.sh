@@ -37,7 +37,7 @@ requiredments(){
             echo 
         else
             # Check if the OS is macOS
-            if [[ "$OSTYPE" == "darwin"* ]]; then 
+            if [[ "${OSTYPE}" == "darwin"* ]]; then 
                 if ping -c 1 google.com >/dev/null 2>&1; then
                 # Install package
                 install_Brew_package() {
@@ -54,14 +54,12 @@ requiredments(){
                 install_pip_package() {
                     package_name="$1"
                     if ! python3 -m pip show "${package_name}" >/dev/null 2>&1; then
-                        echo "${package_name} is not installed. Installing..."
                         pip3 install "${package_name}"
                     else
                         echo -e "${package_name} is already ${GREEN}installed.${NC}"
                     fi
                 }
                 echo
-                echo "${package_name} is not installed. Installing..."
                 echo "_________BREW PACKAGES________"
 
                 # Install BREW packages
