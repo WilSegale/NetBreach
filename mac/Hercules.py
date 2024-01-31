@@ -32,8 +32,8 @@ def show_help():
     HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
     HowToUseInfo04 = f"\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
     HowToUseInfo05 = f"\nIf you want to use the program on a global network, you can type {GREEN}'sudo python3 {SoftwareName} {GLOBAL}'{RESET}"
-    HowToUseInfo06 = f"\nIf you want to use the program locally, you can type {GREEN}'python3 {SoftwareName} {LOCAL}'{RESET}"
-    HowToUseInfo07 = f"\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {SoftwareName} {GUI}'{RESET}" 
+    HowToUseInfo06 = f"\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {SoftwareName} {GUI}'{RESET}" 
+    HowToUseInfo07 = f"\nIf you want to use the program locally, you can type {GREEN}'python3 {SoftwareName} {LOCAL}'{RESET}"
     HowToUseInfo08 = f"\nIf you want to use the program with GUI in Local mode you can type {GREEN}'python3 {SoftwareName} {GuiLocal}'{RESET}"
     HowToUseInfo09 = f"\nIf you want to have the program install required packages by it's self type {GREEN}'python3 {SoftwareName} {installRequirement}'{RESET}"
     HowToUseInfo10 = f"\nIf you want to have the program uninstall required packages by it's self type {GREEN}'python3 {SoftwareName} {uninstallRequirement}'{RESET}"
@@ -57,7 +57,7 @@ def show_help():
             HowToUseInfo09 +
             HowToUseInfo10) 
 
-    lineArt(["figlet", "Linux"])
+    lineArt(["figlet", "Mac"])
     lineArt(["figlet", "? HELP ?"])
     print(NameOfOs, file=HelpFile)
     print(HELP_LOGO, file=HelpFile)
@@ -329,8 +329,8 @@ try:
         print("Please use the correct number of arguments.")
         print(f'''Example: 
 {GLOBAL} put's it in global mode for attack global networks, 
-{LOCAL} put's it in local mode for attack local networks, 
 {GUI} put's it in GUI mode to attack GUI GLOBAL networks, 
+{LOCAL} put's it in local mode for attack local networks,
 {GuiLocal} put's it in GUI LOCAL mode to attack GUI LOCAL networks,
 {installRequirement} put's it in installation mode that installs the required packages,
 {uninstallRequirement} put's it in uninstallation mode that uninstalls the packages,
