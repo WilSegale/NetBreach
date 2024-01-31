@@ -8,6 +8,14 @@ cleanup() {
     # Add cleanup commands here
     exit 1
 }
+# Function to be executed when Ctrl+Z is pressed
+handle_ctrl_z() {
+    echo "Ctrl+Z pressed. Performing custom action..."
+    # Your custom action goes here
+}
+
+# Set up the trap to call the function on SIGTSTP (Ctrl+Z)
+trap 'handle_ctrl_z' SIGTSTP
 
 # Function to handle Ctrl+C
 ctrl_c() {
