@@ -1,4 +1,0 @@
-# Hydra v9.5 run at 2024-01-28 19:52:06 on localhost mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://localhost)
-[3306][mysql] host: localhost   login: root   password: Cmonster2006
-# Hydra v9.5 run at 2024-01-30 21:15:43 on localhost mysql (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I mysql://localhost)
-[3306][mysql] host: localhost   login: root   password: Cmonster2006
