@@ -1,0 +1,1 @@
+# Hydra v9.5 run at 2024-01-30 21:40:38 on Input Hostname mysql (hydra -l Input Username: -P rockyou.txt -t 64 -vV -o output.log -I mysql://Input Hostname:)

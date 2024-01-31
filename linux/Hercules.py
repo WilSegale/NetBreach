@@ -329,8 +329,8 @@ try:
         print("Please use the correct number of arguments.")
         print(f'''Example: 
 {GLOBAL} put's it in global mode for attack global networks, 
-{LOCAL} put's it in local mode for attack local networks, 
 {GUI} put's it in GUI mode to attack GUI GLOBAL networks, 
+{LOCAL} put's it in local mode for attack local networks,
 {GuiLocal} put's it in GUI LOCAL mode to attack GUI LOCAL networks,
 {installRequirement} put's it in installation mode that installs the required packages,
 {uninstallRequirement} put's it in uninstallation mode that uninstalls the packages,
