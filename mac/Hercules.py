@@ -174,7 +174,7 @@ def show_GLOBAL():
                     percentage = int(progress * 100)  # Calculate the percentage of completion
                     
                     # Print the loading bar and percentage, replacing the line each iteration
-                    print(f'\rLoading {ProgramName} Globaly [{bar}] {percentage} % ', end='', flush=False)
+                    print(f'\rLoading {ProgramName} Globally [{bar}] {percentage} % ', end='', flush=False)
                     
                     time.sleep(delay)  # Pause to control the update rate
             print_loading_bar(50)
@@ -225,7 +225,7 @@ def show_LOCAL():
                 percentage = int(progress * 100)  # Calculate the percentage of completion
                 
                 # Print the loading bar and percentage, replacing the line each iteration
-                print(f'\rLoading {ProgramName} Localy [{bar}] {percentage} % ', end='', flush=False)
+                print(f'\rLoading {ProgramName} Locally [{bar}] {percentage} % ', end='', flush=False)
                 
                 time.sleep(delay)  # Pause to control the update rate
         print_loading_bar(50)
@@ -272,7 +272,7 @@ def show_GuiLOCAL():
                 percentage = int(progress * 100)  # Calculate the percentage of completion
                 
                 # Print the loading bar and percentage, replacing the line each iteration
-                print(f'\rLoading {ProgramName} Localy [{bar}] {percentage} % ', end='', flush=False)
+                print(f'\rLoading {ProgramName} Locally [{bar}] {percentage} % ', end='', flush=False)
                 
                 time.sleep(delay)  # Pause to control the update rate
         print_loading_bar(50)
