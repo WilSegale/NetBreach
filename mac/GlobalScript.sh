@@ -141,10 +141,13 @@ else
                     echo -e "${RED}ERROR:${NC} plase input a number into the input field"
                     sleep 1
                     exit 1                
-                #checks if the user has put in a letter insed of a number into the input feild
-                elif [[ " ${alphabet[*]} " == *" ${service} "* ]]; then
-                    echo "Please enter a number next time"
-                    exit 1
+                #checks if the user has put in a letter insted of a number into the input feild
+                for letter in "${alphabet[@]}"; do
+                    if [[ "${letter}" == "${service}" ]]; then
+                        echo "Please enter a number next time"
+                        exit 1
+                    fi
+                done
 
                 else
                     # Scan specific port
