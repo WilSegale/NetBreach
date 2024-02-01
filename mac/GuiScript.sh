@@ -59,8 +59,8 @@ required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
     percentage=$((step * 100 / total_steps))
     
     # Update the Zenity progress bar and percentage
-    echo "$percentage"
-    echo "# Loading GUI... $percentage%"
+    echo "${percentage}"
+    echo "# Loading GUI... ${percentage}%"
 
     # Simulate some work (you can replace this with your actual task)
     sleep 0.1
