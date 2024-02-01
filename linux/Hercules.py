@@ -57,7 +57,7 @@ def show_help():
             HowToUseInfo09 +
             HowToUseInfo10) 
 
-    lineArt(["figlet", "Linux"])
+    lineArt(["figlet", "Mac"])
     lineArt(["figlet", "? HELP ?"])
     print(NameOfOs, file=HelpFile)
     print(HELP_LOGO, file=HelpFile)
@@ -174,7 +174,7 @@ def show_GLOBAL():
                     percentage = int(progress * 100)  # Calculate the percentage of completion
                     
                     # Print the loading bar and percentage, replacing the line each iteration
-                    print(f'\rLoading {ProgramName} Globaly [{bar}] {percentage} % ', end='', flush=False)
+                    print(f'\rLoading {ProgramName} Globally [{bar}] {percentage} % ', end='', flush=False)
                     
                     time.sleep(delay)  # Pause to control the update rate
             print_loading_bar(50)
@@ -225,7 +225,7 @@ def show_LOCAL():
                 percentage = int(progress * 100)  # Calculate the percentage of completion
                 
                 # Print the loading bar and percentage, replacing the line each iteration
-                print(f'\rLoading {ProgramName} Localy [{bar}] {percentage} % ', end='', flush=False)
+                print(f'\rLoading {ProgramName} Locally [{bar}] {percentage} % ', end='', flush=False)
                 
                 time.sleep(delay)  # Pause to control the update rate
         print_loading_bar(50)
@@ -272,7 +272,7 @@ def show_GuiLOCAL():
                 percentage = int(progress * 100)  # Calculate the percentage of completion
                 
                 # Print the loading bar and percentage, replacing the line each iteration
-                print(f'\rLoading {ProgramName} Localy [{bar}] {percentage} % ', end='', flush=False)
+                print(f'\rLoading {ProgramName} Locally [{bar}] {percentage} % ', end='', flush=False)
                 
                 time.sleep(delay)  # Pause to control the update rate
         print_loading_bar(50)
@@ -286,14 +286,14 @@ def show_GuiLOCAL():
 #holds the if statements that connect to the functions for the program to work properly
 try:
     # Handle command-line arguments
-    #connectes to the HELP verison of the Hercules program so the user understands what the porgram does
+    #connect to the HELP function of the Hercules program so the user understands what the program does
     if len(sys.argv) == 2 and sys.argv[1] in HELP:
         show_help()
         
     #puts the program into gui mode
     elif len(sys.argv) == 2 and sys.argv[1] in GUI:
-        #checks if the user is conncted to ssh and if they are it says to discconect from ssh for the GUI script to work correctly
-        #else if they are not conncted to ssh it will work normally
+        #checks if the user is connected to ssh and if they are it says to disconnected from ssh for the GUI script to work correctly
+        #else if they are not connected to ssh it will work normally
         def is_ssh_connection():
             return "SSH_TTY" in os.environ
 
@@ -303,15 +303,15 @@ try:
         else:
             Show_GUI()
     
-    #connectes to the global verison of the Hercules program
+    #connect to the global function of the Hercules program
     elif len(sys.argv) == 2 and sys.argv[1] in GLOBAL:
         show_GLOBAL()
 
-    #connectes to the local verison of the Hercules program
+    #connect to the local function of the Hercules program
     elif len(sys.argv) == 2 and sys.argv[1] in LOCAL:
         show_LOCAL()
     
-    #connectes to the GuiLocal verison of the Hercules program
+    #connect to the GuiLocal function of the Hercules program
     elif len(sys.argv) == 2 and sys.argv[1] in GuiLocal:
         show_GuiLOCAL()
 
@@ -323,7 +323,7 @@ try:
     elif len(sys.argv) == 2 and sys.argv[1] in uninstallRequirement:
         os.system('bash uninstall.sh')
 
-    #if the user doenst input the correct argument it tells them what arguments to use for it to work 
+    #if the user does not input the correct argument it tells them what arguments to use for it to work 
     else:
         print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
         print("Please use the correct number of arguments.")
@@ -332,8 +332,8 @@ try:
 {GUI} put's it in GUI mode to attack GUI GLOBAL networks, 
 {LOCAL} put's it in local mode for attack local networks,
 {GuiLocal} put's it in GUI LOCAL mode to attack GUI LOCAL networks,
-{installRequirement} put's it in installation mode that installs the required packages,
-{uninstallRequirement} put's it in uninstallation mode that uninstalls the packages,
+{installRequirement} put's it in install mode that installs the required packages,
+{uninstallRequirement} put's it in uninstall mode that uninstalls the packages,
 {HELP} put's it in help mode so you understand what you are going to do with this program.''')
 
 except KeyboardInterrupt:
