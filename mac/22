@@ -1,0 +1,9 @@
+# Nmap 7.94 scan initiated Thu Feb  1 10:40:57 2024 as: nmap -sS -p 22 -oN 22 --open 192.168.1.1/24
+Nmap scan report for ZeroDEV.fios-router.home (192.168.1.91)
+Host is up (0.29s latency).
+
+PORT   STATE SERVICE
+22/tcp open  ssh
+MAC Address: DC:A6:32:CD:DE:F5 (Raspberry Pi Trading)
+
+# Nmap done at Thu Feb  1 10:41:08 2024 -- 256 IP addresses (31 hosts up) scanned in 10.61 seconds
