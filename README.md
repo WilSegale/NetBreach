@@ -14,8 +14,6 @@ sudo python3 setup.py
 open README.md
 ```
 ## this file will explain how the program works and how to use it to it's full capacity 
-
-
 # Troubleshooting SSH: Remote Host Identification Changed
 
 If you encounter the following error message when connecting to an SSH server:
@@ -25,10 +23,20 @@ If you encounter the following error message when connecting to an SSH server:
 @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ```
-# Just type the following command in the CLI 
+
+# You can type the following command in the CLI
 ```plaintext
 ssh [username]@[hostname]"
 ```
+
+# Or you can go to this file and delate all the hashes that are connected to previously used ssh hosts
+```ssh hash config```
+```plaintext
+cd ~/.ssh
+
+sudo nano known_hosts
+```
+
 # if the user you are attacking has changed their port number for ssh type this command instead of the one on top
 
 ```plaintext

@@ -49,8 +49,6 @@ If you encounter the following error message when connecting to an SSH server:
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ```
 
-
-
 # You can type the following command in the CLI
 ```plaintext
 ssh [username]@[hostname]"

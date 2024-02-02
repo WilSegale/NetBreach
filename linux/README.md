@@ -49,7 +49,6 @@ If you encounter the following error message when connecting to an SSH server:
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ```
 
-
 # You can type the following command in the CLI
 ```plaintext
 ssh [username]@[hostname]"
@@ -63,7 +62,7 @@ cd ~/.ssh
 sudo nano known_hosts
 ```
 
-# If the user you are attacking has changed their port number for ssh type this command instead of the one on top
+# if the user you are attacking has changed their port number for ssh type this command instead of the one on top
 
 ```plaintext
 ssh [username]@[hostname] -p [port Number]
