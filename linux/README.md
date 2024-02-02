@@ -48,18 +48,17 @@ If you encounter the following error message when connecting to an SSH server:
 @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ```
-
-# You can type the following command in the CLI
-```plaintext
-ssh [username]@[hostname]
-```
-
 # Or you can go to this file and delate all the hashes that are connected to previously used ssh hosts
 ```ssh hash config```
 ```plaintext
 cd ~/.ssh
 
 sudo nano known_hosts
+```
+
+# You can type the following command in the CLI
+```plaintext
+ssh [username]@[hostname]
 ```
 
 # if the user you are attacking has changed their port number for ssh type this command instead of the one on top
