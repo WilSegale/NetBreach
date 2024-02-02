@@ -51,7 +51,7 @@ If you encounter the following error message when connecting to an SSH server:
 
 # You can type the following command in the CLI
 ```plaintext
-ssh [username]@[hostname]"
+ssh [username]@[hostname]
 ```
 
 # Or you can go to this file and delate all the hashes that are connected to previously used ssh hosts
