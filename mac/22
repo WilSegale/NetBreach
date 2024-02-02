@@ -1,9 +1,0 @@
-# Nmap 7.94 scan initiated Thu Feb  1 18:22:40 2024 as: nmap -sS -p 22 -oN 22 --open 192.168.1.1/24
-Nmap scan report for 192.168.1.81
-Host is up (0.030s latency).
-
-PORT   STATE SERVICE
-22/tcp open  ssh
-MAC Address: BC:D0:74:AA:71:36 (Apple)
-
-# Nmap done at Thu Feb  1 18:22:51 2024 -- 256 IP addresses (35 hosts up) scanned in 11.16 seconds
