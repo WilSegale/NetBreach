@@ -16,7 +16,21 @@ open README.md
 ## this file will explain how the program works and how to use it to it's full capacity 
 
 
-# IF you get this error message when connecting to the ssh server 
-### @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-# @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# Troubleshooting SSH: Remote Host Identification Changed
+
+If you encounter the following error message when connecting to an SSH server:
+
+```plaintext
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+```
+# Just type the following command in the CLI 
+```plaintext
+ssh [username]@[hostname]"
+```
+# if the user you are attacking has changed their port number for ssh type this command instead of the one on top
+
+```plaintext
+ssh [username]@[hostname] -p [port Number]
+```

@@ -36,4 +36,36 @@ bash requirements.sh --help or bash requirements.sh -h
 ```
 
 ### This software is going to help you crack passwords.
-### To crack VNC(5900) dont type anything in the "Username" input. Just type the ip address in the hostname input field.
+### To crack VNC(5900) do not type anything in the "Username" input. Just type the ip address in the hostname input field.
+
+
+# Troubleshooting SSH: Remote Host Identification Changed
+
+If you encounter the following error message when connecting to an SSH server:
+
+```plaintext
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+```
+
+
+
+# You can type the following command in the CLI
+```plaintext
+ssh [username]@[hostname]"
+```
+
+# Or you can go to this file and delate all the hashes that are connected to previously used ssh hosts
+```ssh hash config```
+```plaintext
+cd ~/.ssh
+
+sudo nano known_hosts
+```
+
+# if the user you are attacking has changed their port number for ssh type this command instead of the one on top
+
+```plaintext
+ssh [username]@[hostname] -p [port Number]
+```
