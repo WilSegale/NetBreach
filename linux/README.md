@@ -29,11 +29,7 @@ sudo python3 Hercules.py --Gui-Local
 python3 Hercules.py --help or python3 Hercules.py -h
 ```
 
-## If you are wondering what the requirements do type
-
-```bash
-bash requirements.sh --help or bash requirements.sh -h
-```
+## the requirements file will automatically install the requirements that are needed for the program to run successfully
 
 ### This software is going to help you crack passwords.
 ### To crack VNC(5900) do not type anything in the "Username" input. Just type the ip address in the hostname input field.
