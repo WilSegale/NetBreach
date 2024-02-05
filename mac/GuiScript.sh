@@ -40,17 +40,6 @@ total_steps=100
 userName="Input Username:"
 hostName="Input Hostname:"
 
-#exit array
-exit=("exit" "quit" "EXIT" "QUIT" "STOP" "stop")
-
-# Gets the current time in a 12-hour format
-CURRENT_TIME=$(date +"%I:%M:%S %p")
-
-# Gets current date in mm/dd/yyyy format
-CURRENT_DATE=$(date +"%m/%d/%Y")
-
-# the packages for the program to work correctly
-required_packages=("wget" "nmap" "hydra" "ssh" "mysql")
 
 (
   # Start a subshell to redirect the output
