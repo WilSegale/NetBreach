@@ -42,16 +42,10 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# Check if root user
-if [[ $EUID -ne 0 ]]; then
-  echo -e "${RED}ERROR:${NC} Please run as root."
-  exit 1
-fi
-
 # Check for required packages
 for package in "${required_packages[@]}"; do
-  if ! command_exists "$package"; then
-    echo -e "ERROR: The required package ${GREEN}'$package'${NC} is not installed. Please install it and try again."
+  if ! command_exists "${package}"; then
+    echo -e "ERROR: The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
     exit 1
   fi
 done
@@ -71,6 +65,11 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
     echo
 else
+    # Check if root user
+    if [[ $EUID -ne 0 ]]; then
+        echo -e "${RED}ERROR:${NC} Please run as root."
+        exit 1
+    fi
     if [[ "$OSTYPE" == "${OS}"* ]]; then
         clear
         if [[ $EUID -ne $root ]]; then
