@@ -57,8 +57,17 @@ sudo nano known_hosts
 ssh [username]@[hostname]
 ```
 
-# if the user you are attacking has changed their port number for ssh type this command instead of the one on top
+# If the user you are attacking has changed their port number for ssh type this command instead of the one on top
 
 ```plaintext
 ssh [username]@[hostname] -p [port Number]
 ```
+
+# Trouble shooting the error log error message
+## if you ever get this message
+
+```plaintext
+ERROR = open("ERROR.log", "a")
+    PermissionError: [Errno 13] Permission denied: 'ERROR.log'
+```
+## You get rid of this message by going to the error log file and remove it. It will fix the program for you 
