@@ -27,7 +27,7 @@ trap ctrl_c SIGINT
 
 # Check for required packages
 for package in "${required_packages[@]}"; do
-    if ! command_exists "${package}"; then
+    if ! command_exists "$package"; then
         echo -e "ERROR: The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
         exit 1
     fi
@@ -72,6 +72,13 @@ else
             if [[ $service == "ALL" || $service == "all" ]]; then
                 # Scan the entire network and display open ports
                 nmap 127.0.0.1 --system-dns -Pn -oN local.txt
+                echo "Would you like to see what is inside the scan file YES OR NO?"
+                read -p ">>> " service
+                if [[ $service == "YES" || $service == "yes" ]]; then
+                    open local.txt
+                else
+                    echo "Ok I will not open the local scan file"
+                fi
                 hydra -h
                 echo "Put in Hydra first to start the script."
                 echo ""
