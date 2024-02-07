@@ -15,7 +15,12 @@ pipPackages=(
     "asyncio"
     "pyfiglet"
 )
-
+# Check if the script is run with --help or -h
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+    figlet "? HELP ?"
+    echo "This script will install the required packages for the script."
+    exit 1
+fi
 requiredments() {
     # Checks if the user is ROOT and prompts them not to use sudo
     if [ "$(id -u)" -eq 0 ]; then
