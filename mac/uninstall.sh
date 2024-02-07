@@ -1,8 +1,6 @@
 #!/bin/bash
 source DontEdit.sh
 
-# Color variables
-
 # Checks if the user is ROOT and if they are, it prompts them not to use sudo
 if [ "$(id -u)" -eq 0 ]; then
     # Puts the ERROR message into line art
