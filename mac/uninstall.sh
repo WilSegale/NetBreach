@@ -38,7 +38,7 @@ trap ctrl_c SIGINT
 # Checks if the user is ROOT and if they are, it prompts them not to use sudo
 if [ "$(id -u)" -eq 0 ]; then
     # Puts the ERROR message into line art
-    echo -e "\e[91m$(figlet ERROR)\e[0m"
+    echo -e "${RED}$(figlet ERROR)${NC}"
 
     # Gives the user something to read so they understand why they got the error
     echo "+++++++++++++++++++++++++++++++++++++++++"
