@@ -328,12 +328,12 @@ try:
         print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
         print("Please use the correct number of arguments.")
         print(f'''Example: 
-{GLOBAL} put's it in global mode for attack global networks, 
-{GUI} put's it in GUI mode to attack GUI GLOBAL networks, 
-{LOCAL} put's it in local mode for attack local networks,
-{GuiLocal} put's it in GUI LOCAL mode to attack GUI LOCAL networks,
-{installRequirement} put's it in install mode that installs the required packages,
-{uninstallRequirement} put's it in uninstall mode that uninstalls the packages,
+{GLOBAL} put's it in global mode for attacking global networks, 
+{GUI} put's it in GUI mode to attacking in GUI GLOBAL networks, 
+{LOCAL} put's it in local mode for attacking local networks,
+{GuiLocal} put's it in GUI LOCAL mode to attacking in GUI LOCAL networks,
+{installRequirement} put's it in install mode that install's the required packages,
+{uninstallRequirement} put's it in uninstall mode that uninstall's the packages,
 {HELP} put's it in help mode so you understand what you are going to do with this program.''')
 
 except KeyboardInterrupt:
