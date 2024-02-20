@@ -1,3 +1,0 @@
-# Hydra v9.5 run at 2024-02-13 13:43:15 on 192.168.1.38 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.38:5900)
-# Hydra v9.5 run at 2024-02-13 15:24:35 on 192.168.1.42 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.42:22)
-# Hydra v9.5 run at 2024-02-13 15:25:18 on 192.168.1.42 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.42:22)

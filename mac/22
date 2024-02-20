@@ -1,9 +1,0 @@
-# Nmap 7.94 scan initiated Tue Feb 13 15:25:00 2024 as: nmap -sS -p 22 -oN 22 --open 192.168.1.1/24
-Nmap scan report for Main.fios-router.home (192.168.1.42)
-Host is up (0.20s latency).
-
-PORT   STATE SERVICE
-22/tcp open  ssh
-MAC Address: 8C:15:6D:33:ED:F4 (Unknown)
-
-# Nmap done at Tue Feb 13 15:25:10 2024 -- 256 IP addresses (24 hosts up) scanned in 10.58 seconds
