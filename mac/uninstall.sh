@@ -78,7 +78,7 @@ else
                     echo "${package_name} is installed."
                     brew uninstall "${package_name}"
                 else
-                    echo -e "${RED}$package_name${NC} is not installed."
+                    echo -e "${RED}$package_name${NC} Is not installed."
                 fi
             }
 
@@ -102,7 +102,7 @@ else
                         echo -e "${pipPackage}: uninstalled ${GREEN}successfully${NC}"
                     fi
                 else
-                    echo -e "${RED}${pipPackage}${NC}: is not installed"
+                    echo -e "${RED}${pipPackage}${NC}: Is not installed"
                 fi
             done
 
@@ -122,12 +122,12 @@ else
             else
                 for package in "${Packages[@]}"
                 do
-                    echo -e "${package}: ${RED}is removed${NC}"
+                    echo -e "${package}: ${RED}Is removed${NC}"
                 done
                 echo -e "________PIP Packages________"
                 for pipPackage in "${pipPackages[@]}"
                 do
-                    echo -e "${pipPackage}: ${RED}is removed${NC}"
+                    echo -e "${pipPackage}: ${RED}Is removed${NC}"
                 done
             fi
 
