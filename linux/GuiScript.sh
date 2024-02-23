@@ -235,7 +235,7 @@ else
                         Connected_To_VNC_SERVER="We have connected you to '${host}'. Please enter the password to '${host}'. To continue..."
                         zenity --info --title="${title}" --text="${Connected_To_VNC_SERVER}"
 
-                        open "vnc://${host}"
+                        open "vncviewer://${host}"
                         exit 1
                     fi
                 fi
@@ -263,7 +263,7 @@ else
                         Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
                         zenity --info --title="${title}" --text="${Connected_To_SSH_SERVER}"
 
-                        ssh "$user"@"$host"
+                        ssh "${user}"@"${host}"
                     fi
                 fi
             }
@@ -288,7 +288,7 @@ else
                         zenity --info --title="${title}" --text="${Connecting_To_MySQL_SERVER}"
 
                         sleep 3
-                        mysql -u "$userName" -p -A
+                        mysql -u "${userName}" -p -A
                     fi
                 fi
             }

@@ -115,7 +115,7 @@ else
         LocalRunHackingCommand() {
             # Break in the outputs of my code
             echo
-            original_host=127.0.0.1
+            original_host=LOCALHOST
             original_port=$service
 
             # Check if the port is closed
@@ -171,8 +171,8 @@ else
                     echo "${Connected_To_VNC_SERVER}"
                     # Put the
                     echo
-                    echo "Loading VNC server..."
-                    open "vnc://${host}"
+                    echo "Loading vncviewer server..."
+                    open "vncviewer://${host}"
                     exit
                 fi
             fi
