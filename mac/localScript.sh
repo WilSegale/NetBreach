@@ -132,7 +132,7 @@ else
         LocalRunHackingCommand() {
             # Break in the outputs of my code
             echo
-            original_host=127.0.0.1
+            original_host=LOCALHOST;
             original_port=$service
 
             # Check if the port is closed
