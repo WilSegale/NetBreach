@@ -6,7 +6,7 @@ source DontEdit.sh
 
 if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
 
-    echo -e "\e[91m\e[1m!Are you sure you want to remove your Packages (YES/NO)!: \e[0m"
+    echo -e "${BRIGHT}${RED}Are you sure you want to remove your Packages (YES/NO)!: ${NC}"
 
     read -p ">>> " YES_NO
 
@@ -19,6 +19,7 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
             "mysql"
             "figlet"
             "zenity"
+            "vncviewer"
         )
 
         # PIP packages that will be uninstalled if they are installed
@@ -31,10 +32,10 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
         check_package() {
             package_name="$1"
             if command -v "${package_name}" >/dev/null 2>&1; then
-                echo "$package_name is installed."
-                sudo apt-get remove -y "$package_name"
+                echo "${package_name} is installed."
+                sudo apt-get remove -y "${package_name}"
             else
-                echo -e "\e[91m$package_name\e[0m is not installed."
+                echo -e "${RED}${package_name}${RED} is not installed."
             fi
         }
 
@@ -55,10 +56,10 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
                     echo -e "Error occurred during uninstallation of \"${pipPackage}\""
                     exit 1
                 else
-                    echo -e "${pipPackage}: uninstalled \e[92msuccessfully\e[0m"
+                    echo -e "${pipPackage}: uninstalled ${GREEN}successfully${NC}"
                 fi
             else
-                echo -e "\e[91m${pipPackage}\e[0m: is not installed"
+                echo -e "${RED}${pipPackage}${NC}: is not installed"
             fi
         done
 
@@ -71,10 +72,10 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
             echo -e "________PIP Packages________"
             for pipPackage in "${pipPackages[@]}"
             do
-                echo -e "\e[91m${pipPackage}\e[0m"
+                echo -e "${GREEN}${pipPackage}${NC}"
             done
             echo -e "________ERROR________"
-            echo -e "\e[91mError occurred during pip uninstallation\e[0m"
+            echo -e "${RED}Error occurred during pip uninstallation${NC}"
         else
             for package in "${Packages[@]}"
             do
@@ -83,7 +84,7 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
             echo -e "________PIP Packages________"
             for pipPackage in "${pipPackages[@]}"
             do
-                echo -e "${pipPackage}: \e[92mis removed\e[0m"
+                echo -e "${pipPackage}: ${RED}is removed${NC}"
             done
         fi
 
@@ -92,5 +93,5 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
         exit 1
     fi
 else
-    echo -e "${RED}This script can only be run on Linux$"
+    echo -e "${RED}This script can only be run on Linux${NC}"
 fi
