@@ -9,6 +9,7 @@ Packages=(
     "mysql"
     "figlet"
     "zenity"
+    "
 )
 
 pipPackages=(
