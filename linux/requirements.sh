@@ -9,7 +9,6 @@ Packages=(
     "mysql"
     "figlet"
     "zenity"
-    "tigervnc-viewer"
 )
 
 pipPackages=(

@@ -171,8 +171,8 @@ else
                     echo "${Connected_To_VNC_SERVER}"
                     # Put the
                     echo
-                    echo "Loading vncviewer server..."
-                    open "vncviewer://${host}"
+                    echo "Loading VNC server..."
+                    open "vnc://${host}"
                     exit
                 fi
             fi

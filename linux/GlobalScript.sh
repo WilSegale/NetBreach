@@ -182,7 +182,7 @@ else
                         # Put the
                         echo
                         echo "Loading VNC server..."
-                        open "vncviewer://${host}"
+                        open "vnc://${host}"
                         exit
                     fi
                 fi
