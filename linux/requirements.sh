@@ -3,6 +3,7 @@ source DontEdit.sh
 
 # Packages to install
 Packages=(
+    "curl"
     "wget"
     "hydra"
     "nmap"
