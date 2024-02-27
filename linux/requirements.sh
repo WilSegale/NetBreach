@@ -26,9 +26,9 @@ requiredments() {
             install_linux_package() {
                 package_name="$1"
                 if ! command -v "${package_name}" >/dev/null 2>&1; then
-                    sudo apt-get install -y "${package_name}"
+                    sudo apt-get install "${package_name}" -y
                 else
-                    echo -e "${package_name} is already \e[92minstalled.\e[0m"
+                    echo -e "${package_name} is already ${GREEN}installed.${NC}"
                 fi
             }
 
