@@ -3,6 +3,7 @@ source DontEdit.sh
 
 # Packages to install
 Packages=(
+    "mysql-server"
     "curl"
     "wget"
     "hydra"
