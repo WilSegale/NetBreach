@@ -326,7 +326,7 @@ try:
     #if the user does not input the correct argument it tells them what arguments to use for it to work 
     else:
         print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
-        print("Please use the correct number of arguments.")
+        print(f"Please use the correct number of arguments.")
         print(f'''Example: 
 {GLOBAL} put's it in global mode for attacking global networks, 
 {GUI} put's it in GUI mode to attacking in GUI GLOBAL networks, 
