@@ -6,10 +6,11 @@ source DontEdit.sh
 #checks if the user is connected to ssh and if they are it makes the program not work
 if [ -n "$SSH_CLIENT" ]; then
     echo "Connected via SSH"
-    exit 0
+    exit 1
 else
     echo "Not connected via SSH"
 fi
+
 # Function to handle cleanup on exit
 # quits program with ctrl-c
 EXIT_PROGRAM_WITH_CTRL_C() {
