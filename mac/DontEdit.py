@@ -1,5 +1,4 @@
 # Import necessary modules
-from colorama import *
 import datetime
 import platform
 import time
@@ -9,7 +8,6 @@ import logging
 import sys
 import subprocess
 import requests
-from colorama import Fore
 
 lineArt = subprocess.run
 
