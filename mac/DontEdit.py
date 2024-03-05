@@ -8,6 +8,7 @@ import logging
 import sys
 import subprocess
 import requests
+import random
 
 lineArt = subprocess.run
 
@@ -20,6 +21,7 @@ GREEN = "\033[92m"
 RED = "\033[91m"
 RESET = "\033[0m"
 
+changeColor = [GREEN, RED, RESET]
 
 # Define constants for command-line arguments
 HELP = ["--HELP", "--Help", "--help", "-h", "-H"]
