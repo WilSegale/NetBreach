@@ -123,7 +123,7 @@ def Show_GUI():
             os.system("bash GuiScript.sh")  # the script to run after loading
         else:    
             # makes a pop up dialog to tell the user that the user is not root
-            print(f"TIME:{formatted_time} Please run as ROOT. DATE:{current_date}")
+            print(f"[ {RED}FAIL{RESET} ] TIME:{formatted_time} Please run as ROOT. DATE:{current_date}")
             print(f"ERROR:TIME:{formatted_time} Please run as ROOT. DATE:{current_date}", file=ERROR)
     else:
         # makes a pop up dialog to tell the user that the OS is not correct
@@ -177,7 +177,7 @@ def show_GLOBAL():
             os.system("bash GlobalScript.sh")  # the script to run after loading
         else:    
             # makes a pop up dialog to tell the user that the user is not root
-            print(f"TIME:{formatted_time} Please run as ROOT. DATE:{current_date}")
+            print(f"[ {RED}FAIL{RESET} ] TIME:{formatted_time} Please run as ROOT. DATE:{current_date}")
             print(f"ERROR:TIME:{formatted_time} Please run as ROOT. DATE:{current_date}", file=ERROR)
     else:
         # makes a pop up dialog to tell the user that the OS is not correct

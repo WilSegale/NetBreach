@@ -68,7 +68,6 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
 else
     # Check if root user
     if [[ $EUID -ne 0 ]]; then
-        echo
         echo -e "[ ${RED}FAIL${NC} ]: Please run as root."
         exit 1
     fi
