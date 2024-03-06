@@ -4,16 +4,35 @@
 source DontEdit.sh
 
 # Function to handle cleanup on exit
-cleanup() {
+# quits program with ctrl-c
+EXIT_PROGRAM_WITH_CTRL_C() {
     echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
     # Add cleanup commands here
     exit 1
 }
 
+# quits program with ctrl-z
+EXIT_PROGRAM_WITH_CTRL_Z(){
+    echo ""
+    echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
+    # Add cleanup commands here
+    exit 1
+}
+
+# Function to be executed when Ctrl+Z is pressed
+handle_ctrl_z() {
+    EXIT_PROGRAM_WITH_CTRL_Z
+    exit 1
+    # Your custom action goes here
+}
+
+# Set up the trap to call the function on SIGTSTP (Ctrl+Z)
+trap 'handle_ctrl_z' SIGTSTP
+
 # Function to handle Ctrl+C
 ctrl_c() {
     echo ""
-    cleanup
+    EXIT_PROGRAM_WITH_CTRL_C
 }
 
 trap ctrl_c SIGINT
@@ -23,18 +42,12 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# Check if root user
-if [[ $EUID -ne 0 ]]; then
-  echo -e "${RED}ERROR:${NC} Please run as root."
-  exit 1
-fi
-
 # Check for required packages
 for package in "${required_packages[@]}"; do
-  if ! command_exists "$package"; then
-    echo -e "ERROR: The required package ${GREEN}'$package'${NC} is not installed. Please install it and try again."
-    exit 1
-  fi
+    if ! command_exists "$package"; then
+        echo -e "[ ${RED}FAIL${NC} ]: The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
+        exit 1
+    fi
 done
 
 # Check if the script is run with --help or -h
@@ -52,6 +65,11 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
     echo
 else
+    # Check if root user
+    if [[ $EUID -ne 0 ]]; then
+        echo -e "[ ${RED}FAIL${NC} ]: Please run as root."
+        exit 1
+    fi
     if [[ "$OSTYPE" == "${OS}"* ]]; then
         clear
         if [[ $EUID -ne $root ]]; then
@@ -122,10 +140,13 @@ else
                     echo -e "${RED}ERROR:${NC} plase input a number into the input field"
                     sleep 1
                     exit 1                
-                #checks if the user has put in a letter insed of a number into the input feild
-                elif [[ " ${alphabet[*]} " == *" ${service} "* ]]; then
-                    echo "Please enter a number next time"
-                    exit 1
+                #checks if the user has put in a letter insted of a number into the input feild
+                for letter in "${alphabet[@]}"; do
+                    if [[ "${letter}" == "${service}" ]]; then
+                        echo "Please enter a number next time"
+                        exit 1
+                    fi
+                done
 
                 else
                     # Scan specific port
@@ -182,7 +203,7 @@ else
                         # Put the
                         echo
                         echo "Loading VNC server..."
-                        open "vncviewer://${host}"
+                        open "vnc://${host}"
                         exit
                     fi
                 fi

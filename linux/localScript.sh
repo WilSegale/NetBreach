@@ -9,26 +9,43 @@ command_exists() {
 }
 
 # Function to handle cleanup on exit
-cleanup() {
+# quits program with ctrl-c
+EXIT_PROGRAM_WITH_CTRL_C() {
     echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
     # Add cleanup commands here
     exit 1
 }
 
+# quits program with ctrl-z
+EXIT_PROGRAM_WITH_CTRL_Z(){
+    echo ""
+    echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
+    # Add cleanup commands here
+    exit 1
+}
+
+# Function to be executed when Ctrl+Z is pressed
+handle_ctrl_z() {
+    EXIT_PROGRAM_WITH_CTRL_Z
+    exit 1
+    # Your custom action goes here
+}
+
+# Set up the trap to call the function on SIGTSTP (Ctrl+Z)
+trap 'handle_ctrl_z' SIGTSTP
+
 # Function to handle Ctrl+C
 ctrl_c() {
     echo ""
-    cleanup
+    EXIT_PROGRAM_WITH_CTRL_C
 }
 
-
-#allows the user to close the program gracefully
 trap ctrl_c SIGINT
 
 # Check for required packages
 for package in "${required_packages[@]}"; do
     if ! command_exists "$package"; then
-        echo -e "ERROR: The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
+        echo -e "[ ${RED}FAIL${NC} ]: The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
         exit 1
     fi
 done
@@ -115,7 +132,7 @@ else
         LocalRunHackingCommand() {
             # Break in the outputs of my code
             echo
-            original_host=LOCALHOST
+            original_host=LOCALHOST;
             original_port=$service
 
             # Check if the port is closed
@@ -172,7 +189,7 @@ else
                     # Put the
                     echo
                     echo "Loading VNC server..."
-                    open "vncviewer://${host}"
+                    open "vnc://${host}"
                     exit
                 fi
             fi
