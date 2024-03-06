@@ -1,9 +1,6 @@
 from DontEdit import *
 from HelpLogo import *
 
-#gets random color for the loading bar
-random_color = random.choice(changeColor)
-
 # gets the current time and formats it HH:MM:SS
 current_time = datetime.datetime.now().time()
 
@@ -116,7 +113,7 @@ def Show_GUI():
                 for loadingBar in range(iterations + 1):
                     progress = loadingBar / iterations  # Calculate the progress ratio
                     bar_length = int(progress * width)  # Calculate the number of dots for the current progress
-                    bar = random_color + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                    bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
                     percentage = int(progress * 100)  # Calculate the percentage of completion
                     
                     # Print the loading bar and percentage, replacing the line each iteration
@@ -173,7 +170,7 @@ def show_GLOBAL():
                 for loadingBar in range(iterations + 1):
                     progress = loadingBar / iterations  # Calculate the progress ratio
                     bar_length = int(progress * width)  # Calculate the number of dots for the current progress
-                    bar = random_color + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                    bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
                     percentage = int(progress * 100)  # Calculate the percentage of completion
                     
                     # Print the loading bar and percentage, replacing the line each iteration
@@ -224,7 +221,7 @@ def show_LOCAL():
             for loadingBar in range(iterations + 1):
                 progress = loadingBar / iterations  # Calculate the progress ratio
                 bar_length = int(progress * width)  # Calculate the number of dots for the current progress
-                bar = random_color + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
                 percentage = int(progress * 100)  # Calculate the percentage of completion
                 
                 # Print the loading bar and percentage, replacing the line each iteration
@@ -274,7 +271,7 @@ def show_GuiLOCAL():
             for loadingBar in range(iterations + 1):
                 progress = loadingBar / iterations  # Calculate the progress ratio
                 bar_length = int(progress * width)  # Calculate the number of dots for the current progress
-                bar = random_color + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
                 percentage = int(progress * 100)  # Calculate the percentage of completion
                 
                 # Print the loading bar and percentage, replacing the line each iteration

@@ -26,8 +26,6 @@ GRAY_TEXT = "\033[90m"
 CYAN_TEXT = "\033[36m"
 RESET = "\033[0m"
 
-changeColor = [GREEN, RED, BLUE, YELLOW, CYAN_TEXT, ORANGE_Start, RESET]
-
 # Define constants for command-line arguments
 HELP = ["--HELP", "--Help", "--help", "-h", "-H"]
 GUI = ["--GUI", "--Gui", "--gui"]
