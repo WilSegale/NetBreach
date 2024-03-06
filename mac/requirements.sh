@@ -43,7 +43,7 @@ requiredments() {
                     if ! command -v "${package_name}" >/dev/null 2>&1; then
                         brew install "${package_name}"
                     else
-                        echo -e "${package_name} is already ${GREEN}installed.${NC}"
+                        echo -e "${package_name} is already ${GREEN}Installed.${NC}"
                     fi
                 }
 
@@ -53,7 +53,7 @@ requiredments() {
                     if ! python3 -m pip show "${package_name}" >/dev/null 2>&1; then
                         pip3 install "${package_name}"
                     else
-                        echo -e "${package_name} is already ${GREEN}installed.${NC}"
+                        echo -e "${package_name} is already ${GREEN}Installed.${NC}"
                     fi
                 }
 
@@ -76,7 +76,14 @@ requiredments() {
 
                 # Update PIP
                 echo "_________PIP UPDATES________"
-                python3 -m pip install --upgrade pip
+                updated_version=$(pip3 --version | awk '{print $2}')
+                
+                if [ "$current_version" != "$updated_version" ]; then
+                    echo -e "pip has been successfully updated. ${GREEN}Installed.${NC}"
+                else
+                    echo "pip is already up to date."
+                fi
+
 
                 echo
                 successful_MESSAGE="${GREEN}[+]${NC} All packages are installed successfully"
