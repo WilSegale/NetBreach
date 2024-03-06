@@ -22,12 +22,11 @@ RED = "\033[91m"
 BLUE = "\033[34m"
 YELLOW = "\033[33m"
 ORANGE_Start = "\033[38;2;255;165;0m"
-ORANGE_END = "\033[0m"
 GRAY_TEXT = "\033[90m"
 CYAN_TEXT = "\033[36m"
 RESET = "\033[0m"
 
-changeColor = [GREEN, RED, BLUE, YELLOW,RESET]
+changeColor = [GREEN, RED, BLUE, YELLOW, CYAN_TEXT, ORANGE_Start, RESET]
 
 # Define constants for command-line arguments
 HELP = ["--HELP", "--Help", "--help", "-h", "-H"]
