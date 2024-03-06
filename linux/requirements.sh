@@ -3,6 +3,7 @@ source DontEdit.sh
 
 # Packages to install
 Packages=(
+    "pip"
     "mysql-server"
     "curl"
     "wget"
@@ -71,7 +72,7 @@ requiredments() {
             echo -e "${RED}ERROR:${NC} NOT CONNECTED TO THE INTERNET"
         fi
     else
-        echo -e "${RED}[-]${NC} Wrong OS, please use the correct OS." # If the user is not using the right OS, it says "You are using the wrong OS"
+        echo -e "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS." # If the user is not using the right OS, it says "You are using the wrong OS"
     fi
 }
 

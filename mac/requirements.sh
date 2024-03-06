@@ -43,7 +43,7 @@ requiredments() {
                     if ! command -v "${package_name}" >/dev/null 2>&1; then
                         brew install "${package_name}"
                     else
-                        echo -e "${package_name} is already ${GREEN}Installed.${NC}"
+                        echo -e "[ ${GREEN}OK${NC} ] ${package_name} is already installed."
                     fi
                 }
 
@@ -53,7 +53,7 @@ requiredments() {
                     if ! python3 -m pip show "${package_name}" >/dev/null 2>&1; then
                         pip3 install "${package_name}"
                     else
-                        echo -e "${package_name} is already ${GREEN}Installed.${NC}"
+                        echo -e "[ ${GREEN}OK${NC} ] ${package_name} is already installed."
                     fi
                 }
 
@@ -79,19 +79,22 @@ requiredments() {
                 updated_version=$(pip3 --version | awk '{print $2}')
                 
                 if [ "$current_version" != "$updated_version" ]; then
-                    echo -e "pip has been successfully updated. ${GREEN}Installed.${NC}"
+
+                    echo -e "[ ${GREEN}OK${NC} ]pip has been successfully updated installed."
                 else
                     echo "pip is already up to date."
                 fi
 
                 echo
                 successful_MESSAGE="[ ${GREEN}OK${NC} ] All packages are installed successfully"
+                echo "_________FINISH________"
+
                 echo -e "${successful_MESSAGE}"
             else
                 echo -e "[ ${RED}FAIL${NC} ]: NOT CONNECTED TO THE INTERNET"
             fi
         else
-            echo -e "${RED}${BRIGHT}[-]${NC} Wrong OS, please use the correct OS." # If the user is not using the right OS, it says "You are using the wrong OS"
+            echo -e "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS." # If the user is not using the right OS, it says "You are using the wrong OS"
         fi
     fi
 }
