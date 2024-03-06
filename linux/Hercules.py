@@ -1,6 +1,9 @@
 from DontEdit import *
 from HelpLogo import *
 
+#gets random color for the loading bar
+random_color = random.choice(changeColor)
+
 # gets the current time and formats it HH:MM:SS
 current_time = datetime.datetime.now().time()
 
@@ -113,7 +116,7 @@ def Show_GUI():
                 for loadingBar in range(iterations + 1):
                     progress = loadingBar / iterations  # Calculate the progress ratio
                     bar_length = int(progress * width)  # Calculate the number of dots for the current progress
-                    bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                    bar = random_color + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
                     percentage = int(progress * 100)  # Calculate the percentage of completion
                     
                     # Print the loading bar and percentage, replacing the line each iteration
@@ -170,7 +173,7 @@ def show_GLOBAL():
                 for loadingBar in range(iterations + 1):
                     progress = loadingBar / iterations  # Calculate the progress ratio
                     bar_length = int(progress * width)  # Calculate the number of dots for the current progress
-                    bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                    bar = random_color + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
                     percentage = int(progress * 100)  # Calculate the percentage of completion
                     
                     # Print the loading bar and percentage, replacing the line each iteration
@@ -221,7 +224,7 @@ def show_LOCAL():
             for loadingBar in range(iterations + 1):
                 progress = loadingBar / iterations  # Calculate the progress ratio
                 bar_length = int(progress * width)  # Calculate the number of dots for the current progress
-                bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                bar = random_color + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
                 percentage = int(progress * 100)  # Calculate the percentage of completion
                 
                 # Print the loading bar and percentage, replacing the line each iteration
@@ -268,7 +271,7 @@ def show_GuiLOCAL():
             for loadingBar in range(iterations + 1):
                 progress = loadingBar / iterations  # Calculate the progress ratio
                 bar_length = int(progress * width)  # Calculate the number of dots for the current progress
-                bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                bar = random_color + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
                 percentage = int(progress * 100)  # Calculate the percentage of completion
                 
                 # Print the loading bar and percentage, replacing the line each iteration
@@ -326,14 +329,14 @@ try:
     #if the user does not input the correct argument it tells them what arguments to use for it to work 
     else:
         print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
-        print("Please use the correct number of arguments.")
+        print(f"Please use the correct number of arguments.")
         print(f'''Example: 
-{GLOBAL} put's it in global mode for attack global networks, 
-{GUI} put's it in GUI mode to attack GUI GLOBAL networks, 
-{LOCAL} put's it in local mode for attack local networks,
-{GuiLocal} put's it in GUI LOCAL mode to attack GUI LOCAL networks,
-{installRequirement} put's it in install mode that installs the required packages,
-{uninstallRequirement} put's it in uninstall mode that uninstalls the packages,
+{GLOBAL} put's it in global mode for attacking global networks, 
+{GUI} put's it in GUI mode to attacking in GUI GLOBAL networks, 
+{LOCAL} put's it in local mode for attacking local networks,
+{GuiLocal} put's it in GUI LOCAL mode to attacking in GUI LOCAL networks,
+{installRequirement} put's it in install mode that install's the required packages,
+{uninstallRequirement} put's it in uninstall mode that uninstall's the packages,
 {HELP} put's it in help mode so you understand what you are going to do with this program.''')
 
 except KeyboardInterrupt:
