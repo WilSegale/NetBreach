@@ -44,10 +44,10 @@ command_exists() {
 
 # Check for required packages
 for package in "${required_packages[@]}"; do
-  if ! command_exists "${package}"; then
-    echo -e "ERROR: The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
-    exit 1
-  fi
+    if ! command_exists "$package"; then
+        echo -e "[ ${RED}FAIL${NC} ]: The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
+        exit 1
+    fi
 done
 
 # Check if the script is run with --help or -h
@@ -67,7 +67,7 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
 else
     # Check if root user
     if [[ $EUID -ne 0 ]]; then
-        echo -e "${RED}ERROR:${NC} Please run as root."
+        echo -e "[ ${RED}FAIL${NC} ]: Please run as root."
         exit 1
     fi
     if [[ "$OSTYPE" == "${OS}"* ]]; then

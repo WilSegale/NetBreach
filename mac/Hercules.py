@@ -232,6 +232,9 @@ def show_LOCAL():
                 
                 time.sleep(delay)  # Pause to control the update rate
         print_loading_bar(50)
+        time.sleep(5)
+        print(f"\n[ {GREEN}OK{RESET} ] Loading {ProgramName} complete")
+        time.sleep(5)
         os.system("bash localScript.sh")  # the script to run after loading
     else:
         # makes a pop up dialog to tell the user that the OS is not correct

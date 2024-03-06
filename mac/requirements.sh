@@ -84,12 +84,11 @@ requiredments() {
                     echo "pip is already up to date."
                 fi
 
-
                 echo
-                successful_MESSAGE="${GREEN}[+]${NC} All packages are installed successfully"
+                successful_MESSAGE="[ ${GREEN}OK${NC} ] All packages are installed successfully"
                 echo -e "${successful_MESSAGE}"
             else
-                echo -e "${RED}ERROR:${NC} NOT CONNECTED TO THE INTERNET"
+                echo -e "[ ${RED}FAIL${NC} ]: NOT CONNECTED TO THE INTERNET"
             fi
         else
             echo -e "${RED}${BRIGHT}[-]${NC} Wrong OS, please use the correct OS." # If the user is not using the right OS, it says "You are using the wrong OS"
