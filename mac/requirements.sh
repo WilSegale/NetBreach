@@ -91,9 +91,11 @@ requiredments() {
 
                 echo -e "${successful_MESSAGE}"
             else
+                echo
                 echo -e "[ ${RED}FAIL${NC} ]: NOT CONNECTED TO THE INTERNET"
             fi
         else
+            echo
             echo -e "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS." # If the user is not using the right OS, it says "You are using the wrong OS"
         fi
     fi

@@ -10,6 +10,9 @@ import subprocess
 import requests
 import random
 
+# easy way to read the root user function
+ROOT = 0
+
 lineArt = subprocess.run
 
 #name of the os

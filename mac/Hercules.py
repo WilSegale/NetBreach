@@ -85,8 +85,7 @@ def Show_GUI():
     # Get the current date
     current_date = datetime.datetime.now().strftime("%m/%d/%Y")
 
-    # easy way to read the root user function
-    ROOT = 0
+
 
     def connect(url="https://google.com"):
         try:
@@ -141,9 +140,6 @@ def show_GLOBAL():
 
     # Get the current date
     current_date = datetime.datetime.now().strftime("%m/%d/%Y")
-
-    # easy way to read the root user function
-    ROOT = 0
 
     def connect(url="https://google.com"):
         try:

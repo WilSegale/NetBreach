@@ -45,6 +45,7 @@ command_exists() {
 # Check for required packages
 for package in "${required_packages[@]}"; do
     if ! command_exists "$package"; then
+        echo ""
         echo -e "[ ${RED}FAIL${NC} ]: The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
         exit 1
     fi
@@ -67,6 +68,7 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
 else
     # Check if root user
     if [[ $EUID -ne 0 ]]; then
+        echo
         echo -e "[ ${RED}FAIL${NC} ]: Please run as root."
         exit 1
     fi
@@ -75,7 +77,7 @@ else
         if [[ $EUID -ne $root ]]; then
             # Error message if not running as root
             echo "ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
-            echo "TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}"
+            echo -e "[ ${RED}FAIL${NC} ]: TIME:${CURRENT_TIME} Please run as ROOT. DATE:${CURRENT_DATE}"
             exit
         else
             sudo rm -rf hydra.restore
