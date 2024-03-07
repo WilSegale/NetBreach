@@ -13,7 +13,7 @@ import random
 lineArt = subprocess.run
 
 #name of the os
-OS = "Darwin"
+OS = "Linux"
 
 # Define color codes for console output
 BRIGHT = '\033[1m'
