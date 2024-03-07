@@ -69,7 +69,7 @@ requiredments() {
             successful_MESSAGE="${GREEN}[+]${NC} All packages are installed successfully"
             echo -e "${successful_MESSAGE}"
         else
-            echo -e "${RED}ERROR:${NC} NOT CONNECTED TO THE INTERNET"
+            echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
         fi
     else
         echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] Wrong OS, please use the correct OS." # If the user is not using the right OS, it says "You are using the wrong OS"
