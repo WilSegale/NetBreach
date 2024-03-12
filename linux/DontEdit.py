@@ -6,9 +6,12 @@ import os
 import urllib.request
 import logging
 import sys
-import subprocess
 import requests
 import random
+import subprocess
+
+# easy way to read the root user function
+ROOT = 0
 
 lineArt = subprocess.run
 
@@ -26,8 +29,6 @@ GRAY_TEXT = "\033[90m"
 CYAN_TEXT = "\033[36m"
 RESET = "\033[0m"
 
-changeColor = [GREEN, RED, BLUE, YELLOW, CYAN_TEXT, ORANGE_Start, RESET]
-
 # Define constants for command-line arguments
 HELP = ["--HELP", "--Help", "--help", "-h", "-H"]
 GUI = ["--GUI", "--Gui", "--gui"]
@@ -36,3 +37,8 @@ LOCAL = ["--LOCAL", "--Local", "--local"]
 GuiLocal = ["--GUI-LOCAL", "--Gui-local", "--gui-local"]
 installRequirement = ["--INSTALL", "--install"]
 uninstallRequirement = ["--UNINSTALL", "--uninstall"]
+
+GuiScript = ["bash", "GuiScript.sh"]
+GlobalScript = ["bash", "GlobalScript.sh"]  # runs the script in global mode
+LocalScript = ["bash", "localScript.sh"]  # runs the script in global mode
+GuiLocalScript = ["bash", "GuiLocal.sh"]  # the script to run after loading

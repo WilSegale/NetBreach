@@ -1,9 +1,6 @@
 from DontEdit import *
 from HelpLogo import *
 
-#gets random color for the loading bar
-random_color = random.choice(changeColor)
-
 # gets the current time and formats it HH:MM:SS
 current_time = datetime.datetime.now().time()
 
@@ -88,9 +85,6 @@ def Show_GUI():
     # Get the current date
     current_date = datetime.datetime.now().strftime("%m/%d/%Y")
 
-    # easy way to read the root user function
-    ROOT = 0
-
     def connect(url="https://google.com"):
         try:
             urllib.request.urlopen(url)  # Try to open a connection to the host
@@ -116,7 +110,7 @@ def Show_GUI():
                 for loadingBar in range(iterations + 1):
                     progress = loadingBar / iterations  # Calculate the progress ratio
                     bar_length = int(progress * width)  # Calculate the number of dots for the current progress
-                    bar = random_color + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                    bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
                     percentage = int(progress * 100)  # Calculate the percentage of completion
                     
                     # Print the loading bar and percentage, replacing the line each iteration
@@ -124,10 +118,10 @@ def Show_GUI():
                     
                     time.sleep(delay)  # Pause to control the update rate
             print_loading_bar(50)
-            os.system("bash GuiScript.sh")  # the script to run after loading
+            subprocess.run(GuiScript)  # the script to run after loading
         else:    
             # makes a pop up dialog to tell the user that the user is not root
-            print(f"TIME:{formatted_time} Please run as ROOT. DATE:{current_date}")
+            print(f"[ {RED}FAIL{RESET} ] TIME:{formatted_time} Please run as ROOT. DATE:{current_date}")
             print(f"ERROR:TIME:{formatted_time} Please run as ROOT. DATE:{current_date}", file=ERROR)
     else:
         # makes a pop up dialog to tell the user that the OS is not correct
@@ -144,9 +138,6 @@ def show_GLOBAL():
 
     # Get the current date
     current_date = datetime.datetime.now().strftime("%m/%d/%Y")
-
-    # easy way to read the root user function
-    ROOT = 0
 
     def connect(url="https://google.com"):
         try:
@@ -173,7 +164,7 @@ def show_GLOBAL():
                 for loadingBar in range(iterations + 1):
                     progress = loadingBar / iterations  # Calculate the progress ratio
                     bar_length = int(progress * width)  # Calculate the number of dots for the current progress
-                    bar = random_color + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                    bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
                     percentage = int(progress * 100)  # Calculate the percentage of completion
                     
                     # Print the loading bar and percentage, replacing the line each iteration
@@ -181,10 +172,10 @@ def show_GLOBAL():
                     
                     time.sleep(delay)  # Pause to control the update rate
             print_loading_bar(50)
-            os.system("bash GlobalScript.sh")  # the script to run after loading
+            subprocess.run(GlobalScript)  # the script to run after loading
         else:    
             # makes a pop up dialog to tell the user that the user is not root
-            print(f"TIME:{formatted_time} Please run as ROOT. DATE:{current_date}")
+            print(f"[ {RED}FAIL{RESET} ] TIME:{formatted_time} Please run as ROOT. DATE:{current_date}")
             print(f"ERROR:TIME:{formatted_time} Please run as ROOT. DATE:{current_date}", file=ERROR)
     else:
         # makes a pop up dialog to tell the user that the OS is not correct
@@ -224,7 +215,7 @@ def show_LOCAL():
             for loadingBar in range(iterations + 1):
                 progress = loadingBar / iterations  # Calculate the progress ratio
                 bar_length = int(progress * width)  # Calculate the number of dots for the current progress
-                bar = random_color + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
                 percentage = int(progress * 100)  # Calculate the percentage of completion
                 
                 # Print the loading bar and percentage, replacing the line each iteration
@@ -232,7 +223,9 @@ def show_LOCAL():
                 
                 time.sleep(delay)  # Pause to control the update rate
         print_loading_bar(50)
-        os.system("bash localScript.sh")  # the script to run after loading
+        print(f"\n[ {GREEN}OK{RESET} ] Loading {ProgramName} complete")
+        time.sleep(5)
+        subprocess.run(LocalScript)  # the script to run after loading
     else:
         # makes a pop up dialog to tell the user that the OS is not correct
         # makes a pop up dialog to tell the user that the OS is not correct
@@ -271,7 +264,7 @@ def show_GuiLOCAL():
             for loadingBar in range(iterations + 1):
                 progress = loadingBar / iterations  # Calculate the progress ratio
                 bar_length = int(progress * width)  # Calculate the number of dots for the current progress
-                bar = random_color + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
                 percentage = int(progress * 100)  # Calculate the percentage of completion
                 
                 # Print the loading bar and percentage, replacing the line each iteration
@@ -279,7 +272,7 @@ def show_GuiLOCAL():
                 
                 time.sleep(delay)  # Pause to control the update rate
         print_loading_bar(50)
-        os.system("bash GuiLocal.sh")  # the script to run after loading
+        subprocess.run(GuiLocalScript)  # the script to run after loading
     else:
         # makes a pop up dialog to tell the user that the OS is not correct
         # makes a pop up dialog to tell the user that the OS is not correct
@@ -320,11 +313,11 @@ try:
 
     #installs the required packages for the program to work properly
     elif len(sys.argv) == 2 and sys.argv[1] in installRequirement:
-        os.system('bash requirements.sh')
+        subprocess.run('bash requirements.sh')
     
     #uninstall the required packages so its easier to uninstall them
     elif len(sys.argv) == 2 and sys.argv[1] in uninstallRequirement:
-        os.system('bash uninstall.sh')
+        subprocess.run('bash uninstall.sh')
 
     #if the user does not input the correct argument it tells them what arguments to use for it to work 
     else:
