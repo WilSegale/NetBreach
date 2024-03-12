@@ -17,7 +17,7 @@ python3 Hercules.py --uninstall
 
 ## To use the program type use can use the following commands
 ```bash 
-sudo python3 Hercules.py --local,
+python3 Hercules.py --local,
 sudo python3 Hercules.py --global,
 sudo python3 Hercules.py --gui,
 sudo python3 Hercules.py --Gui-Local
@@ -49,7 +49,7 @@ If you encounter the following error message when connecting to an SSH server:
 ```plaintext
 cd ~/.ssh
 
-sudo nano known_hosts
+open known_hosts
 ```
 
 # You can type the following command in the CLI
