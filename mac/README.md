@@ -70,4 +70,9 @@ ssh [username]@[hostname] -p [port Number]
 ERROR = open("ERROR.log", "a")
     PermissionError: [Errno 13] Permission denied: 'ERROR.log'
 ```
-## You get rid of this message by going to the error log file and remove it. It will fix the program for you 
+## You get rid of this message by going to the ERROR.log file and remove it. By doing 
+```bash 
+sudo rm -rf ERROR.log
+``` 
+
+## this will fix the program for you.
