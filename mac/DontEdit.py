@@ -40,6 +40,6 @@ installRequirement = ["--INSTALL", "--install"]
 uninstallRequirement = ["--UNINSTALL", "--uninstall"]
 
 GuiScript = ["bash", "GuiScript.sh"]
-GlobalScript = ["bash", "GlobalScript.sh"]  # the script to run after loading
-LocalScript = ["bash", "localScript.sh"]  # the script to run after loading
+GlobalScript = ["bash", "GlobalScript.sh"]  # runs the script in global mode
+LocalScript = ["bash", "localScript.sh"]  # runs the script in global mode
 GuiLocalScript = ["bash", "GuiLocal.sh"]  # the script to run after loading
