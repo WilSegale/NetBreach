@@ -309,7 +309,14 @@ try:
     
     #connect to the GuiLocal function of the Hercules program
     elif len(sys.argv) == 2 and sys.argv[1] in GuiLocal:
-        show_GuiLOCAL()
+        def is_ssh_connection():
+            return "SSH_TTY" in os.environ
+        
+        if is_ssh_connection() == True:
+            print("Connected via SSH. This script will not run.",
+                  "Until you disconnect from SSH.")
+        else:
+            Show_GUI()
 
     #installs the required packages for the program to work properly
     elif len(sys.argv) == 2 and sys.argv[1] in installRequirement:
