@@ -316,7 +316,7 @@ try:
             print("Connected via SSH. This script will not run.",
                   "\nUntil you disconnect from SSH.")
         else:
-            Show_GUI()
+            show_GuiLOCAL()
 
     #installs the required packages for the program to work properly
     elif len(sys.argv) == 2 and sys.argv[1] in installRequirement:
