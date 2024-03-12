@@ -15,7 +15,7 @@ bash uninstall.sh or
 python3 Hercules.py --uninstall
 ```
 
-## To use the program type use can use the following commands
+## To use the program you can type the following commands
 ```bash 
 python3 Hercules.py --local,
 sudo python3 Hercules.py --global,
@@ -29,7 +29,7 @@ sudo python3 Hercules.py --Gui-Local
 python3 Hercules.py --help or python3 Hercules.py -h
 ```
 
-## the requirements file will automatically install the requirements that are needed for the program to run successfully
+## The requirements file will automatically install the requirements that are needed for the program to run successfully
 
 ### This software is going to help you crack passwords.
 ### To crack VNC(5900) do not type anything in the "Username" input. Just type the ip address in the hostname input field.
