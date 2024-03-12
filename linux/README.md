@@ -75,4 +75,4 @@ ERROR = open("ERROR.log", "a")
 sudo rm -rf ERROR.log
 ``` 
 
-## this will fix the program for you.
+## This will fix the program for you.
