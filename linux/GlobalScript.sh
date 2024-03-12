@@ -45,6 +45,7 @@ command_exists() {
 # Check for required packages
 for package in "${required_packages[@]}"; do
     if ! command_exists "$package"; then
+        echo ""
         echo -e "[ ${RED}FAIL${NC} ]: The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
         exit 1
     fi
@@ -75,7 +76,7 @@ else
         if [[ $EUID -ne $root ]]; then
             # Error message if not running as root
             echo "ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
-            echo "TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}"
+            echo -e "[ ${RED}FAIL${NC} ]: TIME:${CURRENT_TIME} Please run as ROOT. DATE:${CURRENT_DATE}"
             exit
         else
             sudo rm -rf hydra.restore
@@ -85,7 +86,7 @@ else
             SITE="https://google.com/"
             if ! curl --head --silent --fail $SITE > /dev/null; then
                 echo "ERROR:TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}" >> ERROR.LOG
-                echo "TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}"
+                echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}"
 
                 exit 1
             else
@@ -111,9 +112,11 @@ else
                     # asks if the user want to see scan on a open file or not
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
+                        echo "Opeing the scan file"
+                        sleep 1
                         open scan.txt
                     else
-                        echo "[-] Ok I will not open the scan.txt file"
+                        echo -e "[${RED}-${NC}] Ok I will not open the scan.txt file"
                         sleep 1
                     fi
                     
@@ -123,7 +126,7 @@ else
                     read -p ">>> " Hydra
 
                     if [[ " ${exit[*]} " == *" ${Hydra} "* ]]; then
-                        echo "[+] Goodbye"
+                        echo "Goodbye"
                         exit 1
                     else
                         $Hydra
@@ -277,6 +280,6 @@ else
         clear
         # Warning message for wrong OS
         echo "WARNING:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
-        echo "TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE"
+        echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE"
     fi
 fi
