@@ -3,12 +3,16 @@
 #connets to the dontedit file to see what OS they are using
 source DontEdit.sh
 root=0
-# Check if the user is connected to SSH or running with sudo
-if [[ -n "${SSH_CLIENT}" || -n "${SUDO_USER}" ]]; then
-    echo "Connected via SSH or running with sudo"
+is_ssh_connection() {
+    [[ -n "${SSH_CLIENT}" ]]
+}
+
+# Main script
+if is_ssh_connection || [ "$EUID" -eq 0 ]; then
+    echo "Connected via SSH or running as root"
     exit 1
 else
-    echo "Not connected via SSH and not running with sudo"
+    echo "Not connected via SSH and not running as root"
 fi
 
 # Function to handle cleanup on exit
