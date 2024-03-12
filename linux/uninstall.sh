@@ -38,7 +38,7 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
                 echo "${package_name} is installed."
                 sudo apt-get remove -y "${package_name}"
             else
-                echo -e "${RED}${package_name}${RED} is not installed."
+                echo -e "${RED}${package_name}${NC} is not installed."
             fi
         }
 
