@@ -4,9 +4,12 @@
 source DontEdit.sh
 
 #checks if the user is connected to ssh and if they are it makes the program not work
-if [ -n "$SSH_CLIENT" ]; then
-    echo "Connected via SSH"
-    exit 1
+if [[ -n "${SSH_CLIENT}" || $EUID -ne $root ]]; then
+    
+
+        echo "Connected via SSH"
+        exit 1
+    fi
 else
     echo "Not connected via SSH"
 fi
@@ -29,9 +32,6 @@ trap ctrl_c SIGINT
 # Rest of your existing code...
 #url to see if the user is connected to the internet
 SITE="https://google.com/"
-
-# Root user
-root=0
 
 #speed of the loading process
 total_steps=100
