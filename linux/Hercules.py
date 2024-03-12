@@ -312,7 +312,7 @@ try:
         def is_ssh_connection():
             return "SSH_TTY" in os.environ
         
-        if is_ssh_connection() == True or is_ssh_connection() == ROOT:
+        if is_ssh_connection() == True and is_ssh_connection() == ROOT:
             print("Connected via SSH. This script will not run.",
                   "\nUntil you disconnect from SSH.")
         else:
