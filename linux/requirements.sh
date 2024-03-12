@@ -2,24 +2,6 @@
 source DontEdit.sh
 
 # Packages to install
-Packages=(
-    "zabbix-server-mysql"
-    "pip"
-    "mysql-server"
-    "curl"
-    "wget"
-    "hydra"
-    "nmap"
-    "mysql"
-    "figlet"
-    "zenity"
-    "tigervnc-viewer"
-)
-
-pipPackages=(
-    "asyncio"
-    "pyfiglet"
-)
 
 requiredments() {
     # Check if the OS is Linux
