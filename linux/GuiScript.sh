@@ -5,11 +5,8 @@ source DontEdit.sh
 
 #checks if the user is connected to ssh and if they are it makes the program not work
 if [[ -n "${SSH_CLIENT}" || $EUID -ne $root ]]; then
-    
-
-        echo "Connected via SSH"
-        exit 1
-    fi
+    echo "Connected via SSH"
+    exit 1
 else
     echo "Not connected via SSH"
 fi
