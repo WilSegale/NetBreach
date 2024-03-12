@@ -118,7 +118,10 @@ def Show_GUI():
                     
                     time.sleep(delay)  # Pause to control the update rate
             print_loading_bar(50)
-            os.system("bash GuiScript.sh")  # the script to run after loading
+            # Command to run the script
+
+            # Run the script using subprocess
+            subprocess.run(GuiScript)        
         else:    
             # makes a pop up dialog to tell the user that the user is not root
             print(f"[ {RED}FAIL{RESET} ] TIME:{formatted_time} Please run as ROOT. DATE:{current_date}")
@@ -172,7 +175,7 @@ def show_GLOBAL():
                     
                     time.sleep(delay)  # Pause to control the update rate
             print_loading_bar(50)
-            os.system("bash GlobalScript.sh")  # the script to run after loading
+            subprocess.run(GlobalScript) # runs the global scirpt function
         else:    
             # makes a pop up dialog to tell the user that the user is not root
             print(f"[ {RED}FAIL{RESET} ] TIME:{formatted_time} Please run as ROOT. DATE:{current_date}")
@@ -226,7 +229,7 @@ def show_LOCAL():
         time.sleep(5)
         print(f"\n[ {GREEN}OK{RESET} ] Loading {ProgramName} complete")
         time.sleep(5)
-        os.system("bash localScript.sh")  # the script to run after loading
+        subprocess.run(LocalScript) # runs the Local scirpt function
     else:
         # makes a pop up dialog to tell the user that the OS is not correct
         # makes a pop up dialog to tell the user that the OS is not correct
