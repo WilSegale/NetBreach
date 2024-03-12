@@ -81,6 +81,7 @@ def Show_GUI():
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
 
+    # get the current time and formats it in the 12 hour format
     formatted_time = current_time.strftime("%I:%M:%S %p")
 
     # Get the current date
@@ -135,6 +136,7 @@ def show_GLOBAL():
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
 
+    #gets the current time and formats it in the 12 hour format
     formatted_time = current_time.strftime("%I:%M:%S %p")
 
     # Get the current date
@@ -189,6 +191,7 @@ def show_LOCAL():
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
 
+    # gets the current time and formats it in the 12 hour format
     formatted_time = current_time.strftime("%I:%M:%S %p")
 
     # Get the current date
@@ -238,6 +241,7 @@ def show_GuiLOCAL():
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
 
+    # get the current time and formats it in the 12 hour format
     formatted_time = current_time.strftime("%I:%M:%S %p")
 
     # Get the current date
