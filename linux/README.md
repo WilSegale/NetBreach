@@ -17,7 +17,7 @@ python3 Hercules.py --uninstall
 
 ## To use the program type use can use the following commands
 ```bash 
-sudo python3 Hercules.py --local,
+python3 Hercules.py --local,
 sudo python3 Hercules.py --global,
 sudo python3 Hercules.py --gui,
 sudo python3 Hercules.py --Gui-Local
@@ -49,7 +49,7 @@ If you encounter the following error message when connecting to an SSH server:
 ```plaintext
 cd ~/.ssh
 
-sudo nano known_hosts
+open known_hosts
 ```
 
 # You can type the following command in the CLI
@@ -70,4 +70,9 @@ ssh [username]@[hostname] -p [port Number]
 ERROR = open("ERROR.log", "a")
     PermissionError: [Errno 13] Permission denied: 'ERROR.log'
 ```
-## You get rid of this message by going to the error log file and remove it. It will fix the program for you 
+## You get rid of this message by going to the ERROR.log file and remove it. By doing 
+```bash 
+sudo rm -rf ERROR.log
+``` 
+
+## this will fix the program for you.
