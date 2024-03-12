@@ -3,6 +3,7 @@ source DontEdit.sh
 
 # Packages to install
 Packages=(
+    "zabbix-server-mysql"
     "pip"
     "mysql-server"
     "curl"

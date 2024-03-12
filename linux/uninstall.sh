@@ -11,18 +11,21 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
     read -p ">>> " YES_NO
 
     if [[ "${yes[*]}" == *"$YES_NO"* ]]; then
-        # Packages to check for installation
+        # Packages to install
         Packages=(
+            "zabbix-server-mysql"
+            "pip"
+            "mysql-server"
+            "curl"
             "wget"
             "hydra"
             "nmap"
             "mysql"
             "figlet"
             "zenity"
-            "vncviewer"
+            "tigervnc-viewer"
         )
 
-        # PIP packages that will be uninstalled if they are installed
         pipPackages=(
             "asyncio"
             "pyfiglet"
