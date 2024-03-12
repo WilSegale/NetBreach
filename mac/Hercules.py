@@ -4,6 +4,7 @@ from HelpLogo import *
 # gets the current time and formats it HH:MM:SS
 current_time = datetime.datetime.now().time()
 
+#get the current time and formats it in the 12 hour format
 formatted_time = current_time.strftime("%I:%M:%S %p")
 
 # Get the current date
