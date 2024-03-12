@@ -6,9 +6,10 @@ import os
 import urllib.request
 import logging
 import sys
-import subprocess
 import requests
 import random
+import subprocess
+
 
 # easy way to read the root user function
 ROOT = 0
@@ -39,6 +40,6 @@ installRequirement = ["--INSTALL", "--install"]
 uninstallRequirement = ["--UNINSTALL", "--uninstall"]
 
 GuiScript = ["bash", "GuiScript.sh"]
-GlobalScript = ["bash GlobalScript.sh"]  # the script to run after loading
-LocalScript = ["bash LocalScript.sh"]  # the script to run after loading
-GuiLocalScript = ["bash GuiLocalScript.sh"]  # the script to run after loading
+GlobalScript = ["bash", "GlobalScript.sh"]  # the script to run after loading
+LocalScript = ["bash", "localScript.sh"]  # the script to run after loading
+GuiLocalScript = ["bash", "GuiLocal.sh"]  # the script to run after loading
