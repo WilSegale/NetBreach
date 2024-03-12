@@ -85,8 +85,6 @@ def Show_GUI():
     # Get the current date
     current_date = datetime.datetime.now().strftime("%m/%d/%Y")
 
-
-
     def connect(url="https://google.com"):
         try:
             urllib.request.urlopen(url)  # Try to open a connection to the host
