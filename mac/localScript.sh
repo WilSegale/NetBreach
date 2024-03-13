@@ -45,7 +45,6 @@ trap ctrl_c SIGINT
 # Check for required packages
 for package in "${required_packages[@]}"; do
     if ! command_exists "$package"; then
-        echo ""
         echo -e "[ ${RED}FAIL${NC} ]: The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
         exit 1
     fi
@@ -74,9 +73,9 @@ else
 
             # gives the user something to read so they understand why they got the error
             echo
-            echo "++++++++++++++++++++++++++++++++++++++++++++++++++++"
-            echo "+   !You dont have to use sudo for this script!    +"
-            echo "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+            echo "++++++++++++++++++++++++++++++++++++++++++++++++++"
+            echo "+   You dont have to use sudo for this script    +"
+            echo "++++++++++++++++++++++++++++++++++++++++++++++++++"
             echo ""
         fi
         # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
@@ -116,7 +115,7 @@ else
                 exit 1
             #checks if the user has put nothing into the input feild
             elif [[ " ${empty[*]} " == *" ${service} "* ]]; then
-                echo -e "${RED}ERROR:${NC} plase input a number into the input field"
+                echo -e "[${RED} FAIL ${NC}] Plase input a number into the input field"
                 sleep 1
                 exit 1
             #checks if the user has put in a letter insed of a number into the input feild
@@ -133,8 +132,8 @@ else
         LocalRunHackingCommand() {
             # Break in the outputs of my code
             echo
-            original_host=127.0.0.1;
-            original_port=$service;
+            original_host=LOCALHOST;
+            original_port=$service
 
             # Check if the port is closed
             if nc -zv "${original_host}" "${original_port}" >/dev/null 2>&1; then

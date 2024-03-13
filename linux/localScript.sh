@@ -115,7 +115,7 @@ else
                 exit 1
             #checks if the user has put nothing into the input feild
             elif [[ " ${empty[*]} " == *" ${service} "* ]]; then
-                echo -e "${RED}ERROR:${NC} plase input a number into the input field"
+                echo -e "[${RED} FAIL ${NC}] Plase input a number into the input field"
                 sleep 1
                 exit 1
             #checks if the user has put in a letter insed of a number into the input feild
