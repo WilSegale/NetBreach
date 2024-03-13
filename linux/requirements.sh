@@ -13,7 +13,7 @@ requiredments() {
                 if ! command -v "${package_name}" >/dev/null 2>&1; then
                     sudo apt-get install "${package_name}" -y
                 else
-                    echo -e "${package_name} is already ${GREEN}installed.${NC}"
+                    echo -e "[ ${GREEN}OK${NC} ] ${package_name} is already installed."
                 fi
             }
 
@@ -23,7 +23,7 @@ requiredments() {
                 if ! python3 -m pip show "${package_name}" >/dev/null 2>&1; then
                     pip3 install "${package_name}"
                 else
-                    echo -e "${package_name} is already ${GREEN}installed.${NC}"
+                    echo -e "[ ${GREEN}OK${NC} ] ${package_name} is already installed."
                 fi
             }
 
@@ -49,13 +49,13 @@ requiredments() {
             sudo python3 -m pip install --upgrade pip
 
             echo
-            successful_MESSAGE="${GREEN}[+]${NC} All packages are installed successfully"
+            successful_MESSAGE="[ ${GREEN}OK${NC} ] All packages are installed successfully"
             echo -e "${successful_MESSAGE}"
         else
-            echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
+            echo -e "[ ${RED}FAIL${NC} ]: NOT CONNECTED TO THE INTERNET"
         fi
     else
-        echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] Wrong OS, please use the correct OS." # If the user is not using the right OS, it says "You are using the wrong OS"
+        echo -e "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS." # If the user is not using the right OS, it says "You are using the wrong OS"
     fi
 }
 
