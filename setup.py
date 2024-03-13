@@ -5,8 +5,6 @@ import os
 import time
 
 GREEN = "\033[92m"
-
-
 RESET = "\033[0m"
 
 # Set up logging 
