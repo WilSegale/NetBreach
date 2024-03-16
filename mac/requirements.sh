@@ -37,7 +37,7 @@ requiredments() {
                 install_pip_package() {
                     package_name="$1"
                     if ! python3 -m pip show "${package_name}" >/dev/null 2>&1; then
-                        pip3 install "${package_name}"
+                        pip3 install "${package_name}" --break-system-packages
                     else
                         echo -e "[ ${GREEN}OK${NC} ] ${package_name} is already installed."
                     fi
@@ -66,7 +66,7 @@ requiredments() {
                 updated_version=$(pip3 --version | awk '{print $2}')
                 
                 if [ "$current_version" != "$updated_version" ]; then
-                    echo -e "[ ${GREEN}OK${NC} ]pip has been successfully updated installed."
+                    echo -e "[ ${GREEN}OK${NC} ] pip has been successfully updated installed."
                 else
                     echo "pip is already up to date."
                 fi
