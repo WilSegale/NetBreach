@@ -1,20 +1,6 @@
 #!/bin/bash
 source DontEdit.sh
 
-# Packages to install
-Packages=(
-    "wget"
-    "hydra"
-    "nmap"
-    "mysql"
-    "figlet"
-    "zenity"
-)
-
-pipPackages=(
-    "asyncio"
-    "pyfiglet"
-)
 # Check if the script is run with --help or -h
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     figlet "? HELP ?"
@@ -72,6 +58,7 @@ requiredments() {
                     install_pip_package "${PIP}"
                 done
 
+                #addes a space to read the PIP UPDATES easily
                 echo
 
                 # Update PIP
@@ -79,7 +66,6 @@ requiredments() {
                 updated_version=$(pip3 --version | awk '{print $2}')
                 
                 if [ "$current_version" != "$updated_version" ]; then
-
                     echo -e "[ ${GREEN}OK${NC} ]pip has been successfully updated installed."
                 else
                     echo "pip is already up to date."
@@ -91,8 +77,7 @@ requiredments() {
 
                 echo -e "${successful_MESSAGE}"
             else
-                echo
-                echo -e "[ ${RED}FAIL${NC} ]: NOT CONNECTED TO THE INTERNET"
+                echo -e "[ ${RED}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
             fi
         else
             echo -e "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS." # If the user is not using the right OS, it says "You are using the wrong OS"

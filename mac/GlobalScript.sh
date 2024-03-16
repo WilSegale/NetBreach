@@ -45,8 +45,21 @@ command_exists() {
 # Check for required packages
 for package in "${required_packages[@]}"; do
     if ! command_exists "$package"; then
-        echo ""
-        echo -e "[ ${RED}FAIL${NC} ]: The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
+        echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
+        sleep 1 
+
+        #asks the user if they want to install the packages that are mssing
+        echo "Would you like me to install it for you. YES/NO"
+
+        read -p ">>> " install
+        
+        if [[ " ${yes[*]} " == *" ${install} "* ]]; then
+            bash requirements.sh
+            exit 1
+        else
+            echo "Ok stopping program"
+            exit 1
+        fi
         exit 1
     fi
 done

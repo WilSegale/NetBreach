@@ -42,3 +42,20 @@ CURRENT_DATE=$(date +"%m/%d/%Y")
 
 # List of required packages/commands (separated by spaces)
 required_packages=("wget" "hydra" "nmap" "ssh" "mysql" "figlet" "zenity")
+
+# list of required packages for the program to work 
+# Packages to install
+Packages=(
+    "wget"
+    "hydra"
+    "nmap"
+    "mysql"
+    "figlet"
+    "zenity"
+)
+
+pipPackages=(
+    "requests" 
+    "asyncio"
+    "pyfiglet"
+)

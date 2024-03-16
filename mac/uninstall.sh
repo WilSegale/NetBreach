@@ -136,6 +136,6 @@ else
             exit 1
         fi
     else
-        echo -e "${RED}This script can only be run on macOS${NC}"
+        echo -e "[ ${RED}FAIL${NC} ]This script can only be run on macOS"
     fi
 fi
