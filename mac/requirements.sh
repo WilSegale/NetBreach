@@ -54,9 +54,17 @@ requiredments() {
                 echo
                 echo "_________PIP PACKAGES________"
                 # Install PIP packages
-                for PIP in "${pipPackages[@]}"; do
-                    install_pip_package "${PIP}"
-                done
+                if [ $? -ne 0 ]; then
+                    echo "Error: Failed to install the package."
+                    echo "Try running it with the --break-system-packages"
+
+                    exit 1
+                else
+                    for PIP in "${pipPackages[@]}"; do
+                        install_pip_package "${PIP}"
+                    done
+                fi
+
 
                 #addes a space to read the PIP UPDATES easily
                 echo
@@ -65,7 +73,7 @@ requiredments() {
                 echo "_________PIP UPDATES________"
                 updated_version=$(pip3 --version | awk '{print $2}')
                 
-                if [ "$current_version" != "$updated_version" ]; then
+                if [ "${current_version}" != "${updated_version}" ]; then
                     echo -e "[ ${GREEN}OK${NC} ] pip has been successfully updated installed."
                 else
                     echo "pip is already up to date."
