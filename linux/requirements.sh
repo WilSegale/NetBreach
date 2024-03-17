@@ -21,7 +21,7 @@ requiredments() {
             install_pip_package() {
                 package_name="$1"
                 if ! python3 -m pip show "${package_name}" >/dev/null 2>&1; then
-                    pip3 install "${package_name}"
+                    pip3 install "${package_name}" --break-system-packages
                 else
                     echo -e "[ ${GREEN}OK${NC} ] ${package_name} is already installed."
                 fi
