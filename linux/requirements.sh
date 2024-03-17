@@ -38,17 +38,10 @@ requiredments() {
             echo
             echo "_________PIP PACKAGES________"
             # Install PIP packages
-        
-            # Install PIP packages
-            if [ $? -ne 0 ]; then
-                echo "Error: Failed to install the package."
-                echo "Try running it with the --break-system-packages"
-                exit 1
-            else
-                for PIP in "${pipPackages[@]}"; do
-                    install_pip_package "${PIP}"
-                done
-            fi
+
+            for PIP in "${pipPackages[@]}"; do
+                install_pip_package "${PIP}"
+            done
             echo
 
             # Update PIP
