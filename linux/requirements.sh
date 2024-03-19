@@ -19,10 +19,10 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
 
         # Function to install package using pip
         install_pip_package() {
+            python3 -m pip install --user --upgrade "${package_name}"
             package_name="$1"
             
             #this install is for the user to know whats being installed
-            python3 -m pip install --user --upgrade "${package_name}"
             
             # this is for the computer to know whats being installed
             python3 -m pip install --user --upgrade "${package_name}" >/dev/null 2>&1
