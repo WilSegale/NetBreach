@@ -9,7 +9,7 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
             package_name="$1"
             sudo apt-get install -y "$package_name" >/dev/null 2>&1
             if [ $? -eq 0 ]; then
-                echo "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
+                echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
             else
                 echo -e "[ ${RED}ERROR${NC} ] Failed to install ${package_name}."
                 return 1
@@ -21,9 +21,9 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
             package_name="$1"
             python3 -m pip install --user --upgrade "$package_name" >/dev/null 2>&1
             if [ $? -eq 0 ]; then
-                echo "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
+                echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
             else
-                echo "[ ${RED}ERROR${NC} ] Failed to install ${package_name}."
+                echo -e "[ ${RED}ERROR${NC} ] Failed to install ${package_name}."
                 return 1
             fi
         }
@@ -45,9 +45,9 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
         echo "_________PIP UPDATES________"
         python3 -m pip install --upgrade pip >/dev/null 2>&1
         if [ $? -eq 0 ]; then
-            echo "[ ${GREEN}OK${NC} ] pip packages updated successfully."
+            echo -e "[ ${GREEN}OK${NC} ] pip packages updated successfully."
         else
-            echo "[ ${RED}ERROR${NC} ] Failed to update pip packages."
+            echo -e "[ ${RED}ERROR${NC} ] Failed to update pip packages."
             failed_packages+=("pip_packages_update")
         fi
 
@@ -60,8 +60,8 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
         fi
 
     else
-        echo "[ ${RED}FAIL${NC} ]: NOT CONNECTED TO THE INTERNET"
+        echo -e "[ ${RED}FAIL${NC} ]: NOT CONNECTED TO THE INTERNET"
     fi
 else
-    echo "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS."
+    echo -e "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS."
 fi
