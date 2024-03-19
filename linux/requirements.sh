@@ -12,10 +12,10 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
             package_name="$1"
             sudo apt-get install "${package_name}" -y
             if [ $? -eq 0 ]; then
-                echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
+                echo -e "[ OK ] ${package_name} installed successfully."
             else
-                echo -e "[ ${RED}ERROR${NC} ] Failed to install ${package_name}."
-                return 1
+                echo -e "[ ERROR ] Failed to install ${package_name}."
+                failed_packages+=("${package_name}")
             fi
         }
 
@@ -24,11 +24,10 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
             package_name="$1"
             python3 -m pip install --user --upgrade "${package_name}"
             if [ $? -eq 0 ]; then
-                echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
+                echo -e "[ OK ] ${package_name} installed successfully."
             else
-                echo -e "[ ${RED}ERROR${NC} ] Failed to install ${package_name}."
+                echo -e "[ ERROR ] Failed to install ${package_name}."
                 failed_packages+=("${package_name}")
-                return 1
             fi
         }
 
@@ -36,14 +35,14 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
 
         # Install APT packages
         for package in "${Packages[@]}"; do
-            install_linux_package "${package}" || failed_packages+=("${package}")
+            install_linux_package "${package}"
         done
 
         echo ""
         echo "_________PIP PACKAGES________"
         # Install PIP packages
         for PIP in "${pipPackages[@]}"; do
-            install_pip_package "${PIP}" || failed_packages+=("${PIP}")
+            install_pip_package "${PIP}"
         done
 
         # Update PIP
@@ -51,9 +50,9 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
         echo "_________PIP UPDATES________"
         python3 -m pip install --upgrade pip
         if [ $? -eq 0 ]; then
-            echo -e "[ ${GREEN}OK${NC} ] pip packages updated successfully."
+            echo -e "[ OK ] pip packages updated successfully."
         else
-            echo -e "[ ${RED}ERROR${NC} ] Failed to update pip packages."
+            echo -e "[ ERROR ] Failed to update pip packages."
             failed_packages+=("pip_packages_update")
         fi
 
@@ -63,13 +62,13 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
         else
             echo ""
             echo "_________FAILED PACKAGE(S) INSTALL________"
-            echo -e "[ ${RED}ERROR${NC} ] The following packages failed to install:"
+            echo -e "[ ERROR ] The following packages failed to install:"
             printf "%s\n" "${failed_packages[@]}"
         fi
 
     else
-        echo -e "[ ${RED}FAIL${NC} ]: NOT CONNECTED TO THE INTERNET"
+        echo -e "[ FAIL ]: NOT CONNECTED TO THE INTERNET"
     fi
 else
-    echo -e "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS."
+    echo -e "[ FAIL ] Wrong OS, please use the correct OS."
 fi
