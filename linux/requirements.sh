@@ -12,6 +12,7 @@ requiredments() {
                 package_name="$1"
                 if ! command -v "${package_name}" >/dev/null 2>&1; then
                     sudo apt-get install "${package_name}" -y
+                    sudo -k
                 else
                     echo -e "[ ${GREEN}OK${NC} ] ${package_name} is already installed."
                 fi
