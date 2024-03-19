@@ -2,26 +2,26 @@
 source DontEdit.sh
 requiredments(){
 # Check if the OS is Linux
-if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
+if [[ "${OSTYPE}" == "${OS}"* ]]; then
     if ping -c 1 google.com >/dev/null 2>&1; then
         # Function to install package using apt package manager
         install_linux_package() {
             package_name="$1"
             sudo apt-get install "${package_name}" -y
-            echo -e "[ OK ] ${package_name} installed successfully."
+            echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
         }
 
         # Function to install package using pip
         install_pip_package() {
             package_name="$1"
             python3 -m pip install --user --upgrade "${package_name}"
-            echo -e "[ OK ] ${package_name} installed successfully."
+            echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
         }
 
         # Function to upgrade pip
         upgrade_pip() {
             python3 -m pip install --upgrade pip
-            echo -e "[ OK ] pip packages updated successfully."
+            echo -e "[ ${GREEN}OK${NC} ] pip packages updated successfully."
         }
 
         # Install APT packages
