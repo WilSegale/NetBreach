@@ -87,7 +87,7 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
             echo -e "________PIP Packages________"
             for pipPackage in "${pipPackages[@]}"
             do
-                echo -e "${pipPackage}: ${RED}is removed${NC}"
+                echo -e "${pipPackage}: ${GREEN}is removed${NC}"
             done
         fi
 
