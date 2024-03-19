@@ -41,9 +41,7 @@ required_packages=("wget" "hydra" "nmap" "ssh" "mysql" "figlet" "zenity")
 
 # Packages to install
 Packages=(
-    "zabbix-server-mysql"
     "pip"
-    "mysql-server"
     "curl"
     "wget"
     "hydra"
@@ -51,7 +49,6 @@ Packages=(
     "mysql"
     "figlet"
     "zenity"
-    "tigervnc-viewer"
 )
 
 pipPackages=(
