@@ -54,7 +54,7 @@ if __name__ == "__main__":
                 
                 time.sleep(delay)  # Pause to control the update rate
         print_loading_bar(50)
-        print("\nDONE running linux command")
+        print("\nDONE running Linux command")
         logger.info(f"Running command: {' '.join(linux_command)}")
         try:
             subprocess.run(linux_command, check=True)
@@ -81,7 +81,7 @@ if __name__ == "__main__":
                 
                 time.sleep(delay)  # Pause to control the update rate
         print_loading_bar(50)
-        print("\nDONE running macos command")
+        print("\nDONE running MacOs command")
         logger.info(f"Running command: {' '.join(macos_command)}")
         try:
             subprocess.run(macos_command, check=True) 
