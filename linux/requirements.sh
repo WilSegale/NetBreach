@@ -1,13 +1,16 @@
 #!/bin/bash
 source DontEdit.sh
 
+# Initialize array for failed packages
+failed_packages=()
+
 # Check if the OS is Linux
 if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
     if ping -c 1 google.com >/dev/null 2>&1; then
         # Function to install package using apt package manager
         install_linux_package() {
             package_name="$1"
-            sudo apt-get install "${Packages}" -y
+            sudo apt-get install "${package_name}" -y
             if [ $? -eq 0 ]; then
                 echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
             else
@@ -16,20 +19,15 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
             fi
         }
 
-
         # Function to install package using pip
         install_pip_package() {
             package_name="$1"
-            
-            #this install is for the user to know whats being installed
             python3 -m pip install --user --upgrade "${package_name}"
-            
-            # this is for the computer to know whats being installed
-            python3 -m pip install --user --upgrade "${package_name}" >/dev/null 2>&1
             if [ $? -eq 0 ]; then
                 echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
             else
                 echo -e "[ ${RED}ERROR${NC} ] Failed to install ${package_name}."
+                failed_packages+=("${package_name}")
                 return 1
             fi
         }
@@ -51,11 +49,7 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
         # Update PIP
         echo ""
         echo "_________PIP UPDATES________"
-        #this is for the user to know that pip is being updated
         python3 -m pip install --upgrade pip
-        
-        #this is for the user to know that pip is being updated
-        python3 -m pip install --upgrade pip >/dev/null 2>&1
         if [ $? -eq 0 ]; then
             echo -e "[ ${GREEN}OK${NC} ] pip packages updated successfully."
         else
