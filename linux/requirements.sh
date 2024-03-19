@@ -4,8 +4,6 @@ source DontEdit.sh
 # Check if the OS is Linux
 if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
     if ping -c 1 google.com >/dev/null 2>&1; then
-        sudo apt-get install -y "${package_name}"
-
         # Function to install package using apt package manager
         install_linux_package() {
             package_name="$1"
