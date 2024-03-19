@@ -7,7 +7,7 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
         # Function to install package using apt package manager
         install_linux_package() {
             package_name="$1"
-            sudo apt-get install "${package_name}" -y
+            sudo apt-get install "${Packages}" -y
             if [ $? -eq 0 ]; then
                 echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
             else
