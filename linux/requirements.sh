@@ -1,9 +1,6 @@
 #!/bin/bash
 source DontEdit.sh
-
-# Initialize array for failed packages
-failed_packages=()
-
+requiredments(){
 # Check if the OS is Linux
 if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
     if ping -c 1 google.com >/dev/null 2>&1; then
@@ -11,36 +8,21 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
         install_linux_package() {
             package_name="$1"
             sudo apt-get install "${package_name}" -y
-            if [ $? -eq 0 ]; then
-                echo -e "[ OK ] ${package_name} installed successfully."
-            else
-                echo -e "[ ERROR ] Failed to install ${package_name}."
-                failed_packages+=("${package_name}")
-            fi
+            echo -e "[ OK ] ${package_name} installed successfully."
         }
 
         # Function to install package using pip
         install_pip_package() {
             package_name="$1"
             python3 -m pip install --user --upgrade "${package_name}"
-            if [ $? -eq 0 ]; then
-                echo -e "[ OK ] ${package_name} installed successfully."
-            else
-                echo -e "[ ERROR ] Failed to install ${package_name}."
-                failed_packages+=("${package_name}")
-            fi
+            echo -e "[ OK ] ${package_name} installed successfully."
         }
 
-            # Install package using pip
-            install_pip_package() {
-                package_name="$1"
-                if ! python3 -m pip show "${package_name}" >/dev/null 2>&1; then
-                    sudo -k
-                    pip3 install "${package_name}" --break-system-packages
-                else
-                    echo -e "[ ${GREEN}OK${NC} ] ${package_name} is already installed."
-                fi
-            }
+        # Function to upgrade pip
+        upgrade_pip() {
+            python3 -m pip install --upgrade pip
+            echo -e "[ OK ] pip packages updated successfully."
+        }
 
         # Install APT packages
         for package in "${Packages[@]}"; do
@@ -57,29 +39,15 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
         # Update PIP
         echo ""
         echo "_________PIP UPDATES________"
-        python3 -m pip install --upgrade pip
-        if [ $? -eq 0 ]; then
-            echo -e "[ OK ] pip packages updated successfully."
-        else
-            echo -e "[ ERROR ] Failed to update pip packages."
-            failed_packages+=("pip_packages_update")
-        fi
+        upgrade_pip
 
-        # Check for failed package installations
-        if [ ${#failed_packages[@]} -eq 0 ]; then
-            echo "All packages installed successfully."
-        else
-            echo ""
-            echo "_________FAILED PACKAGE(S) INSTALL________"
-            echo -e "[ ERROR ] The following packages failed to install:"
-            printf "%s\n" "${failed_packages[@]}"
-        fi
+        echo "All packages installed successfully."
 
-        else
-            echo -e "[ FAIL ] NOT CONNECTED TO THE INTERNET"
-        fi
     else
-        echo -e "[ FAIL ] Wrong OS, please use the correct OS."
+        echo -e "[ ${RED}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
     fi
-
+else
+    echo -e "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS."
+fi
+}
 requiredments

@@ -78,6 +78,19 @@ requiredments() {
             else
                 echo -e "[ ${RED}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
             fi
+            # Function to check if a package is installed
+            check_package() {
+                if brew list "$1" &> /dev/null; then
+                    echo "$1 is installed."
+                else
+                    echo "Package $1 is not installed."
+                fi
+            }
+
+            # Loop through each package and check its status
+            for pkg in "${packages[@]}"; do
+                check_package "${pkg}"
+            done
         else
             echo -e "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS." # If the user is not using the right OS, it says "You are using the wrong OS"
         fi
