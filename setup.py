@@ -17,8 +17,8 @@ handler.setLevel(logging.DEBUG)
 logger.addHandler(handler)
 
 # Platform specific commands 
-linux_command = ["rm", "-rf", "mac", "setup.py"]  
-macos_command = ["rm", "-rf", "linux", "setup.py"]
+linux_command = ["rm", "-rf", "MacOs", "setup.py"]  
+macos_command = ["rm", "-rf", "Linux", "setup.py"]
 
 if __name__ == "__main__":
 
