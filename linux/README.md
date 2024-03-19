@@ -76,3 +76,19 @@ sudo rm -rf ERROR.log
 ``` 
 
 ## This will fix the program for you.
+
+
+## If you are having trouble installing the packages you can install them this way
+```plain text
+    sudo apt install zabbix-server-mysql -y
+    sudo apt install pip -y
+    sudo apt install mysql-server -y
+    sudo apt install curl -y
+    sudo apt install wget -y
+    sudo apt install hydra -y
+    sudo apt install nmap -y
+    sudo apt install mysql -y
+    sudo apt install figlet -y
+    sudo apt install zenity -y
+    sudo apt install tigervnc-viewer -y
+```
