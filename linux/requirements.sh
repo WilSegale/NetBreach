@@ -55,6 +55,8 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
         if [ ${#failed_packages[@]} -eq 0 ]; then
             echo "All packages installed successfully."
         else
+            echo ""
+            echo "_________FAILED PACKAGE(S) INSTALL________"
             echo "Error: The following packages failed to install:"
             printf "%s\n" "${failed_packages[@]}"
         fi
