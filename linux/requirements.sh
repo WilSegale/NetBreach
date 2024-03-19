@@ -16,9 +16,15 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
             fi
         }
 
+
         # Function to install package using pip
         install_pip_package() {
             package_name="$1"
+            
+            #this install is for the user to know whats being installed
+            python3 -m pip install --user --upgrade "${package_name}"
+            
+            # this is for the computer to know whats being installed
             python3 -m pip install --user --upgrade "${package_name}" >/dev/null 2>&1
             if [ $? -eq 0 ]; then
                 echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
@@ -35,6 +41,7 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
             install_linux_package "${package}" || failed_packages+=("${package}")
         done
 
+        echo ""
         echo "_________PIP PACKAGES________"
         # Install PIP packages
         for PIP in "${pipPackages[@]}"; do
@@ -42,7 +49,12 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
         done
 
         # Update PIP
+        echo ""
         echo "_________PIP UPDATES________"
+        #this is for the user to know that pip is being updated
+        python3 -m pip install --upgrade pip
+        
+        #this is for the computer to know that pip is being updated
         python3 -m pip install --upgrade pip >/dev/null 2>&1
         if [ $? -eq 0 ]; then
             echo -e "[ ${GREEN}OK${NC} ] pip packages updated successfully."
@@ -57,7 +69,7 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
         else
             echo ""
             echo "_________FAILED PACKAGE(S) INSTALL________"
-            echo "Error: The following packages failed to install:"
+            echo -e "[ ${RED}ERROR${NC} ] The following packages failed to install:"
             printf "%s\n" "${failed_packages[@]}"
         fi
 

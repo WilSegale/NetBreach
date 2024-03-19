@@ -1,8 +1,7 @@
 #!/bin/bash
+
+#holds the packages and color vars for the program to work
 source DontEdit.sh
-
-# Color variables
-
 
 if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
 
@@ -11,25 +10,6 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
     read -p ">>> " YES_NO
 
     if [[ "${yes[*]}" == *"$YES_NO"* ]]; then
-        # Packages to install
-        Packages=(
-            "zabbix-server-mysql"
-            "pip"
-            "mysql-server"
-            "curl"
-            "wget"
-            "hydra"
-            "nmap"
-            "mysql"
-            "figlet"
-            "zenity"
-            "tigervnc-viewer"
-        )
-
-        pipPackages=(
-            "asyncio"
-            "pyfiglet"
-        )
 
         # Function to check and uninstall a package
         check_package() {
