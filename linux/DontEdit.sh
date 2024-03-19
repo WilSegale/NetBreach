@@ -57,4 +57,4 @@ Packages=(
 pipPackages=(
     "asyncio"
     "pyfiglet"
-)`
+)
