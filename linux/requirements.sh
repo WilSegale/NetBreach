@@ -4,10 +4,12 @@ source DontEdit.sh
 # Check if the OS is Linux
 if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
     if ping -c 1 google.com >/dev/null 2>&1; then
+        sudo apt-get install -y "${package_name}"
+
         # Function to install package using apt package manager
         install_linux_package() {
             package_name="$1"
-            sudo apt-get install -y "$package_name" >/dev/null 2>&1
+            sudo apt-get install -y "${package_name}"
             if [ $? -eq 0 ]; then
                 echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
             else
@@ -19,7 +21,7 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
         # Function to install package using pip
         install_pip_package() {
             package_name="$1"
-            python3 -m pip install --user --upgrade "$package_name" >/dev/null 2>&1
+            python3 -m pip install --user --upgrade "${package_name}" >/dev/null 2>&1
             if [ $? -eq 0 ]; then
                 echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
             else
