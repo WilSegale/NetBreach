@@ -4,7 +4,6 @@ from HelpLogo import *
 # gets the current time and formats it HH:MM:SS
 current_time = datetime.datetime.now().time()
 
-#get the current time and formats it in the 12 hour format
 formatted_time = current_time.strftime("%I:%M:%S %p")
 
 # Get the current date
@@ -12,8 +11,8 @@ current_date = datetime.datetime.now().strftime("%m/%d/%Y")
 
 ERROR = open("ERROR.log", "a")
 
-ProgramName = "Hercules"
-SoftwareName = "Hercules.py"  
+ProgramName = "NetBreach"
+SoftwareName = "NetBreach.py"  
 
 #this is for the user to understand what the program does
 def show_help():
@@ -58,9 +57,9 @@ def show_help():
             HowToUseInfo09 +
             HowToUseInfo10) 
 
-    lineArt(["figlet", "mac"])
+    lineArt(["figlet", "Linux"])
     lineArt(["figlet", "? HELP ?"])
-    print(NameOfOs,  file=HelpFile)
+    print(NameOfOs, file=HelpFile)
     print(HELP_LOGO, file=HelpFile)
     
     #inputs the program used logo in a help file
@@ -81,7 +80,6 @@ def Show_GUI():
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
 
-    # get the current time and formats it in the 12 hour format
     formatted_time = current_time.strftime("%I:%M:%S %p")
 
     # Get the current date
@@ -136,7 +134,6 @@ def show_GLOBAL():
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
 
-    #gets the current time and formats it in the 12 hour format
     formatted_time = current_time.strftime("%I:%M:%S %p")
 
     # Get the current date
@@ -191,7 +188,6 @@ def show_LOCAL():
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
 
-    # gets the current time and formats it in the 12 hour format
     formatted_time = current_time.strftime("%I:%M:%S %p")
 
     # Get the current date
@@ -241,7 +237,6 @@ def show_GuiLOCAL():
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
 
-    # get the current time and formats it in the 12 hour format
     formatted_time = current_time.strftime("%I:%M:%S %p")
 
     # Get the current date
@@ -287,7 +282,7 @@ def show_GuiLOCAL():
 #holds the if statements that connect to the functions for the program to work properly
 try:
     # Handle command-line arguments
-    #connect to the HELP function of the Hercules program so the user understands what the program does
+    #connect to the HELP function of the NetBreach program so the user understands what the program does
     if len(sys.argv) == 2 and sys.argv[1] in HELP:
         show_help()
         
@@ -298,23 +293,30 @@ try:
         def is_ssh_connection():
             return "SSH_TTY" in os.environ
 
-        if is_ssh_connection() == True:
+        if is_ssh_connection() == True or is_ssh_connection() == ROOT:
             print("Connected via SSH. This script will not run.",
-                  "Until you disconnect from SSH.")
+                  "\nUntil you disconnect from SSH.")
         else:
             Show_GUI()
     
-    #connect to the global function of the Hercules program
+    #connect to the global function of the NetBreach program
     elif len(sys.argv) == 2 and sys.argv[1] in GLOBAL:
         show_GLOBAL()
 
-    #connect to the local function of the Hercules program
+    #connect to the local function of the NetBreach program
     elif len(sys.argv) == 2 and sys.argv[1] in LOCAL:
         show_LOCAL()
     
-    #connect to the GuiLocal function of the Hercules program
+    #connect to the GuiLocal function of the NetBreach program
     elif len(sys.argv) == 2 and sys.argv[1] in GuiLocal:
-        show_GuiLOCAL()
+        def is_ssh_connection():
+            return "SSH_TTY" in os.environ
+        
+        if is_ssh_connection() == True and is_ssh_connection() == ROOT:
+            print("Connected via SSH. This script will not run.",
+                  "\nUntil you disconnect from SSH.")
+        else:
+            show_GuiLOCAL()
 
     #installs the required packages for the program to work properly
     elif len(sys.argv) == 2 and sys.argv[1] in installRequirement:
