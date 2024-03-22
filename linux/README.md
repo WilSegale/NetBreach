@@ -6,27 +6,27 @@
 ## Type first
 ```bash
 bash requirements.sh or 
-python3 Hercules.py --install
+python3 NetBreach.py --install
 ```
 
 ## if you want to remove the requirements you can type
 ```bash
 bash uninstall.sh or
-python3 Hercules.py --uninstall
+python3 NetBreach.py --uninstall
 ```
 
 ## To use the program you can type the following commands
 ```bash 
-python3 Hercules.py --local,
-sudo python3 Hercules.py --global,
-sudo python3 Hercules.py --gui,
-sudo python3 Hercules.py --Gui-Local
+python3 NetBreach.py --local,
+sudo python3 NetBreach.py --global,
+sudo python3 NetBreach.py --gui,
+sudo python3 NetBreach.py --Gui-Local
 ```
 
 ## If you are wondering how to use this script just type
 
 ```bash
-python3 Hercules.py --help or python3 Hercules.py -h
+python3 NetBreach.py --help or python3 NetBreach.py -h
 ```
 
 ## The requirements file will automatically install the requirements that are needed for the program to run successfully
@@ -76,19 +76,3 @@ sudo rm -rf ERROR.log
 ``` 
 
 ## This will fix the program for you.
-
-
-## If you are having trouble installing the packages you can install them this way
-```plain text
-    sudo apt install zabbix-server-mysql -y
-    sudo apt install pip -y
-    sudo apt install mysql-server -y
-    sudo apt install curl -y
-    sudo apt install wget -y
-    sudo apt install hydra -y
-    sudo apt install nmap -y
-    sudo apt install mysql -y
-    sudo apt install figlet -y
-    sudo apt install zenity -y
-    sudo apt install tigervnc-viewer -y
-```

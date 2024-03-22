@@ -1,17 +1,13 @@
 # NetBreach
 
-![Image Description](NetBreach.png)
+<img src="NetBreach.png" alt="alt text" width="100" height="100">
 
-# First type 
+# !Do not use this software in Schools or Business! 
+
+## First type 
 ```git
 git clone https://github.com/WilSegale/NetBreach.git
 ```
-
-
-
-
-
-
 
 ## There is also a README file in your os folder it holds more info about the program
 # second step is to type

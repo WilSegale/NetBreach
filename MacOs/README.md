@@ -6,27 +6,27 @@
 ## Type first
 ```bash
 bash requirements.sh or 
-python3 Hercules.py --install
+python3 NetBreach.py --install
 ```
 
 ## if you want to remove the requirements you can type
 ```bash
 bash uninstall.sh or
-python3 Hercules.py --uninstall
+python3 NetBreach.py --uninstall
 ```
 
 ## To use the program you can type the following commands
 ```bash 
-python3 Hercules.py --local,
-sudo python3 Hercules.py --global,
-sudo python3 Hercules.py --gui,
-sudo python3 Hercules.py --Gui-Local
+python3 NetBreach.py --local,
+sudo python3 NetBreach.py --global,
+sudo python3 NetBreach.py --gui,
+sudo python3 NetBreach.py --Gui-Local
 ```
 
 ## If you are wondering how to use this script just type
 
 ```bash
-python3 Hercules.py --help or python3 Hercules.py -h
+python3 NetBreach.py --help or python3 NetBreach.py -h
 ```
 
 ## The requirements file will automatically install the requirements that are needed for the program to run successfully
