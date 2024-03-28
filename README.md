@@ -1,5 +1,5 @@
 # NetBreach
-![alt text](NetBreach-1.jpg)
+![alt text](NetBreach.jpg)
 
 
 # !Do not use this software in Schools or Business! 
