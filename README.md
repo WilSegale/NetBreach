@@ -1,6 +1,6 @@
 # NetBreach
+![alt text](NetBreach-1.jpg)
 
-<img src="NetBreach.png" alt="alt text" width="100" height="100">
 
 # !Do not use this software in Schools or Business! 
 
