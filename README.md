@@ -1,5 +1,6 @@
 # NetBreach
-<img src="NetBreach.JPG" alt="alt text" width="auto" height="auto">
+
+<img src="NetBreach.JPG" alt="alt text" width="200" height="200">
 
 # !Do not use this software in Schools or Business! 
 
