@@ -1,4 +1,5 @@
 # !Do not use this software in Schools or Business!
+<img src="Apple Logo.jpg" alt="Apple Verison of the program" width="200" height="200">
 
 ## Bugs and Issues
 ### If you find any bugs or issues click on [Email me](mailto:wsegalework@gmail.com) to contact me about the issues.
