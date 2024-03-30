@@ -72,6 +72,6 @@ if __name__ == "__main__":
                 subprocess.run(command, check=True, capture_output=True, text=True)
             except subprocess.CalledProcessError as e:
                 logger.error(f"Error running command: {e}")
-    else:
-        print(f"{RED}Unsupported platform{RESET}")
-        logger.error("Unsupported platform")
+        else:
+            print(f"{RED}Unsupported platform{RESET}")
+            logger.error("Unsupported platform")
