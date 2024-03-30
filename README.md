@@ -4,22 +4,19 @@
 
 # !Do not use this software in Schools or Business! 
 
-## First type 
+# First type 
 ```git
 git clone https://github.com/WilSegale/NetBreach.git
 ```
 
-## There is also a README file in your os folder it holds more info about the program
-# second step is to type
+# Second step is to type
 ```bash
 sudo python3 setup.py
 ```
 
-## If you want more info about the program in your OS folder, type
-
-```bash 
-open README.md
-```
+ 
+- [Linux README.md](linux/README.md)
+- [Mac README.md](MacOs/README.md)
 ## this file will explain how the program works and how to use it to it's full capacity 
 # Troubleshooting SSH: Remote Host Identification Changed
 
