@@ -38,14 +38,14 @@ python3 NetBreach.py --help or python3 NetBreach.py -h
 
 # Troubleshooting SSH: Remote Host Identification Changed
 
-If you encounter the following error message when connecting to an SSH server:
+# If you encounter the following error message when connecting to an SSH server:
 
 ```plaintext
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ```
-# Or you can go to this file and delate all the hashes that are connected to previously used ssh hosts
+# You can go to this file and delete all the hashes that are connected to previously used ssh hosts
 ```ssh hash config```
 ```plaintext
 cd ~/.ssh
