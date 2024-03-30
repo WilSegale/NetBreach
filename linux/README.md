@@ -1,4 +1,5 @@
 # !Do not use this software in Schools or Business!
+# Linux verison
 <img src="Linux Logo.jpg" alt="Linux Verison of the program" width="200" height="200">
 
 ## Bugs and Issues

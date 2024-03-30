@@ -38,8 +38,8 @@ LOCAL = ["--LOCAL", "--Local", "--local"]
 GuiLocal = ["--GUI-LOCAL", "--Gui-local", "--gui-local"]
 installRequirement = ["--INSTALL", "--install"]
 uninstallRequirement = ["--UNINSTALL", "--uninstall"]
-
-GuiScript = ["bash", "GuiScript.sh"]
+# bash commands list
+LocalScript = ["bash", "localScript.sh"]  # runs the script in local mode
 GlobalScript = ["bash", "GlobalScript.sh"]  # runs the script in global mode
-LocalScript = ["bash", "localScript.sh"]  # runs the script in global mode
-GuiLocalScript = ["bash", "GuiLocal.sh"]  # the script to run after loading
+GuiScript = ["bash", "GuiScript.sh"] # runs the scirpt in GUI mode
+GuiLocalScript = ["bash", "GuiLocal.sh"]  # runs the script in GUI-Local mode
