@@ -1,6 +1,6 @@
 # !Do not use this software in Schools or Business!
 # Linux verison
-<img src="Linux Logo.jpg" alt="Linux Verison of the program" width="200" height="200">
+<img src="Linux Logo.JPG" alt="Linux Verison of the program" width="200" height="200">
 
 ## Bugs and Issues
 ### If you find any bugs or issues click on [Email me](mailto:wsegalework@gmail.com) to contact me about the issues.
