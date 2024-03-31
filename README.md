@@ -32,7 +32,7 @@ If you encounter the following error message when connecting to an SSH server:
 ```plaintext
 cd ~/.ssh
 
-sudo nano known_hosts
+open known_hosts
 ```
 
 # You can type the following command in the CLI
