@@ -10,9 +10,12 @@ import requests
 import random
 import subprocess
 
+terminalCommand = os.system
+
 # easy way to read the root user function
 ROOT = 0
 
+#the asscie art var
 lineArt = subprocess.run
 
 #name of the os
