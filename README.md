@@ -14,10 +14,10 @@ git clone https://github.com/WilSegale/NetBreach.git
 sudo python3 setup.py
 ```
 
- 
+## This file will explain how the program works and how to use it to it's full capacity
 - [Linux README.md](linux/README.md)
 - [Mac README.md](MacOs/README.md)
-## this file will explain how the program works and how to use it to it's full capacity 
+ 
 # Troubleshooting SSH: Remote Host Identification Changed
 
 If you encounter the following error message when connecting to an SSH server:
