@@ -1,4 +1,6 @@
 # !Do not use this software in Schools or Business!
+
+# MAC verison
 <img src="Apple Logo.JPG" alt="Apple Verison of the program" width="200" height="200">
 
 ## Bugs and Issues
