@@ -76,5 +76,4 @@ ERROR = open("ERROR.log", "a")
 ```bash 
 sudo rm -rf ERROR.log
 ``` 
-
 ## This will fix the program for you.
