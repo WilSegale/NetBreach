@@ -4,6 +4,7 @@ import logging
 import os
 import time
 
+# color vars for the user to understand what went wrong
 GREEN = "\033[92m"
 RED = "\033[91m"
 RESET = "\033[0m"
