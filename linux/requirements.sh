@@ -2,7 +2,7 @@
 source DontEdit.sh
 requiredments(){
 # Check if the OS is Linux
-if [[ "${OSTYPE}" == "${OS}"* ]]; then
+if [[ "${OSTYPE}" == "${Linux}"* ]]; then
     if ping -c 1 google.com >/dev/null 2>&1; then
         # Function to install package using apt package manager
         install_linux_package() {

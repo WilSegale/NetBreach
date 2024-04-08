@@ -1,100 +1,70 @@
 #!/bin/bash
+
+# Source the file DontEdit.sh
 source DontEdit.sh
 
-# Check if the script is run with --help or -h
-if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-    figlet "? HELP ?"
-    echo "This script will install the required packages for the script."
-    exit 1
-fi
-requiredments() {
-    # Checks if the user is ROOT and prompts them not to use sudo
-    if [ "$(id -u)" -eq 0 ]; then
-        # Puts the ERROR message into line art
-        echo -e "${RED}$(figlet ERROR)${NC}"
-
-        # Gives the user something to read so they understand why they got the error
-        echo "+++++++++++++++++++++++++++++++++++++++++"
-        echo "+   Don't use sudo for this script.     +"
-        echo "+   Because it can damage your computer +"
-        echo "+++++++++++++++++++++++++++++++++++++++++"
-        exit 1
+# Function to check if a package is installed
+check_package() {
+    if dpkg -s "$1" &> /dev/null; then
+        echo "$1 is installed."
     else
-        # Check if the OS is macOS
-        if [[ "${OSTYPE}" == "darwin"* ]]; then
-            if ping -c 1 google.com >/dev/null 2>&1; then
-                # Install package using Homebrew package manager
-                install_brew_package() {
-                    package_name="$1"
-                    if ! command -v "${package_name}" >/dev/null 2>&1; then
-                        brew install "${package_name}"
-                    else
-                        echo -e "[ ${GREEN}OK${NC} ] ${package_name} is already installed."
-                    fi
-                }
-
-                # Install package using pip
-                install_pip_package() {
-                    package_name="$1"
-                    if ! python3 -m pip show "${package_name}" >/dev/null 2>&1; then
-                        pip3 install "${package_name}" --break-system-packages
-                    else
-                        echo -e "[ ${GREEN}OK${NC} ] ${package_name} is already installed."
-                    fi
-                }
-
-                echo
-                echo "_________BREW PACKAGES________"
-
-                # Install Homebrew packages
-                for package in "${Packages[@]}"; do
-                    install_brew_package "${package}"
-                done
-
-                echo
-                echo "_________PIP PACKAGES________"
-                for PIP in "${pipPackages[@]}"; do
-                    install_pip_package "${PIP}"
-                done
-
-                #addes a space to read the PIP UPDATES easily
-                echo
-
-                # Update PIP
-                echo "_________PIP UPDATES________"
-                updated_version=$(pip3 --version | awk '{print $2}')
-                
-                if [ "${current_version}" != "${updated_version}" ]; then
-                    echo -e "[ ${GREEN}OK${NC} ] pip has been successfully updated installed."
-                else
-                    echo "pip is already up to date."
-                fi
-
-                echo
-                successful_MESSAGE="[ ${GREEN}OK${NC} ] All packages are installed successfully"
-                echo "_________FINISH________"
-
-                echo -e "${successful_MESSAGE}"
-            else
-                echo -e "[ ${RED}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
-            fi
-            # Function to check if a package is installed
-            check_package() {
-                if brew list "$1" &> /dev/null; then
-                    echo "$1 is installed."
-                else
-                    echo "Package $1 is not installed."
-                fi
-            }
-
-            # Loop through each package and check its status
-            for pkg in "${packages[@]}"; do
-                check_package "${pkg}"
-            done
-        else
-            echo -e "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS." # If the user is not using the right OS, it says "You are using the wrong OS"
-        fi
+        echo "$1 is not installed."
     fi
 }
 
-requiredments
+# Function to install package using brew package manager
+install_brew_package() {
+    package_name="$1"
+    brew install "${package_name}"
+    echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
+}
+
+# Function to install package using pip
+install_pip_package() {
+    package_name="$1"
+    python3 -m pip install --user --upgrade "${package_name}" --break-system-packages
+    echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
+}
+
+# Function to upgrade pip
+upgrade_pip() {
+    python3 -m pip install --upgrade pip --break-system-packages
+    echo -e "[ ${GREEN}OK${NC} ] pip packages updated successfully."
+}
+
+# Check if the OS is Linux
+if [[ "${OSTYPE}" == "${}"* ]]; then
+    if ping -c 1 google.com >/dev/null 2>&1; then
+        # Perform package checks
+        echo "_________PACKAGE CHECKS________"
+        for package in "${packages[@]}"; do
+            check_package "$package"
+        done
+
+        # Install BREW packages
+        echo ""
+        echo "_________BREW PACKAGES INSTALLATION________"
+        for package in "${Packages[@]}"; do
+            install_brew_package "${package}"
+        done
+
+        echo ""
+        echo "_________PIP PACKAGES INSTALLATION________"
+        # Install PIP packages
+        for PIP in "${pipPackages[@]}"; do
+            install_pip_package "${PIP}"
+        done
+
+        # Update PIP
+        echo ""
+        echo "_________PIP UPDATES________"
+        upgrade_pip
+
+        echo "All packages installed successfully."
+
+    else
+        echo -e "[ ${RED}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
+    fi
+else
+    echo -e "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS."
+fi
