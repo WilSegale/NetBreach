@@ -108,21 +108,25 @@ else
 
             # Check the exit status of the last command
             if [ $? -ne 0 ]; then
-                for package in "${Packages[@]}" do
+                for package in "${Packages[@]}" 
+                do
                     echo -e "The packages that are removed are: ${package}"
                 done
                 echo -e "________PIP Packages________"
-                for pipPackage in "${pipPackages[@]}" do
+                for pipPackage in "${pipPackages[@]}" 
+                do
                     echo -e "${RED}${pipPackage}${NC}"
                 done
                 echo -e "________ERROR________"
                 echo -e "${RED}Error occurred during pip uninstallation${NC}"
             else
-                for package in "${Packages[@]}" do
+                for package in "${Packages[@]}"
+                do
                     echo -e "${package}: ${RED}Is removed${NC}"
                 done
                 echo -e "________PIP Packages________"
-                for pipPackage in "${pipPackages[@]}" do
+                for pipPackage in "${pipPackages[@]}" 
+                do
                     echo -e "${pipPackage}: ${RED}Is removed${NC}"
                 done
             fi
