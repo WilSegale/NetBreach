@@ -12,8 +12,7 @@ command_exists() {
 # quits program with ctrl-c
 EXIT_PROGRAM_WITH_CTRL_C() {
     echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
-    
-    # Adds a cleanup commands here
+    # Add cleanup commands here
     exit 1
 }
 
@@ -46,21 +45,7 @@ trap ctrl_c SIGINT
 # Check for required packages
 for package in "${required_packages[@]}"; do
     if ! command_exists "$package"; then
-        echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
-        sleep 1 
-
-        #asks the user if they want to install the packages that are mssing
-        echo "Would you like me to install it for you. YES/NO"
-
-        read -p ">>> " install
-        
-        if [[ " ${yes[*]} " == *" ${install} "* ]]; then
-            bash requirements.sh
-            exit 1
-        else
-            echo "Ok stopping program"
-            exit 1
-        fi
+        echo -e "[ ${RED}FAIL${NC} ]: The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
         exit 1
     fi
 done
@@ -94,19 +79,19 @@ else
             echo ""
         fi
         # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
-        LocalHercules() {
+        LocalNetBreach() {
             # The logo of the program
-            figlet -f slant "Hercules"
+            figlet -f slant "NetBreach"
             echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
             echo "If you want to stop the program type 'stop'."
             read -p ">>> " service
 
-            if [[ "${service}" == "ALL" || "${service}" == "all" ]]; then
+            if [[ $service == "ALL" || $service == "all" ]]; then
                 # Scan the entire network and display open ports
                 nmap 127.0.0.1 --system-dns -Pn -oN local.txt
                 echo "Would you like to see what is inside the scan file YES OR NO?"
                 read -p ">>> " service
-                if [[ "${service}" == "YES" || "${service}" == "yes" ]]; then
+                if [[ $service == "YES" || $service == "yes" ]]; then
                     open local.txt
                 else
                     echo "Ok I will not open the local scan file"
@@ -181,7 +166,7 @@ else
                 if [[ $user == "" && $host == "" || $host == "" ]]; then
                     # No service specified, re-prompt for input
                     echo "No service specified"
-                    LocalHercules
+                    LocalNetBreach
                 # If the user inputs something in the 'Input Username' function and the hostname function,
                 # it will continue as normal
                 else
@@ -217,7 +202,7 @@ else
                 if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                     # No service specified, re-prompt for input
                     echo "No service specified"
-                    LocalHercules
+                    LocalNetBreach
                 # If the user inputs something in the 'Input Username' function and the hostname function,
                 # it will continue as normal
                 else
@@ -249,7 +234,7 @@ else
                 if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                     # No service specified, re-prompt for input
                     echo "No service specified"
-                    LocalHercules
+                    LocalNetBreach
                 # If the user inputs something in the 'Input Username' function and the hostname function,
                 # it will continue as normal
                 else
@@ -262,7 +247,7 @@ else
             fi
         }
 
-        LocalHercules # Calls the Hercules function
+        LocalNetBreach # Calls the NetBreach function
 
         LocalRunHackingCommand # Calls the RunHackingCommand function
 

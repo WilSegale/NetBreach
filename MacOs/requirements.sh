@@ -3,6 +3,17 @@
 # Source the file DontEdit.sh
 source DontEdit.sh
 
+
+check_brew() {
+    if command -v brew &>/dev/null; then
+        echo "Homebrew is installed."
+    else
+        echo "Homebrew is not installed."
+        echo "Would you like to install Homebrew? (YES/NO)"
+        read -r install_brew
+    fi
+}
+
 # Function to check if a package is installed
 check_package() {
     if dpkg -s "$1" &> /dev/null; then
@@ -33,7 +44,7 @@ upgrade_pip() {
 }
 
 # Check if the OS is Linux
-if [[ "${OSTYPE}" == "${}"* ]]; then
+if [[ "${OSTYPE}" == "${OS}"* ]]; then
     if ping -c 1 google.com >/dev/null 2>&1; then
         # Perform package checks
         echo "_________PACKAGE CHECKS________"
