@@ -54,7 +54,7 @@ else
 
         read -p ">>> " YES_NO
 
-        if [[ "${yes[*]}" == *"$YES_NO"* ]]; then
+        if [[ "${yes[*]}" == *"${YES_NO}"* ]]; then
             # Packages to check for installation
             Packages=(
                 "wget"
@@ -70,7 +70,16 @@ else
                 "asyncio"
                 "pyfiglet"
             )
-
+            check_brew() {
+                # Check the exit code of the previous command
+                if [ $? -ne 1 ]; then
+                    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+                else
+                    echo "Homebrew is not installed."
+                fi
+            }
+            check_brew
+             
             # Function to check and uninstall a package
             check_package() {
                 package_name="$1"

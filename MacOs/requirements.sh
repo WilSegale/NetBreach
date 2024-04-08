@@ -3,25 +3,34 @@
 # Source the file DontEdit.sh
 source DontEdit.sh
 
-
-check_brew() {
+RUN(){
     if command -v brew &>/dev/null; then
-        echo "Homebrew is installed."
+        echo
     else
         echo "Homebrew is not installed."
+        echo
         echo "Would you like to install Homebrew? (YES/NO)"
-        read -r install_brew
+        read -p ">>> " answer
+        if [[ "${yes[*]}" == *"${answer}"* ]]; then
+            echo "Installing Homebrew..."
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            sleep 1
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+            # Check the exit code of the previous command
+            if [ $? -ne 0 ]; then
+                echo -e "[ ${RED}FAIL${NC} ] Homebrew installation failed."
+            else
+                echo -e "[ ${GREEN}OK${NC} ] Homebrew installation successful."
+            fi
+        elif [[ "${no[*]}" == *"${answer}"* ]]; then
+            echo "Exiting the script."
+        else
+            echo "Exiting the script."
+        fi
+        exit 1
     fi
 }
-
-# Function to check if a package is installed
-check_package() {
-    if dpkg -s "$1" &> /dev/null; then
-        echo "$1 is installed."
-    else
-        echo "$1 is not installed."
-    fi
-}
+RUN
 
 # Function to install package using brew package manager
 install_brew_package() {
@@ -42,40 +51,46 @@ upgrade_pip() {
     python3 -m pip install --upgrade pip --break-system-packages
     echo -e "[ ${GREEN}OK${NC} ] pip packages updated successfully."
 }
+if [ "$(id -u)" -eq 0 ]; then
+    # Puts the ERROR message into line art
+    echo -e "${RED}$(figlet ERROR)${NC}"
 
-# Check if the OS is Linux
-if [[ "${OSTYPE}" == "${OS}"* ]]; then
-    if ping -c 1 google.com >/dev/null 2>&1; then
-        # Perform package checks
-        echo "_________PACKAGE CHECKS________"
-        for package in "${packages[@]}"; do
-            check_package "$package"
-        done
-
-        # Install BREW packages
-        echo ""
-        echo "_________BREW PACKAGES INSTALLATION________"
-        for package in "${Packages[@]}"; do
-            install_brew_package "${package}"
-        done
-
-        echo ""
-        echo "_________PIP PACKAGES INSTALLATION________"
-        # Install PIP packages
-        for PIP in "${pipPackages[@]}"; do
-            install_pip_package "${PIP}"
-        done
-
-        # Update PIP
-        echo ""
-        echo "_________PIP UPDATES________"
-        upgrade_pip
-
-        echo "All packages installed successfully."
-
-    else
-        echo -e "[ ${RED}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
-    fi
+    # Gives the user something to read so they understand why they got the error
+    echo "+++++++++++++++++++++++++++++++++++++++++"
+    echo "+   Don't use sudo for this script.     +"
+    echo "+   Because it can damage your computer +"
+    echo "+++++++++++++++++++++++++++++++++++++++++"
+    echo ""
+    exit 1
+# If the user is not root, exit the script
 else
-    echo -e "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS."
+    # Check if the OS is Linux
+    if [[ "${OSTYPE}" == "${OS}"* ]]; then
+        if ping -c 1 google.com >/dev/null 2>&1; then
+
+            # Install BREW packages
+            echo ""
+            echo "_________BREW PACKAGES INSTALLATION________"
+            for package in "${Packages[@]}"; do
+                install_brew_package "${package}"
+            done
+
+            echo ""
+            echo "_________PIP PACKAGES INSTALLATION________"
+            # Install PIP packages
+            for PIP in "${pipPackages[@]}"; do
+                install_pip_package "${PIP}"
+            done
+
+            # Update PIP
+            echo ""
+            echo "_________PIP UPDATES________"
+            upgrade_pip
+
+        else
+            echo -e "[ ${RED}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
+        fi
+    else
+        echo -e "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS."
+    fi
 fi
