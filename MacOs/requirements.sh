@@ -52,9 +52,6 @@ upgrade_pip() {
     echo -e "[ ${GREEN}OK${NC} ] pip packages updated successfully."
 }
 if [ "$(id -u)" -eq 0 ]; then
-    # Puts the ERROR message into line art
-    echo -e "${RED}$(figlet ERROR)${NC}"
-
     # Gives the user something to read so they understand why they got the error
     echo "+++++++++++++++++++++++++++++++++++++++++"
     echo "+   Don't use sudo for this script.     +"
