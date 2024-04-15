@@ -74,6 +74,7 @@ ERROR = open("ERROR.log", "a")
 ```
 ## You get rid of this message by going to the ERROR.log file and remove it. By doing 
 ```bash 
-sudo rm -rf ERROR.log
+sudo rm -rf ERROR.log,
+python3 NetBreach.py --fix
 ``` 
 ## This will fix the program for you.
