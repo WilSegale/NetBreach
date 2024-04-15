@@ -75,7 +75,25 @@ def show_help():
 
     #puts the info about how to use the program on the screen
     print(info)
+
+# fixes the program by finding the bug and fixing it
+def fix():
+    try:
+        # Iterate over the list of files to remove and delete them one by one
+        for file_to_remove in RemoveFile:
+            subprocess.run(["rm", "-rf", file_to_remove], check=True)
+        print(f"Files removed {GREEN}successfully.{RESET}")
+        sys.exit(0)
     
+    except subprocess.CalledProcessError as e:
+        print(f"Error: {e}")
+        sys.exit(1)
+    
+    except KeyboardInterrupt:
+        print('\n[-] Exiting...')
+        sys.exit(1)
+
+
 #puts program in GUI mode
 def Show_GUI():
     # gets the current time and formats it HH:MM:SS
@@ -315,14 +333,18 @@ try:
     #connect to the GuiLocal function of the Hercules program
     elif len(sys.argv) == 2 and sys.argv[1] in GuiLocal:
         show_GuiLOCAL()
+        
+    #connects to the fix function of the NetBreach program
+    elif len(sys.argv) == 2 and sys.argv[1] in FIX:
+        fix()
 
     #installs the required packages for the program to work properly
     elif len(sys.argv) == 2 and sys.argv[1] in installRequirement:
-        terminalCommand('bash requirements.sh')
+        os.system('bash requirements.sh')
     
     #uninstall the required packages so its easier to uninstall them
     elif len(sys.argv) == 2 and sys.argv[1] in uninstallRequirement:
-        terminalCommand('bash uninstall.sh')
+        os.system('bash uninstall.sh')
 
     #if the user does not input the correct argument it tells them what arguments to use for it to work 
     else:
@@ -335,6 +357,7 @@ try:
 {GuiLocal} put's it in GUI LOCAL mode to attacking in GUI LOCAL networks,
 {installRequirement} put's it in install mode that install's the required packages,
 {uninstallRequirement} put's it in uninstall mode that uninstall's the packages,
+{FIX} put's it in fix mode that fixes the program,
 {HELP} put's it in help mode so you understand what you are going to do with this program.''')
 
 except KeyboardInterrupt:

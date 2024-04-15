@@ -10,14 +10,11 @@ import requests
 import random
 import subprocess
 
-
 # easy way to read the root user function
 ROOT = 0
 
-
 # list of the files to remove
-
-RemoveFile = ("ERROR.log","ERROR.LOG")
+RemoveFile = ("ERROR.log", "ERROR.LOG")
 
 
 # easy way for the computer to read subprocess.run

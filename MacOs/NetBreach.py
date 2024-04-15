@@ -333,9 +333,11 @@ try:
     #connect to the GuiLocal function of the Hercules program
     elif len(sys.argv) == 2 and sys.argv[1] in GuiLocal:
         show_GuiLOCAL()
-
+        
+    #connects to the fix function of the NetBreach program
     elif len(sys.argv) == 2 and sys.argv[1] in FIX:
         fix()
+
     #installs the required packages for the program to work properly
     elif len(sys.argv) == 2 and sys.argv[1] in installRequirement:
         os.system('bash requirements.sh')
@@ -355,6 +357,7 @@ try:
 {GuiLocal} put's it in GUI LOCAL mode to attacking in GUI LOCAL networks,
 {installRequirement} put's it in install mode that install's the required packages,
 {uninstallRequirement} put's it in uninstall mode that uninstall's the packages,
+{FIX} put's it in fix mode that fixes the program,
 {HELP} put's it in help mode so you understand what you are going to do with this program.''')
 
 except KeyboardInterrupt:
