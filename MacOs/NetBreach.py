@@ -75,7 +75,25 @@ def show_help():
 
     #puts the info about how to use the program on the screen
     print(info)
+
+# fixes the program by finding the bug and fixing it
+def fix():
+    try:
+        # Iterate over the list of files to remove and delete them one by one
+        for file_to_remove in RemoveFile:
+            subprocess.run(["rm", "-rf", file_to_remove], check=True)
+        print(f"Files removed {GREEN}successfully.{RESET}")
+        sys.exit(0)
     
+    except subprocess.CalledProcessError as e:
+        print(f"Error: {e}")
+        sys.exit(1)
+    
+    except KeyboardInterrupt:
+        print('\n[-] Exiting...')
+        sys.exit(1)
+
+
 #puts program in GUI mode
 def Show_GUI():
     # gets the current time and formats it HH:MM:SS
@@ -316,6 +334,8 @@ try:
     elif len(sys.argv) == 2 and sys.argv[1] in GuiLocal:
         show_GuiLOCAL()
 
+    elif len(sys.argv) == 2 and sys.argv[1] in FIX:
+        fix()
     #installs the required packages for the program to work properly
     elif len(sys.argv) == 2 and sys.argv[1] in installRequirement:
         os.system('bash requirements.sh')

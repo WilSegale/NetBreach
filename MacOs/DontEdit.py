@@ -14,6 +14,13 @@ import subprocess
 # easy way to read the root user function
 ROOT = 0
 
+
+# list of the files to remove
+
+RemoveFile = ("ERROR.log","ERROR.LOG")
+
+
+# easy way for the computer to read subprocess.run
 lineArt = subprocess.run
 
 #name of the os
@@ -38,6 +45,8 @@ LOCAL = ["--LOCAL", "--Local", "--local"]
 GuiLocal = ["--GUI-LOCAL", "--Gui-local", "--gui-local"]
 installRequirement = ["--INSTALL", "--install"]
 uninstallRequirement = ["--UNINSTALL", "--uninstall"]
+FIX = ["--FIX", "--fix"]
+
 # bash commands list
 LocalScript = ["bash", "localScript.sh"]  # runs the script in local mode
 GlobalScript = ["bash", "GlobalScript.sh"]  # runs the script in global mode
