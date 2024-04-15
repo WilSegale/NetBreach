@@ -139,7 +139,7 @@ else
                     echo -e "${pipPackage}: ${RED}Is removed${NC}"
                 done
             fi
-
+        # If the user does not want to remove the packages, it exits the program
         elif [[ "${no[*]}" == *"$YES_NO"* ]]; then
             echo -e "${RED}${BRIGHT}Ok, I will not remove the packages.${NC}"
             exit 1

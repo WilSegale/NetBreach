@@ -3,6 +3,40 @@
 # Source the file DontEdit.sh
 source DontEdit.sh
 
+# Function to handle cleanup on exit
+# quits program with ctrl-c
+EXIT_PROGRAM_WITH_CTRL_C() {
+    echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
+    # Add cleanup commands here
+    exit 1
+}
+
+# quits program with ctrl-z
+EXIT_PROGRAM_WITH_CTRL_Z(){
+    echo ""
+    echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
+    # Add cleanup commands here
+    exit 1
+}
+
+# Function to be executed when Ctrl+Z is pressed
+handle_ctrl_z() {
+    EXIT_PROGRAM_WITH_CTRL_Z
+    exit 1
+    # Your custom action goes here
+}
+
+# Set up the trap to call the function on SIGTSTP (Ctrl+Z)
+trap 'handle_ctrl_z' SIGTSTP
+
+# Function to handle Ctrl+C
+ctrl_c() {
+    echo ""
+    EXIT_PROGRAM_WITH_CTRL_C
+}
+
+trap ctrl_c SIGINT
+
 RUN(){
     if command -v brew &>/dev/null; then
         echo
