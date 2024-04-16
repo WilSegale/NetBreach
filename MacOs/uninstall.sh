@@ -86,8 +86,7 @@ else
                 if command -v "${package_name}" >/dev/null 2>&1; then
                     echo "${package_name} is installed."
                     brew uninstall "${package_name}"
-                else
-                    echo -e "${RED}${package_name}${NC} Is not installed."
+                    #echo -e "${RED}${package_name}${NC} Is not installed."
                 fi
             }
 
@@ -110,8 +109,6 @@ else
                     else
                         echo -e "${pipPackage}: uninstalled ${GREEN}successfully${NC}"
                     fi
-                else
-                    echo -e "${RED}${pipPackage}${NC}: Is not installed"
                 fi
             done
 
