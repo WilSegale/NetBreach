@@ -59,7 +59,7 @@ def show_help():
             HowToUseInfo10 +
             HowToUseInfo11) 
 
-    lineArt(["figlet", "Linux"])
+    lineArt(["figlet", "Mac"])
     lineArt(["figlet", "? HELP ?"])
     print(NameOfOs,  file=HelpFile)
     print(HELP_LOGO, file=HelpFile)
