@@ -67,7 +67,7 @@ def show_help():
     #inputs the program used logo in a help file
     #puts the info about the program inside the help file
     print(ProgramsUSED)
-
+    print(info)
     #Puts the info logo in the help file
     print(ProgramsUSED, file=HelpFile)
 
@@ -75,7 +75,6 @@ def show_help():
     print(info, file=HelpFile)
 
     #puts the info about how to use the program on the screen
-    print(info)
 
 # fixes the program by finding the bug and fixing it
 def fix():

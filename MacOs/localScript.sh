@@ -88,11 +88,11 @@ else
 
             if [[ $service == "ALL" || $service == "all" ]]; then
                 # Scan the entire network and display open ports
-                nmap 127.0.0.1 --system-dns -Pn -oN local.txt
+                nmap 127.0.0.1 --system-dns -Pn -oN localPorts.txt
                 echo "Would you like to see what is inside the scan file YES OR NO?"
                 read -p ">>> " service
                 if [[ $service == "YES" || $service == "yes" ]]; then
-                    open local.txt
+                    open localPorts.txt
                 else
                     echo "Ok I will not open the local scan file"
                 fi
