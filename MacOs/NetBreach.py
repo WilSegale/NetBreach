@@ -85,8 +85,8 @@ def fix():
         print(f"Files removed {GREEN}successfully.{RESET}")
         sys.exit(0)
     
-    except subprocess.CalledProcessError as e:
-        print(f"Error: {e}")
+    except subprocess.CalledProcessError as ERROR:
+        print(f"Error: {ERROR}")
         sys.exit(1)
     
     except KeyboardInterrupt:
