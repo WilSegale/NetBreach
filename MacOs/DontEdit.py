@@ -42,7 +42,7 @@ LOCAL = ["--LOCAL", "--Local", "--local"]
 GuiLocal = ["--GUI-LOCAL", "--Gui-local", "--gui-local"]
 installRequirement = ["--INSTALL", "--install"]
 uninstallRequirement = ["--UNINSTALL", "--uninstall"]
-FIX = ["--FIX", "--fix"]
+FIX = ["--FIX", "--fix", "--Fix"]
 
 # bash commands list
 LocalScript = ["bash", "localScript.sh"]  # runs the script in local mode
