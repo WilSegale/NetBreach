@@ -58,7 +58,7 @@ for package in "${required_packages[@]}"; do
             ps aux | grep sudo
             echo "Input the PID for to kill the root session to install the packages."
             read -p ">>> " session
-            kill -9 $session
+            kill -9 "${session}"
             bash requirements.sh
             exit 1
         else
