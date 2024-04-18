@@ -1,0 +1,2 @@
+# Nmap 7.94 scan initiated Tue Apr 16 21:47:31 2024 as: nmap -sS -p 22 -oN 22 --open 192.168.1.1/24
+# Nmap done at Tue Apr 16 22:04:36 2024 -- 256 IP addresses (30 hosts up) scanned in 1024.94 seconds
