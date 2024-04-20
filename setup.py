@@ -3,6 +3,7 @@ import datetime
 import logging
 import os
 import time
+import sys
 
 # color vars for the user to understand what went wrong
 GREEN = "\033[92m"
@@ -26,27 +27,30 @@ logger.addHandler(handler)
 # Platform specific commands 
 linux_command = ["rm", "-rf", "MacOs", "setup.py"]  
 macos_command = ["rm", "-rf", "Linux", "setup.py"]
-
-def print_loading_bar(iterations, delay=0.1, width=40):
-    """
-    Prints a loading bar with green dots to visualize progress.
-    
-    Args:
-        iterations (int): Total number of iterations.
-        delay (float, optional): Delay between updates in seconds. Default is 0.1 seconds.
-        width (int, optional): Width of the loading bar. Default is 40 characters.
-    """
-    for loadingBar in range(iterations + 1):
-        progress = loadingBar / iterations  # Calculate the progress ratio
-        bar_length = int(progress * width)  # Calculate the number of dots for the current progress
-        bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
-        percentage = int(progress * 100)  # Calculate the percentage of completion
+try:
+    def print_loading_bar(iterations, delay=0.1, width=40):
+        """
+        Prints a loading bar with green dots to visualize progress.
         
-        # Print the loading bar and percentage, replacing the line each iteration
-        print(f'\rRunning Setup.py [{bar}] {percentage} % ', end='', flush=False)
-        
-        time.sleep(delay)  # Pause to control the update rate
-
+        Args:
+            iterations (int): Total number of iterations.
+            delay (float, optional): Delay between updates in seconds. Default is 0.1 seconds.
+            width (int, optional): Width of the loading bar. Default is 40 characters.
+        """
+        for loadingBar in range(iterations + 1):
+            progress = loadingBar / iterations  # Calculate the progress ratio
+            bar_length = int(progress * width)  # Calculate the number of dots for the current progress
+            bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+            percentage = int(progress * 100)  # Calculate the percentage of completion
+            
+            # Print the loading bar and percentage, replacing the line each iteration
+            print(f'\rRunning Setup.py [{bar}] {percentage} % ', end='', flush=False)
+            
+            time.sleep(delay)  # Pause to control the update rate
+except KeyboardInterrupt:
+    print("\nSetup.py interrupted")
+    logger.error("Setup.py interrupted")
+    sys.exit(1)
 if __name__ == "__main__":
 
     # Detect platform
