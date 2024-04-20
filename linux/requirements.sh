@@ -1,5 +1,33 @@
 #!/bin/bash
 source DontEdit.sh
+
+#checks if the user has pakcages installed or not
+checkForPackages() {
+    if [ $? -ne 0 ]; then
+        for package in "${Packages[@]}" 
+        do
+            echo -e "The packages that are installed are: ${package}"
+        done
+        echo -e "________PIP Packages________"
+        for pipPackage in "${pipPackages[@]}" 
+        do
+            echo -e "${RED}${pipPackage}${NC}"
+        done
+        echo -e "________ERROR________"
+        echo -e "${RED}Error occurred during pip uninstallation${NC}"
+    else
+        for package in "${Packages[@]}"
+        do
+            echo -e "${package}: ${GREEN}Is Installed${NC}"
+        done
+        echo -e "________PIP Packages________"
+        for pipPackage in "${pipPackages[@]}" 
+        do
+            echo -e "${pipPackage}: ${GREEN}Is Installed${NC}"
+        done
+    fi
+}
+
 requiredments(){
 # Check if the OS is Linux
 if [[ "${OSTYPE}" == "${Linux}"* ]]; then
@@ -40,8 +68,10 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
         echo ""
         echo "_________PIP UPDATES________"
         upgrade_pip
-
-        echo "All packages installed successfully."
+        
+        echo ""
+        echo "_________INSTALLED PACKAGES________"
+        checkForPackages
 
     else
         echo -e "[ ${RED}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
