@@ -1,9 +1,0 @@
-# Nmap 7.94 scan initiated Sat Apr 20 17:09:46 2024 as: nmap -sS -p 22 -oN 22 --open 192.168.1.1/24
-Nmap scan report for raspberrypi.fios-router.home (192.168.1.91)
-Host is up (0.24s latency).
-
-PORT   STATE SERVICE
-22/tcp open  ssh
-MAC Address: DC:A6:32:CD:DE:F5 (Raspberry Pi Trading)
-
-# Nmap done at Sat Apr 20 17:10:10 2024 -- 256 IP addresses (29 hosts up) scanned in 24.17 seconds
