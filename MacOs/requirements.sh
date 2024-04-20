@@ -10,6 +10,7 @@ checkForPackages() {
         do
             echo -e "The packages that are installed are: ${package}"
         done
+        echo ""
         echo -e "________PIP Packages________"
         for pipPackage in "${pipPackages[@]}" 
         do
@@ -109,6 +110,7 @@ install_pip_package() {
 upgrade_pip() {
     python3 -m pip install --upgrade pip --break-system-packages
 }
+# Check if the user is root
 if [ "$(id -u)" -eq 0 ]; then
     # Gives the user something to read so they understand why they got the error
     echo "+++++++++++++++++++++++++++++++++++++++++"

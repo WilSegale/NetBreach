@@ -39,21 +39,17 @@ CURRENT_DATE=$(date +"%m/%d/%Y")
 # List of required packages/commands (separated by spaces)
 required_packages=("wget" "hydra" "nmap" "ssh" "mysql" "figlet" "zenity")
 
-# Packages to install
+# Packages to check for installation
 Packages=(
-    "zabbix-server-mysql"
-    "pip"
-    "mysql-server"
-    "curl"
     "wget"
     "hydra"
     "nmap"
     "mysql"
     "figlet"
     "zenity"
-    "tigervnc-viewer"
 )
 
+# PIP packages that will be uninstalled if they are installed
 pipPackages=(
     "asyncio"
     "pyfiglet"
