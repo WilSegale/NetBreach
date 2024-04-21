@@ -1,137 +1,137 @@
 {
-	"$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v10/terminal-keeper.json",
-	"theme": "tribe",
-	"active": "default",
-	"activateOnStartup": true,
-	"keepExistingTerminals": false,
-	"sessions": {
-		"default": [
-			{
-				"name": "hello",
-				"autoExecuteCommands": true,
-				"icon": "person",
-				"color": "terminal.ansiGreen",
-				"commands": [
-					"echo hello"
-				]
-			},
-			[
-				{
-					"name": "docker:ros",
-					"commands": [
-						""
-					]
-				},
-				{
-					"name": "docker:k8s",
-					"commands": [
-						""
-					]
-				}
-			],
-			[
-				{
-					"name": "docker:nats",
-					"commands": [
-						""
-					]
-				},
-				{
-					"name": "docker:fleet",
-					"commands": [
-						""
-					]
-				}
-			]
-		],
-		"saved-session": [
-			{
-				"name": "connect",
-				"commands": [
-					""
-				]
-			}
-		]
-	},
-	"Transform": "AWS::Serverless-2016-10-31",
-	"Resources": {
-		"StateMachine": {
-			"Type": "AWS::Serverless::StateMachine",
-			"Properties": {
-				"Definition": {
-					"StartAt": "LambdaTask",
-					"States": {
-						"LambdaTask": {
-							"Type": "Task",
-							"Resource": "arn:aws:states:::lambda:invoke",
-							"Parameters": {
-								"Payload.$": "$",
-								"FunctionName": "${LambdaFunction1}"
-							},
-							"End": true
-						}
-					}
-				},
-				"Logging": {
-					"Level": "ALL",
-					"IncludeExecutionData": true,
-					"Destinations": [
-						{
-							"CloudWatchLogsLogGroup": {
-								"LogGroupArn": {
-									"Fn::GetAtt": [
-										"StateMachineLogGroup",
-										"Arn"
-									]
-								}
-							}
-						}
-					]
-				},
-				"Policies": [
-					"AWSXrayWriteOnlyAccess",
-					{
-						"Statement": [
-							{
-								"Effect": "Allow",
-								"Action": [
-									"logs:CreateLogDelivery",
-									"logs:GetLogDelivery",
-									"logs:UpdateLogDelivery",
-									"logs:DeleteLogDelivery",
-									"logs:ListLogDeliveries",
-									"logs:PutResourcePolicy",
-									"logs:DescribeResourcePolicies",
-									"logs:DescribeLogGroups"
-								],
-								"Resource": "*"
-							}
-						]
-					}
-				],
-				"Tracing": {
-					"Enabled": true
-				},
-				"Type": "STANDARD",
-				"DefinitionSubstitutions": {
-					"LambdaFunction1": {
-						"Ref": "AWS::NoValue"
-					}
-				}
-			}
-		},
-		"StateMachineLogGroup": {
-			"Type": "AWS::Logs::LogGroup",
-			"Properties": {
-				"LogGroupName": {
-					"Fn::Sub": [
-						"/aws/vendedlogs/states/${AWS::StackName}-${ResourceId}-Logs",
-						{
-							"ResourceId": "StateMachine"
-						}
-					]
-				}
-			}
-		}
-	}
+    "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v10/terminal-keeper.json",
+    "theme": "tribe",
+    "active": "saved-session",
+    "activateOnStartup": true,
+    "keepExistingTerminals": false,
+    "sessions": {
+        "default": [
+            {
+                "name": "hello",
+                "autoExecuteCommands": true,
+                "icon": "person",
+                "color": "terminal.ansiGreen",
+                "commands": [
+                    "echo hello"
+                ]
+            },
+            [
+                {
+                    "name": "docker:ros",
+                    "commands": [
+                        ""
+                    ]
+                },
+                {
+                    "name": "docker:k8s",
+                    "commands": [
+                        ""
+                    ]
+                }
+            ],
+            [
+                {
+                    "name": "docker:nats",
+                    "commands": [
+                        ""
+                    ]
+                },
+                {
+                    "name": "docker:fleet",
+                    "commands": [
+                        ""
+                    ]
+                }
+            ]
+        ],
+        "saved-session": [
+            {
+                "name": "connect",
+                "commands": [
+                    ""
+                ]
+            }
+        ]
+    },
+    "Transform": "AWS::Serverless-2016-10-31",
+    "Resources": {
+        "StateMachine": {
+            "Type": "AWS::Serverless::StateMachine",
+            "Properties": {
+                "Definition": {
+                    "StartAt": "LambdaTask",
+                    "States": {
+                        "LambdaTask": {
+                            "Type": "Task",
+                            "Resource": "arn:aws:states:::lambda:invoke",
+                            "Parameters": {
+                                "Payload.$": "$",
+                                "FunctionName": "${LambdaFunction1}"
+                            },
+                            "End": true
+                        }
+                    }
+                },
+                "Logging": {
+                    "Level": "ALL",
+                    "IncludeExecutionData": true,
+                    "Destinations": [
+                        {
+                            "CloudWatchLogsLogGroup": {
+                                "LogGroupArn": {
+                                    "Fn::GetAtt": [
+                                        "StateMachineLogGroup",
+                                        "Arn"
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                "Policies": [
+                    "AWSXrayWriteOnlyAccess",
+                    {
+                        "Statement": [
+                            {
+                                "Effect": "Allow",
+                                "Action": [
+                                    "logs:CreateLogDelivery",
+                                    "logs:GetLogDelivery",
+                                    "logs:UpdateLogDelivery",
+                                    "logs:DeleteLogDelivery",
+                                    "logs:ListLogDeliveries",
+                                    "logs:PutResourcePolicy",
+                                    "logs:DescribeResourcePolicies",
+                                    "logs:DescribeLogGroups"
+                                ],
+                                "Resource": "*"
+                            }
+                        ]
+                    }
+                ],
+                "Tracing": {
+                    "Enabled": true
+                },
+                "Type": "STANDARD",
+                "DefinitionSubstitutions": {
+                    "LambdaFunction1": {
+                        "Ref": "AWS::NoValue"
+                    }
+                }
+            }
+        },
+        "StateMachineLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+                "LogGroupName": {
+                    "Fn::Sub": [
+                        "/aws/vendedlogs/states/${AWS::StackName}-${ResourceId}-Logs",
+                        {
+                            "ResourceId": "StateMachine"
+                        }
+                    ]
+                }
+            }
+        }
+    }
 }
