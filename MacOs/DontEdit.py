@@ -1,23 +1,22 @@
 # Import necessary modules
-import datetime
-import platform
-import time
-import os
-import urllib.request
-import logging
-import sys
-import requests
-import random
 import subprocess
+import datetime
+import os
+import platform
+import subprocess
+import sys
+import time
+import urllib.request
+terminalCommand = os.system
 
 # easy way to read the root user function
 ROOT = 0
 
 # list of the files to remove
-RemoveFile = ("ERROR.log", "ERROR.LOG")
+RemoveFile = ("ERROR.log","ERROR.LOG")
 
 
-# easy way for the computer to read subprocess.run
+#the asscie art var
 lineArt = subprocess.run
 
 #name of the os
@@ -42,10 +41,10 @@ LOCAL = ["--LOCAL", "--Local", "--local"]
 GuiLocal = ["--GUI-LOCAL", "--Gui-local", "--gui-local"]
 installRequirement = ["--INSTALL", "--install"]
 uninstallRequirement = ["--UNINSTALL", "--uninstall"]
-FIX = ["--FIX", "--fix", "--Fix"]
+FIX = ["--FIX", "--fix"]
 
-# bash commands list
-LocalScript = ["bash", "localScript.sh"]  # runs the script in local mode
+# Define list of scripts to run
+GuiScript = ["bash", "GuiScript.sh"]
 GlobalScript = ["bash", "GlobalScript.sh"]  # runs the script in global mode
-GuiScript = ["bash", "GuiScript.sh"] # runs the scirpt in GUI mode
-GuiLocalScript = ["bash", "GuiLocal.sh"]  # runs the script in GUI-Local mode
+LocalScript = ["bash", "localScript.sh"]  # runs the script in global mode
+GuiLocalScript = ["bash", "GuiLocal.sh"]  # the script to run after loading
