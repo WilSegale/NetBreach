@@ -340,11 +340,11 @@ try:
 
     #installs the required packages for the program to work properly
     elif len(sys.argv) == 2 and sys.argv[1] in installRequirement:
-        os.system('bash requirements.sh')
+        terminalCommand('bash requirements.sh')
     
     #uninstall the required packages so its easier to uninstall them
     elif len(sys.argv) == 2 and sys.argv[1] in uninstallRequirement:
-        os.system('bash uninstall.sh')
+        terminalCommand('bash uninstall.sh')
 
     #if the user does not input the correct argument it tells them what arguments to use for it to work 
     else:

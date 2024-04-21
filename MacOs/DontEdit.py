@@ -1,5 +1,4 @@
 # Import necessary modules
-import subprocess
 import datetime
 import os
 import platform
@@ -7,6 +6,7 @@ import subprocess
 import sys
 import time
 import urllib.request
+
 terminalCommand = os.system
 
 # easy way to read the root user function
