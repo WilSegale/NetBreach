@@ -1,0 +1,1 @@
+# Nmap 7.95 scan initiated Fri Apr 26 16:09:21 2024 as: nmap -sS -p 22 -oN 22 --open 192.168.1.1/24
