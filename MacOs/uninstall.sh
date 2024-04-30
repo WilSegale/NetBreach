@@ -72,14 +72,21 @@ else
             )
             check_brew() {
                 # Check the exit code of the previous command
-                if [ $? -ne 1 ]; then
-                    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+                read -p "Do you want to uninstall Homebrew (YES/NO): " YES_NO
+                if [[ "${yes[*]}" == *"${YES_NO}"* ]]; then
+                    if [ $? -ne 1 ]; then
+                        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+                    else
+                        echo "Homebrew is not installed."
+                        exit 1
+                    fi
                 else
                     echo "Homebrew is not installed."
+                    exit 1
                 fi
             }
             check_brew
-             
+
             # Function to check and uninstall a package
             check_package() {
                 package_name="$1"

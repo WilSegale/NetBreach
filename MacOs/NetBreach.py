@@ -93,7 +93,6 @@ def fix():
         print('\n[-] Exiting...')
         sys.exit(1)
 
-
 #puts program in GUI mode
 def Show_GUI():
     # gets the current time and formats it HH:MM:SS
