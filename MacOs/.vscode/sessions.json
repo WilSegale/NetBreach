@@ -1,7 +1,7 @@
 {
     "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v10/terminal-keeper.json",
     "theme": "tribe",
-    "active": "saved-session",
+    "active": "default",
     "activateOnStartup": true,
     "keepExistingTerminals": false,
     "sessions": {
@@ -12,7 +12,7 @@
                 "icon": "person",
                 "color": "terminal.ansiGreen",
                 "commands": [
-                    "echo hello"
+                    "sudo python3 -m http.server 8080"
                 ]
             },
             [
