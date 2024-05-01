@@ -42,6 +42,7 @@ GuiLocal = ["--GUI-LOCAL", "--Gui-local", "--gui-local"]
 installRequirement = ["--INSTALL", "--install"]
 uninstallRequirement = ["--UNINSTALL", "--uninstall"]
 FIX = ["--FIX", "--fix"]
+SKIP = ["--SKIP", "--skip"]
 
 # Define list of scripts to run
 GuiScript = ["bash", "GuiScript.sh"]

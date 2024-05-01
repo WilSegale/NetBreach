@@ -303,6 +303,14 @@ def show_GuiLOCAL():
 
 #holds the if statements that connect to the functions for the program to work properly
 try:
+    def process_arguments(args):
+       skip = SKIP in args 
+       gui = GUI in args
+       globals = GLOBAL in args
+       locals = LOCAL in args
+       guilocal = GuiLocal in args
+       fix = FIX in args
+
     # Handle command-line arguments
     #connect to the HELP function of the Hercules program so the user understands what the program does
     if len(sys.argv) == 2 and sys.argv[1] in HELP:
