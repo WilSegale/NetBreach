@@ -67,7 +67,7 @@ def show_help():
     #inputs the program used logo in a help file
     #puts the info about the program inside the help file
     print(ProgramsUSED)
-
+    print(info)
     #Puts the info logo in the help file
     print(ProgramsUSED, file=HelpFile)
 
@@ -75,7 +75,6 @@ def show_help():
     print(info, file=HelpFile)
 
     #puts the info about how to use the program on the screen
-    print(info)
 
 # fixes the program by finding the bug and fixing it
 def fix():
@@ -86,14 +85,13 @@ def fix():
         print(f"Files removed {GREEN}successfully.{RESET}")
         sys.exit(0)
     
-    except subprocess.CalledProcessError as e:
-        print(f"Error: {e}")
+    except subprocess.CalledProcessError as ERROR:
+        print(f"Error: {ERROR}")
         sys.exit(1)
     
     except KeyboardInterrupt:
         print('\n[-] Exiting...')
         sys.exit(1)
-
 
 #puts program in GUI mode
 def Show_GUI():
@@ -305,47 +303,40 @@ def show_GuiLOCAL():
 
 #holds the if statements that connect to the functions for the program to work properly
 try:
+
     # Handle command-line arguments
-    #connect to the HELP function of the Hercules program so the user understands what the program does
-    if len(sys.argv) == 2 and sys.argv[1] in HELP:
-        show_help()
-        
-    #puts the program into gui mode
-    elif len(sys.argv) == 2 and sys.argv[1] in GUI:
-        #checks if the user is connected to ssh and if they are it says to disconnected from ssh for the GUI script to work correctly
-        #else if they are not connected to ssh it will work normally
-        def is_ssh_connection():
-            return "SSH_TTY" in os.environ
+    if len(sys.argv) == 2:
+        # gets the help function
+        if sys.argv[1] in HELP:
+            show_help()
 
-        if is_ssh_connection() == True:
-            print("Connected via SSH. This script will not run.",
-                  "Until you disconnect from SSH.")
-        else:
+        #gets the gui funciton
+        elif sys.argv[1] in GUI:
             Show_GUI()
-    
-    #connect to the global function of the Hercules program
-    elif len(sys.argv) == 2 and sys.argv[1] in GLOBAL:
-        show_GLOBAL()
 
-    #connect to the local function of the Hercules program
-    elif len(sys.argv) == 2 and sys.argv[1] in LOCAL:
-        show_LOCAL()
-    
-    #connect to the GuiLocal function of the Hercules program
-    elif len(sys.argv) == 2 and sys.argv[1] in GuiLocal:
-        show_GuiLOCAL()
+        #gets the global function
+        elif sys.argv[1] in GLOBAL:
+            show_GLOBAL()
         
-    #connects to the fix function of the NetBreach program
-    elif len(sys.argv) == 2 and sys.argv[1] in FIX:
-        fix()
+        #gets the local function
+        elif sys.argv[1] in LOCAL:
+            show_LOCAL()
 
-    #installs the required packages for the program to work properly
-    elif len(sys.argv) == 2 and sys.argv[1] in installRequirement:
-        os.system('bash requirements.sh')
-    
-    #uninstall the required packages so its easier to uninstall them
-    elif len(sys.argv) == 2 and sys.argv[1] in uninstallRequirement:
-        os.system('bash uninstall.sh')
+        #gets the gui local funciton
+        elif sys.argv[1] in GuiLocal:
+            show_GuiLOCAL()
+
+        #gets the fix funciton
+        elif sys.argv[1] in FIX:
+            fix()
+
+        #gets the install funciton
+        elif sys.argv[1] in installRequirement:
+            terminalCommand("bash requirements.sh")
+        
+        #get the unisntall funciotn
+        elif sys.argv[1] in uninstallRequirement:
+            terminalCommand("bash uninstall.sh")
 
     #if the user does not input the correct argument it tells them what arguments to use for it to work 
     else:
