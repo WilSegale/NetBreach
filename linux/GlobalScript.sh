@@ -46,7 +46,25 @@ command_exists() {
 for package in "${required_packages[@]}"; do
     if ! command_exists "$package"; then
         echo ""
-        echo -e "[ ${RED}FAIL${NC} ]: The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
+        echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
+        sleep 1 
+
+        #asks the user if they want to install the packages that are mssing
+        echo "Would you like me to install it for you. YES/NO"
+
+        read -p ">>> " install
+        
+        if [[ " ${yes[*]} " == *" ${install} "* ]]; then
+            ps aux | grep sudo
+            echo "Input the PID for to kill the root session to install the packages."
+            read -p ">>> " session
+            kill -9 "${session}"
+            bash requirements.sh
+            exit 1
+        else
+            echo "Ok stopping program"
+            exit 1
+        fi
         exit 1
     fi
 done
@@ -104,7 +122,7 @@ else
                 echo "If you want to stop the program type 'stop'."
                 read -p ">>> " service
                 
-                if [[ $service == "ALL" || $service == "all" ]]; then
+                if [[ "${service}" == "ALL" || "${service}" == "all" || "${service}" == "*" ]]; then
                     # Tells the user that it can take up to an hour to complete the scanning process
                     echo -e "${RED}This can take up to 1 hour to complete.${NC}"
                     # Scan the entire network and display open ports

