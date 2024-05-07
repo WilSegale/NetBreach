@@ -71,7 +71,7 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
             done
         fi
 
-    elif [[ "${no[*]}" == *"$YES_NO"* ]]; then
+    elif [[ "${no[*]}" == *"${YES_NO}"* ]]; then
         echo -e "${RED}[-]${NC} Ok, I will not remove the packages."
         exit 1
     fi
