@@ -22,6 +22,7 @@ lineArt = subprocess.run
 #name of the os
 OS = "Darwin"
 
+name = "Mac"
 # Define color codes for console output
 BRIGHT = '\033[1m'
 GREEN = "\033[92m"
