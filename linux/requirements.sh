@@ -1,6 +1,23 @@
 #!/bin/bash
 source DontEdit.sh
 
+# Check if the OS is Linux
+if [[ "${OSTYPE}" != "${Linux}"* ]]; then
+    # Check if the user is root
+    if [[ "${EUID}" -ne 0 ]]; then
+        echo "Please run this script as root."
+        exit 1
+    else
+        echo "Running as root."
+        echo ""
+        echo "Installing packages..."
+        echo ""
+        # Install APT packages
+    fi
+else
+    echo "This script only works on Linux."
+    exit 1
+fi
 #checks if the user has pakcages installed or not
 checkForPackages() {
     if [ $? -ne 0 ]; then
