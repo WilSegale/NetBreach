@@ -165,16 +165,16 @@ else
             clear
 
             # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
-            Hercules(){
+            NetBreach(){
                 #loading bar tell the user that the program is trying to connect to the server
                 
-                figlet -f slant "Hercules"
+                figlet -f slant "${NameOfProgram}"
 
                 # Display a message explaining the options
                 options_text="Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'\nIf you want to stop the program, type 'stop'."
 
                 # Show an entry dialog to get user input for the ports from the network
-                service=$(zenity --entry --title "Hercules" --text "${options_text}" --entry-text "")
+                service=$(zenity --entry --title "${NameOfProgram}" --text "${options_text}" --entry-text "")
                 
                 if [[  " ${exit[*]} " == *" ${service} "* ]]; then
                     echo 
@@ -186,7 +186,7 @@ else
                 # Check the user's input and take appropriate action
                 if [[ "${service}" == "ALL" || "${service}" == "all" || "${service}" == "*" ]]; then
                     
-                    zenity --info --title "Hercules" --text "Scanning all ports. This may take up to 1 hour to complete." --timeout=5
+                    zenity --info --title "${NameOfProgram}" --text "Scanning all ports. This may take up to 1 hour to complete." --timeout=5
                     
                     sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
                     hydra -h
@@ -199,7 +199,7 @@ else
 
                     #stops the program if the user inputs "STOP" in the hydra array
                     if [[ " ${exit[*]} " == *" ${hydra} "* ]]; then
-                        zenity --info --title "Hercules" --text "Stopping program."
+                        zenity --info --title "${NameOfProgram}" --text "Stopping program."
                         exit 1
                     else
                         $GUI_HYDRA
@@ -208,17 +208,17 @@ else
                 
                 #stops the program
                 elif [[ " ${exit[*]} " == *" ${service} "* ]]; then
-                    zenity --info --title "Hercules" --text "Stopping program."
+                    zenity --info --title "${NameOfProgram}" --text "Stopping program."
                     exit 1
                 
                 # if the users puts nothing into the input feild it says ERROR
                 elif [[ "${service}" == "" ]]; then
                     zenity --error --title "ERROR" --text "plase input a number into the input field"
-                    Hercules
+                    NetBreach
                 
                 #scans a port that you choose
                 else
-                    zenity --info --title "Hercules" --text "Scanning port ${service}." --timeout=5
+                    zenity --info --title "${NameOfProgram}" --text "Scanning port ${service}." --timeout=5
                     sudo nmap -sS 192.168.1.1/24 -p "$service" --open
                 fi
             }
@@ -236,7 +236,7 @@ else
                     if [[ $user == "" && $host == "" || $host == "" ]]; then
                         # No service specified, re-prompt for input
                         zenity --info --title="SERVICE" --text="No service specified"
-                        Hercules
+                        NetBreach
                     
                     # If the user inputs something in the 'Input Username' function and the hostname function,
                     # It will continue as normal
@@ -270,7 +270,7 @@ else
                     if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                         # No service specified, re-prompt for input
                         zenity --info --title="SERVICE" --text="No service specified"
-                        Hercules
+                        NetBreach
                     else
                         # Cracks SSH Passwords
                         hydra -l "$user" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"$host"
@@ -297,7 +297,7 @@ else
                     if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                         # No service specified, re-prompt for input
                         zenity --info --title="SERVICE" --text="No service specified"
-                        Hercules
+                        NetBreach
                         # If the user inputs something in the 'Input Username' function and the hostname function,
                         # it will continue as normal
 
@@ -315,7 +315,7 @@ else
                 fi
             }
 
-            Hercules # Calls the Hercules function
+            NetBreach # Calls the NetBreach function
             
             RunHackingCommand # Calls the RunHackingCommand function
 

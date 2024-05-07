@@ -9,6 +9,10 @@ NC='\033[0m' # No Color
 username=$(whoami)
 hostname=$(hostname)
 
+#name of program
+NameOfProgram="NetBreach"
+
+
 # OS of the computer
 OS="darwin"
 
