@@ -1,4 +1,5 @@
 # Import necessary modules
+from pathlib import Path
 import datetime
 import os
 import platform
@@ -13,8 +14,7 @@ terminalCommand = os.system
 ROOT = 0
 
 # list of the files to remove
-RemoveFile = ("ERROR.log","ERROR.LOG")
-
+RemoveFile = ["ERROR.log","ERROR.LOG"]
 
 #the asscie art var
 lineArt = subprocess.run

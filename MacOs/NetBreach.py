@@ -79,12 +79,27 @@ def show_help():
 # fixes the program by finding the bug and fixing it
 def fix():
     try:
-        # Iterate over the list of files to remove and delete them one by one
-        for file_to_remove in RemoveFile:
-            subprocess.run(["rm", "-rf", file_to_remove], check=True)
-        print(f"Files removed {GREEN}successfully.{RESET}")
-        sys.exit(0)
-    
+        def check_files(file_paths):
+            non_existent_files = [file for file in file_paths if not Path(file).exists()]
+            return non_existent_files
+
+        # checks if the file is in the computer or not
+        file_paths = RemoveFile
+        non_existent_files = check_files(file_paths)
+
+        #if the file is no longer in the computer it says that the file no longer exists
+        if non_existent_files:
+            print("The following files no longer exist on your computer:")
+            for file in non_existent_files:
+                print(file)
+        # else if the file is still in the computer it says that the file still exists and removes it
+        else:
+            print("The following files still exist on your computer.")
+            for file in file_paths:
+                print(file)
+            print("I will remove them for you.")
+            os.remove(file)
+
     except subprocess.CalledProcessError as ERROR:
         print(f"Error: {ERROR}")
         sys.exit(1)

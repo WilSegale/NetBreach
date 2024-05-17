@@ -189,6 +189,7 @@ else
                     zenity --info --title "${NameOfProgram}" --text "Scanning all ports. This may take up to 1 hour to complete." --timeout=5
                     
                     sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
+                    open scan.txt
                     hydra -h
                     
                     # tell the user info about what to input Hydra first for the program to work correctly
