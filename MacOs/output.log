@@ -1,1 +1,0 @@
-# Hydra v9.5 run at 2024-05-07 18:26:45 on 127.0.0.1 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://127.0.0.1)

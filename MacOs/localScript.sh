@@ -108,7 +108,7 @@ else
                 nmap 127.0.0.1 --system-dns -Pn -oN localPorts.txt
                 echo "Would you like to see what is inside the scan file YES OR NO?"
                 read -p ">>> " service
-                if [[ $service == "YES" || $service == "yes" ]]; then
+                if [[ "${service}" == "YES" || "${service}" == "yes" ]]; then
                     open localPorts.txt
                 else
                     echo "Ok I will not open the local scan file"
@@ -142,7 +142,15 @@ else
 
             else
                 # Scan specific port
-                nmap 127.0.0.1 --system-dns -p $service
+                nmap 127.0.0.1 --system-dns -p $service -oN $service.log
+                read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
+
+                if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
+                    open "${service}.log"
+                else
+                    echo "[-] Ok I will not open the ${service}.log file"
+                    sleep 1
+                fi
             fi
         }
 

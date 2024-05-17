@@ -125,16 +125,19 @@ else
                 if [[ "${service}" == "ALL" || "${service}" == "all" || "${service}" == "*" ]]; then
                     # Tells the user that it can take up to an hour to complete the scanning process
                     echo -e "${RED}This can take up to 1 hour to complete.${NC}"
+
                     # Scan the entire network and display open ports
                     sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
+
                     # asks if the user want to see scan on a open file or not
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
                         echo "Opeing the scan file"
                         sleep 1
                         open scan.txt
+
                     else
-                        echo -e "[${RED}-${NC}] Ok I will not open the scan.txt file"
+                        echo -e "[ ${RED}FAIL${NC} ] Ok I will not open the scan.txt file"
                         sleep 1
                     fi
                     
@@ -171,13 +174,13 @@ else
 
                 else
                     # Scan specific port
-                    sudo nmap -sS 192.168.1.1/24 -p $service -oN $service --open
+                    sudo nmap -sS 192.168.1.1/24 -p $service -oN $service.log --open
                     read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
 
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                        open $service
+                        open "${service}.log"
                     else
-                        echo "[-] Ok I will not open the $service file"
+                        echo "[-] Ok I will not open the ${service}.log file"
                         sleep 1
                     fi
                 fi
