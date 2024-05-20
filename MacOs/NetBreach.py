@@ -89,9 +89,7 @@ def fix():
 
         #if the file is no longer in the computer it says that the file no longer exists
         if non_existent_files:
-            print("The following files no longer exist on your computer:")
-            for file in non_existent_files:
-                print(file)
+            print("The Fix command has run and found no errors")
         # else if the file is still in the computer it says that the file still exists and removes it
         else:
             print("The following files still exist on your computer.")
