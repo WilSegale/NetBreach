@@ -315,7 +315,7 @@ def show_GuiLOCAL():
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
 
 
-def show_manual():
+def show_manual_Global():
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
 
@@ -390,8 +390,8 @@ try:
         elif sys.argv[1] in FIX:
             fix()
         
-        elif sys.argv[1] in Manual:
-            show_manual()
+        elif sys.argv[1] in GlobalManual:
+            show_manual_Global()
 
         #gets the install funciton
         elif sys.argv[1] in installRequirement:
