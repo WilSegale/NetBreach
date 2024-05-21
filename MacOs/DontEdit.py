@@ -43,6 +43,8 @@ GuiLocal = ["--GUI-LOCAL", "--Gui-local", "--gui-local"]
 installRequirement = ["--INSTALL", "--install"]
 uninstallRequirement = ["--UNINSTALL", "--uninstall"]
 FIX = ["--FIX", "--fix"]
+GlobalManualArgument = ["--MANUAL-GLOBAL", "--Manual-Global", "--manual-global"]
+LocalManualArgument = ["--MANUAL-LOCAL", "--Manual-Local", "--manual-local"]
 
 # Define list of scripts to run
 GuiScript = ["bash", "GuiScript.sh"]
@@ -50,3 +52,4 @@ GlobalScript = ["bash", "GlobalScript.sh"]  # runs the script in global mode
 LocalScript = ["bash", "localScript.sh"]  # runs the script in global mode
 GuiLocalScript = ["bash", "GuiLocal.sh"]  # the script to run after loading
 GlobalManual = ["bash", "ManualGlobalScript.sh"]
+LocalManual = ["bash", "ManualLocalScript.sh"]

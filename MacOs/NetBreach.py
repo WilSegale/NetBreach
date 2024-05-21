@@ -38,7 +38,9 @@ def show_help():
     HowToUseInfo08 = f"\nIf you want to use the program with GUI in Local mode you can type {GREEN}'python3 {SoftwareName} {GuiLocal}'{RESET}"
     HowToUseInfo09 = f"\nIf you want to have the program install required packages by it's self type {GREEN}'python3 {SoftwareName} {installRequirement}'{RESET}"
     HowToUseInfo10 = f"\nIf you want to have the program uninstall required packages by it's self type {GREEN}'python3 {SoftwareName} {uninstallRequirement}'{RESET}"
-    HowToUseInfo11 = f"\nIf you get a error message you can type {GREEN}'python3 {SoftwareName} {FIX}'{RESET}"
+    HowToUseInfo11 = f"\nIf you want to have the program allow you to input the ip address or website manuallyfor global networks type {GREEN}'python3 {SoftwareName} {GlobalManualArgument}'{RESET}"
+    HowToUseInfo12 = f"\nIf you want to have the program allow you to input the ip address or website manually for local networks type {GREEN}'python3 {SoftwareName} {LocalManualArgument}'{RESET}"
+    HowToUseInfo13 = f"\nIf you get a error message you can type {GREEN}'python3 {SoftwareName} {FIX}'{RESET}"
     
     ProgramsUSED = (ProgramsUsed+
                     ProgramsUsedInfo01+
@@ -57,7 +59,9 @@ def show_help():
             HowToUseInfo08 +
             HowToUseInfo09 +
             HowToUseInfo10 +
-            HowToUseInfo11) 
+            HowToUseInfo11 +
+            HowToUseInfo12 +
+            HowToUseInfo13) 
 
     lineArt(["figlet", f"{name}"])
     lineArt(["figlet", "? HELP ?"])
@@ -314,7 +318,7 @@ def show_GuiLOCAL():
         print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
 
-
+#go to the manual for the Global mode
 def show_manual_Global():
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
@@ -355,12 +359,61 @@ def show_manual_Global():
                 
                 time.sleep(delay)  # Pause to control the update rate
         print_loading_bar(50)
-        subprocess.run(GuiLocalScript)  # the script to run after loading
+        subprocess.run(GlobalManual)  # the script to run after loading
     else:
         # makes a pop up dialog to tell the user that the OS is not correct
         # makes a pop up dialog to tell the user that the OS is not correct
         print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
+
+#go to the manual for the Local mode
+def show_manual_Local():
+    # gets the current time and formats it HH:MM:SS
+    current_time = datetime.datetime.now().time()
+
+    # get the current time and formats it in the 12 hour format
+    formatted_time = current_time.strftime("%I:%M:%S %p")
+
+    # Get the current date
+    current_date = datetime.datetime.now().strftime("%m/%d/%Y")
+
+    def connect(url="https://google.com"):
+        try:
+            urllib.request.urlopen(url)  # Try to open a connection to the host
+            return True  # If successful, return True
+        except:
+            return False  # If unsuccessful, return False
+
+    # Makes sure that the user is connected to the internet    
+    if platform.system() == OS:
+        #makes the loading bar visible
+        def print_loading_bar(iterations, delay=0.1, width=40):
+            """
+            Prints a loading bar with green dots to visualize progress.
+            
+            Args:
+                iterations (int): Total number of iterations.
+                delay (float, optional): Delay between updates in seconds. Default is 0.1 seconds.
+                width (int, optional): Width of the loading bar. Default is 40 characters.
+            """
+            for loadingBar in range(iterations + 1):
+                progress = loadingBar / iterations  # Calculate the progress ratio
+                bar_length = int(progress * width)  # Calculate the number of dots for the current progress
+                bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                percentage = int(progress * 100)  # Calculate the percentage of completion
+                
+                # Print the loading bar and percentage, replacing the line each iteration
+                print(f'\rLoading {ProgramName} Locally [{bar}] {percentage} % ', end='', flush=False)
+                
+                time.sleep(delay)  # Pause to control the update rate
+        print_loading_bar(50)
+        subprocess.run(LocalManual)  # the script to run after loading
+    else:
+        # makes a pop up dialog to tell the user that the OS is not correct
+        # makes a pop up dialog to tell the user that the OS is not correct
+        print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
+        print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
+  
 
 #holds the if statements that connect to the functions for the program to work properly
 try:
@@ -394,6 +447,9 @@ try:
         elif sys.argv[1] in GlobalManual:
             show_manual_Global()
 
+        elif sys.argv[1] in LocalManual:
+            show_manual_Local()
+
         #gets the install funciton
         elif sys.argv[1] in installRequirement:
             terminalCommand("bash requirements.sh")
@@ -411,6 +467,8 @@ try:
 {GUI} put's it in GUI mode to attacking in GUI GLOBAL networks, 
 {LOCAL} put's it in local mode for attacking local networks,
 {GuiLocal} put's it in GUI LOCAL mode to attacking in GUI LOCAL networks,
+{GlobalManual} put's it in global manual mode that shows you how to use the program,
+{LocalManual} put's it in local manual mode that shows you how to use the program,
 {installRequirement} put's it in install mode that install's the required packages,
 {uninstallRequirement} put's it in uninstall mode that uninstall's the packages,
 {FIX} put's it in fix mode that fixes the program,
