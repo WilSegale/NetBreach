@@ -1,14 +1,12 @@
 # Import necessary modules
+from pathlib import Path
 import datetime
-import platform
-import time
 import os
-import urllib.request
-import logging
-import sys
-import requests
-import random
+import platform
 import subprocess
+import sys
+import time
+import urllib.request
 
 terminalCommand = os.system
 
@@ -16,14 +14,15 @@ terminalCommand = os.system
 ROOT = 0
 
 # list of the files to remove
-RemoveFile = ("ERROR.log","ERROR.LOG")
-
+RemoveFile = ["ERROR.log","ERROR.LOG"]
 
 #the asscie art var
 lineArt = subprocess.run
 
 #name of the os
 OS = "Linux"
+
+name = "Linux"
 
 # Define color codes for console output
 BRIGHT = '\033[1m'
@@ -42,6 +41,8 @@ GUI = ["--GUI", "--Gui", "--gui"]
 GLOBAL = ["--GLOBAL", "--Global", "--global"]
 LOCAL = ["--LOCAL", "--Local", "--local"]
 GuiLocal = ["--GUI-LOCAL", "--Gui-local", "--gui-local"]
+GlobalManualArgument = ["--MANUAL-GLOBAL", "--Manual-Global", "--manual-global"]
+LocalManualArgument = ["--MANUAL-LOCAL", "--Manual-Local", "--manual-local"]
 installRequirement = ["--INSTALL", "--install"]
 uninstallRequirement = ["--UNINSTALL", "--uninstall"]
 FIX = ["--FIX", "--fix"]
@@ -51,3 +52,5 @@ GuiScript = ["bash", "GuiScript.sh"]
 GlobalScript = ["bash", "GlobalScript.sh"]  # runs the script in global mode
 LocalScript = ["bash", "localScript.sh"]  # runs the script in global mode
 GuiLocalScript = ["bash", "GuiLocal.sh"]  # the script to run after loading
+GlobalManual = ["bash", "ManualGlobalScript.sh"]
+LocalManual = ["bash", "ManualLocalScript.sh"]

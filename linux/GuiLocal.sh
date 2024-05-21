@@ -89,7 +89,7 @@ else
         NetBreach() {
             figlet -f slant "${NameOfProgram}"
             options_text="Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'.\nIf you want to stop the program, type 'stop'."
-            service=$(zenity --entry --title "${NameOfProgram}" --text "$options_text" --entry-text "")
+            service=$(zenity --entry --title "${NameOfProgram}" --text "${options_text}" --entry-text "")
             
             if [[  " ${exit[*]} " == *" ${service} "* ]]; then
                 echo 
@@ -114,15 +114,27 @@ else
                     $GUI_HYDRA
                     exit 1
                 fi
+            #stops the script
             elif [[ " ${exit[*]} " == *" ${service} "* ]]; then
                 zenity --info --title "${NameOfProgram}" --text "Stopping program."
                 exit 1
+            # tell the user that they put nothing in the input field
             elif [[ "${service}" == "" ]]; then
                 zenity --error --title "ERROR" --text "Please input a number into the input field."
                 NetBreach
+            #scans the port that they chose and opens the file if they want too
             else
                 zenity --info --title "${NameOfProgram}" --text "Scanning port ${service}." --timeout=5
-                nmap 127.0.0.1 -p "${service}" --open
+                nmap 127.0.0.1 -p "${service}" -oN "${service}.log" --open
+                OpenFileOrNo="Would you like to open the file ${service}.log YES/NO: "
+                GUI_nmap=$(zenity --entry --title "port" --text "${OpenFileOrNo}" --entry-text "")
+                
+                if [[ " ${yes[*]} " == *" ${GUI_nmap} "* ]]; then
+                    open "${service}.log"
+                else
+                    echo "[-] Ok I will not open the ${service}.log file"
+                    sleep 1
+                fi
             fi
         }
 

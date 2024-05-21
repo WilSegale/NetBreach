@@ -100,6 +100,7 @@ else
             # The logo of the program
             figlet -f slant "NetBreach"
             echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
+            echo "If you want to scan a website type Manual and then type the website name or ip address of the website"
             echo "If you want to stop the program type 'stop'."
             read -p ">>> " service
 
@@ -125,6 +126,25 @@ else
                     $Hydra
                     exit 1
                 fi
+
+            elif [[ " ${Manual} " == *" ${service} "* ]]; then
+                echo "What website would you like to scan?"
+
+                #input for the website name
+                read -p ">>> " Manual_scan
+                
+                #scan a website name
+                sudo nmap -sS "${Manual_scan}" -oN WebsiteScan.log --open
+                read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
+
+                if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
+                    open "WebsiteScan.log"
+                else
+                    echo "[-] Ok I will not open the WebsiteScan.log file"
+                    sleep 1
+                fi
+                
+                
             # If the user asks what the program does, it goes to a function that helps them and explains what the program does
             elif [[ " ${exit[*]} " == *" ${service} "* ]]; then
                 echo "Stopping program..."

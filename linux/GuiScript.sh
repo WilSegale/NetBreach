@@ -189,13 +189,14 @@ else
                     zenity --info --title "${NameOfProgram}" --text "Scanning all ports. This may take up to 1 hour to complete." --timeout=5
                     
                     sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
+                    open scan.txt
                     hydra -h
                     
                     # tell the user info about what to input Hydra first for the program to work correctly
                     zenity --info --title "INFO" --text "Put in Hydra first to start the script." --timeout=5
                     
                     hydraInputFeild="Put in Hydra first to start the script." 
-                    GUI_HYDRA=$(zenity --entry --title "hydra" --text "$hydraInputFeild" --entry-text "")
+                    GUI_HYDRA=$(zenity --entry --title "hydra" --text "${hydraInputFeild}" --entry-text "")
 
                     #stops the program if the user inputs "STOP" in the hydra array
                     if [[ " ${exit[*]} " == *" ${hydra} "* ]]; then
@@ -219,7 +220,18 @@ else
                 #scans a port that you choose
                 else
                     zenity --info --title "${NameOfProgram}" --text "Scanning port ${service}." --timeout=5
-                    sudo nmap -sS 192.168.1.1/24 -p "$service" --open
+                    
+                    sudo nmap -sS 192.168.1.1/24 -p "${service}" -oN "${service}.log" --open
+                    
+                    OpenFileOrNo="Would you like to open the file ${service}.log YES/NO: "
+                    
+                    GUI_nmap=$(zenity --entry --title "port" --text "${OpenFileOrNo}" --entry-text "")
+                    if [[ " ${yes[*]} " == *" ${GUI_nmap} "* ]]; then
+                        open "${service}.log"
+                    else
+                        echo "[-] Ok I will not open the ${service}.log file"
+                        sleep 1
+                    fi
                 fi
             }
 

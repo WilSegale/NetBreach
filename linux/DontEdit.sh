@@ -9,8 +9,11 @@ NC='\033[0m' # No Color
 username=$(whoami)
 hostname=$(hostname)
 
+#name of program
+NameOfProgram="NetBreach"
+
 # OS of the computer
-OS="linux"
+OS="darwin"
 
 # For the wget functionality to work
 SITE_URL="https://google.com"
@@ -27,6 +30,9 @@ alphabet=("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r
 yes=("YES" "Y" "yes" "y")
 no=("NO" "N" "no" "n")
 
+#the Manual array so the user can see the manual function
+Manual=("Manual" "manual" "MANUAL")
+
 # The array that contains the exit input
 exit=("exit" "quit" "EXIT" "QUIT" "STOP" "stop")
 
@@ -39,21 +45,17 @@ CURRENT_DATE=$(date +"%m/%d/%Y")
 # List of required packages/commands (separated by spaces)
 required_packages=("wget" "hydra" "nmap" "ssh" "mysql" "figlet" "zenity")
 
-# Packages to install
+# Packages to check for installation
 Packages=(
-    "zabbix-server-mysql"
-    "pip"
-    "mysql-server"
-    "curl"
     "wget"
     "hydra"
     "nmap"
     "mysql"
     "figlet"
     "zenity"
-    "tigervnc-viewer"
 )
 
+# PIP packages that will be uninstalled if they are installed
 pipPackages=(
     "asyncio"
     "pyfiglet"
