@@ -13,7 +13,7 @@ hostname=$(hostname)
 NameOfProgram="NetBreach"
 
 # OS of the computer
-OS="darwin"
+OS="linux"
 
 # For the wget functionality to work
 SITE_URL="https://google.com"
