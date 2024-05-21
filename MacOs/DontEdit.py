@@ -40,11 +40,11 @@ GUI = ["--GUI", "--Gui", "--gui"]
 GLOBAL = ["--GLOBAL", "--Global", "--global"]
 LOCAL = ["--LOCAL", "--Local", "--local"]
 GuiLocal = ["--GUI-LOCAL", "--Gui-local", "--gui-local"]
+GlobalManualArgument = ["--MANUAL-GLOBAL", "--Manual-Global", "--manual-global"]
+LocalManualArgument = ["--MANUAL-LOCAL", "--Manual-Local", "--manual-local"]
 installRequirement = ["--INSTALL", "--install"]
 uninstallRequirement = ["--UNINSTALL", "--uninstall"]
 FIX = ["--FIX", "--fix"]
-GlobalManualArgument = ["--MANUAL-GLOBAL", "--Manual-Global", "--manual-global"]
-LocalManualArgument = ["--MANUAL-LOCAL", "--Manual-Local", "--manual-local"]
 
 # Define list of scripts to run
 GuiScript = ["bash", "GuiScript.sh"]

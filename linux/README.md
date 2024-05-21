@@ -1,5 +1,5 @@
 # !Do not use this software in Schools or Business!
-# Linux verison
+
 <img src="Linux Logo.JPG" alt="Linux Verison of the program" width="200" height="200">
 
 ## Bugs and Issues
@@ -22,7 +22,9 @@ python3 NetBreach.py --uninstall
 python3 NetBreach.py --local,
 sudo python3 NetBreach.py --global,
 sudo python3 NetBreach.py --gui,
-sudo python3 NetBreach.py --Gui-Local
+sudo python3 NetBreach.py --Gui-Local,
+sudo python3 NetBreach.py --MANUAL-GLOBAL,
+python3 NetBreach.py --MANUAL-LOCAL
 ```
 
 ## If you are wondering how to use this script just type
@@ -39,14 +41,14 @@ python3 NetBreach.py --help or python3 NetBreach.py -h
 
 # Troubleshooting SSH: Remote Host Identification Changed
 
-If you encounter the following error message when connecting to an SSH server:
+# If you encounter the following error message when connecting to an SSH server:
 
 ```plaintext
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ```
-# Or you can go to this file and delate all the hashes that are connected to previously used ssh hosts
+# You can go to this file and delete all the hashes that are connected to previously used ssh hosts
 ```ssh hash config```
 ```plaintext
 cd ~/.ssh
