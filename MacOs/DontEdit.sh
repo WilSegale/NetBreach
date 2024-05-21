@@ -12,7 +12,6 @@ hostname=$(hostname)
 #name of program
 NameOfProgram="NetBreach"
 
-
 # OS of the computer
 OS="darwin"
 
@@ -30,6 +29,9 @@ alphabet=("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r
 # The yes array that contains the yes input
 yes=("YES" "Y" "yes" "y")
 no=("NO" "N" "no" "n")
+
+#the Manual array so the user can see the manual function
+Manual=("Manual" "manual" "MANUAL")
 
 # The array that contains the exit input
 exit=("exit" "quit" "EXIT" "QUIT" "STOP" "stop")
