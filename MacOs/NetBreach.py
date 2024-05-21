@@ -390,6 +390,7 @@ try:
         elif sys.argv[1] in FIX:
             fix()
         
+        #gets the global manual funciton
         elif sys.argv[1] in GlobalManual:
             show_manual_Global()
 
