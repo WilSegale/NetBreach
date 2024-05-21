@@ -444,10 +444,10 @@ try:
             fix()
         
         #gets the global manual funciton
-        elif sys.argv[1] in GlobalManual:
+        elif sys.argv[1] in GlobalManualArgument:
             show_manual_Global()
 
-        elif sys.argv[1] in LocalManual:
+        elif sys.argv[1] in LocalManualArgument:
             show_manual_Local()
 
         #gets the install funciton
@@ -467,8 +467,8 @@ try:
 {GUI} put's it in GUI mode to attacking in GUI GLOBAL networks, 
 {LOCAL} put's it in local mode for attacking local networks,
 {GuiLocal} put's it in GUI LOCAL mode to attacking in GUI LOCAL networks,
-{GlobalManual} put's it in global manual mode that shows you how to use the program,
-{LocalManual} put's it in local manual mode that shows you how to use the program,
+{GlobalManualArgument} put's it in global manual mode that shows you how to use the program,
+{LocalManualArgument} put's it in local manual mode that shows you how to use the program,
 {installRequirement} put's it in install mode that install's the required packages,
 {uninstallRequirement} put's it in uninstall mode that uninstall's the packages,
 {FIX} put's it in fix mode that fixes the program,
