@@ -51,6 +51,7 @@ except KeyboardInterrupt:
     print("\nSetup.py interrupted")
     logger.error("Setup.py interrupted")
     sys.exit(1)
+    
 if __name__ == "__main__":
 
     # Detect platform
