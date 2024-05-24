@@ -5,6 +5,9 @@
 ## Bugs and Issues
 ### If you find any bugs or issues click on [Email me](mailto:wsegalework@gmail.com) to contact me about the issues.
 
+# Home Page
+- [Home README.md](../)
+
 ## Type first
 ```bash
 bash requirements.sh or 
