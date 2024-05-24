@@ -3,6 +3,10 @@
 # MAC verison
 <img src="Apple Logo.JPG" alt="Apple Verison of the program" width="200" height="200">
 
+
+# Home Page
+- [Home README.md](../)
+
 ## Bugs and Issues
 ### If you find any bugs or issues click on [Email me](mailto:wsegalework@gmail.com) to contact me about the issues.
 
