@@ -43,11 +43,10 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
 # List of required packages/commands (separated by spaces)
-required_packages=("freerdp2-x11" "wget" "hydra" "nmap" "ssh" "mysql" "figlet" "zenity")
+required_packages=("wget" "hydra" "nmap" "ssh" "mysql" "figlet" "zenity")
 
 # Packages to check for installation
 Packages=(
-    "freerdp2-x11"
     "wget"
     "hydra"
     "nmap"
