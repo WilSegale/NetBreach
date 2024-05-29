@@ -296,8 +296,6 @@ else
 
             RunHackingCommand # Calls the RunHackingCommand function
 
-            RunHackingCommandWithVNC # Calls the RunHackingCommandWithVNC function
-
             RunHackingCommandWithSSH # Calls the RunHackingCommandWithSSH function
 
             RunHackingCommandWithMySQL # Calls the RunHackingCommandWithMySQL function
