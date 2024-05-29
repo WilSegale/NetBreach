@@ -241,17 +241,17 @@ else
                     fi
                 fi
             
-#get to the xfreerdp connection
-ConnectXfreerdp(){
-    read -p "Input username: " username
-    read -p "Input ip: " ip
-    read -p -s "Input password: " password
-    # Put the
-    echo
-    echo "Loading xfreerdp server..."
-    xfreerdp /u:"${username}" /v:"${ip}" /p:"${password}"
-    exit
-}
+            #get to the xfreerdp connection
+            ConnectXfreerdp(){
+                read -p "Input username: " username
+                read -p "Input ip: " ip
+                read -p -s "Input password: " password
+                # Put the
+                echo
+                echo "Loading xfreerdp server..."
+                xfreerdp /u:"${username}" /v:"${ip}" /p:"${password}"
+                exit
+            }
 
             RunHackingCommandWithSSH() {
                 if [[ $service == 22 || $service == "ssh" ]]; then
@@ -312,7 +312,9 @@ ConnectXfreerdp(){
             RunHackingCommand # Calls the RunHackingCommand function
 
             RunHackingCommandWithVNC # Calls the RunHackingCommandWithVNC function
-
+            
+            ConnectXfreerdp # call the xfreerdp command
+            
             RunHackingCommandWithSSH # Calls the RunHackingCommandWithSSH function
 
             RunHackingCommandWithMySQL # Calls the RunHackingCommandWithMySQL function
