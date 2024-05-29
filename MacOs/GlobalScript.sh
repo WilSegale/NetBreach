@@ -43,20 +43,24 @@ command_exists() {
 }
 #get to the xfreerdp connection
 ConnectXfreerdp(){
+    figlet -f slant "xfreerdp"
+    echo
     read -p "Input username: " username
     read -p "Input ip: " ip
     read -s -p "Input password: " password
     # Put the
     echo
     echo "Loading xfreerdp server..."
+    sleep 1
     xfreerdp /u:"${username}" /v:"${ip}" /p:"${password}"
     exit
 }
 # Check if the script is run with --xfreerdp
 if [[ $1 == "--xfreerdp" ]]; then
     ConnectXfreerdp
-
 fi
+
+
 # Check for required packages
 for package in "${required_packages[@]}"; do
     if ! command_exists "$package"; then
@@ -303,7 +307,8 @@ else
             }
             NetBreach
 
-            ConnectXfreerdp
+            ConnectXfreerdp # Calls the ConnectXfreerdp function
+            
             RunHackingCommand # Calls the RunHackingCommand function
 
             RunHackingCommandWithVNC # Calls the RunHackingCommandWithVNC function
