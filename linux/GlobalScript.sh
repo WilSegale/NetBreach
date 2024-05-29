@@ -45,10 +45,7 @@ command_exists() {
 
 # if the user uses the skip function it skips the install proccess of the packages
 if [ "$1" = "--skip" ]; then
-    NetBreach
-    if [ "$2" = "--vnc" ]; then
-        RunHackingCommandWithVNC
-    fi
+    RunHackingCommandWithVNC
 # else if the user doent use the skip function it installes the packages
 else
     # Check for required packages
