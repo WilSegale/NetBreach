@@ -38,10 +38,10 @@ def show_help():
     HowToUseInfo08 = f"\nIf you want to use the program with GUI in Local mode you can type {GREEN}'python3 {SoftwareName} {GuiLocal}'{RESET}"
     HowToUseInfo09 = f"\nIf you want to have the program install required packages by it's self type {GREEN}'python3 {SoftwareName} {installRequirement}'{RESET}"
     HowToUseInfo10 = f"\nIf you want to have the program uninstall required packages by it's self type {GREEN}'python3 {SoftwareName} {uninstallRequirement}'{RESET}"
-    HowToUseInfo11 = f"\nIf you want to have the program allow you to input the ip address or website manuallyfor global networks type {GREEN}'python3 {SoftwareName} {GlobalManualArgument}'{RESET}"
+    HowToUseInfo11 = f"\nIf you want to have the program allow you to input the ip address or website manually for global networks type {GREEN}'python3 {SoftwareName} {GlobalManualArgument}'{RESET}"
     HowToUseInfo12 = f"\nIf you want to have the program allow you to input the ip address or website manually for local networks type {GREEN}'python3 {SoftwareName} {LocalManualArgument}'{RESET}"
     HowToUseInfo13 = f"\nIf you get a error message you can type {GREEN}'python3 {SoftwareName} {FIX}'{RESET}"
-    
+    HowToUseInfo14 = f"\nIf you want to remote conenct to a computer type {GREEN}'python3 {SoftwareName} {conenctRDP}'{RESET}"
     ProgramsUSED = (ProgramsUsed+
                     ProgramsUsedInfo01+
                     ProgramsUsedInfo02+
@@ -61,7 +61,8 @@ def show_help():
             HowToUseInfo10 +
             HowToUseInfo11 +
             HowToUseInfo12 +
-            HowToUseInfo13) 
+            HowToUseInfo13 +
+            HowToUseInfo14) 
 
     lineArt(["figlet", f"{name}"])
     lineArt(["figlet", "? HELP ?"])
@@ -414,48 +415,96 @@ def show_manual_Local():
         print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
   
+def RDPCONENCT():
+    # gets the current time and formats it HH:MM:SS
+    current_time = datetime.datetime.now().time()
 
+    # get the current time and formats it in the 12 hour format
+    formatted_time = current_time.strftime("%I:%M:%S %p")
+
+    # Get the current date
+    current_date = datetime.datetime.now().strftime("%m/%d/%Y")
+
+    def connect(url="https://google.com"):
+        try:
+            urllib.request.urlopen(url)  # Try to open a connection to the host
+            return True  # If successful, return True
+        except:
+            return False  # If unsuccessful, return False
+
+    # Makes sure that the user is connected to the internet    
+    if platform.system() == OS:
+        #makes the loading bar visible
+        def print_loading_bar(iterations, delay=0.1, width=40):
+            """
+            Prints a loading bar with green dots to visualize progress.
+            
+            Args:
+                iterations (int): Total number of iterations.
+                delay (float, optional): Delay between updates in seconds. Default is 0.1 seconds.
+                width (int, optional): Width of the loading bar. Default is 40 characters.
+            """
+            for loadingBar in range(iterations + 1):
+                progress = loadingBar / iterations  # Calculate the progress ratio
+                bar_length = int(progress * width)  # Calculate the number of dots for the current progress
+                bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                percentage = int(progress * 100)  # Calculate the percentage of completion
+                
+                # Print the loading bar and percentage, replacing the line each iteration
+                print(f'\rLoading {ProgramName} in RDP mode [{bar}] {percentage} % ', end='', flush=False)
+                
+                time.sleep(delay)  # Pause to control the update rate
+        print_loading_bar(50)
+        subprocess.run(RDPconnect)  # the script to run after loading
+    else:
+        # makes a pop up dialog to tell the user that the OS is not correct
+        # makes a pop up dialog to tell the user that the OS is not correct
+        print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
+        print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
+  
 #holds the if statements that connect to the functions for the program to work properly
 try:
     # Handle command-line arguments
     if len(sys.argv) == 2:
         # gets the help function
-        if sys.argv[1] in HELP:
+        if argument in HELP:
             show_help()
 
         #gets the gui funciton
-        elif sys.argv[1] in GUI:
+        elif argument in GUI:
             Show_GUI()
 
         #gets the global function
-        elif sys.argv[1] in GLOBAL:
+        elif argument in GLOBAL:
             show_GLOBAL()
         
         #gets the local function
-        elif sys.argv[1] in LOCAL:
+        elif argument in LOCAL:
             show_LOCAL()
 
         #gets the gui local funciton
-        elif sys.argv[1] in GuiLocal:
+        elif argument in GuiLocal:
             show_GuiLOCAL()
 
         #gets the fix funciton
-        elif sys.argv[1] in FIX:
+        elif argument in FIX:
             fix()
         
         #gets the global manual funciton
-        elif sys.argv[1] in GlobalManualArgument:
+        elif argument in GlobalManualArgument:
             show_manual_Global()
 
-        elif sys.argv[1] in LocalManualArgument:
+        elif argument in LocalManualArgument:
             show_manual_Local()
-
+        
+        elif argument in conenctRDP:
+            RDPCONENCT()
         #gets the install funciton
-        elif sys.argv[1] in installRequirement:
+        elif argument in installRequirement:
             terminalCommand("bash requirements.sh")
         
         #get the unisntall funciotn
-        elif sys.argv[1] in uninstallRequirement:
+        elif argument in uninstallRequirement:
             terminalCommand("bash uninstall.sh")
 
     #if the user does not input the correct argument it tells them what arguments to use for it to work 
@@ -471,6 +520,7 @@ try:
 {LocalManualArgument} put's it in local manual mode that shows you how to use the program,
 {installRequirement} put's it in install mode that install's the required packages,
 {uninstallRequirement} put's it in uninstall mode that uninstall's the packages,
+{conenctRDP} put's the program into RDP connection mode,
 {FIX} put's it in fix mode that fixes the program,
 {HELP} put's it in help mode so you understand what you are going to do with this program.''')
 

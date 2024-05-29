@@ -8,6 +8,8 @@ import sys
 import time
 import urllib.request
 
+argument = sys.argv[1]
+
 terminalCommand = os.system
 
 # easy way to read the root user function
@@ -44,6 +46,7 @@ GlobalManualArgument = ["--MANUAL-GLOBAL", "--Manual-Global", "--manual-global"]
 LocalManualArgument = ["--MANUAL-LOCAL", "--Manual-Local", "--manual-local"]
 installRequirement = ["--INSTALL", "--install"]
 uninstallRequirement = ["--UNINSTALL", "--uninstall"]
+conenctRDP = ["--xfreerdp"]
 FIX = ["--FIX", "--fix"]
 
 # Define list of scripts to run
@@ -53,3 +56,4 @@ LocalScript = ["bash", "localScript.sh"]  # runs the script in global mode
 GuiLocalScript = ["bash", "GuiLocal.sh"]  # the script to run after loading
 GlobalManual = ["bash", "ManualGlobalScript.sh"]
 LocalManual = ["bash", "ManualLocalScript.sh"]
+RDPconnect = ["bash", "GlobalScript.sh", "--xfreerdp"]

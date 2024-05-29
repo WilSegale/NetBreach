@@ -44,9 +44,10 @@ command_exists() {
 #get to the xfreerdp connection
 ConnectXfreerdp(){
     figlet -f slant "xfreerdp"
+    sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
     echo
     read -p "Input username: " username
-    read -p "Input ip: " ip
+    read -p "Input IP: " ip
     read -s -p "Input password: " password
     # Put the
     echo

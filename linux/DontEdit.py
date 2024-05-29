@@ -8,6 +8,10 @@ import sys
 import time
 import urllib.request
 
+# gets the CLI arguments like --global etc
+argument = sys.argv[1]
+
+
 terminalCommand = os.system
 
 # easy way to read the root user function
