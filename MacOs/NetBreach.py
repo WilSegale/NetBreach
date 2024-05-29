@@ -38,7 +38,7 @@ def show_help():
     HowToUseInfo08 = f"\nIf you want to use the program with GUI in Local mode you can type {GREEN}'python3 {SoftwareName} {GuiLocal}'{RESET}"
     HowToUseInfo09 = f"\nIf you want to have the program install required packages by it's self type {GREEN}'python3 {SoftwareName} {installRequirement}'{RESET}"
     HowToUseInfo10 = f"\nIf you want to have the program uninstall required packages by it's self type {GREEN}'python3 {SoftwareName} {uninstallRequirement}'{RESET}"
-    HowToUseInfo11 = f"\nIf you want to have the program allow you to input the ip address or website manuallyfor global networks type {GREEN}'python3 {SoftwareName} {GlobalManualArgument}'{RESET}"
+    HowToUseInfo11 = f"\nIf you want to have the program allow you to input the ip address or website manually for global networks type {GREEN}'python3 {SoftwareName} {GlobalManualArgument}'{RESET}"
     HowToUseInfo12 = f"\nIf you want to have the program allow you to input the ip address or website manually for local networks type {GREEN}'python3 {SoftwareName} {LocalManualArgument}'{RESET}"
     HowToUseInfo13 = f"\nIf you get a error message you can type {GREEN}'python3 {SoftwareName} {FIX}'{RESET}"
     
