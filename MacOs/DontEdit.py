@@ -11,7 +11,7 @@ import urllib.request
 terminalCommand = os.system
 
 # easy way to read the root user function
-ROOT = 0
+ROOT = True
 
 # list of the files to remove
 RemoveFile = ["ERROR.log","ERROR.LOG"]
