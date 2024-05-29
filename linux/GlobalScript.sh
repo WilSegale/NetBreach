@@ -58,7 +58,10 @@ ConnectXfreerdp(){
 # Check if the script is run with --xfreerdp
 if [[ $1 == "--xfreerdp" ]]; then
     ConnectXfreerdp
-elif [[ $1 == "--skip" ]]; then
+
+fi
+
+if [[ $1 == "--skip" ]]; then
     NetBreach
 fi
 # Check for required packages
