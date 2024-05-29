@@ -44,9 +44,11 @@ command_exists() {
 
 
 # if the user uses the skip function it skips the install proccess of the packages
-if [ "$1" = "--skip" && "$1" = "--test" ]; then
+if [[ "$1" = "--skip" && "$2" = "--xfreerdp" ]]; then
     echo "Skipping package installation."
-    sleep 1
+    echo "And going to xfreerdp funciton"
+    ConnectXfreerdp
+    
 # else if the user doent use the skip function it installes the packages
 else
     # Check for required packages
@@ -228,13 +230,19 @@ else
                         echo
                         echo "${title}"
                         echo "${Connected_To_VNC_SERVER}"
-                        read -p "Input username: " username
-                        read -p -s "Input password: " password
-                        # Put the
-                        echo
-                        echo "Loading xfreerdp server..."
-                        xfreerdp /u:"${username}" /v:"${host}" /p:"${password}"
-                        exit
+
+                        #get to the xfreerdp connection
+                        ConnectXfreerdp(){
+                            read -p "Input username: " username
+                            read -p "Input ip: " ip
+                            read -p -s "Input password: " password
+                            # Put the
+                            echo
+                            echo "Loading xfreerdp server..."
+                            xfreerdp /u:"${username}" /v:"${ip}" /p:"${password}"
+                            exit
+                        }
+
                     fi
                 fi
             
