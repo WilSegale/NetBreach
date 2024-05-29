@@ -63,7 +63,7 @@ fi
 
 if [[ $1 == "--skip" ]]; then
     NetBreach
-fi
+
 # Check for required packages
 for package in "${required_packages[@]}"; do
     if ! command_exists "$package"; then
@@ -325,4 +325,6 @@ else
         echo "WARNING:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
         echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE"
     fi
+fi
+
 fi
