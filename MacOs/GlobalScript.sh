@@ -41,7 +41,22 @@ trap ctrl_c SIGINT
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
+#get to the xfreerdp connection
+ConnectXfreerdp(){
+    read -p "Input username: " username
+    read -p "Input ip: " ip
+    read -s -p "Input password: " password
+    # Put the
+    echo
+    echo "Loading xfreerdp server..."
+    xfreerdp /u:"${username}" /v:"${ip}" /p:"${password}"
+    exit
+}
+# Check if the script is run with --xfreerdp
+if [[ $1 == "--xfreerdp" ]]; then
+    ConnectXfreerdp
 
+fi
 # Check for required packages
 for package in "${required_packages[@]}"; do
     if ! command_exists "$package"; then
@@ -286,9 +301,9 @@ else
                     fi
                 fi
             }
+            NetBreach
 
-            NetBreach # Calls the NetBreach function
-
+            ConnectXfreerdp
             RunHackingCommand # Calls the RunHackingCommand function
 
             RunHackingCommandWithVNC # Calls the RunHackingCommandWithVNC function
