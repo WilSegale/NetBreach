@@ -47,6 +47,7 @@ required_packages=("freerdp2-x11" "wget" "hydra" "nmap" "ssh" "mysql" "figlet" "
 
 # Packages to check for installation
 Packages=(
+    "freerdp2-x11"
     "wget"
     "hydra"
     "nmap"
