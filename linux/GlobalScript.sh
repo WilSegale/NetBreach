@@ -231,27 +231,33 @@ else
                         echo "${title}"
                         echo "${Connected_To_VNC_SERVER}"
 
-                        #get to the xfreerdp connection
-                        ConnectXfreerdp(){
-                            read -p "Input username: " username
-                            read -p "Input ip: " ip
-                            read -p -s "Input password: " password
-                            # Put the
-                            echo
-                            echo "Loading xfreerdp server..."
-                            xfreerdp /u:"${username}" /v:"${ip}" /p:"${password}"
-                            exit
-                        }
-
+                        read -p "Input username: " username
+                        read -p "Input ip: " ip
+                        read -p -s "Input password: " password
+                        # Put the
+                        echo
+                        echo "Loading xfreerdp server..."
+                        xfreerdp /u:"${username}" /v:"${ip}" /p:"${password}"
                     fi
                 fi
             
+#get to the xfreerdp connection
+ConnectXfreerdp(){
+    read -p "Input username: " username
+    read -p "Input ip: " ip
+    read -p -s "Input password: " password
+    # Put the
+    echo
+    echo "Loading xfreerdp server..."
+    xfreerdp /u:"${username}" /v:"${ip}" /p:"${password}"
+    exit
+}
 
             RunHackingCommandWithSSH() {
                 if [[ $service == 22 || $service == "ssh" ]]; then
                     # Checks if the user has put anything in the 'Input Username' function and the hostname function
                     # If not, it will prompt the user to enter the username and hostname
-                    if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
+                    if [[ "${user}" == "" && "${host}" == "" || $user == "" || $host == "" ]]; then
                         # No service specified, re-prompt for input
                         echo "No service specified"
                         NetBreach
