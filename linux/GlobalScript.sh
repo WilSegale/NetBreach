@@ -59,11 +59,9 @@ ConnectXfreerdp(){
 arguemnts(){
 if [[ $1 == "--xfreerdp" ]]; then
     ConnectXfreerdp
-else
-    NetBreach
 fi
 }
-
+arguemnts
 # Check for required packages
 for package in "${required_packages[@]}"; do
     if ! command_exists "$package"; then
