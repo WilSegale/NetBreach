@@ -56,4 +56,4 @@ LocalScript = ["bash", "localScript.sh"]  # runs the script in global mode
 GuiLocalScript = ["bash", "GuiLocal.sh"]  # the script to run after loading
 GlobalManual = ["bash", "ManualGlobalScript.sh"]
 LocalManual = ["bash", "ManualLocalScript.sh"]
-RDPconnect = ["bash", "GlobalScript.sh", "--xfreerdp"]
+RDPconnect = ["bash", "xfreerdp.sh"]
