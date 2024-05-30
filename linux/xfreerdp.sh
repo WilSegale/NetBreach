@@ -1,4 +1,5 @@
-source DontEdit
+source DontEdit.sh
+clear
 #get to the xfreerdp connection
 ConnectXfreerdp(){
     figlet -f slant "xfreerdp"
