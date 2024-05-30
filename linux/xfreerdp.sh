@@ -8,7 +8,8 @@ ConnectXfreerdp(){
 
     # Check if file exists
     if [ -e "${FILE}" ]; then
-        xfreerdp @
+        source $FILE
+        xfreerdp $@
     else
         sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
         echo
