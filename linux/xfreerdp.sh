@@ -9,7 +9,7 @@ ConnectXfreerdp(){
     # Check if file exists
     if [ -e "${FILE}" ]; then
         source connections.env
-        xfreerdp /v:"${XFREERDP_IP}" /u:"${XFREERDP_USERNAME}" /p:"${XFREERDP_PASSWORD}"
+        xfreerdp /u:"${XFREERDP_USERNAME}" /v:"${XFREERDP_IP}" /p:"${XFREERDP_PASSWORD}"
     else
         sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
         echo
