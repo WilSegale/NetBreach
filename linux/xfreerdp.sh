@@ -3,13 +3,13 @@ clear
 #get to the xfreerdp connection
 ConnectXfreerdp(){
 
-    FILE="connections.conf"
+    FILE="connections.env"
     figlet -f slant "xfreerdp"
 
     # Check if file exists
     if [ -e "${FILE}" ]; then
-        source connections.conf
-        xfreerdp $@
+        source connections.env
+        xfreerdp /v:"${XFREERDP_IP}" /u:"${XFREERDP_USERNAME}" /p:"${XFREERDP_PASSWORD}"
     else
         sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
         echo
@@ -19,9 +19,9 @@ ConnectXfreerdp(){
         echo
         read -p "Do you want to save this connection? (y/n) " save
         if [ $save == "y" ]; then
-            echo "XFREERDP_IP${ip}" >> connections.conf
-            echo "XFREERDP_USERNAME=${username}" >> connections.conf
-            echo "XFREERDP_PASSWORD=${password}" >> connections.conf
+            echo "XFREERDP_IP${ip}" >> $FILE
+            echo "XFREERDP_USERNAME=${username}" >> $FILE
+            echo "XFREERDP_PASSWORD=${password}" >> $FILE
             
             echo "Loading xfreerdp server..."
             sleep 1
