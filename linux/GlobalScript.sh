@@ -41,26 +41,6 @@ trap ctrl_c SIGINT
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
-#get to the xfreerdp connection
-ConnectXfreerdp(){
-    figlet -f slant "xfreerdp"
-    sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
-    echo
-    read -p "Input username: " username
-    read -p "Input IP: " ip
-    read -s -p "Input password: " password
-    # Put the
-    echo
-    echo "Loading xfreerdp server..."
-    sleep 1
-    xfreerdp /u:"${username}" /v:"${ip}" /p:"${password}"
-    exit
-}
-# Check if the script is run with --xfreerdp
-if [[ $1 == "--xfreerdp" ]]; then
-    ConnectXfreerdp
-fi
-
 
 # Check for required packages
 for package in "${required_packages[@]}"; do
