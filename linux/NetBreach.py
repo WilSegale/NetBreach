@@ -499,6 +499,7 @@ try:
         
         elif argument in conenctRDP:
             RDPCONENCT()
+            
         #gets the install funciton
         elif argument in installRequirement:
             terminalCommand("bash requirements.sh")
