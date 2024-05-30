@@ -3,7 +3,7 @@ clear
 #get to the xfreerdp connection
 ConnectXfreerdp(){
 
-    FILE="connections.txt"
+    FILE="connections.conf"
     figlet -f slant "xfreerdp"
 
     # Check if file exists
