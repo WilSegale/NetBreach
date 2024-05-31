@@ -13,7 +13,7 @@ argument = sys.argv
 terminalCommand = os.system
 
 # easy way to read the root user function
-ROOT = True
+ROOT = 0
 
 # list of the files to remove
 RemoveFile = ["ERROR.log","ERROR.LOG"]
