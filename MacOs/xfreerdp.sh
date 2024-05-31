@@ -9,7 +9,7 @@ ConnectXfreerdp() {
     figlet -f slant "xfreerdp"
 
     # Check if file exists
-    if [ -e "${FILE}" ]; then
+    if [[ -e "${FILE}" ]]; then
         source "${FILE}"
         xfreerdp /u:"${XFREERDP_USERNAME}" /v:"${XFREERDP_IP}" /p:"${XFREERDP_PASSWORD}"
     else
