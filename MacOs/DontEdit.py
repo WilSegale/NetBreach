@@ -8,7 +8,7 @@ import sys
 import time
 import urllib.request
 
-argument = sys.argv[1]
+argument = sys.argv
 
 terminalCommand = os.system
 

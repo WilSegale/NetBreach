@@ -1,1 +1,0 @@
-/u:fam /v:192.168.1.160 /p:21RussellLucy

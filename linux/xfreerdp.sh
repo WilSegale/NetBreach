@@ -3,6 +3,8 @@ clear
 
 # Function to handle xfreerdp connection
 ConnectXfreerdp() {
+    sudo chmod +x *
+
     FILE="connections.env"
     figlet -f slant "xfreerdp"
 
@@ -18,7 +20,6 @@ ConnectXfreerdp() {
         read -s -p "Input password: " password
         echo
         read -p "Do you want to save this connection? (y/n) " save
-        sudo chmod +x *.env
         if [[ "${save}" == "y" ]]; then
             echo "XFREERDP_IP=${ip}" >> "${FILE}"
             echo "XFREERDP_USERNAME=${username}" >> "${FILE}"

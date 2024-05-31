@@ -467,44 +467,44 @@ try:
     # Handle command-line arguments
     if len(sys.argv) == 2:
         # gets the help function
-        if argument in HELP:
+        if argument[1] in HELP:
             show_help()
 
         #gets the gui funciton
-        elif argument in GUI:
+        elif argument[1] in GUI:
             Show_GUI()
 
         #gets the global function
-        elif argument in GLOBAL:
+        elif argument[1] in GLOBAL:
             show_GLOBAL()
         
         #gets the local function
-        elif argument in LOCAL:
+        elif argument[1] in LOCAL:
             show_LOCAL()
 
         #gets the gui local funciton
-        elif argument in GuiLocal:
+        elif argument[1] in GuiLocal:
             show_GuiLOCAL()
 
         #gets the fix funciton
-        elif argument in FIX:
+        elif argument[1] in FIX:
             fix()
         
         #gets the global manual funciton
-        elif argument in GlobalManualArgument:
+        elif argument[1] in GlobalManualArgument:
             show_manual_Global()
 
-        elif argument in LocalManualArgument:
+        elif argument[1] in LocalManualArgument:
             show_manual_Local()
         
-        elif argument in conenctRDP:
+        elif argument[1] in conenctRDP:
             RDPCONENCT()
         #gets the install funciton
-        elif argument in installRequirement:
+        elif argument[1] in installRequirement:
             terminalCommand("bash requirements.sh")
         
         #get the unisntall funciotn
-        elif argument in uninstallRequirement:
+        elif argument[1] in uninstallRequirement:
             terminalCommand("bash uninstall.sh")
 
     #if the user does not input the correct argument it tells them what arguments to use for it to work 
