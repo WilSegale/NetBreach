@@ -1,32 +1,34 @@
-source DontEdit.sh
+#!/bin/bash
 clear
-#get to the xfreerdp connection
-ConnectXfreerdp(){
 
-    FILE="connections.txt"
+# Function to handle xfreerdp connection
+ConnectXfreerdp() {
+    sudo chmod +x *
+
+    FILE="connections.env"
     figlet -f slant "xfreerdp"
 
     # Check if file exists
     if [ -e "${FILE}" ]; then
-        xfreerdp @
+        source "${FILE}"
+        xfreerdp /u:"${XFREERDP_USERNAME}" /v:"${XFREERDP_IP}" /p:"${XFREERDP_PASSWORD}"
     else
         sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
         echo
         read -p "Input username: " username
         read -p "Input IP: " ip
         read -s -p "Input password: " password
+        echo
         read -p "Do you want to save this connection? (y/n) " save
-        if [ $save == "y" ]; then
-            echo "/u:${username}" >> connections.conf
-            echo "/v:${ip}" >> connections.conf
-            echo "/p:${password}" >> connections.conf
+        if [[ "${save}" == "y" ]]; then
+            echo "XFREERDP_USERNAME=${username}" >> "${FILE}"
+            echo "XFREERDP_IP=${ip}" >> "${FILE}"
+            echo "XFREERDP_PASSWORD=${password}" >> "${FILE}"
             
             echo "Loading xfreerdp server..."
             sleep 1
-            xfreerdp /u:"${username}" /v:"${ip}" /p:"${password}"
-
+            xfreerdp /v:"${ip}" /u:"${username}" /p:"${password}"
         else
-            # Put the
             echo
             echo "Loading xfreerdp server..."
             sleep 1
@@ -35,4 +37,6 @@ ConnectXfreerdp(){
         fi
     fi
 }
+
+# Call the function
 ConnectXfreerdp
