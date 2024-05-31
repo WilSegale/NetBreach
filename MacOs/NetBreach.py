@@ -494,11 +494,14 @@ try:
         elif argument[1] in GlobalManualArgument:
             show_manual_Global()
 
+        #get the local manula fucnoitn
         elif argument[1] in LocalManualArgument:
             show_manual_Local()
-        
+
+        #conenct with RDP mode enabled
         elif argument[1] in conenctRDP:
             RDPCONENCT()
+
         #gets the install funciton
         elif argument[1] in installRequirement:
             terminalCommand("bash requirements.sh")
