@@ -8,8 +8,27 @@ import sys
 import time
 import urllib.request
 
+
+# gets the current time and formats it HH:MM:SS
+current_time = datetime.datetime.now().time()
+
+#get the current time and formats it in the 12 hour format
+formatted_time = current_time.strftime("%I:%M:%S %p")
+
+# Get the current date
+current_date = datetime.datetime.now().strftime("%m/%d/%Y")
+
+# holds the error file to read from
+ERROR = open("ERROR.log", "a")
+
+# name of program and software name
+ProgramName = "NetBreach"
+SoftwareName = "NetBreach.py"  
+
+# holds the argument of the --globla function
 argument = sys.argv
 
+#terminalcommand for the os.system funciton
 terminalCommand = os.system
 
 # easy way to read the root user function

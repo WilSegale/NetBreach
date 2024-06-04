@@ -1,20 +1,6 @@
 from DontEdit import *
 from HelpLogo import *
 
-# gets the current time and formats it HH:MM:SS
-current_time = datetime.datetime.now().time()
-
-#get the current time and formats it in the 12 hour format
-formatted_time = current_time.strftime("%I:%M:%S %p")
-
-# Get the current date
-current_date = datetime.datetime.now().strftime("%m/%d/%Y")
-
-ERROR = open("ERROR.log", "a")
-
-ProgramName = "NetBreach"
-SoftwareName = "NetBreach.py"  
-
 #this is for the user to understand what the program does
 def show_help():
 
