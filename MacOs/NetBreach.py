@@ -24,7 +24,7 @@ def show_help():
     ProgramsUsed = f"+++++++++++++++PROGRAMS USED+++++++++++++++"
     ProgramsUsedInfo01 = f"\nThis program will help you crack passwords"
     ProgramsUsedInfo02 = f"\nIt has two programs inside it"
-    ProgramsUsedInfo03 = f"\none is {GREEN}Hydra{RESET} and the other is {GREEN}Nmap{RESET} and"
+    ProgramsUsedInfo03 = f"\none is {GREEN}Hydra{RESET} and the other is {BLUE}Nmap{RESET} and"
 
     #this is for the user to understand what the program does
     HowToUse = f"\n+++++++++++++++HOW TO USE++++++++++++++++++"
