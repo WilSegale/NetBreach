@@ -1,9 +1,0 @@
-# Nmap 7.95 scan initiated Tue Jun  4 12:25:52 2024 as: nmap -sS -p 22 -oN 22.log --open 192.168.1.1/24
-Nmap scan report for DESKTOP-UBA64U6.fios-router.home (192.168.1.194)
-Host is up (0.066s latency).
-
-PORT   STATE SERVICE
-22/tcp open  ssh
-MAC Address: 5C:62:8B:ED:BF:F0 (TP-Link Limited)
-
-# Nmap done at Tue Jun  4 12:26:06 2024 -- 256 IP addresses (25 hosts up) scanned in 13.81 seconds
