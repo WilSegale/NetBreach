@@ -3,8 +3,6 @@ clear
 
 # Function to handle xfreerdp connection
 ConnectXfreerdp() {
-    sudo chmod +x *
-
     FILE="connections.env"
     figlet -f slant "xfreerdp"
 
