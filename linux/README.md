@@ -2,11 +2,12 @@
 
 <img src="Linux Logo.JPG" alt="Linux Verison of the program" width="200" height="200">
 
-## Bugs and Issues
-### If you find any bugs or issues click on [Email me](mailto:wsegalework@gmail.com) to contact me about the issues.
 
 # Home Page
 - [Home README.md](../)
+
+## Bugs and Issues
+### If you find any bugs or issues click on [Email me](mailto:wsegalework@gmail.com) to contact me about the issues.
 
 ## Type first
 ```bash
@@ -27,7 +28,8 @@ sudo python3 NetBreach.py --global,
 sudo python3 NetBreach.py --gui,
 sudo python3 NetBreach.py --Gui-Local,
 sudo python3 NetBreach.py --MANUAL-GLOBAL,
-python3 NetBreach.py --MANUAL-LOCAL
+python3 NetBreach.py --MANUAL-LOCAL,
+python3 NetBreach.py --xfreerdp
 ```
 
 ## If you are wondering how to use this script just type
