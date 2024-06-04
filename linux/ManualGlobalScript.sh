@@ -1,4 +1,3 @@
- 
 #!/bin/bash
 
 # file that hold all the variables that need for the program to work properly
