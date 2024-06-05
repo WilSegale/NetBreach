@@ -1,4 +1,5 @@
 #!/bin/bash
+source DontEdit.sh
 clear
 
 # Function to handle xfreerdp connection
