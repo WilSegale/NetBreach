@@ -22,13 +22,7 @@ ConnectXfreerdp() {
             echo
             read -p "Do you want to save this connection? (y/n) " save
             if [[ "${save}" == "y" ]]; then
-                echo "XFREERDP_USERNAME=${username}" >> "${FILE}"
-                echo "XFREERDP_IP=${ip}" >> "${FILE}"
-                echo "XFREERDP_PASSWORD=${password}" >> "${FILE}"
-                
-                echo "Loading xfreerdp server..."
-                sleep 1
-                xfreerdp /v:"${ip}" /u:"${username}" /p:"${password}"
+                connect
             else
                 echo
                 echo "Loading xfreerdp server..."
@@ -41,6 +35,17 @@ ConnectXfreerdp() {
         echo -e "[ ${RED}FAIL${NC} ]This script can only be run on macOS"
         exit
     fi
+}
+
+
+connect(){
+    echo "XFREERDP_USERNAME=${username}" >> "${FILE}"
+    echo "XFREERDP_IP=${ip}" >> "${FILE}"
+    echo "XFREERDP_PASSWORD=${password}" >> "${FILE}"
+    
+    echo "Loading xfreerdp server..."
+    sleep 1
+    xfreerdp /v:"${ip}" /u:"${username}" /p:"${password}"
 }
 
 # Call the function
