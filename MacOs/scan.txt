@@ -1,1 +1,1 @@
-# Nmap 7.95 scan initiated Wed Jun  5 18:33:03 2024 as: nmap -sS -oN scan.txt --open 192.168.1.1/24
+# Nmap 7.95 scan initiated Wed Jun  5 18:35:13 2024 as: nmap -sS -oN scan.txt --open 192.168.1.1/24
