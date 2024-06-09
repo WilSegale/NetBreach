@@ -137,7 +137,7 @@ else
                         open scan.txt
 
                     else
-                        echo -e "[ ${RED}FAIL${NC} ] Ok I will not open the scan.txt file"
+                        echo -e "Ok I will not open the scan.txt file"
                         sleep 1
                     fi
                     
