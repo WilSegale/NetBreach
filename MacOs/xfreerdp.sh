@@ -43,8 +43,17 @@ command_exists() {
 
 # Function to handle xfreerdp connection
 ConnectXfreerdp() {
+    
     if [[ "${OSTYPE}" == "darwin"* ]]; then
+        SITE="https://google.com/"
+        if ! curl --head --silent --fail $SITE > /dev/null; then
+            echo "ERROR:TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}" >> ERROR.LOG
+            echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}"
 
+            exit 1
+        else
+            echo ""
+        fi
         FILE="connections.env"
         figlet -f slant "xfreerdp"
 
