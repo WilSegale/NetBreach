@@ -46,7 +46,7 @@ trap ctrl_c SIGINT
 for package in "${required_packages[@]}"; do
     if ! command_exists "$package"; then
         echo ""
-        echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
+        echo -e "[ ${BRIGHT}${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
         sleep 1 
 
         #asks the user if they want to install the packages that are mssing
@@ -132,7 +132,7 @@ else
                 exit 1
             #checks if the user has put nothing into the input feild
             elif [[ " ${empty[*]} " == *" ${service} "* ]]; then
-                echo -e "[${RED} FAIL ${NC}] Plase input a number into the input field"
+                echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] Plase input a number into the input field"
                 sleep 1
                 exit 1
             #checks if the user has put in a letter insed of a number into the input feild
