@@ -1,6 +1,6 @@
 #!/bin/bash
 source DontEdit.sh
-
+sudo dpkg --configure -a
 # Check if the OS is Linux
 if [[ "${OSTYPE}" != "linux-gnu" ]]; then
     echo "This script only works on Linux."
