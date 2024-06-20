@@ -1,5 +1,8 @@
 #!/bin/bash
 source DontEdit.sh
+
+echo -e "doing a ${GREEN}dpkg configure${NC}"
+
 sudo dpkg --configure -a
 # Check if the OS is Linux
 if [[ "${OSTYPE}" != "linux-gnu" ]]; then
