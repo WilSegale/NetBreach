@@ -262,9 +262,14 @@ def show_LOCAL():
                 
                 time.sleep(delay)  # Pause to control the update rate
         print_loading_bar(50)
-        print(f"\n[ {GREEN}OK{RESET} ] Loading {ProgramName} complete")
-        time.sleep(5)
-        subprocess.run(LocalScript)  # the script to run after loading
+        try:
+    
+            print(f"\n[ {GREEN}OK{RESET} ] Loading {ProgramName} complete")
+            time.sleep(5)
+            subprocess.run(LocalScript)  # the script to run after loading
+        except KeyboardInterrupt:
+            print(f"\n[ {RED}FAIL{RESET} ] Loading {ProgramName} FAILED")
+            sys.exit(1)
     else:
         # makes a pop up dialog to tell the user that the OS is not correct
         # makes a pop up dialog to tell the user that the OS is not correct
