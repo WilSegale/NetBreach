@@ -40,9 +40,9 @@ checkForPackages() {
         for package in "${Packages[@]}"
         do
             if dpkg -l | grep -q "^ii  ${package} "; then
-                echo "${package} is ${GREEN}installed${NC}"
+                echo -e "${package} is ${GREEN}installed${NC}"
             else
-                echo "${package} is ${RED}NOT installed${NC}"
+                echo -e "${package} is ${RED}NOT installed${NC}"
             fi
         done
         echo -e "________PIP Packages________"
@@ -51,7 +51,7 @@ checkForPackages() {
             if pip show "${pipPackage}" > /dev/null 2>&1; then
                 echo -e "${pipPackage} is ${GREEN}installed${NC}"
             else
-                echo "${pipPackage} is ${RED}NOT installed${NC}"
+                echo -e "${pipPackage} is ${RED}NOT installed${NC}"
             fi       
         done
     fi
