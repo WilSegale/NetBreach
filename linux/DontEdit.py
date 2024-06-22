@@ -49,7 +49,6 @@ GlobalManualArgument = ["--MANUAL-GLOBAL", "--Manual-Global", "--manual-global"]
 LocalManualArgument = ["--MANUAL-LOCAL", "--Manual-Local", "--manual-local"]
 installRequirement = ["--INSTALL", "--install"]
 uninstallRequirement = ["--UNINSTALL", "--uninstall"]
-listPackages = ["--Installed", "--installeds"]
 conenctRDP = ["--xfreerdp"]
 FIX = ["--FIX", "--fix"]
 
@@ -61,4 +60,3 @@ GuiLocalScript = ["bash", "GuiLocal.sh"]  # the script to run after loading
 GlobalManual = ["bash", "ManualGlobalScript.sh"]
 LocalManual = ["bash", "ManualLocalScript.sh"]
 RDPconnect = ["bash", "xfreerdp.sh"]
-packages = ["bash", "InstalledPackages"]
