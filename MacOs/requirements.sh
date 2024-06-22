@@ -21,7 +21,11 @@ checkForPackages() {
     else
         for package in "${Packages[@]}"
         do
-            echo -e "${package}: ${GREEN}Is Installed${NC}"
+            if brew list --formula | grep -q "^${package}\$"; then
+                echo -e "${package} is ${GREEN}installed.${NC}"
+            else
+                echo "${package} is ${RED}not installed.${NC}"
+            fi
         done
         echo -e "________PIP Packages________"
         for pipPackage in "${pipPackages[@]}" 
@@ -92,6 +96,8 @@ InstallHomeBrew(){
         exit 1
     fi
 }
+
+# Call the function
 InstallHomeBrew
 
 # Function to install package using brew package manager
@@ -110,6 +116,7 @@ install_pip_package() {
 upgrade_pip() {
     python3 -m pip install --upgrade pip --break-system-packages
 }
+
 # Check if the user is root
 if [ "$(id -u)" -eq 0 ]; then
     # Gives the user something to read so they understand why they got the error
