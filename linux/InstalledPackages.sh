@@ -5,7 +5,7 @@ source DontEdit.sh
 for package in "${Packages[@]}"; do
     if dpkg -l | grep -q "^ii  ${package} "; then
         package_name="$1"
-        apt list $package_name --installed
+        dpkg -l | grep '^ii' | awk $package_name    
     else
         echo "${package} is NOT installed"
     fi
