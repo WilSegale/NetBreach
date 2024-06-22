@@ -49,6 +49,10 @@ checkForPackages() {
     fi
 }
 
+
+
+
+
 requiredments(){
 # Check if the OS is Linux
 if [[ "${OSTYPE}" == "${Linux}"* ]]; then

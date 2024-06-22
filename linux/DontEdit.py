@@ -60,3 +60,4 @@ GuiLocalScript = ["bash", "GuiLocal.sh"]  # the script to run after loading
 GlobalManual = ["bash", "ManualGlobalScript.sh"]
 LocalManual = ["bash", "ManualLocalScript.sh"]
 RDPconnect = ["bash", "xfreerdp.sh"]
+packages = ["bash", "InstalledPackages"]

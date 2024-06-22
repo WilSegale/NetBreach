@@ -464,6 +464,55 @@ def RDPCONENCT():
         print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
   
+
+def ListPackages():
+    # gets the current time and formats it HH:MM:SS
+    current_time = datetime.datetime.now().time()
+
+    # get the current time and formats it in the 12 hour format
+    formatted_time = current_time.strftime("%I:%M:%S %p")
+
+    # Get the current date
+    current_date = datetime.datetime.now().strftime("%m/%d/%Y")
+
+    def connect(url="https://google.com"):
+        try:
+            urllib.request.urlopen(url)  # Try to open a connection to the host
+            return True  # If successful, return True
+        except:
+            return False  # If unsuccessful, return False
+
+    # Makes sure that the user is connected to the internet
+    if platform.system() == OS:
+        #makes the loading bar visible
+        def print_loading_bar(iterations, delay=0.1, width=40):
+            """
+            Prints a loading bar with green dots to visualize progress.
+            
+            Args:
+                iterations (int): Total number of iterations.
+                delay (float, optional): Delay between updates in seconds. Default is 0.1 seconds.
+                width (int, optional): Width of the loading bar. Default is 40 characters.
+            """
+            for loadingBar in range(iterations + 1):
+                progress = loadingBar / iterations  # Calculate the progress ratio
+                bar_length = int(progress * width)  # Calculate the number of dots for the current progress
+                bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)  # Construct the loading bar string
+                percentage = int(progress * 100)  # Calculate the percentage of completion
+                
+                # Print the loading bar and percentage, replacing the line each iteration
+                print(f'\rLoading List of packages [{bar}] {percentage} % ', end='', flush=False)
+                
+                time.sleep(delay)  # Pause to control the update rate
+        print_loading_bar(50)
+        subprocess.run(packages)  # the script to run after loading
+    else:
+        # makes a pop up dialog to tell the user that the OS is not correct
+        # makes a pop up dialog to tell the user that the OS is not correct
+        print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
+        print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
+
+
 #holds the if statements that connect to the functions for the program to work properly
 try:
     # Handle command-line arguments
@@ -503,6 +552,11 @@ try:
         #conenct with RDP mode enabled
         elif argument[1] in conenctRDP:
             RDPCONENCT()
+
+        #list of packages that are installed
+        elif argument[1] in listPackages:
+            ListPackages()
+
 
         #gets the install funciton
         elif argument[1] in installRequirement:
