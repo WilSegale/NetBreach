@@ -4,9 +4,9 @@ source DontEdit.sh
 # Loop through each package and check if it is installed
 for Packages in "${Packages[@]}"
     do
-        if dpkg -l | grep -q "^ii  $Packages "; then
-            echo "$Packages is installed"
+        if dpkg -l | grep -q "^ii  ${Packages} "; then
+            echo "${Packages} is installed"
         else
-            echo "$Packages is NOT installed"
+            echo "${Packages} is NOT installed"
         fi
 done
