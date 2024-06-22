@@ -49,6 +49,7 @@ GlobalManualArgument = ["--MANUAL-GLOBAL", "--Manual-Global", "--manual-global"]
 LocalManualArgument = ["--MANUAL-LOCAL", "--Manual-Local", "--manual-local"]
 installRequirement = ["--INSTALL", "--install"]
 uninstallRequirement = ["--UNINSTALL", "--uninstall"]
+listPackages = ["--Installed", "--installeds"]
 conenctRDP = ["--xfreerdp"]
 FIX = ["--FIX", "--fix"]
 

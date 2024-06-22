@@ -464,7 +464,7 @@ def RDPCONENCT():
         print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
   
-
+# lists the packages that are installed
 def ListPackages():
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
