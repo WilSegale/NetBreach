@@ -39,10 +39,10 @@ checkForPackages() {
     else
         for package in "${Packages[@]}"
         do
-            if dpkg -l | grep -q "^ii  ${Packages} "; then
-                echo "${Packages} is installed"
+            if dpkg -l | grep -q "^ii  ${package} "; then
+                echo "${package} is installed"
             else
-                echo "${Packages} is NOT installed"
+                echo "${package} is NOT installed"
             fi
         done
         echo -e "________PIP Packages________"
