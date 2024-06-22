@@ -42,6 +42,7 @@ def show_help():
     HowToUseInfo12 = f"\nIf you want to have the program allow you to input the ip address or website manually for local networks type {GREEN}'python3 {SoftwareName} {LocalManualArgument}'{RESET}"
     HowToUseInfo13 = f"\nIf you get a error message you can type {GREEN}'python3 {SoftwareName} {FIX}'{RESET}"
     HowToUseInfo14 = f"\nIf you want to remote conenct to a computer type {GREEN}'python3 {SoftwareName} {conenctRDP}'{RESET}"
+    HowToUseInfo15 = f"\nIf you want to list the installed packages type {GREEN}'python3 {SoftwareName} {listPackages}'{RESET}"
     ProgramsUSED = (ProgramsUsed+
                     ProgramsUsedInfo01+
                     ProgramsUsedInfo02+
@@ -62,7 +63,8 @@ def show_help():
             HowToUseInfo11 +
             HowToUseInfo12 +
             HowToUseInfo13 +
-            HowToUseInfo14) 
+            HowToUseInfo14 +
+            HowToUseInfo15) 
 
     lineArt(["figlet", f"{name}"])
     lineArt(["figlet", "? HELP ?"])
@@ -416,7 +418,8 @@ def show_manual_Local():
         # makes a pop up dialog to tell the user that the OS is not correct
         print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
-  
+
+#connect to a windows computer with XfreeRDP
 def RDPCONENCT():
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
@@ -511,7 +514,6 @@ def ListPackages():
         # makes a pop up dialog to tell the user that the OS is not correct
         print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
-
 
 #holds the if statements that connect to the functions for the program to work properly
 try:
