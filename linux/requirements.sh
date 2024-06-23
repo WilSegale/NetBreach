@@ -71,8 +71,25 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
         # Function to install package using pip
         install_pip_package() {
             package_name="$1"
+            
+            # Attempt to install the package
             python3 -m pip install --user --upgrade "${package_name}"
-            echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
+            
+            # Check the exit code of the installation
+            if [ $? -eq 0 ]; then
+                # Verify the package installation by trying to import it in Python
+                python3 -c "import ${package_name}" 2>/dev/null
+                
+                if [ $? -eq 0 ]; then
+                    echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed and verified successfully."
+                else
+                    echo -e "[ ${RED}ERROR${NC} ] ${package_name} installed but could not be imported in Python."
+                    exit 1
+                fi
+            else
+                echo -e "[ ${RED}ERROR${NC} ] Failed to install ${package_name}."
+                exit 1
+            fi
         }
 
         # Function to upgrade pip
