@@ -24,13 +24,13 @@ python3 NetBreach.py --uninstall
 
 ## To use the program you can type the following commands
 ```bash 
-python3 NetBreach.py --local,
-sudo python3 NetBreach.py --global,
-sudo python3 NetBreach.py --gui,
-sudo python3 NetBreach.py --Gui-Local,
-sudo python3 NetBreach.py --MANUAL-GLOBAL,
-python3 NetBreach.py --MANUAL-LOCAL,
+python3 NetBreach.py --local
+python3 NetBreach.py --MANUAL-LOCAL
 python3 NetBreach.py --xfreerdp
+sudo python3 NetBreach.py --global
+sudo python3 NetBreach.py --gui
+sudo python3 NetBreach.py --Gui-Local
+sudo python3 NetBreach.py --MANUAL-GLOBAL
 ```
 
 ## If you are wondering how to use this script just type
