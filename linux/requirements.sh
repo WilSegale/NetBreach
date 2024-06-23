@@ -87,48 +87,16 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
                     exit 1
                 fi
             else
-                echo -e "[ ${BRIGHT}${RED}ERROR${NC} ] Failed to install ${package_name}."
+                echo -e "[ ${RED}ERROR${NC} ] Failed to install ${package_name}."
                 exit 1
             fi
         }
 
-        # Function to get the current version of a pip package
+        # Function to upgrade pip
         upgrade_pip() {
-            package_name="$1"
-            version=$(python3 -c "import pkg_resources; print(pkg_resources.get_distribution('${package_name}').version)" 2>/dev/null)
-            echo "${version}"
+            python3 -m pip install --upgrade pip
+            echo -e "[ ${GREEN}OK${NC} ] pip packages updated successfully."
         }
-
-        # Function to install or update a package using pip
-        install_pip_package() {
-            package_name="$1"
-            
-            # Get the current version before the update
-            current_version=$(get_package_version "${package_name}")
-            echo "Current version of ${package_name}: ${current_version}"
-            
-            # Attempt to install/update the package
-            python3 -m pip install --user --upgrade "${package_name}"
-            
-            # Check the exit code of the installation
-            if [ $? -eq 0 ]; then
-                # Get the new version after the update
-                new_version=$(get_package_version "${package_name}")
-                echo "New version of ${package_name}: ${new_version}"
-                
-                # Verify the package update by comparing versions
-                if [ "${current_version}" != "${new_version}" ]; then
-                    echo -e "[ ${GREEN}OK${NC} ] ${package_name} updated successfully to version ${new_version}."
-                else
-                    echo -e "[ ${RED}ERROR${NC} ] ${package_name} did not update correctly. Still at version ${current_version}."
-                    exit 1
-                fi
-            else
-                echo -e "[ ${RED}ERROR${NC} ] Failed to install/update ${package_name}."
-                exit 1
-            fi
-        }
-
 
         # Install APT packages
         for package in "${Packages[@]}"; do
