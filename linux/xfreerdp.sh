@@ -75,7 +75,7 @@ ConnectXfreerdp() {
             fi
         fi
     else
-        echo -e "[ ${RED}FAIL${NC} ]This script can only be run on Linux"
+        echo -e "[ ${BRIGHT}${RED}FAIL${NC} ]This script can only be run on Linux"
         exit
 
     fi
