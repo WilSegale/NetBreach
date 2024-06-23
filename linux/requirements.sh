@@ -32,10 +32,10 @@ checkForPackages() {
         echo -e "________PIP Packages________"
         for pipPackage in "${pipPackages[@]}" 
         do
-            echo -e "${RED}${pipPackage}${NC}"
+            echo -e "${BRIGHT{{RED}${pipPackage}${NC}"
         done
         echo -e "________ERROR________"
-        echo -e "${RED}Error occurred during pip uninstallation${NC}"
+        echo -e "${BRIGHT}${RED}Error occurred during pip uninstallation${NC}"
     else
         for package in "${Packages[@]}"
         do
@@ -65,7 +65,7 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
         install_linux_package() {
             package_name="$1"
             sudo apt-get install "${package_name}" -y
-            echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
+            echo -e "[ ${BRIGHT}${GREEN}OK${NC} ] ${package_name} installed successfully."
         }
 
         # Function to install package using pip
@@ -87,7 +87,7 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
                     exit 1
                 fi
             else
-                echo -e "[ ${RED}ERROR${NC} ] Failed to install ${package_name}."
+                echo -e "[ ${BRIGHT}${RED}ERROR${NC} ] Failed to install ${package_name}."
                 exit 1
             fi
         }
