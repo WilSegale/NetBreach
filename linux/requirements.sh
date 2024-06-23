@@ -40,9 +40,9 @@ checkForPackages() {
         for package in "${Packages[@]}"
         do
             if dpkg -l | grep -q "^ii  ${package} "; then
-                echo -e "${package} is ${GREEN}installed${NC}"
+                echo -e "${package} is  ${BRIGHT}${GREEN}installed${NC}"
             else
-                echo -e "${package} is ${RED}NOT installed${NC}"
+                echo -e "${package} is  ${BRIGHT}${RED}NOT installed${NC}"
             fi
         done
         echo -e "________PIP Packages________"
@@ -95,7 +95,7 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
         # Function to upgrade pip
         upgrade_pip() {
             python3 -m pip install --upgrade pip
-            echo -e "[ ${GREEN}OK${NC} ] pip packages updated successfully."
+            echo -e "[  ${BRIGHT}${GREEN}OK${NC} ] pip packages updated successfully."
         }
 
         # Install APT packages
@@ -120,10 +120,10 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
         checkForPackages
 
     else
-        echo -e "[ ${RED}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
+        echo -e "[ ${BRIGHT}${RED}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
     fi
 else
-    echo -e "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS."
+    echo -e "[  ${BRIGHT}${RED}FAIL${NC} ] Wrong OS, please use the correct OS."
 fi
 }
 requiredments
