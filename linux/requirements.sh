@@ -93,7 +93,7 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
         }
 
         # Function to get the current version of a pip package
-        get_package_version() {
+        upgrade_pip() {
             package_name="$1"
             version=$(python3 -c "import pkg_resources; print(pkg_resources.get_distribution('${package_name}').version)" 2>/dev/null)
             echo "${version}"
