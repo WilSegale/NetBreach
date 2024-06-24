@@ -7,7 +7,7 @@ import logging
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 handler = logging.FileHandler(f"{pathlib.Path(__file__).stem}_{datetime.datetime.now():%Y%m%d_%H%M%S}.log")
-handler.setLevel(logging.DEBUG)
+handler.setLevel(logging.DEBUGsljdfalskdfj;askldfj
 logger.addHandler(handler)
 
 # Platform specific commands 
