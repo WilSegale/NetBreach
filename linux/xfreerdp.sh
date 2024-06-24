@@ -61,7 +61,7 @@ ConnectXfreerdp() {
             if [[ "${save}" == "y" ]]; then
                 echo "XFREERDP_IP=${ip}" >> "${FILE}"
                 echo "XFREERDP_USERNAME=${username}" >> "${FILE}"
-                echo "XFREERDP_PASSWORD=${password}" >> "${FILE}"
+                echo "XFREERDP_PASSWORD="$password" >> "${FILE}"
                 
                 echo "Loading xfreerdp server..."
                 sleep 1
