@@ -1,9 +1,7 @@
 #!/bin/bash
 source DontEdit.sh
 
-echo -e "doing a ${GREEN}dpkg configure${NC}"
 
-sudo dpkg --configure -a
 # Check if the OS is Linux
 if [[ "${OSTYPE}" != "linux-gnu" ]]; then
     echo "This script only works on Linux."
@@ -21,7 +19,9 @@ echo ""
 echo "Installing packages..."
 echo ""
 # Install APT packages
+echo -e "doing a ${GREEN}dpkg configure${NC}"
 
+sudo dpkg --configure -a
 #checks if the user has pakcages installed or not
 checkForPackages() {
     if [ $? -ne 0 ]; then
