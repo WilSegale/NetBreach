@@ -189,20 +189,6 @@ else
             RunHackingCommand() {
                 # Break in the outputs of my code
                 echo
-                original_host=192.168.1.1/24;
-                original_port=$service
-
-                # Check if the port is closed
-                if nc -zv "${original_host}" "${original_port}" >/dev/null 2>&1; then
-                    echo ""
-                else
-                    echo -e "${RED}[-]${NC} Port ${original_port} on ${original_host} is closed."
-                    # Optionally, you can choose to exit or handle closed port differently
-                    exit 1
-                fi
-
-                # Break in the outputs of my code
-                echo
                 # Services to crack the network
                 echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
                 echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
