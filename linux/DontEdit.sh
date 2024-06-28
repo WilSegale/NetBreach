@@ -8,6 +8,7 @@ NC='\033[0m' # No Color
 # grabes the username by using the "whoami" command and then grabs the hostname by using "hostname" command
 username=$(whoami)
 hostname=$(hostname)
+os_name=$(uname)
 
 #name of program
 NameOfProgram="NetBreach"
@@ -47,6 +48,7 @@ required_packages=("wget" "hydra" "nmap" "ssh" "mysql" "figlet" "zenity")
 
 # Packages to check for installation
 Packages=(
+    "ssh"
     "wget"
     "hydra"
     "nmap"
