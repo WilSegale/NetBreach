@@ -27,7 +27,7 @@ updateOS(){
     sudo apt-get update -y
     sudo apt-get upgrade -y
 }
-
+updateOS
 
 #checks if the user has pakcages installed or not
 checkForPackages() {
