@@ -134,7 +134,7 @@ else
                 read -p ">>> " Manual_scan
                 
                 #scan a website name
-                sudo nmap -sS "${Manual_scan}" -oN WebsiteScan.log --open
+                sudo nmap -sS "${Manual_scan}" -oN "${Manual_scan}".log --open
                 read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
 
                 if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
