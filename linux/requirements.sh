@@ -22,12 +22,6 @@ echo ""
 echo -e "doing a ${GREEN}dpkg configure${NC}"
 
 sudo dpkg --configure -a
-updateOS(){
-    echo "Updating and upgrading ${os_name}"
-    sudo apt-get update -y
-    sudo apt-get upgrade -y
-}
-updateOS
 
 #checks if the user has pakcages installed or not
 checkForPackages() {
