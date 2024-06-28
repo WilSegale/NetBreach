@@ -48,7 +48,6 @@ required_packages=("wget" "hydra" "nmap" "ssh" "mysql" "figlet" "zenity")
 
 # Packages to check for installation
 Packages=(
-    "ssh"
     "wget"
     "hydra"
     "nmap"
