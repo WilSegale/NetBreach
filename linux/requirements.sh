@@ -125,7 +125,7 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
         upgrade_pip
         
         echo ""
-        echo "_________APT PACKAGES________"
+        echo "_________APT PDPACKAGES________"
         checkForPackages
 
     else
