@@ -127,7 +127,7 @@ else
                     exit 1
                 fi
 
-            elif [[ " ${Manual} " == *" ${service} "* ]]; then
+            elif [[ " ${Manual[*]} " == *" ${service} "* ]]; then
                 echo "What website would you like to scan?"
 
                 #input for the website name
