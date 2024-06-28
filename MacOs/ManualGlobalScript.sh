@@ -118,6 +118,7 @@ else
             NetBreach() {
                 # The logo of the program
                 figlet -f slant "NetBreach"
+                figlet -f slant "Manual Global Mode"
                 echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
                 echo "If you want to scan a website type Manual and then type the website name or ip address of the website"
                 echo "If you want to stop the program type 'stop'."
