@@ -155,7 +155,7 @@ else
                         exit 1
                     fi
                 elif [[ " ${Manual[*]} " == *" ${service} "* ]]; then
-                    echo "What website would you like to scan?"
+                    echo "What website would you like to scan? Or user IP"
 
                     #input for the website name
                     read -p ">>> " Manual_scan
@@ -165,9 +165,9 @@ else
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
 
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                        open "WebsiteScan.log"
+                        open "${Manual_scan}.log"
                     else
-                        echo "[-] Ok I will not open the WebsiteScan.log file"
+                        echo "[-] Ok I will not open the ${Manual_scan}.log file"
                         sleep 1
                     fi
                 
