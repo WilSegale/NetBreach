@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#MANUAL GLOBAL SCRIPT
 # file that hold all the variables that need for the program to work properly
 source DontEdit.sh
 

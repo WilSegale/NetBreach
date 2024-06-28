@@ -1,6 +1,5 @@
- 
 #!/bin/bash
-
+#MANUAL GLOBAL SCRIPT
 # file that hold all the variables that need for the program to work properly
 source DontEdit.sh
 
@@ -92,7 +91,7 @@ else
     fi
     if [[ "$OSTYPE" == "${OS}"* ]]; then
         clear
-        if [[ $EUID -ne $root ]]; then
+        if [[ $EUID -ne "${root}" ]]; then
             # Error message if not running as root
             echo "ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
             echo -e "[ ${RED}FAIL${NC} ]: TIME:${CURRENT_TIME} Please run as ROOT. DATE:${CURRENT_DATE}"
@@ -155,20 +154,20 @@ else
                         $Hydra
                         exit 1
                     fi
-                elif [[ " ${Manual} " == *" ${service} "* ]]; then
-                    echo "What website would you like to scan?"
+                elif [[ " ${Manual[*]} " == *" ${service} "* ]]; then
+                    echo "What website would you like to scan? Or user IP"
 
                     #input for the website name
                     read -p ">>> " Manual_scan
                     
                     #scan a website name
-                    sudo nmap -sS "${Manual_scan}" -oN WebsiteScan.log --open
+                    sudo nmap -sS "${Manual_scan}" -oN "${Manual_scan}".log --open
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
 
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                        open "WebsiteScan.log"
+                        open "${Manual_scan}.log"
                     else
-                        echo "[-] Ok I will not open the WebsiteScan.log file"
+                        echo "[-] Ok I will not open the ${Manual_scan}.log file"
                         sleep 1
                     fi
                 
