@@ -36,6 +36,7 @@ checkForPackages() {
         do
             echo -e "The packages that are installed are: ${package}"
         done
+        echo ""
         echo -e "________PIP Packages________"
         for pipPackage in "${pipPackages[@]}" 
         do
@@ -52,6 +53,7 @@ checkForPackages() {
                 echo -e "${package} is ${BRIGHT}${RED}NOT installed${NC}"
             fi
         done
+        echo ""
         echo -e "________PIP Packages________"
         for pipPackage in "${pipPackages[@]}" 
         do
@@ -123,7 +125,7 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
         upgrade_pip
         
         echo ""
-        echo "_________INSTALLED PACKAGES________"
+        echo "_________APT PACKAGES________"
         checkForPackages
 
     else
