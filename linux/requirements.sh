@@ -41,7 +41,7 @@ checkForPackages() {
     else
         for package in "${Packages[@]}"
         do
-            if dpkg -l | grep -q "^ii ${package} "; then
+            if dpkg -l | grep -q "^ii  ${package} "; then
                 echo -e "${package} is ${BRIGHT}${GREEN}installed${NC}"
             else
                 echo -e "${package} is ${BRIGHT}${RED}NOT installed${NC}"
