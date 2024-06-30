@@ -53,7 +53,7 @@ checkForPackages() {
         do
             if pip show "${pipPackage}" > /dev/null 2>&1; then
                 echo -e "${pipPackage} is ${GREEN}installed${NC}"
-            else
+            else 
                 echo -e "${pipPackage} is ${RED}NOT installed${NC}"
             fi 
         done
@@ -76,7 +76,7 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
             package_name="$1"
             
             # Attempt to install the package
-            python3 -m pip install --user --upgrade "${package_name}"
+            python3 -m pip install --user --upgrade "${package_name}" --break-systempackages
             
             # Check the exit code of the installation
             if [ $? -eq 0 ]; then
