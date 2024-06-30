@@ -44,7 +44,7 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
 # List of required packages/commands (separated by spaces)
-required_packages=("${Packages}")
+required_packages=("wget" "hydra" "nmap" "ssh" "mysql" "figlet" "zenity" "mysql-server")
 
 # Packages to check for installation
 Packages=(
