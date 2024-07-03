@@ -8,12 +8,13 @@ NC='\033[0m' # No Color
 # grabes the username by using the "whoami" command and then grabs the hostname by using "hostname" command
 username=$(whoami)
 hostname=$(hostname)
+os_name=$(uname)
 
 #name of program
 NameOfProgram="NetBreach"
 
 # OS of the computer
-OS="darwin"
+OS="linux"
 
 # For the wget functionality to work
 SITE_URL="https://google.com"
@@ -47,10 +48,13 @@ required_packages=("wget" "hydra" "nmap" "ssh" "mysql" "figlet" "zenity")
 
 # Packages to check for installation
 Packages=(
+    "ssh"
+    "mysql"
+    "mysql-server"
+    "python3-pip"
     "wget"
     "hydra"
     "nmap"
-    "mysql"
     "figlet"
     "zenity"
 )
