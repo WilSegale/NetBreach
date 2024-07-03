@@ -14,7 +14,7 @@ os_name=$(uname)
 NameOfProgram="NetBreach"
 
 # OS of the computer
-OS="linux"
+OS="darwin"
 
 # For the wget functionality to work
 SITE_URL="https://google.com"

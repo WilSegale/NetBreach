@@ -24,7 +24,7 @@ checkForPackages() {
             if brew list --formula | grep -q "^${package}\$"; then
                 echo -e "${package} is ${GREEN}installed.${NC}"
             else
-                echo "${package} is ${RED}not installed.${NC}"
+                echo -e "${package} is ${RED}not installed.${NC}"
             fi
         done
         echo -e "________PIP Packages________"
