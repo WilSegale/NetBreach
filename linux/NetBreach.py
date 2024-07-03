@@ -1,20 +1,6 @@
 from DontEdit import *
 from HelpLogo import *
 
-# gets the current time and formats it HH:MM:SS
-current_time = datetime.datetime.now().time()
-
-#get the current time and formats it in the 12 hour format
-formatted_time = current_time.strftime("%I:%M:%S %p")
-
-# Get the current date
-current_date = datetime.datetime.now().strftime("%m/%d/%Y")
-
-ERROR = open("ERROR.log", "a")
-
-ProgramName = "NetBreach"
-SoftwareName = "NetBreach.py"  
-
 #this is for the user to understand what the program does
 def show_help():
 
@@ -62,7 +48,8 @@ def show_help():
             HowToUseInfo11 +
             HowToUseInfo12 +
             HowToUseInfo13 +
-            HowToUseInfo14)
+            HowToUseInfo14) 
+
     lineArt(["figlet", f"{name}"])
     lineArt(["figlet", "? HELP ?"])
     print(NameOfOs,  file=HelpFile)
@@ -261,11 +248,9 @@ def show_LOCAL():
                 
                 time.sleep(delay)  # Pause to control the update rate
         print_loading_bar(50)
-    
         print(f"\n[ {GREEN}OK{RESET} ] Loading {ProgramName} complete")
         time.sleep(5)
         subprocess.run(LocalScript)  # the script to run after loading
-
     else:
         # makes a pop up dialog to tell the user that the OS is not correct
         # makes a pop up dialog to tell the user that the OS is not correct
@@ -416,7 +401,7 @@ def show_manual_Local():
         print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
 
-#connect to a windows computer with XfreeRDP
+# go to the RDP CONNECTION mode
 def RDPCONENCT():
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
@@ -463,7 +448,7 @@ def RDPCONENCT():
         # makes a pop up dialog to tell the user that the OS is not correct
         print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
-
+  
 #holds the if statements that connect to the functions for the program to work properly
 try:
     # Handle command-line arguments
@@ -529,5 +514,6 @@ try:
 {FIX} put's it in fix mode that fixes the program,
 {HELP} put's it in help mode so you understand what you are going to do with this program.''')
 
+#holds the keyboard exit function
 except KeyboardInterrupt:
     print("\n[-] Exiting...")

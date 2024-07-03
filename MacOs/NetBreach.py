@@ -400,7 +400,8 @@ def show_manual_Local():
         # makes a pop up dialog to tell the user that the OS is not correct
         print(f"TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}")
         print(f"WARNING:TIME:{formatted_time} Wrong OS. Please use the correct OS. DATE:{current_date}",file=ERROR)
-  
+
+# go to the RDP CONNECTION mode
 def RDPCONENCT():
     # gets the current time and formats it HH:MM:SS
     current_time = datetime.datetime.now().time()
@@ -513,5 +514,6 @@ try:
 {FIX} put's it in fix mode that fixes the program,
 {HELP} put's it in help mode so you understand what you are going to do with this program.''')
 
+#holds the keyboard exit function
 except KeyboardInterrupt:
     print("\n[-] Exiting...")

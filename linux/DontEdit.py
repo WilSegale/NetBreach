@@ -8,6 +8,20 @@ import sys
 import time
 import urllib.request
 
+# gets the current time and formats it HH:MM:SS
+current_time = datetime.datetime.now().time()
+
+#get the current time and formats it in the 12 hour format
+formatted_time = current_time.strftime("%I:%M:%S %p")
+
+# Get the current date
+current_date = datetime.datetime.now().strftime("%m/%d/%Y")
+
+ERROR = open("ERROR.log", "a")
+
+ProgramName = "NetBreach"
+SoftwareName = "NetBreach.py"  
+
 # gets the CLI arguments like --global etc
 argument = sys.argv
 
