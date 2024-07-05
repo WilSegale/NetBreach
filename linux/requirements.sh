@@ -105,6 +105,7 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
 
         #if the pip3 install "packages" fails with the --break-system-packages it does pip3 install "packages"
         pipFail(){
+            echo "pip force"
             if [ "$1" = "--pipForce" ]; then
                 package_name="$1"
                 
