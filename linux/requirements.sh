@@ -76,7 +76,7 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
             package_name="$1"
             
             # Attempt to install the package
-            python3 -m pip install --user --upgrade "${package_name}" --break-system-packages
+            python3 -m pip3 install --user --upgrade "${package_name}" --break-system-packages
             
             # Check the exit code of the installation
             if [ $? -eq 0 ]; then
