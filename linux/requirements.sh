@@ -75,15 +75,9 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
         install_pip_package() {
             package_name="$1"
             
-            # Run pip install and capture the output
-            pipInstall=$(pip3 install "${pipPackages}" 2>&1)
-
-            # Check for the break-system-packages warning
-            if echo "${pipInstall}" | grep -q "--break-system-packages"; then
-                echo "Warning: 'break-system-packages' detected during installation of ${pipPackages}"
-            else
-                echo "Installation of ${pipPackages} completed without 'break-system-packages' warning."
-            fi
+            # Attempt to install the package
+            python3 -m pip install --user --upgrade "${package_name}" --break-system-packages
+            
             # Check the exit code of the installation
             if [ $? -eq 0 ]; then
                 # Verify the package installation by trying to import it in Python
