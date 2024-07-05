@@ -67,8 +67,16 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
         # Function to install package using apt package manager
         install_linux_package() {
             package_name="$1"
-            sudo apt-get install "${package_name}" -y
-            echo -e "[ ${BRIGHT}${GREEN}OK${NC} ] ${package_name} installed successfully."
+
+            for package in "${Packages[@]}"
+            do
+                if dpkg -l | grep -q "^ii  ${package} "; then
+                    sudo apt-get install "${package_name}" -y
+                    echo -e "[ ${BRIGHT}${GREEN}OK${NC} ] ${package_name} installed successfully."
+                else
+                    echo -e "[ ${BRGIHT}${RED}FAIL${NC} ] ${package}"
+                fi
+            done
         }
 
         # Function to install package using pip
@@ -76,7 +84,7 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
             package_name="$1"
             
             # Attempt to install the package
-            python3 -m pip install --user --upgrade "${package_name}" --break-system-packages
+            python3 -m pip install --user --upgrade "${package_name}" 
             
             # Check the exit code of the installation
             if [ $? -eq 0 ]; then
@@ -101,7 +109,7 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
                 package_name="$1"
                 
                 # Attempt to install the package
-                python3 -m pip install --user --upgrade "${package_name}"
+                python3 -m pip install --user --upgrade "${package_name}" --break-system-packages
                 
                 # Check the exit code of the installation
                 if [ $? -eq 0 ]; then
