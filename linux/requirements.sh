@@ -79,7 +79,7 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
             pipInstall=$(pip install "${pipPackages}" 2>&1)
 
             # Check for the break-system-packages warning
-            if echo "${pipInstall}" | grep -q "break-system-packages"; then
+            if echo "${pipInstall}" | grep -q "--break-system-packages"; then
                 echo "Warning: 'break-system-packages' detected during installation of ${pipPackages}"
             else
                 echo "Installation of ${pipPackages} completed without 'break-system-packages' warning."
