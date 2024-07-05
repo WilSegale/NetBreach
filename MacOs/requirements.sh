@@ -104,7 +104,14 @@ InstallHomeBrew
 # Function to install package using brew package manager
 install_brew_package() {
     package_name="$1"
-    brew install "${package_name}"
+    if [ $? -eq 0 ]; then
+        if brew list --formula | grep -q "^${package}\$"; then
+            brew install "${package_name}"
+            echo -e "[ ${BRIGHT}${GREEN}OK${NC} ] ${package_name} installed and verified successfully."
+        else
+            echo -e "[ ${BRIGHT}${RED}ERROR${NC} ] ${package_name} installed but could not be imported in Python."
+        fi
+    fi
 }
 
 # Function to install package using pip
