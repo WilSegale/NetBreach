@@ -76,7 +76,7 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
             package_name="$1"
             
             # Run pip install and capture the output
-            pipInstall=$(pip install "${pipPackages}" 2>&1)
+            pipInstall=$(pip3 install "${pipPackages}" 2>&1)
 
             # Check for the break-system-packages warning
             if echo "${pipInstall}" | grep -q "--break-system-packages"; then
