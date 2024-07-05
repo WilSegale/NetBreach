@@ -86,11 +86,11 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
                 if [ $? -eq 0 ]; then
                     echo -e "[ ${BRIGHT}${GREEN}OK${NC} ] ${package_name} installed and verified successfully."
                 else
-                    echo -e "[ ${BRIGHT}${RED}ERROR${NC} ] ${package_name} installed but could not be imported in Python."
+                    echo -e "[ ${BRIGHT}${RED}FAIL${NC} ] ${package_name} installed but could not be imported in Python."
                     exit 1
                 fi
             else
-                echo -e "[ ${BRIGHT}${RED}ERROR${NC} ] Failed to install ${package_name}."
+                echo -e "[ ${BRIGHT}${RED}FAIL${NC} ] Failed to install ${package_name}."
                 exit 1
             fi
         }
