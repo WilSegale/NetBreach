@@ -19,6 +19,7 @@ checkForPackages() {
         echo -e "________ERROR________"
         echo -e "${RED}Error occurred during pip uninstallation${NC}"
     else
+        #checks if the brew packages is installed or not
         for package in "${Packages[@]}"
         do
             if brew list --formula | grep -q "^${package}\$"; then
@@ -54,7 +55,6 @@ EXIT_PROGRAM_WITH_CTRL_Z(){
 handle_ctrl_z() {
     EXIT_PROGRAM_WITH_CTRL_Z
     exit 1
-    # Your custom action goes here
 }
 
 # Set up the trap to call the function on SIGTSTP (Ctrl+Z)
