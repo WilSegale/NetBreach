@@ -67,16 +67,7 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
         # Function to install package using apt package manager
         install_linux_package() {
             package_name="$1"
-
-            for package in "${Packages[@]}"
-            do
-                if dpkg -l | grep -q "^ii  ${package} "; then
-                    sudo apt-get install "${package_name}" -y
-                    echo -e "[ ${BRIGHT}${GREEN}OK${NC} ] ${package_name} installed successfully."
-                else
-                    echo -e "[ ${BRGIHT}${RED}FAIL${NC} ] ${package}"
-                fi
-            done
+            sudo apt-get install "${package_name}" -y
         }
 
         # Function to install package using pip
