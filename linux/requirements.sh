@@ -67,12 +67,14 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
         # Function to install package using apt package manager
         install_linux_package() {
             package_name="$1"
-            for package_name in "${Packages[@]}"
+
+            for package in "${Packages[@]}"
             do
-                if dpkg -l | grep -q "^ii  ${package_name}\s"; then
-                    echo -e "${package_name} is ${GREEN}installed.${NC}"
+                if dpkg -l | grep -q "^ii  ${package} "; then
+                    sudo apt-get install "${package_name}" -y
+                    echo -e "[ ${BRIGHT}${GREEN}OK${NC} ] ${package_name} installed successfully."
                 else
-                    echo -e "${package_name} is ${RED}not installed.${NC}"
+                    echo -e "[ ${BRGIHT}${RED}FAIL${NC} ] ${package}"
                 fi
             done
         }
