@@ -4,7 +4,7 @@ source DontEdit.sh
 
 # Check if the OS is Linux
 if [[ "${OSTYPE}" != "linux-gnu" ]]; then
-    echo "This script only works on Linux."
+    echo -e "[ ${RED}FAIL${NC} ] This script only works on Linux."
     exit 1
 fi
 
