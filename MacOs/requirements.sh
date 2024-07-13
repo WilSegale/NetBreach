@@ -3,6 +3,15 @@
 # Source the file DontEdit.sh
 source DontEdit.sh
 
+WifiConnection(){
+    if ping -c 1 google.com >/dev/null 2>&1; then
+        install
+    else
+        echo -e "[ ${RED}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
+    fi
+}
+
+
 EthernetConnection(){
     # Get the list of network interfaces
     interfaces=$(ifconfig -a)
@@ -12,7 +21,7 @@ EthernetConnection(){
         # Check if 'en0' has an inet address
         inet=$(ifconfig en0 | grep "inet ")
         if [ -n "$inet" ]; then
-            echo "Ethernet (en0) is connected."
+            install
         else
             echo "Ethernet (en0) is not connected."
         fi
@@ -169,20 +178,21 @@ upgrade_pip() {
     python3 -m pip install --upgrade pip --break-system-packages
 }
 
-# Check if the user is root
-if [ "$(id -u)" -eq 0 ]; then
-    # Gives the user something to read so they understand why they got the error
-    echo "+++++++++++++++++++++++++++++++++++++++++"
-    echo "+   Don't use sudo for this script.     +"
-    echo "+   Because it can damage your computer +"
-    echo "+++++++++++++++++++++++++++++++++++++++++"
-    echo ""
-    exit 1
-# If the user is not root, exit the script
-else
-    # Check if the OS is Linux
-    if [[ "${OSTYPE}" == "${OS}"* ]]; then
-        if ping -c 1 google.com >/dev/null 2>&1; then
+
+install(){
+    # Check if the user is root
+    if [ "$(id -u)" -eq 0 ]; then
+        # Gives the user something to read so they understand why they got the error
+        echo "+++++++++++++++++++++++++++++++++++++++++"
+        echo "+   Don't use sudo for this script.     +"
+        echo "+   Because it can damage your computer +"
+        echo "+++++++++++++++++++++++++++++++++++++++++"
+        echo ""
+        exit 1
+    # If the user is not root, exit the script
+    else
+        # Check if the OS is Linux
+        if [[ "${OSTYPE}" == "${OS}"* ]]; then
 
             # Install BREW packages
             echo ""
@@ -208,10 +218,9 @@ else
             echo ""
             echo "_________INSTALLED PACKAGES________"
             checkForPackages
+        
         else
-            echo -e "[ ${RED}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
+            echo -e "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS."
         fi
-    else
-        echo -e "[ ${RED}FAIL${NC} ] Wrong OS, please use the correct OS."
     fi
-fi
+}
