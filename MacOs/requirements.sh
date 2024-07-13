@@ -5,7 +5,7 @@ source DontEdit.sh
 
 WifiConnection(){
     if ping -c 1 google.com >/dev/null 2>&1; then
-        install
+        installPackages
     else
         echo -e "[ ${RED}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
     fi
@@ -17,11 +17,11 @@ EthernetConnection(){
     interfaces=$(ifconfig -a)
 
     # Check if 'en0' or other common Ethernet interface is up
-    if echo "$interfaces" | grep -q "en0"; then
+    if echo "${interfaces}" | grep -q "en0"; then
         # Check if 'en0' has an inet address
         inet=$(ifconfig en0 | grep "inet ")
-        if [ -n "$inet" ]; then
-            install
+        if [ -n "${inet}" ]; then
+            installPackages
         else
             echo "Ethernet (en0) is not connected."
         fi
@@ -179,7 +179,7 @@ upgrade_pip() {
 }
 
 
-install(){
+installPackages(){
     # Check if the user is root
     if [ "$(id -u)" -eq 0 ]; then
         # Gives the user something to read so they understand why they got the error
