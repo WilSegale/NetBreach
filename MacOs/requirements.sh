@@ -68,6 +68,28 @@ ctrl_c() {
 
 trap ctrl_c SIGINT
 
+EthernetConnection(){
+    # Get the list of network interfaces
+    interfaces=$(ifconfig -a)
+
+    # Check if 'en0' or other common Ethernet interface is up
+    if echo "$interfaces" | grep -q "en0"; then
+        # Check if 'en0' has an inet address
+        inet=$(ifconfig en0 | grep "inet ")
+        if [ -n "$inet" ]; then
+            echo "Ethernet (en0) is connected."
+        else
+            echo "Ethernet (en0) is not connected."
+        fi
+    else
+        echo "Ethernet (en0) interface not found."
+    fi
+}
+# If you have other Ethernet interfaces, you can check them similarly
+
+
+
+
 # installes home brew for the brew pakcages to run
 InstallHomeBrew(){
     if command -v brew &>/dev/null; then
