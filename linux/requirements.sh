@@ -12,21 +12,22 @@ WifiConnection() {
 # Ethernet connection check function
 EthernetConnection() {
     # Get the list of network interfaces
-    interfaces=$(ifconfig)
+    interfaces=$(ip link show)
 
-    # Check if 'en0' or other common Ethernet interface is up
-    if echo "${interfaces}" | grep -q "en0"; then
-        # Check if 'en0' has an inet address
-        inet=$(ifconfig en0 | grep "inet ")
+    # Check if 'eth0' or other common Ethernet interface is up
+    if echo "${interfaces}" | grep -q "eth0"; then
+        # Check if 'eth0' has an inet address
+        inet=$(ip addr show eth0 | grep "inet ")
         if [ -n "${inet}" ]; then
             requirements
         else
-            echo "Ethernet (en0) is not connected."
+            echo "Ethernet (eth0) is not connected."
         fi
     else
-        echo "Ethernet (en0) interface not found."
+        echo "Ethernet (eth0) interface not found."
     fi
 }
+
 
 # Check if the OS is Linux
 if [[ "${OSTYPE}" != "linux-gnu" ]]; then
