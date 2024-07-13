@@ -1,5 +1,32 @@
 #!/bin/bash
 source DontEdit.sh
+# Wifi connection check function
+WifiConnection() {
+    if ping -c 1 google.com >/dev/null 2>&1; then
+        requirements
+    else
+        echo -e "[ ${RED}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
+    fi
+}
+
+# Ethernet connection check function
+EthernetConnection() {
+    # Get the list of network interfaces
+    interfaces=$(ifconfig)
+
+    # Check if 'en0' or other common Ethernet interface is up
+    if echo "${interfaces}" | grep -q "en0"; then
+        # Check if 'en0' has an inet address
+        inet=$(ifconfig en0 | grep "inet ")
+        if [ -n "${inet}" ]; then
+            requirements
+        else
+            echo "Ethernet (en0) is not connected."
+        fi
+    else
+        echo "Ethernet (en0) interface not found."
+    fi
+}
 
 # Check if the OS is Linux
 if [[ "${OSTYPE}" != "linux-gnu" ]]; then
@@ -153,4 +180,5 @@ else
     echo -e "[ ${BRIGHT}${RED}FAIL${NC} ] Wrong OS, please use the correct OS."
 fi
 }
-requirements
+WifiConnection
+EthernetConnection
