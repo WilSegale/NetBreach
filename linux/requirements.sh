@@ -21,10 +21,10 @@ EthernetConnection() {
         if [ -n "${inet}" ]; then
             requirements
         else
-            echo "Ethernet (eth0) is not connected."
+            echo -e "[ ${RED}FAIL${NC} ] Ethernet (eth0) or WiFi is not connected."
         fi
     else
-        echo "Ethernet (eth0) interface not found."
+        echo -e "[ ${RED}FAIL${NC} ] Ethernet (eth0) or WiFi is not connected."
     fi
 }
 

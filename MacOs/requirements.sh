@@ -24,10 +24,10 @@ EthernetConnection() {
         if [ -n "${inet}" ]; then
             installPackages
         else
-            echo "Ethernet (en0) is not connected."
+            echo -e "[ ${RED}FAIL${NC} ] Ethernet (en0) or WiFi is not connected."
         fi
     else
-        echo "Ethernet (en0) interface not found."
+        echo -e "[ ${RED}FAIL${NC} ] Ethernet (en0) or WiFi interface not found."
     fi
 }
 
