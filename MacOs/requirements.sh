@@ -135,9 +135,9 @@ checkForPackages() {
         for package in "${Packages[@]}"
         do
             if brew list --formula | grep -q "^${package}\$"; then
-                echo -e "${package} is ${GREEN}installed.${NC}"
+                echo -e "${package}: ${GREEN}Is installed.${NC}"
             else
-                echo -e "${package} is ${RED}not installed.${NC}"
+                echo -e "${package}: ${RED}not installed.${NC}"
             fi
         done
         echo -e "________PIP Packages________"
