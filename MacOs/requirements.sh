@@ -6,7 +6,12 @@ source DontEdit.sh
 # Wifi connection check function
 WifiConnection() {
     if ping -c 1 google.com >/dev/null 2>&1; then
-        installPackages
+        # Check if Homebrew is installed
+        if command -v brew &> /dev/null; then
+            installPackages
+        else
+            InstallHomeBrew
+        fi
     else
         echo -e "[ ${RED}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
     fi
@@ -22,7 +27,12 @@ EthernetConnection() {
         # Check if 'en0' has an inet address
         inet=$(ifconfig en0 | grep "inet ")
         if [ -n "${inet}" ]; then
-            installPackages
+            # Check if Homebrew is installed
+            if command -v brew &> /dev/null; then
+                installPackages
+            else
+                InstallHomeBrew
+            fi
         else
             echo -e "[ ${RED}FAIL${NC} ] Ethernet (en0) or WiFi is not connected."
         fi
@@ -33,6 +43,7 @@ EthernetConnection() {
 
 # Install Homebrew if not already installed
 InstallHomeBrew() {
+    
     if command -v brew &>/dev/null; then
         echo
     else
