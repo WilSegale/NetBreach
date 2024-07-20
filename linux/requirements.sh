@@ -1,5 +1,40 @@
 #!/bin/bash
 source DontEdit.sh
+
+# Function to install package using apt package manager
+install_linux_package() {
+    package_name="$1"
+    sudo apt-get install "${package_name}" -y
+}
+
+# Function to install package using pip
+install_pip_package() {
+    package_name="$1"
+    python3 -m pip install --user --upgrade "${package_name}"
+}
+
+# Function to check installed packages
+checkForPackages() {
+    echo "Installed APT packages:"
+    for package in "${Packages[@]}"; do
+        if dpkg -l | grep -q "^ii  ${package} "; then
+            echo -e "${package} is ${BRIGHT}${GREEN}installed${NC}"
+        else
+            echo -e "${package} is ${BRIGHT}${RED}NOT installed${NC}"
+        fi
+    done
+
+    echo ""
+    echo "Installed PIP packages:"
+    for pipPackage in "${pipPackages[@]}"; do
+        if pip show "${pipPackage}" > /dev/null 2>&1; then
+            echo -e "${pipPackage} is ${GREEN}installed${NC}"
+        else
+            echo -e "${pipPackage} is ${RED}NOT installed${NC}"
+        fi
+    done
+}
+
 # Wifi connection check function
 WifiConnection() {
     if ping -c 1 google.com >/dev/null 2>&1; then
@@ -49,39 +84,6 @@ echo ""
 echo -e "doing a ${GREEN}dpkg configure${NC}"
 
 sudo dpkg --configure -a
-
-#checks if the user has pakcages installed or not
-checkForPackages() {
-    if [ $? -ne 0 ]; then
-        for package in "${Packages[@]}" 
-        do
-            echo -e "The packages that are installed are: ${package}"
-        done
-        echo ""
-        echo -e "________PIP Packages________"
-        for pipPackage in "${pipPackages[@]}" 
-        do
-            echo -e "${BRIGHT}${RED}${pipPackage}${NC}"
-        done
-        echo -e "________ERROR________"
-        echo -e "${BRIGHT}${RED}Error occurred during pip uninstallation${NC}"
-    else
-
-        if dpkg -l | grep -q "^ii  ${package} "; then
-            echo -e "${package} is ${BRIGHT}${GREEN}installed${NC}"
-        else
-            echo -e "${package} is ${BRIGHT}${RED}NOT installed${NC}"
-        fi
-        echo ""
-        echo -e "________PIP Packages________"
-
-        if pip show "${pipPackage}" > /dev/null 2>&1; then
-            echo -e "${pipPackage} is ${GREEN}installed${NC}"
-        else 
-            echo -e "${pipPackage} is ${RED}NOT installed${NC}"
-        fi 
-    fi
-}
 
 requirements(){
 # Check if the OS is Linux
@@ -167,7 +169,7 @@ if [[ "${OSTYPE}" == "${Linux}"* ]]; then
         upgrade_pip
         
         echo ""
-        echo "_________APT PDPACKAGES________"
+        echo "_________APT PACKAGES________"
         checkForPackages
 
     else
