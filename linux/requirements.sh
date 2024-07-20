@@ -66,16 +66,20 @@ checkForPackages() {
         echo -e "________ERROR________"
         echo -e "${BRIGHT}${RED}Error occurred during pip uninstallation${NC}"
     else
+
+        if dpkg -l | grep -q "^ii  ${package} "; then
+            echo -e "${package} is ${BRIGHT}${GREEN}installed${NC}"
+        else
+            echo -e "${package} is ${BRIGHT}${RED}NOT installed${NC}"
+        fi
         echo ""
         echo -e "________PIP Packages________"
-        for pipPackage in "${pipPackages[@]}" 
-        do
-            if pip show "${pipPackage}" > /dev/null 2>&1; then
-                echo -e "${pipPackage} is ${GREEN}installed${NC}"
-            else 
-                echo -e "${pipPackage} is ${RED}NOT installed${NC}"
-            fi 
-        done
+
+        if pip show "${pipPackage}" > /dev/null 2>&1; then
+            echo -e "${pipPackage} is ${GREEN}installed${NC}"
+        else 
+            echo -e "${pipPackage} is ${RED}NOT installed${NC}"
+        fi 
     fi
 }
 
