@@ -288,7 +288,6 @@ else
             }
             NetBreach
 
-            ConnectXfreerdp
             RunHackingCommand # Calls the RunHackingCommand function
 
             RunHackingCommandWithVNC # Calls the RunHackingCommandWithVNC function
