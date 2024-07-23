@@ -43,7 +43,6 @@ command_exists() {
 
 # Function to handle xfreerdp connection
 ConnectXfreerdp() {
-    
     if [[ "${OSTYPE}" == "darwin"* ]]; then
         SITE="https://google.com/"
         if ! curl --head --silent --fail $SITE > /dev/null; then
