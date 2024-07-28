@@ -505,7 +505,7 @@ try:
 {GLOBAL} put's it in global mode for attacking global networks, 
 {GUI} put's it in GUI mode to attacking in GUI GLOBAL networks, 
 {LOCAL} put's it in local mode for attacking local networks,
-{GuiLocal} put's it in GUI LOCAL mode to attacking in GUI LOCAL networks,
+{GuiLocal} put's it in GUI LOCAL mode for attacking in GUI LOCAL networks,
 {GlobalManualArgument} put's it in global manual mode that shows you how to use the program,
 {LocalManualArgument} put's it in local manual mode that shows you how to use the program,
 {installRequirement} put's it in install mode that install's the required packages,
