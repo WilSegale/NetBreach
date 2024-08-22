@@ -1,15 +1,11 @@
 #!/bin/bash
-# Source the file DontEdit.sh
-source DontEdit.sh
+if [ -f "DontEdit.sh" ]; then
+    source DontEdit.sh
+else
+    echo "DontEdit.sh not found!"
+    exit 1
+fi
 
-# help function
-HELP(){
-    echo "REQUIREMENTS HELP"
-    if [[ "$1" = "--help" || "$1" = "-h" ]]; then
-        echo "This script is used to check if the system has the required packages installed."
-        echo "If the pip packages fail to install type"
-        echo '''bash requrements.sh --pipForce'''
-}
 
 # Wifi connection check function
 WifiConnection() {
@@ -48,7 +44,18 @@ EthernetConnection() {
         echo -e "[ ${RED}FAIL${NC} ] Ethernet (en0) or WiFi interface not found."
     fi
 }
+# help function
+HELP(){
+    echo "REQUIREMENTS HELP"
 
+    echo "_________________"
+    echo "This script is used to check if the system has the required packages installed."
+    echo "If the pip packages fail to install type"
+    echo '''bash requrements.sh --pipForce'''
+    echo "_________________"
+
+    exit 1
+}
 # Install Homebrew if not already installed
 InstallHomeBrew() {
     
@@ -100,7 +107,7 @@ pipFail(){
         package_name="$1"
         
         # Attempt to install the package
-        python3 -m pip install --user --upgrade "${package_name}"
+        python3 -m pip install --user --upgrade "${package_name}" --break-system-packages
         
         # Check the exit code of the installation
         if [ $? -eq 0 ]; then
@@ -158,6 +165,7 @@ checkForPackages() {
     fi
 }
 
+
 # quits program with ctrl-c
 EXIT_PROGRAM_WITH_CTRL_C() {
     echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
@@ -191,6 +199,35 @@ ctrl_c() {
 
 trap ctrl_c SIGINT
 
+if [[ "$1" = "--help" || "$1" = "-h" ]]; then
+    #goes to the help fucnotin that explains how to fix the pip3 error message
+    HELP "$1"
+fi
+
+# Function to install package using pip
+install_pip_package() {
+    package_name="$1"
+    
+    # Attempt to install the package
+    python3 -m pip install --user --upgrade "${package_name}" --break-system-packages
+    
+    # Check the exit code of the installation
+    if [ $? -eq 0 ]; then
+        # Verify the package installation by trying to import it in Python
+        python3 -c "import ${package_name}" 2>/dev/null
+        
+        if [ $? -eq 0 ]; then
+            echo -e "[ ${BRIGHT}${GREEN}OK${NC} ] ${package_name} installed and verified successfully."
+        else
+            echo -e "[ ${BRIGHT}${RED}FAIL${NC} ] ${package_name} installed but could not be imported in Python."
+            exit 1
+        fi
+    else
+        echo -e "[ ${BRIGHT}${RED}FAIL${NC} ] Failed to install ${package_name}."
+        exit 1
+    fi
+}
+
 # Install packages function
 installPackages() {
     # Check if the user is root
@@ -202,6 +239,9 @@ installPackages() {
         echo "+++++++++++++++++++++++++++++++++++++++++"
         echo ""
         exit 1
+    
+    
+
     # If the user is not root, exit the script
     else
         # Check if the OS is Linux
@@ -236,8 +276,6 @@ installPackages() {
         fi
     fi
 }
-#calls the help function
-HELP
 
 
 # Call EthernetConnection function
