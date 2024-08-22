@@ -86,36 +86,38 @@ install_brew_package() {
         echo -e "[ ${BRIGHT}${GREEN}OK${NC} ] ${package_name} is already installed."
     fi
 }
-
-# Function to install package using pip
-install_pip_package() {
-    package_name="$1"
-    
-    # Attempt to install the package
-    python3 -m pip install --user --upgrade "${package_name}" --break-system-packages
-    
-    # Check the exit code of the installation
-    if [ $? -eq 0 ]; then
-        # Verify the package installation by trying to import it in Python
-        python3 -c "import ${package_name}" 2>/dev/null
+pipFail(){
+    echo "pip force"
+    if [ "$1" = "--pipForce" ]; then
+        package_name="$1"
         
+        # Attempt to install the package
+        python3 -m pip install --user --upgrade "${package_name}"
+        
+        # Check the exit code of the installation
         if [ $? -eq 0 ]; then
-            echo -e "[ ${BRIGHT}${GREEN}OK${NC} ] ${package_name} installed and verified successfully."
+            # Verify the package installation by trying to import it in Python
+            python3 -c "import ${package_name}" 2>/dev/null
+            
+            if [ $? -eq 0 ]; then
+                echo -e "[ ${BRIGHT}${GREEN}OK${NC} ] ${package_name} installed and verified successfully."
+            else
+                echo -e "[ ${BRIGHT}${RED}FAIL${NC} ] ${package_name} installed but could not be imported in Python."
+                exit 1
+            fi
         else
-            echo -e "[ ${BRIGHT}${RED}ERROR${NC} ] ${package_name} installed but could not be imported in Python."
+            echo -e "[ ${BRIGHT}${RED}FAIL${NC} ] Failed to install ${package_name}."
             exit 1
         fi
-    else
-        echo -e "[ ${RED}ERROR${NC} ] Failed to install ${package_name}."
-        exit 1
     fi
 }
 
+
 # Function to upgrade pip
 upgrade_pip() {
-    python3 -m pip install --upgrade pip --break-system-packages
+    python3 -m pip install --upgrade pip
+    echo -e "[ ${BRIGHT}${GREEN}OK${NC} ] pip packages updated successfully."
 }
-
 # Check if packages are installed
 checkForPackages() {
     if [ $? -ne 0 ]; then
