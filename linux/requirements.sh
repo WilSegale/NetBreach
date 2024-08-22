@@ -1,5 +1,19 @@
 #!/bin/bash
 source DontEdit.sh
+
+# help function
+HELP(){
+    echo "REQUIREMENTS HELP"
+    if [[ "$1" = "--help" || "$1" = "-h" ]]; then
+        echo "This script is used to check if the system has the required packages installed."
+        echo "If the pip packages fail to install type"
+        echo '''sudo bash requrements.sh --pipForce'''
+    
+    
+}
+
+
+
 # Wifi connection check function
 WifiConnection() {
     if ping -c 1 google.com >/dev/null 2>&1; then
@@ -180,5 +194,7 @@ else
     echo -e "[ ${BRIGHT}${RED}FAIL${NC} ] Wrong OS, please use the correct OS."
 fi
 }
+
+HELP
 WifiConnection
 EthernetConnection

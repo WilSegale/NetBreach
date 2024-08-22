@@ -1,7 +1,15 @@
 #!/bin/bash
-
 # Source the file DontEdit.sh
 source DontEdit.sh
+
+# help function
+HELP(){
+    echo "REQUIREMENTS HELP"
+    if [[ "$1" = "--help" || "$1" = "-h" ]]; then
+        echo "This script is used to check if the system has the required packages installed."
+        echo "If the pip packages fail to install type"
+        echo '''bash requrements.sh --pipForce'''
+}
 
 # Wifi connection check function
 WifiConnection() {
@@ -228,6 +236,9 @@ installPackages() {
         fi
     fi
 }
+#calls the help function
+HELP
+
 
 # Call EthernetConnection function
 EthernetConnection
