@@ -99,12 +99,6 @@ install_brew_package() {
     fi
 }
 
-# Function to upgrade pip
-upgrade_pip() {
-    python3 -m pip install --upgrade pip
-    echo -e "[ ${GREEN}OK${NC} ] pip upgraded successfully."
-}
-
 # Function to check for installed packages
 checkForPackages() {
     for package in "${Packages[@]}"; do
@@ -127,7 +121,32 @@ checkForPackages() {
 
 # Function to install pip package
 install_pip_package() {
+
+    # Check for the --pipForce flag
+    if [[ "$1" == "--pipForce" ]]; then
+        title="[+] PIP FORCE"
+        WrongPassword="using PIP FORCE mode"
+        osascript -e "display notification \"$WrongPassword\" with title \"$title\""
+
+        # Upgrade pip with force
+        python3 -m pip install --upgrade pip --break-system-packages
+        echo -e "[ ${GREEN}OK${NC} ] pip upgraded successfully."
+
+        # Shift to get the package name
+        shift
+    else
+        title="[-] PIP FORCE"
+        WrongPassword="not using PIP FORCE mode"
+        osascript -e "display notification \"$WrongPassword\" with title \"$title\""
+
+        # Normal pip upgrade
+        python3 -m pip install --upgrade pip
+    fi
+
+    # Now the package name is in $1
     package_name="$1"
+
+    # Install the package
     python3 -m pip install --user --upgrade "${package_name}" --break-system-packages
     if [ $? -eq 0 ]; then
         if python3 -c "import ${package_name}" &>/dev/null; then
@@ -157,13 +176,10 @@ installPackages() {
                 install_brew_package "${package}"
             done
 
-            echo "_________PIP PACKAGES INSTALLATION________"
+            echo "_________PIP PACKAGES INSTALLATION AND PIP UPDATE________"
             for PIP in "${pipPackages[@]}"; do
                 install_pip_package "${PIP}"
             done
-
-            echo "_________PIP UPGRADES________"
-            upgrade_pip
 
             echo "_________INSTALLED PACKAGES________"
             checkForPackages
