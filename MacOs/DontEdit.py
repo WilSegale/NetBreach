@@ -65,7 +65,7 @@ GlobalManualArgument = ["--MANUAL-GLOBAL", "--Manual-Global", "--manual-global"]
 LocalManualArgument = ["--MANUAL-LOCAL", "--Manual-Local", "--manual-local"]
 installRequirement = ["--INSTALL", "--install"]
 uninstallRequirement = ["--UNINSTALL", "--uninstall"]
-conenctRDP = ["--xfreerdp"]
+conenctRDP = ["--xfreerdp", "--XFREERDP"]
 FIX = ["--FIX", "--fix"]
 
 # Define list of scripts to run
