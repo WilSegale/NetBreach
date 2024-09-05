@@ -59,7 +59,6 @@ total_steps=100
 userName="Input Username:"
 hostName="Input Hostname:"
 
-
 (
   # Start a subshell to redirect the output
   for ((step = 0; step <= total_steps; step++)); do
