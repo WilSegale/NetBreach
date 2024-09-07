@@ -6,7 +6,7 @@ encrypt_file() {
     output_file="$2"
     password="$3"
 
-    openssl enc -aes-256-cbc -salt -in "$input_file" -out "$output_file" -pass pass:"$password"
+    openssl enc -aes-256-cbc -salt -in "${input_file}" -out "${output_file}" -pass pass:"${password}"
 }
 
 # Usage example

@@ -22,7 +22,7 @@ function encryptFiles() {
 
         # Generate random strings using openssl
         for ((i=0; i<numStrings; i++)); do
-            randomString=$(openssl rand -base64 $((stringLength * 3/4)) | tr -dc 'a-zA-Z0-9' | head -c $stringLength)
+            randomString=$(openssl rand -base64 $((stringLength * 3/4)) | tr -dc 'a-zA-Z0-9' | head -c "${stringLength}")
             echo "${randomString}" > "${targetFile}"
         done
       
