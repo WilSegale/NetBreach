@@ -10,7 +10,7 @@ encrypt_file() {
 }
 
 # Usage example
-read -p "Input file name to encrypt: " input_file
+read -e -p "Input file name to encrypt: " input_file
 output_file="encrypted.enc"
 read -sp "Input Password: " password
 

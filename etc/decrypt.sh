@@ -1,5 +1,6 @@
 #!/bin/bash
 source DontEdit.sh
+ls *.enc
 # Decrypt a file using a password list and verify its integrity
 decrypt_file() {
     input_file="$1"
@@ -22,7 +23,7 @@ validate_decryption() {
     fi
 }
 
-input_file="encrypted.enc"
+read -e -p "Enter the path to the encrypted file: " input_file
 output_file="decrypted.txt"
 password_file="rockyou.txt"
 
@@ -33,6 +34,8 @@ while IFS= read -r password; do
     # Validate if the decrypted file is readable
     if validate_decryption "${output_file}"; then
         echo -e "File decrypted successfully with password: ${GREEN}${password}${NC}"
+        echo "Password to ${input_file} is: ${password}" >> password.txt
+        open "${output_file}"
         exit 0
     else
         echo -e "Incorrect password: ${RED}${password}${NC}" >&2
