@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ls
 # Encrypt a file
 encrypt_file() {
     input_file="$1"
