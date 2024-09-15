@@ -66,7 +66,7 @@ InstallHomeBrew() {
         echo "Homebrew is not installed."
         echo "Would you like to install Homebrew? (YES/NO)"
         read -p ">>> " answer
-        if [[ "${answer,,}" == "yes" ]]; then
+        if [[ "${answer}" == "yes" ]]; then
             echo "Installing Homebrew..."
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
             sleep 1

@@ -1,3 +1,0 @@
-# Hydra v9.5 run at 2024-09-09 05:28:32 on 127.0.0.1 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://127.0.0.1)
-# Hydra v9.5 run at 2024-09-10 12:24:47 on 127.0.0.1 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://127.0.0.1)
-# Hydra v9.5 run at 2024-09-14 08:06:47 on 127.0.0.1 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://127.0.0.1)
