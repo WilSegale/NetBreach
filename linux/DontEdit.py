@@ -8,6 +8,7 @@ import sys
 import time
 import urllib.request
 
+
 # gets the current time and formats it HH:MM:SS
 current_time = datetime.datetime.now().time()
 
@@ -17,15 +18,17 @@ formatted_time = current_time.strftime("%I:%M:%S %p")
 # Get the current date
 current_date = datetime.datetime.now().strftime("%m/%d/%Y")
 
+# holds the error file to read from
 ERROR = open("ERROR.log", "a")
 
+# name of program and software name
 ProgramName = "NetBreach"
 SoftwareName = "NetBreach.py"  
 
-# gets the CLI arguments like --global etc
+# holds the argument of the --globla function
 argument = sys.argv
 
-# var for the os.sysetm command
+#terminalcommand for the os.system funciton
 terminalCommand = os.system
 
 # easy way to read the root user function
@@ -38,10 +41,9 @@ RemoveFile = ["ERROR.log","ERROR.LOG"]
 lineArt = subprocess.run
 
 #name of the os
-OS = "Linux"
+OS = "Darwin"
 
-name = "Linux"
-
+name = "Mac"
 # Define color codes for console output
 BRIGHT = '\033[1m'
 GREEN = "\033[92m"
@@ -55,16 +57,16 @@ RESET = "\033[0m"
 
 # Define constants for command-line arguments
 HELP = ["--HELP", "--Help", "--help", "-h", "-H"]
-GUI = ["--GUI", "--Gui", "--gui"]
-GLOBAL = ["--GLOBAL", "--Global", "--global"]
-LOCAL = ["--LOCAL", "--Local", "--local"]
-GuiLocal = ["--GUI-LOCAL", "--Gui-local", "--gui-local"]
-GlobalManualArgument = ["--MANUAL-GLOBAL", "--Manual-Global", "--manual-global"]
-LocalManualArgument = ["--MANUAL-LOCAL", "--Manual-Local", "--manual-local"]
-installRequirement = ["--INSTALL", "--install"]
-uninstallRequirement = ["--UNINSTALL", "--uninstall"]
-conenctRDP = ["--xfreerdp"]
-FIX = ["--FIX", "--fix"]
+GUI = ["--GUI", "--Gui", "--gui", "-GU","-Gu"]
+GLOBAL = ["--GLOBAL", "--Global", "--global", "-G", "-g"]
+LOCAL = ["--LOCAL", "--Local", "--local", "-l", "-L"]
+GuiLocal = ["--GUI-LOCAL", "--Gui-local", "--gui-local", "--g-l", "--G-l", "--G-L"]
+GlobalManualArgument = ["--MANUAL-GLOBAL", "--Manual-Global", "--manual-global", "--m-g", "--M-g", "--M-G"]
+LocalManualArgument = ["--MANUAL-LOCAL", "--Manual-Local", "--manual-local", "--m-l", "--M-l", "--M-L"]
+installRequirement = ["--INSTALL", "--install", "--in"]
+uninstallRequirement = ["--UNINSTALL", "--uninstall", "--un"]
+conenctRDP = ["--xfreerdp", "--XFREERDP", "--XFREE", "--xfree"]
+FIX = ["--FIX", "--fix", "-f", "-F"]
 
 # Define list of scripts to run
 GuiScript = ["bash", "GuiScript.sh"]
