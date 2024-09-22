@@ -1,0 +1,8 @@
+# Nmap 7.95 scan initiated Sat Sep 21 11:43:18 2024 as: nmap -sS -p 22 -oN 22.log --open 192.168.1.1/24
+Nmap scan report for zeros-Air.lan (192.168.1.13)
+Host is up (0.00028s latency).
+
+PORT   STATE SERVICE
+22/tcp open  ssh
+
+# Nmap done at Sat Sep 21 11:44:05 2024 -- 256 IP addresses (33 hosts up) scanned in 47.35 seconds

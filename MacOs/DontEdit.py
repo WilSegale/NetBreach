@@ -57,16 +57,16 @@ RESET = "\033[0m"
 
 # Define constants for command-line arguments
 HELP = ["--HELP", "--Help", "--help", "-h", "-H"]
-GUI = ["--GUI", "--Gui", "--gui"]
-GLOBAL = ["--GLOBAL", "--Global", "--global"]
-LOCAL = ["--LOCAL", "--Local", "--local"]
-GuiLocal = ["--GUI-LOCAL", "--Gui-local", "--gui-local"]
-GlobalManualArgument = ["--MANUAL-GLOBAL", "--Manual-Global", "--manual-global"]
-LocalManualArgument = ["--MANUAL-LOCAL", "--Manual-Local", "--manual-local"]
-installRequirement = ["--INSTALL", "--install"]
-uninstallRequirement = ["--UNINSTALL", "--uninstall"]
-conenctRDP = ["--xfreerdp", "--XFREERDP"]
-FIX = ["--FIX", "--fix"]
+GUI = ["--GUI", "--Gui", "--gui", "-GU","-Gu"]
+GLOBAL = ["--GLOBAL", "--Global", "--global", "-G", "-g"]
+LOCAL = ["--LOCAL", "--Local", "--local", "-l", "-L"]
+GuiLocal = ["--GUI-LOCAL", "--Gui-local", "--gui-local", "--g-l", "--G-l", "--G-L"]
+GlobalManualArgument = ["--MANUAL-GLOBAL", "--Manual-Global", "--manual-global", "--m-g", "--M-g", "--M-G"]
+LocalManualArgument = ["--MANUAL-LOCAL", "--Manual-Local", "--manual-local", "--m-l", "--M-l", "--M-L"]
+installRequirement = ["--INSTALL", "--install", "--in"]
+uninstallRequirement = ["--UNINSTALL", "--uninstall", "--un"]
+conenctRDP = ["--xfreerdp", "--XFREERDP", "--XFREE", "xfree"]
+FIX = ["--FIX", "--fix", "-f", "-F"]
 
 # Define list of scripts to run
 GuiScript = ["bash", "GuiScript.sh"]
