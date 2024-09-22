@@ -27,7 +27,7 @@ If you encounter the following error message when connecting to an SSH server:
 @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ```
-# Or you can go to this file and delate all the hashes that are connected to previously used ssh hosts
+# you can go to this file and delate all the hashes that are connected to previously used for ssh hosts
 ```ssh hash config```
 ```plaintext
 cd ~/.ssh
