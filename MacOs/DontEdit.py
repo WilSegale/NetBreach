@@ -7,8 +7,9 @@ import subprocess
 import sys
 import time
 import urllib.request
-
-
+import socket
+import ipaddress
+import json
 # gets the current time and formats it HH:MM:SS
 current_time = datetime.datetime.now().time()
 

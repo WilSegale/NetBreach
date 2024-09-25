@@ -1,101 +1,97 @@
-
 from DontEdit import *
-from threading import Thread, Lock
-from queue import Queue
-import pyfiglet
-import argparse
-import socket
-import os
-import time
+# Function to scan a specific port on an IP address
+def scan_port(ip, port):
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(0.5)  # Set timeout for the connection
+        result = sock.connect_ex((ip, port))  # Try to connect to the port
+        sock.close()
+        return result == 0  # Port is open if result is 0
+    except socket.error:
+        return False
 
-os.system("clear")
+# Function to scan a range of IP addresses and ports with ETA
+def network_scan_with_eta(network, port_range):
+    open_ports = []
+    ip_list = list(ipaddress.IPv4Network(network, strict=False))
+    total_ips = len(ip_list)
+    total_ports = len(port_range)
+    total_tasks = total_ips * total_ports
+    start_time = time.time()
 
-ascii_banner = pyfiglet.figlet_format("PORT SCANNER")
-print(ascii_banner)
+    tasks_done = 0
+    for ip in ip_list:
+        for port in port_range:
+            tasks_done += 1
+            if scan_port(str(ip), port):
+                print(f"[+] {ip}:{port} is open")
+                open_ports.append(f"{ip}:{port}")
 
-# number of threads, feel free to tune this parameter as you wish
-N_THREADS = 200
-# thread queue
-q = Queue()
-print_lock = Lock()
-open_ports_found = True   # Flag to check if any open ports were found
+            # Calculate and print ETA
+            elapsed_time = time.time() - start_time
+            avg_time_per_task = elapsed_time / tasks_done
+            tasks_left = total_tasks - tasks_done
+            eta = avg_time_per_task * tasks_left
+
+            print(f"Progress: {tasks_done}/{total_tasks}, ETA: {time.strftime('%H:%M:%S', time.gmtime(eta))}", end='\r')
+
+    return open_ports
+
+# Function to save results to a text file
+def save_message_to_txt(data, file_format="txt"):
+    file_path = f'output.{file_format}'
+    try:
+        if file_format == "txt":
+            with open(file_path, 'w') as txt_file:
+                txt_file.write(f"Network: {data['network']}\n")
+                txt_file.write(f"Port Range: {data['port_range']}\n")
+                txt_file.write("Open Ports:\n")
+                for port in data['open_ports']:
+                    txt_file.write(f"{port}\n")
+        elif file_format == "json":
+            with open(file_path, 'w') as json_file:
+                json.dump(data, json_file, indent=4)
+        print(f"Results saved to {file_path}")
+    except IOError as e:
+        print(f"Error saving to file: {e}")
+
+# Function to parse the port range input (e.g., 20-1024)
+def parse_port_range(port_range_str):
+    try:
+        start, end = map(int, port_range_str.split('-'))
+        return list(range(start, end + 1))
+    except ValueError:
+        print("Invalid port range format. Please enter a valid range (e.g., 20-1024).")
+        return []
 
 try:
-    def port_scan(port):
-        """
-        Scan a port on the global variable `host`
-        """
-        global open_ports_found
-        try:
-            s = socket.socket()
-            s.connect((host, port))
-        except:
-            with print_lock:
-                print(f"{host:15}:{port:5} is {RED}CLOSED{RESET}", end='\r')
-        else:
-            with print_lock:
-                print(f"{host:15}:{port:5} is {GREEN}OPEN{RESET}")
-            open_ports_found = True
-        finally:
-            s.close()
+    # Get user input for network and port range
+    print("Enter the network range (e.g., 192.168.1.0/24):")
+    network = input(">>> ")  # Store the network range as a string
+    port_range_input = input("Enter the port range (e.g., 20-1024) or 'all' to scan all ports:\n>>> ")
 
-    def scan_thread():
-        global q
-        while True:
-            # get the port number from the queue
-            worker = q.get()
-            # scan that port number
-            port_scan(worker)
-            # tells the queue that the scanning for that port 
-            # is done
-            q.task_done()
+    if port_range_input == "*" or port_range_input == "all":
+        port_range = list(range(1, 65536))  # All ports from 1 to 65535
+    else:
+        port_range = parse_port_range(port_range_input)
 
-    def main(host, ports):
-        global q
-        for t in range(N_THREADS):
-            # for each thread, start it
-            t = Thread(target=scan_thread)
-            # when we set daemon to true, that thread will end when the main thread ends
-            t.daemon = True
-            # start the daemon thread
-            t.start()
+    if not port_range:
+        print("Invalid port range. Exiting.")
+    else:
+        # Run the network scanner
+        if __name__ == "__main__":
+            open_ports = network_scan_with_eta(network, port_range)
 
-        for worker in ports:
-            # for each port, put that port into the queue
-            # to start scanning
-            q.put(worker)
-        
-        # wait for the threads ( port scanners ) to finish
-        q.join()
-
-    if __name__ == "__main__":
-        # parse some parameters passed
-        parser = argparse.ArgumentParser(description="Simple port scanner")
-        parser.add_argument("host", help="Host to scan.")
-        parser.add_argument("--ports", "-p", dest="port_range", default="1-65535", help="Port range to scan, default is 1-65535 (all ports)")
-        args = parser.parse_args()
-        host, port_range = args.host, args.port_range
-
-        start_port, end_port = port_range.split("-")
-        start_port, end_port = int(start_port), int(end_port)
-
-        ports = [p for p in range(start_port, end_port)]
-
-        main(host, ports)
-        
-        # Display a message if no open ports were found
-        if not open_ports_found:
-            print(f"No open ports found on {host}")
+            # Save the results to a file if open ports are found
+            if open_ports:
+                data = {
+                    "network": network,
+                    "port_range": port_range_input,
+                    "open_ports": open_ports
+                }
+                save_message_to_txt(data, file_format="txt")  # Save as plain text
+            else:
+                print("[-] No open ports found.")
 
 except KeyboardInterrupt:
-    def loadingBar(iterations, delay=0.1, width=40):
-        for load in range(iterations + 1):
-            progress = load / iterations
-            bar_length = int(progress * width)
-            bar = GREEN + '•' * bar_length + RESET + ' ' * (width - bar_length)
-            percentage = int(progress * 100)
-            
-            print(f'\nExiting [{bar}] {percentage}% ', end='', flush=False)
-            time.sleep(delay)
-
-    loadingBar(50)
+    print("\n[-] Exiting")
