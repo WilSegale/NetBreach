@@ -1,8 +1,0 @@
-# Nmap 7.95 scan initiated Wed Sep 25 16:20:26 2024 as: nmap --system-dns -p 22 -oN 22.log 127.0.0.1
-Nmap scan report for localhost (127.0.0.1)
-Host is up (0.00022s latency).
-
-PORT   STATE SERVICE
-22/tcp open  ssh
-
-# Nmap done at Wed Sep 25 16:20:26 2024 -- 1 IP address (1 host up) scanned in 0.03 seconds
