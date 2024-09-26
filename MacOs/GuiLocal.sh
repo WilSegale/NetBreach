@@ -1,7 +1,7 @@
 #!/bin/bash
-source DontEdit.sh
+source DontEdit.sh  # Source external script for variables or functions
 
-#checks if the user is connected to ssh and if they are it makes the program not work
+# Check if the user is connected via SSH; exit if connected
 if [ -n "${SSH_CLIENT}" ]; then
     echo "Connected via SSH"
     exit 1
@@ -9,173 +9,147 @@ else
     echo "Not connected via SSH"
 fi
 
-# Function to handle cleanup on exit
-# quits program with ctrl-c
+# Function to handle cleanup and exit when Ctrl+C is pressed
 EXIT_PROGRAM_WITH_CTRL_C() {
-    echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
-    # Add cleanup commands here
+    osascript -e 'display notification "Exiting Software..." with title "Exit Notification"'  # Display exit notification
     exit 1
 }
 
-# quits program with ctrl-z
+# Function to handle cleanup and exit when Ctrl+Z is pressed
 EXIT_PROGRAM_WITH_CTRL_Z(){
-    echo ""
-    echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
-    # Add cleanup commands here
+    osascript -e 'display notification "Exiting Software..." with title "Exit Notification"'  # Display exit notification
     exit 1
 }
 
-# Function to be executed when Ctrl+Z is pressed
+# Function to be executed when Ctrl+Z is pressed; triggers cleanup
 handle_ctrl_z() {
     EXIT_PROGRAM_WITH_CTRL_Z
-    exit 1
-    # Your custom action goes here
 }
 
-# Set up the trap to call the function on SIGTSTP (Ctrl+Z)
+# Set up trap to call the Ctrl+Z handler function
 trap 'handle_ctrl_z' SIGTSTP
 
-# Function to handle Ctrl+C
+# Function to handle Ctrl+C; calls exit function
 ctrl_c() {
-    echo ""
     EXIT_PROGRAM_WITH_CTRL_C
 }
 
+# Set up trap to call the Ctrl+C handler function
 trap ctrl_c SIGINT
 
+# Clear the terminal
 clear
-total_steps=100
-userName="Input Username:"
-hostName="Input Hostname:"
 
-# Function to check if a command exists
+# Initialize variables
+total_steps=100
+userName="Input Username:"  # Message for username prompt
+hostName="Input Hostname:"  # Message for hostname prompt
+
+# Function to check if a command exists on the system
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# Check for required packages
+# Loop through required packages and check if they are installed
 for package in "${required_packages[@]}"; do
-    if ! command_exists "$package"; then
-        echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
-        sleep 1 
+    if ! command_exists "${package}"; then
+        # Prompt the user to install missing package
+        osascript -e "display dialog \"The required package '$package' is not installed. Would you like me to install it for you?\" buttons {\"Yes\", \"No\"} default button \"Yes\""
+        choice=$(osascript -e "button returned of result")
 
-        #asks the user if they want to install the packages that are mssing
-        echo "Would you like me to install it for you. YES/NO"
-
-        read -p ">>> " install
-        
-        if [[ " ${yes[*]} " == *" ${install} "* ]]; then
-            bash requirements.sh
+        if [ "$choice" == "Yes" ]; then
+            bash requirements.sh  # Run script to install missing packages
             exit 1
         else
-            echo "Ok stopping program"
+            osascript -e 'display notification "Stopping program due to missing package." with title "Program Stopped"'  # Notify user of program stop
             exit 1
         fi
-        exit 1
     fi
 done
 
-# Check if the script is run with --help or -h
+# Check if the script is run with --help or -h; display help info if true
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-    # Display help information
-    figlet "? HELP ?"
-    zenity --info --title="? HELP ?" --text="+++++++++++++++Programs used+++++++++++++++\nThis program will help you crack passwords.\nIt uses Hydra and Nmap." --width=400
-    zenity --info --title="? HELP ?" --text="+++++++++++++++How to use++++++++++++++++++\nTo use the program, specify the port to scan. It will check for open ports and attempt to crack passwords." --width=400
+    # Display help information about the program
+    osascript -e 'display dialog "This program helps crack passwords using Hydra and Nmap.\nTo use the program, specify the port to scan, and it will check for open ports and attempt to crack passwords." buttons {"OK"} default button "OK"'
 else
-    # Check if the OS matches the expected OS type
+    # Check if the OS type matches the expected OS type
     if [[ "$OSTYPE" == "${OS}"* ]]; then
 
         # Function to scan ports
         NetBreach() {
-            figlet -f slant "${NameOfProgram}"
+            figlet -f slant "${NameOfProgram}"  # Display program name in ASCII art
             options_text="Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'.\nIf you want to stop the program, type 'stop'."
-            service=$(zenity --entry --title "${NameOfProgram}" --text "${options_text}" --entry-text "")
+            # Prompt user for port number to scan
+            service=$(osascript -e "display dialog \"$options_text\" default answer \"\" buttons {\"OK\"} default button \"OK\"" -e 'text returned of result')
             
-            if [[  " ${exit[*]} " == *" ${service} "* ]]; then
-                echo 
+            # Exit if user types 'stop'
+            if [[ "${service}" == "stop" ]]; then
+                osascript -e 'display notification "Stopping program." with title "Program Stopped"'
+                exit 1
             else
-                echo -e "[+] The port you are scanning is: ${service}"
+                osascript -e "display notification \"The port you are scanning is: ${service}\" with title \"Port Scan\""  # Notify user of port being scanned
             fi
             
-            if [[ "${service}" == "ALL" || "${service}" == "all" || "${service}" == "*" ]]; then
-                echo -e "[-] Exiting program..."
-                # Scan all ports
-                zenity --info --title "${NameOfProgram}" --text "Scanning all ports. This may take up to 1 hour to complete." --timeout=5
-                sudo nmap 127.0.0.1/24 -Pn -oN scan.txt --open
+            # Check if the user wants to scan all ports
+            if [[ "${service}" == "ALL" ]]; then
+                osascript -e 'display notification "Scanning all ports. This may take up to 1 hour to complete." with title "Port Scan"'  # Notify user about the scan duration
+                sudo nmap 127.0.0.1/24 -Pn -oN scan.txt --open  # Run Nmap scan for all ports
+                # Prompt user for Hydra command input
+                Hydra_input=$(osascript -e "display dialog \"Input Hydra command to use a custom hacking technique.\" default answer \"\" buttons {\"OK\"} default button \"OK\"" -e 'text returned of result')
 
-                zenity --info --title "INFO" --text "Put in Hydra first to start the script." --timeout=5
-                hydraInputField="Put in Hydra first to start the script."
-                GUI_HYDRA=$(zenity --entry --title "hydra" --text "$hydraInputField" --entry-text "")
-
-                if [[ " ${exit[*]} " == *" ${GUI_HYDRA} "* ]]; then
-                    zenity --info --title "${NameOfProgram}" --text "Stopping program."
+                if [[ "${Hydra_input}" == "" ]]; then
+                    osascript -e 'display notification "Stopping program." with title "Program Stopped"'  # Notify user of program stop
                     exit 1
                 else
-                    $GUI_HYDRA
+                    $Hydra_input  # Execute user input as command
                     exit 1
                 fi
-            #stops the script
-            elif [[ " ${exit[*]} " == *" ${service} "* ]]; then
-                zenity --info --title "${NameOfProgram}" --text "Stopping program."
-                exit 1
-            # tell the user that they put nothing in the input field
             elif [[ "${service}" == "" ]]; then
-                zenity --error --title "ERROR" --text "Please input a number into the input field."
-                NetBreach
-            #scans the port that they chose and opens the file if they want too
+                # Prompt user to input a port number if the field is left blank
+                osascript -e "display dialog \"Please input a number into the input field.\" buttons {\"OK\"} default button \"OK\""
+                NetBreach  # Restart the function to prompt again
             else
-                zenity --info --title "${NameOfProgram}" --text "Scanning port ${service}." --timeout=5
+                # Scan the specified port and save the output to a log file
+                osascript -e "display notification \"Scanning port ${service}.\" with title \"Port Scan\""
                 nmap 127.0.0.1 -p "${service}" -oN "${service}.log" --open
-                OpenFileOrNo="Would you like to open the file ${service}.log YES/NO: "
-                GUI_nmap=$(zenity --entry --title "port" --text "${OpenFileOrNo}" --entry-text "")
-                
-                if [[ " ${yes[*]} " == *" ${GUI_nmap} "* ]]; then
-                    open "${service}.log"
+                # Prompt user to open the log file after scanning
+                OpenFileOrNo=$(osascript -e "display dialog \"Would you like to open the file ${service}.log?\" buttons {\"Yes\", \"No\"} default button \"Yes\"" -e 'button returned of result')
+
+                if [ "$OpenFileOrNo" == "Yes" ]; then
+                    open "${service}.log"  # Open the log file if the user selects Yes
                 else
-                    echo "[-] Ok I will not open the ${service}.log file"
+                    osascript -e 'display notification "File not opened." with title "Action"'  # Notify user that the file was not opened
                     sleep 1
                 fi
             fi
         }
 
-        # Function to collect user and host information
+        # Function to collect user and host information for further actions
         RunHackingCommand() {
-            # Break in the outputs of my code
-            echo
-            original_host=127.0.0.1
-            original_port=$service
-
-            # Check if the port is closed
-            if nc -zv "${original_host}" "${original_port}" >/dev/null 2>&1; then
-                echo ""
-            else
-                echo -e "${RED}[-]${NC} Port ${original_port} on ${original_host} is closed."
-                # Optionally, you can choose to exit or handle closed port differently
-                exit 1
-            fi
+            # Notify user about specific input requirements based on services
+            osascript -e 'display notification "Hacking command" with title "To crack VNC(5900), leave Input Username empty. To crack MySQL(3306), type localhost in Input Hostname"'
             
-            zenity --info --title="Hacking command" --text="To crack VNC(5900), leave 'Input Username' empty.\nTo crack MySQL(3306), type 'localhost' in 'Input Hostname'."
-            user=$(zenity --entry --title "UserName" --text "${userName}" --entry-text "")
-            host=$(zenity --entry --title "HostName" --text "${hostName}" --entry-text "")
+            # Prompt for username
+            user=$(osascript -e "display dialog \"$userName\" default answer \"\" buttons {\"OK\"} default button \"OK\"" -e 'text returned of result')
+            # Prompt for hostname
+            host=$(osascript -e "display dialog \"$hostName\" default answer \"\" buttons {\"OK\"} default button \"OK\"" -e 'text returned of result')
         }
 
         # Function to crack VNC passwords
         RunHackingCommandWithVNC() {
+            # Check if the selected service is VNC (port 5900)
             if [[ $service == 5900 || $service == "VNC" ]]; then
+                # Validate that required fields are filled
                 if [[ $user == "" && $host == "" || $host == "" ]]; then
-                    zenity --info --title="SERVICE" --text="No service specified"
-                    NetBreach
+                    osascript -e 'display notification "No service specified." with title "Error"'  # Notify of missing service specification
+                    NetBreach  # Restart port scanning function
                 else
-                    # Crack VNC password
+                    # Run Hydra for VNC password cracking
                     hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://"$host"
-                    title="Connecting to ${host}"
-                    Connecting_To_VNC_SERVER="Connecting to '${host}'. Please wait..."
-                    zenity --info --title="${title}" --text="${Connecting_To_VNC_SERVER}"
-                    sleep 5
-                    title="Enter password to ${host}"
-                    Connected_To_VNC_SERVER="Connected to '${host}'. Enter the password to continue..."
-                    zenity --info --title="${title}" --text="${Connected_To_VNC_SERVER}"
-                    open "vnc://${host}"
+                    osascript -e "display notification \"Connecting to ${host}. Please wait...\" with title \"Connecting to VNC Server\""
+                    sleep 5  # Simulate waiting time
+                    osascript -e "display notification \"Connected to ${host}. Enter the password to continue...\" with title \"VNC Connection\""
+                    open "vnc://${host}"  # Open VNC connection
                     exit 1
                 fi
             fi
@@ -183,52 +157,50 @@ else
 
         # Function to crack SSH passwords
         RunHackingCommandWithSSH() {
+            # Check if the selected service is SSH (port 22)
             if [[ $service == 22 || $service == "SSH" ]]; then
+                # Validate that required fields are filled
                 if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
-                    zenity --info --title="SERVICE" --text="No service specified"
-                    NetBreach
+                    osascript -e 'display notification "No service specified." with title "Error"'  # Notify of missing service specification
+                    NetBreach  # Restart port scanning function
                 else
-                    # Crack SSH password
-                    hydra -l "$user" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"$host"
-                    title="Connecting to ${user}"
-                    Connecting_To_SSH_SERVER="Connecting to ${user}. Please wait..."
-                    zenity --info --title="${title}" --text="${Connecting_To_SSH_SERVER}"
-                    sleep 5
-                    title="Enter password to ${user}"
-                    Connected_To_SSH_SERVER="Connected to ${user}. Enter the password to continue..."
-                    zenity --info --title="${title}" --text="${Connected_To_SSH_SERVER}"
-                    ssh "${user}"@"${host}"
+                    # Run Hydra for SSH password cracking
+                    hydra -l "$user" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"${host}"
+                    osascript -e "display notification \"Connecting to ${user}. Please wait...\" with title \"Connecting to SSH Server\""
+                    sleep 5  # Simulate waiting time
+                    osascript -e "display notification \"Connected to ${user}. Enter the password to continue...\" with title \"SSH Connection\""
+                    ssh "${user}"@"${host}"  # Open SSH connection
                 fi
             fi
         }
 
         # Function to crack MySQL passwords
         RunHackingCommandWithMySQL() {
+            # Check if the selected service is MySQL (port 3306)
             if [[ $service == 3306 || $service == "mysql" ]]; then
+                # Validate that required fields are filled
                 if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
-                    zenity --info --title="SERVICE" --text="No service specified"
-                    NetBreach
+                    osascript -e 'display notification "No service specified." with title "Error"'  # Notify of missing service specification
+                    NetBreach  # Restart port scanning function
                 else
-                    # Crack MySQL password
+                    # Run Hydra for MySQL password cracking
                     hydra -l "$userName" -P rockyou.txt -t 64 -vV -o output.log -I mysql://"$hostName"
-                    title="Connecting to ${user}"
-                    Connecting_To_MySQL_SERVER="Connecting to ${host}. Please wait..."
-                    zenity --info --title="${title}" --text="${Connecting_To_MySQL_SERVER}"
-                    sleep 3
-                    mysql -u "${userName}" -p -A
+                    osascript -e "display notification \"Connecting to ${user}. Please wait...\" with title \"Connecting to MySQL Server\""
+                    sleep 3  # Simulate waiting time
+                    mysql -u "${userName}" -p -A  # Open MySQL connection
                 fi
             fi
         }
 
-        # Call functions in order
+        # Call functions in the correct sequence
         NetBreach
         RunHackingCommand
         RunHackingCommandWithVNC
         RunHackingCommandWithSSH
         RunHackingCommandWithMySQL
     else
-        # Warning message for wrong OS
-        echo "WARNING: Wrong OS. Please use the correct OS." >> ERROR.LOG
-        zenity --warning --title="WRONG OS" --text="Wrong OS. Please use the correct OS."
+        # Warning message if the script is run on an incorrect OS
+        osascript -e 'display dialog "WARNING: Wrong OS. Please use the correct OS." buttons {"OK"} default button "OK"'
+        exit 1
     fi
 fi
