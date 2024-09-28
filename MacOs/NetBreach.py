@@ -473,9 +473,7 @@ try:
         elif argument[1] in GuiLocal:
             show_GuiLOCAL()
 
-        #gets the fix funciton
-        elif argument[1] in FIX:
-            fix()
+       
         
         #gets the global manual funciton
         elif argument[1] in GlobalManualArgument:
@@ -488,11 +486,14 @@ try:
         #conenct with RDP mode enabled
         elif argument[1] in conenctRDP:
             RDPCONENCT()
-
+        
+        #gets the fix funciton
+        elif argument[1] in FIX:
+            fix()
         #gets the install funciton
         elif argument[1] in installRequirement:
             terminalCommand("bash requirements.sh")
-        
+                  
         #get the unisntall funciotn
         elif argument[1] in uninstallRequirement:
             terminalCommand("bash uninstall.sh")

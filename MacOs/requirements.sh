@@ -1,5 +1,19 @@
 #!/bin/bash
 
+# Default values
+pipForceMode=false
+
+# Argument Parsing
+for arg in "$@"; do
+    case $arg in
+        --pipForce)
+            pipForceMode=true
+            shift
+            ;;
+    esac
+done
+
+
 # Load DontEdit.sh if it exists
 if [ -f "DontEdit.sh" ]; then
     source DontEdit.sh
@@ -121,27 +135,35 @@ checkForPackages() {
 
 # Function to install pip package
 install_pip_package() {
+#!/bin/bash
 
-    # Check for the --pipForce flag
-    if [[ "$1" == "--pipForce" ]]; then
+  
+
+    # Notification title and message
+    if $pipForceMode; then
         title="[+] PIP FORCE"
-        WrongPassword="using PIP FORCE mode"
-        osascript -e "display notification \"$WrongPassword\" with title \"$title\""
-
+        message="Using PIP FORCE mode"
+        osascript -e "display notification \"$message\" with title \"$title\""
+        
         # Upgrade pip with force
-        python3 -m pip install --upgrade pip --break-system-packages
-        echo -e "[ ${GREEN}OK${NC} ] pip upgraded successfully."
-
-        # Shift to get the package name
-        shift
+        if python3 -m pip install --upgrade pip --break-system-packages; then
+            echo -e "[ ${GREEN}OK${NC} ] pip upgraded successfully."
+        else
+            echo -e "[ ${RED}ERROR${NC} ] Failed to upgrade pip with force."
+        fi
     else
         title="[-] PIP FORCE"
-        WrongPassword="not using PIP FORCE mode"
-        osascript -e "display notification \"$WrongPassword\" with title \"$title\""
-
+        message="Not using PIP FORCE mode"
+        osascript -e "display notification \"$message\" with title \"$title\""
+        
         # Normal pip upgrade
-        python3 -m pip install --upgrade pip
+        if python3 -m pip install --upgrade pip; then
+            echo -e "[ ${GREEN}OK${NC} ] pip upgraded successfully."
+        else
+            echo -e "[ ${RED}ERROR${NC} ] Failed to upgrade pip."
+        fi
     fi
+
 
     # Now the package name is in $1
     package_name="$1"
