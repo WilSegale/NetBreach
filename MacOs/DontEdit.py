@@ -67,7 +67,7 @@ LocalManualArgument = {"--MANUAL-LOCAL", "--Manual-Local", "--manual-local", "--
 installRequirement = {"--INSTALL", "--install", "--in"}
 uninstallRequirement = {"--UNINSTALL", "--uninstall", "--un"}
 conenctRDP = {"--xfreerdp", "--XFREERDP", "--XFREE", "--xfree"}
-pipForce = {"--pipForce"}
+pipForce = {"--pipForce","--pip-force","--PIP-FORCE","--pipforce"}
 FIX = {"--FIX", "--fix", "-f", "-F"}
 
 # Define list of scripts to run
