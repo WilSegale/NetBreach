@@ -23,11 +23,13 @@ def show_help():
     HowToUseInfo07 = f"\nIf you want to use the program locally, you can type {GREEN}'python3 {SoftwareName} {LOCAL}'{RESET}"
     HowToUseInfo08 = f"\nIf you want to use the program with GUI in Local mode you can type {GREEN}'python3 {SoftwareName} {GuiLocal}'{RESET}"
     HowToUseInfo09 = f"\nIf you want to have the program install required packages by it's self type {GREEN}'python3 {SoftwareName} {installRequirement}'{RESET}"
-    HowToUseInfo10 = f"\nIf you want to have the program uninstall required packages by it's self type {GREEN}'python3 {SoftwareName} {uninstallRequirement}'{RESET}"
-    HowToUseInfo11 = f"\nIf you want to have the program allow you to input the ip address or website manually for global networks type {GREEN}'python3 {SoftwareName} {GlobalManualArgument}'{RESET}"
-    HowToUseInfo12 = f"\nIf you want to have the program allow you to input the ip address or website manually for local networks type {GREEN}'python3 {SoftwareName} {LocalManualArgument}'{RESET}"
-    HowToUseInfo13 = f"\nIf you get a error message you can type {GREEN}'python3 {SoftwareName} {FIX}'{RESET}"
-    HowToUseInfo14 = f"\nIf you want to remote conenct to a computer type {GREEN}'python3 {SoftwareName} {conenctRDP}'{RESET}"
+    HowToUseInfo10 = f"\nIf you want to have the program install required packages by it's self type {GREEN}'python3 {SoftwareName} {pipForce}'{RESET}"
+
+    HowToUseInfo11 = f"\nIf you want to have the program uninstall required packages by it's self type {GREEN}'python3 {SoftwareName} {uninstallRequirement}'{RESET}"
+    HowToUseInfo12 = f"\nIf you want to have the program allow you to input the ip address or website manually for global networks type {GREEN}'python3 {SoftwareName} {GlobalManualArgument}'{RESET}"
+    HowToUseInfo13 = f"\nIf you want to have the program allow you to input the ip address or website manually for local networks type {GREEN}'python3 {SoftwareName} {LocalManualArgument}'{RESET}"
+    HowToUseInfo14 = f"\nIf you get a error message you can type {GREEN}'python3 {SoftwareName} {FIX}'{RESET}"
+    HowToUseInfo15 = f"\nIf you want to remote conenct to a computer type {GREEN}'python3 {SoftwareName} {conenctRDP}'{RESET}"
     ProgramsUSED = (ProgramsUsed+
                     ProgramsUsedInfo01+
                     ProgramsUsedInfo02+
@@ -48,7 +50,8 @@ def show_help():
             HowToUseInfo11 +
             HowToUseInfo12 +
             HowToUseInfo13 +
-            HowToUseInfo14) 
+            HowToUseInfo14 +
+            HowToUseInfo15) 
 
     lineArt(["figlet", f"{name}"])
     lineArt(["figlet", "? HELP ?"])
@@ -473,9 +476,7 @@ try:
         elif argument[1] in GuiLocal:
             show_GuiLOCAL()
 
-        #gets the fix funciton
-        elif argument[1] in FIX:
-            fix()
+       
         
         #gets the global manual funciton
         elif argument[1] in GlobalManualArgument:
@@ -488,11 +489,18 @@ try:
         #conenct with RDP mode enabled
         elif argument[1] in conenctRDP:
             RDPCONENCT()
-
+        
+        #gets the fix funciton
+        elif argument[1] in FIX:
+            fix()
         #gets the install funciton
         elif argument[1] in installRequirement:
             terminalCommand("bash requirements.sh")
-        
+
+        #enables the pipForce mode if pip3 install fails
+        elif argument[1] in pipForce:
+            terminalCommand("bash requirements.sh --pipForce")
+
         #get the unisntall funciotn
         elif argument[1] in uninstallRequirement:
             terminalCommand("bash uninstall.sh")
@@ -505,10 +513,11 @@ try:
 {GLOBAL} put's it in global mode for attacking global networks, 
 {GUI} put's it in GUI mode to attacking in GUI GLOBAL networks, 
 {LOCAL} put's it in local mode for attacking local networks,
-{GuiLocal} put's it in GUI LOCAL mode to attacking in GUI LOCAL networks,
+{GuiLocal} put's it in GUI LOCAL mode for attacking in GUI LOCAL networks,
 {GlobalManualArgument} put's it in global manual mode that shows you how to use the program,
 {LocalManualArgument} put's it in local manual mode that shows you how to use the program,
 {installRequirement} put's it in install mode that install's the required packages,
+{pipForce} put's it in pipForce mode that installs the required packages with pipForce,
 {uninstallRequirement} put's it in uninstall mode that uninstall's the packages,
 {conenctRDP} put's the program into RDP connection mode,
 {FIX} put's it in fix mode that fixes the program,

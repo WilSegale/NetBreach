@@ -36,7 +36,7 @@ terminalCommand = os.system
 ROOT = 0
 
 # list of the files to remove
-RemoveFile = ["ERROR.log","ERROR.LOG"]
+RemoveFile = ["ERROR.log", "ERROR.LOG"]
 
 #the asscie art var
 lineArt = subprocess.run
@@ -57,17 +57,18 @@ CYAN_TEXT = "\033[36m"
 RESET = "\033[0m"
 
 # Define constants for command-line arguments
-HELP = ["--HELP", "--Help", "--help", "-h", "-H"]
-GUI = ["--GUI", "--Gui", "--gui", "-GU","-Gu"]
-GLOBAL = ["--GLOBAL", "--Global", "--global", "-G", "-g"]
-LOCAL = ["--LOCAL", "--Local", "--local", "-l", "-L"]
-GuiLocal = ["--GUI-LOCAL", "--Gui-local", "--gui-local", "--g-l", "--G-l", "--G-L"]
-GlobalManualArgument = ["--MANUAL-GLOBAL", "--Manual-Global", "--manual-global", "--m-g", "--M-g", "--M-G"]
-LocalManualArgument = ["--MANUAL-LOCAL", "--Manual-Local", "--manual-local", "--m-l", "--M-l", "--M-L"]
-installRequirement = ["--INSTALL", "--install", "--in"]
-uninstallRequirement = ["--UNINSTALL", "--uninstall", "--un"]
-conenctRDP = ["--xfreerdp", "--XFREERDP", "--XFREE", "--xfree"]
-FIX = ["--FIX", "--fix", "-f", "-F"]
+HELP = {"--HELP", "--Help", "--help", "-h", "-H"}
+GUI = {"--GUI", "--Gui", "--gui", "-GU","-Gu"}
+GLOBAL = {"--GLOBAL", "--Global", "--global", "-G", "-g"}
+LOCAL = {"--LOCAL", "--Local", "--local", "-l", "-L"}
+GuiLocal = {"--GUI-LOCAL", "--Gui-local", "--gui-local", "--g-l", "--G-l", "--G-L"}
+GlobalManualArgument = {"--MANUAL-GLOBAL", "--Manual-Global", "--manual-global", "--m-g", "--M-g", "--M-G"}
+LocalManualArgument = {"--MANUAL-LOCAL", "--Manual-Local", "--manual-local", "--m-l", "--M-l", "--M-L"}
+installRequirement = {"--INSTALL", "--install", "--in"}
+uninstallRequirement = {"--UNINSTALL", "--uninstall", "--un"}
+conenctRDP = {"--xfreerdp", "--XFREERDP", "--XFREE", "--xfree"}
+pipForce = {"--pipForce","--pip-force","--PIP-FORCE","--pipforce"}
+FIX = {"--FIX", "--fix", "-f", "-F"}
 
 # Define list of scripts to run
 GuiScript = ["bash", "GuiScript.sh"]
