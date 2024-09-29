@@ -476,8 +476,6 @@ try:
         elif argument[1] in GuiLocal:
             show_GuiLOCAL()
 
-       
-        
         #gets the global manual funciton
         elif argument[1] in GlobalManualArgument:
             show_manual_Global()
@@ -493,6 +491,7 @@ try:
         #gets the fix funciton
         elif argument[1] in FIX:
             fix()
+
         #gets the install funciton
         elif argument[1] in installRequirement:
             terminalCommand("bash requirements.sh")
@@ -504,6 +503,7 @@ try:
         #get the unisntall funciotn
         elif argument[1] in uninstallRequirement:
             terminalCommand("bash uninstall.sh")
+
         else:
             print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
             print(f"Please use the correct number of arguments.")
