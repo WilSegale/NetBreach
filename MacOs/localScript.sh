@@ -184,7 +184,6 @@ else
         }
 
         LocalRunHackingCommandWithVNC() {
-
             if [[ $service == 5900 || $service == "VNC" ]]; then
                 # Checks if the user has put anything in the 'Input Username' function and the hostname function
                 # If not, it will prompt the user to enter the username and hostname
@@ -200,14 +199,14 @@ else
                     # Alerts the user that the computer is trying to connect to the VNC server
                     title="Connecting to ${GREEN}${host}${NC}"
                     Connecting_To_VNC_SERVER="We are connecting you to '${host}'. Please wait..."
-                    echo "${title}"
-                    echo "${Connecting_To_VNC_SERVER}"
+                    echo -e "${title}"
+                    echo -e "${Connecting_To_VNC_SERVER}"
                     sleep 5
 
                     # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
                     # Notification for the user to see the computer is connected to the VNC server
-                    title="Enter password to ${host}"
-                    Connected_To_VNC_SERVER="We have connected you to '${host}'. Please enter the password to '${host}'. To continue..."
+                    title="Enter password to ${GREEN}${host}${NC}"
+                    Connected_To_VNC_SERVER="We have connected you to '${GREEN}${host}${NC}'. Please enter the password to '${GREEN}${host}${NC}'. To continue..."
                     echo
                     echo "${title}"
                     echo "${Connected_To_VNC_SERVER}"

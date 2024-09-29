@@ -1,0 +1,8 @@
+# Nmap 7.95 scan initiated Sun Sep 29 10:29:06 2024 as: nmap -sS -p 5900 -oN 5900.log --open 192.168.1.1/24
+Nmap scan report for zeros-Air.lan (192.168.1.17)
+Host is up (0.00045s latency).
+
+PORT     STATE SERVICE
+5900/tcp open  vnc
+
+# Nmap done at Sun Sep 29 10:29:25 2024 -- 256 IP addresses (32 hosts up) scanned in 19.05 seconds
