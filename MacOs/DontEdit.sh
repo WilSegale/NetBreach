@@ -57,6 +57,7 @@ Packages=(
     "nmap"
     "figlet"
     "zenity"
+    "freerdp"
 )
 
 # PIP packages that will be uninstalled if they are installed
