@@ -1,4 +1,7 @@
 # NetBreach
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/534c337f9c454fef95015c8c0d9fd3ce)](https://app.codacy.com/gh/WilSegale/NetBreach?utm_source=github.com&utm_medium=referral&utm_content=WilSegale/NetBreach&utm_campaign=Badge_Grade)
+
 # CREATION DATA: NOV/1/2022
 <img src="NetBreach.jpg" alt="NetBreach img " width="200" height="200">
 
