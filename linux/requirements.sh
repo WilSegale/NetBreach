@@ -137,26 +137,18 @@ install_pip_package() {
 
 # Install packages function
 installPackages() {
-    if [ "$(id -u)" -eq 0 ]; then
-        echo "+++++++++++++++++++++++++++++++++++++++++"
-        echo "+   Don't use sudo for this script.     +"
-        echo "+   Because it can damage your computer +"
-        echo "+++++++++++++++++++++++++++++++++++++++++"
-        exit 1
-    else
-        echo "_________PACKAGES INSTALLATION________"
-        for package in "${Packages[@]}"; do
-            install_package "${package}"
-        done
+    echo "_________PACKAGES INSTALLATION________"
+    for package in "${Packages[@]}"; do
+        install_package "${package}"
+    done
 
-        echo "_________PIP PACKAGES INSTALLATION AND PIP UPDATE________"
-        for PIP in "${pipPackages[@]}"; do
-            install_pip_package "${PIP}"
-        done
+    echo "_________PIP PACKAGES INSTALLATION AND PIP UPDATE________"
+    for PIP in "${pipPackages[@]}"; do
+        install_pip_package "${PIP}"
+    done
 
-        echo "_________INSTALLED PACKAGES________"
-        checkForPackages
-    fi
+    echo "_________INSTALLED PACKAGES________"
+    checkForPackages
 }
 
 # Handle Ctrl+Z (SIGTSTP)
