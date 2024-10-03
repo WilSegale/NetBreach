@@ -23,21 +23,23 @@ fi
 
 # Wifi connection check function
 WifiConnection() {
-    if ping -c 1 google.com >/dev/null 2>&1; then
-        installPackages
+    # Check if wlan0 or other common Wi-Fi interface is up
+    interfaces=$(ip link show)
+    if echo "${interfaces}" | grep -q "wlan0"; then
+        if nmcli -t -f active,ssid dev wifi | grep -q '^yes'; then
+            installPackages
+        else
+            echo -e "[ ${RED}FAIL${NC} ] Wi-Fi is not connected."
+        fi
     else
-        echo -e "[ ${RED}FAIL${NC} ] NOT CONNECTED TO THE INTERNET"
+        echo -e "[ ${RED}FAIL${NC} ] Wi-Fi interface not found."
     fi
 }
 
 # Ethernet connection check function
 EthernetConnection() {
-    # Get the list of network interfaces
     interfaces=$(ip link show)
-
-    # Check if 'eth0' or other common Ethernet interface is up
     if echo "${interfaces}" | grep -q "eth0"; then
-        # Check if 'eth0' has an inet address
         inet=$(ip -4 addr show eth0 | grep "inet ")
         if [ -n "${inet}" ]; then
             installPackages
@@ -50,7 +52,7 @@ EthernetConnection() {
 }
 
 # Help function
-HELP(){
+HELP() {
     echo "REQUIREMENTS HELP"
     echo "_________________"
     echo "This script is used to check if the system has the required packages installed."
@@ -98,13 +100,10 @@ checkForPackages() {
 
 # Function to install pip package
 install_pip_package() {
-    # Notification title and message
     if $pipForceMode; then
         title="[+] PIP FORCE"
         message="Using PIP FORCE mode"
         notify-send "$title" "$message"
-        
-        # Upgrade pip with force
         if python3 -m pip install --upgrade pip --break-system-packages; then
             echo -e "[ ${GREEN}OK${NC} ] pip upgraded successfully."
         else
@@ -114,8 +113,6 @@ install_pip_package() {
         title="[-] PIP FORCE"
         message="Not using PIP FORCE mode"
         notify-send "$title" "$message"
-        
-        # Normal pip upgrade
         if python3 -m pip install --upgrade pip; then
             echo -e "[ ${GREEN}OK${NC} ] pip upgraded successfully."
         else
@@ -123,10 +120,7 @@ install_pip_package() {
         fi
     fi
 
-    # Now the package name is in $1
     package_name="$1"
-
-    # Install the package
     python3 -m pip install --user --upgrade "${package_name}" --break-system-packages
     if [ $? -eq 0 ]; then
         if python3 -c "import ${package_name}" &>/dev/null; then
@@ -175,5 +169,9 @@ if [[ "$1" == "--help" || "$1" == "-h" ]]; then
     HELP
 fi
 
-# Call EthernetConnection function
-EthernetConnection
+# Call WifiConnection or EthernetConnection based on connection type
+if nmcli dev status | grep -q 'wifi'; then
+    WifiConnection
+else
+    EthernetConnection
+fi
