@@ -64,17 +64,24 @@ HELP() {
 
 # Function to install packages using apt (modify if using another package manager)
 install_package() {
-    package_name="$1"
-    if ! dpkg -l | grep -q "^ii  ${package_name} "; then
-        sudo apt update
-        sudo apt install -y "${package_name}"
-        if [ $? -eq 0 ]; then
-            echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
+    # Check if root user
+    if [[ $EUID -ne 0 ]]; then
+        echo -e "[ ${RED}FAIL${NC} ]: Please run as root."
+        exit 1
+    fi
+   elif [[ "$OSTYPE" == "${OS}"* ]]; then
+        package_name="$1"
+        if ! dpkg -l | grep -q "^ii  ${package_name} "; then
+            sudo apt update
+            sudo apt install -y "${package_name}"
+            if [ $? -eq 0 ]; then
+                echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
+            else
+                echo -e "[ ${RED}ERROR${NC} ] ${package_name} installation failed."
+            fi
         else
-            echo -e "[ ${RED}ERROR${NC} ] ${package_name} installation failed."
+            echo -e "[ ${GREEN}OK${NC} ] ${package_name} is already installed."
         fi
-    else
-        echo -e "[ ${GREEN}OK${NC} ] ${package_name} is already installed."
     fi
 }
 
