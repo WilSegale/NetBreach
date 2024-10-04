@@ -1,5 +1,6 @@
 #!/bin/bash
 # Check if root user
+source DontEdit.sh
 if [[ $EUID -ne 0 ]]; then
     echo -e "[ ${RED}FAIL${NC} ]: Please run as root."
     exit 1
