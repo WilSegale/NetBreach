@@ -69,7 +69,7 @@ install_package() {
         echo -e "[ ${RED}FAIL${NC} ]: Please run as root."
         exit 1
     fi
-   elif [[ "$OSTYPE" == "${OS}"* ]]; then
+    if [[ "$OSTYPE" == "${OS}"* ]]; then
         package_name="$1"
         if ! dpkg -l | grep -q "^ii  ${package_name} "; then
             sudo apt update
