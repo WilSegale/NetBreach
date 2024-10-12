@@ -71,7 +71,7 @@ pipForce = {"--pipForce","--pip-force","--PIP-FORCE", "--pipforce"}
 FIX = {"--FIX", "--fix", "-f", "-F"}
 
 # Define list of scripts to run
-GuiScript = ["bash", "GuiScript.sh"]
+GuiScript = ["bash", "GuiGlobal.sh"]
 GlobalScript = ["bash", "GlobalScript.sh"]  # runs the script in global mode
 LocalScript = ["bash", "localScript.sh"]  # runs the script in global mode
 GuiLocalScript = ["bash", "GuiLocal.sh"]  # the script to run after loading
