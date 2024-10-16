@@ -63,6 +63,8 @@ for package in "${required_packages[@]}"; do
         elif [[ " ${skip[*]} " == *" ${install} "* ]]; then
             echo "Ok skipping"
             NetBreach()
+        else
+            echo "Invalid input"
         fi
         exit 1
     fi
