@@ -192,6 +192,8 @@ else
                 read -p "Input Username: " user
                 read -p "Input Hostname: " host
                 read -p "Input Port: " port
+
+                echo -e "${host}">> Hostname.txt
             }
 
             RunHackingCommandWithVNC() {
