@@ -30,6 +30,7 @@ alphabet=("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r
 # The yes array that contains the yes input
 yes=("YES" "Y" "yes" "y")
 no=("NO" "N" "no" "n")
+skip=("skip" "Skip" "SKIP")
 
 #the Manual array so the user can see the manual function
 Manual=("Manual" "manual" "MANUAL")

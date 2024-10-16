@@ -50,16 +50,19 @@ for package in "${required_packages[@]}"; do
         sleep 1 
 
         #asks the user if they want to install the packages that are mssing
-        echo "Would you like me to install it for you. YES/NO"
+        echo "Would you like me to install it for you. YES/NO/SKIP"
 
         read -p ">>> " install
         
         if [[ " ${yes[*]} " == *" ${install} "* ]]; then
             bash requirements.sh
             exit 1
-        else
+        elif [[ " ${no[*]} " == *" ${install} "* ]]; then
             echo "Ok stopping program"
             exit 1
+        elif [[ " ${skip[*]} " == *" ${install} "* ]]; then
+            echo "Ok skipping"
+            NetBreach()
         fi
         exit 1
     fi
@@ -193,7 +196,7 @@ else
                 read -p "Input Hostname: " host
                 read -p "Input Port: " port
 
-                echo -e "${host}">> Hostname.txt
+                echo -e "${uesr}:${host}:${port}" >> Hostname.txt
             }
 
             RunHackingCommandWithVNC() {
