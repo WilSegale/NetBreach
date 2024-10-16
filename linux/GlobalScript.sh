@@ -3,6 +3,21 @@
 # file that hold all the variables that need for the program to work properly
 source DontEdit.sh
 
+# Function to display help
+display_help() {
+    figlet "? HELP ?"
+    echo
+    echo "+++++++++++++++Programs used+++++++++++++++"
+    echo "This program will help you crack passwords"
+    echo "It has two programs inside it, one is Hydra and the other is Nmap"
+    echo
+    echo "+++++++++++++++How to use++++++++++++++++++"
+    echo "To use the program you have to tell the computer what port you want to scan."
+    echo "It will then scan the port that you asked for on the network and see if any ports that you asked are open."
+    echo "If there are any ports that are open, it will ask for a username and hostname."
+    echo "When you give the program the username and hostname, it will try to crack the given parameters you provided."
+    echo
+}
 # Function to handle cleanup on exit
 # quits program with ctrl-c
 EXIT_PROGRAM_WITH_CTRL_C() {
@@ -42,49 +57,40 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# Check for required packages
-for package in "${required_packages[@]}"; do
-    if ! command_exists "$package"; then
-        echo ""
-        echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
-        sleep 1 
 
-        #asks the user if they want to install the packages that are mssing
-        echo "Would you like me to install it for you. YES/NO/SKIP"
-
-        read -p ">>> " install
-        
-        if [[ " ${yes[*]} " == *" ${install} "* ]]; then
-            bash requirements.sh
-            exit 1
-        elif [[ " ${no[*]} " == *" ${install} "* ]]; then
-            echo "Ok stopping program"
-            exit 1
-        elif [[ " ${skip[*]} " == *" ${install} "* ]]; then
-            echo "Ok skipping"
-            NetBreach()
-        else
-            echo "Invalid input"
-        fi
-        exit 1
-    fi
-done
 
 # Check if the script is run with --help or -h
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-    figlet "? HELP ?"
-    echo
-    echo "+++++++++++++++Programs used+++++++++++++++"
-    echo "This program will help you crack passwords"
-    echo "It has two programs inside it, one is Hydra and the other is Nmap"
-    echo
-    echo "+++++++++++++++How to use++++++++++++++++++"
-    echo "To use the program you have to tell the computer what port you want to scan."
-    echo "It will then scan the port that you asked for on the network and see if any ports that you asked are open."
-    echo "If there are any ports that are open, it will ask for a username and hostname."
-    echo "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
-    echo
+    display_help
+
 else
+    # Check for required packages
+    for package in "${required_packages[@]}"; do
+        if ! command_exists "$package"; then
+            echo ""
+            echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
+            sleep 1 
+
+            #asks the user if they want to install the packages that are mssing
+            echo "Would you like me to install it for you. YES/NO/SKIP"
+
+            read -p ">>> " install
+            
+            if [[ " ${yes[*]} " == *" ${install} "* ]]; then
+                bash requirements.sh
+                exit 1
+            elif [[ " ${no[*]} " == *" ${install} "* ]]; then
+                echo "Ok stopping program"
+                exit 1
+            elif [[ " ${skip[*]} " == *" ${install} "* ]]; then
+                echo "Ok skipping"
+                NetBreach
+            else
+                echo "Invalid input"
+            fi
+            exit 1
+        fi
+    done
     # Check if root user
     if [[ $EUID -ne 0 ]]; then
         echo -e "[ ${RED}FAIL${NC} ]: Please run as root."
