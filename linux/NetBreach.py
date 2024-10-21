@@ -506,10 +506,10 @@ try:
         elif argument[1] in uninstallRequirement:
             terminalCommand("bash uninstall.sh")
 
-        # skips if a package donets work correclty
+        #skips the packages if one doents install
         elif argument[1] in skip:
             terminalCommand("bash GlobalScript.sh --skip")
-            
+        
         else:
             print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
             print(f"Please use the correct number of arguments.")

