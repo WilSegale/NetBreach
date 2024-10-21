@@ -46,8 +46,6 @@ if [[ "$1" == "--skip" ]]; then
     echo "Skipping package check"
     sleep 1
     NetBreach
-    return 0
-
 else
 
     # Check for required packages
