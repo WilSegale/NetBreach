@@ -69,6 +69,7 @@ uninstallRequirement = {"--UNINSTALL", "--uninstall", "--un"}
 conenctRDP = {"--xfreerdp", "--XFREERDP", "--XFREE", "--xfree"}
 pipForce = {"--pipForce","--pip-force","--PIP-FORCE", "--pipforce"}
 FIX = {"--FIX", "--fix", "-f", "-F"}
+skip = {"--skip", "--SKIP"}
 
 # Define list of scripts to run
 GuiScript = ["bash", "GuiGlobal.sh"]

@@ -24,12 +24,13 @@ def show_help():
     HowToUseInfo08 = f"\nIf you want to use the program with GUI in Local mode you can type {GREEN}'python3 {SoftwareName} {GuiLocal}'{RESET}"
     HowToUseInfo09 = f"\nIf you want to have the program install required packages by it's self type {GREEN}'python3 {SoftwareName} {installRequirement}'{RESET}"
     HowToUseInfo10 = f"\nIf you want to have the program install required packages by it's self type {GREEN}'python3 {SoftwareName} {pipForce}'{RESET}"
-
     HowToUseInfo11 = f"\nIf you want to have the program uninstall required packages by it's self type {GREEN}'python3 {SoftwareName} {uninstallRequirement}'{RESET}"
     HowToUseInfo12 = f"\nIf you want to have the program allow you to input the ip address or website manually for global networks type {GREEN}'python3 {SoftwareName} {GlobalManualArgument}'{RESET}"
     HowToUseInfo13 = f"\nIf you want to have the program allow you to input the ip address or website manually for local networks type {GREEN}'python3 {SoftwareName} {LocalManualArgument}'{RESET}"
     HowToUseInfo14 = f"\nIf you get a error message you can type {GREEN}'python3 {SoftwareName} {FIX}'{RESET}"
     HowToUseInfo15 = f"\nIf you want to remote conenct to a computer type {GREEN}'python3 {SoftwareName} {conenctRDP}'{RESET}"
+    HowToUseInfo16 = f"\nIf you want to skip a step type {GREEN}'python3 {SoftwareName} {skip}'{RESET}"
+    
     ProgramsUSED = (ProgramsUsed+
                     ProgramsUsedInfo01+
                     ProgramsUsedInfo02+
@@ -51,7 +52,8 @@ def show_help():
             HowToUseInfo12 +
             HowToUseInfo13 +
             HowToUseInfo14 +
-            HowToUseInfo15) 
+            HowToUseInfo15 +
+            HowToUseInfo16) 
 
     lineArt(["figlet", f"{name}"])
     lineArt(["figlet", "? HELP ?"])
@@ -503,7 +505,8 @@ try:
         #get the unisntall funciotn
         elif argument[1] in uninstallRequirement:
             terminalCommand("bash uninstall.sh")
-
+        elif argument[1] in skip:
+            terminalCommand("bash GlobalScirpt.sh --skip")
         else:
             print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
             print(f"Please use the correct number of arguments.")

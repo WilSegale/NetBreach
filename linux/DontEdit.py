@@ -36,13 +36,13 @@ terminalCommand = os.system
 ROOT = 0
 
 # list of the files to remove
-RemoveFile = ["ERROR.log", "ERROR.LOG"]
+RemoveFile = ["ERROR.log","ERROR.LOG"]
 
 #the asscie art var
 lineArt = subprocess.run
 
 #name of the os
-OS = "Linux"
+OS = "linux"
 
 name = "Linux"
 # Define color codes for console output
@@ -67,11 +67,12 @@ LocalManualArgument = {"--MANUAL-LOCAL", "--Manual-Local", "--manual-local", "--
 installRequirement = {"--INSTALL", "--install", "--in"}
 uninstallRequirement = {"--UNINSTALL", "--uninstall", "--un"}
 conenctRDP = {"--xfreerdp", "--XFREERDP", "--XFREE", "--xfree"}
-pipForce = {"--pipForce","--pip-force","--PIP-FORCE","--pipforce"}
+pipForce = {"--pipForce","--pip-force","--PIP-FORCE", "--pipforce"}
 FIX = {"--FIX", "--fix", "-f", "-F"}
+skip = {"--skip", "--SKIP"}
 
 # Define list of scripts to run
-GuiScript = ["bash", "GuiScript.sh"]
+GuiScript = ["bash", "GuiGlobal.sh"]
 GlobalScript = ["bash", "GlobalScript.sh"]  # runs the script in global mode
 LocalScript = ["bash", "localScript.sh"]  # runs the script in global mode
 GuiLocalScript = ["bash", "GuiLocal.sh"]  # the script to run after loading
