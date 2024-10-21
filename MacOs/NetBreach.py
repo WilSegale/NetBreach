@@ -506,7 +506,7 @@ try:
         elif argument[1] in uninstallRequirement:
             terminalCommand("bash uninstall.sh")
         elif argument[1] in skip:
-            terminalCommand("bash GlobalScirpt.sh --skip")
+            terminalCommand("bash GlobalScript.sh --skip")
         else:
             print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
             print(f"Please use the correct number of arguments.")
