@@ -1,9 +1,12 @@
 import random
 import string
-textFile = open("rockyou.txt","a")
+import time
+
+textFile = open("rockyou.txt", "a")
 
 try:
     password_count = 0  # Initialize the password count
+    start_time = time.time()  # Record the start time
 
     while True:
         # Set the desired password length
@@ -20,10 +23,13 @@ try:
         # Join the characters to form the password string
         password = ''.join(password_list)
 
-        print(f"{password}",file=textFile)
+        print(f"{password}", file=textFile)
         print(f"{password}")
 
         password_count += 1  # Increment the password count
 
 except KeyboardInterrupt:
-    print(f"Generated and printed {password_count:,.2f} passwords.")
+    end_time = time.time()  # Record the end time
+    elapsed_time = end_time - start_time  # Calculate the elapsed time
+    print(f"Generated and printed {password_count:,} passwords.")
+    print(f"Elapsed time: {elapsed_time:.2f} seconds.")
