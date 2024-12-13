@@ -137,6 +137,8 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
 
     if [[ "$1" == "--help" || "$1" == "-h" ]]; then
         HELP
+    else
+        installPackages
     fi
 
 fi
