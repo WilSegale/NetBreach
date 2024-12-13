@@ -63,10 +63,6 @@ else
             read -p ">>> " install
             
             if [[ " ${yes[*]} " == *" ${install} "* ]]; then
-                ps aux | grep sudo
-                echo "Input the PID for to kill the root session to install the packages."
-                read -p ">>> " session
-                kill -9 "${session}"
                 bash requirements.sh
                 exit 1
             else
