@@ -28,36 +28,6 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
         exit 1
     fi
 
-    # Wifi connection check function
-    WifiConnection() {
-        # Check if wlan0 or other common Wi-Fi interface is up
-        interfaces=$(ip link show)
-        if echo "${interfaces}" | grep -q "wlan0"; then
-            if nmcli -t -f active,ssid dev wifi | grep -q '^yes'; then
-                installPackages
-            else
-                echo -e "[ ${RED}FAIL${NC} ] Wi-Fi is not connected."
-            fi
-        else
-            echo -e "[ ${RED}FAIL${NC} ] Wi-Fi interface not found."
-        fi
-    }
-
-    # Ethernet connection check function
-    EthernetConnection() {
-        interfaces=$(ip link show)
-        if echo "${interfaces}" | grep -q "eth0"; then
-            inet=$(ip -4 addr show eth0 | grep "inet ")
-            if [ -n "${inet}" ]; then
-                installPackages
-            else
-                echo -e "[ ${RED}FAIL${NC} ] Ethernet (eth0) is not connected."
-            fi
-        else
-            echo -e "[ ${RED}FAIL${NC} ] Ethernet (eth0) interface not found."
-        fi
-    }
-
     # Help function
     HELP() {
         echo "REQUIREMENTS HELP"
@@ -169,10 +139,4 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
         HELP
     fi
 
-    # Call WifiConnection or EthernetConnection based on connection type
-    if nmcli dev status | grep -q 'wifi'; then
-        WifiConnection
-    else
-        EthernetConnection
-    fi
 fi
