@@ -1,2 +1,0 @@
-# Nmap 7.95 scan initiated Wed Dec 11 16:37:47 2024 as: nmap -sS -p 3306 -oN 3306.log --open 127.0.0.1
-# Nmap done at Wed Dec 11 16:37:47 2024 -- 1 IP address (1 host up) scanned in 0.04 seconds
