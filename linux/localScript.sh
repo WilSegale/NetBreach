@@ -63,7 +63,7 @@ else
             read -p ">>> " install
             
             if [[ " ${yes[*]} " == *" ${install} "* ]]; then
-                bash requirements.sh
+                sudo bash requirements.sh
                 exit 1
             else
                 echo "Ok stopping program"
