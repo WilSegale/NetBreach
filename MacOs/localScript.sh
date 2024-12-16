@@ -40,7 +40,7 @@ install_missing_packages() {
                     exit 1
                 }
             else
-                echo "Exiting program. Missing package: $package."
+                echo "Exiting program. Missing package: ${package}."
                 exit 1
             fi
         fi
