@@ -140,7 +140,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
     else
         installPackages
     fi
-    else
-        echo -e "[ ${yellow}${BRIGHT}WARNING${NC} ] This script is only supported on ${GREEN}${OS}${NC} operating systems."
-        exit 1
+else
+    echo -e "[ ${yellow}${BRIGHT}WARNING${NC} ] This script is only supported on ${GREEN}${OS}${NC} operating systems."
+    exit 1
 fi
