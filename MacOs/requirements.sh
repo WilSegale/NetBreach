@@ -1,4 +1,11 @@
 #!/bin/bash
+# Load DontEdit.sh if it exists
+if [ -f "DontEdit.sh" ]; then
+    source DontEdit.sh
+else
+    echo "DontEdit.sh not found!"
+    exit 1
+fi
 # get the os type and if its not a MAC then it say error you are not using a MAC computer
 if [[ "$OSTYPE" == "${OS}"* ]]; then
 
@@ -16,13 +23,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
     done
 
 
-    # Load DontEdit.sh if it exists
-    if [ -f "DontEdit.sh" ]; then
-        source DontEdit.sh
-    else
-        echo "DontEdit.sh not found!"
-        exit 1
-    fi
+   
 
     # Wifi connection check function
     WifiConnection() {
