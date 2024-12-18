@@ -9,7 +9,7 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
 
     read -p ">>> " YES_NO
 
-    if [[ "${yes[*]}" == *"$YES_NO"* ]]; then
+    if [[ "${yes[*]}" == *"${YES_NO}"* ]]; then
 
         # Function to check and uninstall a package
         check_package() {
@@ -32,7 +32,7 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
         for pipPackage in "${pipPackages[@]}"
         do
             if python3 -m pip show "${pipPackage}" >/dev/null 2>&1; then
-                pip3 uninstall "${pipPackage}" -y
+                pip3 uninstall "${pipPackage}" -y --break-system-packages
 
                 # Check the exit status of the last command
                 if [ $? -ne 0 ]; then
