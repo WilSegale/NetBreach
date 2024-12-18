@@ -32,7 +32,7 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
         for pipPackage in "${pipPackages[@]}"
         do
             if python3 -m pip show "${pipPackage}" >/dev/null 2>&1; then
-                pip3 uninstall "${pipPackage}" -y --break-system-packages
+                pip3 uninstall "${pipPackage}" --break-system-packages -y
 
                 # Check the exit status of the last command
                 if [ $? -ne 0 ]; then
