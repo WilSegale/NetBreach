@@ -38,9 +38,6 @@ show_hide() {
         # If the input is neither in the "show" nor "hide" array, display "Unknown option".
         if [[ "${found}" == false ]]; then
             echo -e "${RED}[-]${RESET} Unknown option"
-            sleep 1
-            read -p "Do you want to show or hide folders: " new_input
-            show_hide "${new_input}"  # Call the function recursively with the new input.
         fi
     fi
 }

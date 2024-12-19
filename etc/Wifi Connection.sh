@@ -20,13 +20,13 @@ connect_to_wifi() {
     PASSWORD=$(cat wifi_password.txt)
 
     # Try to connect to Wi-Fi
-    networksetup -setairportnetwork en0 "$SSID" "$PASSWORD"
+    networksetup -setairportnetwork en0 "${SSID}" "${PASSWORD}"
 
     # Check if the connection was successful
     if [ $? -eq 0 ]; then
-        echo "Connected to Wi-Fi: $SSID"
+        echo "Connected to Wi-Fi: ${SSID}"
     else
-        echo "Failed to connect to Wi-Fi: $SSID"
+        echo "Failed to connect to Wi-Fi: ${SSID}"
         exit 1
     fi
 }
