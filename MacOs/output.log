@@ -1,1 +1,0 @@
-# Hydra v9.5 run at 2024-12-23 16:26:48 on 192.168.1.22 ssh (hydra -l kali -P rockyou.txt -t 64 -vV -o output.log -I ssh://192.168.1.22:22)

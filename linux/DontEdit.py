@@ -68,6 +68,7 @@ installRequirement = {"--INSTALL", "--install", "--in"}
 uninstallRequirement = {"--UNINSTALL", "--uninstall", "--un"}
 conenctRDP = {"--xfreerdp", "--XFREERDP", "--XFREE", "--xfree"}
 pipForce = {"--pipForce","--pip-force","--PIP-FORCE", "--pipforce"}
+autoConnect = {"--autoConnect", "--autoconnect", "--auto", "--AUTO"}
 FIX = {"--FIX", "--fix", "-f", "-F"}
 skip = {"--skip", "--SKIP"}
 
