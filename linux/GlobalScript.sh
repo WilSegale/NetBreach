@@ -42,6 +42,7 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
+
 # Auto-connects the SSH server to the computer
 if [[ "$1" == "--auto" ]]; then
 
@@ -52,7 +53,7 @@ if [[ "$1" == "--auto" ]]; then
         ssh $userConnection
     else
         # File not found
-        echo "Error: SSH username and IP address file '${ssh_connection}' not found."
+        echo "Error: SSH username and IP address file 'connect.txt' not found."
         exit 1
     fi
 
