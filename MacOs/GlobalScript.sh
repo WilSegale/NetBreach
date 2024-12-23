@@ -41,6 +41,11 @@ trap ctrl_c SIGINT
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
+
+
+
+
+
 # check if the user has put --skip in the arguemnts 
 if [[ "$1" == "--skip" ]]; then
     echo "Skipping package check"
@@ -75,6 +80,7 @@ else
         fi
     done
 fi
+
 # Check if the script is run with --help or -h
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     figlet "? HELP ?"
@@ -89,6 +95,7 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "If there are any ports that are open, it will ask for a username and hostname."
     echo "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
     echo
+
 else
 
     # Check if root user
