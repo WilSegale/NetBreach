@@ -1,0 +1,29 @@
+# Nmap 7.95 scan initiated Mon Dec 23 16:26:27 2024 as: nmap -sS -p 22 -oN 22.log --open 192.168.1.1/24
+Nmap scan report for kali-raspberrypi.fios-router.home (192.168.1.22)
+Host is up (0.23s latency).
+
+PORT   STATE SERVICE
+22/tcp open  ssh
+MAC Address: 2C:CF:67:52:E6:9C (Raspberry Pi (Trading))
+
+Nmap scan report for MacBook-Pro-2.fios-router.home (192.168.1.81)
+Host is up (0.10s latency).
+
+PORT   STATE SERVICE
+22/tcp open  ssh
+MAC Address: BC:D0:74:AA:71:36 (Apple)
+
+Nmap scan report for MacM1Mini2021.fios-router.home (192.168.1.99)
+Host is up (0.076s latency).
+
+PORT   STATE SERVICE
+22/tcp open  ssh
+MAC Address: 14:98:77:40:69:9A (Apple)
+
+Nmap scan report for MacBookAir.fios-router.home (192.168.1.228)
+Host is up (0.00047s latency).
+
+PORT   STATE SERVICE
+22/tcp open  ssh
+
+# Nmap done at Mon Dec 23 16:26:35 2024 -- 256 IP addresses (33 hosts up) scanned in 8.79 seconds

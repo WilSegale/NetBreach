@@ -75,7 +75,6 @@ skip = {"--skip", "--SKIP"}
 # Define list of scripts to run
 GuiScript = ["bash", "GuiGlobal.sh"]
 GlobalScript = ["bash", "GlobalScript.sh"]  # runs the script in Global mode
-GlobalScriptAutoConnect = ["bash", "GlobalScript.sh", "--autoConnect"]
 LocalScript = ["bash", "localScript.sh"]  # runs the script in Local mode
 GuiLocalScript = ["bash", "GuiLocal.sh"]  # runs the script that uses GUI mode with local mode
 GlobalManual = ["bash", "ManualGlobalScript.sh"]

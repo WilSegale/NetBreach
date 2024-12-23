@@ -42,8 +42,23 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
+# Auto-connects the SSH server to the computer
+if [[ "$1" == "--auto" ]]; then
 
+    # Check if the SSH connection file exists
+    if [ -f "${ssh_connection}" ]; then
+        userConnection=$(cat "${ssh_connection}")  # Read the hint from the file
 
+        ssh $userConnection
+    else
+        # File not found
+        echo "Error: SSH username and IP address file '${ssh_connection}' not found."
+        exit 1
+    fi
+
+    # Exit script successfully
+    exit 0
+fi
 
 
 # check if the user has put --skip in the arguemnts 
@@ -207,8 +222,11 @@ else
                 echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
                 echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
                 read -p "Input Username: " user
+                
                 read -p "Input Hostname: " host
                 read -p "Input Port: " port
+                echo "$user@$host -p $port" > "${ssh_connection}"
+
             }
 
             RunHackingCommandWithVNC() {

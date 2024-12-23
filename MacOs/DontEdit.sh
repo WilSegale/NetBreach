@@ -1,5 +1,4 @@
 #!/bin/bash
-
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 yellow="\033[33m"
@@ -10,6 +9,9 @@ NC='\033[0m' # No Color
 username=$(whoami)
 hostname=$(hostname)
 os_name=$(uname)
+
+# var that holds the ssh connection list
+ssh_connection="connect.txt"
 
 #name of program
 NameOfProgram="NetBreach"
@@ -26,6 +28,7 @@ root=0
 # the array that holds nothing in it
 empty=("")
 
+# The array that contains the alphabet
 alphabet=("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z")
 
 # The yes array that contains the yes input
