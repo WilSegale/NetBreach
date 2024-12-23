@@ -68,14 +68,16 @@ installRequirement = {"--INSTALL", "--install", "--in"}
 uninstallRequirement = {"--UNINSTALL", "--uninstall", "--un"}
 conenctRDP = {"--xfreerdp", "--XFREERDP", "--XFREE", "--xfree"}
 pipForce = {"--pipForce","--pip-force","--PIP-FORCE", "--pipforce"}
+autoConnect = {"--autoConnect", "--autoconnect", "--auto", "--AUTO"}
 FIX = {"--FIX", "--fix", "-f", "-F"}
 skip = {"--skip", "--SKIP"}
 
 # Define list of scripts to run
 GuiScript = ["bash", "GuiGlobal.sh"]
-GlobalScript = ["bash", "GlobalScript.sh"]  # runs the script in global mode
-LocalScript = ["bash", "localScript.sh"]  # runs the script in global mode
-GuiLocalScript = ["bash", "GuiLocal.sh"]  # the script to run after loading
+GlobalScript = ["bash", "GlobalScript.sh"]  # runs the script in Global mode
+GlobalScriptAutoConnect = ["bash", "GlobalScript.sh", "--autoConnect"]
+LocalScript = ["bash", "localScript.sh"]  # runs the script in Local mode
+GuiLocalScript = ["bash", "GuiLocal.sh"]  # runs the script that uses GUI mode with local mode
 GlobalManual = ["bash", "ManualGlobalScript.sh"]
 LocalManual = ["bash", "ManualLocalScript.sh"]
 RDPconnect = ["bash", "xfreerdp.sh"]

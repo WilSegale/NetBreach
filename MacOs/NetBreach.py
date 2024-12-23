@@ -510,10 +510,12 @@ try:
         elif argument[1] in skip:
             terminalCommand("bash GlobalScript.sh --skip")
         
+        elif argument[1] in autoConnect:
+            GlobalScriptAutoConnect
         else:
-            print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
-            print(f"Please use the correct number of arguments.")
-            print(f'''Example: 
+                    print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
+        print(f"Please use the correct number of arguments.")
+        print(f'''Example: 
 {GLOBAL} put's it in global mode for attacking global networks, 
 {GUI} put's it in GUI mode to attacking in GUI GLOBAL networks, 
 {LOCAL} put's it in local mode for attacking local networks,
@@ -524,6 +526,7 @@ try:
 {pipForce} put's it in pipForce mode that installs the required packages with pipForce,
 {uninstallRequirement} put's it in uninstall mode that uninstall's the packages,
 {conenctRDP} put's the program into RDP connection mode,
+{autoConnect} put's the program into auto connect, if there is a file with the user SSH username and ip address to use,
 {FIX} put's it in fix mode that fixes the program,
 {HELP} put's it in help mode so you understand what you are going to do with this program.''')
 
@@ -542,6 +545,7 @@ try:
 {pipForce} put's it in pipForce mode that installs the required packages with pipForce,
 {uninstallRequirement} put's it in uninstall mode that uninstall's the packages,
 {conenctRDP} put's the program into RDP connection mode,
+{autoConnect} put's the program into auto connect, if there is a file with the user SSH username and ip address to use,
 {FIX} put's it in fix mode that fixes the program,
 {HELP} put's it in help mode so you understand what you are going to do with this program.''')
 
