@@ -67,7 +67,7 @@ if __name__ == "__main__":
         if platform:
             # Run command
             print_loading_bar(50)
-            print("\nDONE running command")
+            print(f"\n[ {GREEN}DONE{RESET} ] running command")
             if platform == "linux":
                 command = linux_command
             elif platform == "macos":
