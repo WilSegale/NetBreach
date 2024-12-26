@@ -157,7 +157,7 @@ else
 
                     # Scan the entire network and display open ports
                     sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
-
+                    echo "Scan complete. Open ports saved to scan.txt"
                     # asks if the user want to see scan on a open file or not
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
@@ -204,12 +204,13 @@ else
                 else
                     # Scan specific port
                     sudo nmap -sS 192.168.1.1/24 -p $service -oN $service.log --open
+                    say "Scan complete. Open ports saved to ${service}.log"
                     read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
 
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
                         open "${service}.log"
                     else
-                        echo "[-] Ok I will not open the ${service}.log file"
+                        echo -e "\n[ ${RED}${BRIGHT}-${NC} ] Ok I will not open the ${service}.log file"
                         sleep 1
                     fi
                 fi
