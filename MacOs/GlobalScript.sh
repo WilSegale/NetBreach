@@ -66,6 +66,7 @@ if [[ "$1" == "--skip" ]]; then
     echo "Skipping package check"
     sleep 1
     NetBreach
+    
 else
 
     # Check for required packages
@@ -203,14 +204,14 @@ else
 
                 else
                     # Scan specific port
-                    sudo nmap -sS 192.168.1.1/24 -p $service -oN $service.log --open
-                    say "Scan complete. Open ports saved to ${service}.log"
+                    sudo nmap -sS 192.168.1.1/24 -p $service -oN $service.txt --open
+                    say "Scan complete. Open ports saved to ${service}.txt"
                     read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
 
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                        open "${service}.log"
+                        open "${service}.txt"
                     else
-                        echo -e "\n[ ${RED}${BRIGHT}-${NC} ] Ok I will not open the ${service}.log file"
+                        echo -e "\n[ ${RED}${BRIGHT}-${NC} ] Ok I will not open the ${service}.txt file"
                         sleep 1
                     fi
                 fi
