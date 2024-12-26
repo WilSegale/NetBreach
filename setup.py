@@ -53,31 +53,35 @@ except KeyboardInterrupt:
     sys.exit(1)
     
 if __name__ == "__main__":
-
-    # Detect platform
-    if os.name == "posix":
-        if os.uname().sysname == "Linux":
-            platform = "linux"
-        elif os.uname().sysname == "Darwin":
-            platform = "macos"
-        else:
-            platform = None
-            logger.error("Unsupported platform")
-        
-        if platform:
-            # Run command
-            print_loading_bar(50)
-            print(f"\n[ {GREEN}DONE{RESET} ] running command")
-            if platform == "linux":
-                command = linux_command
-            elif platform == "macos":
-                command = macos_command
-                
-            logger.info(f"Running command: {' '.join(command)}")
-            try:
-                subprocess.run(command, check=True, capture_output=True, text=True)
-            except subprocess.CalledProcessError as e:
-                logger.error(f"Error running command: {e}")
-        else:
-            print(f"{RED}Unsupported platform{RESET}")
-            logger.error("Unsupported platform")
+    try: 
+        # Detect platform
+        if os.name == "posix":
+            if os.uname().sysname == "Linux":
+                platform = "linux"
+            elif os.uname().sysname == "Darwin":
+                platform = "macos"
+            else:
+                platform = None
+                logger.error("Unsupported platform")
+            
+            if platform:
+                # Run command
+                print_loading_bar(50)
+                print(f"\n[ {GREEN}DONE{RESET} ] running command")
+                if platform == "linux":
+                    command = linux_command
+                elif platform == "macos":
+                    command = macos_command
+                    
+                logger.info(f"Running command: {' '.join(command)}")
+                try:
+                    subprocess.run(command, check=True, capture_output=True, text=True)
+                except subprocess.CalledProcessError as e:
+                    logger.error(f"Error running command: {e}")
+            else:
+                print(f"{RED}Unsupported platform{RESET}")
+                logger.error("Unsupported platform")
+    except KeyboardInterrupt:
+        print("\nSetup.py interrupted")
+        logger.error("Setup.py interrupted")
+        sys.exit(1)
