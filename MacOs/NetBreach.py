@@ -494,18 +494,20 @@ try:
         elif argument[1] in FIX:
             fix()
 
-        #gets the install funciton
-        elif argument[1] in installRequirement:
-            terminalCommand("bash requirements.sh")
-
+     
         #enables the pipForce mode if pip3 install fails
         elif argument[1] in pipForce:
             terminalCommand("bash requirements.sh --pipForce")
-
+        
+        #gets the install funciton
+        elif argument[1] in installRequirement:
+            terminalCommand("bash requirements.sh")
+            sys.exit()
+        
         #get the unisntall funciotn
         elif argument[1] in uninstallRequirement:
             terminalCommand("bash uninstall.sh")
-
+            sys.exit()
         #skips the packages if one doents install
         elif argument[1] in skip:
             terminalCommand("bash GlobalScript.sh --skip")
@@ -514,9 +516,9 @@ try:
             terminalCommand("bash GlobalScript.sh --auto")
             exit()
         else:
-                    print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
-        print(f"Please use the correct number of arguments.")
-        print(f'''Example: 
+            print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
+            print(f"Please use the correct number of arguments.")
+            print(f'''Example: 
 {GLOBAL} put's it in global mode for attacking global networks, 
 {GUI} put's it in GUI mode to attacking in GUI GLOBAL networks, 
 {LOCAL} put's it in local mode for attacking local networks,
