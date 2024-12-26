@@ -64,9 +64,7 @@ fi
 # check if the user has put --skip in the arguemnts 
 if [[ "$1" == "--skip" ]]; then
     echo "Skipping package check"
-    sleep 1
-    NetBreach
-    
+    sleep 4
 else
 
     # Check for required packages
