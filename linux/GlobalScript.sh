@@ -6,7 +6,7 @@ source DontEdit.sh
 # Function to handle cleanup on exit
 # quits program with ctrl-c
 EXIT_PROGRAM_WITH_CTRL_C() {
-    echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
+    echo -e "${RED}${BRIGHT}[-]${NC} EXITING SOFTWARE..."
     # Add cleanup commands here
     exit 1
 }
@@ -14,7 +14,7 @@ EXIT_PROGRAM_WITH_CTRL_C() {
 # quits program with ctrl-z
 EXIT_PROGRAM_WITH_CTRL_Z(){
     echo ""
-    echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
+    echo -e "${RED}${BRIGHT}[-]${NC} EXITING SOFTWARE..."
     # Add cleanup commands here
     exit 1
 }
@@ -42,7 +42,6 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-
 # Auto-connects the SSH server to the computer
 if [[ "$1" == "--auto" ]]; then
 
@@ -50,16 +49,17 @@ if [[ "$1" == "--auto" ]]; then
     if [ -f "${ssh_connection}" ]; then
         userConnection=$(cat "${ssh_connection}")  # Read the hint from the file
 
-        ssh $userConnection
+        ssh "${userConnection}"  # Connect to the SSH server
     else
         # File not found
-        echo "Error: SSH username and IP address file 'connect.txt' not found."
+        echo -e "[ ${RED}${BRIGHT}Error${NC} ] SSH username and IP address file 'connect.txt' not found."
         exit 1
     fi
 
     # Exit script successfully
-    exit 0
+    exit 1
 fi
+
 
 # check if the user has put --skip in the arguemnts 
 if [[ "$1" == "--skip" ]]; then
@@ -72,7 +72,7 @@ else
     for package in "${required_packages[@]}"; do
         if ! command_exists "$package"; then
             echo ""
-            echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
+            echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
             sleep 1 
 
             #asks the user if they want to install the packages that are mssing
@@ -81,6 +81,10 @@ else
             read -p ">>> " install
             
             if [[ " ${yes[*]} " == *" ${install} "* ]]; then
+                ps aux | grep sudo
+                echo "Input the PID for to kill the root session to install the packages."
+                read -p ">>> " session
+                kill -9 "${session}"
                 bash requirements.sh
                 exit 1
             else
@@ -91,6 +95,7 @@ else
         fi
     done
 fi
+
 # Check if the script is run with --help or -h
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     figlet "? HELP ?"
@@ -105,11 +110,12 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "If there are any ports that are open, it will ask for a username and hostname."
     echo "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
     echo
+
 else
 
     # Check if root user
     if [[ "${EUID}" -ne 0 ]]; then
-        echo -e "[ ${RED}FAIL${NC} ]: Please run as root."
+        echo -e "[ ${RED}${BRIGHT}FAIL${NC} ]: Please run as root."
         exit 1
     fi
     if [[ "$OSTYPE" == "${OS}"* ]]; then
@@ -117,7 +123,7 @@ else
         if [[ "${EUID}" -ne $root ]]; then
             # Error message if not running as root
             echo "ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
-            echo -e "[ ${RED}FAIL${NC} ]: TIME:${CURRENT_TIME} Please run as ROOT. DATE:${CURRENT_DATE}"
+            echo -e "[ ${RED}${BRIGHT}FAIL${NC} ]: TIME:${CURRENT_TIME} Please run as ROOT. DATE:${CURRENT_DATE}"
             exit
         else
             sudo rm -rf hydra.restore
@@ -216,8 +222,11 @@ else
                 echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
                 echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
                 read -p "Input Username: " user
+                
                 read -p "Input Hostname: " host
                 read -p "Input Port: " port
+                echo "$user@$host -p $port" > "${ssh_connection}"
+
             }
 
             RunHackingCommandWithVNC() {

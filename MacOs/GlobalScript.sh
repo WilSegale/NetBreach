@@ -6,7 +6,7 @@ source DontEdit.sh
 # Function to handle cleanup on exit
 # quits program with ctrl-c
 EXIT_PROGRAM_WITH_CTRL_C() {
-    echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
+    echo -e "${RED}${BRIGHT}[-]${NC} EXITING SOFTWARE..."
     # Add cleanup commands here
     exit 1
 }
@@ -14,7 +14,7 @@ EXIT_PROGRAM_WITH_CTRL_C() {
 # quits program with ctrl-z
 EXIT_PROGRAM_WITH_CTRL_Z(){
     echo ""
-    echo -e "${RED}[-]${NC} EXITING SOFTWARE..."
+    echo -e "${RED}${BRIGHT}[-]${NC} EXITING SOFTWARE..."
     # Add cleanup commands here
     exit 1
 }
@@ -49,15 +49,15 @@ if [[ "$1" == "--auto" ]]; then
     if [ -f "${ssh_connection}" ]; then
         userConnection=$(cat "${ssh_connection}")  # Read the hint from the file
 
-        ssh $userConnection
+        ssh "${userConnection}"  # Connect to the SSH server
     else
         # File not found
-        echo "Error: SSH username and IP address file 'connect.txt' not found."
+        echo -e "[ ${RED}${BRIGHT}Error${NC} ] SSH username and IP address file 'connect.txt' not found."
         exit 1
     fi
 
     # Exit script successfully
-    exit 0
+    exit 1
 fi
 
 
@@ -72,7 +72,7 @@ else
     for package in "${required_packages[@]}"; do
         if ! command_exists "$package"; then
             echo ""
-            echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
+            echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
             sleep 1 
 
             #asks the user if they want to install the packages that are mssing
@@ -115,7 +115,7 @@ else
 
     # Check if root user
     if [[ "${EUID}" -ne 0 ]]; then
-        echo -e "[ ${RED}FAIL${NC} ]: Please run as root."
+        echo -e "[ ${RED}${BRIGHT}FAIL${NC} ]: Please run as root."
         exit 1
     fi
     if [[ "$OSTYPE" == "${OS}"* ]]; then
@@ -123,7 +123,7 @@ else
         if [[ "${EUID}" -ne $root ]]; then
             # Error message if not running as root
             echo "ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
-            echo -e "[ ${RED}FAIL${NC} ]: TIME:${CURRENT_TIME} Please run as ROOT. DATE:${CURRENT_DATE}"
+            echo -e "[ ${RED}${BRIGHT}FAIL${NC} ]: TIME:${CURRENT_TIME} Please run as ROOT. DATE:${CURRENT_DATE}"
             exit
         else
             sudo rm -rf hydra.restore

@@ -511,7 +511,8 @@ try:
             terminalCommand("bash GlobalScript.sh --skip")
         
         elif argument[1] in autoConnect:
-            terminalCommand("bash GlobalScript.sh --autoConnect")
+            terminalCommand("bash GlobalScript.sh --auto")
+            exit()
         else:
                     print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
         print(f"Please use the correct number of arguments.")
