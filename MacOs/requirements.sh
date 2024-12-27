@@ -68,7 +68,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
                     echo -e "[ ${RED}FAIL${NC} ] Homebrew installation failed."
                 else
                     echo -e "[ ${GREEN}OK${NC} ] Homebrew installation successful."
-                    echo "Run the program again to install the rest of the packages."
+                    echo -e "\n${GREEN}Run the program again to install the rest of the packages.${NC}"
                 fi
             else
                 echo "Exiting the script."
