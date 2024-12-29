@@ -91,9 +91,6 @@ else
 
     if [[ "$OSTYPE" == "${OS}"* ]]; then
         clear
-        
-        sudo rm -rf hydra.restore
-        clear
 
         #checks if the user is connected to the internet if they are not connceted it tells them they are not connceted and have to connect
         SITE="https://google.com/"
