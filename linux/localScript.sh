@@ -66,8 +66,7 @@ else
                 sudo bash requirements.sh
                 exit 1
             else
-                echo "Ok stopping program"
-                exit 1
+               NetBreach()
             fi
             exit 1
         fi
