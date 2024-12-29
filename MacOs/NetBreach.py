@@ -461,43 +461,52 @@ try:
         # gets the help function
         if argument[1] in HELP:
             show_help()
+            sys.exit()
 
         #gets the gui funciton
         elif argument[1] in GUI:
             Show_GUI()
+            sys.exit()
 
         #gets the global function
         elif argument[1] in GLOBAL:
             show_GLOBAL()
-        
+            sys.exit()
+
         #gets the local function
         elif argument[1] in LOCAL:
             show_LOCAL()
+            sys.exit()
 
         #gets the gui local funciton
         elif argument[1] in GuiLocal:
             show_GuiLOCAL()
+            sys.exit()
 
         #gets the global manual funciton
         elif argument[1] in GlobalManualArgument:
             show_manual_Global()
+            sys.exit()
 
         #get the local manula fucnoitn
         elif argument[1] in LocalManualArgument:
             show_manual_Local()
+            sys.exit()
 
         #conenct with RDP mode enabled
         elif argument[1] in conenctRDP:
             RDPCONENCT()
-        
+            sys.exit()
+
         #gets the fix funciton
         elif argument[1] in FIX:
             fix()
-
+            sys.exit()
      
         #enables the pipForce mode if pip3 install fails
         elif argument[1] in pipForce:
             terminalCommand("bash requirements.sh --pipForce")
+            sys.exit()
         
         #gets the install funciton
         elif argument[1] in installRequirement:
@@ -508,13 +517,15 @@ try:
         elif argument[1] in uninstallRequirement:
             terminalCommand("bash uninstall.sh")
             sys.exit()
+
         #skips the packages if one doents install
         elif argument[1] in skip:
             terminalCommand("bash GlobalScript.sh --skip")
-        
+            sys.exit()
+
         elif argument[1] in autoConnect:
             terminalCommand("bash GlobalScript.sh --auto")
-            exit()
+            sys.exit()
         else:
             print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
             print(f"Please use the correct number of arguments.")
