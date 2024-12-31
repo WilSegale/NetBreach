@@ -1,6 +1,6 @@
 # NetBreach
 # CREATION DATA: NOV/1/2022
-<img src="NetBreach.jpg" alt="NetBreach img " width="100px" height="100px">
+<img src="NetBreach.png" alt="NetBreach img " width="100px" height="100px">
 
 # !Do not use this software in Schools or Business! 
 
