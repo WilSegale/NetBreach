@@ -6,55 +6,6 @@ def show_help():
 
     HelpFile = open("HELP.txt", "w")
 
-    #This is for the user to know what programs are used in this program
-    ProgramsUsed = f"+++++++++++++++PROGRAMS USED+++++++++++++++"
-    ProgramsUsedInfo01 = f"\nThis program will help you crack passwords"
-    ProgramsUsedInfo02 = f"\nIt has two programs inside it"
-    ProgramsUsedInfo03 = f"\none is {GREEN}Hydra{RESET} and the other is {GREEN}Nmap{RESET} and"
-
-    #this is for the user to understand what the program does
-    HowToUse = f"\n+++++++++++++++HOW TO USE++++++++++++++++++"
-    HowToUseInfo01 = f"\nTo use the program you have to tell the computer what port you want to scan."
-    HowToUseInfo02 = f"\nIt will then scan the port that you asked for on the network and see if any ports that you asked are open."
-    HowToUseInfo03 = f"\nIf there are any ports that are open, it will ask for a username and hostname"
-    HowToUseInfo04 = f"\nWhen you give the program the username and hostname, it will try to crack that given parameters you gave it."
-    HowToUseInfo05 = f"\nIf you want to use the program on a global network, you can type {GREEN}'sudo python3 {SoftwareName} {GLOBAL}'{RESET}"
-    HowToUseInfo06 = f"\nIf you want to use the program with GUI support you can type {GREEN}'sudo python3 {SoftwareName} {GUI}'{RESET}" 
-    HowToUseInfo07 = f"\nIf you want to use the program locally, you can type {GREEN}'python3 {SoftwareName} {LOCAL}'{RESET}"
-    HowToUseInfo08 = f"\nIf you want to use the program with GUI in Local mode you can type {GREEN}'python3 {SoftwareName} {GuiLocal}'{RESET}"
-    HowToUseInfo09 = f"\nIf you want to have the program install required packages by it's self type {GREEN}'python3 {SoftwareName} {installRequirement}'{RESET}"
-    HowToUseInfo10 = f"\nIf you want to have the program install required packages by it's self type {GREEN}'python3 {SoftwareName} {pipForce}'{RESET}"
-    HowToUseInfo11 = f"\nIf you want to have the program uninstall required packages by it's self type {GREEN}'python3 {SoftwareName} {uninstallRequirement}'{RESET}"
-    HowToUseInfo12 = f"\nIf you want to have the program allow you to input the ip address or website manually for global networks type {GREEN}'python3 {SoftwareName} {GlobalManualArgument}'{RESET}"
-    HowToUseInfo13 = f"\nIf you want to have the program allow you to input the ip address or website manually for local networks type {GREEN}'python3 {SoftwareName} {LocalManualArgument}'{RESET}"
-    HowToUseInfo14 = f"\nIf you get a error message you can type {GREEN}'python3 {SoftwareName} {FIX}'{RESET}"
-    HowToUseInfo15 = f"\nIf you want to remote conenct to a computer type {GREEN}'python3 {SoftwareName} {conenctRDP}'{RESET}"
-    HowToUseInfo16 = f"\nIf you want to skip a step type {GREEN}'python3 {SoftwareName} {skip}'{RESET}"
-    
-    ProgramsUSED = (ProgramsUsed+
-                    ProgramsUsedInfo01+
-                    ProgramsUsedInfo02+
-                    ProgramsUsedInfo03)
-
-    # holds the information about how the program works in a array so it can grab them more easily
-    info = (HowToUse+
-            HowToUseInfo01 +
-            HowToUseInfo02 + 
-            HowToUseInfo03 + 
-            HowToUseInfo04 +
-            HowToUseInfo05 +
-            HowToUseInfo06 +
-            HowToUseInfo07 +
-            HowToUseInfo08 +
-            HowToUseInfo09 +
-            HowToUseInfo10 +
-            HowToUseInfo11 +
-            HowToUseInfo12 +
-            HowToUseInfo13 +
-            HowToUseInfo14 +
-            HowToUseInfo15 +
-            HowToUseInfo16) 
-
     lineArt(["figlet", f"{name}"])
     lineArt(["figlet", "? HELP ?"])
     print(NameOfOs,  file=HelpFile)
@@ -62,13 +13,14 @@ def show_help():
     
     #inputs the program used logo in a help file
     #puts the info about the program inside the help file
-    print(ProgramsUSED)
-    print(info)
+    print(ProgramsUSEDCOLOR)
+    print(InfoColor)
+
     #Puts the info logo in the help file
     print(ProgramsUSED, file=HelpFile)
 
     #puts the info about how to use the program inside the help file
-    print(info, file=HelpFile)
+    print(Info, file=HelpFile)
 
     #puts the info about how to use the program on the screen
 
@@ -472,7 +424,7 @@ try:
         elif argument[1] in GLOBAL:
             show_GLOBAL()
             sys.exit()
-        
+
         #gets the local function
         elif argument[1] in LOCAL:
             show_LOCAL()
@@ -497,22 +449,22 @@ try:
         elif argument[1] in conenctRDP:
             RDPCONENCT()
             sys.exit()
-    
+
         #gets the fix funciton
         elif argument[1] in FIX:
             fix()
             sys.exit()
-
-        #gets the install funciton
-        elif argument[1] in installRequirement:
-            terminalCommand("bash requirements.sh")
-            sys.exit()
-
+     
         #enables the pipForce mode if pip3 install fails
         elif argument[1] in pipForce:
             terminalCommand("bash requirements.sh --pipForce")
             sys.exit()
-
+        
+        #gets the install funciton
+        elif argument[1] in installRequirement:
+            terminalCommand("bash requirements.sh")
+            sys.exit()
+        
         #get the unisntall funciotn
         elif argument[1] in uninstallRequirement:
             terminalCommand("bash uninstall.sh")
@@ -524,45 +476,16 @@ try:
             sys.exit()
 
         elif argument[1] in autoConnect:
-            terminalCommand("sudo bash GlobalScript.sh --autoConnect")
+            terminalCommand("bash GlobalScript.sh --auto")
             sys.exit()
         else:
-                    print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
-        print(f"Please use the correct number of arguments.")
-        print(f'''Example: 
-{GLOBAL} put's it in global mode for attacking global networks, 
-{GUI} put's it in GUI mode to attacking in GUI GLOBAL networks, 
-{LOCAL} put's it in local mode for attacking local networks,
-{GuiLocal} put's it in GUI LOCAL mode for attacking in GUI LOCAL networks,
-{GlobalManualArgument} put's it in global manual mode that shows you how to use the program,
-{LocalManualArgument} put's it in local manual mode that shows you how to use the program,
-{installRequirement} put's it in install mode that install's the required packages,
-{pipForce} put's it in pipForce mode that installs the required packages with pipForce,
-{uninstallRequirement} put's it in uninstall mode that uninstall's the packages,
-{conenctRDP} put's the program into RDP connection mode,
-{autoConnect} put's the program into auto connect, if there is a file with the user SSH username and ip address to use,
-{FIX} put's it in fix mode that fixes the program,
-{HELP} put's it in help mode so you understand what you are going to do with this program.''')
-
+            print(f'''{ErrorMessage} {explain}''', file=ERROR)
+            print(f'''{RED}{ErrorMessage}{RESET} {explain}''')
     #if the user does not input the correct argument it tells them what arguments to use for it to work 
     else:
-        print(f"WARNING:TIME:{formatted_time} Please use the correct number of arguments. DATE:{current_date}",file=ERROR)
-        print(f"Please use the correct number of arguments.")
-        print(f'''Example: 
-{GLOBAL} put's it in global mode for attacking global networks, 
-{GUI} put's it in GUI mode to attacking in GUI GLOBAL networks, 
-{LOCAL} put's it in local mode for attacking local networks,
-{GuiLocal} put's it in GUI LOCAL mode for attacking in GUI LOCAL networks,
-{GlobalManualArgument} put's it in global manual mode that shows you how to use the program,
-{LocalManualArgument} put's it in local manual mode that shows you how to use the program,
-{installRequirement} put's it in install mode that install's the required packages,
-{pipForce} put's it in pipForce mode that installs the required packages with pipForce,
-{uninstallRequirement} put's it in uninstall mode that uninstall's the packages,
-{conenctRDP} put's the program into RDP connection mode,
-{autoConnect} put's the program into auto connect, if there is a file with the user SSH username and ip address to use,
-{FIX} put's it in fix mode that fixes the program,
-{HELP} put's it in help mode so you understand what you are going to do with this program.''')
-
+        
+        print(f'''{ErrorMessage} {explain}''', file=ERROR)
+        print(f'''{RED}{ErrorMessage}{RESET} {explain}''')
 #holds the keyboard exit function
 except KeyboardInterrupt:
     print("\n[-] Exiting...")
