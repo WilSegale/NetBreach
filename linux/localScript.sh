@@ -66,7 +66,7 @@ else
                 sudo bash requirements.sh
                 exit 1
             else
-               NetBreach()
+                echo "hello world"
             fi
             exit 1
         fi
