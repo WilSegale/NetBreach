@@ -203,7 +203,6 @@ else
                 else
                     # Scan specific port
                     sudo nmap -sS 192.168.1.1/24 -p $service -oN $service.txt --open
-                    say "Scan complete. Open ports saved to ${service}.txt"
                     read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
 
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
