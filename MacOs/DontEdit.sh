@@ -11,7 +11,7 @@ hostname=$(hostname)
 os_name=$(uname)
 
 # var that holds the ssh connection list
-ssh_connection="connect.txt"
+ssh_connection="connect.log"
 
 #name of program
 NameOfProgram="NetBreach"

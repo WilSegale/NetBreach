@@ -224,7 +224,7 @@ else
                 
                 read -p "Input Hostname: " host
                 read -p "Input Port: " port
-                echo "$user@$host -p $port" > "${ssh_connection}"
+                echo "${user}@${host}" > "${ssh_connection}"
 
             }
 

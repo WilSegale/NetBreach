@@ -42,7 +42,7 @@ RemoveFile = ["ERROR.log","ERROR.LOG"]
 lineArt = subprocess.run
 
 #name of the os
-OS = "Linux"
+OS = "linux"
 
 name = "Linux"
 # Define color codes for console output
