@@ -60,42 +60,6 @@ if [[ "$1" == "--auto" ]]; then
     exit 1
 fi
 
-
-# check if the user has put --skip in the arguemnts 
-if [[ "$1" == "--skip" ]]; then
-    echo "Skipping package check"
-    sleep 1
-    NetBreach
-else
-
-    # Check for required packages
-    for package in "${required_packages[@]}"; do
-        if ! command_exists "$package"; then
-            echo ""
-            echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
-            sleep 1 
-
-            #asks the user if they want to install the packages that are mssing
-            echo "Would you like me to install it for you. YES/NO"
-
-            read -p ">>> " install
-            
-            if [[ " ${yes[*]} " == *" ${install} "* ]]; then
-                ps aux | grep sudo
-                echo "Input the PID for to kill the root session to install the packages."
-                read -p ">>> " session
-                kill -9 "${session}"
-                bash requirements.sh
-                exit 1
-            else
-                echo "Ok stopping program"
-                exit 1
-            fi
-            exit 1
-        fi
-    done
-fi
-
 # Check if the script is run with --help or -h
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     figlet "? HELP ?"
