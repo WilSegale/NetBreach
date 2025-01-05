@@ -203,7 +203,7 @@ else
 
                 else
                     # Scan specific port
-                    nmap 192.168.1.1/24 -p $service -oN $service.log --open
+                    nmap 127.0.0.1 -p $service -oN $service.log --open
                     read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
 
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
