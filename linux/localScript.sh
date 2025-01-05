@@ -77,11 +77,6 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
 
 else
 
-    # Check if root user
-    if [[ "${EUID}" -ne 0 ]]; then
-        echo -e "[ ${RED}${BRIGHT}FAIL${NC} ]: Please run as root."
-        exit 1
-    fi
     if [[ "$OSTYPE" == "${OS}"* ]]; then
         clear
         if [[ "${EUID}" -ne $root ]]; then
