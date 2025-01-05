@@ -52,7 +52,7 @@ if [[ "$1" == "--auto" ]]; then
         ssh "${userConnection}"  # Connect to the SSH server
     else
         # File not found
-        echo -e "[ ${RED}${BRIGHT}Error${NC} ] SSH username and IP address file 'connect.txt' not found."
+        echo -e "[ ${RED}${BRIGHT}Error${NC} ] SSH username and IP address file 'connect.log' not found."
         exit 1
     fi
 
