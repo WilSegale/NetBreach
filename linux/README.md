@@ -26,6 +26,7 @@ python3 NetBreach.py --uninstall
 python3 NetBreach.py --local
 python3 NetBreach.py --MANUAL-LOCAL
 python3 NetBreach.py --xfreerdp
+python3 NetBreach.py --auto
 sudo python3 NetBreach.py --global
 sudo python3 NetBreach.py --gui
 sudo python3 NetBreach.py --Gui-Local
