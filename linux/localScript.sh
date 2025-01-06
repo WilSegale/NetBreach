@@ -129,7 +129,7 @@ skip_checks_and_run() {
 # Main execution flow
 if [[ "$1" == "--help" || "$1" == "-h" ]]; then
     show_help
-elif [[ "$1" == "--skip" ]]; then
+elif [[ "$1" == "--skip-local" ]]; then
     skip_checks_and_run
 else
     install_missing_packages

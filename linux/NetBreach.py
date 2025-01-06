@@ -473,12 +473,12 @@ try:
         
         #skips the packages if one doents install for global
         elif argument[1] in skipGlobal:
-            terminalCommand("bash GlobalScript.sh --skip")
+            terminalCommand("bash GlobalScript.sh --skip-global")
             sys.exit()
 
         #skips the packages if one doents install for local
         elif argument[1] in skipLocal:
-            terminalCommand("bash GlobalScript.sh --skip-local")
+            terminalCommand("bash localScript.sh --skip-local")
             sys.exit()
 
         elif argument[1] in autoConnect:
