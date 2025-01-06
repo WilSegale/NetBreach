@@ -44,7 +44,7 @@ command_exists() {
 
 # Check for required packages
 for package in "${required_packages[@]}"; do
-    if ! command_exists "${package}"; then
+    if ! command_exists "$package"; then
         echo ""
         echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
         sleep 1 
@@ -55,6 +55,10 @@ for package in "${required_packages[@]}"; do
         read -p ">>> " install
         
         if [[ " ${yes[*]} " == *" ${install} "* ]]; then
+            ps aux | grep sudo
+            echo "Input the PID for to kill the root session to install the packages."
+            read -p ">>> " session
+            kill -9 "${session}"
             bash requirements.sh
             exit 1
         else
@@ -114,7 +118,7 @@ else
             NetBreach() {
                 # The logo of the program
                 figlet -f slant "NetBreach"
-                figlet -f slant "Manual Global"
+                figlet -f slant "Manual Global Mode"
                 echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
                 echo "If you want to scan a website type Manual and then type the website name or ip address of the website"
                 echo "If you want to stop the program type 'stop'."

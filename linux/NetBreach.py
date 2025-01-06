@@ -1,6 +1,5 @@
 from DontEdit import *
 from HelpLogo import *
-from DontEditHelp import *
 
 #this is for the user to understand what the program does
 def show_help():
@@ -471,14 +470,9 @@ try:
             terminalCommand("bash uninstall.sh")
             sys.exit()
 
-        #skips the packages if one doents install for global mode
-        elif argument[1] in skipGlobal:
+        #skips the packages if one doents install
+        elif argument[1] in skip:
             terminalCommand("bash GlobalScript.sh --skip")
-            sys.exit()
-
-        #skips the packages if one doents install for local mode
-        elif argument[1] in skipLocal:
-            terminalCommand("bash localScript.sh --skip")
             sys.exit()
 
         elif argument[1] in autoConnect:

@@ -64,8 +64,7 @@ fi
 # check if the user has put --skip in the arguemnts 
 if [[ "$1" == "--skip" ]]; then
     echo "Skipping package check"
-    sleep 1
-    NetBreach
+    sleep 4
 else
 
     # Check for required packages
@@ -157,7 +156,7 @@ else
 
                     # Scan the entire network and display open ports
                     sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
-
+                    echo "Scan complete. Open ports saved to scan.txt"
                     # asks if the user want to see scan on a open file or not
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
@@ -203,13 +202,13 @@ else
 
                 else
                     # Scan specific port
-                    sudo nmap -sS 192.168.1.1/24 -p $service -oN $service.log --open
+                    sudo nmap -sS 192.168.1.1/24 -p $service -oN $service.txt --open
                     read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
 
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                        open "${service}.log"
+                        open "${service}.txt"
                     else
-                        echo "[-] Ok I will not open the ${service}.log file"
+                        echo -e "\n[ ${RED}${BRIGHT}-${NC} ] Ok I will not open the ${service}.txt file"
                         sleep 1
                     fi
                 fi
@@ -225,7 +224,7 @@ else
                 
                 read -p "Input Hostname: " host
                 read -p "Input Port: " port
-                echo "$user@$host -p $port" > "${ssh_connection}"
+                echo "${user}@${host}" > "${ssh_connection}"
 
             }
 
