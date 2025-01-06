@@ -19,13 +19,18 @@ command_exists() {
 # Check for --help argument
 show_help() {
     figlet "? HELP ?"
-    echo -e "\n+++++++++++++++ Programs used +++++++++++++++"
-    echo "This program helps crack passwords using Hydra and Nmap."
-    echo -e "\n+++++++++++++++ How to use +++++++++++++++"
-    echo "1. Specify the port you want to scan (e.g., SSH - 22, VNC - 5900, MySQL - 3306)."
-    echo "2. The program scans the network and identifies open ports."
-    echo "3. Input the username and hostname to attempt cracking the target service."
-    exit 0
+    echo
+    echo "+++++++++++++++Programs used+++++++++++++++"
+    echo "This program will help you crack passwords"
+    echo "It has two programs inside it, one is Hydra and the other is Nmap"
+    echo
+    echo "+++++++++++++++How to use++++++++++++++++++"
+    echo "To use the program you have to tell the computer what port you want to scan."
+    echo "It will then scan the port that you asked for on the network and see if any ports that you asked are open."
+    echo "If there are any ports that are open, it will ask for a username and hostname."
+    echo "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
+    echo
+
 }
 
 # Function to check and install missing packages
@@ -59,7 +64,8 @@ check_internet() {
 NetBreach() {
     clear
     figlet -f slant "NetBreach"
-    echo "Enter the port to scan (SSH - 22, VNC - 5900, MySQL - 3306). Type 'ALL' to scan all or 'stop' to exit."
+    echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
+    echo "If you want to stop the program type 'stop'."
     read -p ">>> " service
 
     case "${service}" in
@@ -110,12 +116,19 @@ RunHackingCommand() {
     esac
 }
 
+# Skip function
+skip_checks_and_run() {
+    echo -e "[ ${GREEN}INFO${NC} ] Skipping all checks..."
+    sleep 5
+    NetBreach
+    RunHackingCommand
+}
+
 # Main execution flow
 if [[ "$1" == "--help" || "$1" == "-h" ]]; then
     show_help
 elif [[ "$1" == "--skip" ]]; then
-    echo "Skipping package check..."
-    NetBreach
+    skip_checks_and_run
 else
     install_missing_packages
     check_internet
