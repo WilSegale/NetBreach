@@ -224,7 +224,6 @@ else
                 
                 read -p "Input Hostname: " host
                 read -p "Input Port: " port
-                echo "${user}@${host}" > "${ssh_connection}"
 
             }
 
@@ -294,7 +293,10 @@ else
                         echo -e "${title}"
                         echo -e "${Connected_To_SSH_SERVER}"
                         echo ""
+                        echo "${user}@${host}" > "${ssh_connection}"
+                        sleep 1
                         ssh "${user}@${host}" -p "${port}"
+
                     fi
                 fi
             }
