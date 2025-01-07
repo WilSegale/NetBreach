@@ -1,4 +1,5 @@
 from DontEdit import *
+from Help import *
 from HelpLogo import *
 
 #this is for the user to understand what the program does
@@ -470,11 +471,17 @@ try:
             terminalCommand("bash uninstall.sh")
             sys.exit()
 
-        #skips the packages if one doents install
-        elif argument[1] in skip:
+        #skips the packages if one doents install for global mode
+        elif argument[1] in skipGlobal:
             terminalCommand("bash GlobalScript.sh --skip")
             sys.exit()
 
+        # skips the packages if one doents for local mode
+        elif argument[1] in skipLocal:
+            terminalCommand("bash localScript.sh --skip")
+            sys.exit()
+        
+        #auto connect to ssh server
         elif argument[1] in autoConnect:
             terminalCommand("bash GlobalScript.sh --auto")
             sys.exit()
