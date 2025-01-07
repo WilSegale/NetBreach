@@ -41,6 +41,7 @@ trap ctrl_c SIGINT
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
+cat output.log
 
 # Auto-connects the SSH server to the computer
 if [[ "$1" == "--auto" ]]; then
@@ -48,7 +49,6 @@ if [[ "$1" == "--auto" ]]; then
     # Check if the SSH connection file exists
     if [ -f "${ssh_connection}" ]; then
         userConnection=$(cat "${ssh_connection}")  # Read the hint from the file
-
         ssh "${userConnection}"  # Connect to the SSH server
     else
         # File not found
