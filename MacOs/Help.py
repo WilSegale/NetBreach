@@ -24,7 +24,8 @@ HowToUseInfo12Color = f"\nIf you want to have the program allow you to input the
 HowToUseInfo13Color = f"\nIf you want to have the program allow you to input the ip address or website manually for local networks type {GREEN}'python3 {SoftwareName} {LocalManualArgument}'{RESET}"
 HowToUseInfo14Color = f"\nIf you get a error message you can type {GREEN}'python3 {SoftwareName} {FIX}'{RESET}"
 HowToUseInfo15Color = f"\nIf you want to remote conenct to a computer type {GREEN}'python3 {SoftwareName} {conenctRDP}'{RESET}"
-HowToUseInfo16Color = f"\nIf you want to skip a step type {GREEN}'python3 {SoftwareName} {skip}'{RESET}"
+HowToUseInfo16Color = f"\nIf you want to skip a step type {GREEN}'sudo python3 {SoftwareName} {skipGlobal}'{RESET}"
+HowToUseInfo17Color = f"\nIf you want to skip a step type {GREEN}'python3 {SoftwareName} {skipLocal}'{RESET}"
 
 ProgramsUSEDCOLOR = (ProgramsUSEDCOLOR+
                 ProgramsUsedInfo01COLOR+
@@ -48,7 +49,8 @@ InfoColor = (HowToUseColor +
         HowToUseInfo13Color +
         HowToUseInfo14Color +
         HowToUseInfo15Color +
-        HowToUseInfo16Color)
+        HowToUseInfo16Color + 
+        HowToUseInfo17Color)
 #--------------HELP MESSAGE END with color-------------------#
 
 #--------------HELP MESSAGE START-------------------#
@@ -77,7 +79,8 @@ HowToUseInfo12 = f"\nIf you want to have the program allow you to input the ip a
 HowToUseInfo13 = f"\nIf you want to have the program allow you to input the ip address or website manually for local networks type 'python3 {SoftwareName} {LocalManualArgument}'"
 HowToUseInfo14 = f"\nIf you get a error message you can type 'python3 {SoftwareName} {FIX}'"
 HowToUseInfo15 = f"\nIf you want to remote conenct to a computer type 'python3 {SoftwareName} {conenctRDP}'"
-HowToUseInfo16 = f"\nIf you want to skip a step type 'python3 {SoftwareName} {skip}'"
+HowToUseInfo16 = f"\nIf you want to skip a step type 'sudo python3 {SoftwareName} {skipGlobal}'"
+HowToUseInfo17 = f"\nIf you want to skip a step type 'python3 {SoftwareName} {skipLocal}'"
 
 ProgramsUSED = (ProgramsUSED+
                 ProgramsUsedInfo01+
@@ -101,7 +104,8 @@ Info = (HowToUse +
         HowToUseInfo13 +
         HowToUseInfo14 +
         HowToUseInfo15 +
-        HowToUseInfo16)
+        HowToUseInfo16 +
+        HowToUseInfo17)
 #--------------HELP MESSAGE END-------------------#
 
 
@@ -122,4 +126,6 @@ Please use the correct number of arguments. Example:
 {conenctRDP} put's the program into RDP connection mode,
 {autoConnect} put's the program into auto connect, if there is a file with the user SSH username and ip address to use,
 {FIX} put's it in fix mode that fixes the program,
+{skipGlobal} put's it in skip global mode that skips the global mode,
+{skipLocal} put's it in skip local mode that skips the local mode,
 {HELP} put's it in help mode so you understand what you are going to do with this program.'''
