@@ -44,7 +44,7 @@ trap ctrl_c SIGINT
 
 # Check for required packages
 for package in "${required_packages[@]}"; do
-    if ! command_exists "$package"; then
+    if ! command_exists "${package}"; then
         echo ""
         echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
         sleep 1 
