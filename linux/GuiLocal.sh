@@ -51,21 +51,25 @@ hostName="Input Hostname:"  # Message for hostname prompt
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
-
-# Loop through required packages and check if they are installed
-for package in "${required_packages[@]}"; do
-    if ! command_exists "${package}"; then
-        # Prompt the user to install missing package
-        response=$(xmessage -buttons "Yes:0,No:1" "Do you want to install the required package?")
-        if [ "$?" -eq 0 ]; then
-            bash requirements.sh  # Run script to install missing packages
-            exit 1
-        else
-            exit 1
+# check if the user has put --skip in the arguemnts 
+if [[ "$1" == "--skip" ]]; then
+    echo "Skipping package check"
+    sleep 4
+else
+    # Loop through required packages and check if they are installed
+    for package in "${required_packages[@]}"; do
+        if ! command_exists "${package}"; then
+            # Prompt the user to install missing package
+            response=$(xmessage -buttons "Yes:0,No:1" "Do you want to install the required package?")
+            if [ "$?" -eq 0 ]; then
+                bash requirements.sh  # Run script to install missing packages
+                exit 1
+            else
+                exit 1
+            fi
         fi
-    fi
-done
-
+    done
+fi
 # Check if the script is run with --help or -h; display help info if true
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     # Display help information about the program
