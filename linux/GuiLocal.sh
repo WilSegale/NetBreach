@@ -61,7 +61,7 @@ for package in "${required_packages[@]}"; do
             bash requirements.sh  # Run script to install missing packages
             exit 1
         else
-            echo "You selected No."
+            exit 1
         fi
     fi
 done
