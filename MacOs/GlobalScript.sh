@@ -220,8 +220,8 @@ else
                 # Services to crack the network
                 echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
                 echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
-                
                 read -p "Input Username: " user
+                
                 read -p "Input Hostname: " host
                 read -p "Input Port: " port
 
