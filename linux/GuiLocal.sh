@@ -23,21 +23,20 @@ Common Ports:\n
 - VNC: 5900\n
 - MySQL: 3306\n
 To scan all ports, type 'ALL'."
+    exit 0
 }
 
 # Function to check and install missing packages
 install_missing_packages() {
-    if 
+    # Loop through required packages and check if they are installed
     for package in "${required_packages[@]}"; do
-        if ! command_exists "$package"; then
-            dialog --yesno "The package '${package}' is missing. Would you like to install it?" 10 40
-            if [[ $? -eq 0 ]]; then
-                bash requirements.sh || {
-                    dialog --msgbox "Failed to install '${package}'. Exiting." 10 40
-                    exit 1
-                }
+        if ! command_exists "${package}"; then
+            # Prompt the user to install missing package
+            response=$(xmessage -buttons "Yes:0,No:1" "Do you want to install the required package?")
+            if [ "$?" -eq 0 ]; then
+                bash requirements.sh  # Run script to install missing packages
+                exit 1
             else
-                dialog --msgbox "Cannot proceed without '${package}'. Exiting." 10 40
                 exit 1
             fi
         fi
@@ -108,16 +107,27 @@ RunHackingCommand() {
 }
 
 # Main execution flow
-if [[ "$1" == "--help" || "$1" == "-h" ]]; then
-    show_help
-if [[ "$1" == "--skip" ]]; then
-    echo "Skipping package check"
-    check_internet  
-    NetBreach
-    RunHackingCommand
-else
+SKIP_INSTALL=false
+
+for arg in "$@"; do
+    case "$arg" in
+        --skip)
+            SKIP_INSTALL=true
+            ;;
+        --help|-h)
+            show_help
+            ;;
+        *)
+            dialog --msgbox "Unknown option: $arg" 10 40
+            exit 1
+            ;;
+    esac
+done
+
+if ! $SKIP_INSTALL; then
     install_missing_packages
-    check_internet
-    NetBreach
-    RunHackingCommand
 fi
+
+check_internet
+NetBreach
+RunHackingCommand
