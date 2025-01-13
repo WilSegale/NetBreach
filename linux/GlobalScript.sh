@@ -41,6 +41,7 @@ trap ctrl_c SIGINT
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
+cat output.log
 
 # Auto-connects the SSH server to the computer
 if [[ "$1" == "--auto" ]]; then
@@ -48,7 +49,6 @@ if [[ "$1" == "--auto" ]]; then
     # Check if the SSH connection file exists
     if [ -f "${ssh_connection}" ]; then
         userConnection=$(cat "${ssh_connection}")  # Read the hint from the file
-
         ssh "${userConnection}"  # Connect to the SSH server
     else
         # File not found
@@ -62,7 +62,7 @@ fi
 
 
 # check if the user has put --skip in the arguemnts 
-if [[ "$1" == "--skip-global" ]]; then
+if [[ "$1" == "--skip" ]]; then
     echo "Skipping package check"
     sleep 4
 else
@@ -220,11 +220,10 @@ else
                 # Services to crack the network
                 echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
                 echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
-                read -p "Input Username: " user
                 
+                read -p "Input Username: " user
                 read -p "Input Hostname: " host
                 read -p "Input Port: " port
-                echo "${user}@${host}" > "${ssh_connection}"
 
             }
 
@@ -294,7 +293,10 @@ else
                         echo -e "${title}"
                         echo -e "${Connected_To_SSH_SERVER}"
                         echo ""
+                        echo "${user}@${host}" > "${ssh_connection}"
+                        sleep 1
                         ssh "${user}@${host}" -p "${port}"
+
                     fi
                 fi
             }
