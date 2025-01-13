@@ -82,9 +82,8 @@ else
         # Function to scan ports
         NetBreach() {
             figlet -f slant "${NameOfProgram}"  # Display program name in ASCII art
-            options_text="Type the number of the\port you want to scan
-            (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'.
-            \If you want to stop the program, type 'stop'."
+            options_text="Type the number of the\port you want to scan\(SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'.\If you want to stop the program, type 'stop'." >> help.txt
+            open help.txt  # Open help file
             # Prompt user for port number to scan
             xmessage -center -title "INFO" "${options_text}"  # Notify of missing service specification"
             service=$(dialog --inputbox "${userName}" 8 40 3>&1 1>&2 2>&3)
