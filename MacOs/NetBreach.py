@@ -1,5 +1,5 @@
 from DontEdit import *
-from Help import *
+from MacOs.DontEdit_HelpMessage import *
 from HelpLogo import *
 
 #this is for the user to understand what the program does
