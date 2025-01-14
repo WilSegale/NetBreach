@@ -1,7 +1,5 @@
 from DontEdit import *
 from DontEditHelp import *
-from HelpLogo import *
-
 #this is for the user to understand what the program does
 def show_help():
 
@@ -9,8 +7,14 @@ def show_help():
 
     lineArt(["figlet", f"{name}"])
     lineArt(["figlet", "? HELP ?"])
-    print(NameOfOs,  file=HelpFile)
-    print(HELP_LOGO, file=HelpFile)
+    
+    # Open a file and print its content
+    file_path = 'HelpLogo.txt'
+
+    with open(file_path, 'r') as file:
+        content = file.read()
+    print(content,file=HelpFile)
+
     
     #inputs the program used logo in a help file
     #puts the info about the program inside the help file
