@@ -1,7 +1,5 @@
 from DontEdit import *
-from MacOs.DontEdit_HelpMessage import *
-from HelpLogo import *
-
+from DontEdit_HelpMessage import *
 #this is for the user to understand what the program does
 def show_help():
 
@@ -9,8 +7,14 @@ def show_help():
 
     lineArt(["figlet", f"{name}"])
     lineArt(["figlet", "? HELP ?"])
-    print(NameOfOs,  file=HelpFile)
-    print(HELP_LOGO, file=HelpFile)
+    
+    # Open a file and print its content
+    file_path = 'HelpLogo.txt'
+
+    with open(file_path, 'r') as file:
+        content = file.read()
+    print(content,file=HelpFile)
+
     
     #inputs the program used logo in a help file
     #puts the info about the program inside the help file
@@ -470,18 +474,17 @@ try:
         elif argument[1] in uninstallRequirement:
             terminalCommand("bash uninstall.sh")
             sys.exit()
-
-        #skips the packages if one doents install for global mode
-        elif argument[1] in skipGlobal:
-            terminalCommand("bash GlobalScript.sh --skip")
-            sys.exit()
-
-        # skips the packages if one doents for local mode
-        elif argument[1] in skipLocal:
-            terminalCommand("bash localScript.sh --skip")
-            sys.exit()
         
-        #auto connect to ssh server
+        #skips the packages if one doents install for global
+        elif argument[1] in skipGlobal:
+            terminalCommand("bash GlobalScript.sh --skip-global")
+            sys.exit()
+
+        #skips the packages if one doents install for local
+        elif argument[1] in skipLocal:
+            terminalCommand("bash localScript.sh --skip-local")
+            sys.exit()
+
         elif argument[1] in autoConnect:
             terminalCommand("bash GlobalScript.sh --auto")
             sys.exit()
