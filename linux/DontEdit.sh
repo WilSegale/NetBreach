@@ -83,3 +83,8 @@ It will then scan the port that you asked for on the network and see if any port
 If there are any ports that are open, it will ask for a username and hostname.
 When you provide the username and hostname, it will try to crack the given parameters."
 
+
+
+ERROR_MESSAGE="ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}"
+
+xmessage_error=TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}"
