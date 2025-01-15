@@ -72,17 +72,3 @@ pipPackages=(
 )
 
 
-skip_help(){
-    # Check if the script is run with --skip-help
-    xmessage -center -title "? HELP ?" \
-    "+++++++++++++++ Programs Used ++++++++++++++++
-    This program will help you crack passwords.
-    It has two programs inside it: Hydra and Nmap.
-
-    +++++++++++++++ How to Use ++++++++++++++++++
-    To use the program, you have to tell the computer what port you want to scan.
-    It will then scan the port that you asked for on the network and see if any ports are open.
-
-    If there are any ports that are open, it will ask for a username and hostname.
-    When you provide the username and hostname, it will try to crack the given parameters."
-}
