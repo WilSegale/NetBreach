@@ -72,8 +72,7 @@ pipPackages=(
 )
 
 
-x=xmessage -center -title "? HELP ?" \
-"+++++++++++++++ Programs Used ++++++++++++++++
+HelpMessage="+++++++++++++++ Programs Used ++++++++++++++++
 This program will help you crack passwords.
 It has two programs inside it: Hydra and Nmap.
 
@@ -83,3 +82,4 @@ It will then scan the port that you asked for on the network and see if any port
 
 If there are any ports that are open, it will ask for a username and hostname.
 When you provide the username and hostname, it will try to crack the given parameters."
+
