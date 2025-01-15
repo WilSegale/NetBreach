@@ -57,22 +57,22 @@ if [[ "$1" == "--auto" ]]; then
     fi
 
     # Exit script successfully
+
     exit 1
 fi
 
-
-# check if the user has put --skip in the arguemnts 
+# Check if the user has put --skip in the arguments
 if [[ "$1" == "--skip" ]]; then
     echo "Skipping package check"
     sleep 4
 
-# check if the user has put --skip-help in the arguemnts
+# Check if the user has put --skip-help in the arguments
 elif [[ "$1" == "--skip-help" ]]; then
     xmessage -center -title "? HELP ?" "${HelpMessage}"
     exit 1
 
-# check if the user has put --help or -h in the arguemnts
-elif [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+# Check if the user has put --help or -h in the arguments
+elif [[ "$1" == "--help" || "$1" == "-h" ]]; then
     xmessage -center -title "? HELP ?" "${HelpMessage}"
     exit 1
 
@@ -81,25 +81,22 @@ else
     for package in "${required_packages[@]}"; do
         if ! command_exists "${package}"; then
             echo ""
-            xmessage "[ FAIL ] The required package '${package}' is not installed. Please install it and try again."
+            xmessage -center -title "Missing Package" "[ FAIL ] The required package '${package}' is not installed. Please install it and try again."
             sleep 1 
 
-            #asks the user if they want to install the packages that are mssing
-            echo "Would you like me to install it for you. YES/NO"
-
-            install=$(xmessage -buttons "Yes:0,No:1" "Do you want to continue?")
-            if [ "$?" -eq 0 ]; then
-                xmessage "Installing required packages..."
+            # Ask the user if they want to install the packages that are missing
+            install=$(xmessage -buttons "Yes:0,No:1" -center -title "Install Packages?" "The required package '${package}' is missing. Would you like to install it?")
+            if [[ "$?" -eq 0 ]]; then
+                xmessage -center -title "Installing" "Installing required packages..."
                 sleep 1
                 bash requirements.sh
             else
-                echo "You selected No."
+                xmessage -center -title "Exiting" "You chose not to install the missing packages. Exiting."
+                exit 1
             fi
-            exit 1
         fi
     done
 fi
-
 
 # Check if root user
 if [[ "${EUID}" -ne 0 ]]; then
@@ -107,6 +104,7 @@ if [[ "${EUID}" -ne 0 ]]; then
     "Please run as root."
     exit 1
 fi
+
 if [[ "$OSTYPE" == "${OS}"* ]]; then
     clear
     if [[ "${EUID}" -ne $root ]]; then
