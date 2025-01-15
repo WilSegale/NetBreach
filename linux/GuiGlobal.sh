@@ -90,6 +90,25 @@ else
     done
 fi
 
+skip_help(){
+    # Check if the script is run with --skip-help
+if [ "$1" = "--skip-help" ]; then
+    xmessage -center -title "? HELP ?" \
+    "+++++++++++++++ Programs Used ++++++++++++++++
+    This program will help you crack passwords.
+    It has two programs inside it: Hydra and Nmap.
+
+    +++++++++++++++ How to Use ++++++++++++++++++
+    To use the program, you have to tell the computer what port you want to scan.
+    It will then scan the port that you asked for on the network and see if any ports are open.
+
+    If there are any ports that are open, it will ask for a username and hostname.
+    When you provide the username and hostname, it will try to crack the given parameters."    }
+fi
+}
+
+
+
 # Check if the script is run with --help or -h
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     xmessage -center -title "? HELP ?" \
