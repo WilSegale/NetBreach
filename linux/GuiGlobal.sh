@@ -92,13 +92,13 @@ fi
 
 # Check if the script is run with --help or -h
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-    xmessage "? HELP ?"
-    xmessage "+++++++++++++++Programs used+++++++++++++++"
-    xmessage "This program will help you crack passwords"
-    xmessage "It has two programs inside it, one is Hydra and the other is Nmap"
-
-    xmessage "+++++++++++++++How to use++++++++++++++++++"
-    xmessage "To use the program you have to tell the computer what port you want to scan."
+    xmessage -center -title "? HELP ?"\
+    "+++++++++++++++Programs used+++++++++++++++"\
+    "This program will help you crack passwords"\
+    "It has two programs inside it, one is Hydra and the other is Nmap"\
+    \
+    "+++++++++++++++How to use++++++++++++++++++"\
+    "To use the program you have to tell the computer what port you want to scan."
     xmessage "It will then scan the port that you asked for on the network and see if any ports that you asked are open."
     xmessage "If there are any ports that are open, it will ask for a username and hostname."
     xmessage "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
