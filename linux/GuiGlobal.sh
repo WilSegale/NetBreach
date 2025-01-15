@@ -77,14 +77,13 @@ else
             #asks the user if they want to install the packages that are mssing
             echo "Would you like me to install it for you. YES/NO"
 
-            read -p ">>> " install
-            
-            if [[ " ${yes[*]} " == *" ${install} "* ]]; then
+            install=$(xmessage -buttons "Yes:0,No:1" "Do you want to continue?")
+            if [ "$?" -eq 0 ]; then
+                xmessage "Installing required packages..."
+                sleep 1
                 bash requirements.sh
-                exit 1
             else
-                echo "Ok stopping program"
-                exit 1
+                echo "You selected No."
             fi
             exit 1
         fi
@@ -93,18 +92,17 @@ fi
 
 # Check if the script is run with --help or -h
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-    figlet "? HELP ?"
-    echo
-    echo "+++++++++++++++Programs used+++++++++++++++"
-    echo "This program will help you crack passwords"
-    echo "It has two programs inside it, one is Hydra and the other is Nmap"
-    echo
-    echo "+++++++++++++++How to use++++++++++++++++++"
-    echo "To use the program you have to tell the computer what port you want to scan."
-    echo "It will then scan the port that you asked for on the network and see if any ports that you asked are open."
-    echo "If there are any ports that are open, it will ask for a username and hostname."
-    echo "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
-    echo
+    xmessage "? HELP ?"
+    xmessage "+++++++++++++++Programs used+++++++++++++++"
+    xmessage "This program will help you crack passwords"
+    xmessage "It has two programs inside it, one is Hydra and the other is Nmap"
+
+    xmessage "+++++++++++++++How to use++++++++++++++++++"
+    xmessage "To use the program you have to tell the computer what port you want to scan."
+    xmessage "It will then scan the port that you asked for on the network and see if any ports that you asked are open."
+    xmessage "If there are any ports that are open, it will ask for a username and hostname."
+    xmessage "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
+    
 
 else
 
