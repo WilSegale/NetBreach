@@ -65,6 +65,9 @@ fi
 if [[ "$1" == "--skip" ]]; then
     echo "Skipping package check"
     sleep 4
+elif [[ "$1" == "--skip-help" ]]; then
+    skip_help
+    sleep 4
 else
 
     # Check for required packages
@@ -92,7 +95,6 @@ fi
 
 skip_help(){
     # Check if the script is run with --skip-help
-if [ "$1" = "--skip-help" ]; then
     xmessage -center -title "? HELP ?" \
     "+++++++++++++++ Programs Used ++++++++++++++++
     This program will help you crack passwords.
