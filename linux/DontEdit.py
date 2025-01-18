@@ -44,7 +44,7 @@ lineArt = subprocess.run
 #name of the os
 OS = "Linux"
 
-name = "Linux"
+name = "linux"
 # Define color codes for console output
 BRIGHT = '\033[1m'
 GREEN = "\033[92m"
@@ -55,6 +55,7 @@ ORANGE_Start = "\033[38;2;255;165;0m"
 GRAY_TEXT = "\033[90m"
 CYAN_TEXT = "\033[36m"
 RESET = "\033[0m"
+
 
 # Define constants for command-line arguments
 HELP = {"--HELP", "--Help", "--help", "-h", "-H"}
@@ -73,6 +74,7 @@ FIX = {"--FIX", "--fix", "-f", "-F"}
 skipGlobal = {"--SKIPGLOBAL", "--skip-Global", "--skip-global", "--Skip-Global", "--Skip-global"}
 skipLocal = {"--skip-Local", "--SKIP-LOCAL", "--skip-local", "--Skip-Local", "--Skip-local"}
 
+
 # Define list of scripts to run
 GuiScript = ["bash", "GuiGlobal.sh"]
 GlobalScript = ["bash", "GlobalScript.sh"]  # runs the script in Global mode
@@ -81,5 +83,3 @@ GuiLocalScript = ["bash", "GuiLocal.sh"]  # runs the script that uses GUI mode w
 GlobalManual = ["bash", "ManualGlobalScript.sh"]
 LocalManual = ["bash", "ManualLocalScript.sh"]
 RDPconnect = ["bash", "xfreerdp.sh"]
-
-#esay way to edit and change the help messages
