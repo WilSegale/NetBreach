@@ -490,7 +490,9 @@ try:
             sys.exit()
 
         elif argument[1] in GzipRockYou:
-            terminalCommand("gzip /usr/share/wordlists/rockyou.txt && sleep 5 && mv rockyou.txt ~/Desktop/NetBreach/linux")
+            terminalCommand("""gzip /usr/share/wordlists/rockyou.txt.gz
+                            && sleep 5 
+                            && mv rockyou.txt ~/Desktop/NetBreach/linux""")
             sys.exit()
         else:
             print(f'''{ErrorMessage} {explain}''', file=ERROR)
