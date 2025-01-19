@@ -488,6 +488,10 @@ try:
         elif argument[1] in autoConnect:
             terminalCommand("bash GlobalScript.sh --auto")
             sys.exit()
+
+        elif argument[1] in GzipRockYou:
+            terminalCommand("gzip /usr/share/wordlists/rockyou.txt && sleep 5 && mv rockyou.txt ~/Desktop/NetBreach/linux")
+            sys.exit()
         else:
             print(f'''{ErrorMessage} {explain}''', file=ERROR)
             print(f'''{RED}{ErrorMessage}{RESET} {explain}''')

@@ -70,10 +70,11 @@ uninstallRequirement = {"--UNINSTALL", "--uninstall", "--un"}
 conenctRDP = {"--xfreerdp", "--XFREERDP", "--XFREE", "--xfree"}
 pipForce = {"--pipForce","--pip-force","--PIP-FORCE", "--pipforce"}
 autoConnect = {"--autoConnect", "--autoconnect", "--auto", "--AUTO"}
-FIX = {"--FIX", "--fix", "-f", "-F"}
 skipGlobal = {"--SKIPGLOBAL", "--skip-Global", "--skip-global", "--Skip-Global", "--Skip-global"}
 skipLocal = {"--skip-Local", "--SKIP-LOCAL", "--skip-local", "--Skip-Local", "--Skip-local"}
-
+GzipRockYou = {"--gzipRockYou", "--GzipRockYou", "--Gziprockyou", "--gziprockyou"}
+FIX = {"--FIX", "--fix", "-f", "-F"}
+# Define the path to the directory containing the script
 
 # Define list of scripts to run
 GuiScript = ["bash", "GuiGlobal.sh"]
