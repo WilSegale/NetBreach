@@ -84,3 +84,4 @@ GuiLocalScript = ["bash", "GuiLocal.sh"]  # runs the script that uses GUI mode w
 GlobalManual = ["bash", "ManualGlobalScript.sh"]
 LocalManual = ["bash", "ManualLocalScript.sh"]
 RDPconnect = ["bash", "xfreerdp.sh"]
+kaliLinuxRockyouOs = ["bash", "kaliLinuxRockyouOs.sh"]
