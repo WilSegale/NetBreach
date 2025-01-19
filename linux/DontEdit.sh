@@ -85,6 +85,6 @@ When you provide the username and hostname, it will try to crack the given param
 
 
 
-ERROR_MESSAGE= -e "ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}"
+ERROR_MESSAGE="ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}"
 
 xmessage_error="TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}"
