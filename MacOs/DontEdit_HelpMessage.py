@@ -5,7 +5,7 @@ from DontEdit import *
 ProgramsUSEDCOLOR = f"+++++++++++++++PROGRAMS USED+++++++++++++++"
 ProgramsUsedInfo01COLOR = f"\nThis program will help you crack passwords"
 ProgramsUsedInfo02COLOR = f"\nIt has two programs inside it"
-ProgramsUsedInfo03COLOR = f"\none is {GREEN}Hydra{RESET} and the other is {GREEN}Nmap{RESET} and"
+ProgramsUsedInfo03COLOR = f"\none is {GREEN}Hydra{RESET} and the other is {GREEN}Nmap{RESET}"
 
 #this is for the user to understand what the program does
 HowToUseColor = f"\n+++++++++++++++HOW TO USE++++++++++++++++++"
