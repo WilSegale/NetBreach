@@ -57,62 +57,62 @@ if [[ "$1" == "--auto" ]]; then
     fi
 
     # Exit script successfully
+
     exit 1
 fi
 
-
-# check if the user has put --skip in the arguemnts 
+# Check if the user has put --skip in the arguments
 if [[ "$1" == "--skip" ]]; then
     echo "Skipping package check"
     sleep 4
+
+# Check if the user has put --skip-help in the arguments
 elif [[ "$1" == "--skip-help" ]]; then
     xmessage -center -title "? HELP ?" "${HelpMessage}"
-
     exit 1
 
-elif [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+# Check if the user has put --help or -h in the arguments
+elif [[ "$1" == "--help" || "$1" == "-h" ]]; then
     xmessage -center -title "? HELP ?" "${HelpMessage}"
     exit 1
-else
 
+else
     # Check for required packages
     for package in "${required_packages[@]}"; do
         if ! command_exists "${package}"; then
             echo ""
-            xmessage "[ FAIL ] The required package '${package}' is not installed. Please install it and try again."
+            xmessage -center -title "Missing Package" "[ FAIL ] The required package '${package}' is not installed. Please install it and try again."
             sleep 1 
 
-            #asks the user if they want to install the packages that are mssing
-            echo "Would you like me to install it for you. YES/NO"
-
-            install=$(xmessage -buttons "Yes:0,No:1" "Do you want to continue?")
-            if [ "$?" -eq 0 ]; then
-                xmessage "Installing required packages..."
+            # Ask the user if they want to install the packages that are missing
+            install=$(xmessage -buttons "Yes:0,No:1" -center -title "Install Packages?" "The required package '${package}' is missing. Would you like to install it?")
+            if [[ "$?" -eq 0 ]]; then
+                xmessage -center -title "Installing" "Installing required packages..."
                 sleep 1
                 bash requirements.sh
             else
-                echo "You selected No."
+                xmessage -center -title "Exiting" "You chose not to install the missing packages. Exiting."
+                exit 1
             fi
-            exit 1
         fi
     done
 fi
 
-
-
-
 # Check if root user
 if [[ "${EUID}" -ne 0 ]]; then
-    echo -e "[ ${RED}${BRIGHT}FAIL${NC} ]: Please run as root."
+    xmessage -center -title "[ FAIL ] "\
+    "Please run as root."
     exit 1
 fi
+
 if [[ "$OSTYPE" == "${OS}"* ]]; then
     clear
     if [[ "${EUID}" -ne $root ]]; then
         # Error message if not running as root
-        echo "ERROR:TIME:${CURRENT_TIME} Please run as root. DATE:${CURRENT_DATE}" >> ERROR.LOG
-        echo -e "[ ${RED}${BRIGHT}FAIL${NC} ]: TIME:${CURRENT_TIME} Please run as ROOT. DATE:${CURRENT_DATE}"
-        exit
+        echo "${ERROR_MESSAGE}" >> ERROR.LOG
+        xmessage -center -title "[ FAIL ]"\
+        "${xmessage_error}"
+        exit 1
     else
         sudo rm -rf hydra.restore
         clear
@@ -133,12 +133,11 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
 
         # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
         NetBreach() {
-            # The logo of the program
-            figlet -f slant "NetBreach"
-            echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
-            echo "If you want to stop the program type 'stop'."
-            read -p ">>> " service
-            
+            # Display dialog input box and capture user input
+            service=$(dialog --title "Port Selection-NetBreach" \
+            --inputbox "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'.\nIf you want to stop the program, type 'stop'." 10 60 \
+            3>&1 1>&2 2>&3)
+            clear            
             if [[ "${service}" == "ALL" || "${service}" == "all" || "${service}" == "*" ]]; then
                 # Tells the user that it can take up to an hour to complete the scanning process
                 echo -e "${RED}This can take up to 1 hour to complete.${NC}"
@@ -147,21 +146,25 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
                 sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
                 echo "Scan complete. Open ports saved to scan.txt"
                 # asks if the user want to see scan on a open file or not
-                read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
+                SeeFile=$(dialog --title "SEE-File" \
+                --inputbox "Would you like to see the scan on a open file (Yes or No)" 10 60 \
+                3>&1 1>&2 2>&3)
+                clear
                 if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
                     echo "Opeing the scan file"
                     sleep 1
-                    open scan.txt
+                    xdg-open scan.txt
 
                 else
                     echo -e "Ok I will not open the scan.txt file"
                     sleep 1
                 fi
                 
-                hydra -h
-                echo "Put in Hydra first to start the script."
-                echo ""
-                read -p ">>> " Hydra
+                hydra -h >> HydraHelp.txt
+                xdg-open HydraHelp.txt
+                Hydra=$(dialog --title "Hydra" \
+                --inputbox "Put in Hydra first to start the script." 10 60 \
+                3>&1 1>&2 2>&3)
 
                 if [[ " ${exit[*]} " == *" ${Hydra} "* ]]; then
                     echo "Goodbye"
@@ -192,7 +195,11 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
             else
                 # Scan specific port
                 sudo nmap -sS 192.168.1.1/24 -p $service -oN $service.txt --open
-                read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
+
+                SeeFile=$(dialog --title "Nmap output" \
+                --inputbox "Would you like to see the ${service} on a open file (Yes or No):" 10 60 \
+                3>&1 1>&2 2>&3)
+                #read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
 
                 if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
                     open "${service}.txt"
@@ -207,12 +214,22 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
             # Break in the outputs of my code
             echo
             # Services to crack the network
-            echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
-            echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
+            xmessage -center -title "Services" "Services to crack the network: SSH - 22, VNC - 5900, MySQL - 3306"
+
+            user=$(dialog --title "USER" \
+            --inputbox "Input Username:" 10 60 \
+            3>&1 1>&2 2>&3)
+            clear
+
+            host=$(dialog --title "HOST" \
+            --inputbox "Input Hostname:" 10 60 \
+            3>&1 1>&2 2>&3)
+            clear
             
-            read -p "Input Username: " user
-            read -p "Input Hostname: " host
-            read -p "Input Port: " port
+            port=$(dialog --title "PORT" \
+            --inputbox "Input Port:" 10 60 \
+            3>&1 1>&2 2>&3)
+            clear
 
         }
 

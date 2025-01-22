@@ -143,7 +143,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
                 echo -e "${RED}This can take up to 1 hour to complete.${NC}"
 
                 # Scan the entire network and display open ports
-                sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
+                sudo nmap -sS 127.0.0.1 -Pn -oN scan.txt --open
                 echo "Scan complete. Open ports saved to scan.txt"
                 # asks if the user want to see scan on a open file or not
                 SeeFile=$(dialog --title "SEE-File" \
@@ -194,7 +194,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
 
             else
                 # Scan specific port
-                sudo nmap -sS 192.168.1.1/24 -p $service -oN $service.txt --open
+                sudo nmap -sS 127.0.0.1 -p $service -oN $service.txt --open
 
                 SeeFile=$(dialog --title "Nmap output" \
                 --inputbox "Would you like to see the ${service} on a open file (Yes or No):" 10 60 \
@@ -220,10 +220,12 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
             --inputbox "Input Username:" 10 60 \
             3>&1 1>&2 2>&3)
             clear
+
             host=$(dialog --title "HOST" \
             --inputbox "Input Hostname:" 10 60 \
             3>&1 1>&2 2>&3)
             clear
+            
             port=$(dialog --title "PORT" \
             --inputbox "Input Port:" 10 60 \
             3>&1 1>&2 2>&3)
