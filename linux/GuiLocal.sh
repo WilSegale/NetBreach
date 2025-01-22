@@ -133,12 +133,11 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
 
         # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
         NetBreach() {
-            # The logo of the program
-            figlet -f slant "NetBreach"
-            echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
-            echo "If you want to stop the program type 'stop'."
-            read -p ">>> " service
-            
+            # Display dialog input box and capture user input
+            service=$(dialog --title "Port Selection-NetBreach" \
+            --inputbox "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'.\nIf you want to stop the program, type 'stop'." 10 60 \
+            3>&1 1>&2 2>&3)
+            clear            
             if [[ "${service}" == "ALL" || "${service}" == "all" || "${service}" == "*" ]]; then
                 # Tells the user that it can take up to an hour to complete the scanning process
                 echo -e "${RED}This can take up to 1 hour to complete.${NC}"
@@ -147,21 +146,25 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
                 sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
                 echo "Scan complete. Open ports saved to scan.txt"
                 # asks if the user want to see scan on a open file or not
-                read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
+                SeeFile=$(dialog --title "SEE-File" \
+                --inputbox "Would you like to see the scan on a open file (Yes or No)" 10 60 \
+                3>&1 1>&2 2>&3)
+                clear
                 if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
                     echo "Opeing the scan file"
                     sleep 1
-                    open scan.txt
+                    xdg-open scan.txt
 
                 else
                     echo -e "Ok I will not open the scan.txt file"
                     sleep 1
                 fi
                 
-                hydra -h
-                echo "Put in Hydra first to start the script."
-                echo ""
-                read -p ">>> " Hydra
+                hydra -h >> HydraHelp.txt
+                xdg-open HydraHelp.txt
+                Hydra=$(dialog --title "Hydra" \
+                --inputbox "Put in Hydra first to start the script." 10 60 \
+                3>&1 1>&2 2>&3)
 
                 if [[ " ${exit[*]} " == *" ${Hydra} "* ]]; then
                     echo "Goodbye"
@@ -192,7 +195,11 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
             else
                 # Scan specific port
                 sudo nmap -sS 192.168.1.1/24 -p $service -oN $service.txt --open
-                read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
+
+                SeeFile=$(dialog --title "Nmap output" \
+                --inputbox "Would you like to see the ${service} on a open file (Yes or No):" 10 60 \
+                3>&1 1>&2 2>&3)
+                #read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
 
                 if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
                     open "${service}.txt"
@@ -207,12 +214,20 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
             # Break in the outputs of my code
             echo
             # Services to crack the network
-            echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
-            echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
-            
-            read -p "Input Username: " user
-            read -p "Input Hostname: " host
-            read -p "Input Port: " port
+            xmessage -center -title "Services" "Services to crack the network: SSH - 22, VNC - 5900, MySQL - 3306"
+
+            user=$(dialog --title "USER" \
+            --inputbox "Input Username:" 10 60 \
+            3>&1 1>&2 2>&3)
+            clear
+            host=$(dialog --title "HOST" \
+            --inputbox "Input Hostname:" 10 60 \
+            3>&1 1>&2 2>&3)
+            clear
+            port=$(dialog --title "PORT" \
+            --inputbox "Input Port:" 10 60 \
+            3>&1 1>&2 2>&3)
+            clear
 
         }
 
