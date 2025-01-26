@@ -61,6 +61,8 @@ if __name__ == "__main__":
                 platform = "linux"
             elif os.uname().sysname == "Darwin":
                 platform = "macos"
+            elif os.uname().sysname == "Windows":
+                platform = "windows"
             else:
                 platform = None
                 logger.error("Unsupported platform")
@@ -71,8 +73,12 @@ if __name__ == "__main__":
                 print(f"\n[ {GREEN}DONE{RESET} ] running command")
                 if platform == "linux":
                     command = linux_command
+                
                 elif platform == "macos":
                     command = macos_command
+
+                elif platform == "windows":
+                    command = Windows_command
                     
                 logger.info(f"Running command: {' '.join(command)}")
                 try:
