@@ -1,11 +1,4 @@
-import os
-import sys
-import logging
-import socket
-import platform
-from paramiko import SSHClient, AutoAddPolicy
-import re
-
+from DontEdit import *
 # Constants
 LOG_FILE = "netbreach.log"
 TIMEOUT = 5
@@ -63,21 +56,32 @@ def ssh_disconnect(client):
     except Exception as e:
         logging.error(f"Error disconnecting: {e}")
 
-def check_weak_passwords(host, username, password_file):
+
+def check_weak_passwords(host, username, password_file, max_threads=10):
     try:
         with open(password_file, "r") as file:
             passwords = file.read().splitlines()  # Read passwords line by line
-    except FileNotFoundError: 
+    except FileNotFoundError:
         print(f"Error: Password file '{password_file}' not found.")
         return
 
-    for password in passwords:
+    def attempt_login(password):
         print(f"Trying {username}:{password} on {host}...")
         client = ssh_connect(host, username, password)
         if client:
-            print(f"Success! {host} - {username}:{password}")
             ssh_disconnect(client)
-            return
+            return password  # Return the successful password
+        return None
+
+    with ThreadPoolExecutor(max_threads) as executor:
+        future_to_password = {executor.submit(attempt_login, password): password for password in passwords}
+
+        for future in as_completed(future_to_password):
+            successful_password = future.result()
+            if successful_password:
+                print(f"Success! {host} - {username}:{successful_password}")
+                return  # Exit once a successful password is found
+
     print(f"No weak passwords found for {host}.")
 
 # Terminate SSH session
