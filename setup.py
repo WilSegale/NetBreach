@@ -27,6 +27,7 @@ logger.addHandler(handler)
 # Platform specific commands 
 linux_command = ["rm", "-rf", "MacOs", "setup.py"]  
 macos_command = ["rm", "-rf", "Linux", "setup.py"]
+Windows_command = ["del", "-rf", "MacOs", "Linux", "setup.py"]
 try:
     def print_loading_bar(iterations, delay=0.1, width=40):
         """
