@@ -1,6 +1,5 @@
 import os
 import sys
-import time
 import logging
 import socket
 import platform
@@ -18,9 +17,12 @@ ORANGE_Start = "\033[38;2;255;165;0m"
 GRAY_TEXT = "\033[90m"
 CYAN_TEXT = "\033[36m"
 RESET = "\033[0m"
+
+
 # Constants
 LOG_FILE = "netbreach.log"
 TIMEOUT = 5
+MAX_THREADS = 20  # Adjust for more or less concurrency
 
 # Setup logging
 logging.basicConfig(filename=LOG_FILE, level=logging.INFO, format="%(asctime)s - %(message)s")
@@ -38,26 +40,33 @@ def get_valid_subnet():
         else:
             print("Invalid subnet format. Please try again.")
 
-# Scan for active hosts
+# Scan for active hosts (parallelized)
 def network_scan(subnet):
     active_hosts = []
-    for i in range(1, 255):
-        ip = f"{subnet}.{i}"
-        try:
-            with socket.create_connection((ip, 22), timeout=TIMEOUT):
+    with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
+        futures = {executor.submit(scan_ip, subnet, i): i for i in range(1, 255)}
+        for future in as_completed(futures):
+            ip = f"{subnet}.{futures[future]}"
+            if future.result():
                 active_hosts.append(ip)
-        except (socket.error, socket.timeout):
-            pass
     if not active_hosts:
         print("No active hosts found.")
     return active_hosts
 
-# Connect to SSH
+def scan_ip(subnet, i):
+    ip = f"{subnet}.{i}"
+    try:
+        with socket.create_connection((ip, 22), timeout=TIMEOUT):
+            return True
+    except (socket.error, socket.timeout):
+        return False
+
+# Connect to SSH (same)
 def ssh_connect(host, username, password):
     try:
         client = SSHClient()
         client.set_missing_host_key_policy(AutoAddPolicy())
-        client.connect(host, username=username, password=password)
+        client.connect(host, username=username, password=password, timeout=10)        
         logging.info(f"Connected to {host}")
         print(f"Connected to {host}")
         return client
@@ -66,7 +75,7 @@ def ssh_connect(host, username, password):
         print(f"Failed to connect to {host}: {e}")
         return None
 
-# Disconnect from SSH
+# Disconnect from SSH (same)
 def ssh_disconnect(client):
     try:
         client.close()
@@ -75,41 +84,24 @@ def ssh_disconnect(client):
     except Exception as e:
         logging.error(f"Error disconnecting: {e}")
 
-
-def check_weak_passwords(host, username, password_file, max_threads=10):
-    try:
-        with open(password_file, "r") as file:
-            passwords = file.read().splitlines()  # Read passwords line by line
-    except FileNotFoundError:
-        print(f"Error: Password file '{password_file}' not found.")
-        return
-
-
-    def attempt_login(password):
-        try:
-            print(f"Trying {username}:{password} on {host}...")
-            client = ssh_connect(host, username, password)
-            if client:
-                print(f"Password found: {username}:{password} on {host}")
-                ssh_disconnect(client)
-                return password  # Return the successful password
-            else:
-                print(f"Failed to authenticate {username}:{password} on {host}")
-        except Exception as e:
-            print(f"Error during connection attempt for {username}:{password} on {host}: {e}")
-        time.sleep(1)  # Add a 1-second delay between attempts
-        return None
-
-    with ThreadPoolExecutor(max_threads) as executor:
-        future_to_password = {executor.submit(attempt_login, password): password for password in passwords}
-
-        for future in as_completed(future_to_password):
+# Check for weak passwords (parallelized)
+def check_weak_passwords(host, username, password_list):
+    with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
+        futures = {executor.submit(attempt_login, host, username, password): password for password in password_list}
+        for future in as_completed(futures):
             successful_password = future.result()
             if successful_password:
-                print(f"Success! {host} - {username}:{successful_password}")
-                return  # Exit once a successful password is found
+                print(f"{GREEN}Success! {host} - {username}:{successful_password}{RESET}")
+                break
 
     print(f"No weak passwords found for {host}.")
+
+def attempt_login(host, username, password):
+    client = ssh_connect(host, username, password)
+    if client:
+        ssh_disconnect(client)
+        return password
+    return None
 
 # Terminate SSH session
 def terminate_ssh_session(ip):
@@ -138,10 +130,9 @@ def main():
             choice = input("Enter your choice: ")
             
             if choice == "1":
-                subnet = input("Enter subnet to scan (e.g., 192.168.1): ")
-                print("Scanning network...")
-                active_hosts = network_scan(subnet)
-                print(f"Active hosts found: {active_hosts}")
+                subnet = get_valid_subnet()
+                hosts = network_scan(subnet)
+                print(f"Active hosts: {hosts}")
             elif choice == "2":
                 host = input("Enter SSH host: ")
                 username = input("Enter username: ")
@@ -152,8 +143,10 @@ def main():
             elif choice == "3":
                 host = input("Enter SSH host: ")
                 username = input("Enter username: ")
-                password_file = "rockyou.txt"
-                check_weak_passwords(host, username, password_file)
+                password_file = "rockyou.txt"  # Example password list
+                with open(password_file, "r") as file:
+                    passwords = file.read().splitlines()
+                check_weak_passwords(host, username, passwords)
             elif choice == "4":
                 ip = input("Enter IP of session to terminate: ")
                 terminate_ssh_session(ip)
