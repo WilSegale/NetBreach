@@ -1,4 +1,23 @@
-from DontEdit import *
+import os
+import sys
+import time
+import logging
+import socket
+import platform
+from paramiko import SSHClient, AutoAddPolicy
+import re
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+# Define color codes for console output
+BRIGHT = '\033[1m'
+GREEN = "\033[92m"
+RED = "\033[91m"
+BLUE = "\033[34m"
+YELLOW = "\033[33m"
+ORANGE_Start = "\033[38;2;255;165;0m"
+GRAY_TEXT = "\033[90m"
+CYAN_TEXT = "\033[36m"
+RESET = "\033[0m"
 # Constants
 LOG_FILE = "netbreach.log"
 TIMEOUT = 5
@@ -65,12 +84,20 @@ def check_weak_passwords(host, username, password_file, max_threads=10):
         print(f"Error: Password file '{password_file}' not found.")
         return
 
+
     def attempt_login(password):
-        print(f"Trying {username}:{password} on {host}...")
-        client = ssh_connect(host, username, password)
-        if client:
-            ssh_disconnect(client)
-            return password  # Return the successful password
+        try:
+            print(f"Trying {username}:{password} on {host}...")
+            client = ssh_connect(host, username, password)
+            if client:
+                print(f"Password found: {username}:{password} on {host}")
+                ssh_disconnect(client)
+                return password  # Return the successful password
+            else:
+                print(f"Failed to authenticate {username}:{password} on {host}")
+        except Exception as e:
+            print(f"Error during connection attempt for {username}:{password} on {host}: {e}")
+        time.sleep(1)  # Add a 1-second delay between attempts
         return None
 
     with ThreadPoolExecutor(max_threads) as executor:
