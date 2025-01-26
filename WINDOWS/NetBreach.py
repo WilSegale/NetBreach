@@ -84,15 +84,17 @@ def ssh_disconnect(client):
     except Exception as e:
         logging.error(f"Error disconnecting: {e}")
 
-# Check for weak passwords (parallelized)
 def check_weak_passwords(host, username, password_list):
-    with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
-        futures = {executor.submit(attempt_login, host, username, password): password for password in password_list}
-        for future in as_completed(futures):
-            successful_password = future.result()
-            if successful_password:
-                print(f"{GREEN}Success! {host} - {username}:{successful_password}{RESET}")
-                break
+    for password in password_list:
+        logging.info(f"Attempting {username}:{password} on {host}")
+        
+        client = ssh_connect(host, username, password)
+        if client:
+            print(f"{GREEN}Success! {host} - {username}:{password}{RESET}")
+            ssh_disconnect(client)
+            return
+        else:
+            print(f"Failed to connect with password: {password}")
 
     print(f"No weak passwords found for {host}.")
 
