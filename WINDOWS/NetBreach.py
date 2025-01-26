@@ -63,9 +63,16 @@ def ssh_disconnect(client):
     except Exception as e:
         logging.error(f"Error disconnecting: {e}")
 
-# Check for weak passwords
-def check_weak_passwords(host, username, password_list):
-    for password in password_list:
+def check_weak_passwords(host, username, password_file):
+    try:
+        with open(password_file, "r") as file:
+            passwords = file.read().splitlines()  # Read passwords line by line
+    except FileNotFoundError: 
+        print(f"Error: Password file '{password_file}' not found.")
+        return
+
+    for password in passwords:
+        print(f"Trying {username}:{password} on {host}...")
         client = ssh_connect(host, username, password)
         if client:
             print(f"Success! {host} - {username}:{password}")
@@ -114,8 +121,8 @@ def main():
             elif choice == "3":
                 host = input("Enter SSH host: ")
                 username = input("Enter username: ")
-                passwords = ["admin", "password", "123456"]
-                check_weak_passwords(host, username, passwords)
+                password_file = "rockyou.txt"
+                check_weak_passwords(host, username, password_file)
             elif choice == "4":
                 ip = input("Enter IP of session to terminate: ")
                 terminate_ssh_session(ip)
