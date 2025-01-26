@@ -15,7 +15,7 @@
 bash requirements.sh or 
 python3 NetBreach.py --install
 ```
-
+## The requirements file will automatically install the requirements that are needed for the program to run successfully
 ## if you want to remove the requirements you can type
 ```bash
 bash uninstall.sh or
@@ -40,7 +40,7 @@ sudo python3 NetBreach.py --MANUAL-GLOBAL
 python3 NetBreach.py --help or python3 NetBreach.py -h
 ```
 
-## The requirements file will automatically install the requirements that are needed for the program to run successfully
+
 
 ### This software is going to help you crack passwords.
 ### To crack VNC(5900) do not type anything in the "Username" input. Just type the ip address in the hostname input field.
