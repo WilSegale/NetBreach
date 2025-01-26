@@ -100,9 +100,10 @@ def main():
             choice = input("Enter your choice: ")
             
             if choice == "1":
-                subnet = get_valid_subnet()
-                hosts = network_scan(subnet)
-                print(f"Active hosts: {hosts}")
+                subnet = input("Enter subnet to scan (e.g., 192.168.1): ")
+                print("Scanning network...")
+                active_hosts = network_scan(subnet)
+                print(f"Active hosts found: {active_hosts}")
             elif choice == "2":
                 host = input("Enter SSH host: ")
                 username = input("Enter username: ")
