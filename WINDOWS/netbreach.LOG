@@ -1,0 +1,81 @@
+2025-01-27 17:47:42,389 - Failed to connect to 192.168.1.38:22: timed out
+2025-01-27 17:47:42,389 - Failed to connect to 192.168.1.38:22: timed out
+2025-01-27 17:47:42,389 - Failed to connect to 192.168.1.38:22: timed out
+2025-01-27 17:47:42,389 - Failed to connect to 192.168.1.38:22: timed out
+2025-01-27 17:47:42,390 - Failed to connect to 192.168.1.38:22: timed out
+2025-01-27 17:47:42,390 - Failed to connect to 192.168.1.38:22: timed out
+2025-01-27 17:47:42,390 - Failed to connect to 192.168.1.38:22: timed out
+2025-01-27 17:47:42,390 - Failed to connect to 192.168.1.38:22: timed out
+2025-01-27 17:47:42,390 - Failed to connect to 192.168.1.38:22: timed out
+2025-01-27 17:47:42,390 - Failed to connect to 192.168.1.38:22: timed out
+2025-01-27 17:47:42,390 - Failed to connect to 192.168.1.38:22: timed out
+2025-01-27 17:47:42,390 - Failed to connect to 192.168.1.38:22: timed out
+2025-01-27 17:47:42,390 - Failed to connect to 192.168.1.38:22: timed out
+2025-01-27 17:47:42,390 - Failed to connect to 192.168.1.38:22: timed out
+2025-01-27 17:47:42,391 - Failed to connect to 192.168.1.38:22: timed out
+2025-01-27 17:47:42,391 - Failed to connect to 192.168.1.38:22: timed out
+2025-01-27 17:47:56,830 - Failed to connect to 192.168.1.38:8080: [Errno 64] Host is down
+2025-01-27 17:47:56,831 - Failed to connect to 192.168.1.38:8080: [Errno 64] Host is down
+2025-01-27 17:47:56,831 - Failed to connect to 192.168.1.38:8080: [Errno 64] Host is down
+2025-01-27 17:47:56,831 - Failed to connect to 192.168.1.38:8080: [Errno 64] Host is down
+2025-01-27 17:47:56,832 - Failed to connect to 192.168.1.38:8080: [Errno 64] Host is down
+2025-01-27 17:47:56,833 - Failed to connect to 192.168.1.38:8080: [Errno 64] Host is down
+2025-01-27 17:47:56,833 - Failed to connect to 192.168.1.38:8080: [Errno 64] Host is down
+2025-01-27 17:47:56,833 - Failed to connect to 192.168.1.38:8080: [Errno 64] Host is down
+2025-01-27 17:47:56,833 - Failed to connect to 192.168.1.38:8080: [Errno 64] Host is down
+2025-01-27 17:47:56,833 - Failed to connect to 192.168.1.38:8080: [Errno 64] Host is down
+2025-01-27 17:47:56,835 - Failed to connect to 192.168.1.38:8080: [Errno 64] Host is down
+2025-01-27 17:47:56,835 - Failed to connect to 192.168.1.38:8080: [Errno 64] Host is down
+2025-01-27 17:47:56,835 - Failed to connect to 192.168.1.38:8080: [Errno 64] Host is down
+2025-01-27 17:47:56,835 - Failed to connect to 192.168.1.38:8080: [Errno 64] Host is down
+2025-01-27 17:47:56,835 - Failed to connect to 192.168.1.38:8080: [Errno 64] Host is down
+2025-01-27 17:47:56,835 - Failed to connect to 192.168.1.38:8080: [Errno 64] Host is down
+2025-01-27 17:51:11,989 - Connected (version 2.0, client OpenSSH_9.8)
+2025-01-27 17:51:11,994 - Connected (version 2.0, client OpenSSH_9.8)
+2025-01-27 17:51:11,994 - Connected (version 2.0, client OpenSSH_9.8)
+2025-01-27 17:51:12,002 - Connected (version 2.0, client OpenSSH_9.8)
+2025-01-27 17:51:12,006 - Connected (version 2.0, client OpenSSH_9.8)
+2025-01-27 17:51:12,012 - Connected (version 2.0, client OpenSSH_9.8)
+2025-01-27 17:51:12,021 - Connected (version 2.0, client OpenSSH_9.8)
+2025-01-27 17:51:12,021 - Connected (version 2.0, client OpenSSH_9.8)
+2025-01-27 17:51:12,021 - Connected (version 2.0, client OpenSSH_9.8)
+2025-01-27 17:51:12,031 - Connected (version 2.0, client OpenSSH_9.8)
+2025-01-27 17:51:12,031 - Connected (version 2.0, client OpenSSH_9.8)
+2025-01-27 17:51:12,038 - Connected (version 2.0, client OpenSSH_9.8)
+2025-01-27 17:51:12,044 - Connected (version 2.0, client OpenSSH_9.8)
+2025-01-27 17:51:12,045 - Connected (version 2.0, client OpenSSH_9.8)
+2025-01-27 17:51:12,047 - Connected (version 2.0, client OpenSSH_9.8)
+2025-01-27 17:51:12,047 - Connected (version 2.0, client OpenSSH_9.8)
+2025-01-27 17:51:12,588 - Authentication (password) successful!
+2025-01-27 17:51:12,588 - Connected to 127.0.0.1:22
+2025-01-27 17:51:12,589 - SSH session closed.
+2025-01-27 17:51:14,209 - Disconnect (code 2): Too many authentication failures
+2025-01-27 17:51:14,210 - Failed to connect to 127.0.0.1:22: Authentication failed: transport shut down or saw EOF
+2025-01-27 17:51:14,213 - Disconnect (code 2): Too many authentication failures
+2025-01-27 17:51:14,214 - Failed to connect to 127.0.0.1:22: Authentication failed: transport shut down or saw EOF
+2025-01-27 17:51:14,218 - Disconnect (code 2): Too many authentication failures
+2025-01-27 17:51:14,219 - Failed to connect to 127.0.0.1:22: Authentication failed: transport shut down or saw EOF
+2025-01-27 17:51:14,245 - Disconnect (code 2): Too many authentication failures
+2025-01-27 17:51:14,246 - Failed to connect to 127.0.0.1:22: Authentication failed: transport shut down or saw EOF
+2025-01-27 17:51:14,247 - Disconnect (code 2): Too many authentication failures
+2025-01-27 17:51:14,251 - Disconnect (code 2): Too many authentication failures
+2025-01-27 17:51:14,254 - Disconnect (code 2): Too many authentication failures
+2025-01-27 17:51:14,254 - Disconnect (code 2): Too many authentication failures
+2025-01-27 17:51:14,254 - Failed to connect to 127.0.0.1:22: Authentication failed: transport shut down or saw EOF
+2025-01-27 17:51:14,255 - Failed to connect to 127.0.0.1:22: Authentication failed: transport shut down or saw EOF
+2025-01-27 17:51:14,255 - Disconnect (code 2): Too many authentication failures
+2025-01-27 17:51:14,255 - Failed to connect to 127.0.0.1:22: Authentication failed: transport shut down or saw EOF
+2025-01-27 17:51:14,255 - Disconnect (code 2): Too many authentication failures
+2025-01-27 17:51:14,255 - Failed to connect to 127.0.0.1:22: Authentication failed: transport shut down or saw EOF
+2025-01-27 17:51:14,256 - Failed to connect to 127.0.0.1:22: Authentication failed: transport shut down or saw EOF
+2025-01-27 17:51:14,256 - Failed to connect to 127.0.0.1:22: Authentication failed: transport shut down or saw EOF
+2025-01-27 17:51:14,265 - Disconnect (code 2): Too many authentication failures
+2025-01-27 17:51:14,265 - Failed to connect to 127.0.0.1:22: Authentication failed: transport shut down or saw EOF
+2025-01-27 17:51:14,276 - Disconnect (code 2): Too many authentication failures
+2025-01-27 17:51:14,277 - Failed to connect to 127.0.0.1:22: Authentication failed: transport shut down or saw EOF
+2025-01-27 17:51:14,281 - Disconnect (code 2): Too many authentication failures
+2025-01-27 17:51:14,281 - Failed to connect to 127.0.0.1:22: Authentication failed: transport shut down or saw EOF
+2025-01-27 17:51:14,282 - Disconnect (code 2): Too many authentication failures
+2025-01-27 17:51:14,283 - Disconnect (code 2): Too many authentication failures
+2025-01-27 17:51:14,284 - Failed to connect to 127.0.0.1:22: Authentication failed: transport shut down or saw EOF
+2025-01-27 17:51:14,285 - Failed to connect to 127.0.0.1:22: Authentication failed: transport shut down or saw EOF
