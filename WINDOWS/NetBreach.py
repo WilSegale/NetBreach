@@ -70,9 +70,9 @@ def check_weak_passwords_parallel(host, username, password_list, port):
         for future in as_completed(futures):
             result = future.result()
             if result:
-                print(f"{GREEN}Success! {host}:{port} - {username}:{result}{RESET}")
+                print(f"Success! {host}:{port} - {username}:{result}")
                 return
-    print(f"{RED}No weak passwords found for {host}:{port}{RESET}")
+    print(f"No weak passwords found for {host}:{port}")
 
 # Attempt SSH login
 def attempt_login(host, username, password, port):
