@@ -1,8 +1,7 @@
+# Import statements remain the same
 from DontEdit import *
-
-
 # Constants
-LOG_FILE = "netbreach.log"
+LOG_FILE = "netbreach.LOG"
 TIMEOUT = 5
 MAX_THREADS = 20  # Adjust for more or less concurrency
 
@@ -42,17 +41,17 @@ async def network_scan_async(subnet):
     return active_hosts
 
 # Connect to SSH
-def ssh_connect_with_timeout(host, username, password, timeout=10):
+def ssh_connect_with_timeout(host, username, password, port, timeout=10):
     try:
         client = SSHClient()
         client.set_missing_host_key_policy(AutoAddPolicy())
-        client.connect(host, username=username, password=password, timeout=timeout)
-        logging.info(f"Connected to {host}")
-        print(f"Connected to {host}")
+        client.connect(host, port=port, username=username, password=password, timeout=timeout)
+        logging.info(f"Connected to {host}:{port}")
+        print(f"Connected to {host}:{port}")
         return client
     except Exception as e:
-        logging.error(f"Failed to connect to {host}: {e}")
-        print(f"Failed to connect to {host}: {e}")
+        logging.error(f"Failed to connect to {host}:{port}: {e}")
+        print(f"Failed to connect to {host}:{port}: {e}")
         return None
 
 # Disconnect from SSH
@@ -65,19 +64,19 @@ def ssh_disconnect(client):
         logging.error(f"Error disconnecting: {e}")
 
 # Parallelized password checking
-def check_weak_passwords_parallel(host, username, password_list):
+def check_weak_passwords_parallel(host, username, password_list, port):
     with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
-        futures = {executor.submit(attempt_login, host, username, password): password for password in password_list}
+        futures = {executor.submit(attempt_login, host, username, password, port): password for password in password_list}
         for future in as_completed(futures):
             result = future.result()
             if result:
-                print(f"{GREEN}Success! {host} - {username}:{result}{RESET}")
+                print(f"{GREEN}Success! {host}:{port} - {username}:{result}{RESET}")
                 return
-    print(f"No weak passwords found for {host}.")
+    print(f"{RED}No weak passwords found for {host}:{port}{RESET}")
 
 # Attempt SSH login
-def attempt_login(host, username, password):
-    client = ssh_connect_with_timeout(host, username, password)
+def attempt_login(host, username, password, port):
+    client = ssh_connect_with_timeout(host, username, password, port)
     if client:
         ssh_disconnect(client)
         return password
@@ -115,18 +114,20 @@ def main():
                 print(f"Active hosts: {hosts}")
             elif choice == "2":
                 host = input("Enter SSH host: ")
+                port = int(input("Enter port number (default 22): ") or 22)
                 username = input("Enter username: ")
                 password = input("Enter password: ")
-                client = ssh_connect_with_timeout(host, username, password)
+                client = ssh_connect_with_timeout(host, username, password, port)
                 if client:
                     ssh_disconnect(client)
             elif choice == "3":
                 host = input("Enter SSH host: ")
+                port = int(input("Enter port number (default 22): ") or 22)
                 username = input("Enter username: ")
                 password_file = "rockyou.txt"  # Example password list
                 with open(password_file, "r") as file:
                     passwords = file.read().splitlines()
-                check_weak_passwords_parallel(host, username, passwords)  # Parallel password checking
+                check_weak_passwords_parallel(host, username, passwords, port)  # Parallel password checking
             elif choice == "4":
                 ip = input("Enter IP of session to terminate: ")
                 terminate_ssh_session(ip)
@@ -141,4 +142,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
