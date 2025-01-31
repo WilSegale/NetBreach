@@ -114,10 +114,6 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
 
     # Function to install pip package
     install_pip_package() {
-    #!/bin/bash
-
-    
-
         # Notification title and message
         if $pipForceMode; then
             title="[+] PIP FORCE"
