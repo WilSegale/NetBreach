@@ -14,7 +14,7 @@ os_name=$(uname)
 ssh_connection="connect.log"
 
 #name of program
-NameOfProgram="NetBreach"
+NameOfProgram="NetBreachX"
 
 # OS of the computer
 OS="darwin"
@@ -24,6 +24,10 @@ SITE_URL="https://google.com"
 
 # Root user
 root=0
+
+#easy way to change the logo faster
+logo=NetBreachX
+
 
 # the array that holds nothing in it
 empty=("")

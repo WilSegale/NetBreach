@@ -14,7 +14,7 @@ os_name=$(uname)
 ssh_connection="connect.log"
 
 #name of program
-NameOfProgram="NetBreach"
+NameOfProgram="NetBreachX"
 
 # OS of the computer
 OS="linux"
@@ -24,6 +24,7 @@ SITE_URL="https://google.com"
 
 # Root user
 root=0
+logo=$(figlet -f slant "NetBreach")
 
 # the array that holds nothing in it
 empty=("")

@@ -115,9 +115,9 @@ else
             clear
 
             # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
-            NetBreach() {
+            NetBreachX() {
                 # The logo of the program
-                figlet -f slant "NetBreach"
+                figlet -f slant "NetBreachX"
                 figlet -f slant "Manual Global Mode"
                 echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
                 echo "If you want to scan a website type Manual and then type the website name or ip address of the website"
@@ -306,7 +306,7 @@ else
                 fi
             }
 
-            NetBreach # Calls the NetBreach function
+            NetBreachX # Calls the NetBreach function
 
             RunHackingCommand # Calls the RunHackingCommand function
 
