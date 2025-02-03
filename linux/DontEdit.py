@@ -23,8 +23,8 @@ current_date = datetime.datetime.now().strftime("%m/%d/%Y")
 ERROR = open("ERROR.log", "a")
 
 # name of program and software name
-ProgramName = "NetBreach"
-SoftwareName = "NetBreach.py"  
+ProgramName = "NetBreachX"
+SoftwareName = "NetBreachX.py"  
 
 # holds the argument of the --globla function
 argument = sys.argv
