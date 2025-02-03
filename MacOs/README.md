@@ -1,7 +1,6 @@
 # !Do not use this software in Schools or Business!
 
-# MAC verison
-<img src="Apple Logo.JPG" alt="Apple Verison of the program" width="200" height="200">
+<img src="Apple Logo.JPG" alt="APPLE Verison of the program" width="200" height="200">
 
 
 # Home Page
@@ -13,34 +12,34 @@
 ## Type first
 ```bash
 bash requirements.sh or 
-python3 NetBreach.py --install
+python3 NetBreachX.py --install
 ```
-## The requirements file will automatically install the requirements that are needed for the program to run successfully
+
 ## if you want to remove the requirements you can type
 ```bash
 bash uninstall.sh or
-python3 NetBreach.py --uninstall
+python3 NetBreachX.py --uninstall
 ```
 
 ## To use the program you can type the following commands
 ```bash 
-python3 NetBreach.py --local
-python3 NetBreach.py --MANUAL-LOCAL
-python3 NetBreach.py --xfreerdp
-python3 NetBreach.py --auto
-sudo python3 NetBreach.py --global
-sudo python3 NetBreach.py --gui
-sudo python3 NetBreach.py --Gui-Local
-sudo python3 NetBreach.py --MANUAL-GLOBAL
+python3 NetBreachX.py --local
+python3 NetBreachX.py --MANUAL-LOCAL
+python3 NetBreachX.py --xfreerdp
+python3 NetBreachX.py --auto
+sudo python3 NetBreachX.py --global
+sudo python3 NetBreachX.py --gui
+sudo python3 NetBreachX.py --Gui-Local
+sudo python3 NetBreachX.py --MANUAL-GLOBAL
 ```
 
 ## If you are wondering how to use this script just type
 
 ```bash
-python3 NetBreach.py --help or python3 NetBreach.py -h
+python3 NetBreachX.py --help or python3 NetBreachX.py -h
 ```
 
-
+## The requirements file will automatically install the requirements that are needed for the program to run successfully
 
 ### This software is going to help you crack passwords.
 ### To crack VNC(5900) do not type anything in the "Username" input. Just type the ip address in the hostname input field.
@@ -84,6 +83,6 @@ ERROR = open("ERROR.log", "a")
 ## You get rid of this message by going to the ERROR.log file and remove it. By doing 
 ```bash 
 sudo rm -rf ERROR.log,
-python3 NetBreach.py --fix
+python3 NetBreachX.py --fix
 ``` 
 ## This will fix the program for you.
