@@ -1,6 +1,6 @@
 # NetBreachX - Network Security Tool
 
-NetBreach is a network security tool that provides functionalities for network scanning, SSH session management, and weak password checking. It is designed to help with security auditing by identifying active hosts on a network, managing SSH sessions, and performing parallelized SSH login attempts to check for weak passwords.
+NetBreachX is a network security tool that provides functionalities for network scanning, SSH session management, and weak password checking. It is designed to help with security auditing by identifying active hosts on a network, managing SSH sessions, and performing parallelized SSH login attempts to check for weak passwords.
 
 ## Features
 - **Network Scan**: Scans a given subnet for active hosts.
