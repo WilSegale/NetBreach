@@ -6,7 +6,7 @@
 
 # First type 
 ```git
-git clone https://github.com/WilSegale/NetBreach.git
+git clone https://github.com/WilSegale/NetBreachX.git
 ```
 
 # Second step is to type
