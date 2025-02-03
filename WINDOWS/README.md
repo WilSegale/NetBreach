@@ -1,4 +1,4 @@
-# NetBreach - Network Security Tool
+# NetBreachX - Network Security Tool
 
 NetBreach is a network security tool that provides functionalities for network scanning, SSH session management, and weak password checking. It is designed to help with security auditing by identifying active hosts on a network, managing SSH sessions, and performing parallelized SSH login attempts to check for weak passwords.
 
@@ -16,5 +16,5 @@ NetBreach is a network security tool that provides functionalities for network s
 ## Installation
 1. Clone this repository:
    ```bash
-   git clone https://github.com/wilsegale/NetBreach.git
+   git clone https://github.com/wilsegale/NetBreachX.git
 
