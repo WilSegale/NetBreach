@@ -44,10 +44,11 @@ command_exists() {
 
 # Auto-connects the SSH server to the computer
 if [[ "$1" == "--auto" ]]; then
-    cat output.log
 
-    # Check if the SSH connection file exists
+    # Check if the SSH connection file exists also outputs the file with the password so the 
+    #user can see what the password is
     if [ -f "${ssh_connection}" ]; then
+        cat output.log
         userConnection=$(cat "${ssh_connection}")  # Read the hint from the file
         ssh "${userConnection}"  # Connect to the SSH server
     else
