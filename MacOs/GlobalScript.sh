@@ -146,7 +146,7 @@ else
             # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
             NetBreach() {
                 # The logo of the program
-                figlet -f slant "NetBreach GLOBAL"
+                figlet "${logo} GLOBAL"
                 echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
                 echo "If you want to stop the program type 'stop'."
                 read -p ">>> " service

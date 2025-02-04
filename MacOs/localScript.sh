@@ -41,83 +41,89 @@ trap ctrl_c SIGINT
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
+if [[ "$OSTYPE" == "${OS}"* ]]; then
+    # Auto-connects the SSH server to the computer
+    if [[ "$1" == "--auto" ]]; then
+        # Check if the SSH connection file exists
+        if [ -f "${ssh_connection}" ]; then
+            cat output.log
+            userConnection=$(cat "${ssh_connection}")  # Read the hint from the file
+            ssh "${userConnection}"  # Connect to the SSH server
+        else
+            # File not found
+            echo -e "[ ${RED}${BRIGHT}Error${NC} ] SSH username and IP address file 'connect.log' not found."
+            exit 1
+        fi
 
-# Auto-connects the SSH server to the computer
-if [[ "$1" == "--auto" ]]; then
-
-    # Check if the SSH connection file exists
-    if [ -f "${ssh_connection}" ]; then
-        cat output.log
-
-        userConnection=$(cat "${ssh_connection}")  # Read the hint from the file
-        ssh "${userConnection}"  # Connect to the SSH server
-    else
-        # File not found
-        echo -e "[ ${RED}${BRIGHT}Error${NC} ] SSH username and IP address file 'connect.log' not found."
+        # Exit script successfully
         exit 1
     fi
 
-    # Exit script successfully
-    exit 1
-fi
 
+    # check if the user has put --skip in the arguemnts 
+    if [[ "$1" == "--skip" ]]; then
+        echo "Skipping package check"
+        sleep 4
+    else
+        # Check for required packages
+        for package in "${required_packages[@]}"; do
+            if ! command_exists "$package"; then
+                echo ""
+                echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
+                sleep 1 
 
-# check if the user has put --skip in the arguemnts 
-if [[ "$1" == "--skip" ]]; then
-    echo "Skipping package check"
-    sleep 4
-else
+                #asks the user if they want to install the packages that are mssing
+                echo "Would you like me to install it for you. YES/NO"
 
-    # Check for required packages
-    for package in "${required_packages[@]}"; do
-        if ! command_exists "$package"; then
-            echo ""
-            echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
-            sleep 1 
-
-            #asks the user if they want to install the packages that are mssing
-            echo "Would you like me to install it for you. YES/NO"
-
-            read -p ">>> " install
-            
-            if [[ " ${yes[*]} " == *" ${install} "* ]]; then
-                bash requirements.sh
-                exit 1
-            else
-                echo "Ok stopping program"
+                read -p ">>> " install
+                
+                if [[ " ${yes[*]} " == *" ${install} "* ]]; then
+                    bash requirements.sh
+                    exit 1
+                else
+                    echo "Ok stopping program"
+                    exit 1
+                fi
                 exit 1
             fi
+        done
+    fi
+
+    # Check if the script is run with --help or -h
+    if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+        figlet "? HELP ?"
+        echo
+        echo "+++++++++++++++Programs used+++++++++++++++"
+        echo "This program will help you crack passwords"
+        echo "It has two programs inside it, one is Hydra and the other is Nmap"
+        echo
+        echo "+++++++++++++++How to use++++++++++++++++++"
+        echo "To use the program you have to tell the computer what port you want to scan."
+        echo "It will then scan the port that you asked for on the network and see if any ports that you asked are open."
+        echo "If there are any ports that are open, it will ask for a username and hostname."
+        echo "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
+        echo
+
+    else
+        clear
+        #checks if the user is connected to the internet if they are not connceted it tells them they are not connceted and have to connect
+        SITE="https://google.com/"
+        if ! curl --head --silent --fail "${SITE}" > /dev/null; then
+            echo "ERROR:TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}" >> ERROR.LOG
+            echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}"
+
             exit 1
+        else
+            echo ""
         fi
-    done
-fi
 
-# Check if the script is run with --help or -h
-if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-    figlet "? HELP ?"
-    echo
-    echo "+++++++++++++++Programs used+++++++++++++++"
-    echo "This program will help you crack passwords"
-    echo "It has two programs inside it, one is Hydra and the other is Nmap"
-    echo
-    echo "+++++++++++++++How to use++++++++++++++++++"
-    echo "To use the program you have to tell the computer what port you want to scan."
-    echo "It will then scan the port that you asked for on the network and see if any ports that you asked are open."
-    echo "If there are any ports that are open, it will ask for a username and hostname."
-    echo "When you give the program the username and hostname, it will try to crack that given parameters you gave it."
-    echo
-
-else
-    # Clear the terminal
-    clear
-    # Check if OSTYPE matches detected OS
-    if [[ "$OSTYPE" == "${os}"* ]]; then
+        # Clear the terminal
+        clear
 
         # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
-        NetBreach() {
+        NetBreachX() {
             # The logo of the program
-            figlet -f slant "${logo}"
-
+            figlet "${logo} Local"
             echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
             echo "If you want to stop the program type 'stop'."
             read -p ">>> " service
@@ -127,7 +133,7 @@ else
                 echo -e "${RED}This can take up to 1 hour to complete.${NC}"
 
                 # Scan the entire network and display open ports
-                sudo nmap -sS 127.0.0.1 -Pn -oN scan.txt --open
+                nmap 127.0.0.1 -Pn -oN scan.txt --open
                 echo "Scan complete. Open ports saved to scan.txt"
                 # asks if the user want to see scan on a open file or not
                 read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
@@ -174,7 +180,7 @@ else
 
             else
                 # Scan specific port
-                sudo nmap -sS 127.0.0.1 -p $service -oN $service.txt --open
+                nmap  127.0.0.1/24 -p $service -oN $service.txt --open
                 read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
 
                 if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
@@ -292,7 +298,7 @@ else
                 fi
             fi
         }
-        NetBreach
+        NetBreachX
 
         RunHackingCommand # Calls the RunHackingCommand function
 
@@ -301,10 +307,6 @@ else
         RunHackingCommandWithSSH # Calls the RunHackingCommandWithSSH function
 
         RunHackingCommandWithMySQL # Calls the RunHackingCommandWithMySQL function
-        else
-            echo "WARNING:TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE" >> ERROR.LOG
-            echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] TIME:$CURRENT_TIME Wrong OS. Please use the correct OS. DATE:$CURRENT_DATE"
-        fi
     fi
 else
     clear
