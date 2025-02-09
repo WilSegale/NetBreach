@@ -459,7 +459,12 @@ try:
         elif argument[1] in FIX:
             fix()
             sys.exit()
-     
+
+        #gets the SSH fix function
+        elif argument[1] in SSHFIX:
+            terminalCommand("bash SSH-FIX.sh")
+            sys.exit()
+    
         #enables the pipForce mode if pip3 install fails
         elif argument[1] in pipForce:
             terminalCommand("bash requirements.sh --pipForce")
@@ -470,7 +475,7 @@ try:
             terminalCommand("bash requirements.sh")
             sys.exit()
         
-        #get the unisntall funciotn
+        #get the unisntall function
         elif argument[1] in uninstallRequirement:
             terminalCommand("bash uninstall.sh")
             sys.exit()
