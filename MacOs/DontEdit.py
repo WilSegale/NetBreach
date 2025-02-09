@@ -73,7 +73,7 @@ autoConnect = {"--autoConnect", "--autoconnect", "--auto", "--AUTO"}
 FIX = {"--FIX", "--fix", "-f", "-F"}
 skipGlobal = {"--SKIPGLOBAL", "--skip-Global", "--skip-global", "--Skip-Global", "--Skip-global"}
 skipLocal = {"--skip-Local", "--SKIP-LOCAL", "--skip-local", "--Skip-Local", "--Skip-local"}
-SSHFIX = {"--SSH-FIX", "--ssh-fix", "--SSH-fix", "--ssh-FIX"}
+
 
 # Define list of scripts to run
 GuiScript = ["bash", "GuiGlobal.sh"]

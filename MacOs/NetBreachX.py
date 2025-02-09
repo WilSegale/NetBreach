@@ -459,11 +459,6 @@ try:
         elif argument[1] in FIX:
             fix()
             sys.exit()
-
-        #gets the SSH fix function
-        elif argument[1] in SSHFIX:
-            terminalCommand("bash SSH-FIX.sh")
-            sys.exit()
     
         #enables the pipForce mode if pip3 install fails
         elif argument[1] in pipForce:
