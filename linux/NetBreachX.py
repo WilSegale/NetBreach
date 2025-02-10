@@ -493,9 +493,11 @@ try:
             print(f'''{RED}{ErrorMessage}{RESET} {explain}''')
     #if the user does not input the correct argument it tells them what arguments to use for it to work 
     else:
-        
         print(f'''{ErrorMessage} {explain}''', file=ERROR)
         print(f'''{RED}{ErrorMessage}{RESET} {explain}''')
-#holds the keyboard exit function
+
+#holds the keyboard exit function and handles the error message
 except KeyboardInterrupt:
-    print("\n[-] Exiting...")
+    print(f"\n[ WARNING ] Runing NetBreachX.py {argument[1]}. Has been stopped.",file=ERROR)
+    print(f"\n[ {BRIGHT}{YELLOW}WARNING{RESET} ] Runing NetBreachX.py {argument[1]}. Has been stopped.")
+    sys.exit(1)
