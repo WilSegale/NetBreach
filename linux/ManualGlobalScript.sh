@@ -129,7 +129,7 @@ else
                     echo -e "${RED}This can take up to 1 hour to complete.${NC}"
                     
                     # Scan the entire network and display open ports
-                    sudo nmap -sS 192.168.1.1/24 -Pn -oN scan.txt --open
+                    sudo nmap -sS $IPADDR/24 -Pn -oN scan.txt --open
 
                     # asks if the user want to see scan on a open file or not
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
@@ -193,7 +193,7 @@ else
 
                 else
                     # Scan specific port
-                    sudo nmap -sS 192.168.1.1/24 -p "${service}" -oN $service.log --open
+                    sudo nmap -sS $IPADDR/24 -p "${service}" -oN $service.log --open
                     read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
 
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
