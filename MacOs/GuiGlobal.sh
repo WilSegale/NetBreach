@@ -115,7 +115,7 @@ else
             # Check if the user wants to scan all ports
             if [[ "${service}" == "ALL" ]]; then
                 osascript -e 'display notification "Scanning all ports. This may take up to 1 hour to complete." with title "Port Scan"'  # Notify user about the scan duration
-                sudo nmap 192.168.1.1/24 -Pn -oN scan.txt --open  # Run Nmap scan for all ports
+                sudo nmap -sS $IP_ADDRESS/24 -Pn -oN scan.txt --open  # Run Nmap scan for all ports
                 # Prompt user for Hydra command input
                 Hydra_input=$(osascript -e "display dialog \"Input Hydra command to use a custom hacking technique.\" default answer \"\" buttons {\"OK\"} default button \"OK\"" -e 'text returned of result')
 
@@ -133,7 +133,7 @@ else
             else
                 # Scan the specified port and save the output to a log file
                 osascript -e "display notification \"Scanning port ${service}.\" with title \"Port Scan\""
-                nmap 192.168.1.1/24 -p "${service}" -oN "${service}.log" --open
+                sudo nmap -sS $IP_ADDRESS/24 -p "${service}" -oN "${service}.log" --open
                 # Prompt user to open the log file after scanning
                 OpenFileOrNo=$(osascript -e "display dialog \"Would you like to open the file ${service}.log?\" buttons {\"Yes\", \"No\"} default button \"Yes\"" -e 'button returned of result')
 

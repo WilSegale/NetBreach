@@ -51,6 +51,9 @@ CURRENT_TIME=$(date +"%I:%M:%S %p")
 # Gets current date in mm/dd/yyyy format
 CURRENT_DATE=$(date +"%m/%d/%Y")
 
+#auto finds the ip address of the router
+IP_ADDRESS=$(route -n get default | awk '/gateway/ {print $2}')
+
 # List of required packages/commands (separated by spaces)
 required_packages=("wget" "hydra" "nmap" "ssh" "mysql" "figlet" "zenity")
 
