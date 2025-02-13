@@ -203,7 +203,7 @@ else
 
                 else
                     # Scan specific port
-                    sudo nmap -sS $ $IP_ADDRESS/24 -p $service -oN $service.txt --open
+                    sudo nmap -sS $IP_ADDRESS/24 -p $service -oN $service.txt --open
                     read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
 
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
