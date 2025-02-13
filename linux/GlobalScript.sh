@@ -147,6 +147,8 @@ else
                 read -p ">>> " service
                 
                 if [[ "${service}" == "ALL" || "${service}" == "all" || "${service}" == "*" ]]; then
+                    echo -e "Scanning IP [${GREEN}${IP_ADDRESS}/24${NC}]"
+
                     # Tells the user that it can take up to an hour to complete the scanning process
                     echo -e "${RED}This can take up to 1 hour to complete.${NC}"
 
@@ -197,6 +199,7 @@ else
                 done
 
                 else
+                    echo -e "Scanning IP [${GREEN}${IP_ADDRESS}/24${NC}] on port [${GREEN}${service}${NC}]"
                     # Scan specific port
                     sudo nmap -sS $IPADDR/24 -p $service -oN $service.txt --open
                     read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
