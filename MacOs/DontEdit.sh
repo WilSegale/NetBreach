@@ -28,7 +28,6 @@ root=0
 #easy way to change the logo faster
 logo=NetBreachX
 
-
 # the array that holds nothing in it
 empty=("")
 
