@@ -43,7 +43,7 @@ command_exists() {
 }
 
 # Auto-connects the SSH server to the computer
-if [[ "$1" == "--auto" ]]; then
+if [[ "$1" == *"${auto}"* ]]; then
 
     # Check if the SSH connection file exists also outputs the file with the password so the 
     #user can see what the password is
@@ -97,7 +97,7 @@ else
 fi
 
 # Check if the script is run with --help or -h
-if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+if [[ "$1" == *"${HELP}"* ]]; then
     figlet "? HELP ?"
     echo
     echo "+++++++++++++++Programs used+++++++++++++++"

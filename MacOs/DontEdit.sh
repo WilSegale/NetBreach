@@ -44,6 +44,12 @@ Manual=("Manual" "manual" "MANUAL" "Man" "MAN")
 # The array that contains the exit input
 exit=("exit" "quit" "EXIT" "QUIT" "STOP" "stop")
 
+# The array to have auto connect work
+auto=("--auto" "--Auto" "==AUTO" "--autoconnect" "--Autoconnect" "--AUTOCONNECT")
+
+# the array to have help message work
+HELP=("help" "HELP" "Help" "-h" "--help" "--HELP" "--Help")
+
 # Gets the current time in a 12-hour format
 CURRENT_TIME=$(date +"%I:%M:%S %p")
 
