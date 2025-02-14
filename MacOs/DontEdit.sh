@@ -50,6 +50,9 @@ auto=("--auto" "--Auto" "==AUTO" "--autoconnect" "--Autoconnect" "--AUTOCONNECT"
 # the array to have help message work
 HELP=("help" "HELP" "Help" "-h" "--help" "--HELP" "--Help")
 
+#hold the array for the skip function
+skip=("--skip" "--SKIP" "--Skip" "-s" "-S")
+
 # Gets the current time in a 12-hour format
 CURRENT_TIME=$(date +"%I:%M:%S %p")
 
