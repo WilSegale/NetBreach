@@ -118,7 +118,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
             
             if [[ "${service}" == "ALL" || "${service}" == "all" || "${service}" == "*" ]]; then
                 # Tells the user that it can take up to an hour to complete the scanning process
-                echo -e "${RED}This can take up to 1 hour to complete.${NC}"
+                #echo -e "${RED}This can take up to 1 hour to complete.${NC}"
 
                 # Scan the entire network and display open ports
                 echo -e "Scanning IP [${GREEN}127.0.0.1/24${NC}]"
@@ -128,7 +128,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
                 # asks if the user want to see scan on a open file or not
                 read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
                 if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                    echo "Opeing the scan file"
+                    echo -e "[ ${GREEN}+${NC} ] Opeing the scan file"
                     sleep 1
                     open scan.txt
 
