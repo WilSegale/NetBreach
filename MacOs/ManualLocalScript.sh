@@ -86,15 +86,7 @@ else
     if [[ "$OSTYPE" == "${OS}"* ]]; then
         # Clear the terminal
         clear
-        #checks if the user puts in sudo in the program
-        if [ "$(id -u)" -eq 0 ]; then
-            # gives the user something to read so they understand why they got the error
-            echo
-            echo "++++++++++++++++++++++++++++++++++++++++++++++++++"
-            echo "+   You dont have to use sudo for this script    +"
-            echo "++++++++++++++++++++++++++++++++++++++++++++++++++"
-            echo ""
-        fi
+
         # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
         LocalNetBreach() {
             # The logo of the program
@@ -108,6 +100,7 @@ else
 
             if [[ "${service}" == "ALL" || "${service}" == "all" || "${service}" == "*" ]]; then
                 # Scan the entire network and display open ports
+                
                 nmap 127.0.0.1 --system-dns -Pn -oN localPorts.txt
                 echo "Would you like to see what is inside the scan file YES OR NO?"
                 read -p ">>> " service
