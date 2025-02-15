@@ -90,8 +90,8 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
     fi
 
     # Check if the script is run with --help or -h
-    if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-        figlet "? HELP ?"
+    if [[ "$1" == *"${HELP}"* ]]; then
+        cat Bash_Help_message.txt
         echo
         echo "+++++++++++++++Programs used+++++++++++++++"
         echo "This program will help you crack passwords"

@@ -488,6 +488,10 @@ try:
         elif argument[1] in autoConnect:
             terminalCommand("bash GlobalScript.sh --auto")
             sys.exit()
+
+        elif argument[1] in GlobalHelp:
+            terminalCommand("bash GlobalScript.sh --help")
+            sys.exit()
         else:
             print(f'''{ErrorMessage} {explain}''', file=ERROR)
             print(f'''{RED}{ErrorMessage}{RESET} {explain}''')
