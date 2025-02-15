@@ -105,18 +105,6 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
         echo
 
     else
-        clear
-        #checks if the user is connected to the internet if they are not connceted it tells them they are not connceted and have to connect
-        SITE="https://google.com/"
-        if ! curl --head --silent --fail "${SITE}" > /dev/null; then
-            echo "ERROR:TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}" >> ERROR.LOG
-            echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}"
-
-            exit 1
-        else
-            echo ""
-        fi
-
         # Clear the terminal
         clear
 
