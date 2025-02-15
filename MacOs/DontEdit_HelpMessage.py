@@ -88,8 +88,8 @@ HowToUseInfo14 = f"\nIf you get a error message you can type 'python3 {SoftwareN
 HowToUseInfo15 = f"\nIf you want to remote conenct to a computer type 'python3 {SoftwareName} {conenctRDP}'"
 HowToUseInfo16 = f"\nIf you want to skip a step type 'sudo python3 {SoftwareName} {skipGlobal}'"
 HowToUseInfo17 = f"\nIf you want to skip a step type 'python3 {SoftwareName} {skipLocal}'"
-HowToUseInfo19 = f"\nIf you want to see the help message for global networks type {GREEN}'python3 {SoftwareName} {GlobalHelp}'{RESET}"
-HowToUseInfo20 = f"\nIf you want to see the help message for local networks type {GREEN}'python3 {SoftwareName} {LocalHelp}'{RESET}"
+HowToUseInfo19 = f"\nIf you want to see the help message for global networks type 'python3 {SoftwareName} {GlobalHelp}'"
+HowToUseInfo20 = f"\nIf you want to see the help message for local networks type 'python3 {SoftwareName} {LocalHelp}'"
 
 ProgramsUSED = (ProgramsUSED+
                 ProgramsUsedInfo01+
