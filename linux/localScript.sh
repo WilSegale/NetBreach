@@ -90,8 +90,8 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
     fi
 
     # Check if the script is run with --help or -h
-    if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-        figlet "? HELP ?"
+    if [[ "$1" == *"${HELP}"* ]]; then
+        cat Bash_Help_message.txt
         echo
         echo "+++++++++++++++Programs used+++++++++++++++"
         echo "This program will help you crack passwords"
@@ -105,18 +105,6 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
         echo
 
     else
-        clear
-        #checks if the user is connected to the internet if they are not connceted it tells them they are not connceted and have to connect
-        SITE="https://google.com/"
-        if ! curl --head --silent --fail "${SITE}" > /dev/null; then
-            echo "ERROR:TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}" >> ERROR.LOG
-            echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}"
-
-            exit 1
-        else
-            echo ""
-        fi
-
         # Clear the terminal
         clear
 
@@ -130,7 +118,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
             
             if [[ "${service}" == "ALL" || "${service}" == "all" || "${service}" == "*" ]]; then
                 # Tells the user that it can take up to an hour to complete the scanning process
-                echo -e "${RED}This can take up to 1 hour to complete.${NC}"
+                #echo -e "${RED}This can take up to 1 hour to complete.${NC}"
 
                 # Scan the entire network and display open ports
                 echo -e "Scanning IP [${GREEN}127.0.0.1/24${NC}]"
@@ -140,7 +128,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
                 # asks if the user want to see scan on a open file or not
                 read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
                 if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                    echo "Opeing the scan file"
+                    echo -e "[ ${GREEN}+${NC} ] Opeing the scan file"
                     sleep 1
                     open scan.txt
 

@@ -44,7 +44,7 @@ trap ctrl_c SIGINT
 
 # Check for required packages
 for package in "${required_packages[@]}"; do
-    if ! command_exists "$package"; then
+    if ! command_exists "${package}"; then
         echo ""
         echo -e "[ ${RED}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
         sleep 1 
@@ -70,8 +70,8 @@ for package in "${required_packages[@]}"; do
 done
 
 # Check if the script is run with --help or -h
-if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-    figlet "? HELP ?"
+if [[ "$1" == *"${HELP}"* ]]; then
+    cat Bash_Help_message.txt
     echo
     echo "+++++++++++++++Programs used+++++++++++++++"
     echo "This program will help you crack passwords"
@@ -86,19 +86,13 @@ else
     if [[ "$OSTYPE" == "${OS}"* ]]; then
         # Clear the terminal
         clear
-        #checks if the user puts in sudo in the program
-        if [ "$(id -u)" -eq 0 ]; then
-            # gives the user something to read so they understand why they got the error
-            echo
-            echo "++++++++++++++++++++++++++++++++++++++++++++++++++"
-            echo "+   You dont have to use sudo for this script    +"
-            echo "++++++++++++++++++++++++++++++++++++++++++++++++++"
-            echo ""
-        fi
+
         # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
         LocalNetBreach() {
             # The logo of the program
             figlet -f slant "NetBreach"
+            figlet -f slant "Manual Local Mode"
+
             echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
             echo "If you want to scan a website type Manual and then type the website name or ip address of the website"
             echo "If you want to stop the program type 'stop'."
@@ -106,6 +100,7 @@ else
 
             if [[ "${service}" == "ALL" || "${service}" == "all" || "${service}" == "*" ]]; then
                 # Scan the entire network and display open ports
+                
                 nmap 127.0.0.1 --system-dns -Pn -oN localPorts.txt
                 echo "Would you like to see what is inside the scan file YES OR NO?"
                 read -p ">>> " service

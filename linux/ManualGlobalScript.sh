@@ -70,8 +70,8 @@ for package in "${required_packages[@]}"; do
 done
 
 # Check if the script is run with --help or -h
-if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-    figlet "? HELP ?"
+if [[ "$1" == *"${HELP}"* ]]; then
+    cat Bash_Help_message.txt
     echo
     echo "+++++++++++++++Programs used+++++++++++++++"
     echo "This program will help you crack passwords"
@@ -115,9 +115,9 @@ else
             clear
 
             # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
-            NetBreachX() {
+            NetBreach() {
                 # The logo of the program
-                figlet -f slant "NetBreachX"
+                figlet -f slant "NetBreach"
                 figlet -f slant "Manual Global Mode"
                 echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
                 echo "If you want to scan a website type Manual and then type the website name or ip address of the website"
@@ -128,8 +128,9 @@ else
                     # Tells the user that it can take up to an hour to complete the scanning process
                     echo -e "${RED}This can take up to 1 hour to complete.${NC}"
                     
+                    echo -e "Scanning IP [${GREEN}${IP_ADDRESS}/24${NC}]"
                     # Scan the entire network and display open ports
-                    sudo nmap -sS $IPADDR/24 -Pn -oN scan.txt --open
+                    sudo nmap -sS $IP_ADDRESS/24 -Pn -oN scan.txt --open
 
                     # asks if the user want to see scan on a open file or not
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
@@ -162,6 +163,8 @@ else
                     read -p ">>> " Manual_scan
                     
                     #scan a website name
+                    echo -e "Scanning IP [${GREEN}${Manual_scan}${NC}]"
+
                     sudo nmap -sS "${Manual_scan}" -oN "${Manual_scan}".log --open
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
 
@@ -193,7 +196,7 @@ else
 
                 else
                     # Scan specific port
-                    sudo nmap -sS $IPADDR/24 -p "${service}" -oN $service.log --open
+                    sudo nmap -sS $IP_ADDRESS/24 -p "${service}" -oN $service.log --open
                     read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
 
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
@@ -306,7 +309,7 @@ else
                 fi
             }
 
-            NetBreachX # Calls the NetBreach function
+            NetBreach # Calls the NetBreach function
 
             RunHackingCommand # Calls the RunHackingCommand function
 

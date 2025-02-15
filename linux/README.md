@@ -1,6 +1,6 @@
 # !Do not use this software in Schools or Business!
 
-<img src="Linux Logo.JPG" alt="Linux Verison of the program" width="200" height="200">
+<img src="Linux Logo.JPG" alt="APPLE Verison of the program" width="200" height="200">
 
 
 # Home Page

