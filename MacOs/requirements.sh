@@ -6,6 +6,42 @@ else
     echo "DontEdit.sh not found!"
     exit 1
 fi
+
+# quits program with ctrl-c
+EXIT_PROGRAM_WITH_CTRL_C() {
+    echo ""
+    echo -e "${RED}${BRIGHT}[-]${NC} EXITING SOFTWARE..."
+    # Add cleanup commands here
+    exit 1
+}
+
+# quits program with ctrl-z
+EXIT_PROGRAM_WITH_CTRL_Z(){
+    echo ""
+    echo -e "${RED}${BRIGHT}[-]${NC} EXITING SOFTWARE..."
+    # Add cleanup commands here
+    exit 1
+}
+
+# Function to be executed when Ctrl+Z is pressed
+handle_ctrl_z() {
+    EXIT_PROGRAM_WITH_CTRL_Z
+    exit 1
+    # Your custom action goes here
+}
+
+# Set up the trap to call the function on SIGTSTP (Ctrl+Z)
+trap 'handle_ctrl_z' SIGTSTP
+
+# Function to handle Ctrl+C
+ctrl_c() {
+    echo ""
+    EXIT_PROGRAM_WITH_CTRL_C
+}
+
+trap ctrl_c SIGINT
+
+
 # get the os type and if its not a MAC then it say error you are not using a MAC computer
 if [[ "$OSTYPE" == "${OS}"* ]]; then
 
@@ -52,14 +88,15 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
 
     # Install Homebrew if not already installed
     InstallHomeBrew() {
-        echo "Checking Homebrew installation..."
+        echo ""
+        echo -e "[ ${RED}${BRIGHT}!${NC} ] Checking Homebrew installation..."
         if command -v brew &>/dev/null; then
             echo -e "[ ${GREEN}OK${NC} ] Homebrew is already installed."
         else
             echo "Homebrew is not installed."
             echo "Would you like to install Homebrew? (YES/NO)"
             read -p ">>> " answer
-            if [[ "${answer}" == "yes" ]]; then
+            if [[ " ${yes[*]} " == *" ${answer} "*  ]]; then
                 echo "Installing Homebrew..."
                 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
                 sleep 1
