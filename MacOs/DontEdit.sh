@@ -48,7 +48,7 @@ exit=("exit" "quit" "EXIT" "QUIT" "STOP" "stop")
 auto=("--auto" "--Auto" "==AUTO" "--autoconnect" "--Autoconnect" "--AUTOCONNECT")
 
 # the array to have help message work
-HELP=("help" "HELP" "Help" "-h" "--help" "--HELP" "--Help")
+HELP=("-h" "--help" "--HELP" "--Help")
 
 #hold the array for the skip function
 skip=("--skip" "--SKIP" "--Skip" "-s" "-S")
