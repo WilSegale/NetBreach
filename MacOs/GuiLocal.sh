@@ -90,7 +90,7 @@ else
 fi
 
 # Check if the script is run with --help or -h; display help info if true
-if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+if [[ "$1" == *"${HELP}"* ]]; then
     # Display help information about the program
     osascript -e 'display dialog "This program helps crack passwords using Hydra and Nmap.\nTo use the program, specify the port to scan, and it will check for open ports and attempt to crack passwords." buttons {"OK"} default button "OK"'
 else
