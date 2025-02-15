@@ -17,7 +17,7 @@ sudo python3 setup.py
 ## This file will explain how the program works and how to use it to it's full capacity
 - [Linux README.md](linux/README.md)
 - [Mac README.md](MacOs/README.md)
-- [Windows README.md](Windows/README.md)
+- [Windows README.md](WINDOWS/README.md)
  
 # Troubleshooting SSH: Remote Host Identification Changed
 
