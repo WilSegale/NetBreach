@@ -129,7 +129,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
                 #echo -e "${RED}This can take up to 1 hour to complete.${NC}"
 
                 # Scan the entire network and display open ports
-                echo -e "Scanning IP [${GREEN}127.0.0.1/24${NC}]"
+                echo -e "Scanning IP [${GREEN}127.0.0.1${NC}]"
 
                 nmap 127.0.0.1 -Pn -oN scan.txt --open
                 echo "Scan complete. Open ports saved to scan.txt"
@@ -178,9 +178,9 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
 
             else
                 # Scan specific port
-                echo -e "Scanning IP [${GREEN}127.0.0.1/24${NC}] on port [${GREEN}${service}${NC}]"
+                echo -e "Scanning IP [${GREEN}127.0.0.1${NC}] on port [${GREEN}${service}${NC}]"
 
-                nmap  127.0.0.1/24 -p $service -oN $service.txt --open
+                nmap  127.0.0.1 -p $service -oN $service.txt --open
                 read -p "Would you like to see the ${service} on a open file (Yes or No): " SeeFile
 
                 if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
