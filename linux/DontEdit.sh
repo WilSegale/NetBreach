@@ -43,6 +43,9 @@ Manual=("Manual" "manual" "MANUAL")
 # The array that contains the exit input
 exit=("exit" "quit" "EXIT" "QUIT" "STOP" "stop")
 
+# The array that contains the help input
+help=("--help" "--HELP" "--Help")
+
 # Gets the current time in a 12-hour format
 CURRENT_TIME=$(date +"%I:%M:%S %p")
 

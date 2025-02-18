@@ -43,8 +43,8 @@ lineArt = subprocess.run
 
 #name of the os
 OS = "Linux"
-
 name = "linux"
+
 # Define color codes for console output
 BRIGHT = '\033[1m'
 GREEN = "\033[92m"
@@ -72,9 +72,10 @@ pipForce = {"--pipForce","--pip-force","--PIP-FORCE", "--pipforce"}
 autoConnect = {"--autoConnect", "--autoconnect", "--auto", "--AUTO"}
 skipGlobal = {"--SKIPGLOBAL", "--skip-Global", "--skip-global", "--Skip-Global", "--Skip-global"}
 skipLocal = {"--skip-Local", "--SKIP-LOCAL", "--skip-local", "--Skip-Local", "--Skip-local"}
-GzipRockYou = {"--gzipRockYou", "--GzipRockYou", "--Gziprockyou", "--gziprockyou"}
+GlobalHelp = {"--GlobalHelp", "--globalHelp", "--GLOBALHELP", "--global-help", "--Global-help", "--GLOBAL-HELP"}
+LocalHelp = {"--LocalHelp", "--localHelp", "--LOCALHELP", "--local-help", "--Local-help", "--LOCAL-HELP"}
 FIX = {"--FIX", "--fix", "-f", "-F"}
-# Define the path to the directory containing the script
+
 
 # Define list of scripts to run
 GuiScript = ["bash", "GuiGlobal.sh"]
