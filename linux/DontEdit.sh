@@ -46,6 +46,11 @@ exit=("exit" "quit" "EXIT" "QUIT" "STOP" "stop")
 # The array that contains the help input
 HELP=("--help" "--HELP" "--Help")
 
+# The array that contains the skip input
+SKIPLocal=("--SKIP-local" "--skip-local" "--Skip-Local")
+
+SKIPGlobal=("--SKIP-global" "--skip-global" "--Skip-Global")
+
 # Gets the current time in a 12-hour format
 CURRENT_TIME=$(date +"%I:%M:%S %p")
 
