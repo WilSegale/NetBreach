@@ -60,33 +60,41 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
     fi
 
 
-    # check if the user has put --skip in the arguemnts 
-    if [[ "$1" == "--skip" ]]; then
+    
+    # Check if the user has put --skip in the arguments
+    if [[ " $* " == *" --skip "* ]]; then
         echo "Skipping package check"
         sleep 4
     else
         # Check for required packages
+        missing_packages=()
         for package in "${required_packages[@]}"; do
             if ! command_exists "$package"; then
-                echo ""
-                echo -e "[ ${RED}${BRIGHT}FAIL${NC} ] The required package ${GREEN}'${package}'${NC} is not installed. Please install it and try again."
-                sleep 1 
-
-                #asks the user if they want to install the packages that are mssing
-                echo "Would you like me to install it for you. YES/NO"
-
-                read -p ">>> " install
-                
-                if [[ " ${yes[*]} " == *" ${install} "* ]]; then
-                    bash requirements.sh
-                    exit 1
-                else
-                    echo "Ok stopping program"
-                    exit 1
-                fi
-                exit 1
+                missing_packages+=("$package")
             fi
         done
+
+        if [[ ${#missing_packages[@]} -gt 0 ]]; then
+            echo -e "\n[ ${RED}${BRIGHT}FAIL${NC} ] The following required packages are missing:"
+            for pkg in "${missing_packages[@]}"; do
+                echo -e "  - ${GREEN}'${pkg}'${NC}"
+            done
+
+            echo "Would you like me to install them for you? YES/NO"
+            read -p ">>> " install
+            install=$(echo "$install" | tr '[:upper:]' '[:lower:]')  # Convert input to lowercase
+
+            yes=("yes" "y")
+            for answer in "${yes[@]}"; do
+                if [[ "$install" == "$answer" ]]; then
+                    bash requirements.sh
+                    exit 1
+                fi
+            done
+
+            echo "Ok, stopping program."
+            exit 1
+        fi
     fi
 
     # Check if the script is run with --help or -h
