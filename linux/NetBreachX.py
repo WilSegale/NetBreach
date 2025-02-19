@@ -489,6 +489,11 @@ try:
         elif argument[1] in skipManG:
             terminalCommand("bash ManualGlobalScript.sh --skip")
             sys.exit()
+            
+        #skips the packages if one doents install for manual local
+        elif argument[1] in skipManL:
+            terminalCommand("bash ManualLocalScript.sh --skip")
+            sys.exit()
 
         #auto connects to the saved ssh session
         elif argument[1] in autoConnect:

@@ -27,6 +27,7 @@ HowToUseInfo15Color = f"\nIf you want to remote conenct to a computer type {GREE
 HowToUseInfo16Color = f"\nIf you want to skip a step type {GREEN}'sudo python3 {SoftwareName} {skipGlobal}'{RESET}"
 HowToUseInfo17Color = f"\nIf you want to skip a step type {GREEN}'python3 {SoftwareName} {skipLocal}'{RESET}"
 HowToUseInfo18Color = f"\nIf you want to skip a step type {GREEN}'python3 {SoftwareName} {skipManG}'{RESET}"
+HowToUseInfo19Color = f"\nIf you want to skip a step type {GREEN}'python3 {SoftwareName} {skipManL}'{RESET}"
 
 ProgramsUSEDCOLOR = (ProgramsUSEDCOLOR+
                 ProgramsUsedInfo01COLOR+
@@ -52,7 +53,8 @@ InfoColor = (HowToUseColor +
         HowToUseInfo15Color +
         HowToUseInfo16Color + 
         HowToUseInfo17Color +
-        HowToUseInfo18Color)
+        HowToUseInfo18Color +
+        HowToUseInfo19Color)
 #--------------HELP MESSAGE END with color-------------------#
 
 #--------------HELP MESSAGE START-------------------#
@@ -83,7 +85,8 @@ HowToUseInfo14 = f"\nIf you get a error message you can type 'python3 {SoftwareN
 HowToUseInfo15 = f"\nIf you want to remote conenct to a computer type 'python3 {SoftwareName} {conenctRDP}'"
 HowToUseInfo16 = f"\nIf you want to skip a step type 'sudo python3 {SoftwareName} {skipGlobal}'"
 HowToUseInfo17 = f"\nIf you want to skip a step type 'python3 {SoftwareName} {skipLocal}'"
-HowToUseInfo18Color = f"\nIf you want to skip a step type 'sudo python3 {SoftwareName} {skipManG}'"
+HowToUseInfo18 = f"\nIf you want to skip a step type 'sudo python3 {SoftwareName} {skipManG}'"
+HowToUseInfo19 = f"\nIf you want to skip a step type 'python3 {SoftwareName} {skipManL}'"
 
 ProgramsUSED = (ProgramsUSED+
                 ProgramsUsedInfo01+
@@ -108,7 +111,9 @@ Info = (HowToUse +
         HowToUseInfo14 +
         HowToUseInfo15 +
         HowToUseInfo16 +
-        HowToUseInfo17)
+        HowToUseInfo17 +
+        HowToUseInfo18 +
+        HowToUseInfo19)
 #--------------HELP MESSAGE END-------------------#
 
 
@@ -128,7 +133,9 @@ Please use the correct number of arguments. Example:
 {uninstallRequirement} put's it in uninstall mode that uninstall's the packages,
 {conenctRDP} put's the program into RDP connection mode,
 {autoConnect} put's the program into auto connect, if there is a file with the user SSH username and ip address to use,
-{FIX} put's it in fix mode that fixes the program,
 {skipGlobal} put's it in skip global mode that skips the global mode,
 {skipLocal} put's it in skip local mode that skips the local mode,
+{skipManG} put's it in skip manual Global. Mode so that if a packages doesn't install you can type this so it skips that step
+{skipManL} put's it in skip manual Local. Mode so that if a packages doesn't install you can type this so it skips that step
+{FIX} put's it in fix mode that fixes the program,
 {HELP} put's it in help mode so you understand what you are going to do with this program.'''
