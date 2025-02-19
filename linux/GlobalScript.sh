@@ -63,7 +63,7 @@ fi
 
 
 # check if the user has put --skip in the arguemnts 
-if [[ "$1" == *"${SKIPLocal}"* ]]; then
+if [[ "$1" == *"${SKIPGlcal}"* ]]; then
     echo "Skipping package check"
     sleep 4
 else
