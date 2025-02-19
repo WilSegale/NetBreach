@@ -62,7 +62,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
 
     
     # Check if the user has put --skip in the arguments
-    if [[ "$1" == *"${skip}"* ]]; then
+    if [[ "$1" == *"${SKIPLocal}"* ]]; then
         echo "Skipping package check"
         sleep 4
     else
