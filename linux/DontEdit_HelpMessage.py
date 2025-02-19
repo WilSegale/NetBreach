@@ -26,6 +26,7 @@ HowToUseInfo14Color = f"\nIf you get a error message you can type {GREEN}'python
 HowToUseInfo15Color = f"\nIf you want to remote conenct to a computer type {GREEN}'python3 {SoftwareName} {conenctRDP}'{RESET}"
 HowToUseInfo16Color = f"\nIf you want to skip a step type {GREEN}'sudo python3 {SoftwareName} {skipGlobal}'{RESET}"
 HowToUseInfo17Color = f"\nIf you want to skip a step type {GREEN}'python3 {SoftwareName} {skipLocal}'{RESET}"
+HowToUseInfo18Color = f"\nIf you want to skip a step type {GREEN}'python3 {SoftwareName} {skipManG}'{RESET}"
 
 ProgramsUSEDCOLOR = (ProgramsUSEDCOLOR+
                 ProgramsUsedInfo01COLOR+
@@ -50,7 +51,8 @@ InfoColor = (HowToUseColor +
         HowToUseInfo14Color +
         HowToUseInfo15Color +
         HowToUseInfo16Color + 
-        HowToUseInfo17Color)
+        HowToUseInfo17Color +
+        HowToUseInfo18Color)
 #--------------HELP MESSAGE END with color-------------------#
 
 #--------------HELP MESSAGE START-------------------#
@@ -81,6 +83,7 @@ HowToUseInfo14 = f"\nIf you get a error message you can type 'python3 {SoftwareN
 HowToUseInfo15 = f"\nIf you want to remote conenct to a computer type 'python3 {SoftwareName} {conenctRDP}'"
 HowToUseInfo16 = f"\nIf you want to skip a step type 'sudo python3 {SoftwareName} {skipGlobal}'"
 HowToUseInfo17 = f"\nIf you want to skip a step type 'python3 {SoftwareName} {skipLocal}'"
+HowToUseInfo18Color = f"\nIf you want to skip a step type 'sudo python3 {SoftwareName} {skipManG}'"
 
 ProgramsUSED = (ProgramsUSED+
                 ProgramsUsedInfo01+

@@ -72,6 +72,7 @@ pipForce = {"--pipForce","--pip-force","--PIP-FORCE", "--pipforce"}
 autoConnect = {"--autoConnect", "--autoconnect", "--auto", "--AUTO"}
 skipGlobal = {"--SKIPGLOBAL", "--skip-Global", "--skip-global", "--Skip-Global", "--Skip-global"}
 skipLocal = {"--skip-Local", "--SKIP-LOCAL", "--skip-local", "--Skip-Local", "--Skip-local"}
+skipManG = {"--skip-manual-global", "--SKIP-MANUAL-GLOBAL", "--skip-manual-global", "--Skip-Manual-Global", "--Skip-manual-global"}
 GlobalHelp = {"--GlobalHelp", "--globalHelp", "--GLOBALHELP", "--global-help", "--Global-help", "--GLOBAL-HELP"}
 LocalHelp = {"--LocalHelp", "--localHelp", "--LOCALHELP", "--local-help", "--Local-help", "--LOCAL-HELP"}
 FIX = {"--FIX", "--fix", "-f", "-F"}

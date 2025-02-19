@@ -485,21 +485,31 @@ try:
             terminalCommand("bash localScript.sh --skip")
             sys.exit()
 
+        #skips the packages if one doents install for manual global
+        elif argument[1] in skipManG:
+            terminalCommand("bash ManualGlobalScript.sh --skip")
+            sys.exit()
+
+        #auto connects to the saved ssh session
         elif argument[1] in autoConnect:
             terminalCommand("bash GlobalScript.sh --auto")
             sys.exit()
-
+        
+        #has the help for global mode
         elif argument[1] in GlobalHelp:
             terminalCommand("bash GlobalScript.sh --help")
             sys.exit()
-
+        
+        #has the help for local mode
         elif argument[1] in LocalHelp:
             terminalCommand("bash localScript.sh --help")
             sys.exit()
         
+        # error message for the user if the argument is not correct
         else:
             print(f'''{ErrorMessage} {explain}''', file=ERROR)
             print(f'''{RED}{ErrorMessage}{RESET} {explain}''')
+    
     #if the user does not input the correct argument it tells them what arguments to use for it to work 
     else:
         print(f'''{ErrorMessage} {explain}''', file=ERROR)
