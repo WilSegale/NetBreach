@@ -44,7 +44,6 @@ command_exists() {
 
 # Auto-connects the SSH server to the computer
 if [[ "$1" == *"${auto}"* ]]; then
-
     # Check if the SSH connection file exists also outputs the file with the password so the 
     #user can see what the password is
     if [ -f "${ssh_connection}" ]; then
@@ -81,10 +80,6 @@ else
             read -p ">>> " install
             
             if [[ " ${yes[*]} " == *" ${install} "* ]]; then
-                ps aux | grep sudo
-                echo "Input the PID for to kill the root session to install the packages."
-                read -p ">>> " session
-                kill -9 "${session}"
                 bash requirements.sh
                 exit 1
             else
