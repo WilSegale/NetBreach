@@ -216,7 +216,7 @@ else
                 echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
                 echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
                 read -p "Input Username: " user
-                read -p "Input Hostname: " host
+                read -p "Input Hostname or IP: " host
                 read -p "Input Port: " port
             }
 
@@ -224,7 +224,7 @@ else
                 if [[ $service == 5900 || $service == "VNC" ]]; then
                     # Checks if the user has put anything in the 'Input Username' function and the hostname function
                     # If not, it will prompt the user to enter the username and hostname
-                    if [[ $user == "" && $host == "" || $host == "" ]]; then
+                    if [[ $user == "" && $host == "" || $host == "" || $user == "" ]]; then
                         # No service specified, re-prompt for input
                         echo "No service specified"
                         NetBreach
