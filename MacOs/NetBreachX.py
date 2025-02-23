@@ -462,52 +462,52 @@ try:
     
         #enables the pipForce mode if pip3 install fails
         elif argument[1] in pipForce:
-            PIP
+            subprocess.run(PIP)
             sys.exit()
         
         #gets the install funciton
         elif argument[1] in installRequirement:
-            skipLocalBASH    
+            subprocess.run(skipLocalBASH)    
             sys.exit()
         
         #get the unisntall function
         elif argument[1] in uninstallRequirement:
-            terminalCommand("bash uninstall.sh")
+            subprocess.run(uninstall)
             sys.exit()
         
         #skips the packages if one doents install for global
         elif argument[1] in skipGlobal:
-            terminalCommand("bash GlobalScript.sh --skip")
+            subprocess.run(skipGlobalBASH)
             sys.exit()
 
         #skips the packages if one doents install for local
         elif argument[1] in skipLocal:
-            terminalCommand("bash localScript.sh --skip")
+            subprocess.run(skipLocalBASH)
             sys.exit()
 
         #skips the packages if one doents install for manual global
         elif argument[1] in skipManG:
-            terminalCommand("bash ManualGlobalScript.sh --skip")
+            subprocess.run(skipManGBASH)
             sys.exit()
             
         #skips the packages if one doents install for manual local
         elif argument[1] in skipManL:
-            terminalCommand("bash ManualLocalScript.sh --skip")
+            subprocess.run(skipManLBASH)
             sys.exit()
 
         #auto connects to the saved ssh session
         elif argument[1] in autoConnect:
-            terminalCommand("bash GlobalScript.sh --auto")
+            subprocess.run(SaveAuto)
             sys.exit()
         
         #has the help for global mode
         elif argument[1] in GlobalHelp:
-            terminalCommand("bash GlobalScript.sh --help")
+            subprocess.run(GlobalHelp)
             sys.exit()
         
         #has the help for local mode
         elif argument[1] in LocalHelp:
-            terminalCommand("bash localScript.sh --help")
+            subprocess.run(LocalHelp)
             sys.exit()
         
         # error message for the user if the argument is not correct

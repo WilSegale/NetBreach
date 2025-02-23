@@ -90,11 +90,11 @@ LocalManual = ["bash", "ManualLocalScript.sh"]
 RDPconnect = ["bash", "xfreerdp.sh"]
 
 #argumnent lines
+uninstall = ["bash", "uninstall.sh"]
+install = ["bash", "requirements.sh"]
 skipGlobalBASH = ["bash", "GlobalScript.sh", "--skip"]
 skipLocalBASH = ["bash", "localScript.sh", "--skip"]
 skipManGBASH = ["bash", "ManualGlobalScript.sh", "--skip"]
 skipManLBASH = ["bash", "ManualLocalScript.sh", "--skip"]
-uninstall = ["bash", "uninstall.sh"]
-install = ["bash", "requirements.sh"]
 PIP = ["bash", "requirements.sh", "--pipForce"]
 #kaliLinuxRockyouOs = ["bash", "kaliLinuxRockyouOs.sh"]
