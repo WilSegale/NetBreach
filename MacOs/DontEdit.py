@@ -43,7 +43,7 @@ lineArt = subprocess.run
 
 #name of the os
 OS = "Darwin"
-name = "Mac"
+name = "MAC"
 
 # Define color codes for console output
 BRIGHT = '\033[1m'
@@ -80,6 +80,7 @@ FIX = {"--FIX", "--fix", "-f", "-F"}
 
 
 # Define list of scripts to run
+#normal commands for NetBreachX
 GuiScript = ["bash", "GuiGlobal.sh"]
 GlobalScript = ["bash", "GlobalScript.sh"]  # runs the script in Global mode
 LocalScript = ["bash", "localScript.sh"]  # runs the script in Local mode
@@ -87,3 +88,13 @@ GuiLocalScript = ["bash", "GuiLocal.sh"]  # runs the script that uses GUI mode w
 GlobalManual = ["bash", "ManualGlobalScript.sh"]
 LocalManual = ["bash", "ManualLocalScript.sh"]
 RDPconnect = ["bash", "xfreerdp.sh"]
+
+#argumnent lines
+skipGlobalBASH = ["bash", "GlobalScript.sh", "--skip"]
+skipLocalBASH = ["bash", "localScript.sh", "--skip"]
+skipManGBASH = ["bash", "ManualGlobalScript.sh", "--skip"]
+skipManLBASH = ["bash", "ManualLocalScript.sh", "--skip"]
+uninstall = ["bash", "uninstall.sh"]
+install = ["bash", "requirements.sh"]
+PIP = ["bash", "requirements.sh", "--pipForce"]
+#kaliLinuxRockyouOs = ["bash", "kaliLinuxRockyouOs.sh"]

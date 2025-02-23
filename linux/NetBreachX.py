@@ -462,12 +462,12 @@ try:
     
         #enables the pipForce mode if pip3 install fails
         elif argument[1] in pipForce:
-            terminalCommand("bash requirements.sh --pipForce")
+            PIP
             sys.exit()
         
         #gets the install funciton
         elif argument[1] in installRequirement:
-            terminalCommand("bash requirements.sh")
+            skipLocalBASH    
             sys.exit()
         
         #get the unisntall function
