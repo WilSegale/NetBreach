@@ -1,8 +1,12 @@
 #!/bin/bash
 #MANUAL GLOBAL SCRIPT
 # file that hold all the variables that need for the program to work properly
-source DontEdit.sh
-
+if [ -f "DontEdit.sh" ]; then
+    source DontEdit.sh
+else
+    echo "DontEdit.sh not found!"
+    exit 1
+fi
 # Function to handle cleanup on exit
 # quits program with ctrl-c
 EXIT_PROGRAM_WITH_CTRL_C() {

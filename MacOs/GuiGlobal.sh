@@ -1,6 +1,10 @@
 #!/bin/bash
-source DontEdit.sh  # Source external script for variables or functions
-
+if [ -f "DontEdit.sh" ]; then
+    source DontEdit.sh
+else
+    echo "DontEdit.sh not found!"
+    exit 1
+fi
 # Check if the user is connected via SSH; exit if connected
 if [ -n "${SSH_CLIENT}" ]; then
     echo "Connected via SSH"
