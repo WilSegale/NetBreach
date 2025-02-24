@@ -467,7 +467,7 @@ try:
         
         #gets the install funciton
         elif argument[1] in installRequirement:
-            subprocess.run(skipLocalBASH)    
+            subprocess.run(install)    
             sys.exit()
         
         #get the unisntall function

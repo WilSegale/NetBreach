@@ -1,5 +1,6 @@
 from DontEdit import *
 from DontEdit_HelpMessage import *
+
 #this is for the user to understand what the program does
 def show_help():
 
@@ -467,7 +468,7 @@ try:
         
         #gets the install funciton
         elif argument[1] in installRequirement:
-            subprocess.run(skipLocalBASH)    
+            subprocess.run(install)    
             sys.exit()
         
         #get the unisntall function
