@@ -1,4 +1,5 @@
 from DontEdit import *
+
 #esay way to edit and change the help messages
 #--------------HELP MESSAGE START with color-------------------#
 #This is for the user to know what programs are used in this program
@@ -115,7 +116,6 @@ Info = (HowToUse +
         HowToUseInfo18 +
         HowToUseInfo19)
 #--------------HELP MESSAGE END-------------------#
-
 
 
 #place to esaly edit and change the warning message are error log
