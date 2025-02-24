@@ -58,9 +58,6 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
         esac
     done
 
-
-   
-
     # Wifi connection check function
     WifiConnection() {
         if ping -c 1 google.com >/dev/null 2>&1; then
@@ -122,7 +119,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
             if [ $? -eq 0 ]; then
                 echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
             else
-                echo -e "[ ${RED}ERROR${NC} ] ${package_name} installation failed."
+                echo -e "[ ${yellow}WARNING${NC} ] ${package_name} installation failed."
             fi
         else
             echo -e "[ ${GREEN}OK${NC} ] ${package_name} is already installed."
@@ -133,18 +130,18 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
     checkForPackages() {
         for package in "${Packages[@]}"; do
             if brew list --formula | grep -q "^${package}\$"; then
-                echo -e "${package}: ${GREEN}Is installed.${NC}"
+                echo -e "[ ${GREEN}OK${NC} ] ${package}"
             else
-                echo -e "${package}: ${RED}Not installed.${NC}"
+                echo -e "[ ${GREEN}FAIL${NC} ] ${package}"
             fi
         done
 
         echo -e "________PIP Packages________"
         for pipPackage in "${pipPackages[@]}"; do
             if python3 -c "import ${pipPackage}" &>/dev/null; then
-                echo -e "${pipPackage}: ${GREEN}Is Installed${NC}"
+                echo -e "[ ${GREEN}OK${NC} ] ${pipPackage}"
             else
-                echo -e "${pipPackage}: ${RED}Not Installed${NC}"
+                echo -e "[ ${RED}FAIL${NC} ] ${pipPackage}"
             fi
         done
     }
