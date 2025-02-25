@@ -1,0 +1,11 @@
+ssh
+mysql
+mysql-server
+python3-pip
+wget
+hydra
+nmap
+figlet
+dialog
+x11-utils
+freerdp

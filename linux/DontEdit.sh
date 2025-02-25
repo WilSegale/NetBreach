@@ -66,7 +66,7 @@ IPADDR=$(ip route | awk '/default/ {print $3}')
 # List of required packages/commands (separated by spaces)
 required_packages=("wget" "hydra" "nmap" "ssh" "mysql" "figlet" "dialog" "x11-utils")
 
-# Packages to check for installation
+# System packages
 Packages=(
     "ssh"
     "mysql"
