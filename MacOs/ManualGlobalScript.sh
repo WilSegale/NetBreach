@@ -1,12 +1,8 @@
 #!/bin/bash
 #MANUAL GLOBAL SCRIPT
 # file that hold all the variables that need for the program to work properly
-if [ -f "DontEdit.sh" ]; then
-    source DontEdit.sh
-else
-    echo "DontEdit.sh not found!"
-    exit 1
-fi
+source DontEdit.sh
+
 # Function to handle cleanup on exit
 # quits program with ctrl-c
 EXIT_PROGRAM_WITH_CTRL_C() {
@@ -162,21 +158,21 @@ else
                         exit 1
                     fi
                 elif [[ " ${Manual[*]} " == *" ${service} "* ]]; then
-                    echo "What website would you like to scan? Or user IP"
-
-                    #input for the website name
-                    read -p ">>> " Manual_scan
+                    echo "If you want to scan a website type the website name or ip address of the website"
                     
-                    #scan a website name
-                    echo -e "Scanning IP [${GREEN}${Manual_scan}${NC}]"
+                    read -p "Nmap " NmapScan
+                    echo -e "Scanning IP [${GREEN}${NmapScan}${NC}]"
 
-                    sudo nmap -sS "${Manual_scan}" -oN "${Manual_scan}".log --open
+                    #scan a website name
+                    sudo nmap "${NmapScan}"
+                    #scan a website name
+
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
 
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                        open "${Manual_scan}.log"
+                        open "${NmapScan}.log"
                     else
-                        echo "[-] Ok I will not open the ${Manual_scan}.log file"
+                        echo "[-] Ok I will not open the ${NmapScan}.log file"
                         sleep 1
                     fi
                 
@@ -220,7 +216,7 @@ else
                 echo "To crack VNC(5900), don't type anything in the 'Input Username' prompt"
                 echo "To crack MySQL(3306), type 'localhost' in the 'Input Hostname' prompt"
                 read -p "Input Username: " user
-                read -p "Input Hostname: " host
+                read -p "Input Hostname or IP: " host
                 read -p "Input Port: " port
             }
 
@@ -228,7 +224,7 @@ else
                 if [[ $service == 5900 || $service == "VNC" ]]; then
                     # Checks if the user has put anything in the 'Input Username' function and the hostname function
                     # If not, it will prompt the user to enter the username and hostname
-                    if [[ $user == "" && $host == "" || $host == "" ]]; then
+                    if [[ $user == "" && $host == "" || $host == "" || $user == "" ]]; then
                         # No service specified, re-prompt for input
                         echo "No service specified"
                         NetBreach

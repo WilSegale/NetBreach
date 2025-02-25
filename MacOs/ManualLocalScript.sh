@@ -1,12 +1,8 @@
 #!/bin/bash
 
 #holds the file that contains importent funcitons for the porgram to work
-if [ -f "DontEdit.sh" ]; then
-    source DontEdit.sh
-else
-    echo "DontEdit.sh not found!"
-    exit 1
-fi
+source DontEdit.sh
+
 # Function to check if a command exists
 command_exists() {
     command -v "$1" >/dev/null 2>&1
@@ -131,16 +127,17 @@ else
                 echo "What website would you like to scan? Or user IP"
 
                 #input for the website name
-                read -p ">>> " Manual_scan
+                read -p "Nmap " NmapScan
                 
                 #scan a website name
-                sudo nmap -sS "${Manual_scan}" -oN "${Manual_scan}".log --open
-                read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
+                sudo nmap "${NmapScan}"
+                
+                read -p "Would you like to see the ManualScan on a open file (Yes or No): " SeeFile
 
                 if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                    open "${Manual_scan}.log"
+                    open "ManualScan.log"
                 else
-                    echo "[-] Ok I will not open the ${Manual_scan}.log file"
+                    echo "[-] Ok I will not open the ManualScan.log file"
                     sleep 1
                 fi
                 
