@@ -7,6 +7,7 @@ else
     echo "DontEdit.sh not found!"
     exit 1
 fi
+
 if [[ "$OSTYPE" == "${OS}"* ]]; then
 
     # Default values
