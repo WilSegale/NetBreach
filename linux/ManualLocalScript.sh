@@ -130,13 +130,14 @@ else
                 read -p "Nmap " NmapScan
                 
                 #scan a website name
-                sudo "${Manual_scan}"
-                read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
+                sudo nmap "${NmapScan}"
+                
+                read -p "Would you like to see the ManualScan on a open file (Yes or No): " SeeFile
 
                 if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                    open "${Manual_scan}.log"
+                    open "ManualScan.log"
                 else
-                    echo "[-] Ok I will not open the ${Manual_scan}.log file"
+                    echo "[-] Ok I will not open the ManualScan.log file"
                     sleep 1
                 fi
                 

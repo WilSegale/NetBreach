@@ -164,7 +164,7 @@ else
                     echo -e "Scanning IP [${GREEN}${NmapScan}${NC}]"
 
                     #scan a website name
-                    sudo "${NmapScan}"
+                    sudo nmap "${NmapScan}"
                     #scan a website name
 
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
