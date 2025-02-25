@@ -1,6 +1,12 @@
 #!/bin/bash
 # Check if root user
-source DontEdit.sh
+# Load DontEdit.sh if it exists
+if [ -f "DontEdit.sh" ]; then
+    source DontEdit.sh
+else
+    echo "DontEdit.sh not found!"
+    exit 1
+fi
 if [[ "$OSTYPE" == "${OS}"* ]]; then
 
     # Default values
@@ -45,7 +51,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
             if [ $? -eq 0 ]; then
                 echo -e "[ ${GREEN}OK${NC} ] ${package_name} installed successfully."
             else
-                echo -e "[ ${RED}ERROR${NC} ] ${package_name} installation failed."
+                echo -e "[ ${yellow}WARNING${NC} ] ${package_name} installation failed."
             fi
         else
             echo -e "[ ${GREEN}OK${NC} ] ${package_name} is already installed."
@@ -56,18 +62,18 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
     checkForPackages() {
         for package in "${Packages[@]}"; do
             if dpkg -l | grep -q "^ii  ${package} "; then
-                echo -e "${package}: ${GREEN}Is installed.${NC}"
+                echo -e "[ ${GREEN}OK${NC} ] ${package}"
             else
-                echo -e "${package}: ${RED}Not installed.${NC}"
+                echo -e "[ ${GREEN}FAIL${NC} ] ${package}"
             fi
         done
 
         echo -e "________PIP Packages________"
         for pipPackage in "${pipPackages[@]}"; do
             if python3 -c "import ${pipPackage}" &>/dev/null; then
-                echo -e "${pipPackage}: ${GREEN}Is Installed${NC}"
+                echo -e "[ ${GREEN}OK${NC} ] ${pipPackage}"
             else
-                echo -e "${pipPackage}: ${RED}Not Installed${NC}"
+                echo -e "[ ${RED}FAIL${NC} ] ${pipPackage}"
             fi
         done
     }
