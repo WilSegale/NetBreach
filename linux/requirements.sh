@@ -64,6 +64,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
             if dpkg -l | grep -q "^ii  ${package} "; then
                 echo -e "[ ${GREEN}OK${NC} ] ${package}"
             else
+                echo "error"
                 echo -e "[ ${RED}FAIL${NC} ] ${package}"
             fi
         done
