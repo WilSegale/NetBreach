@@ -158,21 +158,21 @@ else
                         exit 1
                     fi
                 elif [[ " ${Manual[*]} " == *" ${service} "* ]]; then
-                    echo "What website would you like to scan? Or user IP"
-
-                    #input for the website name
-                    read -p ">>> " Manual_scan
+                    echo "If you want to scan a website type the website name or ip address of the website"
                     
-                    #scan a website name
-                    echo -e "Scanning IP [${GREEN}${Manual_scan}${NC}]"
+                    read -p "Nmap " NmapScan
+                    echo -e "Scanning IP [${GREEN}${NmapScan}${NC}]"
 
-                    sudo nmap -sS "${Manual_scan}" -oN "${Manual_scan}".log --open
+                    #scan a website name
+                    sudo "${NmapScan}"
+                    #scan a website name
+
                     read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
 
                     if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
-                        open "${Manual_scan}.log"
+                        open "${NmapScan}.log"
                     else
-                        echo "[-] Ok I will not open the ${Manual_scan}.log file"
+                        echo "[-] Ok I will not open the ${NmapScan}.log file"
                         sleep 1
                     fi
                 

@@ -127,10 +127,10 @@ else
                 echo "What website would you like to scan? Or user IP"
 
                 #input for the website name
-                read -p ">>> " Manual_scan
+                read -p "Nmap " NmapScan
                 
                 #scan a website name
-                sudo nmap -sS "${Manual_scan}" -oN "${Manual_scan}".log --open
+                sudo "${Manual_scan}"
                 read -p "Would you like to see the scan on a open file (Yes or No): " SeeFile
 
                 if [[ " ${yes[*]} " == *" ${SeeFile} "* ]]; then
