@@ -132,7 +132,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
             if brew list --formula | grep -q "^${package}\$"; then
                 echo -e "[ ${GREEN}OK${NC} ] ${package}"
             else
-                echo -e "[ ${GREEN}FAIL${NC} ] ${package}"
+                echo -e "[ ${RED}FAIL${NC} ] ${package}"
             fi
         done
 
