@@ -9,7 +9,7 @@ RESET='\033[0m'
 yes=("yes" "Yes" "YES" "y" "Y")
 
 #array of possible of lists that will show what inside the extension file
-list=("list" "show me what inside")
+list=("list" "Lisst" "LIST" "l" "L")
 
 # Path to the extensions directory
 extensions_dir="${HOME}/.vscode/extensions"
