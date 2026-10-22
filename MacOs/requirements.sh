@@ -22,7 +22,7 @@ if [ "$(id -u)" -eq 0 ]; then
     echo ""
     echo "+++++++++++++++++++++++++++++++++++++++++"
     echo "+   Don't use SUDO for this script.     +"
-    echo "+   Because it can damage your computer +"
+    echo "+   It can cause system issues.         +"
     echo "+++++++++++++++++++++++++++++++++++++++++"
     echo ""
     exit 1
@@ -309,8 +309,10 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
             exit 1
         
         else
-            echo -e "[ ${RED}${BRIGHT}${FAIL}${NC} ] TIME:${CURRENT_TIME} Invalid input. Please enter Yes, No, or Install. DATE:${CURRENT_DATE}"
-            echo "ERROR:TIME:${CURRENT_TIME} Invalid input. Please enter Yes, No, or Install. DATE:${CURRENT_DATE}" >> ERROR.LOG
+            echo -e "[ ${RED}${BRIGHT}${FAIL}${NC} ] TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}"
+
+            echo -e "[ ${RED}ERROR${NC} ] Invalid input. Please enter Yes, No, or Install. FILE (requirements.sh)"
+            echo "ERROR:TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}" >> ERROR.LOG
 
             exit 1
             

@@ -45,8 +45,8 @@ if [ "$(id -u)" -eq 0 ]; then
     # Gives the user something to read so they understand why they got the error
     echo ""
     echo "+++++++++++++++++++++++++++++++++++++++++"
-    echo "+   Don't use sudo for this script.     +"
-    echo "+   Because it can damage your computer +"
+    echo "+   Don't use SUDO for this script.     +"
+    echo "+   It can cause system issues.         +"
     echo "+++++++++++++++++++++++++++++++++++++++++"
     echo ""
     exit 1
