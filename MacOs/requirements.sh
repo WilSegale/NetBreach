@@ -250,7 +250,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
         if [ "$(id -u)" -eq 0 ]; then
             echo ""
             echo "+++++++++++++++++++++++++++++++++++++++++"
-            echo "+   Don't use sudo for this script.     +"
+            echo "+   Don't use SUDO for this script.     +"
             echo "+   Because it can damage your computer +"
             echo "+++++++++++++++++++++++++++++++++++++++++"
             echo ""
