@@ -22,7 +22,7 @@ if [ "$(id -u)" -eq 0 ]; then
     echo ""
     echo "+++++++++++++++++++++++++++++++++++++++++"
     echo "+   Don't use SUDO for this script.     +"
-    echo "+   It can cause system issues.         +"
+    echo "+   Because it can damage your computer +"
     echo "+++++++++++++++++++++++++++++++++++++++++"
     echo ""
     exit 1
@@ -251,7 +251,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
             echo ""
             echo "+++++++++++++++++++++++++++++++++++++++++"
             echo "+   Don't use SUDO for this script.     +"
-            echo "+   Because it can damage your computer +"
+            echo "+   It can cause system issues.         +"
             echo "+++++++++++++++++++++++++++++++++++++++++"
             echo ""
             exit 1
@@ -294,7 +294,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
             fi
         done
         
-        echo -e "\nDo you want me to update the packages for you? "Yes/No/Install""
+        echo -e "\nDo you want me to Update or Install the packages for you? "Yes/No/Install""
 
         read -p ">>> " update
         if [[ " ${yes[*]} " == *" ${update} "* ]]; then
@@ -306,6 +306,12 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
         elif [[ " ${no[*]} " == *" ${update} "* ]]; then
        
             echo -e "[ ${RED}X${NC} ] Not doing update for packages"
+            exit 1
+        
+        else
+            echo -e "[ ${RED}${BRIGHT}${FAIL}${NC} ] TIME:${CURRENT_TIME} Invalid input. Please enter Yes, No, or Install. DATE:${CURRENT_DATE}"
+            echo "ERROR:TIME:${CURRENT_TIME} Invalid input. Please enter Yes, No, or Install. DATE:${CURRENT_DATE}" >> ERROR.LOG
+
             exit 1
             
         fi
