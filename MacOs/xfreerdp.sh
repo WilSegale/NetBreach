@@ -65,7 +65,9 @@ ConnectXfreerdp() {
             source "${FILE}"
             xfreerdp /u:"${XFREERDP_USERNAME}" /v:"${XFREERDP_IP}" /p:"${XFREERDP_PASSWORD}"
         else
-            sudo nmap -sS 192.168.1.1/24 -p 3389 -oN scan.txt --open
+            echo -e "Scanning IP [${GREEN}"${IP_ADDRESS}"/24${NC}] on port [${GREEN}3389${NC}]"
+
+            sudo nmap -sS "${IP_ADDRESS}"/24 -p 3389 -oN scan.txt --open
             echo
             read -p "Input username: " username
             read -p "Input IP: " ip
