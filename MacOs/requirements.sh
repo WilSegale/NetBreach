@@ -19,12 +19,15 @@ else
 fi
 
 if [ "$(id -u)" -eq 0 ]; then
+    # Gives the user something to read so they understand why they got the error.
+    #because using sudo can cause issues with the system and can break the system if the user is not careful
     echo ""
     echo "+++++++++++++++++++++++++++++++++++++++++"
     echo "+   Don't use SUDO for this script.     +"
     echo "+   It can cause system issues.         +"
     echo "+++++++++++++++++++++++++++++++++++++++++"
     echo ""
+    echo "[ WARNING ] Don't use SUDO for this script. It can cause system issues." >> ERROR.log
     exit 1
 fi
 
@@ -248,12 +251,15 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
     # Install packages function
     installPackages() {
         if [ "$(id -u)" -eq 0 ]; then
+            # Gives the user something to read so they understand why they got the error.
+            #because using sudo can cause issues with the system and can break the system if the user is not careful
             echo ""
             echo "+++++++++++++++++++++++++++++++++++++++++"
             echo "+   Don't use SUDO for this script.     +"
             echo "+   It can cause system issues.         +"
             echo "+++++++++++++++++++++++++++++++++++++++++"
             echo ""
+            echo "[ WARNING ] Don't use SUDO for this script. It can cause system issues." >> ERROR.log
             exit 1
         else
             if [[ "${OSTYPE}" == "darwin"* ]]; then
