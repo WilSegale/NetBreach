@@ -31,7 +31,9 @@ HowToUseInfo18Color = f"\nIf you want to auto connect to a ssh session {GREEN}'p
 HowToUseInfo19Color = f"\nIf you want to see the help message for global networks type {GREEN}'python3 {SoftwareName} --Global-Help'{RESET}"
 HowToUseInfo20Color = f"\nIf you want to see the help message for local networks type {GREEN}'python3 {SoftwareName} --Local-Help'{RESET}"
 HowToUseInfo21Color = f"\nIf you want to see the packages that are installed/not installed. Type {GREEN}'python3 {SoftwareName} --list'{RESET}"
-howToUseInfo22Color = f"\nIf you have to update the packages just type. {GREEN}'python3 {SoftwareName} --upgrade{RESET}'"
+HowToUseInfo22Color = f"\nIf you want to update the packages. Type {GREEN}'python3 {SoftwareName} --upgrade'{RESET}\n"
+HowToUseInfo23Color = f"\nIf you want to see the version of the packages. Type {GREEN}'python3 {SoftwareName} --version'{RESET}\n"
+
 ProgramsUSEDCOLOR = (ProgramsUSEDCOLOR+
                 ProgramsUsedInfo01COLOR+
                 ProgramsUsedInfo02COLOR+
@@ -59,8 +61,9 @@ InfoColor = (HowToUseColor +
         HowToUseInfo18Color +
         HowToUseInfo19Color +
         HowToUseInfo20Color +
-        HowToUseInfo21Color +
-        howToUseInfo22Color)
+        HowToUseInfo21Color + 
+        HowToUseInfo22Color +
+        HowToUseInfo23Color)
 #--------------HELP MESSAGE END with color-------------------#
 
 #--------------HELP MESSAGE START-------------------#
@@ -82,7 +85,7 @@ HowToUseInfo05 = f"\nIf you want to use the program on a global network, you can
 HowToUseInfo06 = f"\nIf you want to use the program with GUI support you can type 'sudo python3 {SoftwareName} {GUI}'" 
 HowToUseInfo07 = f"\nIf you want to use the program locally, you can type 'python3 {SoftwareName} {LOCAL}'"
 HowToUseInfo08 = f"\nIf you want to use the program with GUI in Local mode you can type 'python3 {SoftwareName} {GuiLocal}'"
-HowToUseInfo09 = f"\nIf you want to have the program install required packages by it's self type'python3 {SoftwareName} {installRequirement}'"
+HowToUseInfo09 = f"\nIf you want to have the program install required packages by it's self type 'python3 {SoftwareName} {installRequirement}'"
 HowToUseInfo10 = f"\nIf you want to have the program install required packages by it's self type 'python3 {SoftwareName} {pipForce}'"
 HowToUseInfo11 = f"\nIf you want to have the program uninstall required packages by it's self type 'python3 {SoftwareName} {uninstallRequirement}'"
 HowToUseInfo12 = f"\nIf you want to have the program allow you to input the ip address or website manually for global networks type 'sudo python3 {SoftwareName} {GlobalManualArgument}'"
@@ -93,8 +96,9 @@ HowToUseInfo16 = f"\nIf you want to skip a step type 'sudo python3 {SoftwareName
 HowToUseInfo17 = f"\nIf you want to skip a step type 'python3 {SoftwareName} {skipLocal}'"
 HowToUseInfo19 = f"\nIf you want to see the help message for global networks type 'python3 {SoftwareName} {GlobalHelp}'"
 HowToUseInfo20 = f"\nIf you want to see the help message for local networks type 'python3 {SoftwareName} {LocalHelp}'"
-howToUseInfo21 = f"\nIf you want to see the packages that are installed/not installed. Type 'python3 {SoftwareName} {ListPackages}'"
-howToUseInfo22 = f"\nIf you have to update the packages just type. 'python3 {SoftwareName} --upgrade'"
+HowToUseInfo21 = f"\nIf you want to see the packages that are installed/not installed. Type 'python3 {SoftwareName} {ListPackages}'"
+HowToUseInfo22 = f"\nIf you want to update the packages. Type 'python3 {SoftwareName} --upgrade'"
+HowToUseInfo23 = f"\nIf you want to see the version of the packages. Type 'python3 {SoftwareName} --version'"
 
 ProgramsUSED = (ProgramsUSED+
                 ProgramsUsedInfo01+
@@ -122,8 +126,9 @@ Info = (HowToUse +
         HowToUseInfo17 +
         HowToUseInfo19 +
         HowToUseInfo20 + 
-        howToUseInfo21 +
-        howToUseInfo22)
+        HowToUseInfo21 +
+        HowToUseInfo22 +
+        HowToUseInfo23)
 #--------------HELP MESSAGE END-------------------#
 
 
@@ -145,10 +150,13 @@ Please use the correct number of arguments. Example:
 {GREEN}{conenctRDP}{RESET} put's the program into RDP connection mode,
 {GREEN}{skipLocal}{RESET} put's it in skip local mode that skips the local mode,
 {GREEN}{autoConnect}{RESET} put's the program into auto connect, if there is a file with the user SSH username and ip address to use,
-{GREEN}{GlobalHelp}{RESET} put's it in global help mode that shows you how to use the program in global mode,
-{GREEN}{LocalHelp}{RESET} put's it in local help mode that shows you how to use the program in local mode,
+{GREEN}{GlobalHelpPy}{RESET} put's it in global help mode that shows you how to use the program in global mode,
+{GREEN}{LocalHelpPy}{RESET} put's it in local help mode that shows you how to use the program in local mode,
 {GREEN}{ListPackages}{RESET} shows the packages that are installed or not,
+{GREEN}{upgrade}{RESET} allow you to update packages so it work,
 {GREEN}{FIX}{RESET} put's it in fix mode that fixes the program,
-{GREEN}{upgrade}{RESET} put's it in update mode so the packages will always work,
-{GREEN}{HELP}{RESET} put's it in help mode so you understand what you are going to do with this program.'''
+{GREEN}{HELP}{RESET} put's it in help mode so you understand what you are going to do with this program.
+{GREEN}{version}{RESET} shows the version of the packages installed.
+'''
+
 #--------------HELP MESSAGE END-------------------#

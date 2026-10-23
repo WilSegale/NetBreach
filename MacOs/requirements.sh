@@ -347,7 +347,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
 
     if [[ "$1" == "--help" || "$1" == "-h" ]]; then
         HELP
-        
+
     # argument to list the packages that are installed or not
     elif [[ "$1" == "--list" ]]; then
         listForPackages
@@ -360,7 +360,8 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
     elif [[ "$1" == "--pipForce" ]]; then
         pipForceMode=true
         installPackages
-    # armument to tell the user the Version of the pacakges
+
+    # argument to tell the user the Version of the pacakges
     elif [[ "$1" == "--VERSION" ]]; then
         BrewPackageVersion
     fi

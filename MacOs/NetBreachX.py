@@ -526,7 +526,8 @@ try:
         elif argument[1] in upgrade:
             subprocess.run(upgradeBASH)
             sys.exit()
-
+            
+        # allows the program to understand how to show the version of the packages
         elif argument[1] in version:
             subprocess.run(versionBASH)
             sys.exit()

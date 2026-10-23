@@ -21,7 +21,52 @@ else
     exit 1
 fi
 
+PackageVersion(){
+    echo "_________LINUX PACKAGE VERSION CHECK________"
 
+    for package in "${Packages[@]}"; do
+        version=""
+
+        # Detect the Linux package manager and check the package
+        if command -v apt >/dev/null 2>&1; then
+            if dpkg-query -W -f='${Status}' "$package" 2>/dev/null | grep -q "install ok installed"; then
+                version=$(dpkg-query -W -f='${Version}' "$package" 2>/dev/null)
+            fi
+
+        elif command -v dnf >/dev/null 2>&1; then
+            if rpm -q "$package" >/dev/null 2>&1; then
+                version=$(rpm -q --qf '%{VERSION}-%{RELEASE}' "$package" 2>/dev/null)
+            fi
+
+        elif command -v pacman >/dev/null 2>&1; then
+            if pacman -Q "$package" >/dev/null 2>&1; then
+                version=$(pacman -Q "$package" 2>/dev/null | awk '{print $2}')
+            fi
+        fi
+
+        # Display the result
+        if [[ -n "$version" ]]; then
+            echo -e "[ ${GREEN}OK${NC} ] ${package} version: ${version}"
+        else
+            echo -e "[ ${RED}${FAIL}${NC} ] ${package} is not installed."
+        fi
+    done
+
+    echo -e "\n_________PIP PACKAGE VERSION CHECK________"
+
+    for pip_pkg in "${pipPackages[@]}"; do
+        # Check installed Python package metadata
+        version=$(python3 -m pip show "$pip_pkg" 2>/dev/null |
+                  awk -F ': ' '/^Version:/ {print $2}')
+
+        if [[ -n "$version" ]]; then
+            echo -e "[ ${GREEN}OK${NC} ] ${pip_pkg} version: ${version}"
+        else
+            echo -e "[ ${RED}${FAIL}${NC} ] ${pip_pkg} is not installed."
+        fi
+    done
+
+}
 # Loop through every package in the Packages array
 for PACKAGE in "${Packages[@]}"; do
 
@@ -266,7 +311,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
 
     # argument to tell the user the Version of the pacakges
     elif [[ "$1" == "--VERSION" ]]; then
-        BrewPackageVersion
+        PackageVersion
     fi
 
     # Check for installed packages
