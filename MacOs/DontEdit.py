@@ -80,7 +80,9 @@ GlobalHelpPy = {"--GlobalHelp", "--globalHelp", "--GLOBALHELP", "--global-help",
 LocalHelpPy = {"--LocalHelp", "--localHelp", "--LOCALHELP", "--local-help", "--Local-Help", "--LOCAL-HELP"}
 ListPackages = {"--list", "--LIST", "--List"}
 upgrade = {"--UPGRADE", "--upgrade", "--Upgrade", "-U", "-u", "--up", "--UP", "--Up"}
+version = {"--VERSION", "--version", "--Version", "-V", "-v"}
 FIX = {"--FIX", "--fix", "-f", "-F"}
+
 
 
 # Define list of scripts to run
@@ -106,3 +108,4 @@ GlobalHelp = ["bash", "GlobalScript.sh", "--help"]
 LocalHelp = ["bash", "localScript.sh", "--help"]
 upgradeBASH = ["bash", "requirements.sh", "--upgrade"]
 PIP = ["bash", "requirements.sh", "--pipForce"]
+versionBASH = ["bash", "requirements.sh", "--VERSION"]

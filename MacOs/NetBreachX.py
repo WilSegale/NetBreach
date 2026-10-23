@@ -527,6 +527,10 @@ try:
             subprocess.run(upgradeBASH)
             sys.exit()
 
+        elif argument[1] in version:
+            subprocess.run(versionBASH)
+            sys.exit()
+
         # error message for the user if the argument is not correct
         else:
             print(f'''{ErrorMessage} {explain}''', file=ERROR)

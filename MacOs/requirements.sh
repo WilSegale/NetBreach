@@ -32,27 +32,29 @@ if [ "$(id -u)" -eq 0 ]; then
 fi
 
 # Loop through every package
+BrewPackageVersion(){
+    echo "_________BREW PACKAGE VERSION CHECK________"
+    for package in "${Packages[@]}"; do
+        if brew list --formula | grep -q "^${package}\$"; then
+            version=$(brew info --json=v1 "${package}" | jq -r '.[0].versions.stable')
+            echo -e "[ ${GREEN}OK${NC} ] ${package} version: ${version}"
+        else
+            echo -e "[ ${RED}${FAIL}${NC} ] ${package} is not installed."
+        fi
+    done
 
-# Loop through every package in the Packages array
-for PACKAGE in "${Packages[@]}"; do
+    echo -e "\n_________PIP PACKAGE VERSION CHECK________"
+    for pip_pkg in "${pipPackages[@]}"; do
+        if python3 -c "import ${pip_pkg}" &>/dev/null; then
+            version=$(python3 -m pip show "${pip_pkg}" | grep Version | awk '{print $2}')
+            echo -e "[ ${GREEN}OK${NC} ] ${pip_pkg} version: ${version}"
+        else
+            echo -e "[ ${RED}${FAIL}${NC} ] ${pip_pkg} is not installed."
+        fi
+    done
 
-    # Check if the current package has an available update
-    if brew outdated --quiet | grep -qx "${PACKAGE}"; then
-
-        # Notify the user that the package is outdated
-        echo -e "${PACKAGE} ${RED}is out of date.${NC}"
-
-        # Upgrade the package to the latest version
-        brew upgrade "${PACKAGE}"
-
-    else
-
-        # Notify the user that the package is already current
-        echo -e "${PACKAGE} ${GREEN}is up to date.${NC}"
-
-    fi
-
-done
+    exit 1
+}
 #checks if the user is connected to the internet if they are not connceted it tells them they are not connceted and have to connect
 SITE="https://google.com/"
 if ! curl --head --silent --fail $SITE > /dev/null; then
@@ -300,30 +302,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
             fi
         done
         
-        echo -e "\nDo you want me to Update or Install the packages for you? "Yes/No/Install""
-
-        read -p ">>> " update
-        if [[ " ${yes[*]} " == *" ${update} "* ]]; then
-            upgradePackages
-        
-        elif [[ " ${forceInstall[*]} " == *" ${update} "* ]]; then
-            installPackages
-        
-        elif [[ " ${no[*]} " == *" ${update} "* ]]; then
-       
-            echo -e "[ ${RED}X${NC} ] Not doing update for packages"
-            exit 1
-        
-        else
-            echo -e "[ ${RED}${BRIGHT}${FAIL}${NC} ] TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}"
-
-            echo -e "[ ${RED}ERROR${NC} ] Invalid input. Please enter Yes, No, or Install. FILE (requirements.sh)"
-            echo "ERROR:TIME:${CURRENT_TIME} Please connect to the internet. DATE:${CURRENT_DATE}" >> ERROR.LOG
-
-            exit 1
-            
-        fi
-        exit
+       exit 1
     }
     #upgrade the packages and if HOMEBREW is not installed it will ask the user if they want to install it
     upgradePackages() {
@@ -374,6 +353,9 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
     
     elif [[ "$1" == "--upgrade" ]]; then
         upgradePackages
+
+    elif [[ "$1" == "--VERSION" ]]; then
+        BrewPackageVersion
     fi
 
     WifiConnection
