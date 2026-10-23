@@ -251,17 +251,24 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
 
     # Handle Ctrl+C (SIGINT)
     trap 'EXIT_PROGRAM_WITH_CTRL_C' SIGINT
-
+    
     if [[ "$1" == "--help" || "$1" == "-h" ]]; then
         HELP
     # list of packages taht are installed or not
     elif [[ "$1" == "--list" ]]; then
         listForPackages
-
+    # upgrade packages
     elif [[ "$1" == "--upgrade" ]]; then
         upgradePackages
 
+    elif [[ "$1" == "--pipForce" ]]; then
+        pipForceMode=true
+
+    # argument to tell the user the Version of the pacakges
+    elif [[ "$1" == "--VERSION" ]]; then
+        BrewPackageVersion
     fi
+
     # Check for installed packages
     checkForPackages
 else
