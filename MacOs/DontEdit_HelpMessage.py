@@ -32,6 +32,8 @@ HowToUseInfo19Color = f"\nIf you want to see the help message for global network
 HowToUseInfo20Color = f"\nIf you want to see the help message for local networks type {GREEN}'python3 {SoftwareName} --Local-Help'{RESET}"
 HowToUseInfo21Color = f"\nIf you want to see the packages that are installed/not installed. Type {GREEN}'python3 {SoftwareName} --list'{RESET}"
 HowToUseInfo22Color = f"\nIf you want to update the packages. Type {GREEN}'python3 {SoftwareName} --upgrade'{RESET}\n"
+HowToUseInfo23Color = f"\nIf you want to see the version of the packages. Type {GREEN}'python3 {SoftwareName} --version'{RESET}\n"
+
 ProgramsUSEDCOLOR = (ProgramsUSEDCOLOR+
                 ProgramsUsedInfo01COLOR+
                 ProgramsUsedInfo02COLOR+
@@ -60,7 +62,8 @@ InfoColor = (HowToUseColor +
         HowToUseInfo19Color +
         HowToUseInfo20Color +
         HowToUseInfo21Color + 
-        HowToUseInfo22Color)
+        HowToUseInfo22Color +
+        HowToUseInfo23Color)
 #--------------HELP MESSAGE END with color-------------------#
 
 #--------------HELP MESSAGE START-------------------#
@@ -95,6 +98,7 @@ HowToUseInfo19 = f"\nIf you want to see the help message for global networks typ
 HowToUseInfo20 = f"\nIf you want to see the help message for local networks type 'python3 {SoftwareName} {LocalHelp}'"
 HowToUseInfo21 = f"\nIf you want to see the packages that are installed/not installed. Type 'python3 {SoftwareName} {ListPackages}'"
 HowToUseInfo22 = f"\nIf you want to update the packages. Type 'python3 {SoftwareName} --upgrade'"
+HowToUseInfo23 = f"\nIf you want to see the version of the packages. Type 'python3 {SoftwareName} --version'"
 
 ProgramsUSED = (ProgramsUSED+
                 ProgramsUsedInfo01+
@@ -123,7 +127,8 @@ Info = (HowToUse +
         HowToUseInfo19 +
         HowToUseInfo20 + 
         HowToUseInfo21 +
-        HowToUseInfo22)
+        HowToUseInfo22 +
+        HowToUseInfo23)
 #--------------HELP MESSAGE END-------------------#
 
 
@@ -150,5 +155,8 @@ Please use the correct number of arguments. Example:
 {GREEN}{ListPackages}{RESET} shows the packages that are installed or not,
 {GREEN}{upgrade}{RESET} allow you to update packages so it work,
 {GREEN}{FIX}{RESET} put's it in fix mode that fixes the program,
-{GREEN}{HELP}{RESET} put's it in help mode so you understand what you are going to do with this program.'''
+{GREEN}{HELP}{RESET} put's it in help mode so you understand what you are going to do with this program.
+{GREEN}{version}{RESET} shows the version of the packages installed.
+'''
+
 #--------------HELP MESSAGE END-------------------#
