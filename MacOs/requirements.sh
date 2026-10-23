@@ -325,7 +325,7 @@ if [[ "$OSTYPE" == "${OS}"* ]]; then
         fi
         exit
     }
-    
+    #upgrade the packages and if HOMEBREW is not installed it will ask the user if they want to install it
     upgradePackages() {
         echo "_________BREW PACKAGE UPGRADE________"
         if ! command -v brew &>/dev/null; then
